@@ -61,11 +61,17 @@ DEFAULT_ACTIONS = list(MEMORY_ACTION_CONFIG["default_actions"])
 FINALIZE_ACTION = str(MEMORY_ACTION_CONFIG["finalize_action"])
 
 BOXED_DIAGNOSIS_RE = re.compile(r"\\box(?:ed)?\{(.+?)\}", re.S)
+TRACE_TAG_RE = re.compile(r"[^A-Za-z0-9_.-]+")
 
 
 def _extract_boxed_diagnosis(text: str) -> str:
     match = BOXED_DIAGNOSIS_RE.search(text or "")
     return match.group(1).strip() if match else ""
+
+
+def _safe_trace_tag(value: str) -> str:
+    tag = TRACE_TAG_RE.sub("_", str(value or "").strip()).strip("._-")
+    return tag[:80]
 
 
 class MemoryWrappedMedicalAgent(_BaseAgent):
@@ -178,6 +184,8 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         experience_merge_mode: str = "llm",
         memory_top_k: int = 5,
         log_memory_trace: bool = False,
+        inject_case_memory: bool = False,
+        trace_tag: str = "",
         disable_memory: bool = False,
         enable_memory: bool | None = None,
         disable_experience_memory: bool = False,
@@ -199,7 +207,6 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         if enable_memory is not None:
             disable_memory = not enable_memory
         self.memory_root = memory_root or MEMORY_ROOT_DIRNAME
-        self.trace_root = str(Path(self.memory_root) / "trace")
         self.case_update_mode = case_update_mode
         self.query_builder_mode = query_builder_mode
         self.applicability_mode = applicability_mode
@@ -209,6 +216,13 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         # level. Currently per-memory-type top-k is configured in RETRIEVAL_CONFIG.
         self.memory_top_k = memory_top_k
         self.log_memory_trace = log_memory_trace
+        self.inject_case_memory = inject_case_memory
+        effective_trace_tag = _safe_trace_tag(trace_tag)
+        if not effective_trace_tag and inject_case_memory:
+            effective_trace_tag = "inject_case_memory"
+        trace_dirname = f"trace_{effective_trace_tag}" if effective_trace_tag else "trace"
+        self.trace_root = str(Path(self.memory_root) / trace_dirname)
+        self.trace_tag = effective_trace_tag
         self.disable_memory = disable_memory
         self.disable_experience_memory = disable_experience_memory
         self.disable_skill_memory = disable_skill_memory
@@ -479,19 +493,61 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             }
 
     def _inject_guidance(self, observation: Any) -> Any:
-        if self.disable_memory or self.latest_guidance is None:
+        if self.disable_memory:
             return observation
-        guidance_text = guidance_to_text(self.latest_guidance)
-        if not guidance_text:
+        guidance_text = guidance_to_text(self.latest_guidance) if self.latest_guidance else ""
+        case_memory_text = self._case_memory_for_doctor_text() if self.inject_case_memory else ""
+        if not guidance_text and not case_memory_text:
             return observation
         if isinstance(observation, dict):
             enriched = dict(observation)
-            enriched["memory_guidance"] = guidance_text
-            enriched["memory_guidance_structured"] = self.latest_guidance.to_dict()
+            if guidance_text:
+                enriched["memory_guidance"] = guidance_text
+                enriched["memory_guidance_structured"] = self.latest_guidance.to_dict()
+            if case_memory_text:
+                enriched["case_memory"] = case_memory_text
             return enriched
         if isinstance(observation, str):
-            return observation + "\n\n[Memory Guidance]\n" + guidance_text
+            blocks = [observation]
+            if case_memory_text:
+                blocks.append("[Case Memory]\n" + case_memory_text)
+            if guidance_text:
+                blocks.append("[Memory Guidance]\n" + guidance_text)
+            return "\n\n".join(blocks)
         return observation
+
+    def _case_memory_for_doctor_text(self) -> str:
+        if self.latest_query is None:
+            return ""
+        query_debug = (self.latest_memory_debug or {}).get("query_builder") or {}
+        case_memory = (
+            query_debug.get("final_case_memory")
+            or query_debug.get("classified_case_memory")
+            or query_debug.get("case_memory")
+            or {}
+        )
+        if not isinstance(case_memory, dict):
+            return ""
+        lines: list[str] = []
+        chief = str(case_memory.get("chief_complaint") or "").strip()
+        if chief:
+            lines.append(f"Presenting problem: {chief}")
+        goal = str(case_memory.get("diagnosis_goal") or "").strip()
+        if goal:
+            lines.append(f"Diagnostic objective: {goal}")
+        efficient = [
+            str(item).strip()
+            for item in (case_memory.get("efficient_turn_information") or [])[-6:]
+            if str(item).strip()
+        ]
+        if efficient:
+            lines.append("Evidence so far:\n" + "\n".join(f"- {item}" for item in efficient))
+        prior = str(case_memory.get("prior_information_summary") or "").strip()
+        if prior:
+            lines.append(f"Prior summary: {prior}")
+        if self.latest_query.query_text:
+            lines.append(f"Memory retrieval intent: {self.latest_query.query_text}")
+        return "\n".join(lines)
 
     def _candidate_actions(self) -> list[str]:
         raw_tools = getattr(self, "tools", None) or []

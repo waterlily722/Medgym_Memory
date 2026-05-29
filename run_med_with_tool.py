@@ -152,8 +152,8 @@ def main():
     parser.add_argument(
         "--provider",
         default="local",
-        choices=["local", "deepseek", "qwen"],
-        help="Doctor API provider. qwen uses Alibaba Cloud DashScope OpenAI-compatible API.",
+        choices=["local", "deepseek", "qwen", "hulumed"],
+        help="Doctor API provider. hulumed assumes a local OpenAI-compatible server.",
     )
     parser.add_argument("--model", default="", help="Doctor served model name. DeepSeek defaults to deepseek-chat; Qwen defaults to qwen-plus.")
     parser.add_argument("--tokenizer_path", required=True, help="Local tokenizer/model path for AutoTokenizer.")
@@ -162,7 +162,14 @@ def main():
     parser.add_argument("--case_dir", required=True, help="Bench 根目录，例如 /data/xuxiang/mimic-iv/bench")
     parser.add_argument("--max_cases", type=int, default=10)
     parser.add_argument("--repeat_k", type=int, default=1)
+    parser.add_argument("--max_steps", type=int, default=15, help="Maximum doctor-agent turns per case.")
     parser.add_argument("--no_cxr", action="store_true", help="使用无 CXR 数据（bench/without_img/hosp_only）；默认使用有 CXR（bench/with_img/ed_hosp）")
+    parser.add_argument(
+        "--execution_mode",
+        default="parallel",
+        choices=["parallel", "serial"],
+        help="Run cases concurrently or one by one. serial forces --n_parallel_agents=1.",
+    )
     parser.add_argument("--n_parallel_agents", type=int, default=8)
     parser.add_argument("--temperature", type=float, default=0.6)
     parser.add_argument("--top_p", type=float, default=0.95)
@@ -174,7 +181,7 @@ def main():
     parser.add_argument(
         "--judge_provider",
         default="auto",
-        choices=["auto", "local", "deepseek", "qwen", "custom"],
+        choices=["auto", "local", "deepseek", "qwen", "hulumed", "custom"],
         help="Judge API provider. auto reuses --provider unless judge URL/key is explicitly set.",
     )
     parser.add_argument("--judge_base_url", default="", help="Judge API base URL (default: same as --base_url).")
@@ -187,6 +194,16 @@ def main():
     parser.add_argument("--experience_merge_mode", default="llm", choices=["rule", "llm"])
     parser.add_argument("--memory_top_k", type=int, default=5)
     parser.add_argument("--log_memory_trace", action="store_true")
+    parser.add_argument(
+        "--inject_case_memory",
+        action="store_true",
+        help="Expose compact CaseMemory to the doctor agent on each turn, in addition to selected memory guidance.",
+    )
+    parser.add_argument(
+        "--trace_tag",
+        default="",
+        help="Optional suffix for memory trace and trajectory directories.",
+    )
     parser.add_argument("--disable_experience_memory", action="store_true")
     parser.add_argument("--disable_skill_memory", action="store_true")
     parser.add_argument("--disable_knowledge_memory", action="store_true")
@@ -253,6 +270,8 @@ def main():
         help="Number of final-output chars per example. Use 0 for full text.",
     )
     args = parser.parse_args()
+    if args.execution_mode == "serial":
+        args.n_parallel_agents = 1
     resolve_doctor_endpoint(args)
 
     os.environ["MEDGYM_RETRIEVAL_FALLBACK_SCORING"] = (
@@ -297,8 +316,11 @@ def main():
 
     os.environ["TOKENIZERS_PARALLELISM"] = "true"
     if args.trajectory_dir:
-        os.environ["RLLM_TRAJECTORY_DIR"] = args.trajectory_dir
-        Path(args.trajectory_dir).mkdir(parents=True, exist_ok=True)
+        trajectory_dir = Path(args.trajectory_dir)
+        if args.trace_tag:
+            trajectory_dir = trajectory_dir / args.trace_tag
+        os.environ["RLLM_TRAJECTORY_DIR"] = str(trajectory_dir)
+        trajectory_dir.mkdir(parents=True, exist_ok=True)
     else:
         os.environ.setdefault(
             "RLLM_TRAJECTORY_DIR",
@@ -370,6 +392,8 @@ def main():
             "experience_merge_mode": args.experience_merge_mode,
             "memory_top_k": args.memory_top_k,
             "log_memory_trace": args.log_memory_trace,
+            "inject_case_memory": args.inject_case_memory,
+            "trace_tag": args.trace_tag,
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
@@ -387,7 +411,7 @@ def main():
         env_args = {
             "tools": ["ask_patient", "diagnosis", "retrieve", "request_exam"],
             "reward_fn": med_diagnosis_reward,
-            "max_steps": 15,
+            "max_steps": args.max_steps,
         }
 
     else:
@@ -403,6 +427,8 @@ def main():
             "experience_merge_mode": args.experience_merge_mode,
             "memory_top_k": args.memory_top_k,
             "log_memory_trace": args.log_memory_trace,
+            "inject_case_memory": args.inject_case_memory,
+            "trace_tag": args.trace_tag,
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
@@ -420,7 +446,7 @@ def main():
         env_args = {
             "tools": ["ask_patient", "diagnosis", "retrieve", "cxr", "request_exam", "cxr_grounding"],
             "reward_fn": med_diagnosis_reward,
-            "max_steps": 15,
+            "max_steps": args.max_steps,
             "context_injected_tool_names": ["cxr", "request_exam", "cxr_grounding"],
         }
 
@@ -439,7 +465,7 @@ def main():
             "base_url": args.base_url,
             "api_key": args.api_key,
             "model": args.model,
-            "use_chat_completions": args.provider in {"deepseek", "qwen"},
+            "use_chat_completions": args.provider in {"deepseek", "qwen", "hulumed"},
         },
         tokenizer=tokenizer,
         sampling_params=sampling_params,
