@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import time
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -28,11 +29,19 @@ class LLMClient:
     api_key: str = ""
     temperature: float = 0.0
     timeout: int = 60
+    retry_attempts: int = 3
+    retry_backoff_seconds: float = 2.0
 
     def __post_init__(self) -> None:
         self.model = self.model or os.getenv("MEMORY_LLM_MODEL", "")
         self.base_url = self.base_url or os.getenv("MEMORY_LLM_BASE_URL", "")
         self.api_key = self.api_key or os.getenv("MEMORY_LLM_API_KEY", "")
+
+        self.retry_attempts = int(os.getenv("MEMORY_LLM_RETRY_ATTEMPTS", self.retry_attempts))
+        self.retry_backoff_seconds = float(
+            os.getenv("MEMORY_LLM_RETRY_BACKOFF_SECONDS", self.retry_backoff_seconds)
+        )
+        self.timeout = int(os.getenv("MEMORY_LLM_TIMEOUT", self.timeout))
 
         self.base_url = self.base_url.rstrip("/")
 
@@ -89,29 +98,45 @@ class LLMClient:
             method="POST",
         )
 
-        try:
-            if self._is_local_base_url():
-                opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
-                response_ctx = opener.open(request, timeout=self.timeout)
-            else:
-                response_ctx = urllib.request.urlopen(request, timeout=self.timeout)
-            with response_ctx as response:
-                raw = response.read().decode("utf-8")
-        except urllib.error.HTTPError as exc:
-            body = ""
+        raw = ""
+        attempts = max(1, int(self.retry_attempts))
+        for attempt in range(1, attempts + 1):
             try:
-                body = exc.read().decode("utf-8", errors="replace")
-            except Exception:
+                if self._is_local_base_url():
+                    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+                    response_ctx = opener.open(request, timeout=self.timeout)
+                else:
+                    response_ctx = urllib.request.urlopen(request, timeout=self.timeout)
+                with response_ctx as response:
+                    raw = response.read().decode("utf-8")
+                break
+            except urllib.error.HTTPError as exc:
                 body = ""
-            logger.warning(
-                "LLMClient HTTP error: %s; response_body=%s",
-                exc,
-                body[:2000],
-            )
-            return "{}"
-        except (urllib.error.URLError, TimeoutError, OSError) as exc:
-            logger.warning("LLMClient HTTP error: %s", exc)
-            return "{}"
+                try:
+                    body = exc.read().decode("utf-8", errors="replace")
+                except Exception:
+                    body = ""
+                retryable = exc.code in {429, 500, 502, 503, 504}
+                logger.warning(
+                    "LLMClient HTTP error attempt %d/%d: %s; response_body=%s",
+                    attempt,
+                    attempts,
+                    exc,
+                    body[:2000],
+                )
+                if not retryable or attempt >= attempts:
+                    return "{}"
+                time.sleep(self.retry_backoff_seconds * attempt)
+            except (urllib.error.URLError, TimeoutError, OSError) as exc:
+                logger.warning(
+                    "LLMClient HTTP error attempt %d/%d: %s",
+                    attempt,
+                    attempts,
+                    exc,
+                )
+                if attempt >= attempts:
+                    return "{}"
+                time.sleep(self.retry_backoff_seconds * attempt)
 
         try:
             data = json.loads(raw)
@@ -131,8 +156,17 @@ class LLMClient:
         headers = {
             "Content-Type": "application/json",
         }
-        if self.api_key:
-            headers["Authorization"] = f"Bearer {self.api_key}"
+        token = str(self.api_key).strip()
+        if token and token.lower() != "none":
+            auth_value = f"Bearer {token}"
+            try:
+                auth_value.encode("latin-1")
+            except UnicodeEncodeError as exc:
+                raise ValueError(
+                    "MEMORY_LLM_API_KEY/api_key contains non-HTTP-header characters. "
+                    "Use the real ASCII API key, not a placeholder such as Chinese text."
+                ) from exc
+            headers["Authorization"] = auth_value
         return headers
 
     def _is_local_base_url(self) -> bool:

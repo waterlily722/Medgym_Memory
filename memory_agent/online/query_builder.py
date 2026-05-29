@@ -3,8 +3,8 @@ from __future__ import annotations
 import json
 from typing import Any
 
-from ..llm import LLMClient, parse_validate_repair, query_builder_prompt
-from ..llm.schemas import QUERY_BUILDER_SCHEMA
+from ..llm import LLMClient, case_memory_prompt, parse_validate_repair, query_builder_prompt
+from ..llm.schemas import CASE_MEMORY_SCHEMA, QUERY_BUILDER_SCHEMA
 from ..schemas import CaseMemory, CaseState, MemoryQuery
 
 
@@ -406,11 +406,69 @@ def build_case_memory_llm(
         prior_information_summary=rule_memory.prior_information_summary,
     )
     if debug is not None:
-        debug["case_memory_mode"] = "llm_turn_classification_only"
+        debug["case_memory_mode"] = "llm_turn_classification_then_goal"
         debug["case_state"] = case_state.to_dict()
         debug["rule_case_memory"] = rule_memory.to_dict()
         debug["classified_case_memory"] = classified_memory.to_dict()
-        debug["case_memory_llm_available"] = llm_client.available()
+
+    # --- Phase 2: LLM generates strategic diagnosis_goal + prior_information_summary ---
+    if llm_client.available():
+        payload = {
+            "case_state": case_state.to_dict(),
+            "rule_efficient_turn_information": classified_memory.efficient_turn_information,
+            "rule_inefficient_turn_information": inefficient_turn_information(case_state),
+            "instruction": (
+                "Extract CaseMemory from CaseState. CaseState is the full observed ledger. "
+                "Keep diagnosis_goal strategic: state the current diagnostic objective, "
+                "what useful/failed evidence has been gathered, and what next evidence route "
+                "should be prioritized. "
+                "Do not rewrite efficient_turn_information: copy rule_efficient_turn_information exactly. "
+                "Summarize only older low-information records in prior_information_summary."
+            ),
+        }
+        prompt = case_memory_prompt(payload)
+        if debug is not None:
+            debug["case_memory_prompt"] = prompt
+            debug["case_memory_payload"] = payload
+
+        raw_output = llm_client.generate_json(prompt, max_tokens=1200)
+        raw_empty = not str(raw_output or "").strip() or str(raw_output or "").strip() == "{}"
+        parsed, ok, errors = parse_validate_repair(
+            raw_output,
+            CASE_MEMORY_SCHEMA,
+            classified_memory.to_dict(),
+        )
+        if raw_empty or not ok:
+            message = (
+                f"CaseMemory LLM output invalid for case_id={case_state.case_id!r} "
+                f"turn_id={case_state.turn_id}: errors={errors}, raw_output={raw_output!r}"
+            )
+            if strict and not raw_empty:
+                raise RuntimeError(message)
+            parsed = classified_memory.to_dict()
+        else:
+            # Preserve classified efficient_turn_information and chief_complaint
+            parsed["efficient_turn_information"] = list(classified_memory.efficient_turn_information)
+            parsed["chief_complaint"] = classified_memory.chief_complaint
+        try:
+            result = CaseMemory.from_dict(parsed)
+        except Exception as exc:
+            if strict:
+                raise RuntimeError(f"CaseMemory parse failed: {exc}") from exc
+            result = classified_memory
+        if debug is not None:
+            debug["case_memory_raw_output"] = raw_output
+            debug["case_memory_parsed_output"] = parsed
+            debug["case_memory_validation_ok"] = ok
+            debug["case_memory_validation_errors"] = errors
+            debug["case_memory_used_fallback"] = (
+                result.to_dict() == classified_memory.to_dict() and (raw_empty or not ok)
+            )
+            debug["final_case_memory"] = result.to_dict()
+        return result
+
+    if debug is not None:
+        debug["case_memory_llm_available"] = False
         debug["case_memory_used_fallback"] = effective_ids is None
         if effective_ids is None:
             debug["case_memory_fallback_reason"] = "llm_unavailable_or_no_candidates"

@@ -39,9 +39,21 @@ _FINAL_DIAGNOSIS_LINE_RE = re.compile(
 )
 _BOXED_RE = re.compile(r"\\box(?:ed)?\{(.+?)\}")
 
+# Patterns that indicate tool-call JSON or non-diagnosis content
+_TOOL_CALL_PATTERN = re.compile(
+    r'^\s*\{'
+    r'|^\s*(ask_patient|diagnosis|retrieve|request_exam|cxr|finish)\s*[({]'
+    r'|^\s*\[\s*\{',
+    re.IGNORECASE,
+)
+
 
 def _extract_final_diagnosis(text: str) -> str:
-    """从模型输出中抽取最终诊断：优先从 'The final diagnosis is: \\boxed{xxx}.' 中取 xxx，否则取任意 \\boxed{xxx} 内容。"""
+    """从模型输出中抽取最终诊断。
+
+    Only explicit final-diagnosis formats count. Intermediate tool requests or
+    ordinary prose must not be sent to the judge as a diagnosis.
+    """
     text = (text or "").strip()
     text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
     text = " ".join(text.split())
@@ -51,7 +63,24 @@ def _extract_final_diagnosis(text: str) -> str:
     m = _BOXED_RE.search(text)
     if m:
         return m.group(1).strip()
-    return text
+    try:
+        obj = json.loads(text)
+        if isinstance(obj, dict):
+            for key in ("diagnosis", "final_diagnosis"):
+                value = obj.get(key)
+                if isinstance(value, str) and value.strip():
+                    return value.strip()
+    except Exception:
+        pass
+    # Lenient fallback: if text is short and doesn't look like a tool call,
+    # treat the whole text as the diagnosis (old behavior).
+    if (
+        text
+        and len(text) <= 500
+        and not _TOOL_CALL_PATTERN.search(text)
+    ):
+        return text.strip()
+    return ""
 
 
 # ---------------------------------------------------------------------------
@@ -150,6 +179,12 @@ def result_reward_judge(
     if not gold:
         metadata["result_reward_reason"] = "no_ground_truth"
         return 0.0, metadata
+    if not pred:
+        metadata["result_reward_reason"] = "no_final_diagnosis"
+        metadata["judge_consistent"] = False
+        metadata["judge_raw_response"] = ""
+        metadata["model_output_excerpt"] = ""
+        return reward_if_not_consistent, metadata
 
     is_consistent, raw_judge = _call_judge_api(
         pred, gold, judge_model_name, judge_base_url, api_key
@@ -190,6 +225,11 @@ def result_reward(
     if not gold:
         metadata["result_reward_reason"] = "no_ground_truth"
         return 0.0, metadata
+    if not pred:
+        metadata["result_reward_reason"] = "no_final_diagnosis"
+        metadata["ground_truth_contained"] = False
+        metadata["model_output_excerpt"] = ""
+        return reward_if_not_contain, metadata
 
     if normalize:
         pred_n = _normalize(pred)

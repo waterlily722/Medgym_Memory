@@ -690,7 +690,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
 
         if judge_model_name and judge_base_url:
             _, metadata = result_reward_judge(
-                final_diagnosis,
+                f"The final diagnosis is: \\boxed{{{final_diagnosis}}}.",
                 gold_diagnosis,
                 judge_model_name=judge_model_name,
                 judge_base_url=judge_base_url,
@@ -698,7 +698,10 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             )
             return bool(metadata.get("judge_consistent", False))
 
-        _, metadata = result_reward(final_diagnosis, gold_diagnosis)
+        _, metadata = result_reward(
+            f"The final diagnosis is: \\boxed{{{final_diagnosis}}}.",
+            gold_diagnosis,
+        )
         return bool(metadata.get("ground_truth_contained", False))
 
     def _build_clinical_turn(

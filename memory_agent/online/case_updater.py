@@ -236,8 +236,11 @@ def _chief_complaint_from_visible_question(bundle: Any) -> str:
 
 
 def init_case_state(bundle: Any, no_cxr: bool = False) -> CaseState:
+    ehr = _ehr_from_bundle(bundle)
     case_id = _case_id_from_bundle(bundle)
-    chief_complaint = _chief_complaint_from_visible_question(bundle)
+    chief_complaint = _chief_complaint_from_ehr(ehr)
+    if not chief_complaint:
+        chief_complaint = _chief_complaint_from_visible_question(bundle)
 
     return CaseState(
         case_id=case_id,

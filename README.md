@@ -48,15 +48,35 @@ python run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 5 \
+  --max_cases 200 \
   --repeat_k 1 \
   --no_cxr \
   --parser_name qwen \
+  --trace_tag qwen_no_memory \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1
 ```
 
-启用 memory：
+启用 memory 不注入case memory：
+
+```bash
+python run_med_with_tool.py \
+  --model doctor_agent \
+  --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --base_url http://127.0.0.1:30000/v1 \
+  --case_dir /oral_llm/xiweidai/med_env/bench \
+  --max_cases 10 \
+  --repeat_k 1 \
+  --no_cxr \
+  --parser_name qwen \
+  --enable_memory \
+  --trace_tag qwen_nocm \
+  --log_memory_trace \
+  --judge_model judge_agent \
+  --judge_base_url http://127.0.0.1:30002/v1
+```
+
+启用 memory + 注入 Case Memory（每轮将 compact case memory 暴露给 doctor agent）：
 
 ```bash
 python run_med_with_tool.py \
@@ -70,6 +90,8 @@ python run_med_with_tool.py \
   --parser_name qwen \
   --enable_memory \
   --log_memory_trace \
+  --inject_case_memory \
+  --trace_tag case_memory_exp \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1
 ```
@@ -156,14 +178,22 @@ DeepSeek 默认配置：
 |------|------|
 | `--enable_memory` | 启用 memory wrapper |
 | `--log_memory_trace` | 保存每个 case 的 memory trace |
+| `--inject_case_memory` | 每轮将 compact CaseMemory 注入 doctor agent 的 observation（主诉、诊断目标、已获证据、prior summary） |
+| `--trace_tag` | memory trace 和 trajectory 目录后缀，用于区分不同实验，默认无后缀 |
 | `--disable_memory_write` | 冻结 memory store，只检索不写入 |
 | `--retrieval_mode` | 在线检索方式：`fielded_bm25` / `cosine` / `embedding`，默认 `fielded_bm25` |
 | `--merge_scoring_mode` | 离线 merge 候选召回方式，默认 `same_as_retrieval` |
+| `--query_builder_mode` | CaseMemory 构建模式：`rule` / `llm`，默认 `llm` |
+| `--applicability_mode` | 记忆适用性判断模式：`rule` / `llm` / `hybrid`，默认 `llm` |
+| `--experience_extraction_mode` | 经验提取模式：`rule` / `llm`，默认 `llm` |
+| `--experience_merge_mode` | 经验合并模式：`rule` / `llm`，默认 `llm` |
 | `--judge_model` | 开启 LLM judge，用于判断最终诊断是否正确 |
 | `--judge_provider` | judge provider：`auto` / `local` / `deepseek` / `qwen` / `custom` |
 | `--memory_llm_model` | memory 系统专用 LLM，默认复用 doctor model |
 | `--memory_root` | memory 数据目录，默认是 `memory_agent/memory_data` |
 | `--trajectory_dir` | 完整 trajectory 输出目录，默认是 `trajectories/`，会覆盖外部 `RLLM_TRAJECTORY_DIR` |
+| `--max_steps` | 每 case 最大 doctor-agent 轮次，默认 15 |
+| `--execution_mode` | `parallel` / `serial`，serial 强制单线程 |
 
 ## 输出位置
 
@@ -171,8 +201,8 @@ DeepSeek 默认配置：
 
 - run log：`logs/run_*.log`
 - summary log：`logs/summary_*.log`
-- trajectory：`trajectories/trajectory_*.json`
-- memory trace：`memory_agent/memory_data/trace/*.json`
+- trajectory：`trajectories/trajectory_*.json`（启用 `--trace_tag` 时输出到 `trajectories/<tag>/`）
+- memory trace：`memory_agent/memory_data/trace/*.json`（启用 `--trace_tag` 时输出到 `memory_agent/memory_data/trace_<tag>/`）
 - experience memory：`memory_agent/memory_data/experience_memory.jsonl`
 - skill memory：`memory_agent/memory_data/skill_memory.jsonl`
 - knowledge memory：`memory_agent/memory_data/knowledge_memory.jsonl`
