@@ -107,11 +107,16 @@ def build_memory_guidance(
 
 
 def guidance_to_text(guidance: MemoryGuidance) -> str:
+    from ..utils.config import GUIDANCE_CONFIG
+
+    max_chars = GUIDANCE_CONFIG.get("max_guidance_chars", 300)
+    max_memories = GUIDANCE_CONFIG.get("max_memories_in_guidance", 3)
+
     if not guidance.selected_memories:
         return ""
 
     blocks = ["Selected clinical memory references. Treat them as non-ground-truth references."]
-    for idx, memory in enumerate(guidance.selected_memories, start=1):
+    for idx, memory in enumerate(guidance.selected_memories[:max_memories], start=1):
         content = memory.get("content") or {}
         header = (
             f"Memory {idx}: "
@@ -139,4 +144,24 @@ def guidance_to_text(guidance: MemoryGuidance) -> str:
             lines.append("Tags: " + ", ".join(tags))
         blocks.append("\n".join(lines))
 
-    return "\n\n".join(blocks)
+    result = "\n\n".join(blocks)
+
+    # Truncate to max_chars, keeping complete lines
+    if len(result) > max_chars:
+        # Keep header + truncate memories to fit
+        truncated_lines = result.split("\n")
+        kept = []
+        total = 0
+        for line in truncated_lines:
+            if total + len(line) + 1 <= max_chars:
+                kept.append(line)
+                total += len(line) + 1
+            else:
+                # Try to fit a shortened version of this line
+                remaining = max_chars - total - 3
+                if remaining > 20:
+                    kept.append(line[:remaining] + "...")
+                break
+        result = "\n".join(kept)
+
+    return result

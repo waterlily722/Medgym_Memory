@@ -95,7 +95,28 @@ python run_med_with_tool.py \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1
 ```
+  启动 CXR grounding server：
 
+  conda activate vllm_env
+  cd /oral_llm/xiweidai/med_env/code/medgym_memory
+  bash start_grounding_server.sh
+
+  然后跑 CXR 版本（去掉 --no_cxr）：
+
+  python run_med_with_tool.py \
+    --model doctor_agent \
+    --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+    --base_url http://127.0.0.1:30000/v1 \
+    --case_dir /oral_llm/xiweidai/med_env/bench \
+    --max_cases 10 \
+    --repeat_k 1 \
+    --parser_name qwen \
+    --enable_memory \
+    --log_memory_trace \
+    --judge_model judge_agent \
+    --judge_base_url http://127.0.0.1:30002/v1
+
+    
 ## Qwen / DeepSeek API
 
 doctor model 和 judge model 都可以使用 OpenAI-compatible Chat Completions API。

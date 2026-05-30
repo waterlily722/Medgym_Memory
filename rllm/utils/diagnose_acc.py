@@ -325,21 +325,13 @@ def diagnosis_correct_by_reward(
     gold: str,
     task: Dict[str, Any],
 ) -> tuple[bool, str, Dict[str, Any]]:
-    pred = str(pred or "").strip()
-    if not pred:
-        return (
-            False,
-            "no_final_diagnosis",
-            {"result_reward_reason": "no_final_diagnosis"},
-        )
-
     judge_model_name = str(task.get("judge_model_name") or "").strip()
     judge_base_url = str(task.get("judge_base_url") or "").strip()
     judge_api_key = task.get("judge_api_key") or task.get("api_key") or "None"
 
     if judge_model_name and judge_base_url:
         _, metadata = result_reward_judge(
-            f"The final diagnosis is: \\boxed{{{pred}}}.",
+            pred,
             gold,
             judge_model_name=judge_model_name,
             judge_base_url=judge_base_url,
@@ -347,7 +339,7 @@ def diagnosis_correct_by_reward(
         )
         return bool(metadata.get("judge_consistent", False)), "judge", metadata
 
-    _, metadata = result_reward(f"The final diagnosis is: \\boxed{{{pred}}}.", gold)
+    _, metadata = result_reward(pred, gold)
     return bool(metadata.get("ground_truth_contained", False)), "containment", metadata
 
 

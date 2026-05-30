@@ -21,6 +21,9 @@ RETRIEVAL_CONFIG = {
     "negative_experience_min_score": 0.25,
     "skill_min_score": 0.20,
     "knowledge_min_score": 0.12,
+    # Minimum confidence for experience to be included in retrieval candidates.
+    # Experiences below this threshold are filtered out to reduce noise.
+    "min_experience_confidence": 0.7,
 }
 
 MERGE_CONFIG = {
@@ -99,4 +102,13 @@ LLM_CONFIG = {
     "experience_extraction_max_output_tokens": 2000,
     "experience_extraction_max_turns": 15,
     "experience_extraction_max_text_chars": 1600,
+}
+
+# Guidance injection settings
+GUIDANCE_CONFIG = {
+    # Maximum character length for guidance text injected into doctor observation.
+    # Truncated to this limit to avoid overwhelming the 8B model.
+    "max_guidance_chars": 300,
+    # Maximum number of selected memories to include in guidance text.
+    "max_memories_in_guidance": 3,
 }

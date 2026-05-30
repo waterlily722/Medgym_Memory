@@ -235,12 +235,78 @@ def _chief_complaint_from_visible_question(bundle: Any) -> str:
     return chief.strip(" .")
 
 
+def _chief_complaint_from_hpi(ehr: dict[str, Any]) -> str:
+    """Extract presenting complaint from HPI (History of Present Illness)."""
+    history = ehr.get("History") or {}
+    if not isinstance(history, dict):
+        return ""
+    hpi = str(history.get("HPI") or "").strip()
+    if not hpi or len(hpi) < 10:
+        return ""
+    # HPI is often a long narrative; take first sentence as chief complaint
+    first_sentence = hpi.split(".")[0].strip()
+    if len(first_sentence) > 200:
+        first_sentence = first_sentence[:200].rsplit(" ", 1)[0]
+    return first_sentence
+
+
+def _chief_complaint_from_observation(bundle: Any) -> str:
+    """Derive presenting complaint from the initial observation text shown to doctor.
+
+    The observation typically contains 'Patient presents with ...' or similar
+    language that encodes the chief complaint even when the structured EHR
+    Chief_Complaint field is None.
+    """
+    if not isinstance(bundle, dict):
+        return ""
+    # The initial observation may be stored under different keys
+    obs = (
+        str(bundle.get("observation") or "").strip()
+        or str(bundle.get("question") or "").strip()
+    )
+    if not obs:
+        return ""
+
+    # Try common patterns in the observation text
+    import re
+    for pattern in [
+        r"(?i)patient (?:presents with|reports|complains of)[:\s]+([^.]{5,200})",
+        r"(?i)chief complaint[:\s]+([^.]{5,200})",
+        r"(?i)presenting (?:problem|complaint|issue)[:\s]+([^.]{5,200})",
+        r"(?i)my main issue is[:\s]+([^.]{5,200})",
+    ]:
+        m = re.search(pattern, obs)
+        if m:
+            cc = m.group(1).strip()
+            if "available clinical presentation" not in cc.lower():
+                return cc
+
+    # If no pattern matches, use the full text (trimmed) as a last resort
+    # but only if it's not a generic instruction
+    generic_patterns = [
+        "assess and diagnose",
+        "available clinical presentation",
+        "you are a doctor",
+    ]
+    lower = obs.lower()
+    if any(p in lower for p in generic_patterns):
+        return ""
+
+    return obs[:200]
+
+
 def init_case_state(bundle: Any, no_cxr: bool = False) -> CaseState:
     ehr = _ehr_from_bundle(bundle)
     case_id = _case_id_from_bundle(bundle)
+
+    # Try multiple sources for chief_complaint in priority order
     chief_complaint = _chief_complaint_from_ehr(ehr)
     if not chief_complaint:
+        chief_complaint = _chief_complaint_from_hpi(ehr)
+    if not chief_complaint:
         chief_complaint = _chief_complaint_from_visible_question(bundle)
+    if not chief_complaint:
+        chief_complaint = _chief_complaint_from_observation(bundle)
 
     return CaseState(
         case_id=case_id,

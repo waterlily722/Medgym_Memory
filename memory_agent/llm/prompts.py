@@ -272,6 +272,14 @@ Use episode_outcome.success to choose the experience polarity:
   diagnosis". Extract the evidence lesson: what discriminative information was
   missing, misread, over-weighted, or should have been sought.
 
+STRICT rules for failed episodes (negative experiences):
+- Each negative experience MUST name the specific evidence missed AND the
+  differential it would distinguish. Generic cautions like "avoid premature
+  closure" or "consider more differentials" are NOT valid.
+- Maximum 1 negative experience per failed episode unless there are clearly
+  distinct evidence gaps (e.g., missed lab AND missed imaging).
+- If no clear discriminative evidence gap exists, extract 0 experiences.
+
 Use three signals before writing any ExperienceCard:
 
 1. Objective turn-ablation signal:
