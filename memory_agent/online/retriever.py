@@ -22,6 +22,80 @@ logger = logging.getLogger(__name__)
 
 DEFAULT_MEMORY_ROOT = Path(MEMORY_ROOT_DIRNAME)
 
+# ------------------------------------------------------------------
+# Clinical topic filter: skip memories whose topic is clearly unrelated
+# ------------------------------------------------------------------
+
+# Organ system / specialty clusters (lowercase tokens)
+_TOPIC_CLUSTERS: list[tuple[set[str], str]] = [
+    ({"cardiac", "heart", "aortic", "coronary", "myocardial", "valve", "arrhythmia",
+      "atrial", "ventricular", "tachycardia", "fibrillation", "hypertension",
+      "hypertensive", "chest pain", "ecg", "echocardiogram"}, "cardiovascular"),
+    ({"pulmonary", "lung", "pneumonia", "asthma", "copd", "respiratory", "bronch",
+      "dyspnea", "wheez", "cough", "pleural", "pneumothorax", "tb", "tuberculosis"}, "respiratory"),
+    ({"neurologic", "brain", "stroke", "seizure", "epilepsy", "headache", "migraine",
+      "brain", "cerebr", "hemorrhage", "aneurysm", "meningitis", "dementia",
+      "alzheimer", "parkinson", "numbness", "weakness", "paralysis", "nerve",
+      "neuropathy", "sciatica", "radiculopathy"}, "neurological"),
+    ({"gastrointestin", "abdom", "stomach", "liver", "hepat", "pancrea",
+      "bowel", "colon", "rectal", "gastric", "duoden", "intestin", "diverticul",
+      "appendic", "cholecyst", "biliary", "nausea", "vomit", "diarrhea",
+      "melena", "hematemesis"}, "gastrointestinal"),
+    ({"renal", "kidney", "nephro", "dialysis", "urinary", "bladder", "ureter",
+      "prostate", "ut", "cystitis", "pyelonephritis", "hematuria", "proteinuria"}, "urology"),
+    ({"orthoped", "fracture", "bone", "joint", "spine", "spinal", "vertebr",
+      "femur", "hip", "knee", "ankle", "shoulder", "osteoporosis", "arthritis",
+      "osteoarthritis", "spondylo", "disc", "ligament", "tendon", "musculoskeletal"}, "orthopedic"),
+    ({"psychiatr", "depress", "anxiety", "schizo", "bipolar", "mental",
+      "psychosis", "suicid", "mood", "panic", "ptsd", "insomnia"}, "psychiatric"),
+    ({"obstetr", "pregnan", "gestation", "maternal", "fetal", "placenta",
+      "labor", "delivery", "cesarean", "preeclamp", "ectopic", "membrane",
+      "amniotic"}, "obstetric"),
+    ({"gynecol", "uterus", "ovarian", "cervical", "vagin", "endometri",
+      "pelvic mass", "fibroid", "menstrual", "pcos"}, "gynecologic"),
+    ({"dermatol", "skin", "rash", "cellulitis", "abscess", "wound", "ulcer",
+      "urticaria", "eczema", "psoriasis", "melanoma"}, "dermatologic"),
+    ({"hematol", "anemia", "leukemia", "lymphoma", "thrombocytopenia",
+      "coagul", "bleeding", "bruising", "platelet", "itp", "neutropenia"}, "hematologic"),
+    ({"endocrin", "diabetes", "thyroid", "adrenal", "pituitary", "hormone",
+      "hyperglycemia", "hypoglycemia", "insulin", "cortisol"}, "endocrine"),
+    ({"infect", "sepsis", "bacteri", "viral", "fungal", "hiv", "abscess",
+      "cellulitis", "meningitis", "pneumonia"}, "infectious"),
+    ({"oncolog", "cancer", "tumor", "malignan", "neoplasm", "carcinoma",
+      "adenocarcinoma", "metasta", "chemotherapy", "chemo"}, "oncologic"),
+]
+
+# Tags that indicate a generic "broad differential" topic — always match
+_GENERIC_TAGS = {"broad_differential", "premature_closure", "targeted_history",
+                "low_value_interaction", "diagnostic_anchoring", "missing_lab",
+                "missing_history", "missing_imaging", "unsafe_finalization",
+                "positive", "negative"}
+
+
+def _infer_topics(text: str, tags: list[str] | None = None) -> set[str]:
+    """Infer clinical topic cluster(s) from text + tags."""
+    combined = (text or "").lower()
+    if tags:
+        combined += " " + " ".join(str(t).lower() for t in tags)
+    topics: set[str] = set()
+    for keywords, label in _TOPIC_CLUSTERS:
+        for kw in keywords:
+            if kw in combined:
+                topics.add(label)
+                break
+    return topics
+
+
+def _topics_overlap(q_topics: set[str], m_topics: set[str], tags: list[str] | None) -> bool:
+    """Return True if query and memory share at least one topic, or memory is generic."""
+    if not q_topics or not m_topics:
+        return True  # can't determine topic → don't filter
+    # Generic reasoning tags should always pass
+    tag_set = {str(t).lower() for t in (tags or [])}
+    if tag_set & _GENERIC_TAGS:
+        return True
+    return bool(q_topics & m_topics)
+
 
 def _root(root_dir: str | None) -> Path:
     root = Path(root_dir) if root_dir else DEFAULT_MEMORY_ROOT
@@ -202,10 +276,20 @@ def _experience_hits(
     positive: list[RetrievalHit] = []
     negative: list[RetrievalHit] = []
 
+    # Pre-compute query topics once
+    q_topics = _infer_topics(query.query_text or "")
+
     for card in all_cards:
         payload = card.to_dict()
         mid = card.memory_id
         mem_vec = vectors.get(mid)
+
+        # Clinical topic filter: skip memories clearly unrelated to the query
+        mem_tags = payload.get("tags") or []
+        mem_text = experience_to_text(payload)
+        m_topics = _infer_topics(mem_text, mem_tags)
+        if not _topics_overlap(q_topics, m_topics, mem_tags):
+            continue
 
         score = _score_memory(
             query, "experience", payload,

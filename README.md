@@ -65,7 +65,7 @@ python run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 10 \
+  --max_cases 200 \
   --repeat_k 1 \
   --no_cxr \
   --parser_name qwen \
@@ -75,6 +75,19 @@ python run_med_with_tool.py \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1
 ```
+
+python run_med_with_tool.py \
+    --model doctor_agent \
+    --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+    --base_url http://127.0.0.1:30000/v1 \
+    --case_dir /oral_llm/xiweidai/med_env/bench \
+    --max_cases 200 --repeat_k 1 --no_cxr --parser_name qwen \
+    --enable_memory --log_memory_trace \
+    --trace_tag qwen_nocm \
+    --retrieval_mode embedding \
+    --memory_embedding_model intfloat-e5-base-v2 \
+    --memory_embedding_base_url http://127.0.0.1:30010/v1 \
+    --judge_model judge_agent --judge_base_url http://127.0.0.1:30002/v1
 
 启用 memory + 注入 Case Memory（每轮将 compact case memory 暴露给 doctor agent）：
 
@@ -89,7 +102,7 @@ python run_med_with_tool.py \
   --no_cxr \
   --parser_name qwen \
   --enable_memory \
-  --log_memory_trace \
+  --log_memory_trace \ß
   --inject_case_memory \
   --trace_tag case_memory_exp \
   --judge_model judge_agent \

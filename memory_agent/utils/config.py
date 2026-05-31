@@ -107,8 +107,11 @@ LLM_CONFIG = {
 # Guidance injection settings
 GUIDANCE_CONFIG = {
     # Maximum character length for guidance text injected into doctor observation.
-    # Truncated to this limit to avoid overwhelming the 8B model.
-    "max_guidance_chars": 300,
+    # Must be long enough to include boundary + reusable lesson, not just the scenario.
+    "max_guidance_chars": 800,
     # Maximum number of selected memories to include in guidance text.
-    "max_memories_in_guidance": 3,
+    # Keep small to avoid overwhelming the 8B model.
+    "max_memories_in_guidance": 2,
+    # Do not inject the same memory_id more than this many times per episode.
+    "max_repeated_injections_per_memory": 1,
 }

@@ -341,6 +341,38 @@ def _dedupe_records(values: list[Any], limit: int) -> list[dict[str, Any]]:
     return cleaned
 
 
+def _extract_complaint_from_patient_response(text: str) -> str:
+    """Try to extract a short chief complaint from a patient response."""
+    text = (text or "").strip()
+    if not text or len(text) < 5:
+        return ""
+    # Remove common non-informative prefixes
+    import re
+    # Patient responses often start with conversational filler
+    cleaned = re.sub(
+        r"(?i)^(?:well|um|uh|hmm|actually|i think|i believe|you know|as far as i know)[,:\s]+",
+        "",
+        text,
+    ).strip()
+    # If the response is essentially "I don't have / I haven't noticed" — not useful
+    negative_patterns = [
+        r"(?i)i (?:haven't|don't|do not|can't) (?:notice|have|recall|remember|know)",
+        r"(?i)no[, ]",
+        r"(?i)not (?:really|that i|sure if)",
+        r"(?i)i'm not (?:sure|aware|experiencing)",
+        r"(?i)nothing (?:specific|particular|really)",
+        r"(?i)as far as i know,? i haven't",
+    ]
+    for pat in negative_patterns:
+        if re.search(pat, cleaned[:80]):
+            return ""
+    # Take first sentence, cap at 200 chars
+    first = cleaned.split(".")[0].strip()
+    if len(first) > 200:
+        first = first[:200].rsplit(" ", 1)[0]
+    return first if len(first) >= 5 else ""
+
+
 def update_case_state_rule(prev_case_state: CaseState, observation: Any) -> CaseState:
     """
     Deterministic observation ledger.
@@ -371,6 +403,22 @@ def update_case_state_rule(prev_case_state: CaseState, observation: Any) -> Case
         }
         state.acquired_information.append(item)
         current_turn_records.append(item)
+
+    # If chief_complaint is still empty, try to extract from patient response
+    # (first substantive answer on turn 1+)
+    if not state.chief_complaint and previous_turn_id >= 0:
+        for rec in current_turn_records:
+            src = str(rec.get("source_path", ""))
+            # Only extract from patient responses, not from tool outputs
+            if src in ("interaction.ask_patient", "interaction", "patient_response", "initial"):
+                resp_text = rec.get("content", "")
+                # Extract the response part (after "response: ")
+                if "response: " in resp_text:
+                    resp_text = resp_text.split("response: ", 1)[1]
+                cc = _extract_complaint_from_patient_response(resp_text)
+                if cc:
+                    state.chief_complaint = cc
+                    break
 
     state.current_turn = _dedupe_records(current_turn_records, 50)
     state.acquired_information = _dedupe_records(state.acquired_information, 200)

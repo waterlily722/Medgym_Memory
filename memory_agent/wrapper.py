@@ -251,6 +251,8 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.pending_selected_action: dict[str, Any] = {}
         self.turn_records: list[TurnRecord] = []
         self.episode_finalized = False
+        # Track which memory_ids have been injected this episode to avoid repetition
+        self._injected_memory_ids: dict[str, int] = {}
         # Cached original task bundle (set during first update_from_env call)
         self._case_bundle: dict[str, Any] = {}
 
@@ -486,6 +488,8 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             self.latest_applicability,
             self.latest_retrieval,
         )
+        # Filter out memories that have already been injected too many times this episode
+        self.latest_guidance = self._deduplicate_guidance(self.latest_guidance)
         if memory_debug is not None:
             memory_debug["guidance"] = {
                 "structured": self.latest_guidance.to_dict(),
