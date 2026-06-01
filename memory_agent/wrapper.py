@@ -435,6 +435,26 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         base_result = self._call_base("update_from_model", model_output, **kwargs)
         return base_result if base_result is not None else model_output
 
+    def _current_turn_is_ineffective(self) -> bool:
+        """Check whether every record in the current turn is low-information.
+
+        Uses the same _is_low_information_text predicate that the CaseMemory
+        pipeline uses internally, so the classification is consistent.
+        """
+        if self.case_state is None:
+            return False
+        from .online.query_builder import _is_low_information_text
+        current_turn = self.case_state.current_turn or []
+        if not current_turn:
+            return True
+        for record in current_turn:
+            if not isinstance(record, dict):
+                continue
+            content = str(record.get("content") or "").strip()
+            if content and not _is_low_information_text(content):
+                return False
+        return True
+
     def _run_memory_pipeline(self, memory_debug: dict[str, Any] | None = None) -> None:
         if self.case_state is None:
             return
@@ -448,40 +468,75 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 "base_url": self.memory_llm.base_url,
             }
             memory_debug["query_builder"] = {}
-        self.latest_query = build_memory_query(
-            case_state=self.case_state,
-            candidate_actions=candidate_actions,
-            mode=self.query_builder_mode,
-            llm_client=self.memory_llm,
-            debug=memory_debug.get("query_builder") if memory_debug is not None else None,
-            strict=self.strict_memory_errors,
+
+        # ── Ineffective-turn gate ────────────────────────────────────
+        # When all current-turn records are low-information, skip the
+        # expensive case_memory LLM + query_builder LLM calls. Reuse
+        # the previous query and retrieval. Applicability still runs
+        # because case_state.current_turn carries the ineffective
+        # interaction, so the LLM can see "last action returned no
+        # useful evidence" and discourage repeating the same action.
+        can_reuse_previous = (
+            self._current_turn_is_ineffective()
+            and self.latest_query is not None
+            and self.latest_retrieval is not None
+            and self.case_state.turn_id > 1
         )
-        self.latest_retrieval = retrieve_multi_memory(
-            memory_query=self.latest_query,
-            root_dir=self.memory_root,
-            disable_experience_memory=self.disable_experience_memory,
-            disable_skill_memory=self.disable_skill_memory,
-            disable_knowledge_memory=self.disable_knowledge_memory,
-            embedding_client=self.memory_embedding if self.memory_embedding.available() else None,
-        )
-        if memory_debug is not None:
-            memory_debug["retrieval"] = {
-                "memory_root": self.memory_root,
-                "disable_experience_memory": self.disable_experience_memory,
-                "disable_skill_memory": self.disable_skill_memory,
-                "disable_knowledge_memory": self.disable_knowledge_memory,
-                "embedding_available": self.memory_embedding.available(),
-                "retrieval_mode": (
-                    "embedding"
-                    if self.memory_embedding.available()
-                    else str(
-                        os.environ.get("MEDGYM_RETRIEVAL_FALLBACK_SCORING")
-                        or RETRIEVAL_CONFIG.get("fallback_scoring")
-                        or "cosine"
-                    )
-                ),
-                "result": self.latest_retrieval.to_dict(),
-            }
+
+        if can_reuse_previous:
+            if memory_debug is not None:
+                memory_debug["query_builder"]["mode"] = "reused_previous"
+                memory_debug["query_builder"]["reason"] = (
+                    "current turn is entirely low-information; "
+                    "reusing previous query and retrieval"
+                )
+                memory_debug["query_builder"]["reused_query"] = self.latest_query.to_dict()
+            logger.debug(
+                "Ineffective-turn gate active for episode %s turn %d — "
+                "reusing previous query/retrieval",
+                self.episode_id,
+                self.case_state.turn_id,
+            )
+        else:
+            self.latest_query = build_memory_query(
+                case_state=self.case_state,
+                candidate_actions=candidate_actions,
+                mode=self.query_builder_mode,
+                llm_client=self.memory_llm,
+                debug=memory_debug.get("query_builder") if memory_debug is not None else None,
+                strict=self.strict_memory_errors,
+            )
+            self.latest_retrieval = retrieve_multi_memory(
+                memory_query=self.latest_query,
+                root_dir=self.memory_root,
+                disable_experience_memory=self.disable_experience_memory,
+                disable_skill_memory=self.disable_skill_memory,
+                disable_knowledge_memory=self.disable_knowledge_memory,
+                embedding_client=self.memory_embedding if self.memory_embedding.available() else None,
+            )
+            if memory_debug is not None:
+                memory_debug["retrieval"] = {
+                    "memory_root": self.memory_root,
+                    "disable_experience_memory": self.disable_experience_memory,
+                    "disable_skill_memory": self.disable_skill_memory,
+                    "disable_knowledge_memory": self.disable_knowledge_memory,
+                    "embedding_available": self.memory_embedding.available(),
+                    "retrieval_mode": (
+                        "embedding"
+                        if self.memory_embedding.available()
+                        else str(
+                            os.environ.get("MEDGYM_RETRIEVAL_FALLBACK_SCORING")
+                            or RETRIEVAL_CONFIG.get("fallback_scoring")
+                            or "cosine"
+                        )
+                    ),
+                    "result": self.latest_retrieval.to_dict(),
+                }
+                memory_debug["applicability"] = {}
+
+        # Always re-run applicability — case_state may have changed even
+        # if the query/retrieval are reused.
+        if memory_debug is not None and "applicability" not in memory_debug:
             memory_debug["applicability"] = {}
         self.latest_applicability = apply_applicability_control(
             case_state=self.case_state,
