@@ -73,6 +73,7 @@ python run_med_with_tool.py \
   --trace_tag qwen_nocm \
   --log_memory_trace \
   --judge_model judge_agent \
+  --execution_mode serial \
   --judge_base_url http://127.0.0.1:30002/v1
 ```
 

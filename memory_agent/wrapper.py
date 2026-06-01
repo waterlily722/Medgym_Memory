@@ -496,6 +496,20 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 "text": guidance_to_text(self.latest_guidance),
             }
 
+    def _deduplicate_guidance(self, guidance: MemoryGuidance) -> MemoryGuidance:
+        """Filter out memories already injected too many times this episode."""
+        from .utils.config import GUIDANCE_CONFIG
+
+        max_inject = GUIDANCE_CONFIG.get("max_repeated_injections_per_memory", 1)
+        filtered = []
+        for mem in guidance.selected_memories:
+            mid = mem.get("memory_id", "")
+            count = self._injected_memory_ids.get(mid, 0)
+            if count < max_inject:
+                filtered.append(mem)
+                self._injected_memory_ids[mid] = count + 1
+        return MemoryGuidance(selected_memories=filtered)
+
     def _inject_guidance(self, observation: Any) -> Any:
         if self.disable_memory:
             return observation
@@ -1031,6 +1045,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.pending_selected_action = {}
         self.turn_records = []
         self.episode_finalized = False
+        self._injected_memory_ids = {}
 
     def reset(self) -> Any:
         self.reset_memory()
