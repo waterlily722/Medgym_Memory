@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 from ..schemas import DistilledEpisode, ExperienceCard
 from ..schemas import OutcomeType
 from ..utils.config import MEMORY_ROOT_DIRNAME, MERGE_CONFIG
-from ..utils.scoring import bm25_scores, cosine_similarity as token_cosine, tag_overlap_score
+from ..utils.scoring import bm25_scores, cosine_similarity as token_cosine
 from .experience_extractor import extract_experiences
 from .experience_merger import decide_merge_llm, decide_merge_rule
 from .skill_extractor import extract_skills_from_distilled_episode
@@ -54,11 +54,9 @@ def _similar_existing(
     )
 
     scored: list[tuple[float, ExperienceCard]] = []
+    scored: list[tuple[float, ExperienceCard]] = []
     for idx, item in enumerate(candidates):
-        score = (
-            0.90 * text_scores[idx]
-            + 0.10 * tag_overlap_score(experience.tags, item.tags)
-        )
+        score = text_scores[idx]
         scored.append((score, item))
     scored.sort(key=lambda pair: pair[0], reverse=True)
     return [item for score, item in scored[:limit] if score > 0.0]
@@ -77,7 +75,6 @@ def _experience_similarity_text(experience: ExperienceCard) -> str:
         [
             experience.text or "",
             experience.outcome_type or "",
-            " ".join(str(tag) for tag in (experience.tags or [])),
         ]
     )
 

@@ -77,7 +77,6 @@ def merge_experience(base: ExperienceCard, incoming: ExperienceCard) -> Experien
     merged.support_count = max(1, base.support_count) + max(1, incoming.support_count)
 
     merged.text = _choose_longer(base.text, incoming.text)
-    merged.tags = _unique(base.tags + incoming.tags)
 
     merged.confidence = max(base.confidence, incoming.confidence)
 
