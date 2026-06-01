@@ -69,6 +69,9 @@ def _case_memory_view(case_memory: dict[str, Any] | None) -> dict[str, Any]:
         "efficient_turn_information": [
             _clip(x) for x in compact.get("efficient_turn_information") or []
         ],
+        "ineffective_turn_information": [
+            _clip(x) for x in compact.get("ineffective_turn_information") or []
+        ],
         "prior_information_summary": _clip(compact.get("prior_information_summary")),
     }
 

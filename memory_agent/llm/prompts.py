@@ -27,28 +27,37 @@ def _dump(payload: Any) -> str:
 
 def query_builder_prompt(payload: dict[str, Any]) -> str:
     return f"""
-You are building a retrieval query for a clinical experience memory store.
+You are building retrieval queries for a clinical memory system.
 
 {STRICT_JSON_RULES}
 
 Task:
-Create one compact query_text that describes the KNOWN clinical facts from the
-current case, so that relevant past experiences can be retrieved by text similarity.
+Create two compact retrieval queries from CaseMemory:
 
 The input contains case_memory with:
 - chief_complaint: the patient's presenting complaint
 - diagnosis_goal: current diagnostic strategy
 - efficient_turn_information: evidence-bearing information gathered so far
+- ineffective_turn_information: attempted turns that did not add useful evidence
 - prior_information_summary: summary of earlier evidence
 
-CRITICAL: query_text is a RETRIEVAL QUERY for matching similar past experiences.
-It is NOT a diagnostic plan, action guide, or next-step recommendation.
+1. query_text:
+   Retrieval query for EXPERIENCE memory. Describe only KNOWN clinical facts,
+   such as symptoms, signs, labs, imaging, PMH, medications, demographics, and
+   important negative evidence. It is not a diagnostic plan, action guide, or
+   next-step recommendation.
+
+2. skill_query_text:
+   Retrieval query for SKILL memory. Describe the current decision point:
+   presenting problem, uncertainty state, evidence already gathered, failed or
+   low-value actions already attempted, and the type of next workflow guidance
+   needed. Keep it grounded in observed facts.
 
 Rules:
-- Only include KNOWN clinical facts: symptoms, signs, lab/imaging findings,
-  PMH, medications, demographics.
-- If clinical information is very sparse, generate a minimal query from what IS known.
-  A short factual query is better than a speculative one.
+- Do not invent diagnoses, test results, hidden labels, or patient details.
+- If information is sparse, generate short queries from what is known.
+- query_text should match similar diagnostic evidence.
+- skill_query_text should match reusable action/workflow guidance.
 
 Schema:
 {_dump(QUERY_BUILDER_SCHEMA)}
@@ -65,46 +74,77 @@ You are a clinical case-memory extractor for a doctor agent.
 {STRICT_JSON_RULES}
 
 Task:
-Create a compact CaseMemory from CaseState.
+Create a compact CaseMemory from the observed CaseState and formatted turn
+records.
 
 CaseState is a faithful ledger of information already exposed to the doctor agent.
 CaseState.current_turn contains only the newly exposed information for this turn.
 CaseState.acquired_information contains all turns.
 Do not add facts that are not in CaseState. Do not infer diagnoses, missing tests, risk labels, or hidden patient information.
 
-CaseMemory should contain:
-1. chief_complaint:
-   Copy the chief complaint from CaseState. Keep it concise.
+Important:
+- CaseState has no efficient-turn field. You must decide whether the current
+  turn is clinically effective for CaseMemory.
+- A turn is effective if it contains useful positive or negative clinical
+  evidence, exam/lab/imaging/tool evidence, or retrieved medical knowledge that
+  changes the diagnostic differential, next action, or confidence.
+- A turn is ineffective if it is generic, unavailable, unknown without clinical
+  signal, off-topic, redundant, or a no-result/no-knowledge-base response.
+- Decide the effectiveness of the current turn using current_turn_information
+  only. Do not use acquired_turn_information to rescue, reinterpret, or
+  downgrade the current turn.
+- Your main editable work is diagnosis_goal, prior_information_summary, and
+  whether current_turn_information belongs in efficient_turn_information or
+  ineffective_turn_information.
 
-2. diagnosis_goal:
+CaseMemory should contain:
+1. diagnosis_goal:
    Describe the current diagnostic objective, what has already been attempted,
    and what kind of next evidence should be prioritized.
+   Use acquired_turn_information as the full context for what has already been
+   gathered or attempted, and use current_turn_information to update the latest
+   diagnostic state.
    If prior patient questions or tools produced no useful information, mention
    that repeated questioning should be avoided and another evidence route or
    reasoning step should be considered.
 
-3. efficient_turn_information:
-   Copy rule_efficient_turn_information exactly.
+2. efficient_turn_information:
+   Build a ledger from input.initial_information and clinically effective
+   records.
+   Decide whether input.current_turn_information is effective using only
+   current_turn_information. If effective, copy its full formatted record(s)
+   into efficient_turn_information. If ineffective, do not include them.
    Do not summarize, rewrite, deduplicate, reorder, add final diagnosis, or add
-   inferred facts.
-   This list should remain a rule-extracted ledger of initial information and
-   full effective doctor-patient/tool interaction records.
+   inferred facts inside efficient_turn_information.
+
+3. ineffective_turn_information:
+   Build a ledger from clinically ineffective records.
+   Decide whether input.current_turn_information is ineffective using only
+   current_turn_information. If ineffective, copy its full formatted record(s)
+   into ineffective_turn_information. If effective, do not include it here.
+   Do not summarize, rewrite, deduplicate, reorder, add final diagnosis, or add
+   inferred facts inside ineffective_turn_information.
 
 4. prior_information_summary:
    Actively summarize older useful information and ineffective/no-result interactions.
    Include enough detail to prevent repeated questions or repeated low-value tool calls.
-   If current_turn is ineffective, do not add it to efficient_turn_information,
-   but do update diagnosis_goal and prior_information_summary to record that
-   the question/tool was attempted and did not provide evidence.
+   Use acquired_turn_information for the overall summary and
+   current_turn_information for the latest attempted action/result.
+   If current_turn is ineffective, mention the attempted question/tool and why
+   it did not add useful evidence, but do not add it to efficient_turn_information.
    Do not preserve raw source information. Write a clinical summary, not a field dump.
 
 Rules:
-- Use only CaseState.current_turn and CaseState.acquired_information.
-- Do not create a new summary inside efficient_turn_information.
+- Use only CaseState, initial_information, current_turn_information, and
+  acquired_turn_information.
+- Each current_turn_information record should go into exactly one list:
+  efficient_turn_information if useful, otherwise ineffective_turn_information.
+- Do not create a new summary inside efficient_turn_information or
+  ineffective_turn_information.
 - Do not include hidden benchmark labels, judge settings, internal metadata, or
   technical source paths.
 - Do not include patient identifiers.
-- Keep efficient_turn_information exactly equal to rule_efficient_turn_information.
+- Keep chief_complaint exactly equal to CaseState.chief_complaint.
 - Return exactly the schema below.
 
 Schema:
@@ -164,85 +204,50 @@ You are a clinical experience extractor for a medical memory system.
 {STRICT_JSON_RULES}
 
 Task:
-Extract reusable ExperienceCards from the clinical episode trace. Return no more than payload.max_experiences experiences.
+Extract up to payload.max_experiences reusable ExperienceCards from this clinical episode.
 
-The goal is to capture high-value medical diagnostic experience: discriminative clinical cues, missing evidence that mattered, evidence interpretation, and reasoning lessons that a doctor should remember in a similar future case.
-Experience memory focuses on medical diagnostic knowledge and high-value evidence fragments: symptoms, negative evidence, tests, imaging/labs, differential-diagnosis cues, missed clues, and reasoning pitfalls.
+Experience memory stores action-level diagnostic lessons, not workflows. Capture
+high-value evidence fragments and reasoning lessons that should help in a
+similar future case: discriminative symptoms, meaningful negative evidence,
+labs/imaging/exam interpretation, missed clues, differential-diagnosis cues,
+low-value evidence gathering, and premature-closure risks.
+
+Use final_case_memory.efficient_turn_information as the main source of
+evidence-bearing turns. Use final_case_memory.ineffective_turn_information only
+for cautionary lessons about low-value, unavailable, redundant, or misleading
+actions.
 
 Use episode_outcome.success to choose the experience polarity:
-- If success=true, extract positive experiences from turns/fragments that materially supported the correct diagnostic path.
-- If success=false, use the provided gold_diagnosis to understand what was missed, then extract negative/cautionary experiences about missed discriminative evidence, wrong direction, low-value information gathering, or premature closure.
-- For failed episodes, do not create memories that simply say "consider the gold diagnosis". Extract the evidence lesson: what discriminative information was missing, misread, over-weighted, or should have been sought.
+- success=true: extract positive lessons from turns/fragments that materially
+  supported the correct diagnostic path.
+- success=false: extract negative/cautionary lessons about what evidence was
+  missed, misread, over-weighted, not sought, or gathered at low value.
+- Failed episodes must not produce "consider the gold diagnosis" memories.
+  Name the specific missed evidence and the differential it would distinguish.
+  Return at most 1 negative experience unless there are clearly separate gaps
+  such as one lab gap and one imaging gap.
 
-STRICT rules for failed episodes (negative experiences):
-- Each negative experience MUST name the specific evidence missed AND the
-  differential it would distinguish. 
-- Maximum 1 negative experience per failed episode unless there are clearly
-  distinct evidence gaps (e.g., missed lab AND missed imaging).
+Selection gate before writing a card:
+- Prefer turns with positive delta, positive turn_reward, high importance, or a
+  clear clinical role in the final useful evidence chain.
+- Include a low/negative/zero-value turn only if it teaches a reusable caution.
+- Keep a lesson only if it changes a differential, next action, rule-in/rule-out
+  reasoning, high-risk miss, or premature-closure risk.
+- Skip isolated disease labels, generic advice, duplicate facts, and patient
+  identifiers.
 
-Use two signals before writing any ExperienceCard:
-
-1. Objective turn-ablation signal:
-   The trace may contain turn_importance fields such as conf_before, conf_after, delta, turn_reward, and importance.
-   - Positive/high-value turns often have positive delta or high importance.
-   - Negative/cautionary turns may have negative delta, zero value despite cost, or occur before a wrong/premature final diagnosis.
-   - These signals are not perfect; use them as evidence, not as the only rule.
-
-2. Clinical value judgment over effective turns:
-   Mentally score each evidence-bearing turn for whether it:
-   - provides discriminative information for the differential diagnosis;
-   - changes the best next clinical action;
-   - rules in/rules out a plausible diagnosis;
-   - prevents a high-risk miss or premature closure;
-   - exposes a misleading, redundant, or low-value interaction.
-   Prefer turns/fragments with both objective support and clinical value.
-
-
-ExperienceCard fields:
-
-1. memory_id:
-   Use the provided id if available.
-   Do not invent source ids.
-   If the schema expects an empty value, use "".
-
-2. memory_type:
-   Always use "experience".
-
-3. text:
-   Write one reusable, semi-structured clinical experience in concise English.
-   The structure is a guide, not a rigid template. Make the final text natural,
-   compact, and clinically reusable.
-
-   Include the following elements when supported by the episode:
-   - applicable disease type / syndrome / symptom context
-   - clinical uncertainty state
-   - missing key information
-   - main differential diagnosis affected by the missing information
-   - high-value diagnostic information, missed clue, or evidence interpretation
-   - what discriminative value this information has
-   - recommended evidence-gathering direction only when needed to explain the lesson
-   - boundary: when not applicable or what risk exists
-
-4. outcome_type:
-   Use:
-   - positive: successful reusable local action
-   - negative: failed, unsafe, missed, or cautionary local lesson
-
-5. confidence:
-   Estimate how reliable and reusable this experience is.
-
-6. support_count:
-   Use 1 for a newly extracted single-turn or single-episode experience unless input states otherwise.
-
-7. source:
-   Preserve provided provenance only.
-   Use a compact dict, for example:
-   {{
-     "case_ids": [],
-     "episode_ids": [],
-     "turn_ids": []
-   }}
-   Do not invent ids.
+Write each ExperienceCard:
+- memory_id: use a provided id only; otherwise "".
+- memory_type: always "experience".
+- text: one concise reusable lesson in natural English. Include the clinical
+  context, uncertainty state, key evidence or missed evidence, affected
+  differential, discriminative value, and boundary/risk when supported.
+- outcome_type: "positive" for successful reusable lessons, "negative" for
+  failed/unsafe/missed/cautionary lessons.
+- confidence: estimate reliability and reusability from 0 to 1.
+- support_count: 1 unless the input states otherwise.
+- source: preserve only provided case_ids, episode_ids, and turn_ids; do not
+  invent provenance.
 
 Output format:
 {{
@@ -364,6 +369,7 @@ The skill_text should read like a general clinical indication plus workflow rati
 
 Use these signals:
 - final_case_memory.efficient_turn_information: concise evidence-bearing turns that remained useful at the end of the case.
+- final_case_memory.ineffective_turn_information: low-value/no-result turns to avoid, unless a listed action was necessary setup for the successful workflow.
 - turn_value_signals: objective turn-ablation style signals. Prefer turns with positive delta, positive turn_reward, or high importance. A zero-reward turn may be included only when it is a necessary setup step in the successful sequence.
 
 Useful skills often involve:

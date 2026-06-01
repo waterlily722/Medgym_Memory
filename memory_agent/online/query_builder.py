@@ -1,6 +1,4 @@
 from __future__ import annotations
-
-import json
 from typing import Any
 
 from ..llm import LLMClient, case_memory_prompt, parse_validate_repair, query_builder_prompt
@@ -61,6 +59,21 @@ def _turn_information(case_state: CaseState, turn_id: int | None = None) -> list
             text = _record_to_text(item)
             if text:
                 out.append(text)
+    return out
+
+
+def _acquired_turn_information(case_state: CaseState, limit: int = 200) -> list[str]:
+    out: list[str] = []
+    for item in case_state.acquired_information or []:
+        if not isinstance(item, dict):
+            continue
+        if str(item.get("source_path") or "") == "initial":
+            continue
+        text = _record_to_text(item)
+        if text:
+            out.append(text)
+        if len(out) >= limit:
+            break
     return out
 
 
@@ -143,105 +156,6 @@ def _is_low_information_text(text: str) -> bool:
     return False
 
 
-def _effective_candidate_records(case_state: CaseState) -> list[dict[str, Any]]:
-    candidates: list[dict[str, Any]] = []
-    for idx, item in enumerate(case_state.acquired_information or []):
-        if not isinstance(item, dict):
-            continue
-        source_path = str(item.get("source_path") or "")
-        if source_path == "initial":
-            continue
-        content = str(item.get("content") or "").strip()
-        text = _record_to_text(item)
-        if not content or not text:
-            continue
-        candidates.append(
-            {
-                "candidate_id": f"c{idx}",
-                "turn_id": item.get("turn_id"),
-                "source_path": source_path,
-                "text": text,
-                "rule_low_information": _is_low_information_text(content),
-            }
-        )
-    return candidates
-
-
-def _turn_effectiveness_prompt(payload: dict[str, Any]) -> str:
-    return f"""
-You judge whether observed doctor-patient/tool turns should enter a clinical evidence ledger.
-
-Return exactly one valid JSON object with these fields:
-- effective_turn_ids: list of candidate_id strings to keep
-- ineffective_turn_ids: list of candidate_id strings to exclude
-
-Only classify candidates. Do not rewrite, summarize, deduplicate, or invent content.
-
-Keep a candidate effective when it contains clinically useful positive or negative evidence,
-including symptoms, duration, severity, absence of key symptoms, risk factors, exam/test
-results, or retrieved medical knowledge that helps the diagnostic process.
-
-Mark ineffective only when it is generic, unavailable, unknown without clinical signal,
-off-topic, or a no-result/no-knowledge-base tool response.
-
-Input:
-{json.dumps(payload, ensure_ascii=False, indent=2, default=str)}
-""".strip()
-
-
-def _llm_effective_candidate_ids(
-    case_state: CaseState,
-    llm_client: LLMClient,
-    *,
-    debug: dict[str, Any] | None = None,
-) -> set[str] | None:
-    candidates = _effective_candidate_records(case_state)
-    if not candidates or not llm_client.available():
-        return None
-
-    prompt = _turn_effectiveness_prompt(
-        {
-            "case_id": case_state.case_id,
-            "chief_complaint": case_state.chief_complaint,
-            "candidates": candidates,
-        }
-    )
-    fallback = {
-        "effective_turn_ids": [
-            item["candidate_id"] for item in candidates if not item["rule_low_information"]
-        ],
-        "ineffective_turn_ids": [
-            item["candidate_id"] for item in candidates if item["rule_low_information"]
-        ],
-    }
-    raw_output = llm_client.generate_json(prompt, max_tokens=700)
-    parsed, ok, errors = parse_validate_repair(
-        raw_output,
-        {
-            "required": ["effective_turn_ids", "ineffective_turn_ids"],
-            "list_fields": ["effective_turn_ids", "ineffective_turn_ids"],
-            "dict_fields": [],
-        },
-        fallback,
-    )
-    valid_ids = {str(item["candidate_id"]) for item in candidates}
-    effective_ids = {str(value) for value in parsed.get("effective_turn_ids", [])}
-    effective_ids &= valid_ids
-    if not effective_ids and fallback["effective_turn_ids"]:
-        effective_ids = set(fallback["effective_turn_ids"])
-
-    if debug is not None:
-        debug["turn_effectiveness_mode"] = "llm"
-        debug["turn_effectiveness_candidates"] = candidates
-        debug["turn_effectiveness_prompt"] = prompt
-        debug["turn_effectiveness_raw_output"] = raw_output
-        debug["turn_effectiveness_parsed_output"] = parsed
-        debug["turn_effectiveness_validation_ok"] = ok
-        debug["turn_effectiveness_validation_errors"] = errors
-        debug["turn_effectiveness_effective_ids"] = sorted(effective_ids)
-    return effective_ids
-
-
 def _efficient_turn_information(case_state: CaseState, limit: int = 200) -> list[str]:
     """Rule-built evidence ledger, not an LLM summary.
 
@@ -272,27 +186,6 @@ def _efficient_turn_information(case_state: CaseState, limit: int = 200) -> list
         if _is_low_information_text(content):
             continue
         text = _record_to_text(item)
-        if text:
-            out.append(text)
-        if len(out) >= limit:
-            break
-    return out
-
-
-def _efficient_turn_information_from_ids(
-    case_state: CaseState,
-    effective_ids: set[str] | None,
-    limit: int = 200,
-) -> list[str]:
-    if effective_ids is None:
-        return _efficient_turn_information(case_state, limit=limit)
-
-    out: list[str] = _initial_information(case_state)
-    candidates = _effective_candidate_records(case_state)
-    for item in candidates:
-        if item["candidate_id"] not in effective_ids:
-            continue
-        text = str(item.get("text") or "").strip()
         if text:
             out.append(text)
         if len(out) >= limit:
@@ -382,6 +275,7 @@ def build_case_memory_rule(case_state: CaseState) -> CaseMemory:
         chief_complaint=case_state.chief_complaint,
         diagnosis_goal=_diagnosis_goal_rule(case_state),
         efficient_turn_information=_efficient_turn_information(case_state),
+        ineffective_turn_information=inefficient_turn_information(case_state),
         prior_information_summary="\n\n".join(prior_summary_parts),
     )
 
@@ -392,38 +286,31 @@ def build_case_memory_llm(
     debug: dict[str, Any] | None = None,
     strict: bool = True,
 ) -> CaseMemory:
-    effective_ids = _llm_effective_candidate_ids(case_state, llm_client, debug=debug)
-    rule_memory = build_case_memory_rule(case_state)
-    classified_memory = CaseMemory(
-        case_id=rule_memory.case_id,
-        turn_id=rule_memory.turn_id,
-        chief_complaint=rule_memory.chief_complaint,
-        diagnosis_goal=rule_memory.diagnosis_goal,
-        efficient_turn_information=_efficient_turn_information_from_ids(
-            case_state,
-            effective_ids,
-        ),
-        prior_information_summary=rule_memory.prior_information_summary,
-    )
+    fallback_memory = build_case_memory_rule(case_state)
+    current_turn_information = _turn_information(case_state)
+    acquired_turn_information = _acquired_turn_information(case_state)
     if debug is not None:
-        debug["case_memory_mode"] = "llm_turn_classification_then_goal"
+        debug["case_memory_mode"] = "llm_case_memory_with_current_turn_effectiveness"
         debug["case_state"] = case_state.to_dict()
-        debug["rule_case_memory"] = rule_memory.to_dict()
-        debug["classified_case_memory"] = classified_memory.to_dict()
+        debug["fallback_case_memory"] = fallback_memory.to_dict()
+        debug["current_turn_information"] = current_turn_information
+        debug["acquired_turn_information"] = acquired_turn_information
 
-    # --- Phase 2: LLM generates strategic diagnosis_goal + prior_information_summary ---
     if llm_client.available():
         payload = {
             "case_state": case_state.to_dict(),
-            "rule_efficient_turn_information": classified_memory.efficient_turn_information,
-            "rule_inefficient_turn_information": inefficient_turn_information(case_state),
+            "initial_information": _initial_information(case_state),
+            "current_turn_information": current_turn_information,
+            "acquired_turn_information": acquired_turn_information,
             "instruction": (
-                "Extract CaseMemory from CaseState. CaseState is the full observed ledger. "
-                "Keep diagnosis_goal strategic: state the current diagnostic objective, "
-                "what useful/failed evidence has been gathered, and what next evidence route "
-                "should be prioritized. "
-                "Do not rewrite efficient_turn_information: copy rule_efficient_turn_information exactly. "
-                "Summarize only older low-information records in prior_information_summary."
+                "Extract CaseMemory from CaseState. Decide whether the current "
+                "turn is clinically effective using current_turn_information only. "
+                "Put each current-turn record in "
+                "efficient_turn_information if useful, otherwise in "
+                "ineffective_turn_information. Use acquired_turn_information to update "
+                "the overall strategic diagnosis_goal and prior_information_summary, "
+                "and use current_turn_information for the latest progress or "
+                "ineffective/no-result interaction."
             ),
         }
         prompt = case_memory_prompt(payload)
@@ -436,7 +323,7 @@ def build_case_memory_llm(
         parsed, ok, errors = parse_validate_repair(
             raw_output,
             CASE_MEMORY_SCHEMA,
-            classified_memory.to_dict(),
+            fallback_memory.to_dict(),
         )
         if raw_empty or not ok:
             message = (
@@ -445,35 +332,41 @@ def build_case_memory_llm(
             )
             if strict and not raw_empty:
                 raise RuntimeError(message)
-            parsed = classified_memory.to_dict()
+            parsed = fallback_memory.to_dict()
         else:
-            # Preserve classified efficient_turn_information and chief_complaint
-            parsed["efficient_turn_information"] = list(classified_memory.efficient_turn_information)
-            parsed["chief_complaint"] = classified_memory.chief_complaint
+            # Chief complaint is initialized before CaseMemory and should not be repaired here.
+            parsed["chief_complaint"] = case_state.chief_complaint
         try:
             result = CaseMemory.from_dict(parsed)
         except Exception as exc:
             if strict:
                 raise RuntimeError(f"CaseMemory parse failed: {exc}") from exc
-            result = classified_memory
+            result = fallback_memory
         if debug is not None:
             debug["case_memory_raw_output"] = raw_output
             debug["case_memory_parsed_output"] = parsed
             debug["case_memory_validation_ok"] = ok
             debug["case_memory_validation_errors"] = errors
             debug["case_memory_used_fallback"] = (
-                result.to_dict() == classified_memory.to_dict() and (raw_empty or not ok)
+                result.to_dict() == fallback_memory.to_dict() and (raw_empty or not ok)
+            )
+            efficient = {str(item).strip() for item in result.efficient_turn_information}
+            ineffective = {str(item).strip() for item in result.ineffective_turn_information}
+            debug["current_turn_effective"] = any(
+                str(item).strip() in efficient for item in current_turn_information
+            )
+            debug["current_turn_ineffective"] = any(
+                str(item).strip() in ineffective for item in current_turn_information
             )
             debug["final_case_memory"] = result.to_dict()
         return result
 
     if debug is not None:
         debug["case_memory_llm_available"] = False
-        debug["case_memory_used_fallback"] = effective_ids is None
-        if effective_ids is None:
-            debug["case_memory_fallback_reason"] = "llm_unavailable_or_no_candidates"
-        debug["final_case_memory"] = classified_memory.to_dict()
-    return classified_memory
+        debug["case_memory_used_fallback"] = True
+        debug["case_memory_fallback_reason"] = "llm_unavailable"
+        debug["final_case_memory"] = fallback_memory.to_dict()
+    return fallback_memory
 
 
 def build_case_memory(
@@ -535,6 +428,12 @@ def _build_memory_query_rule_from_case_memory(
             text = str(item).strip()
             if text:
                 skill_sections.append(text[:200])
+    ineffective = cm.get("ineffective_turn_information") or []
+    if isinstance(ineffective, list) and ineffective:
+        for item in ineffective[-2:]:
+            text = str(item).strip()
+            if text:
+                skill_sections.append(f"ineffective_attempt: {text[:200]}")
 
     skill_query_text = "; ".join(skill_sections).strip()
 

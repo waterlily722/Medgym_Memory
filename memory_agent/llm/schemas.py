@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 QUERY_BUILDER_SCHEMA = {
-    "required": ["query_text"],
+    "required": ["query_text", "skill_query_text"],
     "list_fields": [],
     "dict_fields": [],
 }
@@ -13,9 +13,10 @@ CASE_MEMORY_SCHEMA = {
         "chief_complaint",
         "diagnosis_goal",
         "efficient_turn_information",
+        "ineffective_turn_information",
         "prior_information_summary",
     ],
-    "list_fields": ["efficient_turn_information"],
+    "list_fields": ["efficient_turn_information", "ineffective_turn_information"],
     "dict_fields": [],
 }
 

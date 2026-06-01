@@ -12,4 +12,5 @@ class CaseMemory(SerializableMixin):
     chief_complaint: str = ""
     diagnosis_goal: str = ""
     efficient_turn_information: list[str] = field(default_factory=list)
+    ineffective_turn_information: list[str] = field(default_factory=list)
     prior_information_summary: str = ""

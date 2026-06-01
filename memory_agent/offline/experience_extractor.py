@@ -96,6 +96,10 @@ def _latest_case_memory(turn_records: list[dict[str, Any]]) -> dict[str, Any]:
                     _clip_text(item, 500)
                     for item in (case_memory.get("efficient_turn_information") or [])[:12]
                 ],
+                "ineffective_turn_information": [
+                    _clip_text(item, 500)
+                    for item in (case_memory.get("ineffective_turn_information") or [])[:12]
+                ],
                 "prior_information_summary": _clip_text(
                     case_memory.get("prior_information_summary"), 1200
                 ),
