@@ -62,6 +62,13 @@ NO_PROXY=127.0.0.1,localhost curl -s http://127.0.0.1:8000/v1/embeddings \
   -d '{"model":"intfloat-e5-base-v2","input":["query: chest pain with fever"]}'
 ```
 
+Memory embedding 会缓存到当前 `memory_root` 下的 `.embedding_cache/embeddings.jsonl`。
+缓存按 `memory_id + memory_type + memory 文本 hash + embedding 模型配置` 命中，memory 内容不变时不会重复向量化；需要临时关闭缓存时可设置：
+
+```bash
+export MEDGYM_DISABLE_EMBEDDING_CACHE=1
+```
+
 不启用 memory：
 
 ```bash

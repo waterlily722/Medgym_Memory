@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import hashlib
+import json
 import logging
 import math
 import os
@@ -161,10 +163,93 @@ def _embedding_cosine(vec_a: list[float], vec_b: list[float]) -> float:
     return dot / (norm_a * norm_b)
 
 
+def _embedding_cache_enabled() -> bool:
+    value = str(os.environ.get("MEDGYM_DISABLE_EMBEDDING_CACHE", "")).strip().lower()
+    return value not in {"1", "true", "yes", "on"}
+
+
+def _embedding_cache_path(root_dir: str | None) -> Path:
+    root = _root(root_dir)
+    return root / ".embedding_cache" / "embeddings.jsonl"
+
+
+def _embedding_cache_namespace(embedding_client: EmbeddingClient) -> str:
+    payload = {
+        "model": embedding_client.model,
+        "base_url": embedding_client.base_url,
+        "dimensions": embedding_client.dimensions,
+        "input_type": "passage",
+        "version": 1,
+    }
+    raw = json.dumps(payload, sort_keys=True, ensure_ascii=True)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
+def _embedding_cache_key(
+    namespace: str,
+    memory_type: str,
+    memory_id: str,
+    text_hash: str,
+) -> str:
+    raw = "\0".join([namespace, memory_type, memory_id, text_hash])
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _load_embedding_cache(path: Path, namespace: str) -> dict[str, list[float]]:
+    if not path.exists():
+        return {}
+
+    cache: dict[str, list[float]] = {}
+    try:
+        with path.open("r", encoding="utf-8") as handle:
+            for line_number, line in enumerate(handle, start=1):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    row = json.loads(line)
+                except json.JSONDecodeError:
+                    logger.warning(
+                        "Skipped invalid embedding cache JSON in %s at line %d",
+                        path,
+                        line_number,
+                    )
+                    continue
+
+                if row.get("namespace") != namespace:
+                    continue
+                key = str(row.get("key") or "")
+                vector = row.get("embedding")
+                if key and isinstance(vector, list):
+                    cache[key] = vector
+    except OSError as exc:
+        logger.warning("Could not read embedding cache %s: %s", path, exc)
+        return {}
+
+    return cache
+
+
+def _append_embedding_cache(path: Path, rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        return
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as handle:
+            for row in rows:
+                handle.write(json.dumps(row, ensure_ascii=False) + "\n")
+    except OSError as exc:
+        logger.warning("Could not write embedding cache %s: %s", path, exc)
+
+
 def _precompute_embeddings(
     items: list[Any],
     memory_type: str,
     embedding_client: EmbeddingClient | None,
+    root_dir: str | None = None,
 ) -> dict[str, list[float]]:
     """Batch-embed all items. Returns {memory_id: vector}."""
     if embedding_client is None or not embedding_client.available():
@@ -179,15 +264,81 @@ def _precompute_embeddings(
         texts.append(text)
         id_order.append(mid)
 
-    vectors = embedding_client.embed_documents(texts)
-    if vectors is None or len(vectors) != len(id_order):
-        logger.warning(
-            "Embedding batch returned %d vectors for %d items; falling back",
-            len(vectors) if vectors else 0, len(id_order),
-        )
+    if not texts:
         return {}
 
-    return {mid: vec for mid, vec in zip(id_order, vectors)}
+    cache_enabled = _embedding_cache_enabled()
+    namespace = _embedding_cache_namespace(embedding_client)
+    cache_path = _embedding_cache_path(root_dir)
+    cache = _load_embedding_cache(cache_path, namespace) if cache_enabled else {}
+
+    result: dict[str, list[float]] = {}
+    miss_texts: list[str] = []
+    miss_ids: list[str] = []
+    miss_keys: list[str] = []
+    miss_hashes: list[str] = []
+
+    for mid, text in zip(id_order, texts, strict=False):
+        text_hash = _sha256_text(text)
+        key = _embedding_cache_key(namespace, memory_type, mid, text_hash)
+        cached_vector = cache.get(key)
+        if cached_vector is not None:
+            result[mid] = cached_vector
+            continue
+        miss_texts.append(text)
+        miss_ids.append(mid)
+        miss_keys.append(key)
+        miss_hashes.append(text_hash)
+
+    if not miss_texts:
+        logger.debug(
+            "Embedding cache hit for all %d %s memory items",
+            len(result),
+            memory_type,
+        )
+        return result
+
+    vectors = embedding_client.embed_documents(miss_texts)
+    if vectors is None or len(vectors) != len(miss_ids):
+        logger.warning(
+            "Embedding batch returned %d vectors for %d items; falling back",
+            len(vectors) if vectors else 0, len(miss_ids),
+        )
+        return result
+
+    cache_rows: list[dict[str, Any]] = []
+    for mid, key, text_hash, vector in zip(
+        miss_ids,
+        miss_keys,
+        miss_hashes,
+        vectors,
+        strict=False,
+    ):
+        result[mid] = vector
+        cache_rows.append(
+            {
+                "namespace": namespace,
+                "key": key,
+                "memory_type": memory_type,
+                "memory_id": mid,
+                "text_hash": text_hash,
+                "model": embedding_client.model,
+                "base_url": embedding_client.base_url,
+                "embedding": vector,
+            }
+        )
+
+    if cache_enabled:
+        _append_embedding_cache(cache_path, cache_rows)
+        logger.debug(
+            "Embedding cache %s: %d hits, %d misses for %s memory",
+            cache_path,
+            len(result) - len(miss_ids),
+            len(miss_ids),
+            memory_type,
+        )
+
+    return result
 
 
 def _score_memory(
@@ -411,19 +562,19 @@ def retrieve_multi_memory(
         if query_embedding and not disable_experience_memory:
             store = ExperienceMemoryStore(_root(root_dir))
             exp_vectors = _precompute_embeddings(
-                store.list_all(), "experience", embedding_client
+                store.list_all(), "experience", embedding_client, root_dir=root_dir
             ) or {}
 
         if (query_embedding or skill_query_embedding) and not disable_skill_memory:
             store = SkillMemoryStore(_root(root_dir))
             skill_vectors = _precompute_embeddings(
-                store.list_all(), "skill", embedding_client
+                store.list_all(), "skill", embedding_client, root_dir=root_dir
             ) or {}
 
         if query_embedding and not disable_knowledge_memory:
             store = KnowledgeMemoryStore(_root(root_dir))
             kn_vectors = _precompute_embeddings(
-                store.list_all(), "knowledge", embedding_client
+                store.list_all(), "knowledge", embedding_client, root_dir=root_dir
             ) or {}
 
         if not query_embedding and not skill_query_embedding:

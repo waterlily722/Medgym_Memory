@@ -195,6 +195,12 @@ NO_PROXY=127.0.0.1,localhost curl -s http://127.0.0.1:8000/v1/embeddings \
   -d '{"model":"intfloat-e5-base-v2","input":["query: chest pain with fever"]}'
 ```
 
+Memory embedding 会缓存到当前 `memory_root` 下的 `.embedding_cache/embeddings.jsonl`，同一条 memory 内容不变时会复用向量。临时关闭缓存：
+
+```bash
+export MEDGYM_DISABLE_EMBEDDING_CACHE=1
+```
+
 ### 终端 E — CXR Grounding Server (port 30050)
 
 无 CXR 模式加了 `--no_cxr` 时可以不启动它；有 CXR 模式必须启动。
