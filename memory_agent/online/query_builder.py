@@ -298,12 +298,15 @@ def build_case_memory_llm(
 
     if llm_client.available():
         payload = {
-            "case_state": case_state.to_dict(),
+            "case_id": case_state.case_id,
+            "turn_id": case_state.turn_id,
+            "chief_complaint": case_state.chief_complaint,
             "initial_information": _initial_information(case_state),
             "current_turn_information": current_turn_information,
             "acquired_turn_information": acquired_turn_information,
             "instruction": (
-                "Extract CaseMemory from CaseState. Decide whether the current "
+                "Extract CaseMemory from compact metadata and formatted records. "
+                "Decide whether the current "
                 "turn is clinically effective using current_turn_information only. "
                 "Put each current-turn record in "
                 "efficient_turn_information if useful, otherwise in "
