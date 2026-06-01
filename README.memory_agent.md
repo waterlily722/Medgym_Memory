@@ -185,6 +185,16 @@ bash examples/search/retrieval/launch_server.sh \
   INFO
 ```
 
+同一个 8000 进程也提供 OpenAI-compatible embedding endpoint，可用于 `--retrieval_mode embedding`：
+
+```bash
+NO_PROXY=127.0.0.1,localhost curl -s http://127.0.0.1:8000/health
+
+NO_PROXY=127.0.0.1,localhost curl -s http://127.0.0.1:8000/v1/embeddings \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"intfloat-e5-base-v2","input":["query: chest pain with fever"]}'
+```
+
 ### 终端 E — CXR Grounding Server (port 30050)
 
 无 CXR 模式加了 `--no_cxr` 时可以不启动它；有 CXR 模式必须启动。

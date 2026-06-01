@@ -40,13 +40,27 @@
 cd /oral_llm/xiweidai/med_env/code/medgym_memory
 ```
 
-embedding
-  python -m vllm.entrypoints.openai.api_server \
-    --model /oral_llm/xiweidai/med_env/models/intfloat-e5-base-v2 \
-    --port 30010 \
-    --convert embed \
-    --runner pooling \
-    --dtype auto
+启动 retrieval server（同时用于 doctor 的 `retrieve` tool 和 `--retrieval_mode embedding`）：
+
+```bash
+cd /oral_llm/xiweidai/med_env/code/rllm
+
+bash examples/search/retrieval/launch_server.sh \
+  examples/search/guidelines/guidelines_index/e5_Flat.index \
+  examples/search/guidelines/guidelines_index/corpus_passages.jsonl \
+  8000 \
+  INFO
+```
+
+确认 retrieval 和 embedding endpoint 都可用：
+
+```bash
+NO_PROXY=127.0.0.1,localhost curl -s http://127.0.0.1:8000/health
+
+NO_PROXY=127.0.0.1,localhost curl -s http://127.0.0.1:8000/v1/embeddings \
+  -H 'Content-Type: application/json' \
+  -d '{"model":"intfloat-e5-base-v2","input":["query: chest pain with fever"]}'
+```
 
 不启用 memory：
 
@@ -65,7 +79,7 @@ python run_med_with_tool.py \
   --judge_base_url http://127.0.0.1:30002/v1
 ```
 
-启用 memory 不注入case memory：
+启用 memory，不注入 Case Memory（默认只注入检索到的 memory guidance）：
 
 ```bash
 python run_med_with_tool.py \
@@ -85,18 +99,27 @@ python run_med_with_tool.py \
   --judge_base_url http://127.0.0.1:30002/v1
 ```
 
+启用 memory，不注入 Case Memory，并使用 embedding 检索：
+
+```bash
 python run_med_with_tool.py \
-    --model doctor_agent \
-    --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
-    --base_url http://127.0.0.1:30000/v1 \
-    --case_dir /oral_llm/xiweidai/med_env/bench \
-    --max_cases 200 --repeat_k 1 --no_cxr --parser_name qwen \
-    --enable_memory --log_memory_trace \
-    --trace_tag qwen_nocm \
-    --retrieval_mode embedding \
-    --memory_embedding_model intfloat-e5-base-v2 \
-    --memory_embedding_base_url http://127.0.0.1:30010/v1 \
-    --judge_model judge_agent --judge_base_url http://127.0.0.1:30002/v1
+  --model doctor_agent \
+  --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --base_url http://127.0.0.1:30000/v1 \
+  --case_dir /oral_llm/xiweidai/med_env/bench \
+  --max_cases 200 \
+  --repeat_k 1 \
+  --no_cxr \
+  --parser_name qwen \
+  --enable_memory \
+  --log_memory_trace \
+  --trace_tag qwen_nocm_embedding \
+  --retrieval_mode embedding \
+  --memory_embedding_model intfloat-e5-base-v2 \
+  --memory_embedding_base_url http://127.0.0.1:8000/v1 \
+  --judge_model judge_agent \
+  --judge_base_url http://127.0.0.1:30002/v1
+```
 
 启用 memory + 注入 Case Memory（每轮将 compact case memory 暴露给 doctor agent）：
 

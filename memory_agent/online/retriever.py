@@ -179,7 +179,7 @@ def _precompute_embeddings(
         texts.append(text)
         id_order.append(mid)
 
-    vectors = embedding_client.embed(texts)
+    vectors = embedding_client.embed_documents(texts)
     if vectors is None or len(vectors) != len(id_order):
         logger.warning(
             "Embedding batch returned %d vectors for %d items; falling back",
@@ -400,11 +400,11 @@ def retrieve_multi_memory(
 
     if embedding_client is not None and embedding_client.available():
         # Embed experience query
-        query_embedding = embedding_client.embed_one(memory_query.query_text)
+        query_embedding = embedding_client.embed_query(memory_query.query_text)
         # Embed skill query (separate)
         skill_query_text = memory_query.skill_query_text or memory_query.query_text
         if skill_query_text and skill_query_text != memory_query.query_text:
-            skill_query_embedding = embedding_client.embed_one(skill_query_text)
+            skill_query_embedding = embedding_client.embed_query(skill_query_text)
         else:
             skill_query_embedding = query_embedding
 

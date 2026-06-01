@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from .applicability_controller import apply_applicability_control
 from .case_updater import (
+    build_chief_complaint_with_llm,
     init_case_state,
     update_case_state,
     update_case_state_llm,
@@ -22,6 +23,7 @@ from .retriever import DEFAULT_MEMORY_ROOT, memory_to_text, retrieve_multi_memor
 __all__ = [
     "DEFAULT_MEMORY_ROOT",
     "init_case_state",
+    "build_chief_complaint_with_llm",
     "update_case_state",
     "update_case_state_rule",
     "update_case_state_llm",

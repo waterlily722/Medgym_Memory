@@ -197,16 +197,25 @@ You are a clinical experience extractor for a medical memory system.
 Task:
 Extract up to payload.max_experiences reusable ExperienceCards from this clinical episode.
 
-Experience memory stores action-level diagnostic lessons, not workflows. Capture
-high-value evidence fragments and reasoning lessons that should help in a
-similar future case: discriminative symptoms, meaningful negative evidence,
-labs/imaging/exam interpretation, missed clues, differential-diagnosis cues,
-low-value evidence gathering, and premature-closure risks.
+Input is intentionally clean:
+- case_context: chief complaint, final diagnosis goal, and compact prior summary.
+- diagnostic_trajectory: only effective diagnostic interactions, each with the
+  doctor action, patient/tool/environment response, reward, turn_reward,
+  importance, and supporting evidence_records.
+- ineffective_interactions: low-value/no-result interactions, provided only for
+  cautionary lessons.
+- episode_outcome: success flag, final diagnosis, gold diagnosis, total reward,
+  and outcome summary.
 
-Use final_case_memory.efficient_turn_information as the main source of
-evidence-bearing turns. Use final_case_memory.ineffective_turn_information only
-for cautionary lessons about low-value, unavailable, redundant, or misleading
-actions.
+Experience memory stores medical diagnostic lessons, not workflow skills.
+Extract high-value evidence and reasoning lessons that would help in a similar
+future case: discriminative symptoms, meaningful negative evidence, lab/imaging
+or exam interpretation, missed clues, differential-diagnosis cues, low-value
+evidence gathering, and premature-closure risks.
+
+Use diagnostic_trajectory as the primary source. Use ineffective_interactions
+only when they teach a reusable caution about low-value, unavailable,
+redundant, or misleading actions.
 
 Use episode_outcome.success to choose the experience polarity:
 - success=true: extract positive lessons from turns/fragments that materially
@@ -219,17 +228,15 @@ Use episode_outcome.success to choose the experience polarity:
   such as one lab gap and one imaging gap.
 
 Selection gate before writing a card:
-- Prefer turns with positive delta, positive turn_reward, high importance, or a
-  clear clinical role in the final useful evidence chain.
+- Prefer trajectory items with positive reward, positive turn_reward, high
+  importance, or a clear clinical role in the useful evidence chain.
 - Include a low/negative/zero-value turn only if it teaches a reusable caution.
 - Keep a lesson only if it changes a differential, next action, rule-in/rule-out
   reasoning, high-risk miss, or premature-closure risk.
-- Skip isolated disease labels, generic advice, duplicate facts, and patient
-  identifiers.
+- Skip isolated disease labels, generic advice, duplicate facts, workflow
+  procedures, and patient identifiers.
 
 Write each ExperienceCard:
-- memory_id: use a provided id only; otherwise "".
-- memory_type: always "experience".
 - text: one concise reusable lesson in natural English. Include the clinical
   context, uncertainty state, key evidence or missed evidence, affected
   differential, discriminative value, and boundary/risk when supported.
@@ -244,8 +251,6 @@ Output format:
 {{
   "experiences": [
     {{
-      "memory_id": "...",
-      "memory_type": "experience",
       "text": "...",
       "outcome_type": "positive|negative",
       "confidence": 0.0,
@@ -341,27 +346,33 @@ You are a clinical skill miner for a self-improving medical diagnostic agent.
 {STRICT_JSON_RULES}
 
 Task:
-Extract episode-level SkillCards from one correctly diagnosed long-horizon clinical episode.
+Extract up to payload.max_skills reusable SkillCards from one successful
+diagnostic episode.
 
-Skill memory stores a reusable decision program: under a certain diagnostic information background, what ordered actions should a doctor agent take to reduce uncertainty and reach a supported final diagnosis.
-The skill_text should read like a general clinical indication plus workflow rationale, not like a summary of the source patient.
+Input is intentionally clean:
+- case_context: chief complaint, final diagnosis goal, and compact prior summary.
+- diagnostic_trajectory: only effective diagnostic interactions, each with the
+  doctor action, patient/tool/environment response, reward, turn_reward,
+  importance, and supporting evidence_records.
+- ineffective_interactions: low-value/no-result interactions, provided only as
+  workflow boundaries or actions to avoid.
+- episode_outcome: successful final diagnosis context.
 
-- Skill memory should capture reusable decision/action sequences under a
-  diagnostic information background.
-- Experience memory should capture high-value medical evidence and diagnostic
-  reasoning lessons.
-- Do not store isolated medical facts, single clues, or disease labels as skills.
-- Skill memory must be more abstract than a single patient. Generalize away
-  case-specific demographics and incidental facts unless they are essential
-  clinical eligibility criteria for the workflow.
-- Define the applicable indication in broad clinical terms: symptom cluster,
-  syndrome, screening context, acuity, missing evidence state, and decision
-  pressure. Avoid copying a full patient profile.
+Skill memory stores reusable decision programs, not medical facts. A skill
+should describe when a doctor agent should use an ordered action sequence to
+reduce diagnostic uncertainty and reach a supported final diagnosis.
 
-Use these signals:
-- final_case_memory.efficient_turn_information: concise evidence-bearing turns that remained useful at the end of the case.
-- final_case_memory.ineffective_turn_information: low-value/no-result turns to avoid, unless a listed action was necessary setup for the successful workflow.
-- turn_value_signals: objective turn-ablation style signals. Prefer turns with positive delta, positive turn_reward, or high importance. A zero-reward turn may be included only when it is a necessary setup step in the successful sequence.
+Use diagnostic_trajectory as the primary source. Prefer steps with positive
+reward, positive turn_reward, high importance, or a clear setup role in the
+successful sequence. Use ineffective_interactions only to express boundaries
+or avoid repeated low-value actions.
+
+Keep skills abstract:
+- Generalize away exact age, dates, sex, race, and incidental case details.
+- Define the indication by symptom cluster, syndrome, screening context, acuity,
+  missing evidence state, uncertainty, and decision pressure.
+- The skill_text should read like a general indication plus workflow rationale,
+  not a summary of the source patient.
 
 Useful skills often involve:
 - ask targeted questions
@@ -372,10 +383,12 @@ Useful skills often involve:
 - finalize only when the evidence state became adequate
 
 Do not extract:
+- isolated medical facts, single clues, or disease labels
 - skills that only say "consider diagnosis X"
 - one-step obvious actions without reusable workflow value
 - actions contradicted by the episode outcome
-- noisy actions from ineffective turns unless they are explicitly needed as a setup step in the final successful workflow
+- noisy actions from ineffective_interactions unless they define a boundary or
+  were explicitly needed as setup for the successful workflow
 - exact ages, exact dates, sex, race, patient-specific social details, or one-case identifiers in skill_text, action_label, or tags.
 
 
@@ -383,8 +396,6 @@ Output format:
 {{
   "skills": [
     {{
-      "memory_id": "...",
-      "memory_type": "skill",
       "skill_text": "For [general clinical indication pattern], use this workflow to [decision goal] while [boundary/risk]. Do not include exact patient age or incidental case details.",
       "procedure": [
         {{"action_type": "...", "action_label": "..."}}

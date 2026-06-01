@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -13,7 +14,7 @@ from ..schemas import (
 from ..utils.config import TRACE_CONFIG
 
 
-TRACE_SCHEMA = "memory_trace.memory_only.v3"
+TRACE_SCHEMA = "memory_trace.memory_only.v4"
 HIT_GROUPS = (
     "positive_experience_hits",
     "negative_experience_hits",
@@ -74,6 +75,73 @@ def _case_memory_view(case_memory: dict[str, Any] | None) -> dict[str, Any]:
         ],
         "prior_information_summary": _clip(compact.get("prior_information_summary")),
     }
+
+
+TURN_ID_RE = re.compile(r"\bturn_(\d+)\b")
+
+
+def _records_by_turn_id(records: list[Any]) -> dict[int, list[str]]:
+    grouped: dict[int, list[str]] = {}
+    for record in records or []:
+        text = str(record or "").strip()
+        if not text:
+            continue
+        for match in TURN_ID_RE.finditer(text):
+            turn_id = int(match.group(1))
+            grouped.setdefault(turn_id, []).append(_clip(text, 800))
+    return grouped
+
+
+def _latest_case_memory_from_turns(turns: list[dict[str, Any]]) -> dict[str, Any]:
+    for turn in reversed(turns or []):
+        case_memory = turn.get("case_memory")
+        if isinstance(case_memory, dict) and case_memory:
+            return case_memory
+    return {}
+
+
+def _turn_id_value(turn: dict[str, Any]) -> int:
+    try:
+        return int(turn.get("turn_id") or 0)
+    except Exception:
+        return 0
+
+
+def _diagnostic_trajectory_from_turns(turns: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    case_memory = _latest_case_memory_from_turns(turns)
+    effective_by_turn = _records_by_turn_id(
+        case_memory.get("efficient_turn_information") or []
+    )
+    turns_by_id = {_turn_id_value(turn): turn for turn in turns or [] if _turn_id_value(turn)}
+    trajectory: list[dict[str, Any]] = []
+    for turn_id in sorted(effective_by_turn):
+        turn = turns_by_id.get(turn_id)
+        if not turn:
+            continue
+        clinical = turn.get("clinical_turn") or {}
+        trajectory.append(
+            {
+                "turn_id": turn_id,
+                "doctor_action_type": clinical.get("doctor_action_type") or "",
+                "tool_name": clinical.get("tool_name") or "",
+                "arguments": clinical.get("arguments") or {},
+                "patient_or_tool_response": clinical.get("patient_or_tool_response"),
+                "env_info": clinical.get("env_info") or {},
+                "reward": clinical.get("reward"),
+                "turn_reward": clinical.get("turn_reward"),
+                "importance": clinical.get("importance"),
+                "evidence_records": effective_by_turn.get(turn_id) or [],
+            }
+        )
+    return trajectory
+
+
+def _ineffective_interactions_from_turns(turns: list[dict[str, Any]]) -> list[Any]:
+    case_memory = _latest_case_memory_from_turns(turns)
+    return [
+        _clip(item, 800)
+        for item in case_memory.get("ineffective_turn_information") or []
+    ]
 
 
 LOW_INFORMATION_PATTERNS = (
@@ -273,6 +341,7 @@ def _clinical_turn_view(clinical: dict[str, Any] | None) -> dict[str, Any]:
         "doctor_action_type": c.get("doctor_action_type") or "",
         "arguments": c.get("arguments") or {},
         "patient_or_tool_response": _clip(c.get("patient_or_tool_response")),
+        "env_info": _clip(c.get("env_info")),
         "reward": c.get("reward"),
         "done": c.get("done"),
         "conf_before": c.get("conf_before"),
@@ -398,7 +467,7 @@ def append_memory_turn_trace(trace_root: str | Path, turn_record: dict[str, Any]
     path = root / f"{case_id}.json"
 
     payload = _read_json(path)
-    if payload.get("schema") not in (None, TRACE_SCHEMA):
+    if payload.get("schema") not in (None, TRACE_SCHEMA, "memory_trace.memory_only.v3"):
         payload = {}
 
     payload.setdefault("schema", TRACE_SCHEMA)
@@ -407,6 +476,8 @@ def append_memory_turn_trace(trace_root: str | Path, turn_record: dict[str, Any]
     turns = payload.setdefault("turns", [])
     _upsert_turn(turns, record)
     turns.sort(key=lambda x: int(x.get("turn_id") or 0))
+    payload["diagnostic_trajectory"] = _diagnostic_trajectory_from_turns(turns)
+    payload["ineffective_interactions"] = _ineffective_interactions_from_turns(turns)
 
     _write_json_atomic(path, payload)
     return path

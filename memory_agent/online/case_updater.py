@@ -408,7 +408,7 @@ Given the initial clinical information below, extract the chief complaint.
 - Keep it under 50 words.
 - If no clinical information is available, return empty string.
 
-Return JSON: {"chief_complaint": "..."}
+Return JSON: {{"chief_complaint": "..."}}
 
 Initial information:
 {info}"""

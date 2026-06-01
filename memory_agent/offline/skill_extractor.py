@@ -9,7 +9,11 @@ from ..llm import LLMClient, parse_validate_repair, skill_extraction_prompt
 from ..llm.schemas import SKILL_EXTRACTION_SCHEMA
 from ..schemas import DistilledEpisode, SkillCard
 from ..utils.config import LLM_CONFIG
-from .experience_extractor import _latest_case_memory, build_clinical_episode_trace
+from .experience_extractor import (
+    _clean_diagnostic_trajectory,
+    _ineffective_interactions,
+    _latest_case_memory,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -100,27 +104,6 @@ def _sanitize_tags(tags: list[str]) -> list[str]:
     return cleaned
 
 
-def _turn_value_signals(clinical_trace: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    signals: list[dict[str, Any]] = []
-    for turn in clinical_trace:
-        if not isinstance(turn, dict):
-            continue
-        signals.append(
-            {
-                "turn_id": turn.get("turn_id"),
-                "tool_name": turn.get("tool_name") or "",
-                "doctor_action_type": turn.get("doctor_action_type") or "",
-                "reward": _safe_float(turn.get("reward"), 0.0),
-                "conf_before": _safe_float(turn.get("conf_before"), 0.0),
-                "conf_after": _safe_float(turn.get("conf_after"), 0.0),
-                "delta": _safe_float(turn.get("delta"), 0.0),
-                "turn_reward": _safe_float(turn.get("turn_reward"), 0.0),
-                "importance": _safe_float(turn.get("importance"), 0.0),
-            }
-        )
-    return signals
-
-
 def _skill_from_raw(raw: dict[str, Any], distilled: DistilledEpisode) -> SkillCard | None:
     if not isinstance(raw, dict):
         return None
@@ -179,8 +162,12 @@ def extract_skills_from_distilled_episode(
         )
         return []
 
-    clinical_trace = build_clinical_episode_trace(distilled.turn_records)
-    if not clinical_trace:
+    final_case_memory = _latest_case_memory(distilled.turn_records)
+    diagnostic_trajectory = _clean_diagnostic_trajectory(
+        distilled.turn_records,
+        final_case_memory,
+    )
+    if not diagnostic_trajectory:
         return []
 
     payload = {
@@ -193,9 +180,13 @@ def extract_skills_from_distilled_episode(
             "total_reward": feedback.get("total_reward") or 0.0,
             "summary": feedback.get("summary") or "",
         },
-        "final_case_memory": _latest_case_memory(distilled.turn_records),
-        "turn_value_signals": _turn_value_signals(clinical_trace),
-        "clinical_episode_trace": clinical_trace,
+        "case_context": {
+            "chief_complaint": final_case_memory.get("chief_complaint") or "",
+            "diagnosis_goal": final_case_memory.get("diagnosis_goal") or "",
+            "prior_information_summary": final_case_memory.get("prior_information_summary") or "",
+        },
+        "diagnostic_trajectory": diagnostic_trajectory,
+        "ineffective_interactions": _ineffective_interactions(final_case_memory),
         "max_skills": MAX_SKILLS_PER_EPISODE,
     }
 
