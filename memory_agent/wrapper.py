@@ -42,6 +42,7 @@ from .online import (
     build_trace_payload,
     guidance_to_text,
     init_case_state,
+    build_chief_complaint_with_llm,
     retrieve_multi_memory,
     update_case_state,
 )
@@ -327,6 +328,13 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             bundle = self._case_bundle_from(observation, info)
             self._case_bundle = bundle if isinstance(bundle, dict) else {}
             initial_case_state = init_case_state(bundle, no_cxr=self.no_cxr)
+            # If chief_complaint is empty, try LLM construction from initial info
+            if not initial_case_state.chief_complaint:
+                llm_cc = build_chief_complaint_with_llm(
+                    initial_case_state, bundle, self.memory_llm,
+                )
+                if llm_cc:
+                    initial_case_state.chief_complaint = llm_cc
             if self.strict_memory_errors and not initial_case_state.case_id:
                 raise RuntimeError("Memory CaseState initialization failed: missing case_id")
             self.episode_id = self._episode_id_from_bundle(self._case_bundle, initial_case_state.case_id)

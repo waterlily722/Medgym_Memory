@@ -270,10 +270,6 @@ def _card_from_raw(
         if episode_success
         else OutcomeType.NEGATIVE.value
     )
-    polarity_tag = outcome_type
-    tags = [str(item) for item in raw.get("tags") or [] if str(item)]
-    tags = [tag for tag in tags if tag not in {"positive", "negative"}]
-    tags.insert(0, polarity_tag)
 
     raw_source = raw.get("source") if isinstance(raw.get("source"), dict) else {}
     source_case_ids = [str(item) for item in raw_source.get("case_ids") or [] if str(item)]
@@ -290,7 +286,6 @@ def _card_from_raw(
         memory_type="experience",
         text=text,
         outcome_type=outcome_type,
-        tags=tags,
         confidence=max(0.0, min(1.0, _safe_float(raw.get("confidence"), 0.5))),
         support_count=max(1, int(_safe_float(raw.get("support_count"), 1))),
         source={

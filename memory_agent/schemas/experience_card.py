@@ -19,7 +19,6 @@ class ExperienceCard(SerializableMixin):
 
     # safety / retrieval
     outcome_type: str = OutcomeType.POSITIVE.value
-    tags: list[str] = field(default_factory=list)
 
     # lightweight confidence / provenance
     confidence: float = 0.5

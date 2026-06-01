@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from typing import Any
 
 from ..llm import LLMClient
@@ -217,6 +218,43 @@ def _chief_complaint_from_ehr(ehr: dict[str, Any]) -> str:
     return chief.strip()
 
 
+_CLINICAL_KEYWORDS = (
+    "pain", "ache", "swelling", "bleeding", "fever", "cough", "shortness",
+    "breath", "nausea", "vomiting", "diarrhea", "constipation", "fatigue",
+    "dizziness", "headache", "rash", "numbness", "weakness", "weight",
+    "urinary", "chest", "abdominal", "back", "joint", "hip", "knee",
+    "fracture", "wound", "infection", "mass", "tumor", "cancer",
+    "diabetes", "hypertension", "pneumonia", "asthma", "arthritis",
+    "heart", "lung", "kidney", "liver", "thyroid", "colon", "breast",
+    "screening", "surgery", "chemotherapy", "dialysis", "pregnancy",
+)
+
+
+def _is_valid_chief_complaint(cc: str) -> bool:
+    """Reject demographics-only or redacted chief complaints."""
+    if not cc or not cc.strip():
+        return False
+    cc = cc.strip()
+    lower = cc.lower()
+    # Redacted text (starts with "___")
+    if lower.startswith("___"):
+        return False
+    # Pure demographics: "I am a XX-year-old X patient..."
+    if lower.startswith("i am ") and "year-old" in lower:
+        # Only reject if there are NO clinical keywords after demographics
+        if not any(kw in lower for kw in _CLINICAL_KEYWORDS):
+            return False
+    # Generic non-informative phrases
+    generic_phrases = (
+        "i haven't been feeling well recently",
+        "i have not been feeling well recently",
+        "i don't feel well",
+    )
+    if lower.rstrip(". ") in generic_phrases:
+        return False
+    return True
+
+
 def _chief_complaint_from_visible_question(bundle: Any) -> str:
     if not isinstance(bundle, dict):
         return ""
@@ -226,13 +264,20 @@ def _chief_complaint_from_visible_question(bundle: Any) -> str:
     marker = "my main issue is:"
     lower = question.lower()
     if marker not in lower:
-        return question
+        # No marker — the full question is likely demographics-only
+        # Validate before returning
+        if _is_valid_chief_complaint(question):
+            return question
+        return ""
     chief = question[lower.find(marker) + len(marker):].strip()
     if "available clinical presentation" in chief.lower():
         return ""
     if chief.lower().startswith("assess and diagnose"):
         return ""
-    return chief.strip(" .")
+    chief = chief.strip(" .")
+    if not _is_valid_chief_complaint(chief):
+        return ""
+    return chief
 
 
 def _chief_complaint_from_hpi(ehr: dict[str, Any]) -> str:
@@ -282,7 +327,7 @@ def _chief_complaint_from_observation(bundle: Any) -> str:
                 return cc
 
     # If no pattern matches, use the full text (trimmed) as a last resort
-    # but only if it's not a generic instruction
+    # but only if it's not a generic instruction and not demographics-only
     generic_patterns = [
         "assess and diagnose",
         "available clinical presentation",
@@ -291,8 +336,10 @@ def _chief_complaint_from_observation(bundle: Any) -> str:
     lower = obs.lower()
     if any(p in lower for p in generic_patterns):
         return ""
-
-    return obs[:200]
+    candidate = obs[:200]
+    if not _is_valid_chief_complaint(candidate):
+        return ""
+    return candidate
 
 
 def init_case_state(bundle: Any, no_cxr: bool = False) -> CaseState:
@@ -315,6 +362,79 @@ def init_case_state(bundle: Any, no_cxr: bool = False) -> CaseState:
         current_turn=[],
         acquired_information=[],
     )
+
+
+def _collect_initial_info_text(bundle: Any) -> str:
+    """Collect all available initial info text from the observation bundle."""
+    parts: list[str] = []
+    if isinstance(bundle, dict):
+        question = str(bundle.get("question") or "").strip()
+        if question:
+            parts.append(f"Patient question: {question}")
+        context = bundle.get("context", {})
+        if isinstance(context, str):
+            try:
+                context = json.loads(context)
+            except (json.JSONDecodeError, TypeError):
+                pass
+        if isinstance(context, dict):
+            ehr = context.get("ehr", context)
+            if isinstance(ehr, dict):
+                # Objective_for_Doctor often contains a summary
+                obj = str(ehr.get("Objective_for_Doctor") or "").strip()
+                if obj and not obj.lower().startswith("assess and diagnose"):
+                    parts.append(f"Objective: {obj}")
+                # HPI
+                history = ehr.get("History") or {}
+                if isinstance(history, dict):
+                    hpi = str(history.get("HPI") or "").strip()
+                    if hpi and hpi != "None" and len(hpi) > 10:
+                        parts.append(f"HPI: {hpi[:500]}")
+                # Patient info
+                pi = ehr.get("Patient_info") or {}
+                if isinstance(pi, dict):
+                    parts.append(
+                        f"Patient: {pi.get('age', '')}yo {pi.get('gender', '')}"
+                    )
+    return "\n".join(parts)
+
+
+_CHIEF_COMPLAINT_PROMPT = """You are extracting the chief complaint from clinical information.
+The chief complaint should be a concise statement of the patient's main symptom or problem.
+
+Given the initial clinical information below, extract the chief complaint.
+- Focus on the main symptom, problem, or reason for the visit.
+- Do NOT include demographics alone (age, gender) without a clinical problem.
+- Keep it under 50 words.
+- If no clinical information is available, return empty string.
+
+Return JSON: {"chief_complaint": "..."}
+
+Initial information:
+{info}"""
+
+
+def build_chief_complaint_with_llm(
+    case_state: CaseState,
+    bundle: Any,
+    llm_client: LLMClient,
+) -> str:
+    """Use LLM to construct chief_complaint when rule-based extraction failed."""
+    if not llm_client.available():
+        return ""
+    info = _collect_initial_info_text(bundle)
+    if not info or len(info.strip()) < 20:
+        return ""
+    prompt = _CHIEF_COMPLAINT_PROMPT.format(info=info)
+    try:
+        raw = llm_client.generate_json(prompt, max_tokens=200)
+        parsed = json.loads(raw) if isinstance(raw, str) else raw
+        cc = str(parsed.get("chief_complaint") or "").strip()
+        if _is_valid_chief_complaint(cc):
+            return cc
+    except Exception:
+        pass
+    return ""
 
 
 def _dedupe_records(values: list[Any], limit: int) -> list[dict[str, Any]]:

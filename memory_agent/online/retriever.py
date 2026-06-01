@@ -73,10 +73,8 @@ _GENERIC_TAGS = {"broad_differential", "premature_closure", "targeted_history",
 
 
 def _infer_topics(text: str, tags: list[str] | None = None) -> set[str]:
-    """Infer clinical topic cluster(s) from text + tags."""
+    """Infer clinical topic cluster(s) from text."""
     combined = (text or "").lower()
-    if tags:
-        combined += " " + " ".join(str(t).lower() for t in tags)
     topics: set[str] = set()
     for keywords, label in _TOPIC_CLUSTERS:
         for kw in keywords:
@@ -86,14 +84,10 @@ def _infer_topics(text: str, tags: list[str] | None = None) -> set[str]:
     return topics
 
 
-def _topics_overlap(q_topics: set[str], m_topics: set[str], tags: list[str] | None) -> bool:
-    """Return True if query and memory share at least one topic, or memory is generic."""
+def _topics_overlap(q_topics: set[str], m_topics: set[str], tags: list[str] | None = None) -> bool:
+    """Return True if query and memory share at least one topic."""
     if not q_topics or not m_topics:
         return True  # can't determine topic → don't filter
-    # Generic reasoning tags should always pass
-    tag_set = {str(t).lower() for t in (tags or [])}
-    if tag_set & _GENERIC_TAGS:
-        return True
     return bool(q_topics & m_topics)
 
 
@@ -399,13 +393,20 @@ def retrieve_multi_memory(
     """
     # ── Pre-compute embeddings for all stores ──────────────────────────
     query_embedding: list[float] | None = None
+    skill_query_embedding: list[float] | None = None
     exp_vectors: dict[str, list[float]] = {}
     skill_vectors: dict[str, list[float]] = {}
     kn_vectors: dict[str, list[float]] = {}
 
     if embedding_client is not None and embedding_client.available():
-        # Embed query
+        # Embed experience query
         query_embedding = embedding_client.embed_one(memory_query.query_text)
+        # Embed skill query (separate)
+        skill_query_text = memory_query.skill_query_text or memory_query.query_text
+        if skill_query_text and skill_query_text != memory_query.query_text:
+            skill_query_embedding = embedding_client.embed_one(skill_query_text)
+        else:
+            skill_query_embedding = query_embedding
 
         if query_embedding and not disable_experience_memory:
             store = ExperienceMemoryStore(_root(root_dir))
@@ -413,7 +414,7 @@ def retrieve_multi_memory(
                 store.list_all(), "experience", embedding_client
             ) or {}
 
-        if query_embedding and not disable_skill_memory:
+        if (query_embedding or skill_query_embedding) and not disable_skill_memory:
             store = SkillMemoryStore(_root(root_dir))
             skill_vectors = _precompute_embeddings(
                 store.list_all(), "skill", embedding_client
@@ -425,7 +426,7 @@ def retrieve_multi_memory(
                 store.list_all(), "knowledge", embedding_client
             ) or {}
 
-        if not query_embedding:
+        if not query_embedding and not skill_query_embedding:
             logger.warning("Query embedding failed; falling back to token scoring")
             query_embedding = None
 
@@ -442,16 +443,26 @@ def retrieve_multi_memory(
             query_embedding=query_embedding,
         )
 
+    # Build a skill-specific query using skill_query_text
+    skill_query = memory_query
+    if memory_query.skill_query_text and memory_query.skill_query_text != memory_query.query_text:
+        skill_query = MemoryQuery(
+            case_id=memory_query.case_id,
+            turn_id=memory_query.turn_id,
+            query_text=memory_query.skill_query_text,
+            skill_query_text=memory_query.skill_query_text,
+        )
+
     return MemoryRetrievalResult(
         positive_experience_hits=positive,
         negative_experience_hits=negative,
         skill_hits=[]
         if disable_skill_memory
         else _skill_hits(
-            memory_query, root_dir,
+            skill_query, root_dir,
             _threshold("skill_min_score", skill_min_score),
             embedding_vectors=skill_vectors or None,
-            query_embedding=query_embedding,
+            query_embedding=skill_query_embedding or query_embedding,
         ),
         knowledge_hits=[]
         if disable_knowledge_memory

@@ -40,6 +40,14 @@
 cd /oral_llm/xiweidai/med_env/code/medgym_memory
 ```
 
+embedding
+  python -m vllm.entrypoints.openai.api_server \
+    --model /oral_llm/xiweidai/med_env/models/intfloat-e5-base-v2 \
+    --port 30010 \
+    --convert embed \
+    --runner pooling \
+    --dtype auto
+
 不启用 memory：
 
 ```bash

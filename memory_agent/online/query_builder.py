@@ -505,18 +505,40 @@ def _build_memory_query_rule_from_case_memory(
     case_memory: CaseMemory | dict[str, Any],
 ) -> MemoryQuery:
     cm = _case_memory_to_dict(case_memory)
-    sections: list[str] = []
-    for field in ["chief_complaint", "diagnosis_goal", "efficient_turn_information", "prior_information_summary"]:
+
+    # --- Experience query: clinical facts only ---
+    exp_sections: list[str] = []
+    for field in ["chief_complaint", "efficient_turn_information", "prior_information_summary"]:
         value = cm.get(field)
         if isinstance(value, list):
             text = _join(value, limit=12)
         else:
             text = str(value or "").strip()
         if text:
-            sections.append(f"{field}: {text}")
+            exp_sections.append(text)
 
-    query_text = "\n".join(sections).strip()
-    if not query_text:
+    query_text = "; ".join(exp_sections).strip()
+
+    # --- Skill query: decision point + action context ---
+    skill_sections: list[str] = []
+    cc = str(cm.get("chief_complaint") or "").strip()
+    if cc:
+        skill_sections.append(cc)
+    dg = str(cm.get("diagnosis_goal") or "").strip()
+    if dg:
+        skill_sections.append(dg)
+    # Include latest efficient info for action context
+    effi = cm.get("efficient_turn_information") or []
+    if isinstance(effi, list) and effi:
+        # Take last 2 turns for skill context
+        for item in effi[-2:]:
+            text = str(item).strip()
+            if text:
+                skill_sections.append(text[:200])
+
+    skill_query_text = "; ".join(skill_sections).strip()
+
+    if not query_text and not skill_query_text:
         raise RuntimeError(
             f"Cannot build memory query for case_id={cm.get('case_id')!r} "
             f"turn_id={cm.get('turn_id')}: CaseMemory contains no queryable information"
@@ -526,6 +548,7 @@ def _build_memory_query_rule_from_case_memory(
         case_id=str(cm.get("case_id") or ""),
         turn_id=int(cm.get("turn_id") or 0),
         query_text=query_text,
+        skill_query_text=skill_query_text,
     )
 
 
@@ -570,14 +593,13 @@ def build_memory_query_llm(
     payload = {
         "case_memory": case_memory.to_dict(),
         "instruction": (
-            "Create one concise retrieval query for memory search. "
-            "Use only case_memory from the input. "
-            "Focus on the current turn plus information already exposed to the doctor agent. "
-            "Do not restate the full historical dialogue. "
-            "Do not infer new diagnoses, missing information, uncertainty, or risk labels. "
-            "The query_text should naturally include the clinical situation, newly exposed facts, "
-            "available/reviewed modalities, and useful next-action needs when present. "
-            "Return JSON with only query_text."
+            "Create TWO retrieval queries for a clinical memory system:\n"
+            "1. query_text: describes KNOWN clinical facts (symptoms, signs, labs, PMH) "
+            "for matching similar past diagnostic experiences. Do NOT speculate.\n"
+            "2. skill_query_text: describes the current decision point, what has been "
+            "done, and what action guidance is needed for matching workflow skills.\n"
+            "Both queries should be concise, fact-based, no meta-reasoning.\n"
+            "Return JSON with query_text and skill_query_text."
         ),
     }
     prompt = query_builder_prompt(payload)
@@ -603,9 +625,10 @@ def build_memory_query_llm(
     parsed, ok, errors = parse_validate_repair(
         raw_output,
         QUERY_BUILDER_SCHEMA,
-        {"query_text": rule_query.query_text},
+        {"query_text": rule_query.query_text, "skill_query_text": rule_query.skill_query_text},
     )
     query_text = str(parsed.get("query_text") or "").strip()
+    skill_query_text = str(parsed.get("skill_query_text") or "").strip()
     if raw_empty or not ok or not query_text:
         message = (
             f"Memory query LLM output invalid for case_id={case_state.case_id!r} "
@@ -614,10 +637,14 @@ def build_memory_query_llm(
         if strict and not raw_empty:
             raise RuntimeError(message)
         query_text = rule_query.query_text
+        skill_query_text = rule_query.skill_query_text
+    if not skill_query_text:
+        skill_query_text = rule_query.skill_query_text
     result = MemoryQuery(
         case_id=case_state.case_id,
         turn_id=case_state.turn_id,
         query_text=query_text,
+        skill_query_text=skill_query_text,
     )
     if debug is not None:
         debug["raw_output"] = raw_output
