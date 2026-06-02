@@ -237,7 +237,7 @@ def _prior_information_text(case_state: CaseState, limit: int = 8) -> str:
     return "\n".join(lines)
 
 
-def _diagnosis_goal_rule(case_state: CaseState) -> str:
+def _diagnostic_strategy_rule(case_state: CaseState) -> str:
     efficient_count = len(_efficient_turn_information(case_state, limit=200))
     inefficient_count = len(
         [
@@ -273,7 +273,7 @@ def build_case_memory_rule(case_state: CaseState) -> CaseMemory:
         case_id=case_state.case_id,
         turn_id=case_state.turn_id,
         chief_complaint=case_state.chief_complaint,
-        diagnosis_goal=_diagnosis_goal_rule(case_state),
+        diagnostic_strategy=_diagnostic_strategy_rule(case_state),
         efficient_turn_information=_efficient_turn_information(case_state),
         ineffective_turn_information=inefficient_turn_information(case_state),
         prior_information_summary="\n\n".join(prior_summary_parts),
@@ -311,7 +311,7 @@ def build_case_memory_llm(
                 "Put each current-turn record in "
                 "efficient_turn_information if useful, otherwise in "
                 "ineffective_turn_information. Use acquired_turn_information to update "
-                "the overall strategic diagnosis_goal and prior_information_summary, "
+                "the overall strategic diagnostic_strategy and prior_information_summary, "
                 "and use current_turn_information for the latest progress or "
                 "ineffective/no-result interaction."
             ),
@@ -420,7 +420,7 @@ def _build_memory_query_rule_from_case_memory(
     cc = str(cm.get("chief_complaint") or "").strip()
     if cc:
         skill_sections.append(cc)
-    dg = str(cm.get("diagnosis_goal") or "").strip()
+    dg = str(cm.get("diagnostic_strategy") or cm.get("diagnosis_goal") or "").strip()
     if dg:
         skill_sections.append(dg)
     # Include latest efficient info for action context

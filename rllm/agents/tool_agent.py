@@ -66,8 +66,12 @@ class ToolAgent(BaseAgent):
         """Helper to format observation into messages."""
         messages = []
         if isinstance(obs, dict):
+            guidance = obs.get("memory_guidance", "")
             if "question" in obs:
-                messages.append({"role": "user", "content": obs["question"]})
+                content = obs["question"]
+                if guidance:
+                    content += "\n\n" + guidance
+                messages.append({"role": "user", "content": content})
             elif "tool_outputs" in obs:
                 # Format tool outputs from environment observation
                 for tool_call_id, tool_output_str in obs["tool_outputs"].items():
@@ -78,6 +82,9 @@ class ToolAgent(BaseAgent):
                             "tool_call_id": tool_call_id,
                         }
                     )
+                # Inject memory guidance after tool outputs
+                if guidance:
+                    messages.append({"role": "user", "content": guidance})
         elif isinstance(obs, str):
             messages.append({"role": "user", "content": obs})
         elif obs:

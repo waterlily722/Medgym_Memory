@@ -11,7 +11,7 @@ CASE_MEMORY_SCHEMA = {
         "case_id",
         "turn_id",
         "chief_complaint",
-        "diagnosis_goal",
+        "diagnostic_strategy",
         "efficient_turn_information",
         "ineffective_turn_information",
         "prior_information_summary",

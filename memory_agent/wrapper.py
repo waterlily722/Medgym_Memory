@@ -613,9 +613,9 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         chief = str(case_memory.get("chief_complaint") or "").strip()
         if chief:
             lines.append(f"Presenting problem: {chief}")
-        goal = str(case_memory.get("diagnosis_goal") or "").strip()
+        goal = str(case_memory.get("diagnostic_strategy") or case_memory.get("diagnosis_goal") or "").strip()
         if goal:
-            lines.append(f"Diagnostic objective: {goal}")
+            lines.append(f"Diagnostic strategy: {goal}")
         efficient = [
             str(item).strip()
             for item in (case_memory.get("efficient_turn_information") or [])[-6:]

@@ -109,55 +109,54 @@ def build_memory_guidance(
 def guidance_to_text(guidance: MemoryGuidance) -> str:
     from ..utils.config import GUIDANCE_CONFIG
 
-    max_chars = GUIDANCE_CONFIG.get("max_guidance_chars", 300)
-    max_memories = GUIDANCE_CONFIG.get("max_memories_in_guidance", 3)
+    max_chars = GUIDANCE_CONFIG.get("max_guidance_chars", 800)
+    max_memories = GUIDANCE_CONFIG.get("max_memories_in_guidance", 2)
 
     if not guidance.selected_memories:
         return ""
 
-    blocks = ["Selected clinical memory references. Treat them as non-ground-truth references."]
-    for idx, memory in enumerate(guidance.selected_memories[:max_memories], start=1):
-        content = memory.get("content") or {}
-        header = (
-            f"Memory {idx}: "
-            f"type={memory.get('memory_type', '')}, id={memory.get('memory_id', '')}"
-        )
-        if memory.get("score") is not None:
-            header += f", score={memory.get('score')}"
-        lines = [header]
-        for label, key in (
-            ("Experience", "experience"),
-            ("Situation", "situation"),
-            ("Action", "action"),
-            ("Outcome", "outcome"),
-            ("Boundary", "boundary"),
-            ("Skill", "skill"),
-            ("Procedure", "procedure"),
-            ("Knowledge", "content"),
-            ("Source", "source"),
-        ):
-            values = _as_text_list(content.get(key))
-            if values:
-                lines.append(f"{label}: " + " ".join(values))
-        tags = _as_text_list(content.get("tags"))
-        if tags:
-            lines.append("Tags: " + ", ".join(tags))
-        blocks.append("\n".join(lines))
+    lessons = []
+    for memory in guidance.selected_memories[:max_memories]:
+        mem_type = memory.get("memory_type", "")
+        # Direct text: experience cards have "text", skill cards have "skill_text"
+        lesson = (
+            memory.get("text")
+            or memory.get("skill_text")
+            or ""
+        ).strip()
 
-    result = "\n\n".join(blocks)
+        # Fallback: extract from nested content dict (legacy format)
+        if not lesson:
+            content = memory.get("content") or {}
+            parts = []
+            for key in ("experience", "situation", "action", "outcome", "boundary",
+                        "skill", "procedure", "content"):
+                values = _as_text_list(content.get(key))
+                if values:
+                    parts.append(" ".join(values))
+            lesson = " ".join(parts).strip()
+
+        if lesson:
+            prefix = "Experience" if mem_type == "experience" else "Skill"
+            lessons.append(f"[{prefix}] {lesson}")
+
+    if not lessons:
+        return ""
+
+    result = "[Past diagnostic experience — non-ground-truth references]\n" + "\n".join(
+        f"- {l}" for l in lessons
+    )
 
     # Truncate to max_chars, keeping complete lines
     if len(result) > max_chars:
-        # Keep header + truncate memories to fit
-        truncated_lines = result.split("\n")
+        lines = result.split("\n")
         kept = []
         total = 0
-        for line in truncated_lines:
+        for line in lines:
             if total + len(line) + 1 <= max_chars:
                 kept.append(line)
                 total += len(line) + 1
             else:
-                # Try to fit a shortened version of this line
                 remaining = max_chars - total - 3
                 if remaining > 20:
                     kept.append(line[:remaining] + "...")
