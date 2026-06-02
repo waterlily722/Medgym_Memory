@@ -64,7 +64,7 @@ def _infer_action_from_text(text: str) -> str:
 
 def _infer_action_from_memory(hit: RetrievalHit) -> str:
     if hit.memory_type == "experience":
-        return _infer_action_from_text(str(hit.content.get("text") or ""))
+        return ""
     if hit.memory_type == "skill":
         action = _infer_action_from_steps(hit.content.get("procedure") or [])
         return action or _infer_action_from_text(str(hit.content.get("skill_text") or ""))
@@ -94,13 +94,12 @@ def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
         )
 
     if _is_negative_experience(hit):
-        bias = {action: -0.35} if action else {}
         return MemoryApplicabilityAssessment(
             memory_id=hit.memory_id,
             memory_type=hit.memory_type,
             decision="apply",
-            reason="Retrieved negative experience is reusable as a caution for the same local decision point.",
-            action_bias=bias,
+            reason="Retrieved negative experience is relevant as a cautionary diagnostic insight for a similar clinical pattern.",
+            action_bias={},
             blocked_actions=[],
         )
 
@@ -109,8 +108,8 @@ def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
             memory_id=hit.memory_id,
             memory_type=hit.memory_type,
             decision="apply",
-            reason="Retrieved positive experience is reusable for the current local decision point.",
-            action_bias={action: 0.30} if action else {},
+            reason="Retrieved positive experience is relevant as a medical diagnostic insight for a similar clinical pattern or evidence state.",
+            action_bias={},
             blocked_actions=[],
         )
 
@@ -119,7 +118,7 @@ def _rule_memory_assessment(hit: RetrievalHit) -> MemoryApplicabilityAssessment:
             memory_id=hit.memory_id,
             memory_type=hit.memory_type,
             decision="apply",
-            reason="Retrieved skill is reusable because its clinical situation and action timing match the current step.",
+            reason="Retrieved skill is reusable because its trigger, boundary, and action timing match the current decision point.",
             action_bias={action: 0.25} if action else {},
             blocked_actions=[],
         )
@@ -192,9 +191,13 @@ def _llm_memory_assessment(
         "allowed_decisions": ["apply", "ignore"],
         "allowed_actions": DEFAULT_ACTIONS,
         "instruction": (
-            "Select whether this memory is reusable for the current decision point. "
-            "Return apply only when trigger, boundary, evidence state, and action timing match. "
-            "Return ignore for partial matches, diagnosis-only overlap, or unavailable evidence."
+            "Decide whether this memory is relevant and useful for the current "
+            "diagnostic reasoning or next action. "
+            "For experience memory, apply only when the current case has a similar "
+            "clinical pattern, evidence state, or diagnostic implication. "
+            "For skill memory, apply only when trigger, boundary, and action timing match. "
+            "Return ignore for weak matches, diagnosis-only overlap, unavailable evidence, "
+            "or premature workflow use."
         ),
     }
     prompt = applicability_prompt(payload)
