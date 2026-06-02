@@ -420,7 +420,7 @@ def _build_memory_query_rule_from_case_memory(
     cc = str(cm.get("chief_complaint") or "").strip()
     if cc:
         skill_sections.append(cc)
-    dg = str(cm.get("diagnostic_strategy") or cm.get("diagnosis_goal") or "").strip()
+    dg = str(cm.get("diagnostic_strategy") or "").strip()
     if dg:
         skill_sections.append(dg)
     # Include latest efficient info for action context

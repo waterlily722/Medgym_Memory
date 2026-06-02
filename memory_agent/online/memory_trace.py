@@ -66,7 +66,7 @@ def _case_memory_view(case_memory: dict[str, Any] | None) -> dict[str, Any]:
     compact = case_memory or {}
     return {
         "chief_complaint": _clip(compact.get("chief_complaint")),
-        "diagnostic_strategy": _clip(compact.get("diagnostic_strategy") or compact.get("diagnosis_goal")),
+        "diagnostic_strategy": _clip(compact.get("diagnostic_strategy")),
         "efficient_turn_information": [
             _clip(x) for x in compact.get("efficient_turn_information") or []
         ],

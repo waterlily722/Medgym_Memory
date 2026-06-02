@@ -92,7 +92,7 @@ def _latest_case_memory(turn_records: list[dict[str, Any]]) -> dict[str, Any]:
                 "case_id": case_memory.get("case_id"),
                 "turn_id": case_memory.get("turn_id"),
                 "chief_complaint": _clip_text(case_memory.get("chief_complaint"), 400),
-                "diagnostic_strategy": _clip_text(case_memory.get("diagnostic_strategy") or case_memory.get("diagnosis_goal"), 700),
+                "diagnostic_strategy": _clip_text(case_memory.get("diagnostic_strategy"), 700),
                 "efficient_turn_information": [
                     _clip_text(item, 500)
                     for item in (case_memory.get("efficient_turn_information") or [])[:12]
@@ -431,7 +431,7 @@ def extract_experiences(
         },
         "case_context": {
             "chief_complaint": final_case_memory.get("chief_complaint") or "",
-            "diagnostic_strategy": final_case_memory.get("diagnostic_strategy") or final_case_memory.get("diagnosis_goal") or "",
+            "diagnostic_strategy": final_case_memory.get("diagnostic_strategy") or "",
             "prior_information_summary": final_case_memory.get("prior_information_summary") or "",
         },
         "diagnostic_trajectory": diagnostic_trajectory,

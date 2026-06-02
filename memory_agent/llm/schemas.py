@@ -41,6 +41,26 @@ EXPERIENCE_EXTRACTION_SCHEMA = {
     "required": ["experiences"],
     "list_fields": ["experiences"],
     "dict_fields": [],
+    "item_schema": {
+        "experiences": {
+            "required": [
+                "text",
+                "outcome_type",
+                "confidence",
+                "support_count",
+                "source",
+            ],
+            "list_fields": [],
+            "dict_fields": ["source"],
+            "enum_fields": {
+                "outcome_type": ["positive", "negative"],
+            },
+            "range_fields": {
+                "confidence": {"min": 0.0, "max": 1.0},
+                "support_count": {"min": 1, "max": 999999},
+            },
+        }
+    },
 }
 
 EXPERIENCE_MERGE_SCHEMA = {
@@ -86,4 +106,22 @@ SKILL_EXTRACTION_SCHEMA = {
     "required": ["skills"],
     "list_fields": ["skills"],
     "dict_fields": [],
+    "item_schema": {
+        "skills": {
+            "required": [
+                "skill_text",
+                "procedure",
+                "tags",
+                "confidence",
+                "support_count",
+                "source",
+            ],
+            "list_fields": ["procedure", "tags"],
+            "dict_fields": ["source"],
+            "range_fields": {
+                "confidence": {"min": 0.0, "max": 1.0},
+                "support_count": {"min": 1, "max": 999999},
+            },
+        }
+    },
 }

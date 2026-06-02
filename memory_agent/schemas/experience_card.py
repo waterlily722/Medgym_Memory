@@ -11,10 +11,10 @@ class ExperienceCard(SerializableMixin):
     memory_id: str
     memory_type: str = "experience"
 
-    # Main semi-structured memory text.
-    # Suggested content: uncertainty/syndrome context, missing key information,
-    # affected differential diagnoses, recommended action, discriminative value,
-    # and boundary/risk.
+    # Main semi-structured medical diagnostic insight.
+    # Suggested content: clinical pattern, key positive/negative evidence,
+    # discriminative clue, lab/imaging/exam finding, missed or misleading evidence,
+    # and diagnostic implication.
     text: str = ""
 
     # safety / retrieval

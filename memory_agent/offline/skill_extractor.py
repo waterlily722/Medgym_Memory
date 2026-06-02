@@ -182,7 +182,7 @@ def extract_skills_from_distilled_episode(
         },
         "case_context": {
             "chief_complaint": final_case_memory.get("chief_complaint") or "",
-            "diagnostic_strategy": final_case_memory.get("diagnostic_strategy") or final_case_memory.get("diagnosis_goal") or "",
+            "diagnostic_strategy": final_case_memory.get("diagnostic_strategy") or "",
             "prior_information_summary": final_case_memory.get("prior_information_summary") or "",
         },
         "diagnostic_trajectory": diagnostic_trajectory,

@@ -90,8 +90,8 @@ Update CaseMemory from case metadata and turn records.
 Input contains:
 - case_id, turn_id, chief_complaint
 - initial_information
-- current_turn_information
-- acquired_turn_information: prior formatted turns excluding initial_information and current_turn_information
+- current_turn_information: formatted records newly exposed in this turn
+- acquired_turn_information: all formatted non-initial turn records, including current_turn_information
 
 Core task:
 1. Classify each current_turn_information record as effective or ineffective.
@@ -99,29 +99,32 @@ Core task:
 3. Return CaseMemory only.
 
 Current-turn classification:
-- Use current_turn_information for the factual content of the current turn.
+- Use current_turn_information only to decide whether the current turn is effective.
+- Do not use acquired_turn_information to rescue, reinterpret, or downgrade the current turn.
 - Effective: adds useful positive/negative evidence, exam/lab/imaging/tool evidence, or medical knowledge that changes diagnostic uncertainty or next action.
 - Ineffective: generic, unavailable, unknown without clinical signal, off-topic, redundant, or no-result response.
-- Each current record must appear in exactly one list.
+- Each current_turn_information record must appear in exactly one list:
+  efficient_turn_information if effective, otherwise ineffective_turn_information.
 
 CaseMemory fields:
 1. diagnostic_strategy:
    Write a concise clinician reasoning state:
    known evidence; leading uncertainty or differential direction; most useful missing evidence; whether diagnosis should not yet be finalized.
+   Use acquired_turn_information for the full history and current_turn_information for the latest progress.
 
 2. efficient_turn_information:
-   Raw ledger of initial_information plus effective records.
-   Copy records exactly. Do not summarize or infer.
+   Raw ledger of initial_information plus clinically effective records from acquired_turn_information.
+   Copy full formatted records exactly. Do not summarize, rewrite, deduplicate, reorder, or infer.
 
 3. ineffective_turn_information:
-   Raw ledger of ineffective records.
-   Copy records exactly. Do not summarize or infer.
+   Raw ledger of clinically ineffective records from acquired_turn_information.
+   Copy full formatted records exactly. Do not summarize, rewrite, deduplicate, reorder, or infer.
 
 4. prior_information_summary:
    Concise clinical handoff summary of all gathered patient facts.
    Include positive and negative symptoms, exam findings, labs/imaging, history, medications, allergies, family/social history when available.
    State what was asked or checked and what the answer was.
-   Do not mention whether turns were effective.
+   Include no-result or low-value interactions as attempted actions/results, but do not label them as effective or ineffective.
 
 Rules:
 - Use only provided case metadata and turn records.
