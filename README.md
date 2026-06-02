@@ -124,6 +124,8 @@ python run_med_with_tool.py \
   --retrieval_mode embedding \
   --memory_embedding_model intfloat-e5-base-v2 \
   --memory_embedding_base_url http://127.0.0.1:8000/v1 \
+  --memory_llm_model memory_llm \
+  --memory_llm_base_url http://127.0.0.1:30003/v1 \
   --execution_mode serial \
   --judge_model judge_agent \
   --judge_base_url http://127.0.0.1:30002/v1
