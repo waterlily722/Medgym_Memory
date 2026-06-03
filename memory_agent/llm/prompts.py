@@ -101,16 +101,25 @@ Core task:
 Current-turn classification:
 - Use current_turn_information only to decide whether the current turn is effective.
 - Do not use acquired_turn_information to rescue, reinterpret, or downgrade the current turn.
-- Effective: adds useful positive/negative evidence, exam/lab/imaging/tool evidence, or medical knowledge that changes diagnostic uncertainty or next action.
-- Ineffective: generic, unavailable, unknown without clinical signal, off-topic, redundant, or no-result response.
+- Effective: adds useful positive/negative evidence, exam/lab/imaging/tool evidence, or information that changes diagnostic uncertainty, evidence interpretation, next action, or readiness to finalize.
+- Ineffective: generic, unavailable, unknown without clinical signal, off-topic, redundant, repeated, or no-result response.
 - Each current_turn_information record must appear in exactly one list:
   efficient_turn_information if effective, otherwise ineffective_turn_information.
 
 CaseMemory fields:
+
 1. diagnostic_strategy:
-   Write a concise clinician reasoning state:
-   known evidence; leading uncertainty or differential direction; most useful missing evidence; whether diagnosis should not yet be finalized.
-   Use acquired_turn_information for the full history and current_turn_information for the latest progress.
+   Write a concise clinician reasoning state for the next doctor-agent decision.
+   Include:
+   - current clinical problem
+   - key evidence already gathered
+   - current diagnostic uncertainty
+   - most useful missing information
+   - whether existing evidence is enough or not enough to finalize diagnosis
+   - any management-relevant risk only if explicitly supported
+
+   This field should help the doctor agent decide what to ask, check, interpret, or finalize next.
+   Do not invent diagnoses, tests, risks, or management plans.
 
 2. efficient_turn_information:
    Raw ledger of initial_information plus clinically effective records from acquired_turn_information.
@@ -121,16 +130,25 @@ CaseMemory fields:
    Copy full formatted records exactly. Do not summarize, rewrite, deduplicate, reorder, or infer.
 
 4. prior_information_summary:
-   Concise clinical handoff summary of all gathered patient facts.
-   Include positive and negative symptoms, exam findings, labs/imaging, history, medications, allergies, family/social history when available.
-   State what was asked or checked and what the answer was.
-   Include no-result or low-value interactions as attempted actions/results, but do not label them as effective or ineffective.
+   Write a compact clinical handoff summary of all gathered patient facts.
+   Include available:
+   - history and symptoms
+   - relevant positive and negative findings
+   - exam, lab, imaging, or tool results
+   - interpretation of important evidence when directly supported
+   - unresolved missing information
+   - low-value or no-result attempts, if present
+
+   The summary should preserve what was asked or checked and what the answer was.
+   Do not label items as effective or ineffective in this field.
+   Do not recommend treatment unless explicitly supported by the input.
 
 Rules:
 - Use only provided case metadata and turn records.
 - Keep chief_complaint exactly equal to input.chief_complaint.
-- Do not invent diagnoses, tests, findings, or patient details.
+- Do not invent diagnoses, tests, findings, risks, treatments, or patient details.
 - Raw ledger fields must copy records exactly.
+- Keep the memory compact but useful for the next diagnostic turn.
 
 Schema:
 {_dump(CASE_MEMORY_SCHEMA)}
@@ -138,7 +156,6 @@ Schema:
 Input:
 {_dump(payload)}
 """.strip()
-
 
 def applicability_prompt(payload: dict[str, Any]) -> str:
     return f"""
@@ -193,37 +210,41 @@ Input:
 - ineffective_interactions: low-value or no-result interactions
 - episode_outcome
 
-Experience memory stores medical diagnostic insights learned from previous cases.
+Experience memory stores reusable diagnostic evidence-interpretation insights.
 It is not an action policy or workflow.
 
 Extract experiences about:
-- symptom/finding patterns associated with diagnosis
-- discriminative clues between similar conditions
-- important negative findings
-- lab, imaging, exam, or tool findings
-- missed or misleading evidence in failed cases
+- discriminative symptoms, signs, history, exam, lab, imaging, or tool findings
+- important positive or negative evidence
+- missed, misleading, or over-weighted evidence in failed cases
 
 Good experience:
-"Finger swelling with redness, pus, and nail-biting history supports paronychia; nail-biting is a useful discriminative clue."
+"Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection."
 
 Bad experience:
-"Ask targeted questions."  # generic workflow advice
+"Ask targeted questions."
+"Consider paronychia."
+"Finger swelling means paronychia."
 
 Rules:
-- Each experience must be grounded in specific case evidence.
-- Prefer clinically discriminative or commonly missed clues.
+- Each experience must be grounded in explicit episode evidence.
+- Write one concise clinical insight, not labeled sections.
+- Include clinical pattern, key evidence, diagnostic interpretation, and applicability boundary.
+- Prefer discriminative or commonly missed evidence.
 - Do not use gold diagnosis to add facts absent from the trajectory.
+- Do not extract generic workflow advice.
+- Do not output diagnosis-only or overgeneralized statements.
 - Use episode_outcome.success only to choose outcome_type.
 - For failed episodes, return at most 2 high-confidence negative experiences.
-- Skip generic, duplicate, or weakly supported lessons.
+- Skip generic, duplicate, weakly supported, or non-reusable lessons.
 
 Confidence:
-- 0.9-1.0: specific, directly supported, clinically important, reusable.
-- 0.7-0.89: useful but indirectly supported.
+- 0.9-1.0: directly supported, clinically important, reusable, with clear interpretation and boundary.
+- 0.7-0.89: useful but partially inferred.
 - Below 0.7: do not output.
 
 Write each ExperienceCard:
-- text: concise medical diagnostic insight with clinical pattern, key evidence, and diagnostic implication.
+- text: one complete clinical diagnostic insight.
 - outcome_type: "positive" or "negative".
 - confidence: per rules above.
 - support_count: 1 unless otherwise stated.
@@ -253,13 +274,13 @@ Allowed decisions:
 Goal:
 Keep the memory library compact without losing important medical distinctions.
 
-Use merge only when all are true:
-1. Same medical insight.
-2. Same or compatible evidence pattern.
-3. Same diagnostic implication.
-4. Compatible outcome direction.
-5. Compatible boundary or patient context.
-6. Same retrieval purpose.
+Use merge only when both memories have:
+- same medical insight
+- compatible evidence pattern
+- same diagnostic implication
+- compatible outcome direction
+- compatible boundary or patient context
+- same retrieval purpose
 
 Use insert_new when:
 - the medical insight differs
@@ -267,35 +288,16 @@ Use insert_new when:
 - the diagnostic implication differs
 - the boundary differs or is unclear
 - one memory is an exception or contrast
-- merging would lose an important symptom, finding, test, modality, or nuance
+- merging would lose an important symptom, finding, test, modality, negative evidence, or nuance
 - you are uncertain
 
 Merge rules:
 - Preserve the selected existing memory_id.
 - Generalize only when supported by both memories.
-- Keep concrete clinical evidence and diagnostic implication.
+- Keep concrete clinical evidence, diagnostic interpretation, and applicability boundary.
+- Keep merged text as one concise clinical insight, not labeled fragments.
 - Do not turn the merged memory into generic advice.
 - Combine only provided sources.
-
-Output format:
-{{
-  "merge_decision": "merge|insert_new",
-  "target_memory_ids": [],
-  "reason": "...",
-  "merged_experience": {{
-    "memory_id": "...",
-    "memory_type": "experience",
-    "text": "...",
-    "outcome_type": "positive|negative",
-    "confidence": 0.0,
-    "support_count": 1,
-    "source": {{
-      "case_ids": [],
-      "episode_ids": [],
-      "turn_ids": []
-    }}
-  }}
-}}
 
 Rules:
 - If merge_decision is "merge", merged_experience is the final merged card.
@@ -326,22 +328,26 @@ Input:
 - episode_outcome
 
 Skill memory stores reusable local diagnostic decision patterns.
-It is not a medical fact, isolated clue, or symptom-diagnosis association.
+It is not a medical fact, isolated clue, symptom-diagnosis association, or generic advice.
 
 A skill answers:
 - when this local decision pattern applies
-- what action or short action sequence is useful
+- what next action or short action sequence is useful
 - why it helps reduce diagnostic uncertainty
 - when it should not be applied
 
 Important:
-A skill extracted from one episode should be treated as low-support skill evidence.
-Its support_count is 1 unless otherwise stated.
+- Do not invent action_type values.
+- procedure.action_type must be copied exactly from action/tool names present in the episode input.
+- If a useful reasoning pattern has no corresponding available action/tool, skip it.
+- Always output tags as [].
+- support_count is 1 unless otherwise stated.
 
 Each skill should include:
 1. trigger: clinical pattern or uncertainty that activates the skill
-2. procedure: 1-3 diagnostic actions with rationale
-3. boundary: when this skill should not apply
+2. procedure: 1-3 available actions with concrete action_label
+3. rationale: why the action helps the diagnostic process
+4. boundary: when this skill should not apply
 
 Do not extract:
 - isolated medical facts or single clues
@@ -349,37 +355,22 @@ Do not extract:
 - "consider diagnosis X"
 - generic advice such as "ask more questions" or "order tests"
 - actions contradicted by the episode outcome
-- skills without a clear trigger or decision logic
+- skills without clear trigger, action logic, and boundary
+- action_type values not present in the episode input
 
 Generalization:
 - Remove incidental case details.
-- Keep demographics or exposures only if they affect the decision.
-- Keep clinical trigger, action logic, evidence threshold, and boundary.
+- Keep demographics, exposures, modality, evidence threshold, and boundary only if clinically relevant.
+- Prefer local reusable decision patterns over broad disease rules.
 
 Confidence:
-- 0.9-1.0: local decision pattern is visible, evidence-supported, clinically coherent, and outcome-supported.
+- 0.9-1.0: visible, evidence-supported, clinically coherent, and outcome-supported.
 - 0.7-0.89: useful but partially inferred.
 - Below 0.7: do not output.
 
-Output format:
-{{
-  "skills": [
-    {{
-      "skill_text": "When [clinical trigger/uncertainty], do [local diagnostic action or short sequence] because [rationale]. Do not apply when [boundary].",
-      "procedure": [
-        {{"action_type": "...", "action_label": "..."}}
-      ],
-      "tags": [],
-      "confidence": 0.0,
-      "support_count": 1,
-      "source": {{
-        "case_ids": [],
-        "episode_ids": [],
-        "turn_ids": []
-      }}
-    }}
-  ]
-}}
+Rules:
+- Do not normalize or invent action_type.
+- action_label must be concrete and clinically useful.
 
 Schema:
 {_dump(SKILL_EXTRACTION_SCHEMA)}
