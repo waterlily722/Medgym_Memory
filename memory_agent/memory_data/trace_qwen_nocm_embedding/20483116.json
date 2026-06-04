@@ -1,0 +1,1644 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20483116",
+  "turns": [
+    {
+      "case_id": "20483116",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Current clinical problem: 42-year-old female with headache, nausea/vomiting/diarrhea, and history of migraines. Key evidence gathered: chief complaint and patient demographics. Diagnostic uncertainty: unclear if migraine exacerbation, infection, or other etiology. Most useful missing information: detailed symptom timeline, associated features (e.g., photophobia, fever, focal neurological signs), vital signs, and prior imaging or lab results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 42-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 42-year-old female patient presenting with Headache, nausea/vomiting/diarrhea and history of migraines.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 42-year-old female presenting with headache, nausea/vomiting/diarrhea, and history of migraines. No additional findings, exams, labs, or imaging results provided. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 1,
+        "query_text": "42-year-old female with headache, nausea/vomiting/diarrhea, history of migraines. No additional findings, exams, labs, or imaging results provided. Diagnostic uncertainty: unclear if migraine exacerbation, infection, or other etiology.",
+        "skill_query_text": "Presenting problem: 42-year-old female with headache, nausea/vomiting/diarrhea, history of migraines. Evidence gathered: chief complaint and demographics. Missing: detailed symptom timeline, associated features, vital signs, prior imaging or lab results. Ineffective actions: none. Need: diagnostic decision workflow guidance."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7868,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7788,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7717,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8271,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_2019ba9cf7b7",
+              "type": "experience",
+              "score": 0.8207,
+              "outcome": "negative",
+              "text": "Unintentional weight loss and fatigue in a 77-year-old female, especially when accompanied by fever, strongly suggest systemic infection or malignancy; do not apply this when the patient has no fever, no weight loss, or when symptoms are localized and non-systemic.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8142,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8085,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8057,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.799,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': 'ed4a0f8d-7630-4e6c-8e81-fd35b5bcdd4f', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Current clinical problem: headache with associated nausea/vomiting/diarrhea. Key evidence gathered: chief complaint only. Diagnostic uncertainty remains high; no specific migraine pattern changes confirmed. Most useful missing information: detailed history of migraine triggers, frequency, severity, and recent changes. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Chief complaint: Headache, nausea/vomiting/diarrhea. No specific migraine pattern changes confirmed. Patient unable to provide specific information on recent changes in migraine frequency, severity, or triggers. No exam, lab, imaging, or tool results available. Missing: detailed migraine history, triggers, and recent changes. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 2,
+        "query_text": "Chief complaint: headache, nausea/vomiting/diarrhea. No specific migraine pattern changes confirmed. No exam, lab, imaging, or tool results available. Missing: detailed migraine history, triggers, and recent changes. No low-value or no-result attempts recorded.",
+        "skill_query_text": "Presenting problem: headache with nausea/vomiting/diarrhea. Uncertainty: no specific migraine pattern changes confirmed. Evidence gathered: chief complaint only. Missing: detailed migraine history, triggers, recent changes. Ineffective action: asked about recent changes in migraine patterns, patient unable to provide specific information. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7929,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.774,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8278,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8229,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.8096,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8225,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8089,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8083,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '80377747-ba0c-4e63-b116-0422b267d03c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 63}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Current clinical problem: headache with associated nausea/vomiting/diarrhea. Key evidence gathered: patient reports uncertainty about migraine triggers. Diagnostic uncertainty remains high due to lack of specific trigger data or objective findings. Most useful missing information: detailed history of migraine triggers, recent changes in frequency/severity, or objective lab/imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Chief complaint: headache, nausea/vomiting/diarrhea. Patient reports uncertainty about migraine triggers. Turn 2: asked about recent changes in migraine patterns; patient responded with uncertainty and requested a more specific question. Turn 3: asked about specific triggers (foods, stress, sleep); patient again responded with uncertainty and requested a more specific question. No objective findings or lab/imaging results provided. No treatment recommended."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 3,
+        "query_text": "Chief complaint: headache, nausea/vomiting/diarrhea. Patient reports uncertainty about migraine triggers. No objective findings or lab/imaging results provided. Diagnostic uncertainty remains high due to lack of specific trigger data or objective findings.",
+        "skill_query_text": "Presenting problem: headache with nausea/vomiting/diarrhea. Current uncertainty: unclear migraine triggers. Evidence gathered: patient reports uncertainty about triggers. Ineffective actions: asked about specific triggers (foods, stress, sleep) — patient responded with uncertainty. Missing: detailed history of migraine triggers, recent changes in frequency/severity, or objective lab/imaging results. Need: workflow guidance for eliciting specific trigger data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8263,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8065,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.802,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.771,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7569,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8488,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8376,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_081e48e222ba",
+              "type": "experience",
+              "score": 0.8274,
+              "outcome": "negative",
+              "text": "Repeatedly requesting labs or imaging without first obtaining targeted history or ruling out high-yield findings (like occult blood in stool) wastes diagnostic resources and delays definitive diagnosis in cases with clear red flags.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8396,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.83,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8286,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_f43afddafa87"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8263,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_f43afddafa87",
+            "memory_type": "experience",
+            "score": 0.8488,
+            "content": {
+              "experience": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?"
+        },
+        "patient_or_tool_response": "{'question': 'I have had visual disturbances before my headaches — specifically, blurry vision — which is typical for my migraines. I also experience photophobia (sensitivity to light) and nausea during them. I do not recall any aura or sensitivity to sound, but I’m not sure if I’ve had those before. I don’t think I’ve had any changes in vision, weakness, numbness, or tingling during this current episode.'}",
+        "env_info": "{'response': [{'id': '094c27f1-c2e6-4ded-8603-667be4ad6b81', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 128}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Current clinical problem: headache with associated nausea/vomiting/diarrhea. Key evidence: patient reports visual disturbances (blurry vision), photophobia, and nausea during headaches, consistent with migraine. No aura, sound sensitivity, or neurological symptoms (vision changes, weakness, numbness) reported. Diagnostic uncertainty: whether this is typical migraine or if there is an underlying neurological or systemic cause. Most useful missing information: history of prior aura, specific triggers, or recent changes in migraine pattern. Existing evidence is not enough to finalize diagnosis; further history or diagnostic tests may be needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?)\nresponse: I have had visual disturbances before my headaches — specifically, blurry vision — which is typical for my migraines. I also experience photophobia (sensitivity to light) and nausea during them. I do not recall any aura or sensitivity to sound, but I’m not sure if I’ve had those before. I don’t think I’ve had any changes in vision, weakness, numbness, or tingling during this current episode."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: headache, nausea/vomiting/diarrhea. Patient reports visual disturbances (blurry vision), photophobia, and nausea during headaches, consistent with migraine. No aura, sound sensitivity, or neurological symptoms (vision changes, weakness, numbness) reported. Previous turns: turn_2 asked about recent changes in migraine patterns — patient responded with request for more specific question. turn_3 asked about specific triggers — patient responded with request for more specific question. No lab, imaging, or exam results provided. No treatment recommended. Missing: specific triggers, recent changes in migraine pattern, or history of aura."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 4,
+        "query_text": "Headache with nausea/vomiting/diarrhea, visual disturbances (blurry vision), photophobia, nausea during headaches, no aura, no sound sensitivity, no neurological symptoms (vision changes, weakness, numbness). Uncertainty: typical migraine vs. underlying neurological/systemic cause. Missing: history of aura, specific triggers, recent changes in migraine pattern.",
+        "skill_query_text": "Presenting problem: headache with nausea/vomiting/diarrhea. Evidence gathered: visual disturbances, photophobia, nausea during headaches; no aura, sound sensitivity, or neurological symptoms. Ineffective actions: none. Missing: specific triggers, recent changes in migraine pattern, history of aura. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8068,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7781,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8324,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.83,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.828,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8046,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8033,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_8ddff5b18aac",
+              "type": "skill",
+              "score": 0.8005,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3bf97537-694e-4a8a-beae-5f1680e49461': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '3bf97537-694e-4a8a-beae-5f1680e49461', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 263}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 4,
+        "query_text": "Headache with nausea/vomiting/diarrhea, visual disturbances (blurry vision), photophobia, nausea during headaches, no aura, no sound sensitivity, no neurological symptoms (vision changes, weakness, numbness). Uncertainty: typical migraine vs. underlying neurological/systemic cause. Missing: history of aura, specific triggers, recent changes in migraine pattern.",
+        "skill_query_text": "Presenting problem: headache with nausea/vomiting/diarrhea. Evidence gathered: visual disturbances, photophobia, nausea during headaches; no aura, sound sensitivity, or neurological symptoms. Ineffective actions: none. Missing: specific triggers, recent changes in migraine pattern, history of aura. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8068,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7781,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8324,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.83,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.828,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8046,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8033,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_8ddff5b18aac",
+              "type": "skill",
+              "score": 0.8005,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "differential diagnosis of headache with nausea, vomiting, diarrhea, and history of migraines"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0586cfed-797c-49de-8150-9524c40c0d3e': '[Document 1] (ID: 20748_12, Score: 0.876)\\n❑\\xa0 Presentation- Change in quality, severity, frequency, and pattern of headache. Nausea and vomiting between headache. Headache worst on first awakening in the morning.\\n❑\\xa0 Neurologic exam - Complicated migraine, seizure or very brief aura, < 5-minute atypical aura\\n❑\\xa0 Recent change in weight or visi...\\n\\n[Document 2] (ID: 2896_15, Score: 0.865)\\n## Diagnosis of headache disorders\\nThis guide can be separately downloaded (Additional file 3).\\nThe universally accepted basis for the diagnosis of any headache is the International Classification of Headache Disorders, an abbreviated version of which is included in these aids (3.2 Diagnostic criter...\\n\\n[Document 3] (ID: 4097_51, Score: 0.864)\\n## Clinical assessment\\nWarning signals identified from the history or the physical examination that warrant further examination:\\n- thunderclap headache (severe headache with sudden onset); - headache with atypical aura (lasting more than 1 h or including motor symptoms); - newly presenting headache ...\\n\\n[Document 4] (ID: 2896_51, Score: 0.863)\\n2.6.1.1 Reasons for specialist referral ▪ Diagnostic uncertainty after due enquiry. ▪ Diagnosis of any of the following,...[truncated]'}}",
+        "env_info": "{'response': [{'id': '0586cfed-797c-49de-8150-9524c40c0d3e', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"differential diagnosis of headache with nausea, vomiting, diarrhea, and history of migraines\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 334}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.2727272727272727,
+        "delta": 0.1818181818181818,
+        "turn_reward": 0.03636363636363636,
+        "importance": 0.1818181818181818
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis of headache with nausea, vomiting, diarrhea, and history of migraines\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis of headache with nausea, vomiting, diarrhea, and history of migraines\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Current clinical problem: headache with nausea, vomiting, and diarrhea, with history of migraines. Key evidence: patient reports visual disturbances, photophobia, and nausea during headaches; no aura, weakness, or numbness. Diagnostic uncertainty: whether this is a typical migraine exacerbation or a new or evolving condition requiring specialist referral. Most useful missing information: detailed headache diary, recent changes in migraine pattern, specific triggers, and neurologic exam findings. Existing evidence is not enough to finalize diagnosis; further history and possibly imaging or neurologic evaluation are needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?)\nresponse: I have had visual disturbances before my headaches — specifically, blurry vision — which is typical for my migraines. I also experience photophobia (sensitivity to light) and nausea during them. I do not recall any aura or sensitivity to sound, but I’m not sure if I’ve had those before. I don’t think I’ve had any changes in vision, weakness, numbness, or tingling during this current episode.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis of headache with nausea, vomiting, diarrhea, and history of migraines)\nresponse: [Document 1] (ID: 20748_12, Score: 0.876)\n❑  Presentation- Change in quality, severity, frequency, and pattern of headache. Nausea and vomiting between headache. Headache worst on first awakening in the morning.\n❑  Neurologic exam - Complicated migraine, seizure or very brief aura, < 5-minute atypical aura\n❑  Recent change in weight or visi...\n\n[Document 2] (ID: 2896_15, Score: 0.865)\n## Diagnosis of headache disorders\nThis guide can be separately downloaded (Additional file 3).\nThe universally accepted basis for the diagnosis of any headache is the International Classification of Headache Disorders, an abbreviated version of which is included in these aids (3.2 Diagnostic criter...\n\n[Document 3] (ID: 4097_51, Score: 0.864)\n## Clinical assessment\nWarning signals identified from the history or the physical examination that warrant further examination:\n- thunderclap headache (severe headache with sudden onset); - headache with atypical aura (lasting more than 1 h or including motor symptoms); - newly presenting headache ...\n\n[Document 4] (ID: 2896_51, Score: 0.863)\n2.6.1.1 Reasons for specialist referral ▪ Diagnostic uncertainty after due enquiry. ▪ Diagnosis of any of the following, which are best managed by specialists: ▪ migraine with aura including motor weakness; ▪ chronic migraine; ▪ cluster headache; ▪ trigeminal neuralgia; ▪ persistent idiopathic facia...\n\n[Document 5] (ID: 2896_16, Score: 0.862)\n## Diagnostic diary\nA diary kept over a few weeks can be a very helpful diagnostic aid, clarifying the pattern and frequency of headaches and associated symptoms as well as medication use or overuse.\nAn example is included here, among the management aids (3.3.2 Diary and calendar for use in primary ..."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: headache, nausea, vomiting, diarrhea. History: migraines with visual disturbances (blurry vision), photophobia, nausea during episodes; no aura, weakness, numbness, or tingling. Patient unsure of recent changes in migraine pattern or triggers. Labs requested but no result available. Differential diagnosis retrieved includes complicated migraine, seizure, atypical aura, thunderclap headache, and specialist referral indications. No definitive diagnosis or treatment recommended. Missing: detailed headache diary, neurologic exam findings, and specific triggers."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 6,
+        "query_text": "Headache with nausea, vomiting, diarrhea; history of migraines with visual disturbances (blurry vision), photophobia, nausea during episodes; no aura, weakness, numbness, or tingling; patient unsure of recent pattern changes or triggers; labs requested but no result; differential includes complicated migraine, seizure, atypical aura, thunderclap headache; specialist referral indicated; missing: headache diary, neurologic exam, specific triggers.",
+        "skill_query_text": "Presenting problem: headache with nausea, vomiting, diarrhea, history of migraines. Current uncertainty: whether this is a typical migraine exacerbation or new/evolving condition needing specialist referral. Evidence gathered: patient reports visual disturbances, photophobia, nausea; no aura, weakness, numbness; labs requested but no result. Ineffective action: labs request yielded no result. Need: workflow guidance for next diagnostic steps, including whether to proceed with neurologic exam, imaging, or specialist referral."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7884,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7839,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7777,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7606,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7424,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.834,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6a4fc7cfb2d",
+              "type": "experience",
+              "score": 0.8181,
+              "outcome": "negative",
+              "text": "Failure to elicit specific visual symptoms during initial questioning led to delayed diagnosis; always probe for visual changes (floaters, light sensitivity, blurring) even in non-specific chief complaints.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.817,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.828,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8155,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8138,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_c6a4fc7cfb2d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.7777,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_c6a4fc7cfb2d",
+            "memory_type": "experience",
+            "score": 0.8181,
+            "content": {
+              "experience": "Failure to elicit specific visual symptoms during initial questioning led to delayed diagnosis; always probe for visual changes (floaters, light sensitivity, blurring) even in non-specific chief complaints.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '602494cc-a782-4876-b173-a58abb6e04a3', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 823}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2727272727272727,
+        "conf_after": 0.2727272727272727,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Current clinical problem: headache with nausea/vomiting/diarrhea, with history of migraines. Key evidence: visual disturbances, photophobia, nausea during headaches; no aura, no sensory changes. Diagnostic uncertainty: whether this is a typical migraine exacerbation or if there is an underlying systemic or neurological cause. Most useful missing information: recent changes in sleep, diet, or stress; results of labs; detailed headache diary. Existing evidence is not enough to finalize diagnosis; further history and diagnostic tools needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Headache, nausea/vomiting/diarrhea",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?)\nresponse: I have had visual disturbances before my headaches — specifically, blurry vision — which is typical for my migraines. I also experience photophobia (sensitivity to light) and nausea during them. I do not recall any aura or sensitivity to sound, but I’m not sure if I’ve had those before. I don’t think I’ve had any changes in vision, weakness, numbness, or tingling during this current episode.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis of headache with nausea, vomiting, diarrhea, and history of migraines)\nresponse: [Document 1] (ID: 20748_12, Score: 0.876)\n❑  Presentation- Change in quality, severity, frequency, and pattern of headache. Nausea and vomiting between headache. Headache worst on first awakening in the morning.\n❑  Neurologic exam - Complicated migraine, seizure or very brief aura, < 5-minute atypical aura\n❑  Recent change in weight or visi...\n\n[Document 2] (ID: 2896_15, Score: 0.865)\n## Diagnosis of headache disorders\nThis guide can be separately downloaded (Additional file 3).\nThe universally accepted basis for the diagnosis of any headache is the International Classification of Headache Disorders, an abbreviated version of which is included in these aids (3.2 Diagnostic criter...\n\n[Document 3] (ID: 4097_51, Score: 0.864)\n## Clinical assessment\nWarning signals identified from the history or the physical examination that warrant further examination:\n- thunderclap headache (severe headache with sudden onset); - headache with atypical aura (lasting more than 1 h or including motor symptoms); - newly presenting headache ...\n\n[Document 4] (ID: 2896_51, Score: 0.863)\n2.6.1.1 Reasons for specialist referral ▪ Diagnostic uncertainty after due enquiry. ▪ Diagnosis of any of the following, which are best managed by specialists: ▪ migraine with aura including motor weakness; ▪ chronic migraine; ▪ cluster headache; ▪ trigeminal neuralgia; ▪ persistent idiopathic facia...\n\n[Document 5] (ID: 2896_16, Score: 0.862)\n## Diagnostic diary\nA diary kept over a few weeks can be a very helpful diagnostic aid, clarifying the pattern and frequency of headaches and associated symptoms as well as medication use or overuse.\nAn example is included here, among the management aids (3.3.2 Diary and calendar for use in primary ..."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Chief complaint: headache, nausea/vomiting/diarrhea. History: migraines with visual disturbances (blurry vision), photophobia, nausea during attacks; no aura, no sensory changes. Exam: no new neurological findings. Labs: no result available. Differential diagnosis retrieved: migraine with aura, chronic migraine, cluster headache, trigeminal neuralgia. Diagnostic diary recommended. Missing: recent changes in sleep, diet, stress; detailed headache pattern; lab results. No result for labs. No specific triggers identified. Patient unsure about recent changes in lifestyle or migraine patterns."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 7,
+        "query_text": "Headache with nausea/vomiting/diarrhea, history of migraines, visual disturbances (blurry vision), photophobia, nausea during headaches, no aura, no sensory changes, no new neurological findings, no lab results available, diagnostic uncertainty: migraine exacerbation vs. systemic/neurological cause, missing: recent changes in sleep/diet/stress, detailed headache diary.",
+        "skill_query_text": "Presenting problem: headache with nausea/vomiting/diarrhea, history of migraines. Uncertainty: migraine exacerbation vs. systemic/neurological cause. Evidence gathered: visual disturbances, photophobia, nausea during attacks, no aura, no new neurological findings, no lab results. Ineffective actions: failed attempts to elicit triggers, failed lab request, failed to obtain lifestyle changes. Need: workflow guidance for next diagnostic steps, including targeted history, lab/imaging, or referral criteria."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8031,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7821,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8304,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8248,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.8213,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8148,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8139,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8124,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your headaches?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I had a recent GI illness that started five days before my headache. I had fever for the first two days, nausea, vomiting, and diarrhea — I took Imodium and it helped a little. I also have mild crampy pain in my right lower quadrant. I don’t have any sick contacts or unusual food exposure.'}",
+        "env_info": "{'response': [{'id': 'fb3fc493-5b5a-4996-945a-a8a655657395', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your headaches?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 890}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2727272727272727,
+        "conf_after": 0.2727272727272727,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your heada",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your headaches?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Current clinical problem: headache with nausea, vomiting, and diarrhea, possibly related to recent GI illness. Key evidence: patient reports recent GI illness with fever, nausea, vomiting, diarrhea, and mild crampy pain in right lower quadrant. Diagnostic uncertainty: whether symptoms are due to migraine, infection, or another systemic process. Most useful missing information: results of labs (none available), imaging (not yet requested), and clarification on visual disturbances or aura. Existing evidence is not enough to finalize diagnosis; further investigation needed.",
+        "efficient_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your headaches?)\nresponse: Yes, I had a recent GI illness that started five days before my headache. I had fever for the first two days, nausea, vomiting, and diarrhea — I took Imodium and it helped a little. I also have mild crampy pain in my right lower quadrant. I don’t have any sick contacts or unusual food exposure."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: headache, nausea, vomiting, diarrhea. History: patient reports recent GI illness with fever, nausea, vomiting, diarrhea, and mild crampy pain in right lower quadrant. No sick contacts or unusual food exposure. Previous interactions: asked about migraine triggers, visual disturbances, sleep/diet/stress changes — patient responded with uncertainty. Labs requested but no result available. Retrieved differential diagnosis documents (headache disorders, warning signs, specialist referral criteria, diagnostic diary). No imaging or specific exam results yet. Unresolved: need clarification on visual disturbances, aura, or other neurological symptoms."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 8,
+        "query_text": "Headache with nausea, vomiting, diarrhea; recent GI illness with fever, nausea, vomiting, diarrhea, mild crampy pain in right lower quadrant; no sick contacts or unusual food exposure; labs not done, imaging not requested; unresolved: visual disturbances or aura not clarified.",
+        "skill_query_text": "Presenting problem: headache with nausea, vomiting, diarrhea, possibly related to recent GI illness. Evidence gathered: patient history of recent GI illness, fever, mild RLQ pain. Missing: lab results, imaging, clarification on visual disturbances or aura. Ineffective actions: none. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8156,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7854,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8289,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8195,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8158,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8402,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_4538fc2ecabd",
+              "type": "skill",
+              "score": 0.8344,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8322,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'307200f4-f945-472e-9cfd-523bc43b6cf5': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '307200f4-f945-472e-9cfd-523bc43b6cf5', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1018}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2727272727272727,
+        "conf_after": 0.2727272727272727,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 8,
+        "query_text": "Headache with nausea, vomiting, diarrhea; recent GI illness with fever, nausea, vomiting, diarrhea, mild crampy pain in right lower quadrant; no sick contacts or unusual food exposure; labs not done, imaging not requested; unresolved: visual disturbances or aura not clarified.",
+        "skill_query_text": "Presenting problem: headache with nausea, vomiting, diarrhea, possibly related to recent GI illness. Evidence gathered: patient history of recent GI illness, fever, mild RLQ pain. Missing: lab results, imaging, clarification on visual disturbances or aura. Ineffective actions: none. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8156,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7854,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8289,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8195,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8158,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8402,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_4538fc2ecabd",
+              "type": "skill",
+              "score": 0.8344,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8322,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "headache with nausea, vomiting, diarrhea, and recent GI infection differential diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0f189e77-6a77-4b97-a14f-4af937886c9e': '[Document 1] (ID: 527_8, Score: 0.866)\\n- Bloody diarrhea - Weight loss - Diarrhea leading to dehydration - Fever - Prolonged diarrhea (3 or more unformed stools per day, persisting several days) - Neurologic involvement, such as paresthesias, motor weakness, cranial nerve palsies - Sudden onset of nausea, vomiting, diarrhea - Severe abdo...\\n\\n[Document 2] (ID: 20748_12, Score: 0.862)\\n❑\\xa0 Presentation- Change in quality, severity, frequency, and pattern of headache. Nausea and vomiting between headache. Headache worst on first awakening in the morning.\\n❑\\xa0 Neurologic exam - Complicated migraine, seizure or very brief aura, < 5-minute atypical aura\\n❑\\xa0 Recent change in weight or visi...\\n\\n[Document 3] (ID: 2896_74, Score: 0.861)\\n## Diagnostic criteria:\\nA. Headache of any duration fulfilling criterion C B. Bacterial meningitis or meningoencephalitis has been diagnosed C. Evidence of causation demonstrated by at least two of the following: 1. headache has developed in temporal relation to the onset of the bacterial meningitis...\\n\\n[Document 4] (ID: 4097_51, Score: 0.855)\\n## Clinical assessment\\nWarning signals identified from the history or the physical examination that warrant further examin...[truncated]'}}",
+        "env_info": "{'response': [{'id': '0f189e77-6a77-4b97-a14f-4af937886c9e', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"headache with nausea, vomiting, diarrhea, and recent GI infection differential diagnosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1092}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2727272727272727,
+        "conf_after": 0.2727272727272727,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"headache with nausea, vomiting, diarrhea, and recent GI infection differential diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"headache with nausea, vomiting, diarrhea, and recent GI infection differential diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 9. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Headache, nausea/vomiting/diarrhea",
+          "initial_information: I am a 42-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 42-year-old female patient presenting with Headache, nausea/vomiting/diarrhea and history of migraines..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?)\nresponse: I have had visual disturbances before my headaches — specifically, blurry vision — which is typical for my migraines. I also experience photophobia (sensitivity to light) and nausea during them. I do not recall any aura or sensitivity to sound, but I’m not sure if I’ve had those before. I don’t think I’ve had any changes in vision, weakness, numbness, or tingling during this current episode.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis of headache with nausea, vomiting, diarrhea, and history of migraines)\nresponse: [Document 1] (ID: 20748_12, Score: 0.876)\n❑  Presentation- Change in quality, severity, frequency, and pattern of headache. Nausea and vomiting between headache. Headache worst on first awakening in the morning.\n❑  Neurologic exam - Complicated migraine, seizure or very brief aura, < 5-minute atypical aura\n❑  Recent change in weight or visi...\n\n[Document 2] (ID: 2896_15, Score: 0.865)\n## Diagnosis of headache disorders\nThis guide can be separately downloaded (Additional file 3).\nThe universally accepted basis for the diagnosis of any headache is the International Classification of Headache Disorders, an abbreviated version of which is included in these aids (3.2 Diagnostic criter...\n\n[Document 3] (ID: 4097_51, Score: 0.864)\n## Clinical assessment\nWarning signals identified from the history or the physical examination that warrant further examination:\n- thunderclap headache (severe headache with sudden onset); - headache with atypical aura (lasting more than 1 h or including motor symptoms); - newly presenting headache ...\n\n[Document 4] (ID: 2896_51, Score: 0.863)\n2.6.1.1 Reasons for specialist referral ▪ Diagnostic uncertainty after due enquiry. ▪ Diagnosis of any of the following, which are best managed by specialists: ▪ migraine with aura including motor weakness; ▪ chronic migraine; ▪ cluster headache; ▪ trigeminal neuralgia; ▪ persistent idiopathic facia...\n\n[Document 5] (ID: 2896_16, Score: 0.862)\n## Diagnostic diary\nA diary kept over a few weeks can be a very helpful diagnostic aid, clarifying the pattern and frequency of headaches and associated symptoms as well as medication use or overuse.\nAn example is included here, among the management aids (3.3.2 Diary and calendar for use in primary ...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your headaches?)\nresponse: Yes, I had a recent GI illness that started five days before my headache. I had fever for the first two days, nausea, vomiting, and diarrhea — I took Imodium and it helped a little. I also have mild crampy pain in my right lower quadrant. I don’t have any sick contacts or unusual food exposure.",
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=headache with nausea, vomiting, diarrhea, and recent GI infection differential diagnosis)\nresponse: [Document 1] (ID: 527_8, Score: 0.866)\n- Bloody diarrhea - Weight loss - Diarrhea leading to dehydration - Fever - Prolonged diarrhea (3 or more unformed stools per day, persisting several days) - Neurologic involvement, such as paresthesias, motor weakness, cranial nerve palsies - Sudden onset of nausea, vomiting, diarrhea - Severe abdo...\n\n[Document 2] (ID: 20748_12, Score: 0.862)\n❑  Presentation- Change in quality, severity, frequency, and pattern of headache. Nausea and vomiting between headache. Headache worst on first awakening in the morning.\n❑  Neurologic exam - Complicated migraine, seizure or very brief aura, < 5-minute atypical aura\n❑  Recent change in weight or visi...\n\n[Document 3] (ID: 2896_74, Score: 0.861)\n## Diagnostic criteria:\nA. Headache of any duration fulfilling criterion C B. Bacterial meningitis or meningoencephalitis has been diagnosed C. Evidence of causation demonstrated by at least two of the following: 1. headache has developed in temporal relation to the onset of the bacterial meningitis...\n\n[Document 4] (ID: 4097_51, Score: 0.855)\n## Clinical assessment\nWarning signals identified from the history or the physical examination that warrant further examination:\n- thunderclap headache (severe headache with sudden onset); - headache with atypical aura (lasting more than 1 h or including motor symptoms); - newly presenting headache ...\n\n[Document 5] (ID: 29635_1, Score: 0.855)\nSymptoms include diarrhoea, headache, malaise and nausea, vomiting being a less common complaint, and are usually milder than those experienced with rotavirus infection, and as a result dehydration is less severe.  Incubation takes 3-4 days, and symptoms persist for less than 5 days in uncomplicated..."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?)\nresponse: I have had visual disturbances before my headaches — specifically, blurry vision — which is typical for my migraines. I also experience photophobia (sensitivity to light) and nausea during them. I do not recall any aura or sensitivity to sound, but I’m not sure if I’ve had those before. I don’t think I’ve had any changes in vision, weakness, numbness, or tingling during this current episode.\ndoctor_action: retrieve(query=differential diagnosis of headache with nausea, vomiting, diarrhea, and history of migraines)\nresponse: [Document 1] (ID: 20748_12, Score: 0.876)\n❑  Presentation- Change in quality, severity, frequency, and pattern of headache. Nausea and vomiting between headache. Headache worst on first awakening in the morning.\n❑  Neurologic exam - Complicated migraine, seizure or very brief aura, < 5-minute atypical aura\n❑  Recent change in weight or visi...\n\n[Document 2] (ID: 2896_15, Score: 0.865)\n## Diagnosis of headache disorders\nThis guide can be separately downloaded (Additional file 3).\nThe universally accepted basis for the diagnosis of any headache is the International Classification of Headache Disorders, an abbreviated version of which is included in these aids (3.2 Diagnostic criter...\n\n[Document 3] (ID: 4097_51, Score: 0.864)\n## Clinical assessment\nWarning signals identified from the history or the physical examination that warrant further examination:\n- thunderclap headache (severe headache with sudden onset); - headache with atypical aura (lasting more than 1 h or including motor symptoms); - newly presenting headache ...\n\n[Document 4] (ID: 2896_51, Score: 0.863)\n2.6.1.1 Reasons for specialist referral ▪ Diagnostic uncertainty after due enquiry. ▪ Diagnosis of any of the following, which are best managed by specialists: ▪ migraine with aura including motor weakness; ▪ chronic migraine; ▪ cluster headache; ▪ trigeminal neuralgia; ▪ persistent idiopathic facia...\n\n[Document 5] (ID: 2896_16, Score: 0.862)\n## Diagnostic diary\nA diary kept over a few weeks can be a very helpful diagnostic aid, clarifying the pattern and frequency of headaches and associated symptoms as well as medication use or overuse.\nAn example is included here, among the management aids (3.3.2 Diary and calendar for use in primary ...\ndoctor_action: ask_patient(question=Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your headaches?)\nresponse: Yes, I had a recent GI illness that started five days before my headache. I had fever for the first two days, nausea, vomiting, and diarrhea — I took Imodium and it helped a little. I also have mild crampy pain in my right lower quadrant. I don’t have any sick contacts or unusual food exposure.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 10,
+        "query_text": "Patient is a 42-year-old female with headache, nausea, vomiting, diarrhea, history of migraines, visual disturbances (blurry vision), photophobia, recent GI illness (fever, nausea, vomiting, diarrhea 5 days prior), mild crampy pain in right lower quadrant. No labs or imaging results yet. Uncertainty: differential diagnosis including migraine, infection, or other headache disorders with systemic symptoms.",
+        "skill_query_text": "Presenting problem: headache with nausea, vomiting, diarrhea and recent GI infection. Evidence gathered: patient history including migraine triggers, visual disturbances, photophobia, recent GI illness. Ineffective actions: labs and imaging requests yielded no results. Need workflow guidance: next diagnostic step to resolve uncertainty without repeating low-information actions."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7851,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7728,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7713,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8214,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_2019ba9cf7b7",
+              "type": "experience",
+              "score": 0.8126,
+              "outcome": "negative",
+              "text": "Unintentional weight loss and fatigue in a 77-year-old female, especially when accompanied by fever, strongly suggest systemic infection or malignancy; do not apply this when the patient has no fever, no weight loss, or when symptoms are localized and non-systemic.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8195,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_4538fc2ecabd",
+              "type": "skill",
+              "score": 0.812,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8106,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any fever, neck stiffness, or confusion during or after your headache episodes?"
+        },
+        "patient_or_tool_response": "{'question': 'I had a fever on the first two days of the illness. I did not experience neck stiffness or confusion during or after my headache episodes.'}",
+        "env_info": "{'response': [{'id': 'f714e75c-f775-443c-a2e0-2e50c6e99fac', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any fever, neck stiffness, or confusion during or after your headache episodes?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1592}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2727272727272727,
+        "conf_after": 0.2727272727272727,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, neck stiffness, or confusion during or after your headache episodes?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, neck stiffness, or confusion during or after your headache episodes?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20483116",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Headache, nausea/vomiting/diarrhea",
+        "diagnostic_strategy": "Current clinical problem: headache with nausea, vomiting, and diarrhea, with recent GI illness and fever. Key evidence: history of migraines with visual disturbances, photophobia, and nausea; recent GI illness with fever, diarrhea, and mild right lower quadrant crampy pain; no neck stiffness or confusion. Diagnostic uncertainty: whether this is a complicated migraine, post-infectious headache, or another etiology (e.g., viral, bacterial, or systemic). Most useful missing information: neurologic exam findings (e.g., neck stiffness, focal deficits), imaging or lab results, and specific timing of symptoms relative to GI illness. Existing evidence is not enough to finalize diagnosis; further investigation needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Headache, nausea/vomiting/diarrhea",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?)\nresponse: I have had visual disturbances before my headaches — specifically, blurry vision — which is typical for my migraines. I also experience photophobia (sensitivity to light) and nausea during them. I do not recall any aura or sensitivity to sound, but I’m not sure if I’ve had those before. I don’t think I’ve had any changes in vision, weakness, numbness, or tingling during this current episode.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your headaches?)\nresponse: Yes, I had a recent GI illness that started five days before my headache. I had fever for the first two days, nausea, vomiting, and diarrhea — I took Imodium and it helped a little. I also have mild crampy pain in my right lower quadrant. I don’t have any sick contacts or unusual food exposure.",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, neck stiffness, or confusion during or after your headache episodes?)\nresponse: I had a fever on the first two days of the illness. I did not experience neck stiffness or confusion during or after my headache episodes."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: headache, nausea, vomiting, diarrhea. History: migraines with visual disturbances, photophobia, nausea; recent GI illness with fever, diarrhea, crampy pain in right lower quadrant; no neck stiffness or confusion. Exam: no results for labs or imaging. Retrieval: differential diagnoses include complicated migraine, post-infectious headache, bacterial meningitis, viral illness. No specific triggers or changes in migraine pattern identified. No focal neurologic deficits reported. No sick contacts or unusual food exposure. No weight loss or prolonged diarrhea reported. No thunderclap headache or atypical aura. No motor weakness or cranial nerve palsies reported. No diagnostic diary available. No specialist referral indicated. No evidence of dehydration or systemic illness. No specific timing of headache relative to GI illness provided."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20483116",
+        "turn_id": 11,
+        "query_text": "Headache with nausea, vomiting, diarrhea; history of migraines with visual disturbances and photophobia; recent GI illness with fever, diarrhea, mild right lower quadrant crampy pain; no neck stiffness or confusion; no labs or imaging results; diagnostic uncertainty: complicated migraine, post-infectious headache, or other etiology (viral/bacterial/systemic).",
+        "skill_query_text": "Presenting problem: headache with nausea, vomiting, diarrhea. Uncertainty: whether this is complicated migraine, post-infectious headache, or another etiology. Evidence gathered: patient history of migraines, recent GI illness with fever and crampy pain, no neck stiffness or confusion. Missing: neurologic exam, labs, imaging, timing of symptoms relative to GI illness. Ineffective actions: failed lab/imaging requests, vague patient responses to trigger questions. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7982,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7795,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.773,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8116,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.8104,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.8096,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8328,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_4538fc2ecabd",
+              "type": "skill",
+              "score": 0.8295,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8275,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Migraine with aura and concurrent viral gastroenteritis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'15d30ef8-0900-4e0e-9117-52ac8efe7fe9': '{\"diagnosis\": \"Migraine with aura and concurrent viral gastroenteritis\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '15d30ef8-0900-4e0e-9117-52ac8efe7fe9', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Migraine with aura and concurrent viral gastroenteritis}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1666}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2727272727272727,
+        "conf_after": 0.2727272727272727,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Migraine with aura and concurrent viral gastroenteritis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Migraine with aura and concurrent viral gastroenteritis}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 4,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'3bf97537-694e-4a8a-beae-5f1680e49461': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '3bf97537-694e-4a8a-beae-5f1680e49461', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 263}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any visual disturbances, sensitivity to light or sound, or aura before or during your headaches?)\nresponse: I have had visual disturbances before my headaches — specifically, blurry vision — which is typical for my migraines. I also experience photophobia (sensitivity to light) and nausea during them. I do not recall any aura or sensitivity to sound, but I’m not sure if I’ve had those before. I don’t think I’ve had any changes in vision, weakness, numbness, or tingling during this current episode."
+      ]
+    },
+    {
+      "turn_id": 8,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "imaging"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'307200f4-f945-472e-9cfd-523bc43b6cf5': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '307200f4-f945-472e-9cfd-523bc43b6cf5', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1018}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent exposure to infections, such as gastrointestinal illness or flu-like symptoms, that might explain the nausea, vomiting, and diarrhea alongside your headaches?)\nresponse: Yes, I had a recent GI illness that started five days before my headache. I had fever for the first two days, nausea, vomiting, and diarrhea — I took Imodium and it helped a little. I also have mild crampy pain in my right lower quadrant. I don’t have any sick contacts or unusual food exposure."
+      ]
+    },
+    {
+      "turn_id": 11,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Migraine with aura and concurrent viral gastroenteritis}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'15d30ef8-0900-4e0e-9117-52ac8efe7fe9': '{\"diagnosis\": \"Migraine with aura and concurrent viral gastroenteritis\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '15d30ef8-0900-4e0e-9117-52ac8efe7fe9', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Migraine with aura and concurrent viral gastroenteritis}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1666}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, neck stiffness, or confusion during or after your headache episodes?)\nresponse: I had a fever on the first two days of the illness. I did not experience neck stiffness or confusion during or after my headache episodes."
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your migraine patterns, such as increased frequency, severity, or new triggers?)\nresponse: I’m not sure. Could you ask a more specific question?",
+    "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific triggers for your migraines, such as certain foods, stress, or changes in sleep patterns?)\nresponse: I’m not sure. Could you ask a more specific question?",
+    "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your sleep patterns, dietary habits, or stress levels that could potentially be contributing to your symptoms?)\nresponse: I’m not sure. Could you ask a more specific question?",
+    "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

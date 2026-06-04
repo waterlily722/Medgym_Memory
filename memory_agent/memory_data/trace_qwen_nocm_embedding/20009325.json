@@ -1,0 +1,1416 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20009325",
+  "turns": [
+    {
+      "case_id": "20009325",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 69-year-old male patient presenting with nonspecific subjective complaints. Key evidence gathered: Patient reports general malaise without specific symptoms. Diagnostic uncertainty remains high due to lack of specific history, exam, or diagnostic findings. Most useful missing information: Detailed history of symptoms, duration, associated features, and relevant medical history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 69-year-old male reporting general malaise without specific symptoms. No exam, lab, imaging, or tool results available. No relevant positive or negative findings reported. No history of specific symptoms, duration, or associated features provided. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 1,
+        "query_text": "69-year-old male, chief complaint: general malaise without specific symptoms. No exam, lab, or imaging results. No positive or negative findings. No symptom history, duration, or associated features provided. Diagnostic uncertainty remains high due to insufficient evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 69-year-old male with nonspecific malaise. Evidence gathered: Patient reports general malaise, no specific symptoms. No exam, lab, or imaging results. No history of symptoms or associated features. No ineffective actions tried. Need workflow guidance on next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8092,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7955,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.785,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8092,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '488739ec-0f3d-4b45-a84b-627bfa35b502', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell. Key evidence gathered: Patient denies fever, cough, shortness of breath, chest pain, or fatigue. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed history of recent symptoms, duration, associated factors, and any prior medical or social history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general feeling of unwellness without specific symptoms. Denies fever, cough, shortness of breath, chest pain, or fatigue. No abnormal findings reported. No prior medical or social history provided. No lab, imaging, or exam results available. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 2,
+        "query_text": "Patient reports general feeling of unwellness without specific symptoms. Denies fever, cough, shortness of breath, chest pain, or fatigue. No abnormal findings reported. No prior medical or social history provided. No lab, imaging, or exam results available. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell. Evidence gathered: Patient denies fever, cough, shortness of breath, chest pain, or fatigue. No lab, imaging, or exam results available. No prior medical or social history provided. No ineffective actions tried. Need workflow guidance on next diagnostic steps given current lack of specific symptoms or objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8347,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7981,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7856,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your energy levels, appetite, or weight recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '0dcbd090-4377-4190-b30e-2211c5bb6f89', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your energy levels, appetite, or weight recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 81}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, appetite, or weight recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, appetite, or weight recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient reports general malaise without specific symptoms. Key evidence gathered: No fever, cough, shortness of breath, chest pain, or fatigue (turn 2); no recent changes in energy, appetite, or weight (turn 3). Diagnostic uncertainty remains high due to non-specific chief complaint. Most useful missing information: Detailed history of symptoms, duration, and any associated signs. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No fever, cough, shortness of breath, chest pain, or fatigue reported (turn 2). No recent changes in energy, appetite, or weight reported (turn 3). No lab, imaging, or tool results available. No management-relevant risk identified. Missing: Detailed symptom history, duration, and associated signs."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 3,
+        "query_text": "Patient reports general malaise without specific symptoms. No fever, cough, shortness of breath, chest pain, or fatigue. No recent changes in energy, appetite, or weight. No lab, imaging, or tool results available. No management-relevant risk identified. Missing: Detailed symptom history, duration, and associated signs.",
+        "skill_query_text": "Presenting problem: Patient reports general malaise without specific symptoms. Current uncertainty: Diagnosis not yet possible due to non-specific complaint. Evidence gathered: No fever, cough, shortness of breath, chest pain, or fatigue; no recent changes in energy, appetite, or weight. Ineffective action: Asked about energy, appetite, weight — patient reported no changes. Needed guidance: Workflow for gathering detailed symptom history and duration to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8148,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8114,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7906,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'fdc039cd-aecb-484e-90d1-01b843153e17', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 155}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient reports nonspecific malaise without identified symptoms. Key evidence gathered: No fever, cough, shortness of breath, chest pain, fatigue, energy level, appetite, or weight changes, and no gastrointestinal symptoms. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed history of recent exposures, medications, or systemic symptoms. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports nonspecific malaise. No fever, cough, shortness of breath, chest pain, fatigue, energy level, appetite, or weight changes reported. No gastrointestinal symptoms reported. No abnormal findings reported in any area. No specific exposures, medications, or systemic symptoms provided. No lab, imaging, or tool results available. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 4,
+        "query_text": "Patient reports nonspecific malaise. No fever, cough, shortness of breath, chest pain, fatigue, energy level, appetite, or weight changes. No gastrointestinal symptoms. No abnormal findings. No exposures, medications, or systemic symptoms provided. No lab, imaging, or tool results. Diagnostic uncertainty remains high due to lack of specific findings.",
+        "skill_query_text": "Presenting problem: Patient reports nonspecific malaise. Evidence gathered: No fever, cough, shortness of breath, chest pain, fatigue, energy level, appetite, or weight changes. No gastrointestinal symptoms. No abnormal findings. No exposures, medications, or systemic symptoms. No lab, imaging, or tool results. Ineffective action: Asked about GI symptoms, patient denied. Need guidance on next diagnostic steps given current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7947,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7767,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '41c82e2b-084b-4012-a9f3-7e8326678124', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 231}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient reports nonspecific malaise without identified systemic symptoms. Key evidence gathered: Negative responses to general symptom screens (fever, cough, GI, energy/weight, urinary). Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed history of recent stressors, sleep, hydration, or medication use. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports nonspecific malaise. Negative responses to symptom screens: no fever, cough, shortness of breath, chest pain, fatigue, GI symptoms (nausea, vomiting, diarrhea, constipation), or urinary symptoms (frequent urination, pain during urination, blood in urine). No abnormal findings reported. No lab, imaging, or tool results available. No specific history of stressors, sleep, hydration, or medication use provided. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 5,
+        "query_text": "Patient reports nonspecific malaise. Negative responses to symptom screens: no fever, cough, shortness of breath, chest pain, fatigue, GI symptoms, or urinary symptoms. No lab, imaging, or tool results available. No specific history of stressors, sleep, hydration, or medication use provided. Diagnostic uncertainty remains high due to lack of specific findings.",
+        "skill_query_text": "Presenting problem: nonspecific malaise. Current uncertainty: diagnosis not yet identified. Evidence gathered: negative symptom screens. Missing evidence: detailed history of stressors, sleep, hydration, or medication use. Ineffective action: asked about urinary symptoms, patient denied any issues. Need: workflow guidance for next diagnostic steps given current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.837,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8008,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.787,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'cae28289-1e6f-4ac3-b9d5-0ac0b6687569', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 311}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: No reported symptoms in general (fever, cough, fatigue, GI, urinary, or neurological). Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed history of recent functional changes, potential environmental exposures, or objective signs. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports no specific symptoms: no fever, cough, shortness of breath, chest pain, fatigue, GI issues (nausea, vomiting, diarrhea, constipation), urinary symptoms (frequent urination, pain, blood), or neurological symptoms (dizziness, confusion, numbness). No abnormal findings reported. No objective data or lab/imaging results available. No specific history of recent functional changes or exposures provided."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 6,
+        "query_text": "Patient reports non-specific complaint of feeling unwell. No reported symptoms: fever, cough, fatigue, GI, urinary, or neurological. No objective findings, lab, or imaging results. No history of recent functional changes or exposures. Diagnostic uncertainty remains high due to lack of specific findings.",
+        "skill_query_text": "Presenting problem: non-specific complaint of feeling unwell. Evidence gathered: no symptoms, no objective data. Ineffective action: asked about neurological symptoms, patient denied. Missing: detailed history of functional changes or exposures. Need: workflow guidance for next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8341,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8173,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8142,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.'}",
+        "env_info": "{'response': [{'id': '5364e6bd-3a4f-4441-85c8-2f5a56080c5d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 386}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: Patient reports easy bruising, nosebleeds, bleeding gums, and heavier periods without rashes or discoloration. Diagnostic uncertainty: Could indicate coagulopathy, thrombocytopenia, or bleeding disorder. Most useful missing information: Complete blood count, platelet count, coagulation profile, and possible history of medications or recent trauma. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No fever, cough, shortness of breath, chest pain, or fatigue (turn 2). No changes in energy, appetite, or weight (turn 3). No gastrointestinal symptoms (turn 4). No urinary symptoms (turn 5). No neurological symptoms (turn 6). Current findings: Easy bruising, nosebleeds, bleeding gums, heavier periods; no rashes or discoloration. No prior lab or imaging results provided."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 7,
+        "query_text": "Patient reports easy bruising, nosebleeds, bleeding gums, and heavier periods without rashes or discoloration. No prior lab or imaging results. No fever, cough, shortness of breath, chest pain, fatigue, GI, urinary, or neurological symptoms. No changes in energy, appetite, or weight. Diagnostic uncertainty: coagulopathy, thrombocytopenia, or bleeding disorder. Missing: complete blood count, platelet count, coagulation profile, medication history, recent trauma.",
+        "skill_query_text": "Presenting problem: non-specific complaint of feeling unwell. Current uncertainty: coagulopathy, thrombocytopenia, or bleeding disorder. Evidence gathered: easy bruising, nosebleeds, bleeding gums, heavier periods; no rashes or discoloration. Ineffective actions: none. Needed: workflow guidance for next diagnostic steps including lab tests (CBC, platelet count, coagulation profile) and history review (medications, trauma)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7991,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7882,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7775,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'1d00e415-1d89-439b-9876-cf5d0f18b768': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '1d00e415-1d89-439b-9876-cf5d0f18b768', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 491}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 7,
+        "query_text": "Patient reports easy bruising, nosebleeds, bleeding gums, and heavier periods without rashes or discoloration. No prior lab or imaging results. No fever, cough, shortness of breath, chest pain, fatigue, GI, urinary, or neurological symptoms. No changes in energy, appetite, or weight. Diagnostic uncertainty: coagulopathy, thrombocytopenia, or bleeding disorder. Missing: complete blood count, platelet count, coagulation profile, medication history, recent trauma.",
+        "skill_query_text": "Presenting problem: non-specific complaint of feeling unwell. Current uncertainty: coagulopathy, thrombocytopenia, or bleeding disorder. Evidence gathered: easy bruising, nosebleeds, bleeding gums, heavier periods; no rashes or discoloration. Ineffective actions: none. Needed: workflow guidance for next diagnostic steps including lab tests (CBC, platelet count, coagulation profile) and history review (medications, trauma)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7991,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7882,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7775,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ffaa15ed-f74c-419e-8b07-dc9449cd5172': '[Document 1] (ID: 9684_3, Score: 0.852)\\n- Do you take Coumadin, heparin, or other anticoagulants?\\n\\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\\n\\n- Have you recently had a vaginal or uterine infection?\\n\\n- What other symptoms do you have? Abdominal or pelvic pain?\\n\\n- Do you have nausea...\\n\\n[Document 2] (ID: 8031_0, Score: 0.850)\\nEasy bruising resident survival guide\\nSynonyms and keywords:\\n\\n# Overview\\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\\n\\n[Document 3] (ID: 10978_4, Score: 0.849)\\n# Natural History, Complications, and Prognosis\\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\\n\\n[Document 4] (ID: 32044_4, Score: 0.849)\\n## Age\\n- Rare in children\\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'ffaa15ed-f74c-419e-8b07-dc9449cd5172', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 562}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 9. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines..."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 9,
+        "query_text": "69-year-old male patient reports not feeling well. Symptoms include easy bruising, nosebleeds, bleeding gums, and heavy menstrual bleeding. No fever, cough, shortness of breath, chest pain, fatigue, GI, urinary, or neurological symptoms reported. No prior lab results or imaging. No known trauma, surgery, or vaginal/uterine infection. No rashes or discoloration. Uncertainty: cause of bleeding diathesis in elderly male.",
+        "skill_query_text": "Presenting problem: 69-year-old male with easy bruising, nosebleeds, bleeding gums, and heavy menstrual bleeding. Evidence gathered: negative history for systemic symptoms, positive for bleeding manifestations. Ineffective action: lab request yielded no result. Need guidance: next diagnostic step to resolve bleeding diathesis in elderly male, avoiding repeat low-information actions."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8152,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8106,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7694,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'd5fc31a9-337b-4520-84d9-9cc7df6070a0', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1081}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 10. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.\ndoctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 10,
+        "query_text": "69-year-old male patient reports general malaise. Key findings: easy bruising, recurrent nosebleeds, bleeding gums, and heavier menstrual bleeding. No fever, cough, chest pain, GI, urinary, or neurological symptoms reported. No known anticoagulant use. Labs not performed. Uncertainty: cause of bleeding diathesis in elderly male.",
+        "skill_query_text": "Presenting problem: unexplained bleeding diathesis in elderly male. Evidence gathered: patient reports easy bruising, nosebleeds, gum bleeding, heavy periods. Ineffective action: lab request yielded no result. Need guidance: next diagnostic steps to evaluate bleeding disorder, including targeted lab tests or imaging, avoiding redundant queries."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8034,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7974,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7624,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent surgeries, trauma, or infections?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'e2d68461-c023-4a0c-9a07-ef6793d11b6b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent surgeries, trauma, or infections?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1168}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent surgeries, trauma, or infections?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent surgeries, trauma, or infections?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 11. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent surgeries, trauma, or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.\ndoctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...\ndoctor_action: ask_patient(question=Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 11,
+        "query_text": "69-year-old male patient reports general malaise. Positive findings: easy bruising, nosebleeds, bleeding gums, heavy menstrual bleeding. Negative findings: no fever, cough, shortness of breath, chest pain, fatigue, GI, urinary, neurological symptoms, rashes, discoloration. No known medications, surgeries, trauma, or infections. Labs not performed. Uncertainty: cause of bleeding diathesis in elderly male.",
+        "skill_query_text": "Presenting problem: unexplained bleeding diathesis in elderly male. Evidence gathered: patient denies systemic symptoms, reports bruising, nosebleeds, gum bleeding, heavy periods. Ineffective action: lab request yielded no result. Need guidance: next diagnostic step to resolve bleeding diathesis, avoid repeating low-information actions."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8129,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8091,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7807,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any signs of bleeding in other areas, such as blood in your stool or urine, or prolonged bleeding after minor cuts or injuries?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed easy bruising and frequent nosebleeds. I also get heavy menstrual periods, and sometimes I bleed longer after minor cuts or injuries.'}",
+        "env_info": "{'response': [{'id': '1d1315f3-ad96-4cf5-bd8c-692d69eb4a09', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any signs of bleeding in other areas, such as blood in your stool or urine, or prolonged bleeding after minor cuts or injuries?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1238}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any signs of bleeding in other areas, such as blood in your stool or urine, or prolonged bleeding after minor cuts or injuries?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any signs of bleeding in other areas, such as blood in your stool or urine, or prolonged bleeding after minor cuts or injuries?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unexplained easy bruising, frequent nosebleeds, and heavy menstrual periods, suggesting possible bleeding disorder or coagulopathy. Key evidence gathered: patient reports bleeding symptoms (bruising, nosebleeds, heavy periods, prolonged bleeding after minor cuts). Diagnostic uncertainty remains: whether this is due to inherited coagulopathy, medication, or other systemic condition. Most useful missing information: medication history (especially anticoagulants), recent trauma/surgery, and lab results (e.g., platelet count, PT/INR, aPTT). Existing evidence is not enough to finalize diagnosis; further targeted lab work and medication review are needed.",
+        "efficient_turn_information": [
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any signs of bleeding in other areas, such as blood in your stool or urine, or prolonged bleeding after minor cuts or injuries?)\nresponse: I’ve noticed easy bruising and frequent nosebleeds. I also get heavy menstrual periods, and sometimes I bleed longer after minor cuts or injuries."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general malaise and seeks assessment. No fever, cough, shortness of breath, chest pain, or fatigue. No changes in energy, appetite, or weight. No gastrointestinal, urinary, or neurological symptoms. Skin changes: easy bruising, nosebleeds, bleeding gums, heavy menstrual periods. No rashes or discoloration. Lab request (labs) returned no result. Retrieved documents suggest possible causes of easy bruising including coagulopathy, anticoagulant use, or trauma. Medication history not confirmed. No recent surgeries, trauma, or infections reported. No blood in stool or urine reported. No specific symptoms of vascular or systemic disease reported."
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 12,
+        "query_text": "Patient reports easy bruising, frequent nosebleeds, heavy menstrual periods, and prolonged bleeding after minor cuts. No fever, cough, chest pain, fatigue, GI/urinary/neuro symptoms. Skin changes include bruising, nosebleeds, bleeding gums. No rashes or discoloration. Lab results pending. No recent trauma, surgery, or infections. No blood in stool or urine. Medication history unknown. Diagnostic uncertainty: possible coagulopathy, anticoagulant use, or systemic condition.",
+        "skill_query_text": "Presenting problem: unexplained bleeding symptoms (bruising, nosebleeds, heavy periods, prolonged bleeding after minor cuts). Evidence gathered: patient history of bleeding symptoms. Missing: medication history (especially anticoagulants), recent trauma/surgery, lab results (platelet count, PT/INR, aPTT). Ineffective actions: none. Need: workflow guidance for targeted lab work and medication review to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7921,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7863,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7723,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "causes of bleeding disorders in elderly males with easy bruising, nosebleeds, and heavy menstrual bleeding"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'40ab7ac1-6e04-40d3-94c1-e00cdc2f9708': '[Document 1] (ID: 10978_4, Score: 0.858)\\n# Natural History, Complications, and Prognosis\\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\\n\\n[Document 2] (ID: 32044_4, Score: 0.856)\\n## Age\\n- Rare in children\\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\\n- Largely due to the increase in the prevalence ...\\n\\n[Document 3] (ID: 7520_2, Score: 0.856)\\n# Causes\\nUterine bleeding can be divided into anatomical or structural and non-structural causes. The anatomical causes include Polyp, adenomyosis, Leiomyoma and Malignancy or hyperplasia. The non-structural causes include Coagulopathy, Ovulatory dysfunction, such as PCOS, Endometrial disorders, suc...\\n\\n[Document 4] (ID: 32044_7, Score: 0.853)\\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to an...[truncated]'}}",
+        "env_info": "{'response': [{'id': '40ab7ac1-6e04-40d3-94c1-e00cdc2f9708', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"causes of bleeding disorders in elderly males with easy bruising, nosebleeds, and heavy menstrual bleeding\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1325}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of bleeding disorders in elderly males with easy bruising, nosebleeds, and heavy menstrual bleeding\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of bleeding disorders in elderly males with easy bruising, nosebleeds, and heavy menstrual bleeding\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 13. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent surgeries, trauma, or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any signs of bleeding in other areas, such as blood in your stool or urine, or prolonged bleeding after minor cuts or injuries?)\nresponse: I’ve noticed easy bruising and frequent nosebleeds. I also get heavy menstrual periods, and sometimes I bleed longer after minor cuts or injuries.",
+          "turn_13 retrieve_interaction: doctor_action: retrieve(query=causes of bleeding disorders in elderly males with easy bruising, nosebleeds, and heavy menstrual bleeding)\nresponse: [Document 1] (ID: 10978_4, Score: 0.858)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 2] (ID: 32044_4, Score: 0.856)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 3] (ID: 7520_2, Score: 0.856)\n# Causes\nUterine bleeding can be divided into anatomical or structural and non-structural causes. The anatomical causes include Polyp, adenomyosis, Leiomyoma and Malignancy or hyperplasia. The non-structural causes include Coagulopathy, Ovulatory dysfunction, such as PCOS, Endometrial disorders, suc...\n\n[Document 4] (ID: 32044_7, Score: 0.853)\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to angiodysplastic lesions.\n- Stools streaked with blood, perianal pain, and blood drops on the toilet paper or in the toilet bowl may be associated with perianal pathology, such as a...\n\n[Document 5] (ID: 32044_15, Score: 0.851)\nBleeding may be a direct result of vasculitis or secondary to intussusception, which is associated with HSP\n\n- Most commonly affects children\n\n- Bleeding may be a direct result of vasculitis or secondary to intussusception, which is associated with HSP\n\n- Aortoenteric fistula:\n\n- Abdominal aortic an..."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.\ndoctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...\ndoctor_action: ask_patient(question=Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 13,
+        "query_text": "69-year-old male patient reports easy bruising, frequent nosebleeds, bleeding gums, and heavy menstrual bleeding. No fever, cough, chest pain, GI, urinary, or neurological symptoms. No known anticoagulant use, recent trauma, surgery, or infection. Labs not performed. Uncertainty: cause of bleeding diathesis in elderly male with menorrhagia.",
+        "skill_query_text": "Presenting problem: bleeding diathesis (bruising, nosebleeds, menorrhagia) in elderly male. Evidence gathered: symptom history, no meds/trauma/surgery. Missing: labs, targeted diagnostic tests. Ineffective: lab request yielded no result. Need: workflow guidance for next diagnostic step to resolve bleeding disorder uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8015,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8012,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7616,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Von Willebrand disease symptoms and prevalence in elderly males"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a26e5fc5-acd3-436f-9470-e435221457cd': '[Document 1] (ID: 10978_3, Score: 0.885)\\n# Epidemiology and Demographics\\nThe prevalence of von Willebrand’s disease is 0.6 to 1.3%. It is estimated that the referral prevalence of von Willebrand’s disease is approximately 1 case per 10,000 persons. The actual abnormality (which does not necessarily lead to disease) occurs in 0.9-3% of the ...\\n\\n[Document 2] (ID: 10978_0, Score: 0.862)\\nVon Willebrand disease overview\\n\\n# Overview\\nVon Willebrand’s disease is an genetic coagulation disorder with resultant abnormality in platelet adhesion and aggregation. Von Willebrand disease (vWD) is the most common genetic coagulation disorder described in humans.  It affects up to 1% of the popul...\\n\\n[Document 3] (ID: 10978_5, Score: 0.860)\\n## Diagnostic Study of Choice\\nThere is no single diagnostic study of choice for the diagnosis of von Willebrand disease, but von Willebrand disease can be diagnosed based on screening tests followed by confirmatory tests. The screening tests for VWD that are selected by the National Heart, Lung, and...\\n\\n[Document 4] (ID: 16956_4, Score: 0.859)\\n# Role in disease\\nHereditary or acquired defects of VWF lead to von Willebrand disease (vWD), a bleeding diathesis of the...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'a26e5fc5-acd3-436f-9470-e435221457cd', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Von Willebrand disease symptoms and prevalence in elderly males\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1861}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.5,
+        "delta": 0.5,
+        "turn_reward": 0.1,
+        "importance": 0.5
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Von Willebrand disease symptoms and prevalence in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Von Willebrand disease symptoms and prevalence in elderly males\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 14. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 69-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 69-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent surgeries, trauma, or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any signs of bleeding in other areas, such as blood in your stool or urine, or prolonged bleeding after minor cuts or injuries?)\nresponse: I’ve noticed easy bruising and frequent nosebleeds. I also get heavy menstrual periods, and sometimes I bleed longer after minor cuts or injuries.",
+          "turn_13 retrieve_interaction: doctor_action: retrieve(query=causes of bleeding disorders in elderly males with easy bruising, nosebleeds, and heavy menstrual bleeding)\nresponse: [Document 1] (ID: 10978_4, Score: 0.858)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 2] (ID: 32044_4, Score: 0.856)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 3] (ID: 7520_2, Score: 0.856)\n# Causes\nUterine bleeding can be divided into anatomical or structural and non-structural causes. The anatomical causes include Polyp, adenomyosis, Leiomyoma and Malignancy or hyperplasia. The non-structural causes include Coagulopathy, Ovulatory dysfunction, such as PCOS, Endometrial disorders, suc...\n\n[Document 4] (ID: 32044_7, Score: 0.853)\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to angiodysplastic lesions.\n- Stools streaked with blood, perianal pain, and blood drops on the toilet paper or in the toilet bowl may be associated with perianal pathology, such as a...\n\n[Document 5] (ID: 32044_15, Score: 0.851)\nBleeding may be a direct result of vasculitis or secondary to intussusception, which is associated with HSP\n\n- Most commonly affects children\n\n- Bleeding may be a direct result of vasculitis or secondary to intussusception, which is associated with HSP\n\n- Aortoenteric fistula:\n\n- Abdominal aortic an...",
+          "turn_14 retrieve_interaction: doctor_action: retrieve(query=Von Willebrand disease symptoms and prevalence in elderly males)\nresponse: [Document 1] (ID: 10978_3, Score: 0.885)\n# Epidemiology and Demographics\nThe prevalence of von Willebrand’s disease is 0.6 to 1.3%. It is estimated that the referral prevalence of von Willebrand’s disease is approximately 1 case per 10,000 persons. The actual abnormality (which does not necessarily lead to disease) occurs in 0.9-3% of the ...\n\n[Document 2] (ID: 10978_0, Score: 0.862)\nVon Willebrand disease overview\n\n# Overview\nVon Willebrand’s disease is an genetic coagulation disorder with resultant abnormality in platelet adhesion and aggregation. Von Willebrand disease (vWD) is the most common genetic coagulation disorder described in humans.  It affects up to 1% of the popul...\n\n[Document 3] (ID: 10978_5, Score: 0.860)\n## Diagnostic Study of Choice\nThere is no single diagnostic study of choice for the diagnosis of von Willebrand disease, but von Willebrand disease can be diagnosed based on screening tests followed by confirmatory tests. The screening tests for VWD that are selected by the National Heart, Lung, and...\n\n[Document 4] (ID: 16956_4, Score: 0.859)\n# Role in disease\nHereditary or acquired defects of VWF lead to von Willebrand disease (vWD), a bleeding diathesis of the skin and mucous membranes, causing nosebleeds, menorrhagia, and gastrointestinal bleeding. The point at which the mutation occurs determines the severity of the bleeding diathesi...\n\n[Document 5] (ID: 10978_6, Score: 0.856)\nThe diagnosis of von Willebrand’s disease (VWD) begins with a relevant personal or family history of mucocutaneous bleeding. When VWD is suspected, several levels of testing are needed in order to make diagnosis. Initail tests involve measurement of VWF antigen (VWF:Ag) level, Factor VIII activity (..."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, cough, shortness of breath, chest pain, or fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or weight recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms such as nausea, vomiting, diarrhea, or constipation?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any urinary symptoms such as frequent urination, pain during urination, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any neurological symptoms such as dizziness, confusion, or numbness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get bleeding gums occasionally, and my periods are heavier than average. I haven’t had any rashes or discoloration on my skin, but I do notice bruises forming more easily than before.\ndoctor_action: retrieve(query=common causes of easy bruising, nosebleeds, and heavy menstrual bleeding in elderly males)\nresponse: [Document 1] (ID: 9684_3, Score: 0.852)\n- Do you take Coumadin, heparin, or other anticoagulants?\n\n- Have you recently given birth, had surgery, or experienced trauma on or near the vagina or uterus?\n\n- Have you recently had a vaginal or uterine infection?\n\n- What other symptoms do you have? Abdominal or pelvic pain?\n\n- Do you have nausea...\n\n[Document 2] (ID: 8031_0, Score: 0.850)\nEasy bruising resident survival guide\nSynonyms and keywords:\n\n# Overview\nEasy bruising is the bruising of skin with minor compression or pressure. When small capillaries of the superficial skin rupture from pressure or compression, petechiae occur, sometimes ecchymosis is also seen with insignifican...\n\n[Document 3] (ID: 10978_4, Score: 0.849)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 4] (ID: 32044_4, Score: 0.849)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 5] (ID: 8402_51, Score: 0.849)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...\ndoctor_action: ask_patient(question=Are you currently taking any medications, including aspirin, NSAIDs, or anticoagulants like Coumadin or heparin?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 14,
+        "query_text": "69-year-old male patient reports easy bruising, frequent nosebleeds, bleeding gums, and heavy menstrual periods. No fever, cough, shortness of breath, chest pain, GI, urinary, or neurological symptoms. No known anticoagulant use, recent trauma, surgery, or infection. Labs not performed. Suspected bleeding disorder based on symptoms.",
+        "skill_query_text": "Presenting problem: 69-year-old male with easy bruising, nosebleeds, bleeding gums, and heavy menstrual bleeding. History: negative for systemic symptoms, no anticoagulant use, no trauma/surgery/infection. Ineffective action: lab request yielded no result. Need guidance on next diagnostic step for bleeding disorder in elderly male."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.795,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7926,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7726,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Von Willebrand Disease}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8401d763-92d8-48e8-8393-9a2c879821bd': '{\"diagnosis\": \"Von Willebrand Disease\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '8401d763-92d8-48e8-8393-9a2c879821bd', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Von Willebrand Disease}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2382}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Von Willebrand Disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Von Willebrand Disease}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20009325",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Known evidence: patient reports easy bruising and nosebleeds, heavy menstrual periods. No other symptoms reported. Leading uncertainty: possible vasculopathy or inflammatory condition (e.g., giant cell arteritis) given age-related risk factors and bleeding symptoms. Most useful missing evidence: lab results (CBC, sedimentation rate), temporal artery tenderness, visual symptoms. Diagnosis should not yet be finalized.",
+        "efficient_turn_information": [
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get heavy menstrual periods, which I’ve been putting off talking about, but it’s been a problem for a while. I don’t recall any rashes or unusual skin discoloration, but I do notice bruises more often than I used to, even without obvious injury."
+        ],
+        "ineffective_turn_information": [
+          "turn_15 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any headaches, especially around the temples, or any vision changes such as blurred vision or seeing spots?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise. No specific symptoms initially. After detailed questioning, patient reports easy bruising, nosebleeds, and heavy menstrual periods. No fever, weight loss, chest pain, joint pain, urinary symptoms, or neurological symptoms reported. Labs requested but no result available. Retrieved documents suggest possible giant cell arteritis as a differential given age-related risk and bleeding symptoms. No visual changes or temporal artery tenderness reported."
+      },
+      "inefficient_turn_information": [
+        "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20009325",
+        "turn_id": 15,
+        "query_text": "Patient reports easy bruising, nosebleeds, and heavy menstrual periods. No fever, weight loss, chest pain, joint pain, urinary symptoms, or neurological symptoms. Labs (CBC, sedimentation rate) pending. No visual changes or temporal artery tenderness. Age-related risk factors for vasculopathy or inflammatory condition. Uncertainty: possible giant cell arteritis. No prior diagnosis.",
+        "skill_query_text": "Presenting problem: patient reports easy bruising, nosebleeds, heavy menstrual periods. Uncertainty: possible vasculopathy or inflammatory condition. Evidence gathered: patient history, no fever, no joint/visual symptoms. Missing: CBC, sedimentation rate, temporal artery tenderness. Ineffective action: asked about headaches/visual changes — no response. Need: workflow guidance for next diagnostic steps given bleeding symptoms and age-related risk."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any jaw pain when chewing, or any tenderness in your temples or scalp?"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': '968a67ca-b74f-42e9-825f-e94ed852f576', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any jaw pain when chewing, or any tenderness in your temples or scalp?\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"968a67ca-b74f-42e9-825f-e94ed852f576\", \"type\": \"function\", \"function\": {\"name\": \"ask_patient\", \"arguments\": \"{\\\\\"question\\\\\": \\\\\"Have you noticed any jaw pain when chewing, or any tenderness in your temples or scalp?\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 7, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 8, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 9, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 2455}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any jaw pain when chewing, or any tenderness in your temples or scalp?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any jaw pain when chewing, or any tenderness in your temples or scalp?\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 10,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you had any recent surgeries, trauma, or infections?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': 'e2d68461-c023-4a0c-9a07-ef6793d11b6b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent surgeries, trauma, or infections?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1168}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unexplained bruising?)\nresponse: Yes, I’ve noticed easy bruising and sometimes nosebleeds. I also get heavy menstrual periods, which I’ve been putting off talking about, but it’s been a problem for a while. I don’t recall any rashes or unusual skin discoloration, but I do notice bruises more often than I used to, even without obvious injury."
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_15 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any headaches, especially around the temples, or any vision changes such as blurred vision or seeing spots?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+  ]
+}

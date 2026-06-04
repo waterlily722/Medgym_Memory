@@ -1,0 +1,1150 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20118546",
+  "turns": [
+    {
+      "case_id": "20118546",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 27-year-old female patient presenting with nonspecific subjective complaints. Key evidence gathered: Patient’s age, gender, and chief complaint of feeling unwell. Diagnostic uncertainty remains high due to lack of specific symptoms, exam findings, or diagnostic data. Most useful missing information: Detailed symptom history, physical exam findings, and relevant lab/imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 27-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 27-year-old female patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 27-year-old female reporting nonspecific subjective complaints of not feeling well. No specific symptoms, exam findings, lab results, or imaging data provided. No prior history or diagnostic data available. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 1,
+        "query_text": "27-year-old female, chief complaint: not feeling well recently. No specific symptoms, signs, exam findings, lab results, or imaging data. No prior history or diagnostic data available. Diagnostic uncertainty remains high due to insufficient evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 27-year-old female with nonspecific subjective complaints. Evidence gathered: age, gender, chief complaint. Missing: detailed symptom history, physical exam findings, lab/imaging results. No ineffective actions tried. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8063,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7672,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.753,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7472,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8091,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8058,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8022,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8094,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7955,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7925,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8058,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': 'I noticed a sudden gush of fluid from my vagina, and since then, there’s been a steady leakage of watery fluid. It’s been happening without any pain or regular contractions. I’ve also noticed that the baby feels easier to feel through my belly, and I’m not sure if my uterus has gotten smaller. I haven’t had any contractions, but I’m not sure how long it’s been going on — I think it started a few days ago.'}",
+        "env_info": "{'response': [{'id': 'c885223e-d3f4-49bf-bf0f-069f97423381', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing and when they started?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.09090909090909091,
+        "turn_reward": 0.018181818181818184,
+        "importance": 0.09090909090909091
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unexplained subjective discomfort and reports sudden vaginal fluid leakage, possible preterm labor or rupture of membranes. Key evidence gathered: patient reports watery vaginal discharge without pain or contractions, and perception of easier fetal detection through abdomen. Diagnostic uncertainty: unclear if this is rupture of membranes, amniotic fluid leakage, or other gynecological issue; need to confirm presence of amniotic fluid, fetal well-being, and uterine status. Most useful missing information: confirmation of amniotic fluid (e.g., nitrazine test, ferning test, ultrasound), fetal heart tones, and gestational age. Existing evidence is not enough to finalize diagnosis; requires further diagnostic testing and clinical correlation.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: I noticed a sudden gush of fluid from my vagina, and since then, there’s been a steady leakage of watery fluid. It’s been happening without any pain or regular contractions. I’ve also noticed that the baby feels easier to feel through my belly, and I’m not sure if my uterus has gotten smaller. I haven’t had any contractions, but I’m not sure how long it’s been going on — I think it started a few days ago."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general subjective discomfort and seeks assessment. Initial complaint: vague 'not feeling well.' Current turn reveals: sudden vaginal fluid gush followed by steady watery leakage without pain or contractions; patient notes easier fetal detection through abdomen and uncertainty about uterine size. No contractions reported. No prior diagnostic tests or findings documented. No treatment or risk factors mentioned. Missing: confirmation of amniotic fluid, fetal well-being, gestational age, and clinical context for vaginal discharge."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 2,
+        "query_text": "Patient reports sudden gush of watery vaginal fluid followed by steady leakage without pain or contractions. Patient notes easier fetal detection through abdomen and uncertainty about uterine size. No contractions reported. No prior diagnostic tests or findings. Missing: confirmation of amniotic fluid, fetal well-being, gestational age. Unclear if rupture of membranes, amniotic fluid leakage, or other gynecological issue.",
+        "skill_query_text": "Presenting problem: sudden vaginal fluid leakage without pain or contractions, patient notes easier fetal detection. Evidence gathered: patient history of symptoms, no contractions. Missing: confirmation of amniotic fluid, fetal heart tones, gestational age. No ineffective actions tried. Need workflow guidance for confirming amniotic fluid, assessing fetal well-being, and determining gestational age."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7697,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7678,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7555,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7184,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.817,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.795,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.793,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.8005,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7945,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7929,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'53827301-c66b-4a75-8b20-a0dac7a1a5a8': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '53827301-c66b-4a75-8b20-a0dac7a1a5a8', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 139}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 2,
+        "query_text": "Patient reports sudden gush of watery vaginal fluid followed by steady leakage without pain or contractions. Patient notes easier fetal detection through abdomen and uncertainty about uterine size. No contractions reported. No prior diagnostic tests or findings. Missing: confirmation of amniotic fluid, fetal well-being, gestational age. Unclear if rupture of membranes, amniotic fluid leakage, or other gynecological issue.",
+        "skill_query_text": "Presenting problem: sudden vaginal fluid leakage without pain or contractions, patient notes easier fetal detection. Evidence gathered: patient history of symptoms, no contractions. Missing: confirmation of amniotic fluid, fetal heart tones, gestational age. No ineffective actions tried. Need workflow guidance for confirming amniotic fluid, assessing fetal well-being, and determining gestational age."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7697,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7678,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7555,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7184,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.817,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.795,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.793,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.8005,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7945,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7929,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8fe65d38-b216-49b1-88da-4f16e94f5150': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '8fe65d38-b216-49b1-88da-4f16e94f5150', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 210}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 2,
+        "query_text": "Patient reports sudden gush of watery vaginal fluid followed by steady leakage without pain or contractions. Patient notes easier fetal detection through abdomen and uncertainty about uterine size. No contractions reported. No prior diagnostic tests or findings. Missing: confirmation of amniotic fluid, fetal well-being, gestational age. Unclear if rupture of membranes, amniotic fluid leakage, or other gynecological issue.",
+        "skill_query_text": "Presenting problem: sudden vaginal fluid leakage without pain or contractions, patient notes easier fetal detection. Evidence gathered: patient history of symptoms, no contractions. Missing: confirmation of amniotic fluid, fetal heart tones, gestational age. No ineffective actions tried. Need workflow guidance for confirming amniotic fluid, assessing fetal well-being, and determining gestational age."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7697,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7678,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7555,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7184,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.817,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.795,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.793,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.8005,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7945,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7929,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.7678,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "vaginal fluid leakage without pain in pregnant woman"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f5abafa0-6a01-45a5-b95e-1d1cdd941cd0': '[Document 1] (ID: 11322_5, Score: 0.861)\\n## History and Symptoms\\nThe hallmark of PROM is pooling of fluid. A history of leakage of clear fluid from the vagina is suggestive of PROM.\\n## Physical Examination\\nPatients with PROM usually appear well, some may be in active labor. Physical examination of patients is usually remarkable for leakage...\\n\\n[Document 2] (ID: 3624_10, Score: 0.858)\\nClinical diagnosis may be easy when patients are presenting with heavy watery vaginal discharge or when clear fluid can be seen leaking from the cervical os. However, recent data suggest that in 47% of the cases, clinicians are uncertain regarding the diagnosis of PPROM based on clinical examination...\\n\\n[Document 3] (ID: 1184_35, Score: 0.853)\\n# Vagina\\nVascularity of the vagina increases during pregnancy.\\nThe muscle layer hypertrophies, and changes in the surrounding connective tissue make the vagina more elastic.These changes enable it to dilate during the second stage of labour so as to accomodate the descending foetus.\\nThere is marked ...\\n\\n[Document 4] (ID: 20286_6, Score: 0.852)\\n## Medical contradictions\\nMisinformation about female ejaculation can lead to misdiagnosis of underlying medical conditio...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'f5abafa0-6a01-45a5-b95e-1d1cdd941cd0', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"vaginal fluid leakage without pain in pregnant woman\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 284}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.18181818181818182,
+        "delta": 0.09090909090909091,
+        "turn_reward": 0.018181818181818184,
+        "importance": 0.09090909090909091
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"vaginal fluid leakage without pain in pregnant woman\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"vaginal fluid leakage without pain in pregnant woman\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unexplained general malaise and reports vaginal fluid leakage without pain. Key evidence gathered: Patient describes sudden gush followed by steady watery leakage, no pain or contractions, and altered fetal position perception. Diagnostic uncertainty: Unclear if this is PROM (premature rupture of membranes) or another condition; clinical exam may be inconclusive in 47% of cases. Most useful missing information: Confirmation of vaginal fluid nature (e.g., pH, ferning, nitrazine test), cervical exam findings, and fetal heart tones. Existing evidence is not enough to finalize diagnosis; further targeted testing or exam is needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports sudden gush of fluid from vagina, followed by steady watery leakage without pain or contractions. Patient notes baby feels easier to feel through belly and uncertainty about uterine size. No lab or CXR results available. Vaginal fluid leakage without pain is suggestive of PROM, but clinical diagnosis may be uncertain in 47% of cases. Vaginal changes during pregnancy are noted, but no direct diagnostic evidence yet. No contractions reported. No treatment or risk management recommended unless further evidence is obtained."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 5,
+        "query_text": "Patient reports sudden gush followed by steady watery vaginal leakage without pain or contractions. Patient perceives altered fetal position and notes baby feels easier to feel through belly. No contractions reported. No lab or CXR results available. Vaginal fluid leakage without pain is suggestive of PROM, but clinical diagnosis may be uncertain in 47% of cases. No treatment or risk management recommended unless further evidence is obtained.",
+        "skill_query_text": "Presenting problem: Patient presents with unexplained general malaise and vaginal fluid leakage without pain. Current uncertainty: Unclear if this is PROM or another condition; clinical exam may be inconclusive in 47% of cases. Evidence gathered: Patient describes symptoms, altered fetal perception, no contractions. Missing evidence: Confirmation of vaginal fluid nature (pH, ferning, nitrazine), cervical exam findings, fetal heart tones. Ineffective actions: Requested labs and CXR with no results. Need workflow guidance on next diagnostic steps or exam prioritization."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.79,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7588,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7527,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7082,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8036,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7914,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7897,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8014,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7951,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.794,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any contractions or changes in your baby’s movements since the fluid leakage began?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '0e5b14b6-f703-4e96-8ab9-48b566390df9', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any contractions or changes in your baby\\\\u2019s movements since the fluid leakage began?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 763}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.18181818181818182,
+        "conf_after": 0.18181818181818182,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any contractions or changes in your baby’s movements since the fluid leakage began?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any contractions or changes in your baby’s movements since the fluid leakage began?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assess for preterm premature rupture of membranes (PPROM) given vaginal fluid leakage without pain. Key evidence: Patient reports watery vaginal leakage starting days ago, no contractions, no pain, and baby feels easier to detect. Diagnostic uncertainty: Cannot confirm if leakage is amniotic fluid or other source; no lab or imaging results yet. Most useful missing information: Confirmation of amniotic fluid (e.g., nitrazine test, ferning test, or amniotic fluid index). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports sudden gush of fluid from vagina, followed by steady watery leakage without pain or contractions. Baby feels easier to detect through belly; unsure if uterus has shrunk. No lab or imaging results available (CXR, labs). Retrieved documents suggest PROM is suspected with clear fluid leakage, but 47% of cases have uncertain diagnosis based on exam alone. No contractions or abnormal fetal movements reported. No result for labs or CXR. No known medical contradictions or treatments mentioned."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 6,
+        "query_text": "Patient reports watery vaginal leakage starting days ago, no contractions, no pain, baby feels easier to detect. No lab or imaging results yet. Uncertain if leakage is amniotic fluid. No contractions or abnormal fetal movements. No CXR or labs available. No known medical contradictions or treatments mentioned.",
+        "skill_query_text": "Presenting problem: Assess for PPROM given vaginal fluid leakage without pain. Evidence gathered: Patient reports watery leakage, baby easier to detect, no contractions or pain. Missing: Confirmation of amniotic fluid (nitrazine, ferning, amniotic fluid index). Ineffective actions: None tried. Need workflow guidance on next diagnostic steps to confirm amniotic fluid."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8066,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_7ef36fd51451",
+              "type": "experience",
+              "score": 0.7723,
+              "outcome": "negative",
+              "text": "Easy bruising, frequent nosebleeds, heavy menstrual bleeding, and prolonged bleeding after minor injuries strongly suggest a bleeding disorder like Von Willebrand Disease; do not dismiss this pattern as non-specific or benign without further lab confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.8002,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7966,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7915,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "PPROM diagnosis criteria and management in pregnant women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'20c2ad43-5bf9-4eff-a59e-02925471d9a4': '[Document 1] (ID: 8146_2, Score: 0.888)\\n- Decline in progesterone action\\n\\n- Breakdown in maternal-fetal tolerance.\\n\\n- Placental abruption, Placenta previa\\n\\n- Smoking\\n\\n- Maternal age 40\\n\\n- Poor nutrition, low body mass index\\n\\n- Fetal anomaly\\n\\n- Fetal growth restriction, oligohydramnios, polyhydramnios\\n\\n- Vaginal bleeding\\n\\n- Premature prete...\\n\\n[Document 2] (ID: 3624_9, Score: 0.876)\\nMaternal and fetal infection is the second major complication consecutive to PPROM, as chorioamnionitis complicates 10-36% of PPROM. Early and accurate diagnosis is necessary to appropriately manage patients with PROM and to limit unnecessary intervention in patients without PROM. Early and accurate...\\n\\n[Document 3] (ID: 3624_6, Score: 0.873)\\n## Main points\\nBiophysical markers, biochemical markers, or a combination of both may better identify patients at risk for preterm delivery. Ultrasonography to determine cervical length, fFN testing or a combination of both is the most useful tools in determining women at high risk for preterm labor...\\n\\n[Document 4] (ID: 3624_32, Score: 0.873)\\nNo effects of general health status, external genitalia, and psychomotor development have been reported at follow-up. Howeve...[truncated]'}}",
+        "env_info": "{'response': [{'id': '20c2ad43-5bf9-4eff-a59e-02925471d9a4', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"PPROM diagnosis criteria and management in pregnant women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 840}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.18181818181818182,
+        "conf_after": 0.2727272727272727,
+        "delta": 0.09090909090909088,
+        "turn_reward": 0.018181818181818177,
+        "importance": 0.09090909090909088
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"PPROM diagnosis criteria and management in pregnant women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"PPROM diagnosis criteria and management in pregnant women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 6. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 27-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 27-year-old female patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: I noticed a sudden gush of fluid from my vagina, and since then, there’s been a steady leakage of watery fluid. It’s been happening without any pain or regular contractions. I’ve also noticed that the baby feels easier to feel through my belly, and I’m not sure if my uterus has gotten smaller. I haven’t had any contractions, but I’m not sure how long it’s been going on — I think it started a few days ago.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=vaginal fluid leakage without pain in pregnant woman)\nresponse: [Document 1] (ID: 11322_5, Score: 0.861)\n## History and Symptoms\nThe hallmark of PROM is pooling of fluid. A history of leakage of clear fluid from the vagina is suggestive of PROM.\n## Physical Examination\nPatients with PROM usually appear well, some may be in active labor. Physical examination of patients is usually remarkable for leakage...\n\n[Document 2] (ID: 3624_10, Score: 0.858)\nClinical diagnosis may be easy when patients are presenting with heavy watery vaginal discharge or when clear fluid can be seen leaking from the cervical os. However, recent data suggest that in 47% of the cases, clinicians are uncertain regarding the diagnosis of PPROM based on clinical examination...\n\n[Document 3] (ID: 1184_35, Score: 0.853)\n# Vagina\nVascularity of the vagina increases during pregnancy.\nThe muscle layer hypertrophies, and changes in the surrounding connective tissue make the vagina more elastic.These changes enable it to dilate during the second stage of labour so as to accomodate the descending foetus.\nThere is marked ...\n\n[Document 4] (ID: 20286_6, Score: 0.852)\n## Medical contradictions\nMisinformation about female ejaculation can lead to misdiagnosis of underlying medical conditions or wrong diagnosis where no medical condition exists.\nCurrent studies verify that female ejaculate is expelled through the urethra yet many continue to believe that the fluid l...\n\n[Document 5] (ID: 4716_76, Score: 0.850)\n# Condom-loaded catheter intrauterine tamponade versus uterovaginal packing\nThe trial (212 women) took place at a single hospital in Pakistan (2). Women were aged 20 to 40 years, at > 37 weeks' gestation, and had primary PPH following vaginal birth. PPH was unresponsive to first-response medical tre...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any contractions or changes in your baby’s movements since the fluid leakage began?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=PPROM diagnosis criteria and management in pregnant women)\nresponse: [Document 1] (ID: 8146_2, Score: 0.888)\n- Decline in progesterone action\n\n- Breakdown in maternal-fetal tolerance.\n\n- Placental abruption, Placenta previa\n\n- Smoking\n\n- Maternal age 40\n\n- Poor nutrition, low body mass index\n\n- Fetal anomaly\n\n- Fetal growth restriction, oligohydramnios, polyhydramnios\n\n- Vaginal bleeding\n\n- Premature prete...\n\n[Document 2] (ID: 3624_9, Score: 0.876)\nMaternal and fetal infection is the second major complication consecutive to PPROM, as chorioamnionitis complicates 10-36% of PPROM. Early and accurate diagnosis is necessary to appropriately manage patients with PROM and to limit unnecessary intervention in patients without PROM. Early and accurate...\n\n[Document 3] (ID: 3624_6, Score: 0.873)\n## Main points\nBiophysical markers, biochemical markers, or a combination of both may better identify patients at risk for preterm delivery. Ultrasonography to determine cervical length, fFN testing or a combination of both is the most useful tools in determining women at high risk for preterm labor...\n\n[Document 4] (ID: 3624_32, Score: 0.873)\nNo effects of general health status, external genitalia, and psychomotor development have been reported at follow-up. However, there is concern about the increase in fetal death in mid-trimester and the higher incidence of gestational diabetes linked to 17-OHP-C. Since the paucity of data, ongoing t...\n\n[Document 5] (ID: 8477_2, Score: 0.871)\n# Diagnosis\nShown below is an algorithm summarizing the diagnosis of Pre-eclampsia.\nAbbreviations: BP: Blood pressure, RR=Respiratory rate,\nHR=Heart Rate, OCP= Oral Contraceptive Pill, P :Cr=  Protein:Creatinine, sFlt-1= Soluble fms-like tyrosine kinase 1 , PlGF= placental growth factor, A:Cr= Album..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: I noticed a sudden gush of fluid from my vagina, and since then, there’s been a steady leakage of watery fluid. It’s been happening without any pain or regular contractions. I’ve also noticed that the baby feels easier to feel through my belly, and I’m not sure if my uterus has gotten smaller. I haven’t had any contractions, but I’m not sure how long it’s been going on — I think it started a few days ago.\ndoctor_action: retrieve(query=vaginal fluid leakage without pain in pregnant woman)\nresponse: [Document 1] (ID: 11322_5, Score: 0.861)\n## History and Symptoms\nThe hallmark of PROM is pooling of fluid. A history of leakage of clear fluid from the vagina is suggestive of PROM.\n## Physical Examination\nPatients with PROM usually appear well, some may be in active labor. Physical examination of patients is usually remarkable for leakage...\n\n[Document 2] (ID: 3624_10, Score: 0.858)\nClinical diagnosis may be easy when patients are presenting with heavy watery vaginal discharge or when clear fluid can be seen leaking from the cervical os. However, recent data suggest that in 47% of the cases, clinicians are uncertain regarding the diagnosis of PPROM based on clinical examination...\n\n[Document 3] (ID: 1184_35, Score: 0.853)\n# Vagina\nVascularity of the vagina increases during pregnancy.\nThe muscle layer hypertrophies, and changes in the surrounding connective tissue make the vagina more elastic.These changes enable it to dilate during the second stage of labour so as to accomodate the descending foetus.\nThere is marked ...\n\n[Document 4] (ID: 20286_6, Score: 0.852)\n## Medical contradictions\nMisinformation about female ejaculation can lead to misdiagnosis of underlying medical conditions or wrong diagnosis where no medical condition exists.\nCurrent studies verify that female ejaculate is expelled through the urethra yet many continue to believe that the fluid l...\n\n[Document 5] (ID: 4716_76, Score: 0.850)\n# Condom-loaded catheter intrauterine tamponade versus uterovaginal packing\nThe trial (212 women) took place at a single hospital in Pakistan (2). Women were aged 20 to 40 years, at > 37 weeks' gestation, and had primary PPH following vaginal birth. PPH was unresponsive to first-response medical tre...\ndoctor_action: ask_patient(question=Have you experienced any contractions or changes in your baby’s movements since the fluid leakage began?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 7,
+        "query_text": "27-year-old female patient reports sudden gush of watery vaginal fluid, steady leakage without pain, no contractions, baby feels easier to detect. No labs or CXR results. Uncertainty: diagnosis of PPROM vs. other causes of vaginal fluid leakage.",
+        "skill_query_text": "Presenting problem: vaginal fluid leakage without pain in pregnant woman. Evidence gathered: patient history, retrieval of PROM/PPROM docs. Ineffective actions: labs and CXR requested with no results. Need: workflow guidance for next diagnostic step to resolve uncertainty about PPROM diagnosis."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7991,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.781,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7695,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7257,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8149,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8049,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7959,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8017,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7917,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7879,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{PPROM (Preterm Premature Rupture of Membranes)}."
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'aee9250d-1b31-4e0a-8126-260440f63870': '{\"diagnosis\": \"PPROM (Preterm Premature Rupture of Membranes)\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'aee9250d-1b31-4e0a-8126-260440f63870', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{PPROM (Preterm Premature Rupture of Membranes)}.\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1371}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2727272727272727,
+        "conf_after": 0.45454545454545453,
+        "delta": 0.18181818181818182,
+        "turn_reward": 0.03636363636363637,
+        "importance": 0.18181818181818182
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{PPROM (Preterm Premature Rupture of Membranes)}.\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{PPROM (Preterm Premature Rupture of Membranes)}.\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20118546",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20118546",
+        "turn_id": 5,
+        "query_text": "Patient is 27-year-old female, reports steady watery vaginal fluid leakage without pain, notices baby easier to feel and decrease in uterine size. No prior history of similar symptoms or pregnancy complications. No fever, pain, or weight changes reported. Diagnostic uncertainty remains regarding cause of fluid leakage in pregnancy.",
+        "skill_query_text": "Presenting problem: vaginal fluid leakage without pain in pregnant woman. Evidence gathered: patient history, physical exam findings (uterine size, fetal position), and retrieval of PROM-related documents. No ineffective actions. Need guidance on next diagnostic step to resolve uncertainty about PROM vs. other causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_b03dd654a6b9",
+              "type": "experience",
+              "score": 0.778,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia; nail-biting is a useful discriminative clue.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cc7c18da85e5",
+              "type": "experience",
+              "score": 0.7924,
+              "outcome": "negative",
+              "text": "Easy bruising, nosebleeds, and heavy menstrual periods without fever, weight loss, or visual symptoms suggest coagulation disorder rather than giant cell arteritis; absence of temporal artery tenderness and visual changes is a key negative clue.",
+              "tags": []
+            },
+            {
+              "id": "exp_e29f1d992330",
+              "type": "experience",
+              "score": 0.784,
+              "outcome": "negative",
+              "text": "Unintentional voiding of urine and foot drop in a patient with new lower back pain strongly suggest cauda equina syndrome; these are key discriminative findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.7738,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7826,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7555,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.755,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Premature Rupture of Membranes (PROM)}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5a8e3fc4-1181-41d9-bb42-fec2f8ec9811': '{\"diagnosis\": \"Premature Rupture of Membranes (PROM)\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '5a8e3fc4-1181-41d9-bb42-fec2f8ec9811', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Premature Rupture of Membranes (PROM)}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 953}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.18181818181818182,
+        "conf_after": 0.45454545454545453,
+        "delta": 0.2727272727272727,
+        "turn_reward": 0.05454545454545454,
+        "importance": 0.2727272727272727
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Premature Rupture of Membranes (PROM)}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Premature Rupture of Membranes (PROM)}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": []
+}

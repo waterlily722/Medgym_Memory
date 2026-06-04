@@ -1,0 +1,1341 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20396115",
+  "turns": [
+    {
+      "case_id": "20396115",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "hypotension",
+        "diagnostic_strategy": "Current clinical problem: 58-year-old male with hypotension and history of CML post-BMT. Key evidence gathered: chief complaint and patient demographics. Diagnostic uncertainty: cause of hypotension (e.g., infection, graft-versus-host, medication, volume depletion). Most useful missing information: vital signs, recent labs, imaging, or history of recent procedures. Evidence is insufficient to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 58-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 58-year-old male patient presenting with hypotension and a history of CML s/p BMT ___.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: hypotension. Patient: 58-year-old male. History: CML post-BMT. No other findings, labs, exams, or imaging reported. No results or interpretations available. Missing: vital signs, recent labs, imaging, or history of recent procedures."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 1,
+        "query_text": "Patient: 58-year-old male. Chief complaint: hypotension. History: CML post-BMT. No labs, exams, or imaging reported. Missing: vital signs, recent labs, imaging, or history of recent procedures. Diagnostic uncertainty: cause of hypotension (infection, graft-versus-host, medication, volume depletion).",
+        "skill_query_text": "Presenting problem: hypotension in 58-year-old male with CML post-BMT. Evidence gathered: chief complaint and demographics. Uncertainty: cause of hypotension. Ineffective actions: none. Missing: vital signs, recent labs, imaging, or history of recent procedures. Need: diagnostic decision workflow guidance."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7451,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8226,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8125,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8115,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8109,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8101,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8093,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight loss, fever, or night sweats?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had a fever, and I’ve been experiencing cramps and abdominal pain. I’ve also had diarrhea that’s been watery and sometimes bloody — up to 10 times a day. I’ve felt weak and had a low-grade fever that’s lasted for a while, and I’ve noticed some fatigue. I haven’t lost weight recently, but I’ve been sweating a lot at night.'}",
+        "env_info": "{'response': [{'id': '3983d2f4-c2ed-4222-82f3-70305b68d701', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent weight loss, fever, or night sweats?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.16666666666666666,
+        "turn_reward": 0.03333333333333333,
+        "importance": 0.16666666666666666
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fever, or night sweats?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fever, or night sweats?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20396115",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "hypotension",
+        "diagnostic_strategy": "Current clinical problem: hypotension. Key evidence gathered: patient reports fever, cramps, abdominal pain, watery bloody diarrhea (up to 10x/day), weakness, low-grade fever, fatigue, night sweats, no recent weight loss. Diagnostic uncertainty: potential infectious or inflammatory etiology (e.g., enterocolitis, sepsis) vs. other systemic causes. Most useful missing information: recent vital signs, lab results (CBC, electrolytes, CRP, blood cultures), imaging (if indicated). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fever, or night sweats?)\nresponse: I’ve had a fever, and I’ve been experiencing cramps and abdominal pain. I’ve also had diarrhea that’s been watery and sometimes bloody — up to 10 times a day. I’ve felt weak and had a low-grade fever that’s lasted for a while, and I’ve noticed some fatigue. I haven’t lost weight recently, but I’ve been sweating a lot at night."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: hypotension. Patient reports fever, cramps, abdominal pain, watery bloody diarrhea (up to 10x/day), weakness, low-grade fever, fatigue, night sweats, no recent weight loss. No weight loss, but night sweats noted. No lab or imaging results yet. No prior history or exam findings provided. No treatment or risk factors explicitly supported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 2,
+        "query_text": "Chief complaint: hypotension. Symptoms: fever, cramps, abdominal pain, watery bloody diarrhea (up to 10x/day), weakness, low-grade fever, fatigue, night sweats. No recent weight loss. No lab or imaging results. Diagnostic uncertainty: infectious or inflammatory etiology (e.g., enterocolitis, sepsis) vs. other systemic causes.",
+        "skill_query_text": "Presenting problem: hypotension. Evidence gathered: patient reports fever, cramps, abdominal pain, watery bloody diarrhea (up to 10x/day), weakness, low-grade fever, fatigue, night sweats. No recent weight loss. No lab or imaging results. No prior history or exam findings. Ineffective actions: none. Needed guidance: diagnostic decision workflow for evaluating infectious or inflammatory etiology in hypotensive patient with GI symptoms."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7924,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7726,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7666,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8343,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.832,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8315,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8287,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8237,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a1317efdfcb6",
+              "type": "skill",
+              "score": 0.8175,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6e3f7b4b-23a1-4d39-91c1-1cc82b6a2106': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '6e3f7b4b-23a1-4d39-91c1-1cc82b6a2106', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 124}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20396115",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 2,
+        "query_text": "Chief complaint: hypotension. Symptoms: fever, cramps, abdominal pain, watery bloody diarrhea (up to 10x/day), weakness, low-grade fever, fatigue, night sweats. No recent weight loss. No lab or imaging results. Diagnostic uncertainty: infectious or inflammatory etiology (e.g., enterocolitis, sepsis) vs. other systemic causes.",
+        "skill_query_text": "Presenting problem: hypotension. Evidence gathered: patient reports fever, cramps, abdominal pain, watery bloody diarrhea (up to 10x/day), weakness, low-grade fever, fatigue, night sweats. No recent weight loss. No lab or imaging results. No prior history or exam findings. Ineffective actions: none. Needed guidance: diagnostic decision workflow for evaluating infectious or inflammatory etiology in hypotensive patient with GI symptoms."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7924,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7726,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7666,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8343,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.832,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8315,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8287,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8237,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a1317efdfcb6",
+              "type": "skill",
+              "score": 0.8175,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "CML post BMT complications with fever, diarrhea, abdominal pain, hypotension"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a14dac92-2863-4ea2-a65a-0710459d3ec1': '[Document 1] (ID: 31116_6, Score: 0.873)\\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculoskeletal pain (2.1%), nausea (2.1%...\\n\\n[Document 2] (ID: 18060_12, Score: 0.872)\\nThere were two deaths through BMT Day +28 in the allogeneic transplant setting. There were an additional six deaths BMT Day +29 through BMT Day +100 in the allogeneic transplant setting.\\n\\n## Postmarketing Experience\\nThe following adverse reactions (reported as MedRA terms) have been identified durin...\\n\\n[Document 3] (ID: 31141_7, Score: 0.872)\\n- The most frequently reported serious adverse reactions in patients with newly diagnosed chronic phase CML included pleural effusion (4%), hemorrhage (2%), congestive heart failure (1%), pulmonary hypertension (1%), and pyrexia (1%). The most frequently reported serious adverse reactions in patient...\\n\\n[Document 4] (ID: 31141_8, Score: 0.866)\\n- The cumulative rates of the majority of adverse reactions (all grades) in newly diagnosed patients with chronic phase ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'a14dac92-2863-4ea2-a65a-0710459d3ec1', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"CML post BMT complications with fever, diarrhea, abdominal pain, hypotension\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 195}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.16666666666666666,
+        "turn_reward": 0.03333333333333333,
+        "importance": 0.16666666666666666
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CML post BMT complications with fever, diarrhea, abdominal pain, hypotension\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CML post BMT complications with fever, diarrhea, abdominal pain, hypotension\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20396115",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "hypotension",
+        "diagnostic_strategy": "Current clinical problem: hypotension with associated fever, diarrhea, abdominal pain, and fatigue. Key evidence: patient reports fever, cramps, watery bloody diarrhea (up to 10x/day), night sweats, fatigue, and low-grade fever. Labs not available. Current diagnostic uncertainty: whether this is due to CML post-BMT complications, infection, or other systemic cause. Most useful missing information: lab results (CBC, electrolytes, inflammatory markers), imaging (if indicated), and specific CML treatment history. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: hypotension"
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: hypotension. Patient reports fever, cramps, watery bloody diarrhea (up to 10x/day), night sweats, fatigue, and low-grade fever. No recent weight loss. Labs not available. Retrieved documents suggest possible CML post-BMT complications including abdominal pain, fatigue, and diarrhea, but no direct diagnostic confirmation. No imaging or specific lab results available. Missing: lab results, imaging, CML treatment history."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 4,
+        "query_text": "Chief complaint: hypotension. Symptoms: fever, cramps, watery bloody diarrhea (up to 10x/day), night sweats, fatigue, low-grade fever. Labs not available. History: possible CML post-BMT complications. Uncertainty: whether due to CML post-BMT, infection, or other systemic cause. Missing: CBC, electrolytes, inflammatory markers, imaging, CML treatment history.",
+        "skill_query_text": "Presenting problem: hypotension with fever, diarrhea, abdominal pain, fatigue. Evidence gathered: patient-reported symptoms. Ineffective action: request for labs returned no result. Missing: lab results, imaging, CML treatment history. Need: diagnostic decision workflow guidance for next steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7953,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7842,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7534,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8339,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8262,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.822,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.831,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8279,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8138,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f01d7e38e72f"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_f01d7e38e72f",
+            "memory_type": "experience",
+            "score": 0.822,
+            "content": {
+              "experience": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any recent bleeding or bruising?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had watery diarrhea that’s been bloody, along with cramps and fever. I’ve also noticed some abdominal pain and tenderness, which has been pretty severe.'}",
+        "env_info": "{'response': [{'id': '20c03300-40c4-4c5d-8a5f-59ffce64d928', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any recent bleeding or bruising?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 739}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent bleeding or bruising?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent bleeding or bruising?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20396115",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "hypotension",
+        "diagnostic_strategy": "Current clinical problem: hypotension with possible systemic infection or gastrointestinal bleeding. Key evidence: fever, bloody diarrhea, abdominal pain, tenderness, fatigue, night sweats, and no lab results. Diagnostic uncertainty: whether infection, bleeding, or post-BMT complication is driving hypotension. Most useful missing information: lab results (CBC, electrolytes, inflammatory markers), imaging (abdomen), and bleeding source assessment. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: hypotension",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fever, or night sweats?)\nresponse: I’ve had a fever, and I’ve been experiencing cramps and abdominal pain. I’ve also had diarrhea that’s been watery and sometimes bloody — up to 10 times a day. I’ve felt weak and had a low-grade fever that’s lasted for a while, and I’ve noticed some fatigue. I haven’t lost weight recently, but I’ve been sweating a lot at night.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent bleeding or bruising?)\nresponse: I’ve had watery diarrhea that’s been bloody, along with cramps and fever. I’ve also noticed some abdominal pain and tenderness, which has been pretty severe."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: hypotension. History: fever, bloody watery diarrhea (up to 10x/day), cramps, abdominal pain, tenderness, fatigue, night sweats, no recent weight loss. Exam: no labs performed (no result). Tool: retrieved documents on CML post-BMT complications (fever, diarrhea, abdominal pain, hypotension) with adverse reactions including abdominal pain, fatigue, and bleeding. Unresolved: no lab results, no imaging, no bleeding source assessment. Low-value attempt: lab request returned no result."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 5,
+        "query_text": "Chief complaint: hypotension. Symptoms: fever, bloody watery diarrhea (up to 10x/day), cramps, abdominal pain, tenderness, fatigue, night sweats. No recent weight loss. No lab results. No imaging. No bleeding source assessment. Uncertainty: whether infection, bleeding, or post-BMT complication is driving hypotension.",
+        "skill_query_text": "Presenting problem: hypotension. Uncertainty: whether infection, bleeding, or post-BMT complication is driving hypotension. Evidence gathered: patient reports fever, bloody diarrhea, abdominal pain, tenderness, fatigue, night sweats. Ineffective action: lab request returned no result. Missing: lab results (CBC, electrolytes, inflammatory markers), imaging (abdomen), bleeding source assessment. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8107,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7899,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7726,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.8389,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8341,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8334,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8457,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8332,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8268,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f01d7e38e72f",
+          "skill_b4ce35674ffa"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_b4ce35674ffa",
+            "memory_type": "skill",
+            "score": 0.8457,
+            "content": {
+              "skill": "When a patient presents with redness, swelling, warmth, and pain at a site of recent skin break, with systemic symptoms like fever and fatigue, request lab tests to confirm infection and rule out systemic involvement.",
+              "procedure": [
+                {
+                  "action_type": "REQUEST_LAB",
+                  "action_label": "Request lab tests (e.g., CBC, CRP)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ebd400ce-e29d-428f-bee3-5dbc43edf3a7': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'ebd400ce-e29d-428f-bee3-5dbc43edf3a7', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 812}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20396115",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 5,
+        "query_text": "Chief complaint: hypotension. Symptoms: fever, bloody watery diarrhea (up to 10x/day), cramps, abdominal pain, tenderness, fatigue, night sweats. No recent weight loss. No lab results. No imaging. No bleeding source assessment. Uncertainty: whether infection, bleeding, or post-BMT complication is driving hypotension.",
+        "skill_query_text": "Presenting problem: hypotension. Uncertainty: whether infection, bleeding, or post-BMT complication is driving hypotension. Evidence gathered: patient reports fever, bloody diarrhea, abdominal pain, tenderness, fatigue, night sweats. Ineffective action: lab request returned no result. Missing: lab results (CBC, electrolytes, inflammatory markers), imaging (abdomen), bleeding source assessment. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8107,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7899,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7726,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.8389,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8341,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8334,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8457,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8332,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8268,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f01d7e38e72f"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "CML post BMT with bloody diarrhea, abdominal pain, fever, hypotension"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'cc474bf2-213f-481c-8652-17b73b68f062': '[Document 1] (ID: 31116_6, Score: 0.868)\\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculoskeletal pain (2.1%), nausea (2.1%...\\n\\n[Document 2] (ID: 31141_7, Score: 0.868)\\n- The most frequently reported serious adverse reactions in patients with newly diagnosed chronic phase CML included pleural effusion (4%), hemorrhage (2%), congestive heart failure (1%), pulmonary hypertension (1%), and pyrexia (1%). The most frequently reported serious adverse reactions in patient...\\n\\n[Document 3] (ID: 31872_7, Score: 0.866)\\n- The most common (>10%) non-hematologic adverse drug reactions were rash, pruritus, headache, nausea, fatigue, alopecia and myalgia. Upper abdominal pain, constipation, diarrhea, dry skin, muscle spasms, arthralgia, abdominal pain, peripheral edema, vomiting, and asthenia were observed less commonl...\\n\\n[Document 4] (ID: 18060_12, Score: 0.864)\\nThere were two deaths through BMT Day +28 in the allogeneic transplant setting. There were an additional six deaths BMT ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'cc474bf2-213f-481c-8652-17b73b68f062', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"CML post BMT with bloody diarrhea, abdominal pain, fever, hypotension\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 886}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CML post BMT with bloody diarrhea, abdominal pain, fever, hypotension\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CML post BMT with bloody diarrhea, abdominal pain, fever, hypotension\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20396115",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "hypotension",
+        "diagnostic_strategy": "Current clinical problem: hypotension in a patient with suspected CML post-BMT, presenting with bloody diarrhea, abdominal pain, fever. Key evidence: patient reports fever, cramps, bloody diarrhea, abdominal pain, night sweats, fatigue, and no recent weight loss. Labs and imaging not yet performed. Diagnostic uncertainty: whether symptoms are due to CML complications, infection, or other post-transplant issues. Most useful missing information: lab results (CBC, electrolytes, inflammatory markers), imaging (abdominal CT or ultrasound), and specific CML treatment history. Existing evidence is not enough to finalize diagnosis; further diagnostic workup is required. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fever, or night sweats?)\nresponse: I’ve had a fever, and I’ve been experiencing cramps and abdominal pain. I’ve also had diarrhea that’s been watery and sometimes bloody — up to 10 times a day. I’ve felt weak and had a low-grade fever that’s lasted for a while, and I’ve noticed some fatigue. I haven’t lost weight recently, but I’ve been sweating a lot at night.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent bleeding or bruising?)\nresponse: I’ve had watery diarrhea that’s been bloody, along with cramps and fever. I’ve also noticed some abdominal pain and tenderness, which has been pretty severe."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=CML post BMT with bloody diarrhea, abdominal pain, fever, hypotension)\nresponse: [Document 1] (ID: 31116_6, Score: 0.868)\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculoskeletal pain (2.1%), nausea (2.1%...\n\n[Document 2] (ID: 31141_7, Score: 0.868)\n- The most frequently reported serious adverse reactions in patients with newly diagnosed chronic phase CML included pleural effusion (4%), hemorrhage (2%), congestive heart failure (1%), pulmonary hypertension (1%), and pyrexia (1%). The most frequently reported serious adverse reactions in patient...\n\n[Document 3] (ID: 31872_7, Score: 0.866)\n- The most common (>10%) non-hematologic adverse drug reactions were rash, pruritus, headache, nausea, fatigue, alopecia and myalgia. Upper abdominal pain, constipation, diarrhea, dry skin, muscle spasms, arthralgia, abdominal pain, peripheral edema, vomiting, and asthenia were observed less commonl...\n\n[Document 4] (ID: 18060_12, Score: 0.864)\nThere were two deaths through BMT Day +28 in the allogeneic transplant setting. There were an additional six deaths BMT Day +29 through BMT Day +100 in the allogeneic transplant setting.\n\n## Postmarketing Experience\nThe following adverse reactions (reported as MedRA terms) have been identified durin...\n\n[Document 5] (ID: 31141_8, Score: 0.862)\n- The cumulative rates of the majority of adverse reactions (all grades) in newly diagnosed patients with chronic phase CML were similar after 12 and 36 months minimum follow up including congestive heart failure/cardiac dysfunction (2% vs 2%), pericardial effusion (2% vs 3%), pulmonary edema (<1% v..."
+        ],
+        "prior_information_summary": "Chief complaint: hypotension. Patient reports fever, cramps, bloody diarrhea (up to 10 times/day), abdominal pain, night sweats, fatigue, no weight loss. Labs and imaging not performed. Documented CML post-BMT complications include abdominal pain, diarrhea, fatigue, anemia, hepatic enzymes increase, and cardiac issues. No specific lab or imaging results available. Patient has no bleeding or bruising reported. No weight loss or significant systemic symptoms beyond fever and fatigue. No definitive diagnosis or management plan supported."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 7,
+        "query_text": "Hypotension in patient with suspected CML post-BMT; symptoms include fever, cramps, bloody diarrhea (up to 10 times/day), abdominal pain, night sweats, fatigue; no weight loss; labs and imaging not performed; no bleeding/bruising reported; unresolved diagnostic uncertainty: whether symptoms due to CML complications, infection, or other post-transplant issues.",
+        "skill_query_text": "Presenting problem: hypotension in CML post-BMT patient with fever, bloody diarrhea, abdominal pain, night sweats, fatigue. Evidence gathered: patient history (no weight loss, no bleeding/bruising). Ineffective actions: lab and imaging requests returned no results. Need workflow guidance on next diagnostic steps: prioritize CBC, electrolytes, inflammatory markers, abdominal CT/ultrasound, and review CML treatment history."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7961,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7844,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.76,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8275,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.8271,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8258,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8403,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8316,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8226,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_b4ce35674ffa"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent exposure to contaminated food or water?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '6c6549bf-6d1a-4c85-96b3-6a6a4e2c0129', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent exposure to contaminated food or water?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1430}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent exposure to contaminated food or water?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent exposure to contaminated food or water?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20396115",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "hypotension",
+        "diagnostic_strategy": "Current clinical problem: hypotension with associated fever, bloody diarrhea, abdominal pain, and fatigue. Key evidence: patient reports fever, cramps, watery bloody diarrhea, night sweats, and weakness; no recent weight loss. Diagnostic uncertainty: unclear etiology — could be infectious, inflammatory, or post-BMT complication. Most useful missing information: recent exposure to contaminated food/water (current turn), specific lab/imaging results, and history of BMT. Existing evidence is not enough to finalize diagnosis; further targeted testing or exposure history is needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: hypotension"
+        ],
+        "ineffective_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent exposure to contaminated food or water?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: hypotension. Patient reports fever, cramps, watery bloody diarrhea (up to 10x/day), night sweats, fatigue, and weakness; no recent weight loss. Labs and imaging requests returned no results. Retrieved documents suggest possible CML post-BMT complications including abdominal pain, diarrhea, fever, and hypotension, with adverse reactions like anemia, hepatic enzymes increase, and fatigue. No exposure to contaminated food/water reported in current turn. Missing: specific diagnostic tests, exposure history, and BMT history. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 8,
+        "query_text": "Patient presents with hypotension, fever, watery bloody diarrhea (up to 10x/day), abdominal pain, night sweats, and fatigue; no recent weight loss. Labs and imaging results pending. No exposure to contaminated food/water reported. History suggests possible post-BMT complication. Unclear etiology: infectious, inflammatory, or post-BMT. No treatment recommended.",
+        "skill_query_text": "Presenting problem: hypotension with fever, bloody diarrhea, abdominal pain, night sweats, fatigue. Evidence gathered: patient denies recent food/water exposure. Ineffective action: asked about exposure, patient denies. Missing: specific lab/imaging results, BMT history. Need workflow guidance on next diagnostic steps or targeted testing."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8099,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7945,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7769,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8444,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8436,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.8432,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8517,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8465,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.844,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{CML post-BMT with gastrointestinal complications and possible infection or graft-versus-host disease}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8bc8d665-5a92-40f5-b4aa-fef7a30d0e81': '{\"diagnosis\": \"CML post-BMT with gastrointestinal complications and possible infection or graft-versus-host disease\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '8bc8d665-5a92-40f5-b4aa-fef7a30d0e81', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{CML post-BMT with gastrointestinal complications and possible infection or graft-versus-host disease}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1500}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.5,
+        "delta": 0.16666666666666669,
+        "turn_reward": 0.03333333333333334,
+        "importance": 0.16666666666666669
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{CML post-BMT with gastrointestinal complications and possible infection or graft-versus-host disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{CML post-BMT with gastrointestinal complications and possible infection or graft-versus-host disease}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20396115",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "hypotension",
+        "diagnosis_goal": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 7. Low-information/no-result turns already attempted: 3; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: hypotension",
+          "initial_information: I am a 58-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 58-year-old male patient presenting with hypotension and a history of CML s/p BMT ___..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fever, or night sweats?)\nresponse: I’ve had a fever, and I’ve been experiencing abdominal cramps and diarrhea that’s been pretty frequent—sometimes up to 10 times a day, and it’s been bloody. I’ve also had some night sweats, and I’ve noticed I’ve lost a bit of weight recently.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=CML post-BMT complications with fever, diarrhea, weight loss, night sweats)\nresponse: [Document 1] (ID: 18060_12, Score: 0.867)\nThere were two deaths through BMT Day +28 in the allogeneic transplant setting. There were an additional six deaths BMT Day +29 through BMT Day +100 in the allogeneic transplant setting.\n\n## Postmarketing Experience\nThe following adverse reactions (reported as MedRA terms) have been identified durin...\n\n[Document 2] (ID: 31116_6, Score: 0.861)\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculoskeletal pain (2.1%), nausea (2.1%...\n\n[Document 3] (ID: 31141_7, Score: 0.859)\n- The most frequently reported serious adverse reactions in patients with newly diagnosed chronic phase CML included pleural effusion (4%), hemorrhage (2%), congestive heart failure (1%), pulmonary hypertension (1%), and pyrexia (1%). The most frequently reported serious adverse reactions in patient...\n\n[Document 4] (ID: 31872_7, Score: 0.859)\n- The most common (>10%) non-hematologic adverse drug reactions were rash, pruritus, headache, nausea, fatigue, alopecia and myalgia. Upper abdominal pain, constipation, diarrhea, dry skin, muscle spasms, arthralgia, abdominal pain, peripheral edema, vomiting, and asthenia were observed less commonl...\n\n[Document 5] (ID: 23222_8, Score: 0.858)\n- Hematic and Lymphatic: Purpura; bone marrow depression; leukopenia; eosinophilia; thrombocytopenia.\n\n- Metabolic, Nutritional and Immune: Elevation and lowering of blood sugar levels; weight gain or loss.\n\n- Musculoskeletal: Myalgia.\n\n- Nervous System and Psychiatric: Decreased or increased libido...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent bleeding or bruising?)\nresponse: I’ve had watery diarrhea that’s been bloody, along with cramps and abdominal pain. I’ve also had a fever up to 104°F. The diarrhea’s been frequent—sometimes as many as 10 bowel movements a day. I haven’t noticed any bruising, but I’ve been feeling very tired and weak.",
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=CML post-BMT with fever, bloody diarrhea, weight loss, night sweats differential diagnosis)\nresponse: [Document 1] (ID: 6277_5, Score: 0.864)\n## Symptoms\nSymptoms of  SPTCL include: \n- Fever\n- Chills\n- Weight loss\n- Night sweats\n- Myalgias\n- Painless swellings on extremities and trunk\n\n## Physical Examination\n\n### Vitals\n- Fever is often present\n\n### Skin\n- Subcutaneous nodules\nAbdomen\n- Hepatosplenomegaly\n\n## Laboratory Findings\nLaborato...\n\n[Document 2] (ID: 27791_4, Score: 0.860)\n## Signs and Symptoms\n- Fever lasting 24 hours or longer.\n- Vomiting\n- Diarrhea\n- Abdominal pain\n- Skin rash\n- Conjuctivitis\n- High ESR\n- Redness or swelling of the lips and tongue\n- Lethargy\n- Redness or swelling of the hands or feet\n- Confusion\n- Headache\n- Sore throat\n- Syncope\n- Lymphadenopathy\n...\n\n[Document 3] (ID: 11041_2, Score: 0.860)\n# Signs and Symptoms\nAs noted above, pseudomembranous colitis is characterized by diarrhea, abdominal pain, and fever. Usually, the diarrhea is not bloody, although blood may be present if the affected individual is taking blood thinners or has an underlying lower bowel condition, such as inflamed h...\n\n[Document 4] (ID: 25922_9, Score: 0.859)\n# Natural History, Complications and Prognosis\n- The majority of patients with lymphocytosis remain asymptomatic unless there is significant lymphadenopathy or infection.\n- Early clinical features can include, but do not necessarily need to include, fever, fatigue, night sweats, weight loss, and lym...\n\n[Document 5] (ID: 114_365, Score: 0.859)\n# S: Subjective\nThe patient may complain of some or all of the following: watery diarrhea (can be profuse), abdominal pain or cramping, flatulence, nausea, vomiting, anorexia, fever, and weight loss.\nThe history should include questions about the presence and characteristics of the symptoms listed a...",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent exposure to antibiotics or other medications?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any recent weight loss, fever, or night sweats?)\nresponse: I’ve had a fever, and I’ve been experiencing abdominal cramps and diarrhea that’s been pretty frequent—sometimes up to 10 times a day, and it’s been bloody. I’ve also had some night sweats, and I’ve noticed I’ve lost a bit of weight recently.\ndoctor_action: retrieve(query=CML post-BMT complications with fever, diarrhea, weight loss, night sweats)\nresponse: [Document 1] (ID: 18060_12, Score: 0.867)\nThere were two deaths through BMT Day +28 in the allogeneic transplant setting. There were an additional six deaths BMT Day +29 through BMT Day +100 in the allogeneic transplant setting.\n\n## Postmarketing Experience\nThe following adverse reactions (reported as MedRA terms) have been identified durin...\n\n[Document 2] (ID: 31116_6, Score: 0.861)\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculoskeletal pain (2.1%), nausea (2.1%...\n\n[Document 3] (ID: 31141_7, Score: 0.859)\n- The most frequently reported serious adverse reactions in patients with newly diagnosed chronic phase CML included pleural effusion (4%), hemorrhage (2%), congestive heart failure (1%), pulmonary hypertension (1%), and pyrexia (1%). The most frequently reported serious adverse reactions in patient...\n\n[Document 4] (ID: 31872_7, Score: 0.859)\n- The most common (>10%) non-hematologic adverse drug reactions were rash, pruritus, headache, nausea, fatigue, alopecia and myalgia. Upper abdominal pain, constipation, diarrhea, dry skin, muscle spasms, arthralgia, abdominal pain, peripheral edema, vomiting, and asthenia were observed less commonl...\n\n[Document 5] (ID: 23222_8, Score: 0.858)\n- Hematic and Lymphatic: Purpura; bone marrow depression; leukopenia; eosinophilia; thrombocytopenia.\n\n- Metabolic, Nutritional and Immune: Elevation and lowering of blood sugar levels; weight gain or loss.\n\n- Musculoskeletal: Myalgia.\n\n- Nervous System and Psychiatric: Decreased or increased libido...\ndoctor_action: ask_patient(question=Have you noticed any recent bleeding or bruising?)\nresponse: I’ve had watery diarrhea that’s been bloody, along with cramps and abdominal pain. I’ve also had a fever up to 104°F. The diarrhea’s been frequent—sometimes as many as 10 bowel movements a day. I haven’t noticed any bruising, but I’ve been feeling very tired and weak.\ndoctor_action: retrieve(query=CML post-BMT with fever, bloody diarrhea, weight loss, night sweats differential diagnosis)\nresponse: [Document 1] (ID: 6277_5, Score: 0.864)\n## Symptoms\nSymptoms of  SPTCL include: \n- Fever\n- Chills\n- Weight loss\n- Night sweats\n- Myalgias\n- Painless swellings on extremities and trunk\n\n## Physical Examination\n\n### Vitals\n- Fever is often present\n\n### Skin\n- Subcutaneous nodules\nAbdomen\n- Hepatosplenomegaly\n\n## Laboratory Findings\nLaborato...\n\n[Document 2] (ID: 27791_4, Score: 0.860)\n## Signs and Symptoms\n- Fever lasting 24 hours or longer.\n- Vomiting\n- Diarrhea\n- Abdominal pain\n- Skin rash\n- Conjuctivitis\n- High ESR\n- Redness or swelling of the lips and tongue\n- Lethargy\n- Redness or swelling of the hands or feet\n- Confusion\n- Headache\n- Sore throat\n- Syncope\n- Lymphadenopathy\n...\n\n[Document 3] (ID: 11041_2, Score: 0.860)\n# Signs and Symptoms\nAs noted above, pseudomembranous colitis is characterized by diarrhea, abdominal pain, and fever. Usually, the diarrhea is not bloody, although blood may be present if the affected individual is taking blood thinners or has an underlying lower bowel condition, such as inflamed h...\n\n[Document 4] (ID: 25922_9, Score: 0.859)\n# Natural History, Complications and Prognosis\n- The majority of patients with lymphocytosis remain asymptomatic unless there is significant lymphadenopathy or infection.\n- Early clinical features can include, but do not necessarily need to include, fever, fatigue, night sweats, weight loss, and lym...\n\n[Document 5] (ID: 114_365, Score: 0.859)\n# S: Subjective\nThe patient may complain of some or all of the following: watery diarrhea (can be profuse), abdominal pain or cramping, flatulence, nausea, vomiting, anorexia, fever, and weight loss.\nThe history should include questions about the presence and characteristics of the symptoms listed a...\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20396115",
+        "turn_id": 9,
+        "query_text": "58-year-old male, post-BMT for CML, presenting with hypotension, fever up to 104°F, bloody diarrhea (10+ times/day), abdominal cramps, night sweats, weight loss, fatigue, no bruising or bleeding. No recent antibiotic exposure reported.",
+        "skill_query_text": "Patient with post-BMT CML presenting with hypotension, fever, bloody diarrhea, weight loss, night sweats, fatigue. Labs, CXR, and imaging not yet performed. Need targeted diagnostic guidance for differential including SPTCL, pseudomembranous colitis, or infection."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_4fa0bb4beb1a",
+              "type": "experience",
+              "score": 0.839,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with systemic symptoms like fever, weight loss, and night sweats, the absence of lymphadenopathy or other localized signs should not lead to premature diagnosis of Hodgkin lymphoma without confirmatory evidence; the gold diagnosis here was urinary tract infection, highlighting the risk of over-reliance on B symptoms without ruling out simpler, common causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_cc58f67ef651",
+              "type": "experience",
+              "score": 0.8307,
+              "outcome": "negative",
+              "text": "When a patient reports neurological symptoms like dizziness and pallor, the absence of classic systemic symptoms (e.g., weight loss, fever, night sweats) should not lead to premature closure on anemia; consider melena as a differential and pursue targeted GI history and occult blood testing.",
+              "tags": []
+            },
+            {
+              "id": "exp_8dc38c68226a",
+              "type": "experience",
+              "score": 0.8268,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with weight loss, fatigue, night sweats, nausea, and vomiting, failure to obtain targeted labs (e.g., CBC, metabolic panel) or imaging (e.g., abdomen/pelvis) early leads to missed diagnoses such as malignancy or acute kidney failure. This case highlights the critical need to pursue specific diagnostic tests despite initial negative results, as the absence of results does not rule out serious pathology.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.8204,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_8dc38c68226a"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Post-BMT complications including possible graft-versus-host disease (GVHD) or infection such as CMV or other opportunistic infection, given the history of CML post-BMT, fever, bloody diarrhea, weight loss, night sweats, and abdominal pain. Further diagnostic workup is needed to confirm.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6c763a2e-64d9-4f4f-8f0c-d81e1e5d71b4': '{\"diagnosis\": \"Post-BMT complications including possible graft-versus-host disease (GVHD) or infection such as CMV or other opportunistic infection, given the history of CML post-BMT, fever, bloody diarrhea, weight loss, night sweats, and abdominal pain. Further diagnostic workup is needed to confirm.\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '6c763a2e-64d9-4f4f-8f0c-d81e1e5d71b4', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Post-BMT complications including possible graft-versus-host disease (GVHD) or infection such as CMV or other opportunistic infection, given the history of CML post-BMT, fever, bloody diarrhea, weight loss, night sweats, and abdominal pain. Further diagnostic workup is needed to confirm.}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1607}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.5,
+        "delta": 0.16666666666666669,
+        "turn_reward": 0.03333333333333334,
+        "importance": 0.16666666666666669
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-BMT complications including possible graft-versus-host disease (GVHD) or infection such as CMV or other opportunistic infection, given t",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-BMT complications including possible graft-versus-host disease (GVHD) or infection such as CMV or other opportunistic infection, given the history of CML post-BMT, fever, bloody diarrhea, weight loss, night sweats, and abdominal pain. Further diagnostic workup is needed to confirm.}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'6e3f7b4b-23a1-4d39-91c1-1cc82b6a2106': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '6e3f7b4b-23a1-4d39-91c1-1cc82b6a2106', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 124}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fever, or night sweats?)\nresponse: I’ve had a fever, and I’ve been experiencing abdominal cramps and diarrhea that’s been pretty frequent—sometimes up to 10 times a day, and it’s been bloody. I’ve also had some night sweats, and I’ve noticed I’ve lost a bit of weight recently."
+      ]
+    },
+    {
+      "turn_id": 4,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you noticed any recent bleeding or bruising?"
+      },
+      "patient_or_tool_response": "{'question': 'I’ve had watery diarrhea that’s been bloody, along with cramps and fever. I’ve also noticed some abdominal pain and tenderness, which has been pretty severe.'}",
+      "env_info": "{'response': [{'id': '20c03300-40c4-4c5d-8a5f-59ffce64d928', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any recent bleeding or bruising?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 739}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_4 retrieve_interaction: doctor_action: retrieve(query=CML post-BMT complications with fever, diarrhea, weight loss, night sweats)\nresponse: [Document 1] (ID: 18060_12, Score: 0.867)\nThere were two deaths through BMT Day +28 in the allogeneic transplant setting. There were an additional six deaths BMT Day +29 through BMT Day +100 in the allogeneic transplant setting.\n\n## Postmarketing Experience\nThe following adverse reactions (reported as MedRA terms) have been identified durin...\n\n[Document 2] (ID: 31116_6, Score: 0.861)\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculos...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "imaging"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'ebd400ce-e29d-428f-bee3-5dbc43edf3a7': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': 'ebd400ce-e29d-428f-bee3-5dbc43edf3a7', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 812}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent bleeding or bruising?)\nresponse: I’ve had watery diarrhea that’s been bloody, along with cramps and abdominal pain. I’ve also had a fever up to 104°F. The diarrhea’s been frequent—sometimes as many as 10 bowel movements a day. I haven’t noticed any bruising, but I’ve been feeling very tired and weak."
+      ]
+    },
+    {
+      "turn_id": 8,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{CML post-BMT with gastrointestinal complications and possible infection or graft-versus-host disease}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'8bc8d665-5a92-40f5-b4aa-fef7a30d0e81': '{\"diagnosis\": \"CML post-BMT with gastrointestinal complications and possible infection or graft-versus-host disease\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '8bc8d665-5a92-40f5-b4aa-fef7a30d0e81', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{CML post-BMT with gastrointestinal complications and possible infection or graft-versus-host disease}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1500}",
+      "reward": 0.0,
+      "turn_reward": 0.03333333333333334,
+      "importance": 0.16666666666666669,
+      "evidence_records": [
+        "turn_8 retrieve_interaction: doctor_action: retrieve(query=CML post-BMT with fever, bloody diarrhea, weight loss, night sweats differential diagnosis)\nresponse: [Document 1] (ID: 6277_5, Score: 0.864)\n## Symptoms\nSymptoms of  SPTCL include: \n- Fever\n- Chills\n- Weight loss\n- Night sweats\n- Myalgias\n- Painless swellings on extremities and trunk\n\n## Physical Examination\n\n### Vitals\n- Fever is often present\n\n### Skin\n- Subcutaneous nodules\nAbdomen\n- Hepatosplenomegaly\n\n## Laboratory Findings\nLaborato...\n\n[Document 2] (ID: 27791_4, Score: 0.860)\n## Signs and Symptoms\n- Fever lasting 24 hours or longer.\n- Vomiting\n- Diarrhea\n- Abdominal pain\n- Skin rash\n- Conjuctivitis\n- High ESR\n- Redness or swelling of the lips and tongue\n- Lethargy\n- Redness or swelling of the hands or feet\n- Confusion\n- Head...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 9,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Post-BMT complications including possible graft-versus-host disease (GVHD) or infection such as CMV or other opportunistic infection, given the history of CML post-BMT, fever, bloody diarrhea, weight loss, night sweats, and abdominal pain. Further diagnostic workup is needed to confirm.}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'6c763a2e-64d9-4f4f-8f0c-d81e1e5d71b4': '{\"diagnosis\": \"Post-BMT complications including possible graft-versus-host disease (GVHD) or infection such as CMV or other opportunistic infection, given the history of CML post-BMT, fever, bloody diarrhea, weight loss, night sweats, and abdominal pain. Further diagnostic workup is needed to confirm.\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '6c763a2e-64d9-4f4f-8f0c-d81e1e5d71b4', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Post-BMT complications including possible graft-versus-host disease (GVHD) or infection such as CMV or other opportunistic infection, given the history of CML post-BMT, fever, bloody diarrhea, weight loss, night sweats, and abdominal pain. Further diagnostic workup is needed to confirm.}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1607}",
+      "reward": 0.0,
+      "turn_reward": 0.03333333333333334,
+      "importance": 0.16666666666666669,
+      "evidence_records": [
+        "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent exposure to antibiotics or other medications?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

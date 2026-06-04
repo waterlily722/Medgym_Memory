@@ -1,0 +1,2215 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20126835",
+  "turns": [
+    {
+      "case_id": "20126835",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 62-year-old male patient presenting with nonspecific subjective complaints. Key evidence gathered: Patient reports general malaise without specific symptoms. Diagnostic uncertainty remains high due to lack of objective findings or history. Most useful missing information: Detailed history of symptoms, duration, associated features, and relevant medical history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 62-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 62-year-old male patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 62-year-old male reporting general malaise without specific symptoms. No objective findings, lab, imaging, or exam results available. No history or associated features provided. No prior tests or interventions performed. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 1,
+        "query_text": "62-year-old male, chief complaint: general malaise without specific symptoms. No objective findings, lab, imaging, or exam results. No history or associated features provided. Diagnostic uncertainty remains high due to lack of objective findings or history.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 62-year-old male with nonspecific subjective complaints. Evidence gathered: Patient reports general malaise without specific symptoms. No objective findings, lab, imaging, or exam results. No history or associated features provided. No prior tests or interventions performed. Ineffective actions: None. Need workflow guidance for next diagnostic steps given insufficient evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8039,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.762,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.734,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7322,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8105,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.81,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8098,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7998,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7738,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7676,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8105,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '27b0043a-6695-4394-9022-0ba870b59842', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with vague chief complaint of not feeling well. Key evidence gathered: Patient is unable to specify symptoms. Diagnostic uncertainty remains high due to lack of specific symptom data. Most useful missing information: Detailed description of symptoms, duration, and associated factors. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Patient reports not feeling well recently, seeking assessment and diagnosis. No specific symptoms provided. Patient responded to initial question by requesting a more specific inquiry, indicating inability to articulate symptoms. No exam, lab, imaging, or tool results available. No positive or negative findings reported. Missing information: Detailed symptom description, duration, and associated factors. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 2,
+        "query_text": "Patient reports not feeling well recently, seeking assessment and diagnosis. No specific symptoms provided. No exam, lab, imaging, or tool results available. No positive or negative findings reported. Missing information: Detailed symptom description, duration, and associated factors.",
+        "skill_query_text": "Presenting problem: Patient presents with vague chief complaint of not feeling well. Current uncertainty: Unable to specify symptoms. Evidence gathered: Patient requested more specific inquiry, indicating inability to articulate symptoms. Ineffective action: Asked about specific symptoms, received non-specific response. Missing evidence: Detailed symptom description, duration, associated factors. Need: Workflow guidance for eliciting specific symptom information."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8422,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7975,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7666,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.765,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8423,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8421,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8407,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8014,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7966,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7931,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '1dad6742-90bb-453e-82ca-0ccd015481a6', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 53}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with vague subjective complaint of not feeling well. Key evidence gathered: Patient denies chest pain, shortness of breath, fatigue, or unexplained weight loss. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed history of symptoms, duration, associated features, and any recent changes in health. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports not feeling well recently, seeking assessment and diagnosis. Turn 2: Patient requested more specific question about symptoms. Turn 3: Patient denies chest pain, shortness of breath, fatigue, or unexplained weight loss. No objective findings or lab/imaging results reported. No specific symptoms identified. No low-value or no-result attempts noted."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 3,
+        "query_text": "Patient reports not feeling well recently. Denies chest pain, shortness of breath, fatigue, or unexplained weight loss. No objective findings, lab, or imaging results. No specific symptoms identified. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Patient reports not feeling well. Current uncertainty: No specific symptoms or objective findings. Evidence gathered: Patient denies chest pain, shortness of breath, fatigue, or unexplained weight loss. Missing evidence: Detailed history of symptoms, duration, associated features, recent health changes. Ineffective actions: None. Need: Workflow guidance for next diagnostic steps given vague complaint and lack of specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.8216,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8013,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8061,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8022,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.801,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '13e2da80-a3cf-407c-afa8-fc8b5fab9275', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 132}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell. Key evidence gathered: No chest pain, shortness of breath, fatigue, or weight loss (turn 3); no joint pain, swelling, or stiffness (turn 4). Diagnostic uncertainty remains high due to lack of specific symptoms. Most useful missing information: Detailed history of systemic symptoms, functional status, or recent exposures. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No chest pain, shortness of breath, fatigue, or weight loss reported (turn 3). No joint pain, swelling, or stiffness reported (turn 4). No other specific symptoms identified. No exam, lab, imaging, or tool results available. Unresolved missing information: Detailed symptom history, functional status, and recent exposures. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 4,
+        "query_text": "Patient reports general malaise without specific symptoms. No chest pain, shortness of breath, fatigue, or weight loss. No joint pain, swelling, or stiffness. No exam, lab, imaging, or tool results available. Unresolved diagnostic uncertainty due to lack of specific symptoms and missing history of systemic symptoms, functional status, or recent exposures.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell. Current uncertainty: Diagnosis not yet possible due to insufficient evidence. Evidence gathered: Negative for chest pain, shortness of breath, fatigue, weight loss, joint pain, swelling, stiffness. Ineffective actions: Asking about specific symptoms yielded no useful information. Needed: Workflow guidance for eliciting detailed symptom history, functional status, and recent exposures."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8177,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7964,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7572,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7513,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8466,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_1be18ad725f5",
+              "type": "experience",
+              "score": 0.8334,
+              "outcome": "negative",
+              "text": "A dull, aching pain localized to the joint without radiation or systemic features is not diagnostic of osteoarthritis alone; it may represent mechanical strain, muscle strain, or other non-inflammatory joint pathologies, and requires further targeted evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8176,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8038,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7976,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7908,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?"
+        },
+        "patient_or_tool_response": "{'question': 'I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.'}",
+        "env_info": "{'response': [{'id': 'e26f5d81-acc9-4a0f-b841-b1cb92022a12', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 213}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell. Key evidence gathered: No reported chest pain, shortness of breath, fatigue, weight loss, joint pain, swelling, stiffness, or skin changes. Diagnostic uncertainty remains high due to lack of specific symptoms. Most useful missing information: Detailed history of systemic symptoms, recent exposures, or functional changes. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No chest pain, shortness of breath, fatigue, weight loss, joint pain, swelling, stiffness, or skin changes reported. No known abnormal findings in relevant systems. No specific history of systemic symptoms or exposures provided. No lab, imaging, or tool results available. Missing: Detailed symptom history, functional changes, or exposures. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 5,
+        "query_text": "Patient reports general malaise without specific symptoms. No chest pain, shortness of breath, fatigue, weight loss, joint pain, swelling, stiffness, or skin changes reported. No known abnormal findings in relevant systems. No specific history of systemic symptoms or exposures provided. No lab, imaging, or tool results available. Missing: Detailed symptom history, functional changes, or exposures. No low-value or no-result attempts identified.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell. Current uncertainty: Diagnosis remains unclear due to lack of specific symptoms. Evidence gathered: No reported chest pain, shortness of breath, fatigue, weight loss, joint pain, swelling, stiffness, or skin changes. Ineffective actions tried: Asking about specific symptoms (chest, joints, etc.) yielded negative responses. Missing evidence: Detailed history of systemic symptoms, recent exposures, or functional changes. Need: Workflow guidance for next diagnostic steps based on current evidence and ineffective prior actions."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8182,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7967,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7664,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7532,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8348,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_1be18ad725f5",
+              "type": "experience",
+              "score": 0.83,
+              "outcome": "negative",
+              "text": "A dull, aching pain localized to the joint without radiation or systemic features is not diagnostic of osteoarthritis alone; it may represent mechanical strain, muscle strain, or other non-inflammatory joint pathologies, and requires further targeted evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.815,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8251,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8164,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8093,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'a0a3c218-ebf0-44de-a19c-4605e369759e', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 282}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: No reported chest pain, shortness of breath, fatigue, weight loss, joint pain, skin changes, or gastrointestinal symptoms. Diagnostic uncertainty remains high due to lack of specific symptoms. Most useful missing information: Detailed history of systemic symptoms, recent exposures, or functional changes. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No chest pain, shortness of breath, fatigue, weight loss, joint pain, skin changes, or gastrointestinal symptoms reported. All prior inquiries yielded negative or non-specific responses. No diagnostic evidence gathered to narrow differential. No tests or findings performed. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 6,
+        "query_text": "Patient reports general malaise without specific symptoms. No chest pain, shortness of breath, fatigue, weight loss, joint pain, skin changes, or gastrointestinal symptoms reported. No tests or findings performed. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Current uncertainty: Diagnosis not narrowed due to lack of specific symptoms. Evidence gathered: Negative responses to targeted symptom inquiries. Ineffective actions: Multiple symptom screening questions yielded non-specific or negative responses. Needed guidance: Workflow for managing non-specific complaints with no clear diagnostic direction."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7925,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7854,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7561,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7388,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_1be18ad725f5",
+              "type": "experience",
+              "score": 0.8212,
+              "outcome": "negative",
+              "text": "A dull, aching pain localized to the joint without radiation or systemic features is not diagnostic of osteoarthritis alone; it may represent mechanical strain, muscle strain, or other non-inflammatory joint pathologies, and requires further targeted evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8151,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8094,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8027,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7977,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7858,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up.'}",
+        "env_info": "{'response': [{'id': '0ba337b4-baa8-4a57-8f72-5b72ff03e11c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 359}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of feeling unwell. Key evidence gathered: patient reports confusion, lightheadedness, and dizziness upon standing. Diagnostic uncertainty remains high due to lack of specific symptom localization or objective findings. Most useful missing information: history of syncope, orthostatic vital signs, cognitive testing, or neurological exam. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general malaise. No chest pain, shortness of breath, fatigue, or weight loss. No joint pain, swelling, or stiffness. No skin rashes, discoloration, or lesions. No gastrointestinal symptoms. Current turn adds neurological symptoms: confusion, lightheadedness, and dizziness upon standing. No other findings reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 7,
+        "query_text": "Patient reports non-specific complaints of feeling unwell, with symptoms including confusion, lightheadedness, and dizziness upon standing. No chest pain, shortness of breath, fatigue, weight loss, joint pain, skin rashes, or GI symptoms. No objective findings. Diagnostic uncertainty remains high due to lack of specific symptom localization or objective data. No history of syncope, orthostatic vital signs, cognitive testing, or neurological exam. No management-relevant risk supported.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaints of feeling unwell, now with added neurological symptoms (confusion, lightheadedness, dizziness upon standing). Evidence gathered: patient-reported symptoms. No objective findings. No ineffective actions tried. Need workflow guidance on next diagnostic steps: history of syncope, orthostatic vital signs, cognitive testing, or neurological exam."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7755,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7561,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7237,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8153,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.809,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.804,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7879,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7865,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7824,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'71c1c14a-d190-4b22-9cd0-ac878dde7c46': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '71c1c14a-d190-4b22-9cd0-ac878dde7c46', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 439}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 7,
+        "query_text": "Patient reports non-specific complaints of feeling unwell, with symptoms including confusion, lightheadedness, and dizziness upon standing. No chest pain, shortness of breath, fatigue, weight loss, joint pain, skin rashes, or GI symptoms. No objective findings. Diagnostic uncertainty remains high due to lack of specific symptom localization or objective data. No history of syncope, orthostatic vital signs, cognitive testing, or neurological exam. No management-relevant risk supported.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaints of feeling unwell, now with added neurological symptoms (confusion, lightheadedness, dizziness upon standing). Evidence gathered: patient-reported symptoms. No objective findings. No ineffective actions tried. Need workflow guidance on next diagnostic steps: history of syncope, orthostatic vital signs, cognitive testing, or neurological exam."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7755,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7561,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7237,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8153,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.809,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.804,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7879,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7865,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7824,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of confusion and lightheadedness in elderly men"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e87c1525-4b91-4a5d-85fd-48e522b9cf33': '[Document 1] (ID: 11017_5, Score: 0.862)\\n- Their vision becomes blurry. They may have trouble sensing things (hearing, tasting, feeling, etc.).\\n- Confusion (BAC = 0.18 to 0.30%)\\nProfound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\\nHeightened emotional state — aggressive, withdrawn, or overly...\\n\\n[Document 2] (ID: 12149_3, Score: 0.862)\\n### Activities Requiring Mental Alertness\\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\\n\\n# Adv...\\n\\n[Document 3] (ID: 20144_0, Score: 0.861)\\nConfusion overview\\n\\n# Overview\\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\\n\\n# Pathophysiology\\nConfusion results from glo...\\n\\n[Document 4] (ID: 11902_3, Score: 0.860)\\n- Profound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\\n- Heightened emot...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'e87c1525-4b91-4a5d-85fd-48e522b9cf33', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of confusion and lightheadedness in elderly men\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 510}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of confusion and lightheadedness in elderly men\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of confusion and lightheadedness in elderly men\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with vague complaint of not feeling well, with recent symptoms of confusion and lightheadedness. Key evidence gathered: Patient reports confusion and lightheadedness, especially upon standing (turn 7). No lab results available (turn 8). Current diagnostic uncertainty: Possible causes include medication side effects, metabolic issues, or neurological conditions. Most useful missing information: Detailed medication history, recent alcohol use, and results from relevant labs or imaging. Existing evidence is not enough to finalize diagnosis; further targeted investigation is needed.",
+        "efficient_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports general malaise and seeks assessment. No chest, joint, skin, or GI symptoms reported. Patient reports confusion and lightheadedness, especially upon standing. Labs requested but no results available. No prior findings or abnormalities reported. No specific medication or toxin exposure history provided. No imaging or exam results available. Patient denies any specific symptoms in multiple systems, but neurological symptoms are now identified as key concern."
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 9,
+        "query_text": "Patient reports confusion and lightheadedness, especially upon standing. No lab results available. No prior findings or abnormalities reported. No specific medication or toxin exposure history provided. No imaging or exam results available. Patient denies chest, joint, skin, or GI symptoms. Neurological symptoms identified as key concern.",
+        "skill_query_text": "Presenting problem: Patient presents with vague complaint of not feeling well, with recent symptoms of confusion and lightheadedness. Current uncertainty: Possible causes include medication side effects, metabolic issues, or neurological conditions. Evidence gathered: Patient reports confusion and lightheadedness, especially upon standing. Ineffective actions: General symptom screening questions yielded no relevant findings. Missing: Detailed medication history, recent alcohol use, and results from relevant labs or imaging. Need: Workflow guidance for targeted investigation."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7645,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7535,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7311,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.829,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8134,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8131,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8043,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.794,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.789,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you recently started taking any new medications or supplements?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '4ea32f24-2302-486b-a4c3-bf09af1c65d7', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you recently started taking any new medications or supplements?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1011}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you recently started taking any new medications or supplements?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you recently started taking any new medications or supplements?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 10. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 62-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 62-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=symptoms of confusion and lightheadedness in elderly men)\nresponse: [Document 1] (ID: 11017_5, Score: 0.862)\n- Their vision becomes blurry. They may have trouble sensing things (hearing, tasting, feeling, etc.).\n- Confusion (BAC = 0.18 to 0.30%)\nProfound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\nHeightened emotional state — aggressive, withdrawn, or overly...\n\n[Document 2] (ID: 12149_3, Score: 0.862)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 20144_0, Score: 0.861)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 4] (ID: 11902_3, Score: 0.860)\n- Profound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\n- Heightened emotional state — aggressive, withdrawn, or overly affectionate.  Vision, speech, and awareness are impaired.\n- Poor coordination and pain response.  Nausea and vomiting sometimes occ...\n\n[Document 5] (ID: 10774_2, Score: 0.857)\n## Toxication\n- Intoxication by various drugs (alcohol, anaesthetics, marijuana, etc.)\n- Poisons (including carbon monoxide and metabolic blockade)\n- Medications, including psychotropic medications\n\n## Mental illness\n- Mania\n- Depression\n- Schizophrenia\n\n## Psychological stressors\n- Distraction\n- Em...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you recently started taking any new medications or supplements?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.\ndoctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up.\ndoctor_action: retrieve(query=symptoms of confusion and lightheadedness in elderly men)\nresponse: [Document 1] (ID: 11017_5, Score: 0.862)\n- Their vision becomes blurry. They may have trouble sensing things (hearing, tasting, feeling, etc.).\n- Confusion (BAC = 0.18 to 0.30%)\nProfound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\nHeightened emotional state — aggressive, withdrawn, or overly...\n\n[Document 2] (ID: 12149_3, Score: 0.862)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 20144_0, Score: 0.861)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 4] (ID: 11902_3, Score: 0.860)\n- Profound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\n- Heightened emotional state — aggressive, withdrawn, or overly affectionate.  Vision, speech, and awareness are impaired.\n- Poor coordination and pain response.  Nausea and vomiting sometimes occ...\n\n[Document 5] (ID: 10774_2, Score: 0.857)\n## Toxication\n- Intoxication by various drugs (alcohol, anaesthetics, marijuana, etc.)\n- Poisons (including carbon monoxide and metabolic blockade)\n- Medications, including psychotropic medications\n\n## Mental illness\n- Mania\n- Depression\n- Schizophrenia\n\n## Psychological stressors\n- Distraction\n- Em...\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 10,
+        "query_text": "62-year-old male patient reports confusion, lightheadedness, and dizziness upon standing. No chest pain, joint pain, skin changes, or GI symptoms. No new medications or supplements reported. Labs not performed. Uncertainty remains regarding cause of neurological symptoms.",
+        "skill_query_text": "Presenting problem: confusion and lightheadedness in elderly male. Evidence gathered: patient history excluding systemic symptoms, retrieved documents on confusion/dizziness in elderly. Ineffective action: lab request yielded no result. Need guidance on next diagnostic step to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7784,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.742,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7247,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_eb3a62fc75cd",
+              "type": "experience",
+              "score": 0.7937,
+              "outcome": "negative",
+              "text": "Bilateral, painless, gradual vision loss with dyschromatopsia (especially red washout) in an elderly patient supports nutritional optic neuropathy; do not apply this when there is pain, acute onset, or systemic symptoms suggesting other etiologies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7934,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7911,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8147,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_1243d80c7992",
+              "type": "skill",
+              "score": 0.7937,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7887,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_19bb6b569799"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_19bb6b569799",
+            "memory_type": "experience",
+            "score": 0.7934,
+            "content": {
+              "experience": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'69da4d70-90e2-4a4b-a006-a59f3080323b': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '69da4d70-90e2-4a4b-a006-a59f3080323b', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1080}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 10,
+        "query_text": "62-year-old male patient reports confusion, lightheadedness, and dizziness upon standing. No chest pain, joint pain, skin changes, or GI symptoms. No new medications or supplements reported. Labs not performed. Uncertainty remains regarding cause of neurological symptoms.",
+        "skill_query_text": "Presenting problem: confusion and lightheadedness in elderly male. Evidence gathered: patient history excluding systemic symptoms, retrieved documents on confusion/dizziness in elderly. Ineffective action: lab request yielded no result. Need guidance on next diagnostic step to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7784,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.742,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7247,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_eb3a62fc75cd",
+              "type": "experience",
+              "score": 0.7937,
+              "outcome": "negative",
+              "text": "Bilateral, painless, gradual vision loss with dyschromatopsia (especially red washout) in an elderly patient supports nutritional optic neuropathy; do not apply this when there is pain, acute onset, or systemic symptoms suggesting other etiologies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7934,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7911,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8147,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_1243d80c7992",
+              "type": "skill",
+              "score": 0.7937,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7887,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_19bb6b569799"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "causes of confusion and dizziness in elderly men"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'61454f59-c8ff-41e1-88e0-f4e075bc25c4': '[Document 1] (ID: 20144_0, Score: 0.870)\\nConfusion overview\\n\\n# Overview\\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\\n\\n# Pathophysiology\\nConfusion results from glo...\\n\\n[Document 2] (ID: 12149_3, Score: 0.858)\\n### Activities Requiring Mental Alertness\\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\\n\\n# Adv...\\n\\n[Document 3] (ID: 22749_1, Score: 0.857)\\n# Possible causes\\nConfusion, like inability to focus attention, is a very general and nonspecific symptom of brain or mental dysfunction. In addition to many organic causes of confusion relating to a structural defect or a metabolic problem in the brain (analogous to hardware problems in a computer)...\\n\\n[Document 4] (ID: 20215_0, Score: 0.856)\\nDizziness overview\\nNorina Usman, M.B.B.S\\n\\n# Overview\\nDizziness is a symptom rather than a condition on its own. It is a c...[truncated]'}}",
+        "env_info": "{'response': [{'id': '61454f59-c8ff-41e1-88e0-f4e075bc25c4', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"causes of confusion and dizziness in elderly men\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1154}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of confusion and dizziness in elderly men\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of confusion and dizziness in elderly men\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 11. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 62-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 62-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=symptoms of confusion and lightheadedness in elderly men)\nresponse: [Document 1] (ID: 11017_5, Score: 0.862)\n- Their vision becomes blurry. They may have trouble sensing things (hearing, tasting, feeling, etc.).\n- Confusion (BAC = 0.18 to 0.30%)\nProfound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\nHeightened emotional state — aggressive, withdrawn, or overly...\n\n[Document 2] (ID: 12149_3, Score: 0.862)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 20144_0, Score: 0.861)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 4] (ID: 11902_3, Score: 0.860)\n- Profound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\n- Heightened emotional state — aggressive, withdrawn, or overly affectionate.  Vision, speech, and awareness are impaired.\n- Poor coordination and pain response.  Nausea and vomiting sometimes occ...\n\n[Document 5] (ID: 10774_2, Score: 0.857)\n## Toxication\n- Intoxication by various drugs (alcohol, anaesthetics, marijuana, etc.)\n- Poisons (including carbon monoxide and metabolic blockade)\n- Medications, including psychotropic medications\n\n## Mental illness\n- Mania\n- Depression\n- Schizophrenia\n\n## Psychological stressors\n- Distraction\n- Em...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you recently started taking any new medications or supplements?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_12 retrieve_interaction: doctor_action: retrieve(query=causes of confusion and dizziness in elderly men)\nresponse: [Document 1] (ID: 20144_0, Score: 0.870)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 2] (ID: 12149_3, Score: 0.858)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 22749_1, Score: 0.857)\n# Possible causes\nConfusion, like inability to focus attention, is a very general and nonspecific symptom of brain or mental dysfunction. In addition to many organic causes of confusion relating to a structural defect or a metabolic problem in the brain (analogous to hardware problems in a computer)...\n\n[Document 4] (ID: 20215_0, Score: 0.856)\nDizziness overview\nNorina Usman, M.B.B.S\n\n# Overview\nDizziness is a symptom rather than a condition on its own. It is a complex and subjective complaint that encompasses a wide spectrum of symptomatology. It is a sensation of postural unsteadiness or deceptive motion. It is one of the most communal ...\n\n[Document 5] (ID: 20144_1, Score: 0.856)\n# Natural History, Complications and Prognosis\nConfusion is a disturbance in mental status which develops rapidly. If untreated it develops into a stupor / coma. Confusion caused by metabolic changes can be rapidly corrected and have good prognosis compared to the one caused by underlying structural..."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.\ndoctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up.\ndoctor_action: retrieve(query=symptoms of confusion and lightheadedness in elderly men)\nresponse: [Document 1] (ID: 11017_5, Score: 0.862)\n- Their vision becomes blurry. They may have trouble sensing things (hearing, tasting, feeling, etc.).\n- Confusion (BAC = 0.18 to 0.30%)\nProfound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\nHeightened emotional state — aggressive, withdrawn, or overly...\n\n[Document 2] (ID: 12149_3, Score: 0.862)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 20144_0, Score: 0.861)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 4] (ID: 11902_3, Score: 0.860)\n- Profound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\n- Heightened emotional state — aggressive, withdrawn, or overly affectionate.  Vision, speech, and awareness are impaired.\n- Poor coordination and pain response.  Nausea and vomiting sometimes occ...\n\n[Document 5] (ID: 10774_2, Score: 0.857)\n## Toxication\n- Intoxication by various drugs (alcohol, anaesthetics, marijuana, etc.)\n- Poisons (including carbon monoxide and metabolic blockade)\n- Medications, including psychotropic medications\n\n## Mental illness\n- Mania\n- Depression\n- Schizophrenia\n\n## Psychological stressors\n- Distraction\n- Em...\ndoctor_action: ask_patient(question=Have you recently started taking any new medications or supplements?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 12,
+        "query_text": "62-year-old male patient reports confusion, lightheadedness, and dizziness, especially when standing. No chest pain, joint pain, skin changes, GI symptoms, or neurological symptoms beyond these. No new medications or supplements reported. Labs and imaging not performed. Relevant history: elderly male with cognitive and balance symptoms. Uncertainty: cause of confusion and dizziness.",
+        "skill_query_text": "Presenting problem: confusion and dizziness in elderly male. Evidence gathered: patient denies other symptoms; retrieved documents on causes of confusion/dizziness in elderly men. Ineffective actions: labs and imaging requested but no results. Need guidance: next diagnostic action to resolve uncertainty about cause of confusion and dizziness."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.789,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7585,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7353,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_eb3a62fc75cd",
+              "type": "experience",
+              "score": 0.8019,
+              "outcome": "negative",
+              "text": "Bilateral, painless, gradual vision loss with dyschromatopsia (especially red washout) in an elderly patient supports nutritional optic neuropathy; do not apply this when there is pain, acute onset, or systemic symptoms suggesting other etiologies.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.8003,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7997,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.818,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_1243d80c7992",
+              "type": "skill",
+              "score": 0.8023,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7851,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent falls, or have you felt unsteady when walking?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '6195ec7a-a39a-462e-9908-402270c995b2', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent falls, or have you felt unsteady when walking?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1627}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent falls, or have you felt unsteady when walking?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent falls, or have you felt unsteady when walking?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of feeling unwell, with recent reports of confusion and lightheadedness. Key evidence gathered: Patient denies falls or unsteadiness on walking. Confirmed symptoms include confusion and lightheadedness, especially upon standing. No lab or imaging results available. Diagnostic uncertainty remains high due to lack of objective data. Most useful missing information: Medication history, recent changes in medications or supplements, and results from requested labs/imaging. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent falls, or have you felt unsteady when walking?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general unwellness. Denies falls or unsteadiness. Reports confusion and lightheadedness, especially when standing. No gastrointestinal, dermatological, joint, or neurological symptoms beyond confusion and dizziness. No recent medication changes reported. Labs and imaging requested but no results available. Retrieved documents suggest possible causes of confusion and dizziness in elderly, including metabolic, toxic, or psychiatric factors. No specific diagnosis or risk identified yet."
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 13,
+        "query_text": "Patient reports general unwellness, confusion, and lightheadedness especially upon standing. Denies falls or unsteadiness. No labs or imaging results available. No recent medication changes reported. Diagnostic uncertainty remains high due to lack of objective data. Relevant history: no gastrointestinal, dermatological, joint, or neurological symptoms beyond confusion and dizziness. No specific diagnosis or risk identified.",
+        "skill_query_text": "Presenting problem: patient with non-specific unwellness, confusion, and lightheadedness on standing. Evidence gathered: denies falls/unsteadiness, no labs/imaging results, no recent medication changes. Ineffective action: asked about falls/unsteadiness, patient denied. Missing: medication history, recent changes, lab/imaging results. Need: workflow guidance for next diagnostic steps given current uncertainty and lack of objective data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7737,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.752,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7359,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8192,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8158,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8071,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8142,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.803,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7942,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of confusion and dizziness in elderly men without other symptoms"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6df7e0a1-8852-4346-926c-4c23fbe8d7e8': '[Document 1] (ID: 20144_0, Score: 0.862)\\nConfusion overview\\n\\n# Overview\\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\\n\\n# Pathophysiology\\nConfusion results from glo...\\n\\n[Document 2] (ID: 12149_3, Score: 0.859)\\n### Activities Requiring Mental Alertness\\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\\n\\n# Adv...\\n\\n[Document 3] (ID: 22144_5, Score: 0.859)\\n## Related to the Brain\\nBrain related causes are less commonly associated with isolated vertigo and nystagmus but can still produce signs and symptoms which mimic peripheral causes.  Disequilibrium is often a prominent feature.\\n- Degenerative: Age related decline in balance function\\n- Infectious: Me...\\n\\n[Document 4] (ID: 20215_2, Score: 0.859)\\n# Risk factors\\nCommon risk factors in the development of dizziness include family history of thromboembolic factors (diab...[truncated]'}}",
+        "env_info": "{'response': [{'id': '6df7e0a1-8852-4346-926c-4c23fbe8d7e8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of confusion and dizziness in elderly men without other symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1701}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of confusion and dizziness in elderly men without other symptoms\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of confusion and dizziness in elderly men without other symptoms\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20126835",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 13. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 62-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 62-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=symptoms of confusion and lightheadedness in elderly men)\nresponse: [Document 1] (ID: 11017_5, Score: 0.862)\n- Their vision becomes blurry. They may have trouble sensing things (hearing, tasting, feeling, etc.).\n- Confusion (BAC = 0.18 to 0.30%)\nProfound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\nHeightened emotional state — aggressive, withdrawn, or overly...\n\n[Document 2] (ID: 12149_3, Score: 0.862)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 20144_0, Score: 0.861)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 4] (ID: 11902_3, Score: 0.860)\n- Profound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\n- Heightened emotional state — aggressive, withdrawn, or overly affectionate.  Vision, speech, and awareness are impaired.\n- Poor coordination and pain response.  Nausea and vomiting sometimes occ...\n\n[Document 5] (ID: 10774_2, Score: 0.857)\n## Toxication\n- Intoxication by various drugs (alcohol, anaesthetics, marijuana, etc.)\n- Poisons (including carbon monoxide and metabolic blockade)\n- Medications, including psychotropic medications\n\n## Mental illness\n- Mania\n- Depression\n- Schizophrenia\n\n## Psychological stressors\n- Distraction\n- Em...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you recently started taking any new medications or supplements?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_12 retrieve_interaction: doctor_action: retrieve(query=causes of confusion and dizziness in elderly men)\nresponse: [Document 1] (ID: 20144_0, Score: 0.870)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 2] (ID: 12149_3, Score: 0.858)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 22749_1, Score: 0.857)\n# Possible causes\nConfusion, like inability to focus attention, is a very general and nonspecific symptom of brain or mental dysfunction. In addition to many organic causes of confusion relating to a structural defect or a metabolic problem in the brain (analogous to hardware problems in a computer)...\n\n[Document 4] (ID: 20215_0, Score: 0.856)\nDizziness overview\nNorina Usman, M.B.B.S\n\n# Overview\nDizziness is a symptom rather than a condition on its own. It is a complex and subjective complaint that encompasses a wide spectrum of symptomatology. It is a sensation of postural unsteadiness or deceptive motion. It is one of the most communal ...\n\n[Document 5] (ID: 20144_1, Score: 0.856)\n# Natural History, Complications and Prognosis\nConfusion is a disturbance in mental status which develops rapidly. If untreated it develops into a stupor / coma. Confusion caused by metabolic changes can be rapidly corrected and have good prognosis compared to the one caused by underlying structural...",
+          "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent falls, or have you felt unsteady when walking?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_14 retrieve_interaction: doctor_action: retrieve(query=common causes of confusion and dizziness in elderly men without other symptoms)\nresponse: [Document 1] (ID: 20144_0, Score: 0.862)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 2] (ID: 12149_3, Score: 0.859)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 22144_5, Score: 0.859)\n## Related to the Brain\nBrain related causes are less commonly associated with isolated vertigo and nystagmus but can still produce signs and symptoms which mimic peripheral causes.  Disequilibrium is often a prominent feature.\n- Degenerative: Age related decline in balance function\n- Infectious: Me...\n\n[Document 4] (ID: 20215_2, Score: 0.859)\n# Risk factors\nCommon risk factors in the development of dizziness include family history of thromboembolic factors (diabetes, hypertension, high cholesterol, and rheumatic disease), cardiac arrhythmias, stroke, medication side effect (diuretics, antiepileptic drugs, opioid-based analgesics, antipsy...\n\n[Document 5] (ID: 20215_0, Score: 0.859)\nDizziness overview\nNorina Usman, M.B.B.S\n\n# Overview\nDizziness is a symptom rather than a condition on its own. It is a complex and subjective complaint that encompasses a wide spectrum of symptomatology. It is a sensation of postural unsteadiness or deceptive motion. It is one of the most communal ..."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.\ndoctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up.\ndoctor_action: retrieve(query=symptoms of confusion and lightheadedness in elderly men)\nresponse: [Document 1] (ID: 11017_5, Score: 0.862)\n- Their vision becomes blurry. They may have trouble sensing things (hearing, tasting, feeling, etc.).\n- Confusion (BAC = 0.18 to 0.30%)\nProfound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\nHeightened emotional state — aggressive, withdrawn, or overly...\n\n[Document 2] (ID: 12149_3, Score: 0.862)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\n\n[Document 3] (ID: 20144_0, Score: 0.861)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 4] (ID: 11902_3, Score: 0.860)\n- Profound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\n- Heightened emotional state — aggressive, withdrawn, or overly affectionate.  Vision, speech, and awareness are impaired.\n- Poor coordination and pain response.  Nausea and vomiting sometimes occ...\n\n[Document 5] (ID: 10774_2, Score: 0.857)\n## Toxication\n- Intoxication by various drugs (alcohol, anaesthetics, marijuana, etc.)\n- Poisons (including carbon monoxide and metabolic blockade)\n- Medications, including psychotropic medications\n\n## Mental illness\n- Mania\n- Depression\n- Schizophrenia\n\n## Psychological stressors\n- Distraction\n- Em...\ndoctor_action: ask_patient(question=Have you recently started taking any new medications or supplements?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20126835",
+        "turn_id": 14,
+        "query_text": "62-year-old male patient reports confusion, lightheadedness, and dizziness, especially when standing. No chest pain, joint pain, skin changes, GI symptoms, or recent falls. No new medications or supplements. No lab or imaging results available. Uncertainty remains regarding cause of neurological symptoms.",
+        "skill_query_text": "Presenting problem: confusion and dizziness in elderly male. Evidence gathered: patient history of symptoms, retrieved documents on causes of confusion/dizziness. Ineffective actions: lab and imaging requests yielded no results. Need guidance on next diagnostic action to resolve uncertainty without repeating low-information turns."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7769,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7433,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7225,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8032,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.7962,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7958,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.811,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_1243d80c7992",
+              "type": "skill",
+              "score": 0.797,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7896,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_19bb6b569799"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Vascular Dementia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'aea24f3c-0da3-4f4f-9730-38400e0c6bbd': '{\"diagnosis\": \"Vascular Dementia\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'aea24f3c-0da3-4f4f-9730-38400e0c6bbd', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Vascular Dementia}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2189}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Vascular Dementia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Vascular Dementia}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '1dad6742-90bb-453e-82ca-0ccd015481a6', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 53}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 3,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '13e2da80-a3cf-407c-afa8-fc8b5fab9275', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 132}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any chest pain, shortness of breath, fatigue, or unexplained weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 4,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?"
+      },
+      "patient_or_tool_response": "{'question': 'I haven’t noticed any rashes, discoloration, or unusual lesions on my skin.'}",
+      "env_info": "{'response': [{'id': 'e26f5d81-acc9-4a0f-b841-b1cb92022a12', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 213}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, especially in the mornings or after periods of inactivity?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': 'a0a3c218-ebf0-44de-a19c-4605e369759e', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 282}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your skin, such as rashes, discoloration, or unusual lesions?)\nresponse: I haven’t noticed any rashes, discoloration, or unusual lesions on my skin."
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?"
+      },
+      "patient_or_tool_response": "{'question': 'I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up.'}",
+      "env_info": "{'response': [{'id': '0ba337b4-baa8-4a57-8f72-5b72ff03e11c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 359}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, diarrhea, or abdominal pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'71c1c14a-d190-4b22-9cd0-ac878dde7c46': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '71c1c14a-d190-4b22-9cd0-ac878dde7c46', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 439}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any neurological symptoms, such as headaches, dizziness, numbness, or difficulty concentrating?)\nresponse: I’ve had confusion and lightheadedness. My thinking’s been fuzzy lately, and I’ve felt dizzy at times, especially when standing up."
+      ]
+    },
+    {
+      "turn_id": 9,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you recently started taking any new medications or supplements?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '4ea32f24-2302-486b-a4c3-bf09af1c65d7', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you recently started taking any new medications or supplements?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1011}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_9 retrieve_interaction: doctor_action: retrieve(query=symptoms of confusion and lightheadedness in elderly men)\nresponse: [Document 1] (ID: 11017_5, Score: 0.862)\n- Their vision becomes blurry. They may have trouble sensing things (hearing, tasting, feeling, etc.).\n- Confusion (BAC = 0.18 to 0.30%)\nProfound confusion — uncertain where they are or what they are doing. Dizziness and staggering occur.\nHeightened emotional state — aggressive, withdrawn, or overly...\n\n[Document 2] (ID: 12149_3, Score: 0.862)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly pa...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 10,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "imaging"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'69da4d70-90e2-4a4b-a006-a59f3080323b': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '69da4d70-90e2-4a4b-a006-a59f3080323b', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1080}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you recently started taking any new medications or supplements?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 12,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any recent falls, or have you felt unsteady when walking?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '6195ec7a-a39a-462e-9908-402270c995b2', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent falls, or have you felt unsteady when walking?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1627}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_12 retrieve_interaction: doctor_action: retrieve(query=causes of confusion and dizziness in elderly men)\nresponse: [Document 1] (ID: 20144_0, Score: 0.870)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 2] (ID: 12149_3, Score: 0.858)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients....[truncated]"
+      ]
+    },
+    {
+      "turn_id": 13,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "common causes of confusion and dizziness in elderly men without other symptoms"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'6df7e0a1-8852-4346-926c-4c23fbe8d7e8': '[Document 1] (ID: 20144_0, Score: 0.862)\\nConfusion overview\\n\\n# Overview\\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\\n\\n# Pathophysiology\\nConfusion results from glo...\\n\\n[Document 2] (ID: 12149_3, Score: 0.859)\\n### Activities Requiring Mental Alertness\\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\\n\\n# Adv...\\n\\n[Document 3] (ID: 22144_5, Score: 0.859)\\n## Related to the Brain\\nBrain related causes are less commonly associated with isolated vertigo and nystagmus but can still produce signs and symptoms which mimic peripheral causes.  Disequilibrium is often a prominent feature.\\n- Degenerative: Age related decline in balance function\\n- Infectious: Me...\\n\\n[Document 4] (ID: 20215_2, Score: 0.859)\\n# Risk factors\\nCommon risk factors in the development of dizziness include family history of thromboembolic factors (diab...[truncated]'}}",
+      "env_info": "{'response': [{'id': '6df7e0a1-8852-4346-926c-4c23fbe8d7e8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of confusion and dizziness in elderly men without other symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1701}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent falls, or have you felt unsteady when walking?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 14,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Vascular Dementia}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'aea24f3c-0da3-4f4f-9730-38400e0c6bbd': '{\"diagnosis\": \"Vascular Dementia\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': 'aea24f3c-0da3-4f4f-9730-38400e0c6bbd', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Vascular Dementia}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2189}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_14 retrieve_interaction: doctor_action: retrieve(query=common causes of confusion and dizziness in elderly men without other symptoms)\nresponse: [Document 1] (ID: 20144_0, Score: 0.862)\nConfusion overview\n\n# Overview\nConfusion refers to mental dysfunction in which a lack of attention and disorientation occurs with the inability to think with normal speed or clarity. It is the inability to maintain a coherent stream of thought or action.\n\n# Pathophysiology\nConfusion results from glo...\n\n[Document 2] (ID: 12149_3, Score: 0.859)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hy...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

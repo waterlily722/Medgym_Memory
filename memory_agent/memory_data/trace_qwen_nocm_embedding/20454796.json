@@ -1,0 +1,2090 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20454796",
+  "turns": [
+    {
+      "case_id": "20454796",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 55-year-old female patient presenting with 'Patient' and history of right breast cancer. Key evidence gathered: Patient is 55-year-old female with recent subjective decline and history of R breast cancer. Diagnostic uncertainty: No specific symptoms or findings provided beyond chief complaint and history. Most useful missing information: Detailed symptom timeline, relevant exam findings, lab/imaging results, or cancer recurrence status. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 55-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 55-year-old female patient presenting with Patient and history of R breast cancer.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is 55-year-old female with recent subjective decline and history of right breast cancer. No specific symptoms, exam, lab, imaging, or tool results provided. No interpretation of evidence available. Missing: Detailed symptom timeline, relevant exam findings, lab/imaging results, or cancer recurrence status. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 1,
+        "query_text": "55-year-old female, history of right breast cancer, recent subjective decline, no specific symptoms, signs, exam, lab, or imaging results provided, diagnostic uncertainty unresolved, missing detailed symptom timeline, exam findings, lab/imaging results, or cancer recurrence status.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 55-year-old female with 'Patient' and history of right breast cancer. Current uncertainty: No specific symptoms or findings provided. Evidence gathered: Subjective decline, history of R breast cancer. Missing: Detailed symptom timeline, exam findings, lab/imaging results, cancer recurrence status. Ineffective actions: None reported. Need: Workflow guidance for next diagnostic steps based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_40c6316a3b2a",
+              "type": "experience",
+              "score": 0.8195,
+              "outcome": "negative",
+              "text": "Fever, weight loss, fatigue, cough, and hemoptysis in a 57-year-old male strongly suggest lung cancer; do not dismiss this pattern as non-specific unless imaging or biopsy confirms an alternative.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.812,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_2019ba9cf7b7",
+              "type": "experience",
+              "score": 0.8111,
+              "outcome": "negative",
+              "text": "Unintentional weight loss and fatigue in a 77-year-old female, especially when accompanied by fever, strongly suggest systemic infection or malignancy; do not apply this when the patient has no fever, no weight loss, or when symptoms are localized and non-systemic.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8141,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8105,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8071,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.8105,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did you first start experiencing these symptoms, and have they been getting worse over time?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'a493e1c4-feef-4271-a2ce-195c6bbc4fc1', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did you first start experiencing these symptoms, and have they been getting worse over time?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first start experiencing these symptoms, and have they been getting worse over time?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first start experiencing these symptoms, and have they been getting worse over time?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unspecified chief complaint. Key evidence gathered: patient reports no known problems or abnormal findings in the relevant area. Diagnostic uncertainty remains high due to lack of specific symptom details or objective findings. Most useful missing information: precise nature, onset, and progression of symptoms. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first start experiencing these symptoms, and have they been getting worse over time?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Patient. No known problems or abnormal findings reported by patient in the relevant area. No specific symptom onset or progression details provided. No exam, lab, imaging, or tool results available. No interpretation of evidence possible due to lack of specific data. Missing information: precise nature, onset, and progression of symptoms."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 2,
+        "query_text": "Patient presents with unspecified chief complaint. No known problems or abnormal findings reported. No specific symptom onset or progression details provided. No exam, lab, imaging, or tool results available. Diagnostic uncertainty remains high due to lack of specific symptom details or objective findings. Missing information: precise nature, onset, and progression of symptoms.",
+        "skill_query_text": "Presenting problem: Patient with unspecified chief complaint. Current uncertainty: insufficient evidence to finalize diagnosis. Evidence gathered: patient reports no known problems or abnormal findings. Missing evidence: precise nature, onset, and progression of symptoms. Ineffective action tried: asked about symptom onset and progression, received negative response. Need: workflow guidance for next diagnostic steps given lack of specific symptom data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8313,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8242,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7802,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7748,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7685,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8435,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6a4fc7cfb2d",
+              "type": "experience",
+              "score": 0.8284,
+              "outcome": "negative",
+              "text": "Failure to elicit specific visual symptoms during initial questioning led to delayed diagnosis; always probe for visual changes (floaters, light sensitivity, blurring) even in non-specific chief complaints.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8276,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8207,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8138,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8087,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_f43afddafa87",
+          "skill_03d62c742a12",
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8313,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_f43afddafa87",
+            "memory_type": "experience",
+            "score": 0.8435,
+            "content": {
+              "experience": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.8207,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any unexplained weight loss, fatigue, or changes in appetite recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '4790f34c-0192-4504-bcc9-83ec29508a36', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any unexplained weight loss, fatigue, or changes in appetite recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 76}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unexplained weight loss, fatigue, or changes in appetite recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unexplained weight loss, fatigue, or changes in appetite recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unspecified chief complaint. Key evidence gathered: Patient denies unexplained weight loss, fatigue, or appetite changes. Diagnostic uncertainty remains high due to lack of specific symptoms or findings. Most useful missing information: Detailed symptom timeline, relevant physical exam findings, lab or imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any unexplained weight loss, fatigue, or changes in appetite recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Patient. Turn 2: Patient denies problems with symptom onset or worsening. Turn 3: Patient denies unexplained weight loss, fatigue, or appetite changes. No relevant exam, lab, imaging, or tool results provided. No specific history or findings to interpret. Missing: Detailed symptom timeline, physical exam, lab/imaging results."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 3,
+        "query_text": "Patient presents with unspecified chief complaint. Denies unexplained weight loss, fatigue, or appetite changes. No exam, lab, or imaging results provided. No relevant history or findings. Diagnostic uncertainty remains high due to lack of specific symptoms or findings. Missing: Detailed symptom timeline, physical exam, lab/imaging results.",
+        "skill_query_text": "Presenting problem: Patient with unspecified chief complaint. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: Patient denies weight loss, fatigue, or appetite changes. Ineffective action: Asked about weight loss, fatigue, appetite; patient denied. Missing: Detailed symptom timeline, physical exam, lab/imaging results. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.839,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8158,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7843,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.775,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7737,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8426,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8394,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8371,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8374,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8346,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8307,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_f43afddafa87"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any pain, swelling, or unusual discharge from your breasts or underarms recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'b6e4e6cb-f7fc-42c8-9c98-d7b29350f783', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any pain, swelling, or unusual discharge from your breasts or underarms recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 151}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any pain, swelling, or unusual discharge from your breasts or underarms recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any pain, swelling, or unusual discharge from your breasts or underarms recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unspecified chief complaint. Key evidence gathered: Patient denies pain, swelling, or unusual discharge from breasts or underarms (turn 4). Also denies symptoms of weight loss, fatigue, or appetite changes (turns 2-3). Diagnostic uncertainty remains high due to lack of specific symptoms or findings. Most useful missing information: Detailed history of symptoms, relevant physical exam, lab or imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any pain, swelling, or unusual discharge from your breasts or underarms recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient denies any problems in breast or underarm area (turns 2-4). Also denies unexplained weight loss, fatigue, or appetite changes (turns 2-3). No symptoms or findings reported. No exam, lab, imaging, or tool results provided. No relevant history or findings to interpret. Missing information: Detailed symptom history, physical exam, diagnostic tests. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 4,
+        "query_text": "Patient denies pain, swelling, or unusual discharge from breasts or underarms. Denies weight loss, fatigue, or appetite changes. No exam, lab, imaging, or tool results provided. No relevant history or findings. Diagnostic uncertainty remains high due to lack of specific symptoms or findings.",
+        "skill_query_text": "Presenting problem: Patient presents with unspecified chief complaint. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: Patient denies relevant symptoms. Ineffective action: Asked about breast/underarm symptoms (turn 4), patient denied issues. Missing: Detailed symptom history, physical exam, diagnostic tests. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7685,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7491,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7482,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8356,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_7f7d2d0a31dc",
+              "type": "experience",
+              "score": 0.8275,
+              "outcome": "negative",
+              "text": "Repeated negative responses to non-specific symptom questions (weight loss, fever, fatigue) do not rule out rheumatoid arthritis; focus on joint-specific findings and autoantibody testing for diagnostic confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_9ef2509e63b0",
+              "type": "experience",
+              "score": 0.8261,
+              "outcome": "negative",
+              "text": "Absence of fever, redness, or warmth in acute knee trauma with swelling and inability to bear weight does not rule out fracture or ligament tear; do not assume infection is absent without imaging or lab confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8243,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_aa1ed1da6eed",
+              "type": "skill",
+              "score": 0.8214,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8157,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent episodes of fever, night sweats, or persistent cough?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '50e88598-8e84-4ff8-9eec-7869ac157c86', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent episodes of fever, night sweats, or persistent cough?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 228}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent episodes of fever, night sweats, or persistent cough?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent episodes of fever, night sweats, or persistent cough?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unspecified chief complaint. Key evidence gathered: No recent fever, night sweats, or persistent cough reported. Diagnostic uncertainty remains high due to lack of specific symptoms or findings. Most useful missing information: Detailed history of symptoms, relevant physical exam, lab or imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent episodes of fever, night sweats, or persistent cough?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Patient. History: No recent fever, night sweats, or persistent cough reported. No unexplained weight loss, fatigue, or appetite changes reported. No pain, swelling, or unusual discharge from breasts or underarms reported. No abnormal findings reported in any area. No lab, imaging, or tool results available. No specific symptoms or findings identified to guide diagnosis. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 5,
+        "query_text": "Patient presents with unspecified chief complaint. No recent fever, night sweats, or persistent cough reported. No unexplained weight loss, fatigue, or appetite changes. No pain, swelling, or discharge from breasts/underarms. No abnormal findings. No lab, imaging, or tool results available. No specific symptoms or findings to guide diagnosis. No management-relevant risk identified. Diagnostic uncertainty remains high.",
+        "skill_query_text": "Presenting problem: Patient with unspecified chief complaint. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: No recent fever, night sweats, or cough reported. Missing: Detailed symptom history, physical exam, lab/imaging results. Ineffective action: Asked about fever, night sweats, cough — patient denied. Need: Workflow guidance for next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7703,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7498,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7485,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.8507,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8349,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_9ef2509e63b0",
+              "type": "experience",
+              "score": 0.823,
+              "outcome": "negative",
+              "text": "Absence of fever, redness, or warmth in acute knee trauma with swelling and inability to bear weight does not rule out fracture or ligament tear; do not assume infection is absent without imaging or lab confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8429,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.826,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8255,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a30d3511-240e-4140-bbaf-b21421c17fa9': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'a30d3511-240e-4140-bbaf-b21421c17fa9', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 303}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.16666666666666666,
+        "delta": 0.16666666666666666,
+        "turn_reward": 0.03333333333333333,
+        "importance": 0.16666666666666666
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 5,
+        "query_text": "Patient presents with unspecified chief complaint. No recent fever, night sweats, or persistent cough reported. No unexplained weight loss, fatigue, or appetite changes. No pain, swelling, or discharge from breasts/underarms. No abnormal findings. No lab, imaging, or tool results available. No specific symptoms or findings to guide diagnosis. No management-relevant risk identified. Diagnostic uncertainty remains high.",
+        "skill_query_text": "Presenting problem: Patient with unspecified chief complaint. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: No recent fever, night sweats, or cough reported. Missing: Detailed symptom history, physical exam, lab/imaging results. Ineffective action: Asked about fever, night sweats, cough — patient denied. Need: Workflow guidance for next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7703,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7498,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7485,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.8507,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8349,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_9ef2509e63b0",
+              "type": "experience",
+              "score": 0.823,
+              "outcome": "negative",
+              "text": "Absence of fever, redness, or warmth in acute knee trauma with swelling and inability to bear weight does not rule out fracture or ligament tear; do not assume infection is absent without imaging or lab confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8429,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.826,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8255,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms and complications of breast cancer recurrence in 55-year-old female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f6b5bc6b-ae75-4495-b734-6290790684cd': '[Document 1] (ID: 4110_23, Score: 0.864)\\nThe risk of local recurrence is strongly dependent on the age of the patient at the time of diagnosis [bib_ref] Recurrence rates after treatment of breast cancer with standard radiotherapy with or..., Bartelink [/bib_ref] [bib_ref] Isolated loco-regional recurrence of breast cancer is more common in...\\n\\n[Document 2] (ID: 6736_1, Score: 0.860)\\n# What to expect (Outlook/Prognosis)?\\nThere may be support groups for women with breast disease in your area. Ask your doctor or other health care provider for a recommendation. The outcome is excellent for people with one tumor. People with many tumors, or who get them at an early age may have an i...\\n\\n[Document 3] (ID: 8621_1, Score: 0.859)\\n## Life Threatening Causes\\n- Breast cancer\\n- Breast cancer is a type of cancer that originates in the breast tissue and occurs when the breast tissue starts growing at an uncontrollable rate. Although it is predominantly present in females, It also occurs in men. Breast cancer can be either ductal w...\\n\\n[Document 4] (ID: 14246_2, Score: 0.857)\\n# Risk Factors\\n- Common risk factors in the development of ductal carcinoma, include:\\n- Family history of breast cancer\\n- M...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'f6b5bc6b-ae75-4495-b734-6290790684cd', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms and complications of breast cancer recurrence in 55-year-old female\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 374}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.16666666666666666,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.16666666666666666,
+        "turn_reward": 0.03333333333333333,
+        "importance": 0.16666666666666666
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and complications of breast cancer recurrence in 55-year-old female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and complications of breast cancer recurrence in 55-year-old female\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unspecified symptoms, no clear history or physical findings. Key evidence gathered: patient denies symptoms (pain, swelling, discharge, weight loss, fever, night sweats) and no lab results available. Diagnostic uncertainty remains high due to lack of specific clinical data. Most useful missing information: detailed symptom timeline, physical exam findings, imaging or lab results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=symptoms and complications of breast cancer recurrence in 55-year-old female)\nresponse: [Document 1] (ID: 4110_23, Score: 0.864)\nThe risk of local recurrence is strongly dependent on the age of the patient at the time of diagnosis [bib_ref] Recurrence rates after treatment of breast cancer with standard radiotherapy with or..., Bartelink [/bib_ref] [bib_ref] Isolated loco-regional recurrence of breast cancer is more common in...\n\n[Document 2] (ID: 6736_1, Score: 0.860)\n# What to expect (Outlook/Prognosis)?\nThere may be support groups for women with breast disease in your area. Ask your doctor or other health care provider for a recommendation. The outcome is excellent for people with one tumor. People with many tumors, or who get them at an early age may have an i...\n\n[Document 3] (ID: 8621_1, Score: 0.859)\n## Life Threatening Causes\n- Breast cancer\n- Breast cancer is a type of cancer that originates in the breast tissue and occurs when the breast tissue starts growing at an uncontrollable rate. Although it is predominantly present in females, It also occurs in men. Breast cancer can be either ductal w...\n\n[Document 4] (ID: 14246_2, Score: 0.857)\n# Risk Factors\n- Common risk factors in the development of ductal carcinoma, include:\n- Family history of breast cancer\n- Mutations in BRCA1/BRCA2 genes\n- Previous exposure to radiation therapy\n- Increased breast density\n- Hormonal therapy\n- Nulliparity\n- Obesity\n\n# Natural History, Complications an...\n\n[Document 5] (ID: 1450_49, Score: 0.856)\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\nThese recommendations apply to women aged 18 and over\nThrombocytosis, 40 and ov..."
+        ],
+        "prior_information_summary": "Patient denies symptoms including pain, swelling, discharge, weight loss, fatigue, changes in appetite, fever, night sweats, or persistent cough. No lab results available. No physical exam or imaging results recorded. No known history of breast cancer or related risk factors. No clinical cause identified for symptoms. Recommendation to return to GP if symptoms worsen remains pending further investigation."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 7,
+        "query_text": "Patient denies pain, swelling, discharge, weight loss, fever, night sweats, fatigue, appetite changes, or persistent cough. No lab, imaging, or physical exam results available. No known breast cancer history or risk factors. No clinical cause identified. High diagnostic uncertainty due to lack of specific data.",
+        "skill_query_text": "Presenting problem: patient with unspecified symptoms, no clear history or findings. Evidence gathered: denies symptoms, no labs/imaging/physical exam. Ineffective action: retrieved breast cancer recurrence info irrelevant to current case. Need workflow guidance on next diagnostic steps given insufficient data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7752,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7606,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7483,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.8531,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8491,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8367,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8351,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8327,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8248,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f01d7e38e72f",
+          "skill_14c12495f9b6",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_f01d7e38e72f",
+            "memory_type": "experience",
+            "score": 0.8491,
+            "content": {
+              "experience": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you undergone any recent imaging or follow-up tests related to your breast cancer history?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'abebaffa-5043-4daa-aff6-95f497ba0b1c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you undergone any recent imaging or follow-up tests related to your breast cancer history?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 877}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you undergone any recent imaging or follow-up tests related to your breast cancer history?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you undergone any recent imaging or follow-up tests related to your breast cancer history?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with unspecified chief complaint, with history of breast cancer. Key evidence gathered: patient denies recent imaging, symptoms, or complications related to breast cancer. Diagnostic uncertainty remains high due to lack of specific clinical data or test results. Most useful missing information: recent imaging or lab results, specific symptom timeline, or objective findings. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you undergone any recent imaging or follow-up tests related to your breast cancer history?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Patient. History: Patient denies recent imaging, symptoms, or complications related to breast cancer. Exam: No results from requested labs. Information retrieved: Literature on breast cancer recurrence risk, complications, risk factors, and management recommendations for 55-year-old female. No specific clinical findings or test results available. Unresolved: Specific symptom timeline, imaging or lab results, and objective findings not provided."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 8,
+        "query_text": "Patient presents with unspecified chief complaint, history of breast cancer, denies recent imaging, symptoms, or complications. No lab or imaging results available. No specific symptom timeline or objective findings. Diagnostic uncertainty remains high due to insufficient data. No management-relevant risk supported.",
+        "skill_query_text": "Presenting problem: Patient with history of breast cancer, no recent imaging or test results. Uncertainty: Diagnosis not finalized due to lack of specific clinical data. Evidence gathered: Patient denies symptoms or complications. Ineffective action: Asked about recent imaging/tests, patient denies issues. Missing: Recent imaging, lab results, symptom timeline. Need: Workflow guidance for next diagnostic steps based on breast cancer history and current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_ff56919235da",
+              "type": "experience",
+              "score": 0.8154,
+              "outcome": "negative",
+              "text": "Repeated requests for labs or PSA without obtaining results are low-value; prioritize patient-reported systemic symptoms over unobtainable lab data when diagnosing advanced prostate cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8148,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8057,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8521,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.836,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8336,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f01d7e38e72f",
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'06aacb34-bae7-4a6c-ba14-bb3d02cccefd': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '06aacb34-bae7-4a6c-ba14-bb3d02cccefd', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 952}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 8,
+        "query_text": "Patient presents with unspecified chief complaint, history of breast cancer, denies recent imaging, symptoms, or complications. No lab or imaging results available. No specific symptom timeline or objective findings. Diagnostic uncertainty remains high due to insufficient data. No management-relevant risk supported.",
+        "skill_query_text": "Presenting problem: Patient with history of breast cancer, no recent imaging or test results. Uncertainty: Diagnosis not finalized due to lack of specific clinical data. Evidence gathered: Patient denies symptoms or complications. Ineffective action: Asked about recent imaging/tests, patient denies issues. Missing: Recent imaging, lab results, symptom timeline. Need: Workflow guidance for next diagnostic steps based on breast cancer history and current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_ff56919235da",
+              "type": "experience",
+              "score": 0.8154,
+              "outcome": "negative",
+              "text": "Repeated requests for labs or PSA without obtaining results are low-value; prioritize patient-reported systemic symptoms over unobtainable lab data when diagnosing advanced prostate cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8148,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8057,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8521,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.836,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8336,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f01d7e38e72f",
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common systemic symptoms of breast cancer recurrence in postmenopausal women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c1c6b6c9-3535-4e8a-a3b7-52fccac7e136': '[Document 1] (ID: 4468_30, Score: 0.867)\\n## Locoregional disease recurrence\\nIn case of locoregional disease recurrence after adjuvant therapy, the following test (as with initial primary tumor treatment) should be done before any further treatment decision: - Biopsy, - Hormone receptor status - HER2 status - Complete re-staging.\\nFollowing ...\\n\\n[Document 2] (ID: 3232_1, Score: 0.861)\\nsystemic treatment. In patients with a de novo diagnosis of breast cancer with synchronous distant metastases, surgery and radiotherapy result in considerably better locoregional tumor control. An improvement in survival has not been consistently proven, but may exist in subgroups of patients. Concl...\\n\\n[Document 3] (ID: 20545_5, Score: 0.861)\\n# Natural History, Complications and Prognosis\\nIf left untreated, women with menopause  may progress to develop hypertension, hyperlipidemia, and  atherosclerosis. Common complications of menopause  includecardiovascular disease, osteoporosis, Stroke. The complication that is happened with  hormonal...\\n\\n[Document 4] (ID: 1352_3, Score: 0.860)\\n## People with early breast cancer and their families would welcome a new effective treatment option that reduces the risk ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'c1c6b6c9-3535-4e8a-a3b7-52fccac7e136', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common systemic symptoms of breast cancer recurrence in postmenopausal women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1026}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.5,
+        "delta": 0.16666666666666669,
+        "turn_reward": 0.03333333333333334,
+        "importance": 0.16666666666666669
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common systemic symptoms of breast cancer recurrence in postmenopausal women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common systemic symptoms of breast cancer recurrence in postmenopausal women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Assess for possible breast cancer recurrence in a postmenopausal woman with no reported symptoms. Key evidence gathered: No reported symptoms (pain, swelling, discharge, weight loss, fever, night sweats, cough), no lab or imaging results available. Diagnostic uncertainty: Cannot confirm or rule out recurrence without further investigation. Most useful missing information: Imaging or lab results, patient history of prior treatment, and any recent follow-up tests. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=common systemic symptoms of breast cancer recurrence in postmenopausal women)\nresponse: [Document 1] (ID: 4468_30, Score: 0.867)\n## Locoregional disease recurrence\nIn case of locoregional disease recurrence after adjuvant therapy, the following test (as with initial primary tumor treatment) should be done before any further treatment decision: - Biopsy, - Hormone receptor status - HER2 status - Complete re-staging.\nFollowing ...\n\n[Document 2] (ID: 3232_1, Score: 0.861)\nsystemic treatment. In patients with a de novo diagnosis of breast cancer with synchronous distant metastases, surgery and radiotherapy result in considerably better locoregional tumor control. An improvement in survival has not been consistently proven, but may exist in subgroups of patients. Concl...\n\n[Document 3] (ID: 20545_5, Score: 0.861)\n# Natural History, Complications and Prognosis\nIf left untreated, women with menopause  may progress to develop hypertension, hyperlipidemia, and  atherosclerosis. Common complications of menopause  includecardiovascular disease, osteoporosis, Stroke. The complication that is happened with  hormonal...\n\n[Document 4] (ID: 1352_3, Score: 0.860)\n## People with early breast cancer and their families would welcome a new effective treatment option that reduces the risk of recurrence\nBreast cancer is the most common cancer in the UK. Hormone receptor‑positive, HER2-negative breast cancer is the most common subtype, accounting for about 70% of a...\n\n[Document 5] (ID: 886_0, Score: 0.859)\nThis article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY# Introduction\nBreast cancer is a common disease in Canada, with approximately 25,000 new cases per year . Survival outcomes with early-stage breast cancer have significantly i..."
+        ],
+        "prior_information_summary": "Chief complaint: Patient. History: No reported symptoms (pain, swelling, discharge, weight loss, fever, night sweats, cough). No lab results available. No imaging results available. No recent imaging or follow-up tests reported. No known complications or risk factors reported. No clinical cause identified for symptoms. No treatment or management plan supported. No evidence of recurrence or systemic symptoms. No actionable findings. No result for labs or imaging. No knowledge base available for approximate answers."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 10,
+        "query_text": "Patient, postmenopausal, no reported symptoms (pain, swelling, discharge, weight loss, fever, night sweats, cough). No lab or imaging results available. No prior treatment history or recent follow-up tests known. No clinical cause identified. Diagnostic uncertainty: Cannot confirm or rule out recurrence without further investigation.",
+        "skill_query_text": "Presenting problem: Assess for possible breast cancer recurrence in postmenopausal woman with no reported symptoms. Evidence gathered: None (no labs, imaging, or history). Ineffective action: Retrieved systemic symptoms of recurrence but no actionable findings. Need: Workflow guidance for next diagnostic steps given lack of evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8291,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8165,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7883,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7793,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.769,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.849,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8395,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.839,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8049,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_4d07b04b92ce",
+              "type": "skill",
+              "score": 0.8047,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8034,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_f01d7e38e72f",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.8165,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unexplained bone pain, fractures, or neurological symptoms that might suggest metastasis?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'a849b09b-dd7b-4fcc-861a-d72dea9f6795', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unexplained bone pain, fractures, or neurological symptoms that might suggest metastasis?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1501}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained bone pain, fractures, or neurological symptoms that might suggest metastasis?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained bone pain, fractures, or neurological symptoms that might suggest metastasis?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 10. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient",
+          "initial_information: I am a 55-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 55-year-old female patient presenting with Patient and history of R breast cancer..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first start experiencing these symptoms, and have they been getting worse over time?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any unexplained weight loss, fatigue, or changes in appetite recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any pain, swelling, or unusual discharge from your breasts or underarms recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent episodes of fever, night sweats, or persistent cough?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=symptoms and complications of breast cancer recurrence in 55-year-old female)\nresponse: [Document 1] (ID: 4110_23, Score: 0.864)\nThe risk of local recurrence is strongly dependent on the age of the patient at the time of diagnosis [bib_ref] Recurrence rates after treatment of breast cancer with standard radiotherapy with or..., Bartelink [/bib_ref] [bib_ref] Isolated loco-regional recurrence of breast cancer is more common in...\n\n[Document 2] (ID: 6736_1, Score: 0.860)\n# What to expect (Outlook/Prognosis)?\nThere may be support groups for women with breast disease in your area. Ask your doctor or other health care provider for a recommendation. The outcome is excellent for people with one tumor. People with many tumors, or who get them at an early age may have an i...\n\n[Document 3] (ID: 8621_1, Score: 0.859)\n## Life Threatening Causes\n- Breast cancer\n- Breast cancer is a type of cancer that originates in the breast tissue and occurs when the breast tissue starts growing at an uncontrollable rate. Although it is predominantly present in females, It also occurs in men. Breast cancer can be either ductal w...\n\n[Document 4] (ID: 14246_2, Score: 0.857)\n# Risk Factors\n- Common risk factors in the development of ductal carcinoma, include:\n- Family history of breast cancer\n- Mutations in BRCA1/BRCA2 genes\n- Previous exposure to radiation therapy\n- Increased breast density\n- Hormonal therapy\n- Nulliparity\n- Obesity\n\n# Natural History, Complications an...\n\n[Document 5] (ID: 1450_49, Score: 0.856)\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\nThese recommendations apply to women aged 18 and over\nThrombocytosis, 40 and ov...",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you undergone any recent imaging or follow-up tests related to your breast cancer history?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=common systemic symptoms of breast cancer recurrence in postmenopausal women)\nresponse: [Document 1] (ID: 4468_30, Score: 0.867)\n## Locoregional disease recurrence\nIn case of locoregional disease recurrence after adjuvant therapy, the following test (as with initial primary tumor treatment) should be done before any further treatment decision: - Biopsy, - Hormone receptor status - HER2 status - Complete re-staging.\nFollowing ...\n\n[Document 2] (ID: 3232_1, Score: 0.861)\nsystemic treatment. In patients with a de novo diagnosis of breast cancer with synchronous distant metastases, surgery and radiotherapy result in considerably better locoregional tumor control. An improvement in survival has not been consistently proven, but may exist in subgroups of patients. Concl...\n\n[Document 3] (ID: 20545_5, Score: 0.861)\n# Natural History, Complications and Prognosis\nIf left untreated, women with menopause  may progress to develop hypertension, hyperlipidemia, and  atherosclerosis. Common complications of menopause  includecardiovascular disease, osteoporosis, Stroke. The complication that is happened with  hormonal...\n\n[Document 4] (ID: 1352_3, Score: 0.860)\n## People with early breast cancer and their families would welcome a new effective treatment option that reduces the risk of recurrence\nBreast cancer is the most common cancer in the UK. Hormone receptor‑positive, HER2-negative breast cancer is the most common subtype, accounting for about 70% of a...\n\n[Document 5] (ID: 886_0, Score: 0.859)\nThis article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY# Introduction\nBreast cancer is a common disease in Canada, with approximately 25,000 new cases per year . Survival outcomes with early-stage breast cancer have significantly i...",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unexplained bone pain, fractures, or neurological symptoms that might suggest metastasis?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did you first start experiencing these symptoms, and have they been getting worse over time?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any unexplained weight loss, fatigue, or changes in appetite recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any pain, swelling, or unusual discharge from your breasts or underarms recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any recent episodes of fever, night sweats, or persistent cough?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=symptoms and complications of breast cancer recurrence in 55-year-old female)\nresponse: [Document 1] (ID: 4110_23, Score: 0.864)\nThe risk of local recurrence is strongly dependent on the age of the patient at the time of diagnosis [bib_ref] Recurrence rates after treatment of breast cancer with standard radiotherapy with or..., Bartelink [/bib_ref] [bib_ref] Isolated loco-regional recurrence of breast cancer is more common in...\n\n[Document 2] (ID: 6736_1, Score: 0.860)\n# What to expect (Outlook/Prognosis)?\nThere may be support groups for women with breast disease in your area. Ask your doctor or other health care provider for a recommendation. The outcome is excellent for people with one tumor. People with many tumors, or who get them at an early age may have an i...\n\n[Document 3] (ID: 8621_1, Score: 0.859)\n## Life Threatening Causes\n- Breast cancer\n- Breast cancer is a type of cancer that originates in the breast tissue and occurs when the breast tissue starts growing at an uncontrollable rate. Although it is predominantly present in females, It also occurs in men. Breast cancer can be either ductal w...\n\n[Document 4] (ID: 14246_2, Score: 0.857)\n# Risk Factors\n- Common risk factors in the development of ductal carcinoma, include:\n- Family history of breast cancer\n- Mutations in BRCA1/BRCA2 genes\n- Previous exposure to radiation therapy\n- Increased breast density\n- Hormonal therapy\n- Nulliparity\n- Obesity\n\n# Natural History, Complications an...\n\n[Document 5] (ID: 1450_49, Score: 0.856)\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\nThese recommendations apply to women aged 18 and over\nThrombocytosis, 40 and ov...\ndoctor_action: ask_patient(question=Have you undergone any recent imaging or follow-up tests related to your breast cancer history?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common systemic symptoms of breast cancer recurrence in postmenopausal women)\nresponse: [Document 1] (ID: 4468_30, Score: 0.867)\n## Locoregional disease recurrence\nIn case of locoregional disease recurrence after adjuvant therapy, the following test (as with initial primary tumor treatment) should be done before any further treatment decision: - Biopsy, - Hormone receptor status - HER2 status - Complete re-staging.\nFollowing ...\n\n[Document 2] (ID: 3232_1, Score: 0.861)\nsystemic treatment. In patients with a de novo diagnosis of breast cancer with synchronous distant metastases, surgery and radiotherapy result in considerably better locoregional tumor control. An improvement in survival has not been consistently proven, but may exist in subgroups of patients. Concl...\n\n[Document 3] (ID: 20545_5, Score: 0.861)\n# Natural History, Complications and Prognosis\nIf left untreated, women with menopause  may progress to develop hypertension, hyperlipidemia, and  atherosclerosis. Common complications of menopause  includecardiovascular disease, osteoporosis, Stroke. The complication that is happened with  hormonal...\n\n[Document 4] (ID: 1352_3, Score: 0.860)\n## People with early breast cancer and their families would welcome a new effective treatment option that reduces the risk of recurrence\nBreast cancer is the most common cancer in the UK. Hormone receptor‑positive, HER2-negative breast cancer is the most common subtype, accounting for about 70% of a...\n\n[Document 5] (ID: 886_0, Score: 0.859)\nThis article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY# Introduction\nBreast cancer is a common disease in Canada, with approximately 25,000 new cases per year . Survival outcomes with early-stage breast cancer have significantly i...\n\nIneffective/no-result interactions:\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 11,
+        "query_text": "55-year-old female with history of breast cancer, presenting with unspecified chief complaint. No positive or negative findings reported. No labs or imaging results available. No weight loss, fatigue, pain, fever, or neurological symptoms reported. No recent imaging or labs performed. Uncertainty remains regarding recurrence or other causes.",
+        "skill_query_text": "Patient has history of breast cancer, no labs or imaging results, no systemic symptoms reported. Previous retrieval queries on recurrence symptoms and risk factors. Ineffective attempts: labs and imaging requests yielded no results. Need guidance on next diagnostic action to resolve uncertainty without repeating low-information steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_2019ba9cf7b7",
+              "type": "experience",
+              "score": 0.8452,
+              "outcome": "negative",
+              "text": "Unintentional weight loss and fatigue in a 77-year-old female, especially when accompanied by fever, strongly suggest systemic infection or malignancy; do not apply this when the patient has no fever, no weight loss, or when symptoms are localized and non-systemic.",
+              "tags": []
+            },
+            {
+              "id": "exp_40c6316a3b2a",
+              "type": "experience",
+              "score": 0.8398,
+              "outcome": "negative",
+              "text": "Fever, weight loss, fatigue, cough, and hemoptysis in a 57-year-old male strongly suggest lung cancer; do not dismiss this pattern as non-specific unless imaging or biopsy confirms an alternative.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8285,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8174,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8129,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8109,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12",
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-local symptoms of breast cancer recurrence in postmenopausal women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9fb144e6-0cd3-4329-a228-7458b6c936e5': '[Document 1] (ID: 2965_0, Score: 0.864)\\nSummary version of the standards, options and recommendations for nonmetastatic breast cancer (updated January 2001)\\n\\n[bib_ref] ) Standards, options and recommendations for non metastatic breast cancer patients, Mauriac [/bib_ref]\\n\\n## Clinical diagnosis (figures 1 and 2)\\nDiagnostic work-up of an abn...\\n\\n[Document 2] (ID: 20545_5, Score: 0.862)\\n# Natural History, Complications and Prognosis\\nIf left untreated, women with menopause  may progress to develop hypertension, hyperlipidemia, and  atherosclerosis. Common complications of menopause  includecardiovascular disease, osteoporosis, Stroke. The complication that is happened with  hormonal...\\n\\n[Document 3] (ID: 2965_29, Score: 0.860)\\n## General follow-up after treatment of patients in complete remission\\nHistory taking and clinical examination form the basis of followup (standard). In the absence of symptoms or signs, a routine screen for metastases is not indicated (standard, level of evidence: A). If a metastasis is found, the ...\\n\\n[Document 4] (ID: 2965_32, Score: 0.859)\\n[fig] Figure 3: Impalpable operable tumour -locoregional treatment. [/fig]\\n\\n[fig] Figure 6: Operable palpable tumour -loco...[truncated]'}}",
+        "env_info": "{'response': [{'id': '9fb144e6-0cd3-4329-a228-7458b6c936e5', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-local symptoms of breast cancer recurrence in postmenopausal women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1579}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-local symptoms of breast cancer recurrence in postmenopausal women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-local symptoms of breast cancer recurrence in postmenopausal women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Current clinical problem: Assess for signs of breast cancer recurrence in a postmenopausal woman with no reported symptoms. Key evidence gathered: Patient reports no symptoms, no recent imaging or lab results, and no known abnormalities. Diagnostic uncertainty remains high due to lack of objective findings. Most useful missing information: Results of imaging or lab tests, or presence of systemic symptoms. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient"
+        ],
+        "ineffective_turn_information": [
+          "turn_12 retrieve_interaction: doctor_action: retrieve(query=non-local symptoms of breast cancer recurrence in postmenopausal women)\nresponse: [Document 1] (ID: 2965_0, Score: 0.864)\nSummary version of the standards, options and recommendations for nonmetastatic breast cancer (updated January 2001)\n\n[bib_ref] ) Standards, options and recommendations for non metastatic breast cancer patients, Mauriac [/bib_ref]\n\n## Clinical diagnosis (figures 1 and 2)\nDiagnostic work-up of an abn...\n\n[Document 2] (ID: 20545_5, Score: 0.862)\n# Natural History, Complications and Prognosis\nIf left untreated, women with menopause  may progress to develop hypertension, hyperlipidemia, and  atherosclerosis. Common complications of menopause  includecardiovascular disease, osteoporosis, Stroke. The complication that is happened with  hormonal...\n\n[Document 3] (ID: 2965_29, Score: 0.860)\n## General follow-up after treatment of patients in complete remission\nHistory taking and clinical examination form the basis of followup (standard). In the absence of symptoms or signs, a routine screen for metastases is not indicated (standard, level of evidence: A). If a metastasis is found, the ...\n\n[Document 4] (ID: 2965_32, Score: 0.859)\n[fig] Figure 3: Impalpable operable tumour -locoregional treatment. [/fig]\n\n[fig] Figure 6: Operable palpable tumour -locoregional treatment. [/fig]\n\n[fig] Figure 7: Operable palpable tumour -locoregional treatment. [/fig]\n\n[table] Table 1: Definition of 'Standards, Options and Recommendations' [/ta...\n\n[Document 5] (ID: 1207_19, Score: 0.859)\nhave a low absolute risk of local recurrence (defined as women aged 50 and over with tumours that are 3 cm or less, N0, ER‑positive, HER2‑negative and grade 1 to 2), and\nhave been advised to have adjuvant endocrine therapy for a minimum of 5 years.\nIf partial-breast radiotherapy (see recommendation ..."
+        ],
+        "prior_information_summary": "Chief complaint: Patient. Patient reports no symptoms of breast cancer recurrence, including no pain, swelling, discharge, weight loss, fatigue, fever, night sweats, cough, bone pain, fractures, or neurological symptoms. No imaging or lab results available. Relevant documents retrieved include general standards for nonmetastatic breast cancer, natural history, complications, risk factors, and follow-up guidelines, but no specific clinical findings or test results are present. No evidence of systemic or local recurrence detected. No known abnormalities reported. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 12,
+        "query_text": "Patient is postmenopausal, reports no symptoms, no imaging or lab results, no known abnormalities, no systemic or local recurrence detected, no management-relevant risk identified.",
+        "skill_query_text": "Current decision point: Assess for breast cancer recurrence in postmenopausal woman with no symptoms. Evidence gathered: No imaging, no labs, no signs/symptoms. Ineffective action: Retrieved non-local symptoms of recurrence but no specific findings. Need workflow guidance on next diagnostic steps given absence of objective evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7959,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7875,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.779,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7498,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7271,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8098,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_8a1f6ade34a2",
+              "type": "experience",
+              "score": 0.8094,
+              "outcome": "negative",
+              "text": "Requesting imaging without prior targeted history or physical exam yields no diagnostic value in AVM evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8085,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.814,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8094,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8089,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Non-specific systemic symptoms in a postmenopausal woman with history of breast cancer, requiring further investigation for possible recurrence or metastasis.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'60031a2f-f931-4e88-b22a-644cb64c8655': '{\"diagnosis\": \"Non-specific systemic symptoms in a postmenopausal woman with history of breast cancer, requiring further investigation for possible recurrence or metastasis.\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '60031a2f-f931-4e88-b22a-644cb64c8655', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Non-specific systemic symptoms in a postmenopausal woman with history of breast cancer, requiring further investigation for possible recurrence or metastasis.}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2118}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Non-specific systemic symptoms in a postmenopausal woman with history of breast cancer, requiring further investigation for possible recurren",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Non-specific systemic symptoms in a postmenopausal woman with history of breast cancer, requiring further investigation for possible recurrence or metastasis.}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Known evidence: patient denies any unusual fatigue, unexplained weight loss, or night sweats. No labs or imaging results available. Patient has history of breast cancer. Leading uncertainty: whether symptoms are related to breast cancer recurrence or another systemic condition. Most useful missing evidence: results of requested labs and imaging, and clarification on patient’s current symptoms. Diagnosis should not yet be finalized.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any unusual fatigue, unexplained weight loss, or night sweats that might not be related to your breast cancer history?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient denies any unusual fatigue, unexplained weight loss, or night sweats. Denies recent infections, fever, chills, changes in appetite, pain, swelling, or changes in breast or lymph nodes. No recent imaging or labs performed. History of breast cancer. No result for labs or imaging. Retrieved documents on breast cancer recurrence symptoms, risk factors, and prognosis for 55-year-old women. No new positive or negative findings from patient or tests."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 13,
+        "query_text": "Patient denies unusual fatigue, unexplained weight loss, or night sweats. No labs or imaging results available. History of breast cancer. Uncertainty: whether symptoms relate to breast cancer recurrence or another systemic condition. No new positive or negative findings from patient or tests.",
+        "skill_query_text": "Presenting problem: patient with breast cancer history. Current uncertainty: whether symptoms are related to recurrence or another systemic condition. Evidence gathered: patient denies fatigue, weight loss, night sweats, infections, fever, chills, appetite changes, pain, swelling, or breast/lymph node changes. Missing: lab/imaging results. Ineffective action: asked about symptoms, patient denied any issues. Need: workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_aa639a2730dd",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Absence of fever, night sweats, or weight loss in a patient with malignant airway obstruction due to stent occlusion is a negative finding that helps rule out systemic metastatic spread.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc7f03fcbdcb",
+              "type": "experience",
+              "score": 0.8122,
+              "outcome": "negative",
+              "text": "Lack of imaging or lab results in a patient with pelvic mass and abdominal distention prevents definitive diagnosis and increases risk of missing malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b153aefcae4",
+              "type": "experience",
+              "score": 0.8086,
+              "outcome": "negative",
+              "text": "Absence of vaginal bleeding, discharge, or menstrual changes in a postmenopausal woman with pelvic mass and abdominal distention does not rule out malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.8222,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_388adbb820ea",
+              "type": "skill",
+              "score": 0.8175,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_e419326a635d",
+              "type": "skill",
+              "score": 0.817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-local symptoms of breast cancer recurrence in postmenopausal women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'cd5c0e00-9ab1-46e2-ac2d-477972a29dc6': '[Document 1] (ID: 2965_0, Score: 0.864)\\nSummary version of the standards, options and recommendations for nonmetastatic breast cancer (updated January 2001)\\n\\n[bib_ref] ) Standards, options and recommendations for non metastatic breast cancer patients, Mauriac [/bib_ref]\\n\\n## Clinical diagnosis (figures 1 and 2)\\nDiagnostic work-up of an abn...\\n\\n[Document 2] (ID: 20545_5, Score: 0.862)\\n# Natural History, Complications and Prognosis\\nIf left untreated, women with menopause  may progress to develop hypertension, hyperlipidemia, and  atherosclerosis. Common complications of menopause  includecardiovascular disease, osteoporosis, Stroke. The complication that is happened with  hormonal...\\n\\n[Document 3] (ID: 2965_29, Score: 0.860)\\n## General follow-up after treatment of patients in complete remission\\nHistory taking and clinical examination form the basis of followup (standard). In the absence of symptoms or signs, a routine screen for metastases is not indicated (standard, level of evidence: A). If a metastasis is found, the ...\\n\\n[Document 4] (ID: 2965_32, Score: 0.859)\\n[fig] Figure 3: Impalpable operable tumour -locoregional treatment. [/fig]\\n\\n[fig] Figure 6: Operable palpable tumour -loco...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'cd5c0e00-9ab1-46e2-ac2d-477972a29dc6', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-local symptoms of breast cancer recurrence in postmenopausal women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2244}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-local symptoms of breast cancer recurrence in postmenopausal women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-local symptoms of breast cancer recurrence in postmenopausal women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Patient",
+        "diagnostic_strategy": "Known evidence: patient reports no symptoms or abnormal findings. No labs or imaging results available. Leading uncertainty: whether patient has non-local symptoms of breast cancer recurrence. Most useful missing evidence: clinical exam findings, imaging, or lab results. Diagnosis should not yet be finalized.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_14 retrieve_interaction: doctor_action: retrieve(query=non-local symptoms of breast cancer recurrence in postmenopausal women)\nresponse: [Document 1] (ID: 2965_0, Score: 0.864)\nSummary version of the standards, options and recommendations for nonmetastatic breast cancer (updated January 2001)\n\n[bib_ref] ) Standards, options and recommendations for non metastatic breast cancer patients, Mauriac [/bib_ref]\n\n## Clinical diagnosis (figures 1 and 2)\nDiagnostic work-up of an abn...\n\n[Document 2] (ID: 20545_5, Score: 0.862)\n# Natural History, Complications and Prognosis\nIf left untreated, women with menopause  may progress to develop hypertension, hyperlipidemia, and  atherosclerosis. Common complications of menopause  includecardiovascular disease, osteoporosis, Stroke. The complication that is happened with  hormonal...\n\n[Document 3] (ID: 2965_29, Score: 0.860)\n## General follow-up after treatment of patients in complete remission\nHistory taking and clinical examination form the basis of followup (standard). In the absence of symptoms or signs, a routine screen for metastases is not indicated (standard, level of evidence: A). If a metastasis is found, the ...\n\n[Document 4] (ID: 2965_32, Score: 0.859)\n[fig] Figure 3: Impalpable operable tumour -locoregional treatment. [/fig]\n\n[fig] Figure 6: Operable palpable tumour -locoregional treatment. [/fig]\n\n[fig] Figure 7: Operable palpable tumour -locoregional treatment. [/fig]\n\n[table] Table 1: Definition of 'Standards, Options and Recommendations' [/ta...\n\n[Document 5] (ID: 1207_19, Score: 0.859)\nhave a low absolute risk of local recurrence (defined as women aged 50 and over with tumours that are 3 cm or less, N0, ER‑positive, HER2‑negative and grade 1 to 2), and\nhave been advised to have adjuvant endocrine therapy for a minimum of 5 years.\nIf partial-breast radiotherapy (see recommendation ..."
+        ],
+        "prior_information_summary": "Patient reports no symptoms or abnormal findings related to breast cancer recurrence. No lab or imaging results available. Patient has no recent infections, fever, chills, weight loss, fatigue, or night sweats. No recent imaging or follow-up tests. No history of breast cancer recurrence symptoms. No family history or risk factors reported. No medications or allergies reported. No social or family history provided. No clinical exam performed. No results for labs or imaging. No actionable findings."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 14,
+        "query_text": "Patient reports no symptoms or abnormal findings. No labs or imaging results available. No history of breast cancer recurrence symptoms. No family history or risk factors. No medications or allergies. No clinical exam performed. Unresolved uncertainty: whether patient has non-local symptoms of breast cancer recurrence.",
+        "skill_query_text": "Presenting problem: patient with no symptoms or findings, uncertain if non-local symptoms of breast cancer recurrence. Evidence gathered: none. Ineffective action: retrieved non-local symptoms of breast cancer recurrence in postmenopausal women. Needed: workflow guidance for next diagnostic steps given no evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_fd83016d219b",
+              "type": "experience",
+              "score": 0.8336,
+              "outcome": "negative",
+              "text": "Requesting imaging for malignant airway obstruction yields no result in the absence of available records or knowledge base, indicating a critical gap in diagnostic evidence.",
+              "tags": []
+            },
+            {
+              "id": "exp_aa639a2730dd",
+              "type": "experience",
+              "score": 0.8199,
+              "outcome": "negative",
+              "text": "Absence of fever, night sweats, or weight loss in a patient with malignant airway obstruction due to stent occlusion is a negative finding that helps rule out systemic metastatic spread.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc7f03fcbdcb",
+              "type": "experience",
+              "score": 0.8163,
+              "outcome": "negative",
+              "text": "Lack of imaging or lab results in a patient with pelvic mass and abdominal distention prevents definitive diagnosis and increases risk of missing malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_388adbb820ea",
+              "type": "skill",
+              "score": 0.7887,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.784,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_e419326a635d",
+              "type": "skill",
+              "score": 0.7795,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{No specific diagnosis can be made with current information; further investigation is needed to rule out recurrence or other causes of symptoms.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d7b26757-a4e9-4c8e-b185-f82486674ba8': '{\"diagnosis\": \"No specific diagnosis can be made with current information; further investigation is needed to rule out recurrence or other causes of symptoms.\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'd7b26757-a4e9-4c8e-b185-f82486674ba8', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{No specific diagnosis can be made with current information; further investigation is needed to rule out recurrence or other causes of symptoms.}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2783}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{No specific diagnosis can be made with current information; further investigation is needed to rule out recurrence or other causes of symptom",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{No specific diagnosis can be made with current information; further investigation is needed to rule out recurrence or other causes of symptoms.}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20454796",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnosis_goal": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_15 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20454796",
+        "turn_id": 14,
+        "query_text": "55-year-old female patient with history of right breast cancer, presenting with non-specific symptoms. No reported weight loss, fatigue, night sweats, new lumps, swelling, or nipple discharge. No recent imaging or labs. No known systemic symptoms. No prior abnormal findings reported.",
+        "skill_query_text": "55-year-old female with history of breast cancer, presenting with vague complaint. Patient denies weight loss, fatigue, night sweats, lumps, or discharge. No labs or imaging performed. Previous symptom screening and literature review on breast cancer recurrence symptoms completed. Need targeted diagnostic guidance for next step: consider imaging or specific exam to resolve uncertainty about recurrence vs. non-cancer causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_7210c8d79a48",
+              "type": "experience",
+              "score": 0.7726,
+              "outcome": "positive",
+              "text": "In diabetic patients with progressive redness, swelling, warmth, and pain on the leg, a recent spider bite is a key discriminative clue supporting cellulitis over other differentials like abscess or deep vein thrombosis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8dc38c68226a",
+              "type": "experience",
+              "score": 0.8367,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with weight loss, fatigue, night sweats, nausea, and vomiting, failure to obtain targeted labs (e.g., CBC, metabolic panel) or imaging (e.g., abdomen/pelvis) early leads to missed diagnoses such as malignancy or acute kidney failure. This case highlights the critical need to pursue specific diagnostic tests despite initial negative results, as the absence of results does not rule out serious pathology.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08c15c13a5e",
+              "type": "experience",
+              "score": 0.8251,
+              "outcome": "negative",
+              "text": "In a patient presenting with vague complaints, the absence of fever, weight loss, or recent infections does not rule out heart failure; orthopnea and exertional dyspnea are key discriminative symptoms that should prompt targeted imaging or lab work to differentiate cardiac from non-cardiac causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8246,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7784,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific symptoms of breast cancer recurrence in postmenopausal women"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': 'dc9c08cf-e5a5-4d70-9b5e-1cc636f61790', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific symptoms of breast cancer recurrence in postmenopausal women\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"dc9c08cf-e5a5-4d70-9b5e-1cc636f61790\", \"type\": \"function\", \"function\": {\"name\": \"retrieve\", \"arguments\": \"{\\\\\"query\\\\\": \\\\\"non-specific symptoms of breast cancer recurrence in postmenopausal women\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.16666666666666666, 'conf_after': 0.16666666666666666, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.16666666666666666, 'conf_after': 0.16666666666666666, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.16666666666666666, 'conf_after': 0.16666666666666666, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 7, 'conf_before': 0.16666666666666666, 'conf_after': 0.16666666666666666, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 2780}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms of breast cancer recurrence in postmenopausal women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms of breast cancer recurrence in postmenopausal women\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": []
+}

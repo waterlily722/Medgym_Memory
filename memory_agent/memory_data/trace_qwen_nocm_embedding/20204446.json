@@ -1,0 +1,1181 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20204446",
+  "turns": [
+    {
+      "case_id": "20204446",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Right ankle fracture",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 19-year-old female patient presenting with right ankle fracture. Key evidence gathered: Chief complaint confirmed. Diagnostic uncertainty: No additional clinical findings, exam, lab, or imaging results yet. Most useful missing information: Detailed mechanism of injury, physical exam findings, imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 19-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 19-year-old female patient presenting with Right ankle fracture.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 19-year-old female presenting with right ankle fracture. Chief complaint confirmed. No additional history, exam, lab, or imaging results available. No interpretation of evidence yet. Missing: Mechanism of injury, physical exam findings, imaging results."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20204446",
+        "turn_id": 1,
+        "query_text": "19-year-old female, chief complaint: right ankle fracture. No additional clinical findings, exam, lab, or imaging results yet. Missing: mechanism of injury, physical exam findings, imaging results. No interpretation of evidence. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 19-year-old female with right ankle fracture. Current uncertainty: No additional evidence gathered. Missing: mechanism of injury, physical exam findings, imaging results. Ineffective actions: None tried. Need: diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7479,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7477,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7182,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8013,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.7935,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_1be18ad725f5",
+              "type": "experience",
+              "score": 0.7876,
+              "outcome": "negative",
+              "text": "A dull, aching pain localized to the joint without radiation or systemic features is not diagnostic of osteoarthritis alone; it may represent mechanical strain, muscle strain, or other non-inflammatory joint pathologies, and requires further targeted evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.792,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7879,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.7865,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.792,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the right ankle injury occur, and what were you doing at the time?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '7c9a03b5-bcab-4841-8338-078b0a270ab9', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did the right ankle injury occur, and what were you doing at the time?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the right ankle injury occur, and what were you doing at the time?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the right ankle injury occur, and what were you doing at the time?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20204446",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Right ankle fracture",
+        "diagnostic_strategy": "Current clinical problem: Right ankle fracture. Key evidence gathered: Patient denies prior problems or abnormal findings in the right ankle. Diagnostic uncertainty remains high due to lack of injury mechanism, timing, or physical exam findings. Most useful missing information: Timing and mechanism of injury, physical exam findings (e.g., swelling, deformity, tenderness), imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the right ankle injury occur, and what were you doing at the time?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Right ankle fracture. Patient denies prior problems or abnormal findings in the right ankle. No injury mechanism or timing provided. No physical exam, lab, imaging, or tool results available. No interpretation of evidence possible due to lack of data. Missing: Injury mechanism, timing, physical exam findings, imaging results."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20204446",
+        "turn_id": 2,
+        "query_text": "Chief complaint: Right ankle fracture. Patient denies prior problems or abnormal findings. No injury mechanism or timing provided. No physical exam, lab, imaging, or tool results available. Diagnostic uncertainty remains high due to lack of injury mechanism, timing, or physical exam findings.",
+        "skill_query_text": "Presenting problem: Right ankle fracture. Current uncertainty: Diagnosis not finalized due to lack of injury mechanism, timing, physical exam findings, and imaging results. Ineffective action tried: Asked patient about injury timing and mechanism, received denial of prior problems. Missing: Injury mechanism, timing, physical exam findings, imaging results. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7422,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.738,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.708,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8127,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.7988,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_1be18ad725f5",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "negative",
+              "text": "A dull, aching pain localized to the joint without radiation or systemic features is not diagnostic of osteoarthritis alone; it may represent mechanical strain, muscle strain, or other non-inflammatory joint pathologies, and requires further targeted evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8108,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.8046,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8043,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe the mechanism of injury? For example, did you fall, twist your ankle, or was there a direct impact?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'b1fc7a7a-9a25-4483-a276-a92520d0d2d6', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the mechanism of injury? For example, did you fall, twist your ankle, or was there a direct impact?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 75}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the mechanism of injury? For example, did you fall, twist your ankle, or was there a direct impact?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the mechanism of injury? For example, did you fall, twist your ankle, or was there a direct impact?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20204446",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Right ankle fracture",
+        "diagnostic_strategy": "Current clinical problem: Right ankle fracture. Key evidence gathered: Patient reports no prior problems or abnormal findings in the area. Diagnostic uncertainty remains: mechanism of injury not yet clarified. Most useful missing information: specific mechanism of injury (e.g., fall, twist, direct impact). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the mechanism of injury? For example, did you fall, twist your ankle, or was there a direct impact?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Right ankle fracture. Patient reports no prior problems or abnormal findings in the area. Mechanism of injury not yet clarified. No exam, lab, imaging, or tool results provided. No treatment recommended. Low-value attempt: repeated inquiry about mechanism of injury yielded no useful clinical information."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20204446",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Right ankle fracture. Patient reports no prior problems or abnormal findings. Mechanism of injury not yet clarified. No exam, lab, imaging, or tool results provided. No treatment recommended.",
+        "skill_query_text": "Presenting problem: Right ankle fracture. Current uncertainty: mechanism of injury not clarified. Evidence gathered: patient reports no prior problems or abnormal findings. Missing: specific mechanism of injury (e.g., fall, twist, direct impact). Ineffective action: repeated inquiry about mechanism of injury yielded no useful clinical information. Need: workflow guidance for eliciting mechanism of injury."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7377,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7344,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7024,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.7961,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_1be18ad725f5",
+              "type": "experience",
+              "score": 0.7957,
+              "outcome": "negative",
+              "text": "A dull, aching pain localized to the joint without radiation or systemic features is not diagnostic of osteoarthritis alone; it may represent mechanical strain, muscle strain, or other non-inflammatory joint pathologies, and requires further targeted evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.795,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7912,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.787,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.7847,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Did you experience any trauma, such as a fall, sports injury, or car accident, that could have caused the injury?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '1319f0f1-860e-4fcf-94d9-90c2783c93df', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Did you experience any trauma, such as a fall, sports injury, or car accident, that could have caused the injury?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 159}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Did you experience any trauma, such as a fall, sports injury, or car accident, that could have caused the injury?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Did you experience any trauma, such as a fall, sports injury, or car accident, that could have caused the injury?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20204446",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Right ankle fracture",
+        "diagnostic_strategy": "Current clinical problem: Right ankle fracture. Key evidence gathered: Patient denies prior problems or abnormal findings in the area. Diagnostic uncertainty remains: No trauma mechanism confirmed; no imaging or physical exam findings yet. Most useful missing information: Trauma mechanism, imaging results, physical exam findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Did you experience any trauma, such as a fall, sports injury, or car accident, that could have caused the injury?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Right ankle fracture. Patient denies prior problems or abnormal findings in the area. Turn 2: Asked about timing and activity at injury; response: denies problems. Turn 3: Asked about mechanism of injury; response: denies problems. Turn 4: Asked about trauma; response: denies problems. No imaging, exam, or lab results available. No trauma mechanism confirmed. No treatment recommended."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20204446",
+        "turn_id": 4,
+        "query_text": "Chief complaint: Right ankle fracture. Patient denies prior problems or abnormal findings. No trauma mechanism confirmed. No imaging, exam, or lab results available. No treatment recommended.",
+        "skill_query_text": "Presenting problem: Right ankle fracture. Uncertainty: No trauma mechanism confirmed. Evidence gathered: Patient denies prior problems or abnormal findings. Missing: Trauma mechanism, imaging, physical exam findings. Ineffective action: Asked about trauma; patient denies problems. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7414,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7379,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7095,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8064,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.7983,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_8dfb5705d60c",
+              "type": "experience",
+              "score": 0.7953,
+              "outcome": "negative",
+              "text": "Trauma history with progressive pain, stiffness, and grinding in the hip supports osteoarthritis with secondary degeneration, not acute fracture, especially when no deformity or inability to move is present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8037,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7999,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7948,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'42392ddf-d1cc-4eab-849d-4f55abe23375': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '42392ddf-d1cc-4eab-849d-4f55abe23375', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 242}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20204446",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20204446",
+        "turn_id": 4,
+        "query_text": "Chief complaint: Right ankle fracture. Patient denies prior problems or abnormal findings. No trauma mechanism confirmed. No imaging, exam, or lab results available. No treatment recommended.",
+        "skill_query_text": "Presenting problem: Right ankle fracture. Uncertainty: No trauma mechanism confirmed. Evidence gathered: Patient denies prior problems or abnormal findings. Missing: Trauma mechanism, imaging, physical exam findings. Ineffective action: Asked about trauma; patient denies problems. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7414,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7379,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7095,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8064,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.7983,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_8dfb5705d60c",
+              "type": "experience",
+              "score": 0.7953,
+              "outcome": "negative",
+              "text": "Trauma history with progressive pain, stiffness, and grinding in the hip supports osteoarthritis with secondary degeneration, not acute fracture, especially when no deformity or inability to move is present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8037,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7999,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7948,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "symptoms and diagnosis of right ankle fracture in young adults"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'134f8813-1035-4a4c-94cb-a656106d6498': '[Document 1] (ID: 24411_10, Score: 0.877)\\n## Skin\\n- Skin examination of patients with Ankle fracture  includes:\\nBruises\\nEcchymosis\\n- Bruises\\n- Ecchymosis\\n\\n## HEENT\\n- HEENT examination of patients with Ankle fracture  usually normal.\\n\\n## Neck\\n- Neck examination of patients with Ankle fracture is usually normal\\n\\n## Lungs\\n- Pulmonary examinati...\\n\\n[Document 2] (ID: 24411_5, Score: 0.876)\\n# Differentiating Ankle fracture from other Diseases \\nIn the orthopedic medicine its important to know that the ankle fracture should be evaluated using radiography for both confirming diagnosis and also for evaluating the surrounding tissues.\\n- Acute compartment syndrome of ankle joint\\n- Ankle Disl...\\n\\n[Document 3] (ID: 25224_7, Score: 0.867)\\n# History and Symptoms \\nThe related signs and symptoms include:\\n- Deformity\\n- Skin lacerations\\n- Open fractures\\n- Erythema\\n- Edema\\n- Stiffness\\n- Decreased range of motion\\n- Tenderness\\n- Loss of function of the ankle\\n- Difficulties in detection of pulses\\n- Nerve damage\\nIn the physical exam the orthop...\\n\\n[Document 4] (ID: 24411_8, Score: 0.866)\\n# History and Symptoms \\nThe related signs and symptoms include:\\n- Deformity\\n- Skin lacerations\\n- Open fractures\\n- Erythe...[truncated]'}}",
+        "env_info": "{'response': [{'id': '134f8813-1035-4a4c-94cb-a656106d6498', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms and diagnosis of right ankle fracture in young adults\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 316}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and diagnosis of right ankle fracture in young adults\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and diagnosis of right ankle fracture in young adults\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20204446",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Right ankle fracture",
+        "diagnostic_strategy": "Current clinical problem: Suspected right ankle fracture. Key evidence gathered: Patient denies prior problems or trauma; imaging request returned no result. Diagnostic uncertainty remains high due to lack of physical exam findings or imaging confirmation. Most useful missing information: Imaging results (X-ray or CT) to confirm fracture. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified from current data.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms and diagnosis of right ankle fracture in young adults)\nresponse: [Document 1] (ID: 24411_10, Score: 0.877)\n## Skin\n- Skin examination of patients with Ankle fracture  includes:\nBruises\nEcchymosis\n- Bruises\n- Ecchymosis\n\n## HEENT\n- HEENT examination of patients with Ankle fracture  usually normal.\n\n## Neck\n- Neck examination of patients with Ankle fracture is usually normal\n\n## Lungs\n- Pulmonary examinati...\n\n[Document 2] (ID: 24411_5, Score: 0.876)\n# Differentiating Ankle fracture from other Diseases \nIn the orthopedic medicine its important to know that the ankle fracture should be evaluated using radiography for both confirming diagnosis and also for evaluating the surrounding tissues.\n- Acute compartment syndrome of ankle joint\n- Ankle Disl...\n\n[Document 3] (ID: 25224_7, Score: 0.867)\n# History and Symptoms \nThe related signs and symptoms include:\n- Deformity\n- Skin lacerations\n- Open fractures\n- Erythema\n- Edema\n- Stiffness\n- Decreased range of motion\n- Tenderness\n- Loss of function of the ankle\n- Difficulties in detection of pulses\n- Nerve damage\nIn the physical exam the orthop...\n\n[Document 4] (ID: 24411_8, Score: 0.866)\n# History and Symptoms \nThe related signs and symptoms include:\n- Deformity\n- Skin lacerations\n- Open fractures\n- Erythema\n- Edema\n- Stiffness\n- Decreased range of motion\n- Tenderness\n- Loss of function of the leg\n- Difficulties in detection of pulses\n- Nerve damage\nIn the physical exam the orthoped...\n\n[Document 5] (ID: 23078_7, Score: 0.865)\n# History and Symptoms\nThe related signs and symptoms include:\n- Deformity\n- Skin lacerations\n- Open fractures\n- Erythema\n- Edema\n- Stiffness\n- Decreased range of motion\n- Tenderness\n- Loss of function of the ankle\n- Difficulties in detection of pulses\n- Nerve damage\n- Varus deformity\n- Tibiotalar s..."
+        ],
+        "prior_information_summary": "Chief complaint: Right ankle fracture. Patient denies prior problems or trauma. Mechanism of injury not specified. Imaging request returned no result. No physical exam findings documented. Relevant symptoms not reported. No positive or negative findings from history or exam. No lab, imaging, or tool results available. Missing: Imaging confirmation, physical exam findings, mechanism of injury details. No low-value or no-result attempts beyond imaging request."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20204446",
+        "turn_id": 6,
+        "query_text": "Chief complaint: Right ankle fracture. Patient denies prior problems or trauma. Imaging request returned no result. No physical exam findings documented. No positive or negative findings from history or exam. No lab, imaging, or tool results available. Missing: Imaging confirmation, physical exam findings, mechanism of injury details.",
+        "skill_query_text": "Presenting problem: Suspected right ankle fracture. Current uncertainty: Diagnosis not confirmed due to lack of imaging results and physical exam findings. Evidence gathered: Patient denies trauma, imaging request pending. Ineffective actions: Previous retrieval of symptoms and diagnosis documents not yielding actionable diagnostic confirmation. Needed: Workflow guidance for confirming fracture with imaging or evaluating alternative diagnoses."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7473,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7379,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7172,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8183,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8032,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_8dfb5705d60c",
+              "type": "experience",
+              "score": 0.7953,
+              "outcome": "negative",
+              "text": "Trauma history with progressive pain, stiffness, and grinding in the hip supports osteoarthritis with secondary degeneration, not acute fracture, especially when no deformity or inability to move is present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8017,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.7998,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7948,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any swelling, bruising, or deformity around the right ankle? Can you describe the pain level and any difficulty walking or bearing weight?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '724b73c1-4dc9-4d49-903e-656d1927bb7f', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any swelling, bruising, or deformity around the right ankle? Can you describe the pain level and any difficulty walking or bearing weight?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 879}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, bruising, or deformity around the right ankle? Can you describe the pain level and any difficulty walking or bearing weight?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, bruising, or deformity around the right ankle? Can you describe the pain level and any difficulty walking or bearing weight?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20204446",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Right ankle fracture",
+        "diagnostic_strategy": "Current clinical problem: Suspected right ankle fracture. Key evidence gathered: Patient denies any swelling, bruising, or deformity; denies pain or difficulty walking. Diagnostic uncertainty remains high due to lack of objective imaging or physical exam findings. Most useful missing information: Imaging results (X-ray or CT) to confirm or rule out fracture. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any swelling, bruising, or deformity around the right ankle? Can you describe the pain level and any difficulty walking or bearing weight?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Right ankle fracture. Patient denies any swelling, bruising, or deformity; denies pain or difficulty walking. History: No trauma reported in prior turns. Imaging request (turn 5) returned no result. Literature review (turn 6) provided general signs/symptoms of ankle fracture (e.g., deformity, edema, tenderness) but no specific findings. No physical exam or imaging results available. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20204446",
+        "turn_id": 7,
+        "query_text": "Chief complaint: Right ankle fracture. Patient denies swelling, bruising, deformity, pain, or difficulty walking. No trauma reported. No imaging or physical exam findings available. Diagnostic uncertainty remains due to lack of objective evidence. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Suspected right ankle fracture. Uncertainty: Diagnosis not confirmed. Evidence gathered: Patient denies symptoms; no imaging or exam findings. Ineffective action: Asked about swelling/bruising/deformity; patient denies issues. Missing: Imaging (X-ray/CT) to confirm or rule out fracture. Need: Workflow guidance for next diagnostic step based on current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7572,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7538,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.743,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7335,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7146,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8108,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.7984,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_8dfb5705d60c",
+              "type": "experience",
+              "score": 0.7984,
+              "outcome": "negative",
+              "text": "Trauma history with progressive pain, stiffness, and grinding in the hip supports osteoarthritis with secondary degeneration, not acute fracture, especially when no deformity or inability to move is present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8106,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8098,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8071,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any trauma or incident that could have caused an injury to your right ankle, even if you don’t remember it clearly?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'f02dca9f-22fe-40cf-b14d-5f34d540d03e', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any trauma or incident that could have caused an injury to your right ankle, even if you don\\\\u2019t remember it clearly?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 968}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any trauma or incident that could have caused an injury to your right ankle, even if you don’t remember it clearly?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any trauma or incident that could have caused an injury to your right ankle, even if you don’t remember it clearly?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20204446",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Right ankle fracture",
+        "diagnostic_strategy": "Current clinical problem: Suspected right ankle fracture. Key evidence gathered: Patient denies trauma, denies swelling, bruising, deformity, pain, or difficulty walking. No imaging results available. Diagnostic uncertainty remains high due to lack of objective evidence. Most useful missing information: Imaging results (X-ray or CT) to confirm or rule out fracture. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any trauma or incident that could have caused an injury to your right ankle, even if you don’t remember it clearly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Right ankle fracture. Patient denies trauma, swelling, bruising, deformity, pain, or difficulty walking. Imaging request returned no result. Retrieved documents describe typical signs/symptoms of ankle fracture (deformity, edema, tenderness, loss of function) and diagnostic approach (radiography). No objective evidence supports or refutes fracture. No imaging or physical exam findings available. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20204446",
+        "turn_id": 8,
+        "query_text": "Chief complaint: Right ankle fracture. Patient denies trauma, swelling, bruising, deformity, pain, or difficulty walking. No imaging results available. Diagnostic uncertainty remains high due to lack of objective evidence. Most useful missing information: Imaging results (X-ray or CT) to confirm or rule out fracture. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Suspected right ankle fracture. Current uncertainty: Diagnosis not confirmed due to lack of imaging. Evidence gathered: Patient denies trauma, swelling, bruising, deformity, pain, or difficulty walking. Missing evidence: Imaging results (X-ray or CT). Ineffective action: Asked patient about trauma, response denied. Need: Workflow guidance for next diagnostic step given no imaging available."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.809,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7928,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7584,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7508,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7463,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8077,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8008,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.7954,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8095,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8053,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8036,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.809,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Right ankle fracture}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'438a57ad-65d2-4312-a781-6076f2a41329': '{\"diagnosis\": \"Right ankle fracture\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '438a57ad-65d2-4312-a781-6076f2a41329', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Right ankle fracture}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1053}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Right ankle fracture}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Right ankle fracture}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any trauma or incident that could have caused an injury to your right ankle, even if you don’t remember it clearly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+  ]
+}

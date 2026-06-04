@@ -1,0 +1,1018 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20238358",
+  "turns": [
+    {
+      "case_id": "20238358",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "OSH transfer for SOB and rash",
+        "diagnostic_strategy": "Current clinical problem: 35-year-old female presenting with OSH transfer for SOB and rash, with h/o asthma. Key evidence gathered: chief complaint and patient demographics. Diagnostic uncertainty: unclear etiology of SOB and rash; asthma history may be relevant. Most useful missing information: detailed symptom timeline, exposure history, physical exam findings, lab/imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 35-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 35-year-old female patient presenting with OSH transfer for SOB and rash and h/o asthma.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 35-year-old female, presenting with OSH transfer for SOB and rash, with h/o asthma. No additional findings, exam, lab, imaging, or tool results available. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20238358",
+        "turn_id": 1,
+        "query_text": "35-year-old female, OSH transfer for SOB and rash, h/o asthma. Known: chief complaint, demographics. Unclear etiology of SOB and rash. No exam, lab, imaging, or tool results. No additional findings. Diagnostic uncertainty remains.",
+        "skill_query_text": "Presenting problem: 35-year-old female with OSH transfer for SOB and rash, h/o asthma. Evidence gathered: chief complaint and demographics. Missing: symptom timeline, exposure history, physical exam, lab/imaging. No ineffective actions. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.81,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7854,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8154,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_4e216e018b5d",
+              "type": "experience",
+              "score": 0.8053,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest meningococcemia; do not discount this presentation in elderly patients even without travel or exposure history.",
+              "tags": []
+            },
+            {
+              "id": "exp_bef580faccef",
+              "type": "experience",
+              "score": 0.7988,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest a systemic inflammatory or coagulopathy process; do not apply this pattern when the patient has no petechiae or when symptoms are isolated to a single organ system without systemic signs.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8269,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.822,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8216,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_6ccf7d71e646"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_6ccf7d71e646",
+            "memory_type": "skill",
+            "score": 0.8216,
+            "content": {
+              "skill": "When a patient presents with worsening shortness of breath and a history of asthma, ask about recent environmental triggers or allergen exposure to narrow the differential diagnosis.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient(question=Have you been exposed to any recent infections or environmental triggers, such as smoke or allergens?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?"
+        },
+        "patient_or_tool_response": "{'question': 'The shortness of breath and rash started when she presented to the clinic on ___ — she developed the sore throat 4 days prior, then the cough and rash the next day. The symptoms have been intermittent — her SOB improved this morning but is now somewhat worse again, and the rash has been worsening over time, becoming more diffuse and spreading to her hands and feet.'}",
+        "env_info": "{'response': [{'id': 'bdf35923-0c4e-412f-af15-b07496b3c2bf', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20238358",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "OSH transfer for SOB and rash",
+        "diagnostic_strategy": "Current clinical problem: SOB and rash with recent onset and intermittent progression. Key evidence: symptoms began at clinic presentation, preceded by sore throat 4 days prior, followed by cough and rash next day; SOB intermittent with recent worsening, rash spreading to extremities. Diagnostic uncertainty: unclear etiology (infectious, allergic, autoimmune, or systemic). Most useful missing information: detailed exposure history, recent travel, medications, and physical exam findings. Evidence is insufficient to finalize diagnosis; further investigation needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?)\nresponse: The shortness of breath and rash started when she presented to the clinic on ___ — she developed the sore throat 4 days prior, then the cough and rash the next day. The symptoms have been intermittent — her SOB improved this morning but is now somewhat worse again, and the rash has been worsening over time, becoming more diffuse and spreading to her hands and feet."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: OSH transfer for SOB and rash. Patient reports SOB and rash began at clinic presentation, preceded by sore throat 4 days prior, followed by cough and rash next day. Symptoms intermittent: SOB improved this morning but now worsening, rash worsening and spreading to hands and feet. No lab, imaging, or exam results provided. No treatment or risk information provided."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20238358",
+        "turn_id": 2,
+        "query_text": "Chief complaint: OSH transfer for SOB and rash. Symptoms began at clinic presentation, preceded by sore throat 4 days prior, followed by cough and rash next day. SOB intermittent, worsened recently; rash spreading to extremities. No lab, imaging, or exam results. No treatment or risk info. Unclear etiology: infectious, allergic, autoimmune, or systemic.",
+        "skill_query_text": "Presenting problem: SOB and rash with recent onset and intermittent progression. Evidence gathered: patient reports symptom timeline and progression. Missing: detailed exposure history, recent travel, medications, physical exam findings. Ineffective actions: none. Need: diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8148,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8051,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8031,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7751,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7721,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8169,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8113,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8098,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8285,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8248,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8148,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3367812e-87c7-47bb-996b-91df320c6528': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '3367812e-87c7-47bb-996b-91df320c6528', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 126}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20238358",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20238358",
+        "turn_id": 2,
+        "query_text": "Chief complaint: OSH transfer for SOB and rash. Symptoms began at clinic presentation, preceded by sore throat 4 days prior, followed by cough and rash next day. SOB intermittent, worsened recently; rash spreading to extremities. No lab, imaging, or exam results. No treatment or risk info. Unclear etiology: infectious, allergic, autoimmune, or systemic.",
+        "skill_query_text": "Presenting problem: SOB and rash with recent onset and intermittent progression. Evidence gathered: patient reports symptom timeline and progression. Missing: detailed exposure history, recent travel, medications, physical exam findings. Ineffective actions: none. Need: diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8148,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8051,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8031,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7751,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7721,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8169,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8113,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8098,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8285,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8248,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.8051,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.8166,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "asthma exacerbation with rash and SOB in adult female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'190bdff1-a5b4-43f0-b4bd-d19595134253': '[Document 1] (ID: 391_40, Score: 0.858)\\n# Persons with Chronic Medical Conditions\\nIn a randomized cross-over study of children and adults with asthma, no increase in asthma exacerbations was reported for either age group (210), and a second study indicated no increase in wheezing among vaccinated asthmatic children (130). One study (123) ...\\n\\n[Document 2] (ID: 844_22, Score: 0.857)\\n- Diagnostic uncertainty - Children not controlled on moderate dose ICS with correct inhaler technique and appropriate medication adherence - Suspected or confirmed severe asthma - Life-threatening event such as an admission to the ICU for asthma - Need for allergy testing to assess the possible rol...\\n\\n[Document 3] (ID: 149_14, Score: 0.855)\\n# Adults\\nAmong adults, runny nose or nasal congestion (28%-78%), headache (16%-44%), and sore throat (15%-27%) have been reported more often among vaccine recipients than placebo recipients (16,23,24). In one clinical trial (16), among a subset of healthy adults aged 18-49 years, signs and symptoms ...\\n\\n[Document 4] (ID: 2279_1, Score: 0.854)\\nExacerbation of asthma (for example, with non‑steroidal anti‑inflammatory drugs )\\nOnset usually less than 1\\xa0hour after drug e...[truncated]'}}",
+        "env_info": "{'response': [{'id': '190bdff1-a5b4-43f0-b4bd-d19595134253', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"asthma exacerbation with rash and SOB in adult female\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 197}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma exacerbation with rash and SOB in adult female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma exacerbation with rash and SOB in adult female\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20238358",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "OSH transfer for SOB and rash",
+        "diagnostic_strategy": "Current clinical problem: OSH transfer for SOB and rash in adult female. Key evidence: SOB and rash started concurrently with sore throat 4 days prior, then cough and rash next day; symptoms intermittent with worsening rash. No lab results available. Diagnostic uncertainty: Could be asthma exacerbation, drug allergy, or other allergic reaction. Most useful missing information: history of asthma, inhaler use, recent exposures, allergy history. Existing evidence is not enough to finalize diagnosis; requires further history, exam, or testing.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: OSH transfer for SOB and rash"
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: OSH transfer for SOB and rash. History: SOB and rash started when presented to clinic; sore throat 4 days prior, cough and rash next day; symptoms intermittent, SOB improved then worsened, rash worsening and spreading to hands and feet. No lab results available. No imaging or exam results. No allergy history or recent exposures documented. No prior asthma or inhaler use documented. No known drug exposure reported. No ICU admission or severe asthma history documented."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20238358",
+        "turn_id": 4,
+        "query_text": "OSH transfer for SOB and rash in adult female. Symptoms started with sore throat 4 days prior, then cough and rash next day; symptoms intermittent with worsening rash. No lab results, imaging, or exam results available. No allergy history, recent exposures, asthma history, or inhaler use documented. Diagnostic uncertainty: asthma exacerbation, drug allergy, or other allergic reaction.",
+        "skill_query_text": "Presenting problem: OSH transfer for SOB and rash. Current uncertainty: asthma exacerbation, drug allergy, or other allergic reaction. Evidence gathered: chief complaint, symptom timeline, no labs, no imaging, no exam results. Ineffective action: requested labs, no result returned. Missing: allergy history, recent exposures, asthma history, inhaler use. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8293,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.8155,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8114,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_4e216e018b5d",
+              "type": "experience",
+              "score": 0.8005,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest meningococcemia; do not discount this presentation in elderly patients even without travel or exposure history.",
+              "tags": []
+            },
+            {
+              "id": "exp_bef580faccef",
+              "type": "experience",
+              "score": 0.7986,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest a systemic inflammatory or coagulopathy process; do not apply this pattern when the patient has no petechiae or when symptoms are isolated to a single organ system without systemic signs.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8235,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_1243d80c7992",
+              "type": "skill",
+              "score": 0.8222,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8185,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_6ccf7d71e646",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been exposed to any new medications, foods, or environmental allergens recently?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t been exposed to any new medications, foods, or other environmental allergens recently.'}",
+        "env_info": "{'response': [{'id': '407d8058-d552-4dc9-881e-d61782159173', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been exposed to any new medications, foods, or environmental allergens recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 709}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been exposed to any new medications, foods, or environmental allergens recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been exposed to any new medications, foods, or environmental allergens recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20238358",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "OSH transfer for SOB and rash",
+        "diagnostic_strategy": "Current clinical problem: SOB and rash in an adult female, with intermittent symptoms worsening over time. Key evidence: SOB and rash started 4 days ago with preceding sore throat, now intermittent with worsening rash. No recent exposure to new allergens. Diagnostic uncertainty: differential includes allergic reaction, drug-induced rash, or asthma exacerbation. Most useful missing information: results of labs (none available), specific rash characteristics, and history of asthma or allergies. Existing evidence is not enough to finalize diagnosis; further diagnostic workup needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: OSH transfer for SOB and rash",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?)\nresponse: The shortness of breath and rash started when she presented to the clinic on ___ — she developed the sore throat 4 days prior, then the cough and rash the next day. The symptoms have been intermittent — her SOB improved this morning but is now somewhat worse again, and the rash has been worsening over time, becoming more diffuse and spreading to her hands and feet.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=asthma exacerbation with rash and SOB in adult female)\nresponse: [Document 1] (ID: 391_40, Score: 0.858)\n# Persons with Chronic Medical Conditions\nIn a randomized cross-over study of children and adults with asthma, no increase in asthma exacerbations was reported for either age group (210), and a second study indicated no increase in wheezing among vaccinated asthmatic children (130). One study (123) ...\n\n[Document 2] (ID: 844_22, Score: 0.857)\n- Diagnostic uncertainty - Children not controlled on moderate dose ICS with correct inhaler technique and appropriate medication adherence - Suspected or confirmed severe asthma - Life-threatening event such as an admission to the ICU for asthma - Need for allergy testing to assess the possible rol...\n\n[Document 3] (ID: 149_14, Score: 0.855)\n# Adults\nAmong adults, runny nose or nasal congestion (28%-78%), headache (16%-44%), and sore throat (15%-27%) have been reported more often among vaccine recipients than placebo recipients (16,23,24). In one clinical trial (16), among a subset of healthy adults aged 18-49 years, signs and symptoms ...\n\n[Document 4] (ID: 2279_1, Score: 0.854)\nExacerbation of asthma (for example, with non‑steroidal anti‑inflammatory drugs )\nOnset usually less than 1 hour after drug exposure (previous exposure not always confirmed)\nSigns and allergic patterns of suspected drug allergy\nTiming of onset\nWidespread red macules or papules (exanthema‑like)\nOnset...\n\n[Document 5] (ID: 6346_1, Score: 0.853)\n- Edema can occur around the mouth, in the throat, in the abdomen, or in other locations. Urticaria and angioedema sometimes occur together in response to an allergen and should be a concern in severe cases because angioedema of the throat can be fatal.\n\n- A possible differential diagnosis for disea..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: OSH transfer for SOB and rash. History: SOB and rash started 4 days ago with preceding sore throat, now intermittent with worsening rash. No recent exposure to new medications, foods, or environmental allergens. Labs requested but no result available. Literature review suggests possible asthma exacerbation, drug-induced rash, or allergic reaction. Rash is widespread and spreading. No specific rash characteristics or allergy history provided. No asthma or allergy history documented. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20238358",
+        "turn_id": 5,
+        "query_text": "Adult female with SOB and worsening diffuse rash over 4 days, preceded by sore throat, intermittent symptoms, no recent allergen exposure, no lab results, no asthma or allergy history, diagnostic uncertainty: allergic reaction, drug-induced rash, or asthma exacerbation.",
+        "skill_query_text": "Presenting problem: SOB and rash in adult female. Evidence gathered: history of sore throat 4 days prior, intermittent symptoms, rash spreading to hands/feet, labs requested but no result. Ineffective action: lab request yielded no result. Need workflow guidance for next diagnostic steps given uncertainty and missing rash characteristics or allergy history."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8149,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.8033,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8017,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.7851,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_bef580faccef",
+              "type": "experience",
+              "score": 0.7833,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest a systemic inflammatory or coagulopathy process; do not apply this pattern when the patient has no petechiae or when symptoms are isolated to a single organ system without systemic signs.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8341,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8277,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.8256,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "allergic reaction with rash, SOB, and asthma history in adults"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c214990e-e9a3-4e52-929c-dfc8bbed78db': \"[Document 1] (ID: 5756_4, Score: 0.863)\\n- Local reactions large, persistent local reactions or minor exacerbations of the patient's allergic symptoms may be treated by local cold applications and/or the use of oral anti-histamines.\\n- Systemic reactions Allergenic extracts are highly potent and in highly sensitive individuals can cause sys...\\n\\n[Document 2] (ID: 27638_7, Score: 0.863)\\n### Allergic Reactions\\nAllergic reactions include the following: bronchospasm, hypotension, laryngeal edema, local erythema or swelling, systemic rash, and urticaria.\\n- Among 58 Pegaspargase-treated patients enrolled in Study 1, clinical allergic reactions were reported in 2 patients (3%). One patie...\\n\\n[Document 3] (ID: 3819_39, Score: 0.862)\\n## Local and systemic adverse events with je-vc\\nJE-VC was studied in approximately 5,000 adults in prelicensure clinical trials. Local and systemic adverse events caused by JE-VC were similar to those reported for JE-MB or placebo adjuvant alone. Subsequent postlicensure studies included children an...\\n\\n[Document 4] (ID: 273_65, Score: 0.861)\\n# Adults Aged 19-49 Years\\nAmong adults, runny nose or nasal congestion (28%-78%), headache (16%-44%), and sore throat (15%-...[truncated]\"}}",
+        "env_info": "{'response': [{'id': 'c214990e-e9a3-4e52-929c-dfc8bbed78db', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"allergic reaction with rash, SOB, and asthma history in adults\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 775}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"allergic reaction with rash, SOB, and asthma history in adults\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"allergic reaction with rash, SOB, and asthma history in adults\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20238358",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "OSH transfer for SOB and rash",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 6. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: OSH transfer for SOB and rash",
+          "initial_information: I am a 35-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 35-year-old female patient presenting with OSH transfer for SOB and rash and h/o asthma..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?)\nresponse: The shortness of breath and rash started when she presented to the clinic on ___ — she developed the sore throat 4 days prior, then the cough and rash the next day. The symptoms have been intermittent — her SOB improved this morning but is now somewhat worse again, and the rash has been worsening over time, becoming more diffuse and spreading to her hands and feet.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=asthma exacerbation with rash and SOB in adult female)\nresponse: [Document 1] (ID: 391_40, Score: 0.858)\n# Persons with Chronic Medical Conditions\nIn a randomized cross-over study of children and adults with asthma, no increase in asthma exacerbations was reported for either age group (210), and a second study indicated no increase in wheezing among vaccinated asthmatic children (130). One study (123) ...\n\n[Document 2] (ID: 844_22, Score: 0.857)\n- Diagnostic uncertainty - Children not controlled on moderate dose ICS with correct inhaler technique and appropriate medication adherence - Suspected or confirmed severe asthma - Life-threatening event such as an admission to the ICU for asthma - Need for allergy testing to assess the possible rol...\n\n[Document 3] (ID: 149_14, Score: 0.855)\n# Adults\nAmong adults, runny nose or nasal congestion (28%-78%), headache (16%-44%), and sore throat (15%-27%) have been reported more often among vaccine recipients than placebo recipients (16,23,24). In one clinical trial (16), among a subset of healthy adults aged 18-49 years, signs and symptoms ...\n\n[Document 4] (ID: 2279_1, Score: 0.854)\nExacerbation of asthma (for example, with non‑steroidal anti‑inflammatory drugs )\nOnset usually less than 1 hour after drug exposure (previous exposure not always confirmed)\nSigns and allergic patterns of suspected drug allergy\nTiming of onset\nWidespread red macules or papules (exanthema‑like)\nOnset...\n\n[Document 5] (ID: 6346_1, Score: 0.853)\n- Edema can occur around the mouth, in the throat, in the abdomen, or in other locations. Urticaria and angioedema sometimes occur together in response to an allergen and should be a concern in severe cases because angioedema of the throat can be fatal.\n\n- A possible differential diagnosis for disea...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you been exposed to any new medications, foods, or environmental allergens recently?)\nresponse: No, I haven’t been exposed to any new medications, foods, or other environmental allergens recently.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=allergic reaction with rash, SOB, and asthma history in adults)\nresponse: [Document 1] (ID: 5756_4, Score: 0.863)\n- Local reactions large, persistent local reactions or minor exacerbations of the patient's allergic symptoms may be treated by local cold applications and/or the use of oral anti-histamines.\n- Systemic reactions Allergenic extracts are highly potent and in highly sensitive individuals can cause sys...\n\n[Document 2] (ID: 27638_7, Score: 0.863)\n### Allergic Reactions\nAllergic reactions include the following: bronchospasm, hypotension, laryngeal edema, local erythema or swelling, systemic rash, and urticaria.\n- Among 58 Pegaspargase-treated patients enrolled in Study 1, clinical allergic reactions were reported in 2 patients (3%). One patie...\n\n[Document 3] (ID: 3819_39, Score: 0.862)\n## Local and systemic adverse events with je-vc\nJE-VC was studied in approximately 5,000 adults in prelicensure clinical trials. Local and systemic adverse events caused by JE-VC were similar to those reported for JE-MB or placebo adjuvant alone. Subsequent postlicensure studies included children an...\n\n[Document 4] (ID: 273_65, Score: 0.861)\n# Adults Aged 19-49 Years\nAmong adults, runny nose or nasal congestion (28%-78%), headache (16%-44%), and sore throat (15%-27%) have been reported more often among vaccine recipients than placebo recipients (277,291). In one clinical trial among a subset of healthy adults aged 18-49 years, signs and...\n\n[Document 5] (ID: 28638_11, Score: 0.861)\nThe adverse reaction profile in women 27 through 45 years of age was comparable to the profile seen in girls and women 9 through 26 years of age.\n\n## Postmarketing Experience\nThe following adverse events have been spontaneously reported during post-approval use of human papillomavirus quadrivalent v..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?)\nresponse: The shortness of breath and rash started when she presented to the clinic on ___ — she developed the sore throat 4 days prior, then the cough and rash the next day. The symptoms have been intermittent — her SOB improved this morning but is now somewhat worse again, and the rash has been worsening over time, becoming more diffuse and spreading to her hands and feet.\ndoctor_action: retrieve(query=asthma exacerbation with rash and SOB in adult female)\nresponse: [Document 1] (ID: 391_40, Score: 0.858)\n# Persons with Chronic Medical Conditions\nIn a randomized cross-over study of children and adults with asthma, no increase in asthma exacerbations was reported for either age group (210), and a second study indicated no increase in wheezing among vaccinated asthmatic children (130). One study (123) ...\n\n[Document 2] (ID: 844_22, Score: 0.857)\n- Diagnostic uncertainty - Children not controlled on moderate dose ICS with correct inhaler technique and appropriate medication adherence - Suspected or confirmed severe asthma - Life-threatening event such as an admission to the ICU for asthma - Need for allergy testing to assess the possible rol...\n\n[Document 3] (ID: 149_14, Score: 0.855)\n# Adults\nAmong adults, runny nose or nasal congestion (28%-78%), headache (16%-44%), and sore throat (15%-27%) have been reported more often among vaccine recipients than placebo recipients (16,23,24). In one clinical trial (16), among a subset of healthy adults aged 18-49 years, signs and symptoms ...\n\n[Document 4] (ID: 2279_1, Score: 0.854)\nExacerbation of asthma (for example, with non‑steroidal anti‑inflammatory drugs )\nOnset usually less than 1 hour after drug exposure (previous exposure not always confirmed)\nSigns and allergic patterns of suspected drug allergy\nTiming of onset\nWidespread red macules or papules (exanthema‑like)\nOnset...\n\n[Document 5] (ID: 6346_1, Score: 0.853)\n- Edema can occur around the mouth, in the throat, in the abdomen, or in other locations. Urticaria and angioedema sometimes occur together in response to an allergen and should be a concern in severe cases because angioedema of the throat can be fatal.\n\n- A possible differential diagnosis for disea...\ndoctor_action: ask_patient(question=Have you been exposed to any new medications, foods, or environmental allergens recently?)\nresponse: No, I haven’t been exposed to any new medications, foods, or other environmental allergens recently.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20238358",
+        "turn_id": 6,
+        "query_text": "35-year-old female with OSH transfer for SOB and rash; symptoms intermittent, rash worsening, spread to hands/feet; h/o asthma; no new allergen exposure; prior retrieve: asthma exacerbation with rash/SOB; retrieve: allergic reaction with rash/SOB/asthma history; labs requested but no result.",
+        "skill_query_text": "Presenting problem: OSH transfer for SOB and rash in 35F with asthma; uncertainty: cause of SOB/rash; evidence gathered: patient history, prior retrieves; ineffective: labs request yielded no result; need: targeted exam/tool or reasoning guidance to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8151,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8106,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8093,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.8016,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7751,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8136,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_aae0e5d2e6d2",
+              "type": "experience",
+              "score": 0.8099,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical context or prior history of hormonal symptoms yields no diagnostic value; prioritize targeted history and physical findings over untargeted lab requests in ambiguous cases.",
+              "tags": []
+            },
+            {
+              "id": "exp_fc137e9b29f4",
+              "type": "experience",
+              "score": 0.8074,
+              "outcome": "negative",
+              "text": "Swelling, redness, and warmth around the hip with a history of trauma are not specific to osteoarthritis; they suggest acute inflammatory or infectious processes such as septic arthritis or bursitis, which require urgent differentiation from degenerative conditions.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8315,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8182,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.814,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_aae0e5d2e6d2",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_aae0e5d2e6d2",
+            "memory_type": "experience",
+            "score": 0.8099,
+            "content": {
+              "experience": "Requesting labs without clinical context or prior history of hormonal symptoms yields no diagnostic value; prioritize targeted history and physical findings over untargeted lab requests in ambiguous cases.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Allergic Reaction with Asthma Exacerbation}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7ce4510f-67ed-4f10-b793-d73824bed1ed': '{\"diagnosis\": \"Allergic Reaction with Asthma Exacerbation\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '7ce4510f-67ed-4f10-b793-d73824bed1ed', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Allergic Reaction with Asthma Exacerbation}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1301}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Allergic Reaction with Asthma Exacerbation}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Allergic Reaction with Asthma Exacerbation}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'3367812e-87c7-47bb-996b-91df320c6528': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '3367812e-87c7-47bb-996b-91df320c6528', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 126}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the shortness of breath (SOB) and rash start, and have they been continuous or intermittent?)\nresponse: The shortness of breath and rash started when she presented to the clinic on ___ — she developed the sore throat 4 days prior, then the cough and rash the next day. The symptoms have been intermittent — her SOB improved this morning but is now somewhat worse again, and the rash has been worsening over time, becoming more diffuse and spreading to her hands and feet."
+      ]
+    },
+    {
+      "turn_id": 4,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you been exposed to any new medications, foods, or environmental allergens recently?"
+      },
+      "patient_or_tool_response": "{'question': 'No, I haven’t been exposed to any new medications, foods, or other environmental allergens recently.'}",
+      "env_info": "{'response': [{'id': '407d8058-d552-4dc9-881e-d61782159173', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been exposed to any new medications, foods, or environmental allergens recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 709}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_4 retrieve_interaction: doctor_action: retrieve(query=asthma exacerbation with rash and SOB in adult female)\nresponse: [Document 1] (ID: 391_40, Score: 0.858)\n# Persons with Chronic Medical Conditions\nIn a randomized cross-over study of children and adults with asthma, no increase in asthma exacerbations was reported for either age group (210), and a second study indicated no increase in wheezing among vaccinated asthmatic children (130). One study (123) ...\n\n[Document 2] (ID: 844_22, Score: 0.857)\n- Diagnostic uncertainty - Children not controlled on moderate dose ICS with correct inhaler technique and appropriate medication adherence - Suspected or confirmed severe asthma - Life-threatening event such as an admission to the ICU for asthma - Need for allergy testing to assess the pos...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "allergic reaction with rash, SOB, and asthma history in adults"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'c214990e-e9a3-4e52-929c-dfc8bbed78db': \"[Document 1] (ID: 5756_4, Score: 0.863)\\n- Local reactions large, persistent local reactions or minor exacerbations of the patient's allergic symptoms may be treated by local cold applications and/or the use of oral anti-histamines.\\n- Systemic reactions Allergenic extracts are highly potent and in highly sensitive individuals can cause sys...\\n\\n[Document 2] (ID: 27638_7, Score: 0.863)\\n### Allergic Reactions\\nAllergic reactions include the following: bronchospasm, hypotension, laryngeal edema, local erythema or swelling, systemic rash, and urticaria.\\n- Among 58 Pegaspargase-treated patients enrolled in Study 1, clinical allergic reactions were reported in 2 patients (3%). One patie...\\n\\n[Document 3] (ID: 3819_39, Score: 0.862)\\n## Local and systemic adverse events with je-vc\\nJE-VC was studied in approximately 5,000 adults in prelicensure clinical trials. Local and systemic adverse events caused by JE-VC were similar to those reported for JE-MB or placebo adjuvant alone. Subsequent postlicensure studies included children an...\\n\\n[Document 4] (ID: 273_65, Score: 0.861)\\n# Adults Aged 19-49 Years\\nAmong adults, runny nose or nasal congestion (28%-78%), headache (16%-44%), and sore throat (15%-...[truncated]\"}}",
+      "env_info": "{'response': [{'id': 'c214990e-e9a3-4e52-929c-dfc8bbed78db', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"allergic reaction with rash, SOB, and asthma history in adults\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 775}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you been exposed to any new medications, foods, or environmental allergens recently?)\nresponse: No, I haven’t been exposed to any new medications, foods, or other environmental allergens recently."
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Allergic Reaction with Asthma Exacerbation}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'7ce4510f-67ed-4f10-b793-d73824bed1ed': '{\"diagnosis\": \"Allergic Reaction with Asthma Exacerbation\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '7ce4510f-67ed-4f10-b793-d73824bed1ed', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Allergic Reaction with Asthma Exacerbation}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1301}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 retrieve_interaction: doctor_action: retrieve(query=allergic reaction with rash, SOB, and asthma history in adults)\nresponse: [Document 1] (ID: 5756_4, Score: 0.863)\n- Local reactions large, persistent local reactions or minor exacerbations of the patient's allergic symptoms may be treated by local cold applications and/or the use of oral anti-histamines.\n- Systemic reactions Allergenic extracts are highly potent and in highly sensitive individuals can cause sys...\n\n[Document 2] (ID: 27638_7, Score: 0.863)\n### Allergic Reactions\nAllergic reactions include the following: bronchospasm, hypotension, laryngeal edema, local erythema or swelling, systemic rash, and urticaria.\n- Among 58 Pegaspargase-treated patients enrolled in Study 1, clinical allergic reactions were reported in 2 patie...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

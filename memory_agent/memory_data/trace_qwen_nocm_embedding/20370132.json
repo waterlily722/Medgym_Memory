@@ -1,0 +1,1019 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20370132",
+  "turns": [
+    {
+      "case_id": "20370132",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Dyspnea on exertion",
+        "diagnostic_strategy": "Current clinical problem: 65-year-old female with dyspnea on exertion and history of aortic... (incomplete). Key evidence gathered: chief complaint and patient demographics. Diagnostic uncertainty: unclear etiology of dyspnea; history of aortic condition not fully specified. Most useful missing information: complete history of aortic condition, relevant symptoms, exam findings, and diagnostic test results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 65-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 65-year-old female patient presenting with Dyspnea on exertion and a history of aortic.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Dyspnea on exertion. Patient: 65-year-old female. History: mentions aortic condition (incomplete). No other symptoms, exam, lab, imaging, or tool results provided. No interpretation of evidence. Missing: full history of aortic condition, relevant symptoms, exam findings, and diagnostic test results. No low-value or no-result attempts."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20370132",
+        "turn_id": 1,
+        "query_text": "65-year-old female with dyspnea on exertion; history of aortic condition (incomplete); no other symptoms, exam, lab, or imaging results provided; diagnostic uncertainty: unclear etiology of dyspnea; missing: complete history of aortic condition, relevant symptoms, exam findings, and diagnostic test results.",
+        "skill_query_text": "Presenting problem: 65-year-old female with dyspnea on exertion and incomplete history of aortic condition. Evidence gathered: chief complaint and demographics. No ineffective actions tried. Need workflow guidance for next diagnostic steps given current uncertainty and missing information."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8212,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7745,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8145,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8089,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_e1ec677d6e3c",
+              "type": "experience",
+              "score": 0.8071,
+              "outcome": "negative",
+              "text": "Hemoptysis in a 58-year-old male with smoking history and COPD strongly suggests bronchiectasis or lung cancer; do not apply this when the patient has no smoking history, no COPD, or when hemoptysis is minimal and isolated without systemic signs.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8192,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8064,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8047,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.8047,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I’ve had chest pain and palpitations along with my shortness of breath when exerting myself. I’ve also experienced episodes where I felt like I was going to faint, especially when standing up or during physical activity.'}",
+        "env_info": "{'response': [{'id': 'a6bd0b4f-b9c3-4cd4-ae74-816103780fd1', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20370132",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Dyspnea on exertion",
+        "diagnostic_strategy": "Current clinical problem: Dyspnea on exertion with associated chest pain, palpitations, and presyncope. Key evidence gathered: patient reports concurrent chest pain, palpitations, and near-fainting episodes triggered by exertion or standing. Diagnostic uncertainty remains: potential cardiac, pulmonary, or neurologic etiology. Most useful missing information: history of hypertension, diabetes, smoking, family history of cardiac disease, recent weight changes, or prior cardiac events. Existing evidence is not enough to finalize diagnosis; further investigation needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?)\nresponse: Yes, I’ve had chest pain and palpitations along with my shortness of breath when exerting myself. I’ve also experienced episodes where I felt like I was going to faint, especially when standing up or during physical activity."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Dyspnea on exertion. Patient reports concurrent chest pain, palpitations, and presyncope triggered by exertion or standing. No prior history or exam data provided. No lab, imaging, or tool results available. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20370132",
+        "turn_id": 2,
+        "query_text": "Dyspnea on exertion with concurrent chest pain, palpitations, and presyncope triggered by exertion or standing. No prior history, exam, lab, or imaging data. Diagnostic uncertainty: cardiac, pulmonary, or neurologic etiology. Missing: hypertension, diabetes, smoking, family cardiac history, recent weight changes, prior cardiac events.",
+        "skill_query_text": "Presenting problem: Dyspnea on exertion with chest pain, palpitations, presyncope. Evidence gathered: patient reports symptoms triggered by exertion or standing. No prior data or tests. No ineffective actions. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7966,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.844,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8398,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_4e216e018b5d",
+              "type": "experience",
+              "score": 0.8287,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest meningococcemia; do not discount this presentation in elderly patients even without travel or exposure history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8412,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8249,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8236,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'70b8795d-9312-441b-872e-674ec2500d69': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '70b8795d-9312-441b-872e-674ec2500d69', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 98}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20370132",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20370132",
+        "turn_id": 2,
+        "query_text": "Dyspnea on exertion with concurrent chest pain, palpitations, and presyncope triggered by exertion or standing. No prior history, exam, lab, or imaging data. Diagnostic uncertainty: cardiac, pulmonary, or neurologic etiology. Missing: hypertension, diabetes, smoking, family cardiac history, recent weight changes, prior cardiac events.",
+        "skill_query_text": "Presenting problem: Dyspnea on exertion with chest pain, palpitations, presyncope. Evidence gathered: patient reports symptoms triggered by exertion or standing. No prior data or tests. No ineffective actions. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7966,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.844,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8398,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_4e216e018b5d",
+              "type": "experience",
+              "score": 0.8287,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest meningococcemia; do not discount this presentation in elderly patients even without travel or exposure history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8412,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8249,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8236,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5f8aa7f5-ae36-4c1d-ba02-f20d4f0e67c9': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '5f8aa7f5-ae36-4c1d-ba02-f20d4f0e67c9', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 169}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20370132",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20370132",
+        "turn_id": 2,
+        "query_text": "Dyspnea on exertion with concurrent chest pain, palpitations, and presyncope triggered by exertion or standing. No prior history, exam, lab, or imaging data. Diagnostic uncertainty: cardiac, pulmonary, or neurologic etiology. Missing: hypertension, diabetes, smoking, family cardiac history, recent weight changes, prior cardiac events.",
+        "skill_query_text": "Presenting problem: Dyspnea on exertion with chest pain, palpitations, presyncope. Evidence gathered: patient reports symptoms triggered by exertion or standing. No prior data or tests. No ineffective actions. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7966,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.844,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8398,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_4e216e018b5d",
+              "type": "experience",
+              "score": 0.8287,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest meningococcemia; do not discount this presentation in elderly patients even without travel or exposure history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8412,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8249,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8236,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "aortic valve disease symptoms in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'14684eb7-8374-4c5e-8d10-85d85f4a7b79': '[Document 1] (ID: 14416_3, Score: 0.881)\\n### History and Symptoms\\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\\n\\n[Document 2] (ID: 14416_2, Score: 0.879)\\n# Differentiating Aortic Stenosis from other Disorders\\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is subval...\\n\\n[Document 3] (ID: 1469_55, Score: 0.877)\\nAmong people aged 65\\xa0years or over the prevalence of asymptomatic heart valve disease may be more than 50%, whereas the prevalence of clinically significant heart valve disease is around 11%. It is predicted that for people over\\xa065, the prevalence of heart valve disease will increase, from 1.5\\xa0milli...\\n\\n[Document 4] (ID: 11506_4, Score: 0.877)\\n# Epidemiology and Demographics\\nThe prevalence of aortic regurgitation varies with age, geographic location, and gender. ...[truncated]'}}",
+        "env_info": "{'response': [{'id': '14684eb7-8374-4c5e-8d10-85d85f4a7b79', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"aortic valve disease symptoms in elderly patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 243}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.6,
+        "delta": 0.39999999999999997,
+        "turn_reward": 0.08,
+        "importance": 0.39999999999999997
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"aortic valve disease symptoms in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"aortic valve disease symptoms in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20370132",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Dyspnea on exertion",
+        "diagnostic_strategy": "Current clinical problem: Dyspnea on exertion with associated chest pain, palpitations, and syncope. Key evidence: Patient reports symptoms consistent with aortic stenosis (angina, syncope, heart failure). No lab or imaging results available. Diagnostic uncertainty: Whether symptoms are due to aortic stenosis or other cardiac/pulmonary causes. Most useful missing information: Echocardiogram to assess aortic valve function. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Dyspnea on exertion"
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: Dyspnea on exertion. Patient reports chest pain, palpitations, and syncope with exertion, and episodes of near-fainting when standing or active. No lab or CXR results available. Retrieved information suggests aortic stenosis as a possible cause, with symptoms including angina, syncope, and heart failure. Also noted: high prevalence of asymptomatic valve disease in elderly, and aortic regurgitation more common in men over 50. No definitive diagnosis or imaging yet. Missing: echocardiogram to confirm valve pathology."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20370132",
+        "turn_id": 5,
+        "query_text": "Chief complaint: Dyspnea on exertion. Symptoms: chest pain, palpitations, syncope. No lab or imaging results. No prior diagnosis. Diagnostic uncertainty: whether symptoms are due to aortic stenosis or other cardiac/pulmonary causes. Missing: echocardiogram to assess aortic valve function.",
+        "skill_query_text": "Presenting problem: Dyspnea on exertion with chest pain, palpitations, syncope. Evidence gathered: chief complaint only. Ineffective actions: requested labs and CXR, no results available. Needed: echocardiogram to assess aortic valve function. Required workflow guidance: decision on next diagnostic step given current evidence and prior failed tests."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7949,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7658,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8252,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.8199,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8221,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8209,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8152,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I’ve noticed swelling in my legs and ankles. It’s been getting worse over the last several years, along with my shortness of breath and fatigue. I haven’t noticed any recent changes in my weight, but I’m not sure if I’ve been tracking it properly.'}",
+        "env_info": "{'response': [{'id': '5b549dbc-9510-4c4f-a4dc-84bd128e6441', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 739}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20370132",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Dyspnea on exertion",
+        "diagnostic_strategy": "Current clinical problem: Dyspnea on exertion with possible cardiac etiology. Key evidence: Chest pain, palpitations, syncope, and now leg swelling. Diagnostic uncertainty: Whether this represents heart failure, aortic stenosis, or another cardiac/pulmonary cause. Most useful missing information: Echocardiogram results, recent weight trend, and specific lab markers (e.g., BNP, troponin). Existing evidence is not enough to finalize diagnosis; further imaging and lab work are needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?)\nresponse: Yes, I’ve had chest pain and palpitations along with my shortness of breath when exerting myself. I’ve also experienced episodes where I felt like I was going to faint, especially when standing up or during physical activity.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?)\nresponse: Yes, I’ve noticed swelling in my legs and ankles. It’s been getting worse over the last several years, along with my shortness of breath and fatigue. I haven’t noticed any recent changes in my weight, but I’m not sure if I’ve been tracking it properly."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=aortic valve disease symptoms in elderly patients)\nresponse: [Document 1] (ID: 14416_3, Score: 0.881)\n### History and Symptoms\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\n\n[Document 2] (ID: 14416_2, Score: 0.879)\n# Differentiating Aortic Stenosis from other Disorders\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is subval...\n\n[Document 3] (ID: 1469_55, Score: 0.877)\nAmong people aged 65 years or over the prevalence of asymptomatic heart valve disease may be more than 50%, whereas the prevalence of clinically significant heart valve disease is around 11%. It is predicted that for people over 65, the prevalence of heart valve disease will increase, from 1.5 milli...\n\n[Document 4] (ID: 11506_4, Score: 0.877)\n# Epidemiology and Demographics\nThe prevalence of aortic regurgitation varies with age, geographic location, and gender.  Aortic insufficiency is unusual before the age of 50 and then increases progressively later in life.  Aortic regurgitation is more commonly seen in men as compared to women. Worl...\n\n[Document 5] (ID: 13701_1, Score: 0.876)\n# Natural History, Disease Progression & Prognosis\nCalcification of the aortic valve is common among the elderly population and shares epidemiologic and histopathologic similarities to atherosclerosis. Progressive thickening and calcification of the aortic valve subsequently causes left ventricular ..."
+        ],
+        "prior_information_summary": "Chief complaint: Dyspnea on exertion. History: Chest pain, palpitations, syncope, leg swelling worsening over years, fatigue. No recent weight change reported. Labs and CXR results unavailable. Literature review suggests aortic stenosis as a possible cause, with symptoms including angina, syncope, and heart failure. Unresolved: Echocardiogram, BNP, troponin, and recent weight trend needed."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20370132",
+        "turn_id": 6,
+        "query_text": "Chief complaint: Dyspnea on exertion. Symptoms: Chest pain, palpitations, syncope, leg swelling worsening over years, fatigue. No recent weight change reported. Labs and CXR results unavailable. Diagnostic uncertainty: Heart failure, aortic stenosis, or other cardiac/pulmonary cause. Missing: Echocardiogram, BNP, troponin, recent weight trend.",
+        "skill_query_text": "Presenting problem: Dyspnea on exertion with possible cardiac etiology. Evidence gathered: Patient reports chest pain, palpitations, syncope, leg swelling. Ineffective actions: Requested labs and CXR with no results; retrieved literature on aortic stenosis symptoms. Needed: Workflow guidance for next diagnostic steps, including echocardiogram, BNP, troponin, and weight trend assessment."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8022,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7511,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8266,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8206,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_124a2730b25d",
+              "type": "experience",
+              "score": 0.818,
+              "outcome": "negative",
+              "text": "Fever, night sweats, and unexplained weight loss without specific respiratory symptoms are non-specific and may mislead toward systemic infections; do not diagnose pulmonary tuberculosis without corroborating respiratory findings or imaging.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8306,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8167,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8101,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "aortic stenosis diagnosis criteria and symptoms"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'2abf0b10-5383-4e4b-9e20-249cfb38bf61': '[Document 1] (ID: 14416_3, Score: 0.908)\\n### History and Symptoms\\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\\n\\n[Document 2] (ID: 14416_2, Score: 0.889)\\n# Differentiating Aortic Stenosis from other Disorders\\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is subval...\\n\\n[Document 3] (ID: 13024_2, Score: 0.888)\\n## Symptoms\\nThe symptoms are similar to that of valvular aortic stenosis but begin earlier in infancy or early adulthood.\\n\\n## Echocardiography\\n- High doppler gradient and normal AV.\\n- It may require a repeat TTE or TEE\\n\\n# Treatment\\nThe membrane can be resected as shown in the videos below:\\n\\n# 2008 A...\\n\\n[Document 4] (ID: 4133_74, Score: 0.884)\\nAortic stenosis is considered a progressive disease and survival during the asymptomatic phase has been found similar to ...[truncated]'}}",
+        "env_info": "{'response': [{'id': '2abf0b10-5383-4e4b-9e20-249cfb38bf61', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"aortic stenosis diagnosis criteria and symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 843}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"aortic stenosis diagnosis criteria and symptoms\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"aortic stenosis diagnosis criteria and symptoms\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20370132",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Dyspnea on exertion",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 6. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Dyspnea on exertion",
+          "initial_information: I am a 65-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 65-year-old female patient presenting with Dyspnea on exertion and a history of aortic..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?)\nresponse: Yes, I’ve had chest pain and palpitations along with my shortness of breath when exerting myself. I’ve also experienced episodes where I felt like I was going to faint, especially when standing up or during physical activity.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=aortic valve disease symptoms in elderly patients)\nresponse: [Document 1] (ID: 14416_3, Score: 0.881)\n### History and Symptoms\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\n\n[Document 2] (ID: 14416_2, Score: 0.879)\n# Differentiating Aortic Stenosis from other Disorders\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is subval...\n\n[Document 3] (ID: 1469_55, Score: 0.877)\nAmong people aged 65 years or over the prevalence of asymptomatic heart valve disease may be more than 50%, whereas the prevalence of clinically significant heart valve disease is around 11%. It is predicted that for people over 65, the prevalence of heart valve disease will increase, from 1.5 milli...\n\n[Document 4] (ID: 11506_4, Score: 0.877)\n# Epidemiology and Demographics\nThe prevalence of aortic regurgitation varies with age, geographic location, and gender.  Aortic insufficiency is unusual before the age of 50 and then increases progressively later in life.  Aortic regurgitation is more commonly seen in men as compared to women. Worl...\n\n[Document 5] (ID: 13701_1, Score: 0.876)\n# Natural History, Disease Progression & Prognosis\nCalcification of the aortic valve is common among the elderly population and shares epidemiologic and histopathologic similarities to atherosclerosis. Progressive thickening and calcification of the aortic valve subsequently causes left ventricular ...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?)\nresponse: Yes, I’ve noticed swelling in my legs and ankles. It’s been getting worse over the last several years, along with my shortness of breath and fatigue. I haven’t noticed any recent changes in my weight, but I’m not sure if I’ve been tracking it properly.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=aortic stenosis diagnosis criteria and symptoms)\nresponse: [Document 1] (ID: 14416_3, Score: 0.908)\n### History and Symptoms\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\n\n[Document 2] (ID: 14416_2, Score: 0.889)\n# Differentiating Aortic Stenosis from other Disorders\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is subval...\n\n[Document 3] (ID: 13024_2, Score: 0.888)\n## Symptoms\nThe symptoms are similar to that of valvular aortic stenosis but begin earlier in infancy or early adulthood.\n\n## Echocardiography\n- High doppler gradient and normal AV.\n- It may require a repeat TTE or TEE\n\n# Treatment\nThe membrane can be resected as shown in the videos below:\n\n# 2008 A...\n\n[Document 4] (ID: 4133_74, Score: 0.884)\nAortic stenosis is considered a progressive disease and survival during the asymptomatic phase has been found similar to that of age-matched controls.In 2010, approximately 40 million people worldwide aged 65 or older had aortic stenosis, and this number is expected to reach 72 million by 2030. [bib...\n\n[Document 5] (ID: 1469_5, Score: 0.883)\nConsider referring adults with symptomatic low‑gradient aortic stenosis with LVEF less than 50% for intervention if during dobutamine stress echocardiography the aortic stenosis is shown to be severe by:\n\na mean gradient across the aortic valve that increases to more than 40 mmHg and\n\nan aortic valv..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?)\nresponse: Yes, I’ve had chest pain and palpitations along with my shortness of breath when exerting myself. I’ve also experienced episodes where I felt like I was going to faint, especially when standing up or during physical activity.\ndoctor_action: retrieve(query=aortic valve disease symptoms in elderly patients)\nresponse: [Document 1] (ID: 14416_3, Score: 0.881)\n### History and Symptoms\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\n\n[Document 2] (ID: 14416_2, Score: 0.879)\n# Differentiating Aortic Stenosis from other Disorders\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is subval...\n\n[Document 3] (ID: 1469_55, Score: 0.877)\nAmong people aged 65 years or over the prevalence of asymptomatic heart valve disease may be more than 50%, whereas the prevalence of clinically significant heart valve disease is around 11%. It is predicted that for people over 65, the prevalence of heart valve disease will increase, from 1.5 milli...\n\n[Document 4] (ID: 11506_4, Score: 0.877)\n# Epidemiology and Demographics\nThe prevalence of aortic regurgitation varies with age, geographic location, and gender.  Aortic insufficiency is unusual before the age of 50 and then increases progressively later in life.  Aortic regurgitation is more commonly seen in men as compared to women. Worl...\n\n[Document 5] (ID: 13701_1, Score: 0.876)\n# Natural History, Disease Progression & Prognosis\nCalcification of the aortic valve is common among the elderly population and shares epidemiologic and histopathologic similarities to atherosclerosis. Progressive thickening and calcification of the aortic valve subsequently causes left ventricular ...\ndoctor_action: ask_patient(question=Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?)\nresponse: Yes, I’ve noticed swelling in my legs and ankles. It’s been getting worse over the last several years, along with my shortness of breath and fatigue. I haven’t noticed any recent changes in my weight, but I’m not sure if I’ve been tracking it properly.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20370132",
+        "turn_id": 7,
+        "query_text": "Patient is 65-year-old female with dyspnea on exertion, chest pain, palpitations, syncope, and leg swelling. History suggests possible aortic stenosis. No labs or CXR results available. Prior retrieval confirmed aortic stenosis symptoms and differentiation from other disorders. Unresolved diagnostic uncertainty: confirm diagnosis with echocardiography.",
+        "skill_query_text": "Presenting problem: 65F with dyspnea on exertion, chest pain, palpitations, syncope, leg swelling. Evidence gathered: patient history, prior retrieval on aortic stenosis symptoms. Ineffective actions: labs and CXR requested but no results. Need workflow guidance: next step to resolve diagnostic uncertainty — prioritize targeted exam (echocardiography) or confirm diagnosis with imaging."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8041,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7423,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8176,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.81,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_4e216e018b5d",
+              "type": "experience",
+              "score": 0.8026,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest meningococcemia; do not discount this presentation in elderly patients even without travel or exposure history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.832,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.832,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8238,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Aortic Stenosis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'54d007a7-3e28-4cd5-a089-ed5e9fd55237': '{\"diagnosis\": \"Aortic Stenosis\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '54d007a7-3e28-4cd5-a089-ed5e9fd55237', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Aortic Stenosis}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1378}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aortic Stenosis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aortic Stenosis}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'70b8795d-9312-441b-872e-674ec2500d69': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '70b8795d-9312-441b-872e-674ec2500d69', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 98}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, palpitations, or fainting episodes along with your dyspnea on exertion?)\nresponse: Yes, I’ve had chest pain and palpitations along with my shortness of breath when exerting myself. I’ve also experienced episodes where I felt like I was going to faint, especially when standing up or during physical activity."
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?"
+      },
+      "patient_or_tool_response": "{'question': 'Yes, I’ve noticed swelling in my legs and ankles. It’s been getting worse over the last several years, along with my shortness of breath and fatigue. I haven’t noticed any recent changes in my weight, but I’m not sure if I’ve been tracking it properly.'}",
+      "env_info": "{'response': [{'id': '5b549dbc-9510-4c4f-a4dc-84bd128e6441', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 739}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 retrieve_interaction: doctor_action: retrieve(query=aortic valve disease symptoms in elderly patients)\nresponse: [Document 1] (ID: 14416_3, Score: 0.881)\n### History and Symptoms\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\n\n[Document 2] (ID: 14416_2, Score: 0.879)\n# Differentiating Aortic Stenosis from other Disorders\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "aortic stenosis diagnosis criteria and symptoms"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'2abf0b10-5383-4e4b-9e20-249cfb38bf61': '[Document 1] (ID: 14416_3, Score: 0.908)\\n### History and Symptoms\\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\\n\\n[Document 2] (ID: 14416_2, Score: 0.889)\\n# Differentiating Aortic Stenosis from other Disorders\\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is subval...\\n\\n[Document 3] (ID: 13024_2, Score: 0.888)\\n## Symptoms\\nThe symptoms are similar to that of valvular aortic stenosis but begin earlier in infancy or early adulthood.\\n\\n## Echocardiography\\n- High doppler gradient and normal AV.\\n- It may require a repeat TTE or TEE\\n\\n# Treatment\\nThe membrane can be resected as shown in the videos below:\\n\\n# 2008 A...\\n\\n[Document 4] (ID: 4133_74, Score: 0.884)\\nAortic stenosis is considered a progressive disease and survival during the asymptomatic phase has been found similar to ...[truncated]'}}",
+      "env_info": "{'response': [{'id': '2abf0b10-5383-4e4b-9e20-249cfb38bf61', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"aortic stenosis diagnosis criteria and symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 843}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any swelling in your legs or ankles, or any changes in your weight recently?)\nresponse: Yes, I’ve noticed swelling in my legs and ankles. It’s been getting worse over the last several years, along with my shortness of breath and fatigue. I haven’t noticed any recent changes in my weight, but I’m not sure if I’ve been tracking it properly."
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Aortic Stenosis}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'54d007a7-3e28-4cd5-a089-ed5e9fd55237': '{\"diagnosis\": \"Aortic Stenosis\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '54d007a7-3e28-4cd5-a089-ed5e9fd55237', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Aortic Stenosis}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1378}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 retrieve_interaction: doctor_action: retrieve(query=aortic stenosis diagnosis criteria and symptoms)\nresponse: [Document 1] (ID: 14416_3, Score: 0.908)\n### History and Symptoms\nThe main symptoms of aortic stenosis include angina, syncope and congestive heart failure.  Left untreated, the average survival is 5 years after the onset of angina, 3 years after the onset of syncope, and 1 year after the onset of congestive heart failure.   Other symptoms...\n\n[Document 2] (ID: 14416_2, Score: 0.889)\n# Differentiating Aortic Stenosis from other Disorders\nAortic stenosis must be differentiated from other cardiac or pulmonary causes of dyspnea, weakness, and dizziness.  Furthermore, if there is left ventricular outflow tract obstruction, it is critical to identify whether the obstruction is s...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

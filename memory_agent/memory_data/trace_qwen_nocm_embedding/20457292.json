@@ -1,0 +1,921 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20457292",
+  "turns": [
+    {
+      "case_id": "20457292",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Hypoglycemia",
+        "diagnostic_strategy": "Current clinical problem: 67-year-old male presenting with hypoglycemia. Key evidence gathered: patient reports recent poor well-being and chief complaint of hypoglycemia. Diagnostic uncertainty remains high due to lack of specific symptoms, lab, or exam findings. Most useful missing information: detailed history of hypoglycemic episodes, recent glucose levels, medication history, and possible triggers. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified yet.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "initial_information: I am a 67-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 67-year-old male patient presenting with Hypoglycemia and hypoglycemia. His.."
+        ],
+        "prior_information_summary": "Patient is a 67-year-old male with chief complaint of hypoglycemia and recent poor well-being. No specific symptoms, lab, exam, or imaging results provided. No prior findings or test results available. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20457292",
+        "turn_id": 1,
+        "query_text": "67-year-old male, chief complaint hypoglycemia, recent poor well-being, no specific symptoms, signs, lab, exam, or imaging findings, no prior test results, no history of hypoglycemic episodes, no glucose levels, no medication history, no triggers identified, diagnostic uncertainty remains high.",
+        "skill_query_text": "Presenting problem: hypoglycemia in 67-year-old male. Uncertainty: diagnosis not finalized. Evidence gathered: chief complaint and recent poor well-being. Missing: detailed hypoglycemic history, glucose levels, medication history, triggers. Ineffective actions: initial information attempt incomplete. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8292,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_64aaa2a0cf94",
+              "type": "experience",
+              "score": 0.7984,
+              "outcome": "negative",
+              "text": "Symptoms of increased thirst, frequent urination, and blurry vision in an elderly patient with fatigue, weight loss, and cognitive decline strongly suggest diabetes mellitus; do not apply this when symptoms are absent or when alternative diagnoses like malignancy or neurological disorders are more likely based on history or exam.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.7751,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8012,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_aa1ed1da6eed",
+              "type": "skill",
+              "score": 0.7966,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7927,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did you first notice symptoms of hypoglycemia?"
+        },
+        "patient_or_tool_response": "{'question': 'I first noticed symptoms of hypoglycemia yesterday, when my girlfriend said I was confused and called her. She had to come pick me up. I also had a similar episode before that, but I’m not sure exactly when. I don’t remember any specific time I first noticed it.'}",
+        "env_info": "{'response': [{'id': 'e164332a-a17c-4627-8fc4-27120d35502b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did you first notice symptoms of hypoglycemia?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.07692307692307693,
+        "delta": 0.07692307692307693,
+        "turn_reward": 0.015384615384615385,
+        "importance": 0.07692307692307693
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first notice symptoms of hypoglycemia?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first notice symptoms of hypoglycemia?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20457292",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Hypoglycemia",
+        "diagnostic_strategy": "Current clinical problem: Hypoglycemia with unclear timing of onset. Key evidence gathered: Patient reports two episodes, first noticed yesterday with confusion and rescue by girlfriend, with vague recall of prior episode. Diagnostic uncertainty: Timing and triggers of episodes remain unclear; need to determine if episodes are recurrent, associated with specific behaviors or medications, and whether lab or imaging is needed. Most useful missing information: Details of prior episode, potential triggers (e.g., diet, activity, medication), and recent glucose levels. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice symptoms of hypoglycemia?)\nresponse: I first noticed symptoms of hypoglycemia yesterday, when my girlfriend said I was confused and called her. She had to come pick me up. I also had a similar episode before that, but I’m not sure exactly when. I don’t remember any specific time I first noticed it."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Hypoglycemia. Patient reports two episodes: first noticed yesterday with confusion and rescue by girlfriend; prior episode recalled vaguely, with no specific timing. No lab, imaging, or exam results provided. No treatment or risk factors explicitly reported. No other relevant history or findings available."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20457292",
+        "turn_id": 2,
+        "query_text": "Chief complaint: Hypoglycemia. Patient reports two episodes: first noticed yesterday with confusion and rescue by girlfriend; prior episode recalled vaguely, no specific timing. No lab, imaging, or exam results provided. No treatment or risk factors explicitly reported. No other relevant history or findings available.",
+        "skill_query_text": "Presenting problem: Hypoglycemia with unclear timing of onset. Evidence gathered: Patient reports two episodes, first noticed yesterday with confusion and rescue by girlfriend, vague recall of prior episode. Uncertainty: Timing and triggers of episodes remain unclear; need to determine if recurrent, associated with specific behaviors or medications, and whether lab or imaging is needed. Missing: Details of prior episode, potential triggers (e.g., diet, activity, medication), recent glucose levels. Ineffective actions: None. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8036,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_64aaa2a0cf94",
+              "type": "experience",
+              "score": 0.7747,
+              "outcome": "negative",
+              "text": "Symptoms of increased thirst, frequent urination, and blurry vision in an elderly patient with fatigue, weight loss, and cognitive decline strongly suggest diabetes mellitus; do not apply this when symptoms are absent or when alternative diagnoses like malignancy or neurological disorders are more likely based on history or exam.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.7689,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8136,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8106,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.8106,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?"
+        },
+        "patient_or_tool_response": "{'question': 'I had sweating and trembling during the hypoglycemia episodes. I also felt confused, and my girlfriend said I was acting weird when I rolled off the bed — but I didn’t have any palpitations or chest pain. I didn’t lose consciousness or have seizures, though.'}",
+        "env_info": "{'response': [{'id': '7796985e-3818-41b9-beba-26298e80aead', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe any other symptoms you\\\\u2019ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 101}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.07692307692307693,
+        "conf_after": 0.15384615384615385,
+        "delta": 0.07692307692307693,
+        "turn_reward": 0.015384615384615385,
+        "importance": 0.07692307692307693
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20457292",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Hypoglycemia",
+        "diagnostic_strategy": "Current clinical problem: Hypoglycemia with associated autonomic and neurocognitive symptoms. Key evidence gathered: patient reports sweating, trembling, confusion, and behavioral changes (acting weird) during episodes; no palpitations, chest pain, loss of consciousness, or seizures. Diagnostic uncertainty remains: whether this is reactive hypoglycemia, endocrine cause, or other metabolic disorder. Most useful missing information: timing of episodes, blood glucose levels during episodes, medication history, dietary patterns, and prior medical history. Existing evidence is not enough to finalize diagnosis; further targeted history and lab/imaging may be needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?)\nresponse: I had sweating and trembling during the hypoglycemia episodes. I also felt confused, and my girlfriend said I was acting weird when I rolled off the bed — but I didn’t have any palpitations or chest pain. I didn’t lose consciousness or have seizures, though."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Hypoglycemia. Patient reports first noticing symptoms yesterday, with a prior similar episode (exact timing unknown). Symptoms include sweating, trembling, confusion, and behavioral changes (acting weird) during episodes; no palpitations, chest pain, loss of consciousness, or seizures. No lab, imaging, or tool results provided. No medication or dietary history provided. No prior medical history provided. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20457292",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Hypoglycemia. Symptoms: sweating, trembling, confusion, behavioral changes (acting weird) during episodes. No palpitations, chest pain, loss of consciousness, or seizures. No lab, imaging, or tool results. No medication, dietary, or prior medical history provided. Diagnostic uncertainty: reactive hypoglycemia, endocrine cause, or other metabolic disorder.",
+        "skill_query_text": "Presenting problem: Hypoglycemia with autonomic and neurocognitive symptoms. Evidence gathered: patient reports sweating, trembling, confusion, acting weird; no palpitations, chest pain, loss of consciousness, or seizures. Missing: timing of episodes, blood glucose levels, medication history, dietary patterns, prior medical history. Ineffective actions: none. Need: workflow guidance for targeted history and lab/imaging to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8354,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8086,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_4d07b04b92ce",
+              "type": "skill",
+              "score": 0.8322,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_aa1ed1da6eed",
+              "type": "skill",
+              "score": 0.8227,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8172,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ecba0b19-bdad-4e61-bdf8-321a2595061d': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'ecba0b19-bdad-4e61-bdf8-321a2595061d', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 214}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3076923076923077,
+        "conf_after": 0.3076923076923077,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20457292",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20457292",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Hypoglycemia. Symptoms: sweating, trembling, confusion, behavioral changes (acting weird) during episodes. No palpitations, chest pain, loss of consciousness, or seizures. No lab, imaging, or tool results. No medication, dietary, or prior medical history provided. Diagnostic uncertainty: reactive hypoglycemia, endocrine cause, or other metabolic disorder.",
+        "skill_query_text": "Presenting problem: Hypoglycemia with autonomic and neurocognitive symptoms. Evidence gathered: patient reports sweating, trembling, confusion, acting weird; no palpitations, chest pain, loss of consciousness, or seizures. Missing: timing of episodes, blood glucose levels, medication history, dietary patterns, prior medical history. Ineffective actions: none. Need: workflow guidance for targeted history and lab/imaging to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8354,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8086,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_4d07b04b92ce",
+              "type": "skill",
+              "score": 0.8322,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_aa1ed1da6eed",
+              "type": "skill",
+              "score": 0.8227,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8172,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms and causes of hypoglycemia in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b2ef295e-db67-4e62-b9f3-5c79cde87a0f': '[Document 1] (ID: 31580_12, Score: 0.894)\\n- Hypoglycemia—Hypoglycemia does not occur in patients receiving Metformin HCl alone under usual circumstances of use, but could occur when caloric intake is deficient, when strenuous exercise is not compensated by caloric supplementation, or during concomitant use with other glucose-lowering agents...\\n\\n[Document 2] (ID: 33289_19, Score: 0.881)\\n# Hypoglycemia\\nHypoglycemia, also known as \"low blood sugar\", is when blood sugar decreases to below normal levels. This may result in a variety of symptoms including clumsiness, trouble talking, confusion, loss of consciousness, seizures or death. A feeling of hunger, sweating, shakiness and weakne...\\n\\n[Document 3] (ID: 3321_7, Score: 0.880)\\nCare goals should be established at the time of admission to the LTC facility for all chronic conditions. Glycemic goals in particular are dependent on the patient\\'s risk of hypoglycemia. Hypoglycemia is the leading limiting factor in the glycemic management of type 1 and insulin-treated type 2 diab...\\n\\n[Document 4] (ID: 22636_46, Score: 0.880)\\n- Injecting insulin the wrong way or in the wrong injection area.\\n- hypoglycemia can be mild to severe. Its onset may b...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'b2ef295e-db67-4e62-b9f3-5c79cde87a0f', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms and causes of hypoglycemia in elderly patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 285}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3076923076923077,
+        "conf_after": 0.46153846153846156,
+        "delta": 0.15384615384615385,
+        "turn_reward": 0.03076923076923077,
+        "importance": 0.15384615384615385
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and causes of hypoglycemia in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and causes of hypoglycemia in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20457292",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Hypoglycemia",
+        "diagnostic_strategy": "Current clinical problem: Hypoglycemia in an elderly patient. Key evidence gathered: patient reports symptoms including confusion, sweating, trembling, and episodes occurring without clear timing; no lab results available. Diagnostic uncertainty: unclear if hypoglycemia is due to medication, diet, or other causes; no lab or imaging data to confirm or rule out. Most useful missing information: blood glucose levels, medication history, and recent caloric intake. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice symptoms of hypoglycemia?)\nresponse: I first noticed symptoms of hypoglycemia yesterday, when my girlfriend said I was confused and called her. She had to come pick me up. I also had a similar episode before that, but I’m not sure exactly when. I don’t remember any specific time I first noticed it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?)\nresponse: I had sweating and trembling during the hypoglycemia episodes. I also felt confused, and my girlfriend said I was acting weird when I rolled off the bed — but I didn’t have any palpitations or chest pain. I didn’t lose consciousness or have seizures, though."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms and causes of hypoglycemia in elderly patients)\nresponse: [Document 1] (ID: 31580_12, Score: 0.894)\n- Hypoglycemia—Hypoglycemia does not occur in patients receiving Metformin HCl alone under usual circumstances of use, but could occur when caloric intake is deficient, when strenuous exercise is not compensated by caloric supplementation, or during concomitant use with other glucose-lowering agents...\n\n[Document 2] (ID: 33289_19, Score: 0.881)\n# Hypoglycemia\nHypoglycemia, also known as \"low blood sugar\", is when blood sugar decreases to below normal levels. This may result in a variety of symptoms including clumsiness, trouble talking, confusion, loss of consciousness, seizures or death. A feeling of hunger, sweating, shakiness and weakne...\n\n[Document 3] (ID: 3321_7, Score: 0.880)\nCare goals should be established at the time of admission to the LTC facility for all chronic conditions. Glycemic goals in particular are dependent on the patient's risk of hypoglycemia. Hypoglycemia is the leading limiting factor in the glycemic management of type 1 and insulin-treated type 2 diab...\n\n[Document 4] (ID: 22636_46, Score: 0.880)\n- Injecting insulin the wrong way or in the wrong injection area.\n- hypoglycemia can be mild to severe. Its onset may be rapid. Some patients have few or no warning symptoms, including:\n- patients with diabetes for a long time\n- patients with diabetic neuropathy (nerve problems)or patients using cer...\n\n[Document 5] (ID: 17403_4, Score: 0.879)\n# Causes\nCauses of hypoglycemia depend on age; neonatal causes are transient neonatal hypoglycemia, prematurity, intrauterine growth retardation, perinatal asphyxia, sepsis, congenital hypopituitarism, beta sympathomimetic drugs, congenital hyperinsulinism, infant of a diabetic mother, Beckwith-Wied..."
+        ],
+        "prior_information_summary": "Chief complaint: Hypoglycemia. Patient reports two episodes: first noticed yesterday with confusion and confusion again before, with no clear timing. Symptoms include sweating, trembling, confusion, and acting weird when rolling off bed; no palpitations, chest pain, loss of consciousness, or seizures. Lab request returned no result. Retrieved documents on hypoglycemia causes and symptoms in elderly patients, including potential causes like medication, caloric intake, and insulin administration errors. No diagnostic test results or imaging available. Missing: blood glucose levels, medication history, recent caloric intake."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20457292",
+        "turn_id": 5,
+        "query_text": "Chief complaint: Hypoglycemia. Symptoms: confusion, sweating, trembling, acting weird when rolling off bed. No palpitations, chest pain, loss of consciousness, or seizures. No lab results, no imaging, no diagnostic test results. No medication history or caloric intake data. Unclear if due to medication, diet, or other causes. Patient is elderly. No final diagnosis.",
+        "skill_query_text": "Presenting problem: Hypoglycemia in elderly patient. Evidence gathered: patient reports symptoms including confusion, sweating, trembling; no lab results, no imaging. Ineffective actions: lab request returned no result; retrieved documents on hypoglycemia causes and symptoms in elderly. Missing: blood glucose levels, medication history, recent caloric intake. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8451,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8195,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_64aaa2a0cf94",
+              "type": "experience",
+              "score": 0.8182,
+              "outcome": "negative",
+              "text": "Symptoms of increased thirst, frequent urination, and blurry vision in an elderly patient with fatigue, weight loss, and cognitive decline strongly suggest diabetes mellitus; do not apply this when symptoms are absent or when alternative diagnoses like malignancy or neurological disorders are more likely based on history or exam.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_4d07b04b92ce",
+              "type": "skill",
+              "score": 0.8251,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8216,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8191,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Do you have a history of diabetes or are you currently taking any medications for blood sugar control?"
+        },
+        "patient_or_tool_response": "{'question': 'I have a history of diabetes — I have IDDM. I’m currently taking insulin (40 units in the morning), metformin, and another pill for blood sugar control.'}",
+        "env_info": "{'response': [{'id': '685eaae4-0b81-4a82-b2f4-ecb9815ceb39', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you have a history of diabetes or are you currently taking any medications for blood sugar control?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 814}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.46153846153846156,
+        "conf_after": 0.5384615384615384,
+        "delta": 0.07692307692307687,
+        "turn_reward": 0.015384615384615375,
+        "importance": 0.07692307692307687
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have a history of diabetes or are you currently taking any medications for blood sugar control?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have a history of diabetes or are you currently taking any medications for blood sugar control?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20457292",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Hypoglycemia",
+        "diagnostic_strategy": "Current clinical problem: Hypoglycemia in a patient with known IDDM. Key evidence gathered: patient reports prior hypoglycemic episodes with sweating, trembling, confusion, but no loss of consciousness; currently on insulin, metformin, and another blood sugar medication. Diagnostic uncertainty: whether hypoglycemia is due to medication regimen, missed meals, or other factors; need to confirm recent glucose levels or identify precipitating factors. Most useful missing information: recent glucose readings, timing of last meal, insulin dosing history, and any recent changes in routine. Existing evidence is not enough to finalize diagnosis; requires further lab or glucose monitoring data.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice symptoms of hypoglycemia?)\nresponse: I first noticed symptoms of hypoglycemia yesterday, when my girlfriend said I was confused and called her. She had to come pick me up. I also had a similar episode before that, but I’m not sure exactly when. I don’t remember any specific time I first noticed it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?)\nresponse: I had sweating and trembling during the hypoglycemia episodes. I also felt confused, and my girlfriend said I was acting weird when I rolled off the bed — but I didn’t have any palpitations or chest pain. I didn’t lose consciousness or have seizures, though.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Do you have a history of diabetes or are you currently taking any medications for blood sugar control?)\nresponse: I have a history of diabetes — I have IDDM. I’m currently taking insulin (40 units in the morning), metformin, and another pill for blood sugar control."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: Hypoglycemia. History: Patient has IDDM, currently on insulin (40 units morning), metformin, and another blood sugar pill. Symptoms: Episodes of hypoglycemia with sweating, trembling, confusion; no loss of consciousness or seizures. No palpitations or chest pain. Patient reports prior episodes but unclear timing. Lab request (turn 4) returned no result. Retrieved documents (turn 5) provide general information on hypoglycemia causes and management in elderly patients, including medication interactions and risk factors. No glucose levels or recent dietary history available."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20457292",
+        "turn_id": 6,
+        "query_text": "Hypoglycemia in patient with IDDM; symptoms include sweating, trembling, confusion; no loss of consciousness or seizures; on insulin (40 units morning), metformin, and another blood sugar medication; unclear timing of prior episodes; no recent glucose levels or dietary history; lab request returned no result.",
+        "skill_query_text": "Presenting problem: Hypoglycemia in IDDM patient. Uncertainty: cause (medication, missed meals, other factors). Evidence gathered: symptoms (sweating, trembling, confusion), medication history, prior episodes. Missing: recent glucose readings, timing of last meal, insulin dosing history, routine changes. Ineffective action: lab request returned no result. Need: workflow guidance to identify precipitating factors or confirm diagnosis."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.829,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_64aaa2a0cf94",
+              "type": "experience",
+              "score": 0.8119,
+              "outcome": "negative",
+              "text": "Symptoms of increased thirst, frequent urination, and blurry vision in an elderly patient with fatigue, weight loss, and cognitive decline strongly suggest diabetes mellitus; do not apply this when symptoms are absent or when alternative diagnoses like malignancy or neurological disorders are more likely based on history or exam.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7967,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_aa1ed1da6eed",
+              "type": "skill",
+              "score": 0.8181,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_4d07b04b92ce",
+              "type": "skill",
+              "score": 0.8086,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8078,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "hypoglycemia in type 1 diabetes patients on insulin therapy"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6454107d-5156-4b4c-a0d3-7fc8dbf043a9': '[Document 1] (ID: 4670_8, Score: 0.894)\\nHypoglycemia is the most common adverse effect of insulin therapy in people with type 1 diabetes (for definitions see Hypoglycemia chapter, p. S104). In the DCCT, 35% of participants in the conventional treatment group and 65% in the intensive group experienced at least 1 episode of severe hypoglyce...\\n\\n[Document 2] (ID: 3190_36, Score: 0.878)\\nTherefore, recommended therapy for type 1 diabetes consists of the following components: 1) use of multiple dose insulin injections (three to four injections per day of basal and prandial insulin) or CSII therapy; 2) matching of prandial insulin to carbohydrate intake, premeal blood glucose, and ant...\\n\\n[Document 3] (ID: 3903_45, Score: 0.877)\\nRecommended therapy for type 1 diabetes therefore consists of the following components: 1) use of multiple dose insulin injections (3-4 injections per day of basal and prandial insulin) or CSII therapy; 2) matching of prandial insulin to carbohydrate intake, premeal blood glucose, and anticipated ac...\\n\\n[Document 4] (ID: 4542_9, Score: 0.877)\\n# Treatment of Hypoglycemia\\nHypoglycemia is a major obstacle for children with type 1 diabetes and can affect their ability...[truncated]'}}",
+        "env_info": "{'response': [{'id': '6454107d-5156-4b4c-a0d3-7fc8dbf043a9', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"hypoglycemia in type 1 diabetes patients on insulin therapy\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 898}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5384615384615384,
+        "conf_after": 0.5384615384615384,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"hypoglycemia in type 1 diabetes patients on insulin therapy\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"hypoglycemia in type 1 diabetes patients on insulin therapy\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20457292",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Hypoglycemia",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 7. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Hypoglycemia",
+          "initial_information: I am a 67-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 67-year-old male patient presenting with Hypoglycemia and hypoglycemia. His..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice symptoms of hypoglycemia?)\nresponse: I first noticed symptoms of hypoglycemia yesterday, when my girlfriend said I was confused and called her. She had to come pick me up. I also had a similar episode before that, but I’m not sure exactly when. I don’t remember any specific time I first noticed it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?)\nresponse: I had sweating and trembling during the hypoglycemia episodes. I also felt confused, and my girlfriend said I was acting weird when I rolled off the bed — but I didn’t have any palpitations or chest pain. I didn’t lose consciousness or have seizures, though.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms and causes of hypoglycemia in elderly patients)\nresponse: [Document 1] (ID: 31580_12, Score: 0.894)\n- Hypoglycemia—Hypoglycemia does not occur in patients receiving Metformin HCl alone under usual circumstances of use, but could occur when caloric intake is deficient, when strenuous exercise is not compensated by caloric supplementation, or during concomitant use with other glucose-lowering agents...\n\n[Document 2] (ID: 33289_19, Score: 0.881)\n# Hypoglycemia\nHypoglycemia, also known as \"low blood sugar\", is when blood sugar decreases to below normal levels. This may result in a variety of symptoms including clumsiness, trouble talking, confusion, loss of consciousness, seizures or death. A feeling of hunger, sweating, shakiness and weakne...\n\n[Document 3] (ID: 3321_7, Score: 0.880)\nCare goals should be established at the time of admission to the LTC facility for all chronic conditions. Glycemic goals in particular are dependent on the patient's risk of hypoglycemia. Hypoglycemia is the leading limiting factor in the glycemic management of type 1 and insulin-treated type 2 diab...\n\n[Document 4] (ID: 22636_46, Score: 0.880)\n- Injecting insulin the wrong way or in the wrong injection area.\n- hypoglycemia can be mild to severe. Its onset may be rapid. Some patients have few or no warning symptoms, including:\n- patients with diabetes for a long time\n- patients with diabetic neuropathy (nerve problems)or patients using cer...\n\n[Document 5] (ID: 17403_4, Score: 0.879)\n# Causes\nCauses of hypoglycemia depend on age; neonatal causes are transient neonatal hypoglycemia, prematurity, intrauterine growth retardation, perinatal asphyxia, sepsis, congenital hypopituitarism, beta sympathomimetic drugs, congenital hyperinsulinism, infant of a diabetic mother, Beckwith-Wied...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Do you have a history of diabetes or are you currently taking any medications for blood sugar control?)\nresponse: I have a history of diabetes — I have IDDM. I’m currently taking insulin (40 units in the morning), metformin, and another pill for blood sugar control.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=hypoglycemia in type 1 diabetes patients on insulin therapy)\nresponse: [Document 1] (ID: 4670_8, Score: 0.894)\nHypoglycemia is the most common adverse effect of insulin therapy in people with type 1 diabetes (for definitions see Hypoglycemia chapter, p. S104). In the DCCT, 35% of participants in the conventional treatment group and 65% in the intensive group experienced at least 1 episode of severe hypoglyce...\n\n[Document 2] (ID: 3190_36, Score: 0.878)\nTherefore, recommended therapy for type 1 diabetes consists of the following components: 1) use of multiple dose insulin injections (three to four injections per day of basal and prandial insulin) or CSII therapy; 2) matching of prandial insulin to carbohydrate intake, premeal blood glucose, and ant...\n\n[Document 3] (ID: 3903_45, Score: 0.877)\nRecommended therapy for type 1 diabetes therefore consists of the following components: 1) use of multiple dose insulin injections (3-4 injections per day of basal and prandial insulin) or CSII therapy; 2) matching of prandial insulin to carbohydrate intake, premeal blood glucose, and anticipated ac...\n\n[Document 4] (ID: 4542_9, Score: 0.877)\n# Treatment of Hypoglycemia\nHypoglycemia is a major obstacle for children with type 1 diabetes and can affect their ability to achieve glycemic targets. Children with early-onset diabetes are at greatest risk for disruption of cognitive function and neuropsychological skills, but the respective role...\n\n[Document 5] (ID: 3903_44, Score: 0.873)\n3. Approach to treatment a. Therapy for type 1 diabetes. The DCCT clearly showed that intensive insulin therapy (three or more injections per day of insulin or continuous subcutane-ous insulin infusion [CSII] or insulin pump therapy) was a key part of improved glycemia and better outcomes (53,66). A..."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did you first notice symptoms of hypoglycemia?)\nresponse: I first noticed symptoms of hypoglycemia yesterday, when my girlfriend said I was confused and called her. She had to come pick me up. I also had a similar episode before that, but I’m not sure exactly when. I don’t remember any specific time I first noticed it.\ndoctor_action: ask_patient(question=Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?)\nresponse: I had sweating and trembling during the hypoglycemia episodes. I also felt confused, and my girlfriend said I was acting weird when I rolled off the bed — but I didn’t have any palpitations or chest pain. I didn’t lose consciousness or have seizures, though.\ndoctor_action: retrieve(query=symptoms and causes of hypoglycemia in elderly patients)\nresponse: [Document 1] (ID: 31580_12, Score: 0.894)\n- Hypoglycemia—Hypoglycemia does not occur in patients receiving Metformin HCl alone under usual circumstances of use, but could occur when caloric intake is deficient, when strenuous exercise is not compensated by caloric supplementation, or during concomitant use with other glucose-lowering agents...\n\n[Document 2] (ID: 33289_19, Score: 0.881)\n# Hypoglycemia\nHypoglycemia, also known as \"low blood sugar\", is when blood sugar decreases to below normal levels. This may result in a variety of symptoms including clumsiness, trouble talking, confusion, loss of consciousness, seizures or death. A feeling of hunger, sweating, shakiness and weakne...\n\n[Document 3] (ID: 3321_7, Score: 0.880)\nCare goals should be established at the time of admission to the LTC facility for all chronic conditions. Glycemic goals in particular are dependent on the patient's risk of hypoglycemia. Hypoglycemia is the leading limiting factor in the glycemic management of type 1 and insulin-treated type 2 diab...\n\n[Document 4] (ID: 22636_46, Score: 0.880)\n- Injecting insulin the wrong way or in the wrong injection area.\n- hypoglycemia can be mild to severe. Its onset may be rapid. Some patients have few or no warning symptoms, including:\n- patients with diabetes for a long time\n- patients with diabetic neuropathy (nerve problems)or patients using cer...\n\n[Document 5] (ID: 17403_4, Score: 0.879)\n# Causes\nCauses of hypoglycemia depend on age; neonatal causes are transient neonatal hypoglycemia, prematurity, intrauterine growth retardation, perinatal asphyxia, sepsis, congenital hypopituitarism, beta sympathomimetic drugs, congenital hyperinsulinism, infant of a diabetic mother, Beckwith-Wied...\ndoctor_action: ask_patient(question=Do you have a history of diabetes or are you currently taking any medications for blood sugar control?)\nresponse: I have a history of diabetes — I have IDDM. I’m currently taking insulin (40 units in the morning), metformin, and another pill for blood sugar control.\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20457292",
+        "turn_id": 7,
+        "query_text": "67-year-old male with hypoglycemia; symptoms: sweating, trembling, confusion; no palpitations, chest pain, loss of consciousness; history: type 1 diabetes, on insulin (40 units AM), metformin, and another blood sugar pill; labs not performed; diagnostic uncertainty: cause of hypoglycemia in type 1 DM on insulin therapy.",
+        "skill_query_text": "Presenting problem: hypoglycemia in 67-year-old male with type 1 diabetes on insulin. Evidence gathered: patient history, symptoms, prior retrieval on hypoglycemia in elderly and type 1 DM. Ineffective action: labs request yielded no result. Need workflow guidance: next diagnostic action to resolve uncertainty about hypoglycemia cause."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8471,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_64aaa2a0cf94",
+              "type": "experience",
+              "score": 0.8083,
+              "outcome": "negative",
+              "text": "Symptoms of increased thirst, frequent urination, and blurry vision in an elderly patient with fatigue, weight loss, and cognitive decline strongly suggest diabetes mellitus; do not apply this when symptoms are absent or when alternative diagnoses like malignancy or neurological disorders are more likely based on history or exam.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8016,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.811,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.809,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_aa1ed1da6eed",
+              "type": "skill",
+              "score": 0.8061,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Hypoglycemia due to insulin therapy in type 1 diabetes}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'91a80a59-d6ec-4e38-96dc-4c27887dd3e7': '{\"diagnosis\": \"Hypoglycemia due to insulin therapy in type 1 diabetes\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '91a80a59-d6ec-4e38-96dc-4c27887dd3e7', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Hypoglycemia due to insulin therapy in type 1 diabetes}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1411}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5384615384615384,
+        "conf_after": 0.5384615384615384,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Hypoglycemia due to insulin therapy in type 1 diabetes}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Hypoglycemia due to insulin therapy in type 1 diabetes}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?"
+      },
+      "patient_or_tool_response": "{'question': 'I had sweating and trembling during the hypoglycemia episodes. I also felt confused, and my girlfriend said I was acting weird when I rolled off the bed — but I didn’t have any palpitations or chest pain. I didn’t lose consciousness or have seizures, though.'}",
+      "env_info": "{'response': [{'id': '7796985e-3818-41b9-beba-26298e80aead', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe any other symptoms you\\\\u2019ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 101}",
+      "reward": 0.0,
+      "turn_reward": 0.015384615384615385,
+      "importance": 0.07692307692307693,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice symptoms of hypoglycemia?)\nresponse: I first noticed symptoms of hypoglycemia yesterday, when my girlfriend said I was confused and called her. She had to come pick me up. I also had a similar episode before that, but I’m not sure exactly when. I don’t remember any specific time I first noticed it."
+      ]
+    },
+    {
+      "turn_id": 3,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'ecba0b19-bdad-4e61-bdf8-321a2595061d': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': 'ecba0b19-bdad-4e61-bdf8-321a2595061d', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 214}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve experienced during these hypoglycemia episodes, such as sweating, trembling, or palpitations?)\nresponse: I had sweating and trembling during the hypoglycemia episodes. I also felt confused, and my girlfriend said I was acting weird when I rolled off the bed — but I didn’t have any palpitations or chest pain. I didn’t lose consciousness or have seizures, though."
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Do you have a history of diabetes or are you currently taking any medications for blood sugar control?"
+      },
+      "patient_or_tool_response": "{'question': 'I have a history of diabetes — I have IDDM. I’m currently taking insulin (40 units in the morning), metformin, and another pill for blood sugar control.'}",
+      "env_info": "{'response': [{'id': '685eaae4-0b81-4a82-b2f4-ecb9815ceb39', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you have a history of diabetes or are you currently taking any medications for blood sugar control?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 814}",
+      "reward": 0.0,
+      "turn_reward": 0.015384615384615375,
+      "importance": 0.07692307692307687,
+      "evidence_records": [
+        "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms and causes of hypoglycemia in elderly patients)\nresponse: [Document 1] (ID: 31580_12, Score: 0.894)\n- Hypoglycemia—Hypoglycemia does not occur in patients receiving Metformin HCl alone under usual circumstances of use, but could occur when caloric intake is deficient, when strenuous exercise is not compensated by caloric supplementation, or during concomitant use with other glucose-lowering agents...\n\n[Document 2] (ID: 33289_19, Score: 0.881)\n# Hypoglycemia\nHypoglycemia, also known as \"low blood sugar\", is when blood sugar decreases to below normal levels. This may result in a variety of symptoms including clumsiness, trouble talking, confusion, loss of consciousness, seizures or death. A feeling of hunger, sweating, shaki...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "ASK",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "hypoglycemia in type 1 diabetes patients on insulin therapy"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'6454107d-5156-4b4c-a0d3-7fc8dbf043a9': '[Document 1] (ID: 4670_8, Score: 0.894)\\nHypoglycemia is the most common adverse effect of insulin therapy in people with type 1 diabetes (for definitions see Hypoglycemia chapter, p. S104). In the DCCT, 35% of participants in the conventional treatment group and 65% in the intensive group experienced at least 1 episode of severe hypoglyce...\\n\\n[Document 2] (ID: 3190_36, Score: 0.878)\\nTherefore, recommended therapy for type 1 diabetes consists of the following components: 1) use of multiple dose insulin injections (three to four injections per day of basal and prandial insulin) or CSII therapy; 2) matching of prandial insulin to carbohydrate intake, premeal blood glucose, and ant...\\n\\n[Document 3] (ID: 3903_45, Score: 0.877)\\nRecommended therapy for type 1 diabetes therefore consists of the following components: 1) use of multiple dose insulin injections (3-4 injections per day of basal and prandial insulin) or CSII therapy; 2) matching of prandial insulin to carbohydrate intake, premeal blood glucose, and anticipated ac...\\n\\n[Document 4] (ID: 4542_9, Score: 0.877)\\n# Treatment of Hypoglycemia\\nHypoglycemia is a major obstacle for children with type 1 diabetes and can affect their ability...[truncated]'}}",
+      "env_info": "{'response': [{'id': '6454107d-5156-4b4c-a0d3-7fc8dbf043a9', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"hypoglycemia in type 1 diabetes patients on insulin therapy\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 898}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Do you have a history of diabetes or are you currently taking any medications for blood sugar control?)\nresponse: I have a history of diabetes — I have IDDM. I’m currently taking insulin (40 units in the morning), metformin, and another pill for blood sugar control."
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Hypoglycemia due to insulin therapy in type 1 diabetes}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'91a80a59-d6ec-4e38-96dc-4c27887dd3e7': '{\"diagnosis\": \"Hypoglycemia due to insulin therapy in type 1 diabetes\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '91a80a59-d6ec-4e38-96dc-4c27887dd3e7', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Hypoglycemia due to insulin therapy in type 1 diabetes}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1411}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 retrieve_interaction: doctor_action: retrieve(query=hypoglycemia in type 1 diabetes patients on insulin therapy)\nresponse: [Document 1] (ID: 4670_8, Score: 0.894)\nHypoglycemia is the most common adverse effect of insulin therapy in people with type 1 diabetes (for definitions see Hypoglycemia chapter, p. S104). In the DCCT, 35% of participants in the conventional treatment group and 65% in the intensive group experienced at least 1 episode of severe hypoglyce...\n\n[Document 2] (ID: 3190_36, Score: 0.878)\nTherefore, recommended therapy for type 1 diabetes consists of the following components: 1) use of multiple dose insulin injections (three to four injections per day of basal and prandial insulin) or CSII therapy; 2) matching of prandial insulin to carbohydrate intake, premeal blood ...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

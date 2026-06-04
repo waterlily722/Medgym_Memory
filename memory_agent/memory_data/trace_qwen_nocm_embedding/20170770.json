@@ -1,0 +1,2142 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20170770",
+  "turns": [
+    {
+      "case_id": "20170770",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 75-year-old male patient presenting with nonspecific subjective complaints. Key evidence gathered: Patient reports general malaise without specific symptoms. Diagnostic uncertainty remains high due to lack of specific history, exam, or diagnostic findings. Most useful missing information: Detailed history of symptoms, duration, associated features, and relevant past medical history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 75-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 75-year-old male patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 75-year-old male reporting general malaise without specific symptoms. No exam, lab, imaging, or tool results available. No history of specific symptoms, duration, or associated features provided. No prior medical history or risk factors documented. No diagnostic findings or test results to interpret. Missing information: Detailed symptom history, duration, associated features, and relevant past medical history."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 1,
+        "query_text": "75-year-old male, chief complaint: general malaise without specific symptoms. No exam, lab, or imaging results. No history of symptom duration, associated features, or past medical history. Diagnostic uncertainty remains high due to insufficient evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 75-year-old male with nonspecific malaise. Evidence gathered: Patient reports general malaise, no specific symptoms. No exam, lab, or imaging results. No history of symptom duration or associated features. No ineffective actions tried. Need workflow guidance on next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8037,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7683,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7409,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7327,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8129,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.812,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8082,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8165,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8034,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7923,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8082,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '46633ec4-6a8a-4345-941d-17539c08095a', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing and when they started?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient reports nonspecific subjective feeling of being unwell without defined symptoms. Key evidence gathered: Patient denies specific symptoms or known abnormalities. Diagnostic uncertainty remains high due to lack of specific symptom description or objective findings. Most useful missing information: Detailed description of symptoms, onset, duration, associated features, and any relevant medical history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general feeling of being unwell without specific symptoms. Patient denies any problems or known abnormal findings in any area. No objective findings, exam, lab, imaging, or tool results reported. No relevant history or symptom details provided. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 2,
+        "query_text": "Patient reports general feeling of being unwell without specific symptoms. Denies any problems or known abnormal findings. No objective findings, exam, lab, imaging, or tool results reported. No relevant history or symptom details provided. Diagnostic uncertainty remains high due to lack of specific symptom description or objective findings.",
+        "skill_query_text": "Presenting problem: Patient reports nonspecific subjective feeling of being unwell without defined symptoms. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: Patient denies specific symptoms or known abnormalities. Missing evidence: Detailed description of symptoms, onset, duration, associated features, and relevant medical history. Ineffective actions tried: Asked patient to describe symptoms; response was denial of problems or abnormalities. Needed guidance: Action-selection workflow for managing nonspecific unwellness without objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8224,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7737,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.751,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7484,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8418,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_74f0bd084ae5",
+              "type": "experience",
+              "score": 0.8311,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication or prior evidence of abnormality yields no diagnostic value; avoid redundant lab requests when history and known findings (e.g., AVM) already guide diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.826,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8111,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7891,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.787,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight loss, fatigue, fever, or night sweats?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '647e582d-17a6-4963-9efb-cfae2a63ff32', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or night sweats?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 73}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or night sweats?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or night sweats?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell. Key evidence gathered: Patient denies recent weight loss, fatigue, fever, or night sweats. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed history of symptom onset, duration, associated symptoms, and any relevant medical or social history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports not feeling well recently, seeking assessment and diagnosis. Turn 2: Patient denied problems related to symptom description. Turn 3: Patient denies recent weight loss, fatigue, fever, or night sweats. No objective findings or lab/imaging results available. No specific symptoms identified. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 3,
+        "query_text": "Patient reports not feeling well recently. Denies recent weight loss, fatigue, fever, or night sweats. No objective findings, lab, or imaging results. No specific symptoms identified. No management-relevant risk identified. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell. Current uncertainty: Diagnosis not yet possible. Evidence gathered: Patient denies weight loss, fatigue, fever, night sweats. Missing: Detailed history of symptom onset, duration, associated symptoms, and relevant medical/social history. Ineffective action: Asked about weight loss, fatigue, fever, night sweats — patient denied. Need: Workflow guidance for next diagnostic steps given current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8134,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.784,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.755,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7448,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8505,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.828,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8279,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8393,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.819,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8184,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your appetite or energy levels recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been feeling more tired lately, like I’m constantly exhausted, even after sleeping. My appetite hasn’t been great either—I’ve been eating less than usual, and sometimes I just don’t feel hungry at all. I’ve also noticed my stools have been darker, almost black, and I’ve been feeling a bit weak. I’m not sure if it’s related, but I’ve also been having some episodes where I vomit up what looks like dark, coffee-ground-like material.'}",
+        "env_info": "{'response': [{'id': '81ab9d3d-9992-4d05-8a2e-3402e2c939cd', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your appetite or energy levels recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 148}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite or energy levels recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite or energy levels recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific fatigue, decreased appetite, dark stools, and vomiting of coffee-ground-like material. Key evidence: Patient reports persistent fatigue, reduced appetite, dark stools, and hematemesis. Diagnostic uncertainty: Differentiating between gastrointestinal bleeding, anemia, or systemic illness. Most useful missing information: History of GI symptoms, prior bleeding events, medication use (especially NSAIDs or anticoagulants), and recent dietary changes. Existing evidence is not enough to finalize diagnosis; further investigation needed.",
+        "efficient_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite or energy levels recently?)\nresponse: I’ve been feeling more tired lately, like I’m constantly exhausted, even after sleeping. My appetite hasn’t been great either—I’ve been eating less than usual, and sometimes I just don’t feel hungry at all. I’ve also noticed my stools have been darker, almost black, and I’ve been feeling a bit weak. I’m not sure if it’s related, but I’ve also been having some episodes where I vomit up what looks like dark, coffee-ground-like material."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general malaise and seeks assessment. Turn 2: Asked about specific symptoms and onset; patient reported no issues in that area. Turn 3: Asked about weight loss, fatigue, fever, or night sweats; patient reported no issues in that area. Turn 4: Patient reports increased fatigue, decreased appetite, dark stools, weakness, and vomiting of coffee-ground-like material. No prior findings or test results reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 4,
+        "query_text": "Patient reports non-specific fatigue, decreased appetite, dark stools, and vomiting of coffee-ground-like material. No prior findings or test results. Diagnostic uncertainty: Differentiating between gastrointestinal bleeding, anemia, or systemic illness. Missing: History of GI symptoms, prior bleeding, medication use (NSAIDs/anticoagulants), recent dietary changes.",
+        "skill_query_text": "Presenting problem: Patient with non-specific fatigue, dark stools, hematemesis. Evidence gathered: Patient-reported symptoms. Ineffective actions: None. Missing: History of GI symptoms, medication use, dietary changes. Need: Diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8531,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.842,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_e72fd139b659",
+              "type": "experience",
+              "score": 0.8349,
+              "outcome": "negative",
+              "text": "Dark urine, pale stools, and jaundice in a patient with fatigue and fever strongly suggest hepatobiliary pathology; do not apply this when the patient has no jaundice, no stool or urine changes, or when systemic signs point to non-liver causes.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8076,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7935,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7934,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7edc86e3eac0"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_7edc86e3eac0",
+            "memory_type": "experience",
+            "score": 0.842,
+            "content": {
+              "experience": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'eb62fef5-c8df-4ab2-bd3f-84cb9f1942b5': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'eb62fef5-c8df-4ab2-bd3f-84cb9f1942b5', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 287}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 4,
+        "query_text": "Patient reports non-specific fatigue, decreased appetite, dark stools, and vomiting of coffee-ground-like material. No prior findings or test results. Diagnostic uncertainty: Differentiating between gastrointestinal bleeding, anemia, or systemic illness. Missing: History of GI symptoms, prior bleeding, medication use (NSAIDs/anticoagulants), recent dietary changes.",
+        "skill_query_text": "Presenting problem: Patient with non-specific fatigue, dark stools, hematemesis. Evidence gathered: Patient-reported symptoms. Ineffective actions: None. Missing: History of GI symptoms, medication use, dietary changes. Need: Diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8531,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.842,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_e72fd139b659",
+              "type": "experience",
+              "score": 0.8349,
+              "outcome": "negative",
+              "text": "Dark urine, pale stools, and jaundice in a patient with fatigue and fever strongly suggest hepatobiliary pathology; do not apply this when the patient has no jaundice, no stool or urine changes, or when systemic signs point to non-liver causes.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8076,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7935,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7934,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7edc86e3eac0"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "query": "symptoms of gastrointestinal bleeding in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'738d7a2a-f682-4364-b23a-9cfdb62b28fe': '[Document 1] (ID: 32044_4, Score: 0.890)\\n## Age\\n- Rare in children\\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\\n- Largely due to the increase in the prevalence ...\\n\\n[Document 2] (ID: 7442_2, Score: 0.888)\\n# Epidemiology and Demographics\\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T...\\n\\n[Document 3] (ID: 32044_6, Score: 0.887)\\nLGIB can be mild and intermittent, as often is the case with angiodysplasia, or it may be moderate or severe, as may be the situation in diverticula-related bleeding.\\nYoung patients may present with abdominal pain, rectal bleeding, diarrhea, and mucous discharge that may be associated with IBD.\\nElde...\\n\\n[Document 4] (ID: 32044_7, Score: 0.877)\\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to an...[truncated]'}}",
+        "env_info": "{'response': [{'id': '738d7a2a-f682-4364-b23a-9cfdb62b28fe', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of gastrointestinal bleeding in elderly patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 358}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of gastrointestinal bleeding in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of gastrointestinal bleeding in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell, with recent symptoms including fatigue, decreased appetite, dark stools, and vomiting of coffee-ground-like material. Key evidence: Patient reports dark stools and coffee-ground emesis, suggesting possible GI bleeding. Diagnostic uncertainty: Whether bleeding is upper or lower GI, and whether it is acute or chronic. Most useful missing information: Specific history of hematemesis, melena, syncope, or prior GI symptoms. Existing evidence is not enough to finalize diagnosis; further targeted history and diagnostic tests (e.g., stool occult blood, endoscopy) are needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite or energy levels recently?)\nresponse: I’ve been feeling more tired lately, like I’m constantly exhausted, even after sleeping. My appetite hasn’t been great either—I’ve been eating less than usual, and sometimes I just don’t feel hungry at all. I’ve also noticed my stools have been darker, almost black, and I’ve been feeling a bit weak. I’m not sure if it’s related, but I’ve also been having some episodes where I vomit up what looks like dark, coffee-ground-like material.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of gastrointestinal bleeding in elderly patients)\nresponse: [Document 1] (ID: 32044_4, Score: 0.890)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 2] (ID: 7442_2, Score: 0.888)\n# Epidemiology and Demographics\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T...\n\n[Document 3] (ID: 32044_6, Score: 0.887)\nLGIB can be mild and intermittent, as often is the case with angiodysplasia, or it may be moderate or severe, as may be the situation in diverticula-related bleeding.\nYoung patients may present with abdominal pain, rectal bleeding, diarrhea, and mucous discharge that may be associated with IBD.\nElde...\n\n[Document 4] (ID: 32044_7, Score: 0.877)\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to angiodysplastic lesions.\n- Stools streaked with blood, perianal pain, and blood drops on the toilet paper or in the toilet bowl may be associated with perianal pathology, such as a...\n\n[Document 5] (ID: 13719_1, Score: 0.877)\n# Overview\nGastrointestinal (GI) bleeding is defined as bleeding from any part of GI tract starting from mouth to anus. It can also be called as gastrointestinal hemorrhage. Based on the origin of bleeding it can be classified into upper gastrointestinal bleeding and lower gastrointestinal bleeding...."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports general malaise, no prior GI symptoms or abnormalities. Turn 4 reveals new symptoms: fatigue, decreased appetite, dark stools, and coffee-ground emesis. Labs requested but no result available. Literature review on GI bleeding in elderly patients retrieved, indicating increased incidence with age, association with diverticula and angiodysplasia, and potential for upper GI bleeding. No specific history of hematemesis or syncope. No prior imaging or diagnostic tests performed. Missing: specific history of GI bleeding, prior GI symptoms, or diagnostic test results."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 6,
+        "query_text": "Patient reports fatigue, decreased appetite, dark stools, and coffee-ground emesis. No prior GI symptoms or abnormalities. Labs requested but no result available. No imaging or prior diagnostic tests. Uncertainty: upper vs lower GI bleeding, acute vs chronic. Missing: history of hematemesis, syncope, or prior GI issues. Age-related risk for diverticula and angiodysplasia noted from literature.",
+        "skill_query_text": "Presenting problem: non-specific malaise with signs suggestive of GI bleeding. Evidence gathered: patient history of fatigue, decreased appetite, dark stools, coffee-ground emesis. Ineffective action: labs requested but no result. Need workflow guidance for next diagnostic steps, including targeted history and tests (e.g., stool occult blood, endoscopy) to differentiate upper vs lower GI bleeding."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8032,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7721,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7532,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7391,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8447,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.842,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8395,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8188,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.8039,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8011,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7edc86e3eac0",
+          "exp_0bca203ce11d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0bca203ce11d",
+            "memory_type": "experience",
+            "score": 0.8395,
+            "content": {
+              "experience": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been having some abdominal pain, and I’ve also felt nauseous lately. My bowel habits have changed too — I’ve been having more frequent, looser stools than usual. I’m not sure if it’s related, but I’ve also noticed my stool has turned black and tarry-looking. I haven’t vomited anything, but I’m worried because I’ve been feeling weak and tired.'}",
+        "env_info": "{'response': [{'id': '60f41399-2cc0-43e8-8bc1-e08a556e2794', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 863}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 7. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 75-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 75-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite or energy levels recently?)\nresponse: I’ve been feeling more tired lately, like I’m constantly exhausted, even after sleeping. My appetite hasn’t been great either—I’ve been eating less than usual, and sometimes I just don’t feel hungry at all. I’ve also noticed my stools have been darker, almost black, and I’ve been feeling a bit weak. I’m not sure if it’s related, but I’ve also been having some episodes where I vomit up what looks like dark, coffee-ground-like material.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of gastrointestinal bleeding in elderly patients)\nresponse: [Document 1] (ID: 32044_4, Score: 0.890)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 2] (ID: 7442_2, Score: 0.888)\n# Epidemiology and Demographics\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T...\n\n[Document 3] (ID: 32044_6, Score: 0.887)\nLGIB can be mild and intermittent, as often is the case with angiodysplasia, or it may be moderate or severe, as may be the situation in diverticula-related bleeding.\nYoung patients may present with abdominal pain, rectal bleeding, diarrhea, and mucous discharge that may be associated with IBD.\nElde...\n\n[Document 4] (ID: 32044_7, Score: 0.877)\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to angiodysplastic lesions.\n- Stools streaked with blood, perianal pain, and blood drops on the toilet paper or in the toilet bowl may be associated with perianal pathology, such as a...\n\n[Document 5] (ID: 13719_1, Score: 0.877)\n# Overview\nGastrointestinal (GI) bleeding is defined as bleeding from any part of GI tract starting from mouth to anus. It can also be called as gastrointestinal hemorrhage. Based on the origin of bleeding it can be classified into upper gastrointestinal bleeding and lower gastrointestinal bleeding....",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?)\nresponse: I’ve been having some abdominal pain, and I’ve also felt nauseous lately. My bowel habits have changed too — I’ve been having more frequent, looser stools than usual. I’m not sure if it’s related, but I’ve also noticed my stool has turned black and tarry-looking. I haven’t vomited anything, but I’m worried because I’ve been feeling weak and tired."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite or energy levels recently?)\nresponse: I’ve been feeling more tired lately, like I’m constantly exhausted, even after sleeping. My appetite hasn’t been great either—I’ve been eating less than usual, and sometimes I just don’t feel hungry at all. I’ve also noticed my stools have been darker, almost black, and I’ve been feeling a bit weak. I’m not sure if it’s related, but I’ve also been having some episodes where I vomit up what looks like dark, coffee-ground-like material.\ndoctor_action: retrieve(query=symptoms of gastrointestinal bleeding in elderly patients)\nresponse: [Document 1] (ID: 32044_4, Score: 0.890)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 2] (ID: 7442_2, Score: 0.888)\n# Epidemiology and Demographics\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T...\n\n[Document 3] (ID: 32044_6, Score: 0.887)\nLGIB can be mild and intermittent, as often is the case with angiodysplasia, or it may be moderate or severe, as may be the situation in diverticula-related bleeding.\nYoung patients may present with abdominal pain, rectal bleeding, diarrhea, and mucous discharge that may be associated with IBD.\nElde...\n\n[Document 4] (ID: 32044_7, Score: 0.877)\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to angiodysplastic lesions.\n- Stools streaked with blood, perianal pain, and blood drops on the toilet paper or in the toilet bowl may be associated with perianal pathology, such as a...\n\n[Document 5] (ID: 13719_1, Score: 0.877)\n# Overview\nGastrointestinal (GI) bleeding is defined as bleeding from any part of GI tract starting from mouth to anus. It can also be called as gastrointestinal hemorrhage. Based on the origin of bleeding it can be classified into upper gastrointestinal bleeding and lower gastrointestinal bleeding....\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 7,
+        "query_text": "75-year-old male patient reports fatigue, decreased appetite, black tarry stools, vomiting coffee-ground material, abdominal pain, nausea, and looser stools. No prior weight loss, fever, or night sweats. No prior abnormal findings. Retrieved: symptoms of GI bleeding in elderly. Labs requested but no result.",
+        "skill_query_text": "Presenting problem: elderly male with GI bleeding symptoms. Evidence gathered: patient history, retrieved GI bleeding info. Missing: lab results. Ineffective: labs request yielded no result. Need: targeted diagnostic workflow guidance to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7819,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7745,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7399,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7361,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8485,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8455,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8404,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8242,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8028,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.8004,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_0bca203ce11d"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.7745,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5ed8755a-86db-47a6-9d90-350856b1be99': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '5ed8755a-86db-47a6-9d90-350856b1be99', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 988}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 7,
+        "query_text": "75-year-old male patient reports fatigue, decreased appetite, black tarry stools, vomiting coffee-ground material, abdominal pain, nausea, and looser stools. No prior weight loss, fever, or night sweats. No prior abnormal findings. Retrieved: symptoms of GI bleeding in elderly. Labs requested but no result.",
+        "skill_query_text": "Presenting problem: elderly male with GI bleeding symptoms. Evidence gathered: patient history, retrieved GI bleeding info. Missing: lab results. Ineffective: labs request yielded no result. Need: targeted diagnostic workflow guidance to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7819,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7745,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7399,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7361,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8485,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8455,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8404,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8242,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8028,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.8004,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_0bca203ce11d"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e77d80b5-3a86-4d65-91c4-e91af2d56b0f': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'e77d80b5-3a86-4d65-91c4-e91af2d56b0f', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1062}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 7,
+        "query_text": "75-year-old male patient reports fatigue, decreased appetite, black tarry stools, vomiting coffee-ground material, abdominal pain, nausea, and looser stools. No prior weight loss, fever, or night sweats. No prior abnormal findings. Retrieved: symptoms of GI bleeding in elderly. Labs requested but no result.",
+        "skill_query_text": "Presenting problem: elderly male with GI bleeding symptoms. Evidence gathered: patient history, retrieved GI bleeding info. Missing: lab results. Ineffective: labs request yielded no result. Need: targeted diagnostic workflow guidance to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7819,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7745,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7399,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7361,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8485,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8455,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8404,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8242,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8028,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.8004,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_0bca203ce11d"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "causes of black tarry stools and vomiting coffee-ground material in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ac2ec310-1522-42b7-af00-38e49acacce0': '[Document 1] (ID: 16201_0, Score: 0.875)\\nCoffee ground vomiting\\n\\n# Overview\\nCoffee ground vomiting refers to a particular appearance of vomit.  Blood contains iron within heme molecules in red blood cells. When this iron has been exposed to gastric acid for some time, it becomes oxidized. This reaction causes the vomitus to look like groun...\\n\\n[Document 2] (ID: 8809_2, Score: 0.851)\\n## Content\\nSince the stomach secretes acid, vomit contains a high concentration of hydronium ions and is thus strongly acidic. Recent food intake will be reflected in the gastric vomit.\\nThe content of the vomitus (vomit) may be of medical interest. Fresh blood in the vomit is termed hematemesis (\"bl...\\n\\n[Document 3] (ID: 6475_2, Score: 0.848)\\n- Eating black licorice, lead, iron pills, bismuth medicines like Pepto-Bismol, or blueberries can also cause black stools. Beets and tomatoes can sometimes make stools appear reddish. In these cases, your doctor can test the stool with a chemical to rule out the presence of blood.\\n- Bleeding in the...\\n\\n[Document 4] (ID: 13719_2, Score: 0.846)\\n# Types of bleeding\\nBleeding from the gastrointestinal tract can be of the following types:\\n- Haematemesis: Vomiting fresh ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'ac2ec310-1522-42b7-af00-38e49acacce0', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"causes of black tarry stools and vomiting coffee-ground material in elderly patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1136}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of black tarry stools and vomiting coffee-ground material in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"causes of black tarry stools and vomiting coffee-ground material in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with fatigue, decreased appetite, black tarry stools, and coffee-ground vomiting, raising concern for upper GI bleeding. Key evidence: Patient reports symptoms consistent with GI bleeding (coffee-ground emesis, melena, weakness, abdominal pain, nausea). No lab, imaging, or CXR results available. Diagnostic uncertainty: Differentiating between benign causes (e.g., bismuth-containing meds, iron supplements) and pathological causes (e.g., peptic ulcer, gastritis, malignancy). Most useful missing information: Stool occult blood test, endoscopy, and detailed medication history. Existing evidence is not enough to finalize diagnosis; further diagnostic workup is required.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite or energy levels recently?)\nresponse: I’ve been feeling more tired lately, like I’m constantly exhausted, even after sleeping. My appetite hasn’t been great either—I’ve been eating less than usual, and sometimes I just don’t feel hungry at all. I’ve also noticed my stools have been darker, almost black, and I’ve been feeling a bit weak. I’m not sure if it’s related, but I’ve also been having some episodes where I vomit up what looks like dark, coffee-ground-like material.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?)\nresponse: I’ve been having some abdominal pain, and I’ve also felt nauseous lately. My bowel habits have changed too — I’ve been having more frequent, looser stools than usual. I’m not sure if it’s related, but I’ve also noticed my stool has turned black and tarry-looking. I haven’t vomited anything, but I’m worried because I’ve been feeling weak and tired."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports general malaise, fatigue, decreased appetite, black tarry stools, and coffee-ground vomiting. Also reports abdominal pain, nausea, and looser stools. No weight loss, fever, or night sweats reported. Labs, CXR, and imaging results unavailable. Medication history not provided. Possible benign causes (e.g., bismuth-containing meds, iron supplements) or pathological causes (e.g., peptic ulcer, gastritis) for GI bleeding. No definitive diagnosis yet. Low-value attempts: Labs, CXR, imaging yielded no results."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 10,
+        "query_text": "Patient reports fatigue, decreased appetite, black tarry stools, coffee-ground vomiting, abdominal pain, nausea, and looser stools. No weight loss, fever, or night sweats. Labs, CXR, and imaging results unavailable. Medication history not provided. Uncertainty: Differentiating benign (e.g., bismuth, iron) vs pathological (e.g., peptic ulcer, gastritis) causes of GI bleeding.",
+        "skill_query_text": "Presenting problem: Patient with suspected upper GI bleeding. Evidence gathered: Symptom history (fatigue, anorexia, melena, hematemesis, abdominal pain, diarrhea). Ineffective actions: Labs, CXR, imaging yielded no results. Missing: Stool occult blood test, endoscopy, detailed medication history. Need: Workflow guidance for prioritizing diagnostic tests to differentiate benign vs pathological GI bleeding causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7896,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7698,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7448,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8791,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8541,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_e72fd139b659",
+              "type": "experience",
+              "score": 0.8501,
+              "outcome": "negative",
+              "text": "Dark urine, pale stools, and jaundice in a patient with fatigue and fever strongly suggest hepatobiliary pathology; do not apply this when the patient has no jaundice, no stool or urine changes, or when systemic signs point to non-liver causes.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8215,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8177,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8152,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_0bca203ce11d",
+          "exp_7edc86e3eac0"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "common causes of upper GI bleeding in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a9c4d2f8-a464-47bd-a3aa-2b3a941b7f0c': '[Document 1] (ID: 7442_2, Score: 0.911)\\n# Epidemiology and Demographics\\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T...\\n\\n[Document 2] (ID: 25316_0, Score: 0.886)\\nSandbox:Aditya\\n\\n# Causes\\n\\n## Common causes\\n- Peptic ulcer disease\\nResponsible for around 33%-50% of upper GI bleeding\\nPeptic ulcer disease is most commonly due to H.pylori or nonsteroidal anti-inflammatory drugs (NSAIDs).\\nUpper GI bleeding is the most common complication of peptic ulcer disease  and...\\n\\n[Document 3] (ID: 7442_1, Score: 0.883)\\n# Classification\\nAccording to the American Gastroenterological Association, upper GI bleeding can be classified based on the rate of blood loss into overt(acute), occult or obscure(chronic) forms.\\n\\n# Pathophysiology\\nThe main inciting event in the pathogenesis of upper GI bleeding is damage to mucosa...\\n\\n[Document 4] (ID: 2100_0, Score: 0.883)\\nAcute upper gastrointestinal bleeding in over 16s: management\\nThis guideline covers how upper gastrointestinal bleeding can ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'a9c4d2f8-a464-47bd-a3aa-2b3a941b7f0c', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of upper GI bleeding in elderly patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1653}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of upper GI bleeding in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of upper GI bleeding in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 9. Low-information/no-result turns already attempted: 3; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 75-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 75-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite or energy levels recently?)\nresponse: I’ve been feeling more tired lately, like I’m constantly exhausted, even after sleeping. My appetite hasn’t been great either—I’ve been eating less than usual, and sometimes I just don’t feel hungry at all. I’ve also noticed my stools have been darker, almost black, and I’ve been feeling a bit weak. I’m not sure if it’s related, but I’ve also been having some episodes where I vomit up what looks like dark, coffee-ground-like material.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of gastrointestinal bleeding in elderly patients)\nresponse: [Document 1] (ID: 32044_4, Score: 0.890)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 2] (ID: 7442_2, Score: 0.888)\n# Epidemiology and Demographics\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T...\n\n[Document 3] (ID: 32044_6, Score: 0.887)\nLGIB can be mild and intermittent, as often is the case with angiodysplasia, or it may be moderate or severe, as may be the situation in diverticula-related bleeding.\nYoung patients may present with abdominal pain, rectal bleeding, diarrhea, and mucous discharge that may be associated with IBD.\nElde...\n\n[Document 4] (ID: 32044_7, Score: 0.877)\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to angiodysplastic lesions.\n- Stools streaked with blood, perianal pain, and blood drops on the toilet paper or in the toilet bowl may be associated with perianal pathology, such as a...\n\n[Document 5] (ID: 13719_1, Score: 0.877)\n# Overview\nGastrointestinal (GI) bleeding is defined as bleeding from any part of GI tract starting from mouth to anus. It can also be called as gastrointestinal hemorrhage. Based on the origin of bleeding it can be classified into upper gastrointestinal bleeding and lower gastrointestinal bleeding....",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?)\nresponse: I’ve been having some abdominal pain, and I’ve also felt nauseous lately. My bowel habits have changed too — I’ve been having more frequent, looser stools than usual. I’m not sure if it’s related, but I’ve also noticed my stool has turned black and tarry-looking. I haven’t vomited anything, but I’m worried because I’ve been feeling weak and tired.",
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=causes of black tarry stools and vomiting coffee-ground material in elderly patients)\nresponse: [Document 1] (ID: 16201_0, Score: 0.875)\nCoffee ground vomiting\n\n# Overview\nCoffee ground vomiting refers to a particular appearance of vomit.  Blood contains iron within heme molecules in red blood cells. When this iron has been exposed to gastric acid for some time, it becomes oxidized. This reaction causes the vomitus to look like groun...\n\n[Document 2] (ID: 8809_2, Score: 0.851)\n## Content\nSince the stomach secretes acid, vomit contains a high concentration of hydronium ions and is thus strongly acidic. Recent food intake will be reflected in the gastric vomit.\nThe content of the vomitus (vomit) may be of medical interest. Fresh blood in the vomit is termed hematemesis (\"bl...\n\n[Document 3] (ID: 6475_2, Score: 0.848)\n- Eating black licorice, lead, iron pills, bismuth medicines like Pepto-Bismol, or blueberries can also cause black stools. Beets and tomatoes can sometimes make stools appear reddish. In these cases, your doctor can test the stool with a chemical to rule out the presence of blood.\n- Bleeding in the...\n\n[Document 4] (ID: 13719_2, Score: 0.846)\n# Types of bleeding\nBleeding from the gastrointestinal tract can be of the following types:\n- Haematemesis: Vomiting fresh red blood.\n- Coffee ground emesis: Vomiting of altered black blood.\n- Melaena: Passage of black tarry stools.\n- Haemochezia: Passage of red blood per rectum (usually due to blee...\n\n[Document 5] (ID: 11449_9, Score: 0.846)\n# What should I know about storage and disposal of this medication?\nKeep this medication in the container it came in, tightly closed, and out - of reach of children. Store it at room temperature and away from excess heat, moisture (not in the bathroom), and light. Throw away any medication that is o...",
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=common causes of upper GI bleeding in elderly patients)\nresponse: [Document 1] (ID: 7442_2, Score: 0.911)\n# Epidemiology and Demographics\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T...\n\n[Document 2] (ID: 25316_0, Score: 0.886)\nSandbox:Aditya\n\n# Causes\n\n## Common causes\n- Peptic ulcer disease\nResponsible for around 33%-50% of upper GI bleeding\nPeptic ulcer disease is most commonly due to H.pylori or nonsteroidal anti-inflammatory drugs (NSAIDs).\nUpper GI bleeding is the most common complication of peptic ulcer disease  and...\n\n[Document 3] (ID: 7442_1, Score: 0.883)\n# Classification\nAccording to the American Gastroenterological Association, upper GI bleeding can be classified based on the rate of blood loss into overt(acute), occult or obscure(chronic) forms.\n\n# Pathophysiology\nThe main inciting event in the pathogenesis of upper GI bleeding is damage to mucosa...\n\n[Document 4] (ID: 2100_0, Score: 0.883)\nAcute upper gastrointestinal bleeding in over 16s: management\nThis guideline covers how upper gastrointestinal bleeding can be effectively managed in adults and young people aged 16 years and older. It aims to identify which diagnostic and therapeutic steps are useful so hospitals can develop a stru...\n\n[Document 5] (ID: 7442_0, Score: 0.881)\nUpper gastrointestinal bleeding overview\n\n# Overview\nUpper gastrointestinal bleeding (UGIB) is defined as bleeding from the gastrointestinal tract that originates proximal to the ligament of Treitz. The most common causes of UGIB are peptic ulcer disease and esophageal varices. Clinical presentation..."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite or energy levels recently?)\nresponse: I’ve been feeling more tired lately, like I’m constantly exhausted, even after sleeping. My appetite hasn’t been great either—I’ve been eating less than usual, and sometimes I just don’t feel hungry at all. I’ve also noticed my stools have been darker, almost black, and I’ve been feeling a bit weak. I’m not sure if it’s related, but I’ve also been having some episodes where I vomit up what looks like dark, coffee-ground-like material.\ndoctor_action: retrieve(query=symptoms of gastrointestinal bleeding in elderly patients)\nresponse: [Document 1] (ID: 32044_4, Score: 0.890)\n## Age\n- Rare in children\n- The incidence of lower GI bleeding increases with age with a 200-fold increase from the second to eighth decades of life la.\nLargely due to the increase in the prevalence of diverticular disease and angiodysplasia with age.\n- Largely due to the increase in the prevalence ...\n\n[Document 2] (ID: 7442_2, Score: 0.888)\n# Epidemiology and Demographics\nAbout 75% of patients presenting to the emergency room with GI bleeding have an upper source. The diagnosis is easier when the patient has hematemesis. In the absence of hematemesis, 40% to 50% of patients in the emergency room with GI bleeding have an upper source. T...\n\n[Document 3] (ID: 32044_6, Score: 0.887)\nLGIB can be mild and intermittent, as often is the case with angiodysplasia, or it may be moderate or severe, as may be the situation in diverticula-related bleeding.\nYoung patients may present with abdominal pain, rectal bleeding, diarrhea, and mucous discharge that may be associated with IBD.\nElde...\n\n[Document 4] (ID: 32044_7, Score: 0.877)\n- Elderly patients with atherosclerotic heart disease may present with intermittent LGIB and syncope that may be due to angiodysplastic lesions.\n- Stools streaked with blood, perianal pain, and blood drops on the toilet paper or in the toilet bowl may be associated with perianal pathology, such as a...\n\n[Document 5] (ID: 13719_1, Score: 0.877)\n# Overview\nGastrointestinal (GI) bleeding is defined as bleeding from any part of GI tract starting from mouth to anus. It can also be called as gastrointestinal hemorrhage. Based on the origin of bleeding it can be classified into upper gastrointestinal bleeding and lower gastrointestinal bleeding....\ndoctor_action: ask_patient(question=Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?)\nresponse: I’ve been having some abdominal pain, and I’ve also felt nauseous lately. My bowel habits have changed too — I’ve been having more frequent, looser stools than usual. I’m not sure if it’s related, but I’ve also noticed my stool has turned black and tarry-looking. I haven’t vomited anything, but I’m worried because I’ve been feeling weak and tired.\ndoctor_action: retrieve(query=causes of black tarry stools and vomiting coffee-ground material in elderly patients)\nresponse: [Document 1] (ID: 16201_0, Score: 0.875)\nCoffee ground vomiting\n\n# Overview\nCoffee ground vomiting refers to a particular appearance of vomit.  Blood contains iron within heme molecules in red blood cells. When this iron has been exposed to gastric acid for some time, it becomes oxidized. This reaction causes the vomitus to look like groun...\n\n[Document 2] (ID: 8809_2, Score: 0.851)\n## Content\nSince the stomach secretes acid, vomit contains a high concentration of hydronium ions and is thus strongly acidic. Recent food intake will be reflected in the gastric vomit.\nThe content of the vomitus (vomit) may be of medical interest. Fresh blood in the vomit is termed hematemesis (\"bl...\n\n[Document 3] (ID: 6475_2, Score: 0.848)\n- Eating black licorice, lead, iron pills, bismuth medicines like Pepto-Bismol, or blueberries can also cause black stools. Beets and tomatoes can sometimes make stools appear reddish. In these cases, your doctor can test the stool with a chemical to rule out the presence of blood.\n- Bleeding in the...\n\n[Document 4] (ID: 13719_2, Score: 0.846)\n# Types of bleeding\nBleeding from the gastrointestinal tract can be of the following types:\n- Haematemesis: Vomiting fresh red blood.\n- Coffee ground emesis: Vomiting of altered black blood.\n- Melaena: Passage of black tarry stools.\n- Haemochezia: Passage of red blood per rectum (usually due to blee...\n\n[Document 5] (ID: 11449_9, Score: 0.846)\n# What should I know about storage and disposal of this medication?\nKeep this medication in the container it came in, tightly closed, and out - of reach of children. Store it at room temperature and away from excess heat, moisture (not in the bathroom), and light. Throw away any medication that is o...\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 11,
+        "query_text": "75-year-old male patient reports fatigue, decreased appetite, black tarry stools, and vomiting coffee-ground material. No weight loss, fever, or night sweats. Abdominal pain and nausea present. No prior labs, CXR, or imaging results. Relevant history: elderly, GI bleeding symptoms. Uncertainty: cause of bleeding (upper GI likely).",
+        "skill_query_text": "Presenting problem: elderly male with GI bleeding symptoms (black stools, coffee-ground vomit). Evidence gathered: patient history, literature on GI bleeding in elderly. Ineffective actions: no lab, CXR, or imaging results. Need: guidance on next diagnostic action to resolve uncertainty (e.g., targeted exam or tool)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8608,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8521,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8389,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8116,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.8091,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8008,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0bca203ce11d",
+          "exp_7edc86e3eac0"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Upper Gastrointestinal Bleeding}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4c98c7ad-750e-462f-9236-dc63b83828fa': '{\"diagnosis\": \"Upper Gastrointestinal Bleeding\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '4c98c7ad-750e-462f-9236-dc63b83828fa', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Upper Gastrointestinal Bleeding}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2146}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Upper Gastrointestinal Bleeding}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Upper Gastrointestinal Bleeding}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 12. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 75-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 75-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any shortness of breath, chest pain, or cough recently?)\nresponse: I haven’t had any shortness of breath, chest pain, or cough recently.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any swelling, pain, or discomfort in your joints or muscles?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent falls, dizziness, or confusion?)\nresponse: I’ve been feeling dizzy lately, especially when I stand up quickly. I’ve also noticed I’m more tired than usual, and my skin looks paler than before. I haven’t fallen recently, but I’ve had a few episodes where I felt lightheaded or like I might pass out.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=symptoms of dizziness, fatigue, pallor in elderly male)\nresponse: [Document 1] (ID: 11275_1, Score: 0.870)\n# Symptoms\nSymptoms include:\n- Patient appears like an 'elderly man'\n- Dry and flaking/peeling skin but no changes in color\n- Loss of muscle mass\n- Sunken eyes\n- Protruded cheeks\n- Loss of fullness near the mouth area giving rise to 'monkey-like' facies\n- Swelling of body (edema) is generally not se...\n\n[Document 2] (ID: 28196_7, Score: 0.865)\n### Signs and Symptoms\n- May be any of those seen in atropine poisoning or antihistamine overdosage: CNS depression, preceded or followed by stimulation; confusion; nervousness; listlessness; intensification of mental symptoms or toxic psychosis in patients with mental illness being treated with neu...\n\n[Document 3] (ID: 13638_12, Score: 0.862)\n## Signs and symptoms\n- Restlessness\n- Dizziness or giddiness\n- Failure to obey orders\n- Confusion\n- Erratic behavior\n- Stumbling or staggering\n- Drymouth (cottonmouth)\n- Tachycardia at rest\n- Elevated temperature\n- Flushing of face\n- Blurred vision\n- Pupillary dilation\n- Slurred or nonsensical spee...\n\n[Document 4] (ID: 19076_4, Score: 0.859)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 5] (ID: 12149_3, Score: 0.858)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been taking any new medications or supplements recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=dizziness, pallor, fatigue in elderly male differential diagnosis)\nresponse: [Document 1] (ID: 8848_1, Score: 0.860)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 11275_1, Score: 0.859)\n# Symptoms\nSymptoms include:\n- Patient appears like an 'elderly man'\n- Dry and flaking/peeling skin but no changes in color\n- Loss of muscle mass\n- Sunken eyes\n- Protruded cheeks\n- Loss of fullness near the mouth area giving rise to 'monkey-like' facies\n- Swelling of body (edema) is generally not se...\n\n[Document 3] (ID: 2937_18, Score: 0.855)\nDifferential diagnosis points: HE needs to be differentiated from the following diseases: (1) Mental disorders: When the only prominent manifestations of HE are mental symptoms, such as personality changes, abnormal behavior, or insomnia, it is easily misdiagnosed as a mental disorder. Therefore, wh...\n\n[Document 4] (ID: 6561_9, Score: 0.849)\n- Central Nervous System: Tiredness and dizziness have occurred in about 10 of 100 patients. Depression has been reported in about 5 of 100 patients. Mental confusion and short-term memory loss have been reported. Headache, somnolence, nightmares, and insomnia have also been reported.\n- Cardiovascul...\n\n[Document 5] (ID: 4725_23, Score: 0.849)\n# Certainty of the Evidence\nApplying the agreed values and preferences, the GDG inferred that the majority of well-informed physicians and patients would not want care decisions to be based on existing prognostic models, due to the very low certainty of evidence for benefit on patient outcomes. Give...",
+          "turn_12 retrieve_interaction: doctor_action: retrieve(query=anemia symptoms in elderly men)\nresponse: [Document 1] (ID: 14108_4, Score: 0.885)\n# Clinical features\n- The symptoms of pernicious anemia take months, and often years to manifest. Patients most commonly present with symptoms of anemia like lightheadedness, dizziness, shortness of breath etc. The population affected with pernicious anemia is usually the elderly (>60 years) owing t...\n\n[Document 2] (ID: 7996_4, Score: 0.885)\n# Clinical features\n- The symptoms of pernicious anemia take months, and often years to manifest. Patients most commonly present with symptoms of anemia like lightheadedness, dizziness, shortness of breath etc. The population affected with pernicious anemia is usually the elderly (>60 years) owing t...\n\n[Document 3] (ID: 1041_15, Score: 0.882)\n# Iron Deficiency in the Elderly\nAnemia in the elderly is a common clinical finding, often multifactorial, and has significant impact on quality of life, functional decline, and mortality. Treatment of iron deficiency and its underlying cause(s) may improve outcomes. Iron deficiency is the second mo...\n\n[Document 4] (ID: 394_19, Score: 0.876)\nAmong men (males aged ≥18 years) and postmenopausal women in the United States, iron-deficiency anemia is uncommon. Data from NHANES III indicated that ≤2% of men aged ≥20 years and 2% of women aged ≥50 years had iron-deficiency anemia (Table 4). Data from CFSII indicate that most men and most women...\n\n[Document 5] (ID: 19573_0, Score: 0.869)\nNormochromic anemia\n\n# Overview\nNormocytic anemia is a common issue that occurs for men and women typically over 85 years old. Its prevalence increases with age, reaching 44 percent in men older than 85 years. Normocytic anemia is the most frequently encountered type of anemia.\n\n# Causes\nThe issue i..."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing, including when they started and how they've progressed?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or night sweats?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any shortness of breath, chest pain, or cough recently?)\nresponse: I haven’t had any shortness of breath, chest pain, or cough recently.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any swelling, pain, or discomfort in your joints or muscles?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any recent falls, dizziness, or confusion?)\nresponse: I’ve been feeling dizzy lately, especially when I stand up quickly. I’ve also noticed I’m more tired than usual, and my skin looks paler than before. I haven’t fallen recently, but I’ve had a few episodes where I felt lightheaded or like I might pass out.\ndoctor_action: retrieve(query=symptoms of dizziness, fatigue, pallor in elderly male)\nresponse: [Document 1] (ID: 11275_1, Score: 0.870)\n# Symptoms\nSymptoms include:\n- Patient appears like an 'elderly man'\n- Dry and flaking/peeling skin but no changes in color\n- Loss of muscle mass\n- Sunken eyes\n- Protruded cheeks\n- Loss of fullness near the mouth area giving rise to 'monkey-like' facies\n- Swelling of body (edema) is generally not se...\n\n[Document 2] (ID: 28196_7, Score: 0.865)\n### Signs and Symptoms\n- May be any of those seen in atropine poisoning or antihistamine overdosage: CNS depression, preceded or followed by stimulation; confusion; nervousness; listlessness; intensification of mental symptoms or toxic psychosis in patients with mental illness being treated with neu...\n\n[Document 3] (ID: 13638_12, Score: 0.862)\n## Signs and symptoms\n- Restlessness\n- Dizziness or giddiness\n- Failure to obey orders\n- Confusion\n- Erratic behavior\n- Stumbling or staggering\n- Drymouth (cottonmouth)\n- Tachycardia at rest\n- Elevated temperature\n- Flushing of face\n- Blurred vision\n- Pupillary dilation\n- Slurred or nonsensical spee...\n\n[Document 4] (ID: 19076_4, Score: 0.859)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 5] (ID: 12149_3, Score: 0.858)\n### Activities Requiring Mental Alertness\n- Patients should be warned about engaging in activities requiring mental alertness and motor coordination, such as driving a car or operating machinery. Antihistamines are more likely to cause dizziness, sedation, and hypotension in elderly patients.\n\n# Adv...\ndoctor_action: ask_patient(question=Have you been taking any new medications or supplements recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 12,
+        "query_text": "75-year-old male patient reports dizziness on standing, fatigue, and pallor. No weight loss, fever, chest pain, cough, joint pain, or recent falls. No new medications. Labs not yet performed. Uncertainty: cause of dizziness, fatigue, pallor in elderly male.",
+        "skill_query_text": "Presenting problem: dizziness, fatigue, pallor in elderly male. Evidence gathered: patient history, symptom review, literature on dizziness/pallor in elderly. Missing: lab results. Ineffective: lab request returned no result. Need: guidance on next diagnostic action to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_b03dd654a6b9",
+              "type": "experience",
+              "score": 0.7621,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia; nail-biting is a useful discriminative clue.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c2cbb9cbc4b1",
+              "type": "experience",
+              "score": 0.8045,
+              "outcome": "negative",
+              "text": "Failure to elicit temporal artery tenderness or visual symptoms despite age-related risk for giant cell arteritis indicates low likelihood of this diagnosis; these are critical discriminative findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.8024,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            },
+            {
+              "id": "exp_e29f1d992330",
+              "type": "experience",
+              "score": 0.7829,
+              "outcome": "negative",
+              "text": "Unintentional voiding of urine and foot drop in a patient with new lower back pain strongly suggest cauda equina syndrome; these are key discriminative findings.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.8144,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7948,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7892,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Anemia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f3b0c6b6-0b86-4e52-b029-56425503640d': '{\"diagnosis\": \"Anemia\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'f3b0c6b6-0b86-4e52-b029-56425503640d', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Anemia}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2187}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Anemia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Anemia}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnosis_goal": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=CBC)\nresponse: {\"exam_type\": \"CBC\", \"source\": \"none\", \"result\": \"No result for \\\"CBC\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=TSH)\nresponse: {\"exam_type\": \"TSH\", \"source\": \"none\", \"result\": \"No result for \\\"TSH\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 12,
+        "query_text": "75-year-old male patient reports dizziness on standing, fatigue, pallor, weakness, and shortness of breath with activity. No fever, chills, night sweats, weight loss, cough, chest pain, urinary symptoms, joint pain, skin changes, or confusion. Previous retrieval suggests possible anemia in elderly males. Labs and CBC not yet performed.",
+        "skill_query_text": "75-year-old male with dizziness, fatigue, pallor, weakness, and exertional dyspnea. History of negative responses to symptom screening. Previous retrieval on anemia in elderly males. Labs and CBC not available. Need targeted diagnostic guidance to resolve anemia uncertainty without repeating low-value lab requests."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d85487062f20",
+              "type": "experience",
+              "score": 0.7736,
+              "outcome": "positive",
+              "text": "Requesting labs without prior evidence or clear indication is low-value when clinical signs strongly suggest cellulitis; prioritize imaging or culture instead to confirm infection extent.",
+              "tags": []
+            },
+            {
+              "id": "exp_7210c8d79a48",
+              "type": "experience",
+              "score": 0.7727,
+              "outcome": "positive",
+              "text": "In diabetic patients with progressive redness, swelling, warmth, and pain on the leg, a recent spider bite is a key discriminative clue supporting cellulitis over other differentials like abscess or deep vein thrombosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_47ecd1784624",
+              "type": "experience",
+              "score": 0.7576,
+              "outcome": "positive",
+              "text": "In patients with finger pain, redness, swelling, and pus, a history of nail-biting and frequent handwashing supports paronychia diagnosis, distinguishing it from other inflammatory or traumatic causes.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8431,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            },
+            {
+              "id": "exp_22b5aabad488",
+              "type": "experience",
+              "score": 0.8257,
+              "outcome": "negative",
+              "text": "In an elderly patient presenting with acute anxiety and self-reported alcohol use, the absence of lab results (e.g., glucose, electrolytes, BUN/Creatinine) is a critical gap that could have ruled out alternative diagnoses like hypoglycemia or diabetic ketoacidosis, which mimic alcohol withdrawal symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_5672ff4e5d85",
+              "type": "experience",
+              "score": 0.8243,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with palpitations, syncope, and fatigue, a key discriminative clue is the presence of symptoms occurring independently of heart racing episodes — this suggests a systemic or non-cardiac etiology and should prompt consideration of orthostatic hypotension or other non-arrhythmic causes, not just atrial fibrillation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.774,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e961aa840a82"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of vitamin B12 deficiency in elderly males"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e14959e1-a55e-4be5-b47b-3f62ea7582f7': \"[Document 1] (ID: 13418_5, Score: 0.869)\\n## Diagnostic Study of Choice\\nHomocysteine and methylmalonic acid levels can be helpful in confirmation. Both serum homocysteine and methylmalonic acid (MMA) levels are increased in helpful confirmatory tests for cobalamin and folate deficiencies. Homocysteine but not methylmalonic acid is increased...\\n\\n[Document 2] (ID: 10975_0, Score: 0.867)\\nVitamin B12 deficiency overview\\n\\n# Overview\\nB12 deficiency can potentially cause severe and irreversible damage, especially to the brain and nervous system.\\nThe daily cobalamin (vitamin B12) requirement is  1-2 mcg. An intake of 5-20 mcg/day is usual in a Western diet. The total body can store 2-5 m...\\n\\n[Document 3] (ID: 10660_6, Score: 0.866)\\n# Folic acid supplements and masking of B12 deficiency\\nThere has been concern about the interaction between vitamin B12 and folic acid.Folic acid supplements can correct the anemia associated with vitamin B12 deficiency. Unfortunately, folic acid will not correct changes in the nervous system that r...\\n\\n[Document 4] (ID: 26738_6, Score: 0.865)\\n# Fabry's Disease\\n- F - Foam cells found in glomeruli and tubules / Febrile episodes\\n- A - Alpha galactosidase A deficien...[truncated]\"}}",
+        "env_info": "{'response': [{'id': 'e14959e1-a55e-4be5-b47b-3f62ea7582f7', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of vitamin B12 deficiency in elderly males\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1814}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of vitamin B12 deficiency in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of vitamin B12 deficiency in elderly males\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnosis_goal": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 12. Low-information/no-result turns already attempted: 3; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 75-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 75-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any unexplained weight loss, fatigue, or loss of appetite?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any cough, shortness of breath, or chest pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your urinary habits, such as frequency, urgency, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, particularly in the mornings?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unusual growths?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any neurological symptoms, such as dizziness, confusion, or memory problems?)\nresponse: I’ve felt dizzy sometimes, especially when I stand up quickly. I also get tired easily, and my skin looks pale. I haven’t noticed any confusion or memory problems, but I do feel weak and short of breath when I’m active.",
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=symptoms of anemia in elderly males)\nresponse: [Document 1] (ID: 14108_4, Score: 0.886)\n# Clinical features\n- The symptoms of pernicious anemia take months, and often years to manifest. Patients most commonly present with symptoms of anemia like lightheadedness, dizziness, shortness of breath etc. The population affected with pernicious anemia is usually the elderly (>60 years) owing t...\n\n[Document 2] (ID: 7996_4, Score: 0.886)\n# Clinical features\n- The symptoms of pernicious anemia take months, and often years to manifest. Patients most commonly present with symptoms of anemia like lightheadedness, dizziness, shortness of breath etc. The population affected with pernicious anemia is usually the elderly (>60 years) owing t...\n\n[Document 3] (ID: 1041_15, Score: 0.877)\n# Iron Deficiency in the Elderly\nAnemia in the elderly is a common clinical finding, often multifactorial, and has significant impact on quality of life, functional decline, and mortality. Treatment of iron deficiency and its underlying cause(s) may improve outcomes. Iron deficiency is the second mo...\n\n[Document 4] (ID: 394_19, Score: 0.870)\nAmong men (males aged ≥18 years) and postmenopausal women in the United States, iron-deficiency anemia is uncommon. Data from NHANES III indicated that ≤2% of men aged ≥20 years and 2% of women aged ≥50 years had iron-deficiency anemia (Table 4). Data from CFSII indicate that most men and most women...\n\n[Document 5] (ID: 11275_1, Score: 0.868)\n# Symptoms\nSymptoms include:\n- Patient appears like an 'elderly man'\n- Dry and flaking/peeling skin but no changes in color\n- Loss of muscle mass\n- Sunken eyes\n- Protruded cheeks\n- Loss of fullness near the mouth area giving rise to 'monkey-like' facies\n- Swelling of body (edema) is generally not se...",
+          "turn_12 retrieve_interaction: doctor_action: retrieve(query=common causes of anemia in elderly males)\nresponse: [Document 1] (ID: 1041_15, Score: 0.886)\n# Iron Deficiency in the Elderly\nAnemia in the elderly is a common clinical finding, often multifactorial, and has significant impact on quality of life, functional decline, and mortality. Treatment of iron deficiency and its underlying cause(s) may improve outcomes. Iron deficiency is the second mo...\n\n[Document 2] (ID: 824_4, Score: 0.883)\nAnemia may be caused by chronic inflammatory conditions, kidney disease, malnutrition, ongoing small-volume blood loss and iron deficiency. Iron-deficiency anemia (IDA) is widely accepted to be the most common cause, and, in a recent study of 3342 patients undergoing gynecologic, urologic, colorecta...\n\n[Document 3] (ID: 19573_0, Score: 0.881)\nNormochromic anemia\n\n# Overview\nNormocytic anemia is a common issue that occurs for men and women typically over 85 years old. Its prevalence increases with age, reaching 44 percent in men older than 85 years. Normocytic anemia is the most frequently encountered type of anemia.\n\n# Causes\nThe issue i...\n\n[Document 4] (ID: 394_19, Score: 0.879)\nAmong men (males aged ≥18 years) and postmenopausal women in the United States, iron-deficiency anemia is uncommon. Data from NHANES III indicated that ≤2% of men aged ≥20 years and 2% of women aged ≥50 years had iron-deficiency anemia (Table 4). Data from CFSII indicate that most men and most women...\n\n[Document 5] (ID: 8950_3, Score: 0.873)\n# Causes\nConditions that can lead to anemia of chronic disease include autoimmune disorders, such as Crohn's disease, systemic lupus erythematosus, rheumatoid arthritis, and ulcerative colitis, Cancer including lymphoma and Hodgkin's disease, chronic kidney disease, liver cirrhosis, long-term infect...",
+          "turn_14 retrieve_interaction: doctor_action: retrieve(query=symptoms of vitamin B12 deficiency in elderly males)\nresponse: [Document 1] (ID: 13418_5, Score: 0.869)\n## Diagnostic Study of Choice\nHomocysteine and methylmalonic acid levels can be helpful in confirmation. Both serum homocysteine and methylmalonic acid (MMA) levels are increased in helpful confirmatory tests for cobalamin and folate deficiencies. Homocysteine but not methylmalonic acid is increased...\n\n[Document 2] (ID: 10975_0, Score: 0.867)\nVitamin B12 deficiency overview\n\n# Overview\nB12 deficiency can potentially cause severe and irreversible damage, especially to the brain and nervous system.\nThe daily cobalamin (vitamin B12) requirement is  1-2 mcg. An intake of 5-20 mcg/day is usual in a Western diet. The total body can store 2-5 m...\n\n[Document 3] (ID: 10660_6, Score: 0.866)\n# Folic acid supplements and masking of B12 deficiency\nThere has been concern about the interaction between vitamin B12 and folic acid.Folic acid supplements can correct the anemia associated with vitamin B12 deficiency. Unfortunately, folic acid will not correct changes in the nervous system that r...\n\n[Document 4] (ID: 26738_6, Score: 0.865)\n# Fabry's Disease\n- F - Foam cells found in glomeruli and tubules / Febrile episodes\n- A - Alpha galactosidase A deficiency / Angiokeratomas\n- B - Burning pain in extremities / BUN increased in serum / Boys\n- R - Renal failure\n- Y - YX genotype (male, X linked recessive)\n- S - Sphingolipidoses\n\n# Hu...\n\n[Document 5] (ID: 9180_6, Score: 0.865)\n# Fabry's Disease\n- F - Foam cells found in glomeruli and tubules / Febrile episodes\n- A - Alpha galactosidase A deficiency / Angiokeratomas\n- B - Burning pain in extremities / BUN increased in serum / Boys\n- R - Renal failure\n- Y - YX genotype (male, X linked recessive)\n- S - Sphingolipidoses\n\n# Hu..."
+        ],
+        "ineffective_turn_information": [
+          "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=CBC)\nresponse: {\"exam_type\": \"CBC\", \"source\": \"none\", \"result\": \"No result for \\\"CBC\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=TSH)\nresponse: {\"exam_type\": \"TSH\", \"source\": \"none\", \"result\": \"No result for \\\"TSH\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any fever, chills, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any unexplained weight loss, fatigue, or loss of appetite?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any cough, shortness of breath, or chest pain?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your urinary habits, such as frequency, urgency, or blood in urine?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any joint pain, swelling, or stiffness, particularly in the mornings?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any skin changes, such as rashes, discoloration, or unusual growths?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any neurological symptoms, such as dizziness, confusion, or memory problems?)\nresponse: I’ve felt dizzy sometimes, especially when I stand up quickly. I also get tired easily, and my skin looks pale. I haven’t noticed any confusion or memory problems, but I do feel weak and short of breath when I’m active.\ndoctor_action: retrieve(query=symptoms of anemia in elderly males)\nresponse: [Document 1] (ID: 14108_4, Score: 0.886)\n# Clinical features\n- The symptoms of pernicious anemia take months, and often years to manifest. Patients most commonly present with symptoms of anemia like lightheadedness, dizziness, shortness of breath etc. The population affected with pernicious anemia is usually the elderly (>60 years) owing t...\n\n[Document 2] (ID: 7996_4, Score: 0.886)\n# Clinical features\n- The symptoms of pernicious anemia take months, and often years to manifest. Patients most commonly present with symptoms of anemia like lightheadedness, dizziness, shortness of breath etc. The population affected with pernicious anemia is usually the elderly (>60 years) owing t...\n\n[Document 3] (ID: 1041_15, Score: 0.877)\n# Iron Deficiency in the Elderly\nAnemia in the elderly is a common clinical finding, often multifactorial, and has significant impact on quality of life, functional decline, and mortality. Treatment of iron deficiency and its underlying cause(s) may improve outcomes. Iron deficiency is the second mo...\n\n[Document 4] (ID: 394_19, Score: 0.870)\nAmong men (males aged ≥18 years) and postmenopausal women in the United States, iron-deficiency anemia is uncommon. Data from NHANES III indicated that ≤2% of men aged ≥20 years and 2% of women aged ≥50 years had iron-deficiency anemia (Table 4). Data from CFSII indicate that most men and most women...\n\n[Document 5] (ID: 11275_1, Score: 0.868)\n# Symptoms\nSymptoms include:\n- Patient appears like an 'elderly man'\n- Dry and flaking/peeling skin but no changes in color\n- Loss of muscle mass\n- Sunken eyes\n- Protruded cheeks\n- Loss of fullness near the mouth area giving rise to 'monkey-like' facies\n- Swelling of body (edema) is generally not se...\n\nIneffective/no-result interactions:\nturn_9 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_11 request_exam_interaction: doctor_action: request_exam(exam_type=CBC)\nresponse: {\"exam_type\": \"CBC\", \"source\": \"none\", \"result\": \"No result for \\\"CBC\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_13 request_exam_interaction: doctor_action: request_exam(exam_type=TSH)\nresponse: {\"exam_type\": \"TSH\", \"source\": \"none\", \"result\": \"No result for \\\"TSH\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=CBC)\nresponse: {\"exam_type\": \"CBC\", \"source\": \"none\", \"result\": \"No result for \\\"CBC\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=TSH)\nresponse: {\"exam_type\": \"TSH\", \"source\": \"none\", \"result\": \"No result for \\\"TSH\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 14,
+        "query_text": "75-year-old male patient reports dizziness on standing, fatigue, pallor, and exertional dyspnea. No fever, chills, night sweats, weight loss, cough, chest pain, urinary symptoms, joint pain, skin changes, or neurological symptoms like confusion or memory loss. Previous retrieval queries focused on anemia in elderly males and vitamin B12 deficiency symptoms. Labs, CBC, and TSH requests returned no results.",
+        "skill_query_text": "75-year-old male with dizziness, fatigue, pallor, and exertional dyspnea. Patient denies systemic symptoms. Previous attempts to order labs, CBC, and TSH yielded no results. Need targeted diagnostic guidance to resolve uncertainty about anemia etiology in elderly male with symptoms consistent with B12 deficiency or iron deficiency. Avoid repeating low-value lab requests; seek targeted exam or reasoning guidance."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d85487062f20",
+              "type": "experience",
+              "score": 0.772,
+              "outcome": "positive",
+              "text": "Requesting labs without prior evidence or clear indication is low-value when clinical signs strongly suggest cellulitis; prioritize imaging or culture instead to confirm infection extent.",
+              "tags": []
+            },
+            {
+              "id": "exp_7210c8d79a48",
+              "type": "experience",
+              "score": 0.7627,
+              "outcome": "positive",
+              "text": "In diabetic patients with progressive redness, swelling, warmth, and pain on the leg, a recent spider bite is a key discriminative clue supporting cellulitis over other differentials like abscess or deep vein thrombosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_47ecd1784624",
+              "type": "experience",
+              "score": 0.7463,
+              "outcome": "positive",
+              "text": "In patients with finger pain, redness, swelling, and pus, a history of nail-biting and frequent handwashing supports paronychia diagnosis, distinguishing it from other inflammatory or traumatic causes.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8444,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            },
+            {
+              "id": "exp_22b5aabad488",
+              "type": "experience",
+              "score": 0.831,
+              "outcome": "negative",
+              "text": "In an elderly patient presenting with acute anxiety and self-reported alcohol use, the absence of lab results (e.g., glucose, electrolytes, BUN/Creatinine) is a critical gap that could have ruled out alternative diagnoses like hypoglycemia or diabetic ketoacidosis, which mimic alcohol withdrawal symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_5672ff4e5d85",
+              "type": "experience",
+              "score": 0.8217,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with palpitations, syncope, and fatigue, a key discriminative clue is the presence of symptoms occurring independently of heart racing episodes — this suggests a systemic or non-cardiac etiology and should prompt consideration of orthostatic hypotension or other non-arrhythmic causes, not just atrial fibrillation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7718,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e961aa840a82"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "B12"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'798dd051-78e5-43fc-9694-9f64aa70cc44': '{\"exam_type\": \"B12\", \"source\": \"none\", \"result\": \"No result for \\\\\"B12\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '798dd051-78e5-43fc-9694-9f64aa70cc44', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"B12\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2388}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"B12\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"B12\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170770",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnosis_goal": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_11 request_exam_interaction: doctor_action: request_exam(exam_type=CBC)\nresponse: {\"exam_type\": \"CBC\", \"source\": \"none\", \"result\": \"No result for \\\"CBC\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=TSH)\nresponse: {\"exam_type\": \"TSH\", \"source\": \"none\", \"result\": \"No result for \\\"TSH\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_15 request_exam_interaction: doctor_action: request_exam(exam_type=B12)\nresponse: {\"exam_type\": \"B12\", \"source\": \"none\", \"result\": \"No result for \\\"B12\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170770",
+        "turn_id": 14,
+        "query_text": "75-year-old male patient reports dizziness on standing, fatigue, pallor, and exertional dyspnea. No fever, chills, night sweats, weight loss, cough, chest pain, urinary symptoms, joint pain, skin changes, or neurological symptoms like confusion or memory loss. Previous retrieval queries focused on anemia in elderly males and vitamin B12 deficiency symptoms. Labs, CBC, and TSH requests returned no results.",
+        "skill_query_text": "75-year-old male with dizziness, fatigue, pallor, and exertional dyspnea. Patient denies systemic symptoms. Previous attempts to order labs, CBC, and TSH yielded no results. Need targeted diagnostic guidance to resolve uncertainty about anemia etiology in elderly male with symptoms consistent with B12 deficiency or iron deficiency. Avoid repeating low-value lab requests; seek targeted exam or reasoning guidance."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d85487062f20",
+              "type": "experience",
+              "score": 0.772,
+              "outcome": "positive",
+              "text": "Requesting labs without prior evidence or clear indication is low-value when clinical signs strongly suggest cellulitis; prioritize imaging or culture instead to confirm infection extent.",
+              "tags": []
+            },
+            {
+              "id": "exp_7210c8d79a48",
+              "type": "experience",
+              "score": 0.7627,
+              "outcome": "positive",
+              "text": "In diabetic patients with progressive redness, swelling, warmth, and pain on the leg, a recent spider bite is a key discriminative clue supporting cellulitis over other differentials like abscess or deep vein thrombosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_47ecd1784624",
+              "type": "experience",
+              "score": 0.7463,
+              "outcome": "positive",
+              "text": "In patients with finger pain, redness, swelling, and pus, a history of nail-biting and frequent handwashing supports paronychia diagnosis, distinguishing it from other inflammatory or traumatic causes.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8444,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            },
+            {
+              "id": "exp_22b5aabad488",
+              "type": "experience",
+              "score": 0.831,
+              "outcome": "negative",
+              "text": "In an elderly patient presenting with acute anxiety and self-reported alcohol use, the absence of lab results (e.g., glucose, electrolytes, BUN/Creatinine) is a critical gap that could have ruled out alternative diagnoses like hypoglycemia or diabetic ketoacidosis, which mimic alcohol withdrawal symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_5672ff4e5d85",
+              "type": "experience",
+              "score": 0.8217,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with palpitations, syncope, and fatigue, a key discriminative clue is the presence of symptoms occurring independently of heart racing episodes — this suggests a systemic or non-cardiac etiology and should prompt consideration of orthostatic hypotension or other non-arrhythmic causes, not just atrial fibrillation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7718,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e961aa840a82"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of hypothyroidism in elderly males"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': '75ee3a34-cdc8-42f6-9d26-e96b868ee99f', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of hypothyroidism in elderly males\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"75ee3a34-cdc8-42f6-9d26-e96b868ee99f\", \"type\": \"function\", \"function\": {\"name\": \"retrieve\", \"arguments\": \"{\\\\\"query\\\\\": \\\\\"symptoms of hypothyroidism in elderly males\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 2465}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of hypothyroidism in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of hypothyroidism in elderly males\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": []
+}

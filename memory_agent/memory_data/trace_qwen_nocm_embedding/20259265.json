@@ -1,0 +1,1309 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20259265",
+  "turns": [
+    {
+      "case_id": "20259265",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "shaking episode",
+        "diagnostic_strategy": "Current clinical problem: 52-year-old female presenting with shaking episode and history of HTN. Key evidence gathered: patient age, gender, chief complaint, and comorbidity (HTN). Diagnostic uncertainty remains high; no specific findings or tests yet. Most useful missing information: detailed history of shaking (onset, duration, triggers, associated symptoms), neurological exam, and relevant lab/imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified yet.",
+        "efficient_turn_information": [
+          "initial_information: I am a 52-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 52-year-old female patient presenting with shaking episode and a history of HTN.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 52-year-old female with chief complaint of shaking episode and history of HTN. No specific symptoms, exam, lab, or imaging results provided yet. No findings or test results available to interpret. Missing information: detailed history of shaking, neurological exam, and relevant diagnostics. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 1,
+        "query_text": "52-year-old female, chief complaint: shaking episode, history of HTN. No specific findings, tests, or imaging results. No symptoms, signs, or lab/imaging data provided. Diagnostic uncertainty remains high. Missing: detailed history of shaking (onset, duration, triggers, associated symptoms), neurological exam, and relevant lab/imaging results.",
+        "skill_query_text": "Presenting problem: 52-year-old female with shaking episode and HTN. Evidence gathered: age, gender, chief complaint, comorbidity. Uncertainty: diagnosis not yet determined. Missing: detailed shaking history, neurological exam, lab/imaging. No ineffective actions tried. Need: diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.817,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8132,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8118,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8082,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8037,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?"
+        },
+        "patient_or_tool_response": "{'question': 'I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly.'}",
+        "env_info": "{'response': [{'id': '85048ecb-023f-40bd-9783-c07b59951ddf', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "shaking episode",
+        "diagnostic_strategy": "Current clinical problem: patient presents with recurrent shaking episodes with associated altered consciousness and amnesia. Key evidence: onset 3 days ago, witnessed by family, bilateral limb involvement, unresponsiveness, post-episode use of Benadryl, pre-existing right-sided weakness from prior thalamic hemorrhage. Diagnostic uncertainty: whether this is seizure-like event, metabolic encephalopathy, or movement disorder. Most useful missing information: detailed neurological exam, EEG, imaging (MRI/CT) to assess for structural or metabolic causes, and history of prior similar episodes. Existing evidence is not enough to finalize diagnosis; further investigation needed to rule out seizure, stroke recurrence, or metabolic derangement.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?)\nresponse: I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: shaking episode. Patient reports onset 3 days ago during computer use, with numbness in left hand and full-body heaviness preceding loss of memory and unresponsiveness. Family reports bilateral limb shaking, unresponsiveness, and two episodes at home. Patient took Benadryl post-episode. Patient has known right-sided weakness from prior thalamic hemorrhage. Patient is uncertain about dizziness, sweating, or chest pain during episodes. No prior imaging, lab, or exam results provided. No prior similar episodes reported. No treatment or management plan initiated."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 2,
+        "query_text": "Patient presents with recurrent shaking episodes, onset 3 days ago, witnessed by family, bilateral limb involvement, unresponsiveness, post-episode use of Benadryl. Associated symptoms: numbness in left hand, full-body heaviness, amnesia. Pre-existing right-sided weakness from prior thalamic hemorrhage. No prior imaging, lab, or exam results. No history of prior similar episodes. Diagnostic uncertainty: seizure-like event, metabolic encephalopathy, or movement disorder.",
+        "skill_query_text": "Presenting problem: recurrent shaking episodes with altered consciousness and amnesia. Evidence gathered: patient history, family report, use of Benadryl. Missing: detailed neurological exam, EEG, imaging (MRI/CT), history of prior episodes. Ineffective actions: none. Need: diagnostic decision workflow guidance to prioritize next steps for ruling out seizure, stroke recurrence, or metabolic derangement."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8082,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8064,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7969,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7982,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7965,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e2967943-d3d8-45a6-a91f-fad1d79c52c0': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'e2967943-d3d8-45a6-a91f-fad1d79c52c0', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 218}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 2,
+        "query_text": "Patient presents with recurrent shaking episodes, onset 3 days ago, witnessed by family, bilateral limb involvement, unresponsiveness, post-episode use of Benadryl. Associated symptoms: numbness in left hand, full-body heaviness, amnesia. Pre-existing right-sided weakness from prior thalamic hemorrhage. No prior imaging, lab, or exam results. No history of prior similar episodes. Diagnostic uncertainty: seizure-like event, metabolic encephalopathy, or movement disorder.",
+        "skill_query_text": "Presenting problem: recurrent shaking episodes with altered consciousness and amnesia. Evidence gathered: patient history, family report, use of Benadryl. Missing: detailed neurological exam, EEG, imaging (MRI/CT), history of prior episodes. Ineffective actions: none. Need: diagnostic decision workflow guidance to prioritize next steps for ruling out seizure, stroke recurrence, or metabolic derangement."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8082,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8064,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7969,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7982,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7965,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'17dc4ea6-7934-4ba8-9860-683e950dcf3c': '[Document 1] (ID: 29555_11, Score: 0.869)\\n- Coma, stupor, delirium, hypokinesia, hypertonia, delusions, aggressive behavior, paranoid reaction, manic reaction, involuntary muscle contractions, gait abnormalities, paresthesia, EEG changes, and tremor. Abrupt discontinuation may also precipitate delirium, agitation, delusions, hallucinations,...\\n\\n[Document 2] (ID: 20769_3, Score: 0.869)\\n# Symptoms\\nSymptom onset is usually rapid, often occurring within minutes after self-poisoning or a change in medication. Serotonin syndrome encompasses a wide range of clinical findings. Mild symptoms may only consist of tachycardia, and shivering, diaphoresis, mydriasis, intermittent tremor or myo...\\n\\n[Document 3] (ID: 21686_1, Score: 0.864)\\n# Symptoms and signs\\nInitial symptoms include incredible restlessness, agitation, malaise, or a fixed stare.  Then comes the more characteristically described extreme and sustained upward deviation of the eyes.  In addition, the eyes may converge, deviate upward and laterally, or deviate downward.  ...\\n\\n[Document 4] (ID: 21563_12, Score: 0.862)\\n- Tremor, muscle hyperirritability (fasciculations, twitching, clonic movements of whole limbs), hypertonicity, ataxia,...[truncated]'}}",
+        "env_info": "{'response': [{'id': '17dc4ea6-7934-4ba8-9860-683e950dcf3c', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 289}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "shaking episode",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 4. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: shaking episode",
+          "initial_information: I am a 52-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 52-year-old female patient presenting with shaking episode and a history of HTN..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?)\nresponse: I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 29555_11, Score: 0.869)\n- Coma, stupor, delirium, hypokinesia, hypertonia, delusions, aggressive behavior, paranoid reaction, manic reaction, involuntary muscle contractions, gait abnormalities, paresthesia, EEG changes, and tremor. Abrupt discontinuation may also precipitate delirium, agitation, delusions, hallucinations,...\n\n[Document 2] (ID: 20769_3, Score: 0.869)\n# Symptoms\nSymptom onset is usually rapid, often occurring within minutes after self-poisoning or a change in medication. Serotonin syndrome encompasses a wide range of clinical findings. Mild symptoms may only consist of tachycardia, and shivering, diaphoresis, mydriasis, intermittent tremor or myo...\n\n[Document 3] (ID: 21686_1, Score: 0.864)\n# Symptoms and signs\nInitial symptoms include incredible restlessness, agitation, malaise, or a fixed stare.  Then comes the more characteristically described extreme and sustained upward deviation of the eyes.  In addition, the eyes may converge, deviate upward and laterally, or deviate downward.  ...\n\n[Document 4] (ID: 21563_12, Score: 0.862)\n- Tremor, muscle hyperirritability (fasciculations, twitching, clonic movements of whole limbs), hypertonicity, ataxia, choreo-athetotic movements, hyperactive deep tendon reflex, extrapyramidal symptoms including acute dystonia, cogwheel rigidity, blackout spells, epileptiform seizures, slurred spe...\n\n[Document 5] (ID: 4198_48, Score: 0.861)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?)\nresponse: I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 4,
+        "query_text": "52-year-old female with shaking episode, loss of consciousness, numbness in left hand, full-body heaviness, right-sided weakness (history of thalamic hemorrhage), no clear dizziness/sweating/chest pain. Retrieved findings: tremor, muscle hyperirritability, hypertonia, ataxia, extrapyramidal symptoms, blackout spells. Labs not performed or available.",
+        "skill_query_text": "Presenting problem: shaking episode with loss of consciousness and history of thalamic hemorrhage. Evidence gathered: patient history, retrieved documents on tremor, hypertonia, blackout spells. Ineffective action: labs request yielded no result. Need workflow guidance for next diagnostic step targeting evidence to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7689,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7671,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7669,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7567,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.753,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8184,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_2019ba9cf7b7",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "negative",
+              "text": "Unintentional weight loss and fatigue in a 77-year-old female, especially when accompanied by fever, strongly suggest systemic infection or malignancy; do not apply this when the patient has no fever, no weight loss, or when symptoms are localized and non-systemic.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8073,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8201,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8133,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8063,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.7671,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.7669,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.8201,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '77b1281d-85cd-46f4-8989-ce053f8aa058', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 804}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "shaking episode",
+        "diagnostic_strategy": "Current clinical problem: patient presents with shaking episode associated with loss of consciousness and history of thalamic hemorrhage. Key evidence: patient reports onset 3 days ago with numbness, full-body heaviness, unresponsiveness, and bilateral limb tremor; history of right-sided weakness from prior thalamic hemorrhage. Diagnostic uncertainty: unclear if episode is seizure, metabolic, toxic, or neurologic recurrence. Most useful missing information: recent medication changes, toxin exposure, EEG or imaging results. Existing evidence is not enough to finalize diagnosis; requires further investigation into potential causes including medication side effects, toxins, or neurologic events.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: shaking episode",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?)\nresponse: I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 29555_11, Score: 0.869)\n- Coma, stupor, delirium, hypokinesia, hypertonia, delusions, aggressive behavior, paranoid reaction, manic reaction, involuntary muscle contractions, gait abnormalities, paresthesia, EEG changes, and tremor. Abrupt discontinuation may also precipitate delirium, agitation, delusions, hallucinations,...\n\n[Document 2] (ID: 20769_3, Score: 0.869)\n# Symptoms\nSymptom onset is usually rapid, often occurring within minutes after self-poisoning or a change in medication. Serotonin syndrome encompasses a wide range of clinical findings. Mild symptoms may only consist of tachycardia, and shivering, diaphoresis, mydriasis, intermittent tremor or myo...\n\n[Document 3] (ID: 21686_1, Score: 0.864)\n# Symptoms and signs\nInitial symptoms include incredible restlessness, agitation, malaise, or a fixed stare.  Then comes the more characteristically described extreme and sustained upward deviation of the eyes.  In addition, the eyes may converge, deviate upward and laterally, or deviate downward.  ...\n\n[Document 4] (ID: 21563_12, Score: 0.862)\n- Tremor, muscle hyperirritability (fasciculations, twitching, clonic movements of whole limbs), hypertonicity, ataxia, choreo-athetotic movements, hyperactive deep tendon reflex, extrapyramidal symptoms including acute dystonia, cogwheel rigidity, blackout spells, epileptiform seizures, slurred spe...\n\n[Document 5] (ID: 4198_48, Score: 0.861)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient presents with shaking episode, onset 3 days ago, associated with numbness, full-body heaviness, unresponsiveness, and bilateral limb tremor. History of right-sided weakness from prior thalamic hemorrhage. No clear memory of dizziness, sweating, or chest pain. No recent medication changes or toxin exposure reported. Labs not performed or available. Literature suggests possible causes including serotonin syndrome, metabolic events, seizures, or neurologic recurrence. No imaging or EEG results available. Key missing: recent medication history, toxin exposure, neuroimaging, EEG, or metabolic panel."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 5,
+        "query_text": "Patient presents with shaking episode, onset 3 days ago, associated with numbness, full-body heaviness, unresponsiveness, and bilateral limb tremor. History of right-sided weakness from prior thalamic hemorrhage. No clear memory of dizziness, sweating, or chest pain. No recent medication changes or toxin exposure reported. Labs not performed or available. No imaging or EEG results available. Diagnostic uncertainty: unclear if episode is seizure, metabolic, toxic, or neurologic recurrence.",
+        "skill_query_text": "Presenting problem: shaking episode with loss of consciousness and history of thalamic hemorrhage. Evidence gathered: patient history, symptoms described, no recent medication changes or toxin exposure reported, labs not performed. Ineffective actions: lab request returned no result, patient denies recent changes. Missing: recent medication history, toxin exposure, neuroimaging, EEG, or metabolic panel. Need: workflow guidance for next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.818,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8087,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_4e216e018b5d",
+              "type": "experience",
+              "score": 0.8084,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest meningococcemia; do not discount this presentation in elderly patients even without travel or exposure history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8203,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8201,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8086,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "differential diagnosis for sudden-onset generalized tremor with loss of consciousness and history of thalamic hemorrhage"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b8bd8fa7-f778-443f-a747-dd9f80e0a1fb': \"[Document 1] (ID: 4198_48, Score: 0.848)\\n## Diagnosis of he\\n## Clinical symptoms\\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...\\n\\n[Document 2] (ID: 24258_3, Score: 0.845)\\n## History and Symptoms\\nTremor is the most common involuntary movement disorder. In the primary care setting, the most common causes of tremors are essential tremors, Parkinson's disease and enhanced physiologic tremor. Important features of tremor in patients history are mode of onset, unilateral o...\\n\\n[Document 3] (ID: 24258_4, Score: 0.843)\\n## X-ray\\nThere are no x-ray findings associated with tremor.\\n\\n## Echocardiography and Ultrasound\\nThere are no echocardiography findings associated with tremor. Magnetic resonance-guided focused ultrasound (MRgFUS), is a noninvasive focused ultrasound ablative thalamotomy procedure used to treat esse...\\n\\n[Document 4] (ID: 3108_12, Score: 0.839)\\n## Tremor\\nIn patients with tremor it is advisable to look for additional signs, such as dystonia, Parkinsonism, and cereb...[truncated]\"}}",
+        "env_info": "{'response': [{'id': 'b8bd8fa7-f778-443f-a747-dd9f80e0a1fb', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"differential diagnosis for sudden-onset generalized tremor with loss of consciousness and history of thalamic hemorrhage\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 884}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for sudden-onset generalized tremor with loss of consciousness and history of thalamic hemorrhage\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for sudden-onset generalized tremor with loss of consciousness and history of thalamic hemorrhage\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "shaking episode",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 6. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: shaking episode",
+          "initial_information: I am a 52-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 52-year-old female patient presenting with shaking episode and a history of HTN..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?)\nresponse: I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 29555_11, Score: 0.869)\n- Coma, stupor, delirium, hypokinesia, hypertonia, delusions, aggressive behavior, paranoid reaction, manic reaction, involuntary muscle contractions, gait abnormalities, paresthesia, EEG changes, and tremor. Abrupt discontinuation may also precipitate delirium, agitation, delusions, hallucinations,...\n\n[Document 2] (ID: 20769_3, Score: 0.869)\n# Symptoms\nSymptom onset is usually rapid, often occurring within minutes after self-poisoning or a change in medication. Serotonin syndrome encompasses a wide range of clinical findings. Mild symptoms may only consist of tachycardia, and shivering, diaphoresis, mydriasis, intermittent tremor or myo...\n\n[Document 3] (ID: 21686_1, Score: 0.864)\n# Symptoms and signs\nInitial symptoms include incredible restlessness, agitation, malaise, or a fixed stare.  Then comes the more characteristically described extreme and sustained upward deviation of the eyes.  In addition, the eyes may converge, deviate upward and laterally, or deviate downward.  ...\n\n[Document 4] (ID: 21563_12, Score: 0.862)\n- Tremor, muscle hyperirritability (fasciculations, twitching, clonic movements of whole limbs), hypertonicity, ataxia, choreo-athetotic movements, hyperactive deep tendon reflex, extrapyramidal symptoms including acute dystonia, cogwheel rigidity, blackout spells, epileptiform seizures, slurred spe...\n\n[Document 5] (ID: 4198_48, Score: 0.861)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for sudden-onset generalized tremor with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 4198_48, Score: 0.848)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...\n\n[Document 2] (ID: 24258_3, Score: 0.845)\n## History and Symptoms\nTremor is the most common involuntary movement disorder. In the primary care setting, the most common causes of tremors are essential tremors, Parkinson's disease and enhanced physiologic tremor. Important features of tremor in patients history are mode of onset, unilateral o...\n\n[Document 3] (ID: 24258_4, Score: 0.843)\n## X-ray\nThere are no x-ray findings associated with tremor.\n\n## Echocardiography and Ultrasound\nThere are no echocardiography findings associated with tremor. Magnetic resonance-guided focused ultrasound (MRgFUS), is a noninvasive focused ultrasound ablative thalamotomy procedure used to treat esse...\n\n[Document 4] (ID: 3108_12, Score: 0.839)\n## Tremor\nIn patients with tremor it is advisable to look for additional signs, such as dystonia, Parkinsonism, and cerebellar or brainstem signs, pointing towards a combined clinical syndrome that warrants specific diagnostic tests. 14 If no additional signs are present, the patient has an isolated...\n\n[Document 5] (ID: 13638_11, Score: 0.839)\n## Differential diagnosis\nThe differential diagnosis for irrational and confused patients is a long one and includes anxiety reactions as well as intoxication with a variety of agents, to include hallucinogenic indoles (such as LSD), cannabinoids (such as the delta-9-tetrahydrocannabinol in marijuan..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?)\nresponse: I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly.\ndoctor_action: retrieve(query=symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 29555_11, Score: 0.869)\n- Coma, stupor, delirium, hypokinesia, hypertonia, delusions, aggressive behavior, paranoid reaction, manic reaction, involuntary muscle contractions, gait abnormalities, paresthesia, EEG changes, and tremor. Abrupt discontinuation may also precipitate delirium, agitation, delusions, hallucinations,...\n\n[Document 2] (ID: 20769_3, Score: 0.869)\n# Symptoms\nSymptom onset is usually rapid, often occurring within minutes after self-poisoning or a change in medication. Serotonin syndrome encompasses a wide range of clinical findings. Mild symptoms may only consist of tachycardia, and shivering, diaphoresis, mydriasis, intermittent tremor or myo...\n\n[Document 3] (ID: 21686_1, Score: 0.864)\n# Symptoms and signs\nInitial symptoms include incredible restlessness, agitation, malaise, or a fixed stare.  Then comes the more characteristically described extreme and sustained upward deviation of the eyes.  In addition, the eyes may converge, deviate upward and laterally, or deviate downward.  ...\n\n[Document 4] (ID: 21563_12, Score: 0.862)\n- Tremor, muscle hyperirritability (fasciculations, twitching, clonic movements of whole limbs), hypertonicity, ataxia, choreo-athetotic movements, hyperactive deep tendon reflex, extrapyramidal symptoms including acute dystonia, cogwheel rigidity, blackout spells, epileptiform seizures, slurred spe...\n\n[Document 5] (ID: 4198_48, Score: 0.861)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...\ndoctor_action: ask_patient(question=Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 6,
+        "query_text": "52-year-old female with shaking episode, loss of consciousness, right-sided weakness (history of thalamic hemorrhage), numbness in left hand, full-body heaviness, generalized tremor, unresponsive episodes, no recent medication changes or toxin exposure, labs not performed, no imaging or exam results yet.",
+        "skill_query_text": "Presenting problem: shaking episode with loss of consciousness and history of thalamic hemorrhage. Evidence gathered: patient history, symptom description, prior retrieval of tremor/loss of consciousness symptoms. Ineffective action: labs request yielded no result. Need guidance on next diagnostic action to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_8998db8f885e",
+              "type": "experience",
+              "score": 0.7947,
+              "outcome": "negative",
+              "text": "Leg weakness and numbness improving with sitting or leaning forward suggests a neurological issue localized to the lower extremities, but absence of gait veering or lateral fall pattern makes cerebellar dysfunction less likely without corroborating signs like ataxia or dysmetria.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.7902,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8254,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.824,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8158,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'fd3df410-f874-44db-b24d-b06cfe484a2b': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'fd3df410-f874-44db-b24d-b06cfe484a2b', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1380}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 6,
+        "query_text": "52-year-old female with shaking episode, loss of consciousness, right-sided weakness (history of thalamic hemorrhage), numbness in left hand, full-body heaviness, generalized tremor, unresponsive episodes, no recent medication changes or toxin exposure, labs not performed, no imaging or exam results yet.",
+        "skill_query_text": "Presenting problem: shaking episode with loss of consciousness and history of thalamic hemorrhage. Evidence gathered: patient history, symptom description, prior retrieval of tremor/loss of consciousness symptoms. Ineffective action: labs request yielded no result. Need guidance on next diagnostic action to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_8998db8f885e",
+              "type": "experience",
+              "score": 0.7947,
+              "outcome": "negative",
+              "text": "Leg weakness and numbness improving with sitting or leaning forward suggests a neurological issue localized to the lower extremities, but absence of gait veering or lateral fall pattern makes cerebellar dysfunction less likely without corroborating signs like ataxia or dysmetria.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.7902,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8254,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.824,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8158,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "serotonin syndrome symptoms and treatment"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6f472188-eb50-47f7-90d0-144001c38d86': '[Document 1] (ID: 12887_3, Score: 0.904)\\n- Symptoms associated with serotonin syndrome may include the following combination of signs and symptoms: mental status changes (e.g., agitation, hallucinations, delirium, and coma), autonomic instability (e.g., tachycardia, labile blood pressure, dizziness, diaphoresis, flushing, and hyperthermia)...\\n\\n[Document 2] (ID: 13634_8, Score: 0.901)\\n### Serotonin Syndrome\\n- Serotonin syndrome may occur with triptans, including zolmitriptan, particularly during co-administration with selective serotonin reuptake inhibitors (SSRIs), serotonin norepinephrine reuptake inhibitors (SNRIs), tricyclic antidepressants (TCAs), and MAO inhibitors. Seroton...\\n\\n[Document 3] (ID: 29622_17, Score: 0.900)\\n- The development of a potentially life threatening serotonin syndrome has been reported with SNRIs and SSRIs, including paroxetine hydrochloride, alone but particularly with concomitant use of other serotonergic drugs (including triptans, tricyclic antidepressants, fentanyl, lithium, tramadol, tryp...\\n\\n[Document 4] (ID: 13959_3, Score: 0.899)\\n- Symptoms associated with serotonin syndrome may include the following combination of signs and symptoms: mental status...[truncated]'}}",
+        "env_info": "{'response': [{'id': '6f472188-eb50-47f7-90d0-144001c38d86', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"serotonin syndrome symptoms and treatment\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1454}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"serotonin syndrome symptoms and treatment\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"serotonin syndrome symptoms and treatment\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "shaking episode",
+        "diagnostic_strategy": "Current clinical problem: patient presents with sudden-onset generalized shaking episode with loss of consciousness, history of thalamic hemorrhage, and no recent medication changes. Key evidence: patient reports shaking, numbness, heaviness, unresponsiveness, and right-sided weakness (pre-existing). No lab or imaging results available. Serotonin syndrome was retrieved as a potential diagnosis, but no confirmatory evidence. Diagnostic uncertainty remains high due to lack of objective data. Most useful missing information: detailed timeline of symptoms, specific medications taken, presence of autonomic instability (e.g., tachycardia, hyperthermia), and imaging or lab results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: shaking episode"
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports shaking episode starting 3 days ago, associated with numbness, full-body heaviness, and unresponsiveness; witnessed by family with shaking in all limbs and two episodes at home. Patient took Benadryl after episodes. Right-sided weakness noted as pre-existing (post-thalamic hemorrhage). No clear memory of dizziness, sweating, or chest pain. No recent medication changes reported. Labs and imaging requested but returned with no results. Serotonin syndrome and other differential diagnoses (e.g., tremor, HE, intoxication) retrieved but not confirmed. No objective findings yet. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 8,
+        "query_text": "Patient presents with sudden-onset generalized shaking episode with loss of consciousness, history of thalamic hemorrhage, pre-existing right-sided weakness, reports numbness, full-body heaviness, unresponsiveness, and two episodes at home. Took Benadryl after episodes. No recent medication changes. No lab or imaging results available. Serotonin syndrome considered but unconfirmed. Diagnostic uncertainty remains due to lack of objective data. Missing: detailed symptom timeline, specific medications, autonomic instability signs, imaging/lab results.",
+        "skill_query_text": "Presenting problem: shaking episode with loss of consciousness. Current uncertainty: diagnosis not confirmed. Evidence gathered: patient history, symptom report, no labs/imaging. Ineffective actions: none. Missing: detailed symptom timeline, specific medications, autonomic signs, imaging/lab results. Need: diagnostic workflow guidance for next steps given current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7989,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7922,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7761,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7712,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.771,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8241,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8033,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8282,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8262,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8254,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been taking any antidepressants, pain medications, or other drugs recently? Even if you think it’s not relevant, please be honest."
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'cbf64daf-d46c-4528-a4e5-fb7ff6a34d20', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been taking any antidepressants, pain medications, or other drugs recently? Even if you think it\\\\u2019s not relevant, please be honest.\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1970}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been taking any antidepressants, pain medications, or other drugs recently? Even if you think it’s not relevant, please be honest.\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been taking any antidepressants, pain medications, or other drugs recently? Even if you think it’s not relevant, please be honest.\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "shaking episode",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 8. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: shaking episode",
+          "initial_information: I am a 52-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 52-year-old female patient presenting with shaking episode and a history of HTN..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?)\nresponse: I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 29555_11, Score: 0.869)\n- Coma, stupor, delirium, hypokinesia, hypertonia, delusions, aggressive behavior, paranoid reaction, manic reaction, involuntary muscle contractions, gait abnormalities, paresthesia, EEG changes, and tremor. Abrupt discontinuation may also precipitate delirium, agitation, delusions, hallucinations,...\n\n[Document 2] (ID: 20769_3, Score: 0.869)\n# Symptoms\nSymptom onset is usually rapid, often occurring within minutes after self-poisoning or a change in medication. Serotonin syndrome encompasses a wide range of clinical findings. Mild symptoms may only consist of tachycardia, and shivering, diaphoresis, mydriasis, intermittent tremor or myo...\n\n[Document 3] (ID: 21686_1, Score: 0.864)\n# Symptoms and signs\nInitial symptoms include incredible restlessness, agitation, malaise, or a fixed stare.  Then comes the more characteristically described extreme and sustained upward deviation of the eyes.  In addition, the eyes may converge, deviate upward and laterally, or deviate downward.  ...\n\n[Document 4] (ID: 21563_12, Score: 0.862)\n- Tremor, muscle hyperirritability (fasciculations, twitching, clonic movements of whole limbs), hypertonicity, ataxia, choreo-athetotic movements, hyperactive deep tendon reflex, extrapyramidal symptoms including acute dystonia, cogwheel rigidity, blackout spells, epileptiform seizures, slurred spe...\n\n[Document 5] (ID: 4198_48, Score: 0.861)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for sudden-onset generalized tremor with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 4198_48, Score: 0.848)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...\n\n[Document 2] (ID: 24258_3, Score: 0.845)\n## History and Symptoms\nTremor is the most common involuntary movement disorder. In the primary care setting, the most common causes of tremors are essential tremors, Parkinson's disease and enhanced physiologic tremor. Important features of tremor in patients history are mode of onset, unilateral o...\n\n[Document 3] (ID: 24258_4, Score: 0.843)\n## X-ray\nThere are no x-ray findings associated with tremor.\n\n## Echocardiography and Ultrasound\nThere are no echocardiography findings associated with tremor. Magnetic resonance-guided focused ultrasound (MRgFUS), is a noninvasive focused ultrasound ablative thalamotomy procedure used to treat esse...\n\n[Document 4] (ID: 3108_12, Score: 0.839)\n## Tremor\nIn patients with tremor it is advisable to look for additional signs, such as dystonia, Parkinsonism, and cerebellar or brainstem signs, pointing towards a combined clinical syndrome that warrants specific diagnostic tests. 14 If no additional signs are present, the patient has an isolated...\n\n[Document 5] (ID: 13638_11, Score: 0.839)\n## Differential diagnosis\nThe differential diagnosis for irrational and confused patients is a long one and includes anxiety reactions as well as intoxication with a variety of agents, to include hallucinogenic indoles (such as LSD), cannabinoids (such as the delta-9-tetrahydrocannabinol in marijuan...",
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=serotonin syndrome symptoms and treatment)\nresponse: [Document 1] (ID: 12887_3, Score: 0.904)\n- Symptoms associated with serotonin syndrome may include the following combination of signs and symptoms: mental status changes (e.g., agitation, hallucinations, delirium, and coma), autonomic instability (e.g., tachycardia, labile blood pressure, dizziness, diaphoresis, flushing, and hyperthermia)...\n\n[Document 2] (ID: 13634_8, Score: 0.901)\n### Serotonin Syndrome\n- Serotonin syndrome may occur with triptans, including zolmitriptan, particularly during co-administration with selective serotonin reuptake inhibitors (SSRIs), serotonin norepinephrine reuptake inhibitors (SNRIs), tricyclic antidepressants (TCAs), and MAO inhibitors. Seroton...\n\n[Document 3] (ID: 29622_17, Score: 0.900)\n- The development of a potentially life threatening serotonin syndrome has been reported with SNRIs and SSRIs, including paroxetine hydrochloride, alone but particularly with concomitant use of other serotonergic drugs (including triptans, tricyclic antidepressants, fentanyl, lithium, tramadol, tryp...\n\n[Document 4] (ID: 13959_3, Score: 0.899)\n- Symptoms associated with serotonin syndrome may include the following combination of signs and symptoms: mental status changes (e.g., agitation, hallucinations, delirium, and coma), autonomic instability (e.g., tachycardia, labile blood pressure, dizziness, diaphoresis, flushing, hyperthermia), ne...\n\n[Document 5] (ID: 27246_27, Score: 0.899)\n- The development of a potentially life-threatening serotonin syndrome has been reported with SNRIs and SSRIs, including escitalopram oxalate, alone but particularly with concomitant use of other serotonergic drugs (including triptans, tricyclic antidepressants, fentanyl,  lithium, tramadol, tryptop...",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you been taking any antidepressants, pain medications, or other drugs recently? Even if you think it’s not relevant, please be honest.)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the shaking episode in more detail? For example, when did it start, how long does it last, and is it associated with any other symptoms like dizziness, sweating, or chest pain?)\nresponse: I started shaking about 3 days ago while I was on the computer talking to my sister-in-law. I felt numbness in my left hand and a full-body heaviness, and then I just woke up — I don’t remember what happened in between. My sister-in-law said I had shaking and trembling in all four limbs, was unresponsive, and had two episodes at home. I took Benadryl after that. During the episodes, my whole body shook and I couldn’t control it. I also had right-sided weakness, but that’s something I’ve had since my thalamic hemorrhage. I’m not sure if I had dizziness, sweating, or chest pain — I don’t remember those symptoms clearly.\ndoctor_action: retrieve(query=symptoms of shaking episode with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 29555_11, Score: 0.869)\n- Coma, stupor, delirium, hypokinesia, hypertonia, delusions, aggressive behavior, paranoid reaction, manic reaction, involuntary muscle contractions, gait abnormalities, paresthesia, EEG changes, and tremor. Abrupt discontinuation may also precipitate delirium, agitation, delusions, hallucinations,...\n\n[Document 2] (ID: 20769_3, Score: 0.869)\n# Symptoms\nSymptom onset is usually rapid, often occurring within minutes after self-poisoning or a change in medication. Serotonin syndrome encompasses a wide range of clinical findings. Mild symptoms may only consist of tachycardia, and shivering, diaphoresis, mydriasis, intermittent tremor or myo...\n\n[Document 3] (ID: 21686_1, Score: 0.864)\n# Symptoms and signs\nInitial symptoms include incredible restlessness, agitation, malaise, or a fixed stare.  Then comes the more characteristically described extreme and sustained upward deviation of the eyes.  In addition, the eyes may converge, deviate upward and laterally, or deviate downward.  ...\n\n[Document 4] (ID: 21563_12, Score: 0.862)\n- Tremor, muscle hyperirritability (fasciculations, twitching, clonic movements of whole limbs), hypertonicity, ataxia, choreo-athetotic movements, hyperactive deep tendon reflex, extrapyramidal symptoms including acute dystonia, cogwheel rigidity, blackout spells, epileptiform seizures, slurred spe...\n\n[Document 5] (ID: 4198_48, Score: 0.861)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...\ndoctor_action: ask_patient(question=Have you recently started or changed any medications? Also, have you been exposed to any toxins or chemicals recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=differential diagnosis for sudden-onset generalized tremor with loss of consciousness and history of thalamic hemorrhage)\nresponse: [Document 1] (ID: 4198_48, Score: 0.848)\n## Diagnosis of he\n## Clinical symptoms\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...\n\n[Document 2] (ID: 24258_3, Score: 0.845)\n## History and Symptoms\nTremor is the most common involuntary movement disorder. In the primary care setting, the most common causes of tremors are essential tremors, Parkinson's disease and enhanced physiologic tremor. Important features of tremor in patients history are mode of onset, unilateral o...\n\n[Document 3] (ID: 24258_4, Score: 0.843)\n## X-ray\nThere are no x-ray findings associated with tremor.\n\n## Echocardiography and Ultrasound\nThere are no echocardiography findings associated with tremor. Magnetic resonance-guided focused ultrasound (MRgFUS), is a noninvasive focused ultrasound ablative thalamotomy procedure used to treat esse...\n\n[Document 4] (ID: 3108_12, Score: 0.839)\n## Tremor\nIn patients with tremor it is advisable to look for additional signs, such as dystonia, Parkinsonism, and cerebellar or brainstem signs, pointing towards a combined clinical syndrome that warrants specific diagnostic tests. 14 If no additional signs are present, the patient has an isolated...\n\n[Document 5] (ID: 13638_11, Score: 0.839)\n## Differential diagnosis\nThe differential diagnosis for irrational and confused patients is a long one and includes anxiety reactions as well as intoxication with a variety of agents, to include hallucinogenic indoles (such as LSD), cannabinoids (such as the delta-9-tetrahydrocannabinol in marijuan...\ndoctor_action: retrieve(query=serotonin syndrome symptoms and treatment)\nresponse: [Document 1] (ID: 12887_3, Score: 0.904)\n- Symptoms associated with serotonin syndrome may include the following combination of signs and symptoms: mental status changes (e.g., agitation, hallucinations, delirium, and coma), autonomic instability (e.g., tachycardia, labile blood pressure, dizziness, diaphoresis, flushing, and hyperthermia)...\n\n[Document 2] (ID: 13634_8, Score: 0.901)\n### Serotonin Syndrome\n- Serotonin syndrome may occur with triptans, including zolmitriptan, particularly during co-administration with selective serotonin reuptake inhibitors (SSRIs), serotonin norepinephrine reuptake inhibitors (SNRIs), tricyclic antidepressants (TCAs), and MAO inhibitors. Seroton...\n\n[Document 3] (ID: 29622_17, Score: 0.900)\n- The development of a potentially life threatening serotonin syndrome has been reported with SNRIs and SSRIs, including paroxetine hydrochloride, alone but particularly with concomitant use of other serotonergic drugs (including triptans, tricyclic antidepressants, fentanyl, lithium, tramadol, tryp...\n\n[Document 4] (ID: 13959_3, Score: 0.899)\n- Symptoms associated with serotonin syndrome may include the following combination of signs and symptoms: mental status changes (e.g., agitation, hallucinations, delirium, and coma), autonomic instability (e.g., tachycardia, labile blood pressure, dizziness, diaphoresis, flushing, hyperthermia), ne...\n\n[Document 5] (ID: 27246_27, Score: 0.899)\n- The development of a potentially life-threatening serotonin syndrome has been reported with SNRIs and SSRIs, including escitalopram oxalate, alone but particularly with concomitant use of other serotonergic drugs (including triptans, tricyclic antidepressants, fentanyl,  lithium, tramadol, tryptop...\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 9,
+        "query_text": "52-year-old female with shaking episode, loss of consciousness, numbness in left hand, full-body heaviness, right-sided weakness (since thalamic hemorrhage), no recall of dizziness/sweating/chest pain. No recent medication changes. Retrieved: serotonin syndrome symptoms, tremor differential, and symptoms of shaking with loss of consciousness. Labs and imaging not performed.",
+        "skill_query_text": "Presenting problem: shaking episode with loss of consciousness and history of thalamic hemorrhage. Uncertainty: differential diagnosis including serotonin syndrome. Evidence gathered: patient history, retrieved documents on serotonin syndrome, tremor, and loss of consciousness. Ineffective actions: labs and imaging requests yielded no results. Need: guidance on next diagnostic action to resolve uncertainty without repeating low-information turns."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8152,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7945,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_4e216e018b5d",
+              "type": "experience",
+              "score": 0.7921,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest meningococcemia; do not discount this presentation in elderly patients even without travel or exposure history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8066,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7983,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.7964,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "differential diagnosis for generalized tremor with loss of consciousness and history of thalamic hemorrhage including metabolic and neurological causes"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'eefd64ea-78b2-4cf4-8529-315a7e0d6a66': '[Document 1] (ID: 3108_12, Score: 0.861)\\n## Tremor\\nIn patients with tremor it is advisable to look for additional signs, such as dystonia, Parkinsonism, and cerebellar or brainstem signs, pointing towards a combined clinical syndrome that warrants specific diagnostic tests. 14 If no additional signs are present, the patient has an isolated...\\n\\n[Document 2] (ID: 4198_48, Score: 0.856)\\n## Diagnosis of he\\n## Clinical symptoms\\nHE presents with a wide range of clinical patterns, from minimal HE (MHE), in which cognitive impairment cannot be identified without a cognitive function test, to OHE, which is easily detected based solely on symptoms and does not require a cognitive function...\\n\\n[Document 3] (ID: 24258_4, Score: 0.853)\\n## X-ray\\nThere are no x-ray findings associated with tremor.\\n\\n## Echocardiography and Ultrasound\\nThere are no echocardiography findings associated with tremor. Magnetic resonance-guided focused ultrasound (MRgFUS), is a noninvasive focused ultrasound ablative thalamotomy procedure used to treat esse...\\n\\n[Document 4] (ID: 32319_3, Score: 0.853)\\n# Pathology\\nCerebrovascular accidents (strokes) can cause thalamic syndrome (Dejerine and Roussy, 1906), which results in...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'eefd64ea-78b2-4cf4-8529-315a7e0d6a66', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"differential diagnosis for generalized tremor with loss of consciousness and history of thalamic hemorrhage including metabolic and neurological causes\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2057}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for generalized tremor with loss of consciousness and history of thalamic hemorrhage including metabolic and neurological causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for generalized tremor with loss of consciousness and history of thalamic hemorrhage including metabolic and neurological causes\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20259265",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "shaking episode",
+        "diagnostic_strategy": "Current clinical problem: generalized tremor with loss of consciousness and history of thalamic hemorrhage. Key evidence: patient reports sudden-onset shaking with loss of consciousness, right-sided weakness (pre-existing), no recent medication or toxin exposure, no lab or imaging results. Diagnostic uncertainty: unclear if tremor is primary, metabolic, or neurological; serotonin syndrome remains a possibility despite no reported drug use. Most useful missing information: detailed timeline of episodes, specific triggers, neuroimaging findings, and lab results for metabolic or toxic causes. Existing evidence is not enough to finalize diagnosis; further targeted testing or history clarification needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: shaking episode"
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: shaking episode. Patient reports onset 3 days ago during computer use, with numbness in left hand, full-body heaviness, and loss of consciousness. Witnessed shaking in all limbs, unresponsiveness, and two episodes at home. Right-sided weakness noted as pre-existing from thalamic hemorrhage. No clear memory of dizziness, sweating, or chest pain. No recent medication or toxin exposure reported. Labs and imaging requested but no results available. Differential diagnosis includes tremor, serotonin syndrome, and other metabolic/neurological causes. Documented findings suggest tremor may be isolated or part of a syndrome, and thalamic pathology may be relevant. No definitive diagnostic evidence yet."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20259265",
+        "turn_id": 10,
+        "query_text": "Chief complaint: shaking episode. Symptoms: sudden-onset shaking with loss of consciousness, right-sided weakness (pre-existing), numbness in left hand, full-body heaviness. No recent medication or toxin exposure. No lab or imaging results. Diagnostic uncertainty: tremor may be primary, metabolic, or neurological; serotonin syndrome remains possible. Missing: detailed timeline, triggers, neuroimaging, metabolic/toxic lab results.",
+        "skill_query_text": "Presenting problem: shaking episode with loss of consciousness. Evidence gathered: chief complaint, pre-existing right-sided weakness, no recent toxin/medication exposure, no lab/imaging results. Ineffective actions: none. Needed guidance: workflow for diagnosing tremor vs. metabolic/neurological causes, prioritizing missing evidence like timeline, triggers, neuroimaging, and metabolic labs."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8217,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8088,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.806,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8123,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.808,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8027,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_19bb6b569799"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_19bb6b569799",
+            "memory_type": "experience",
+            "score": 0.806,
+            "content": {
+              "experience": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Serotonin Syndrome}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8f6bcae9-3bf1-4aeb-b47f-18c4c78fe79f': '{\"diagnosis\": \"Serotonin Syndrome\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '8f6bcae9-3bf1-4aeb-b47f-18c4c78fe79f', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Serotonin Syndrome}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2570}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Serotonin Syndrome}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Serotonin Syndrome}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": []
+}

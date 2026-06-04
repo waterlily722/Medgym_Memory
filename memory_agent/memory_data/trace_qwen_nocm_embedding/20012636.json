@@ -1,0 +1,550 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20012636",
+  "turns": [
+    {
+      "case_id": "20012636",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 27-year-old female patient presenting with nonspecific subjective complaint of not feeling well. Key evidence gathered: Patient’s age, gender, and chief complaint. Diagnostic uncertainty remains high due to lack of specific symptoms, exam, lab, or imaging findings. Most useful missing information: Detailed symptom history, physical exam findings, and relevant diagnostic tests. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 27-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 27-year-old female patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 27-year-old female reporting nonspecific subjective complaint of not feeling well. No specific symptoms, exam, lab, or imaging findings provided. No diagnostic tests performed. No management-relevant risk identified. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 1,
+        "query_text": "27-year-old female, chief complaint: not feeling well recently. No specific symptoms, signs, exam, lab, or imaging findings. No diagnostic tests performed. No management-relevant risk identified. Diagnostic uncertainty remains high due to insufficient evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 27-year-old female with nonspecific subjective complaint of not feeling well. Evidence gathered: age, gender, chief complaint. Missing: detailed symptom history, physical exam, diagnostic tests. No ineffective actions tried. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8085,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8019,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8002,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been having pain, redness, and swelling around my nail, especially on my index and middle fingers. It started suddenly, maybe a week or two ago, after I bit my nails a lot and had some hangnails. Now there’s some pus coming out too. I’ve been washing my hands a lot, which might’ve made it worse.'}",
+        "env_info": "{'response': [{'id': 'e15ca027-1248-4ee3-b830-da5943d7c9c0', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing and when they started?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: patient presents with acute nail and surrounding tissue changes including pain, redness, swelling, and purulent discharge on index and middle fingers. Key evidence gathered: patient reports recent trauma (biting nails, hangnails) and worsening with handwashing. Diagnostic uncertainty: whether this is an infection (e.g., paronychia) or another inflammatory process. Most useful missing information: physical exam of affected nails, presence of fever, recent trauma or exposure, and any history of diabetes or immunosuppression. Existing evidence is not enough to finalize diagnosis; further diagnostic steps needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: I’ve been having pain, redness, and swelling around my nail, especially on my index and middle fingers. It started suddenly, maybe a week or two ago, after I bit my nails a lot and had some hangnails. Now there’s some pus coming out too. I’ve been washing my hands a lot, which might’ve made it worse."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general malaise and seeks assessment. Specific symptoms include acute pain, redness, swelling, and purulent discharge around nails of index and middle fingers, onset ~1 week ago after nail-biting and hangnails. Patient notes handwashing may have worsened condition. No prior history or exam data provided. No lab, imaging, or tool results available. No fever or systemic symptoms reported. No history of diabetes or immunosuppression provided. No prior treatment or interventions mentioned."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 2,
+        "query_text": "Patient reports acute pain, redness, swelling, and purulent discharge around nails of index and middle fingers, onset ~1 week ago after nail-biting and hangnails. Handwashing may have worsened condition. No fever, systemic symptoms, diabetes, or immunosuppression reported. No prior treatment or exam data. Diagnostic uncertainty: infection (e.g., paronychia) vs. other inflammatory process.",
+        "skill_query_text": "Presenting problem: acute nail and surrounding tissue changes with pain, redness, swelling, purulent discharge. Evidence gathered: patient history of trauma (nail-biting, hangnails), worsening with handwashing. Missing: physical exam, fever, recent trauma/exposure, diabetes/immunocompromise history. Ineffective actions: none. Need: diagnostic workflow guidance for differentiating infection vs. inflammatory process."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8054,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7989,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.7988,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'bf4d67ba-b304-407f-b2c1-8fcd3b5db421': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'bf4d67ba-b304-407f-b2c1-8fcd3b5db421', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 116}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 2,
+        "query_text": "Patient reports acute pain, redness, swelling, and purulent discharge around nails of index and middle fingers, onset ~1 week ago after nail-biting and hangnails. Handwashing may have worsened condition. No fever, systemic symptoms, diabetes, or immunosuppression reported. No prior treatment or exam data. Diagnostic uncertainty: infection (e.g., paronychia) vs. other inflammatory process.",
+        "skill_query_text": "Presenting problem: acute nail and surrounding tissue changes with pain, redness, swelling, purulent discharge. Evidence gathered: patient history of trauma (nail-biting, hangnails), worsening with handwashing. Missing: physical exam, fever, recent trauma/exposure, diabetes/immunocompromise history. Ineffective actions: none. Need: diagnostic workflow guidance for differentiating infection vs. inflammatory process."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8054,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7989,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.7988,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "signs and symptoms of paronychia in adults"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a53b3529-c552-4367-8419-57083ef9c7b2': '[Document 1] (ID: 10297_0, Score: 0.877)\\nParonychia (patient information)\\nFor the WikiDoc page for this topic, click here\\n\\n# Overview\\nParonychia is a skin infection that occurs around the nails.\\n\\n# What are the symptoms of Paronychia?\\nThe main symptom is a painful, red, swollen area around the nail, often at the cuticle or at the site of a...\\n\\n[Document 2] (ID: 30106_0, Score: 0.862)\\nParonychia\\nFor patient information, click Paronychia\\nSynonyms and keywords: Felon, Whitlow\\n\\n# Overview\\nThe nail disease paronychia is an often tender bacterial or fungal infection where the nail and skin meet at the side or the base of a finger or toenail. It can start suddenly (acute paronychia) or...\\n\\n[Document 3] (ID: 16609_1, Score: 0.859)\\n## Causes in Alphabetical Order\\n- Jackson-Lawler congenital pachyonychia\\n- Jadassohn-Lewandowsky syndrome\\n- Olmsted syndrome\\n- Tyrosinaemia type 2\\n\\n# Diagnosis\\n\\n## Symptoms\\nCommon symptoms include:\\n- Excess keratin in nail beds and thickening of the nails\\n- Hyperkeratosis on hands and feet\\n- Oral le...\\n\\n[Document 4] (ID: 30106_1, Score: 0.859)\\n## Common Causes\\n- Candida albicans\\n- Excessive immersion of hands in water\\n- Pseudomonas aeruginosa\\n- Staphylococcus aur...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'a53b3529-c552-4367-8419-57083ef9c7b2', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"signs and symptoms of paronychia in adults\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 187}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.8,
+        "delta": 0.6000000000000001,
+        "turn_reward": 0.12000000000000002,
+        "importance": 0.6000000000000001
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"signs and symptoms of paronychia in adults\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"signs and symptoms of paronychia in adults\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with localized nail area symptoms (pain, redness, swelling, pus) suggestive of possible paronychia. Key evidence: Patient reports trauma (biting nails, hangnails), recent onset, and pus formation. Diagnostic uncertainty: Whether infection is bacterial or fungal, and whether imaging or culture is needed. Most useful missing information: Physical exam findings (e.g., presence of pus, abscess, nail separation), lab results (e.g., CBC, culture), or imaging if needed. Existing evidence is not enough to finalize diagnosis; further targeted diagnostic steps are required.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports pain, redness, swelling around nails (index and middle fingers), sudden onset, history of nail biting and hangnails, and pus discharge. Washed hands frequently, which may have worsened condition. No lab results available. Retrieved information on paronychia symptoms and causes, including bacterial/fungal etiologies, trauma, and risk factors. No imaging or physical exam findings documented. Missing: Physical exam details, culture results, or imaging if indicated."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 4,
+        "query_text": "Patient reports pain, redness, swelling around nails (index and middle fingers), sudden onset, history of nail biting and hangnails, pus discharge. No lab results available. No imaging or physical exam findings documented. Uncertainty: bacterial vs fungal infection, need for imaging or culture.",
+        "skill_query_text": "Presenting problem: localized nail area symptoms (pain, redness, swelling, pus) suggestive of paronychia. Evidence gathered: patient history (trauma, recent onset, pus), no labs or imaging. Ineffective action: request for labs yielded no result. Need guidance on next diagnostic steps: physical exam, culture, or imaging."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8389,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.7997,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_8dfb5705d60c",
+              "type": "experience",
+              "score": 0.7868,
+              "outcome": "negative",
+              "text": "Trauma history with progressive pain, stiffness, and grinding in the hip supports osteoarthritis with secondary degeneration, not acute fracture, especially when no deformity or inability to move is present.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent trauma or injury to the affected fingers, or have you been exposed to any chemicals or irritants?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had a hangnail that I picked at, and I’ve been washing my hands a lot lately—sometimes with harsh soaps. I also work in a kitchen, so I’m exposed to water and cleaning chemicals often. I’ve noticed redness, swelling, and pain around my nail, and there’s a little pus forming.'}",
+        "env_info": "{'response': [{'id': '737e85e0-3037-473e-912d-545524d04f80', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent trauma or injury to the affected fingers, or have you been exposed to any chemicals or irritants?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 741}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.8,
+        "conf_after": 0.8,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent trauma or injury to the affected fingers, or have you been exposed to any chemicals or irritants?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent trauma or injury to the affected fingers, or have you been exposed to any chemicals or irritants?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: suspected paronychia based on symptoms of redness, swelling, pain, and pus around nails. Key evidence: patient reports trauma (hangnail picked at), frequent hand washing with harsh soaps, occupational exposure to water and chemicals, and acute onset of symptoms. Diagnostic uncertainty: whether infection is bacterial or fungal, and whether systemic involvement is present. Most useful missing information: specific lab results (e.g., culture, CBC), imaging if needed, or confirmation of exposure to specific pathogens. Existing evidence is not enough to finalize diagnosis; further diagnostic workup is needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: I’ve been having pain, redness, and swelling around my nail, especially on my index and middle fingers. It started suddenly, maybe a week or two ago, after I bit my nails a lot and had some hangnails. Now there’s some pus coming out too. I’ve been washing my hands a lot, which might’ve made it worse.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent trauma or injury to the affected fingers, or have you been exposed to any chemicals or irritants?)\nresponse: I’ve had a hangnail that I picked at, and I’ve been washing my hands a lot lately—sometimes with harsh soaps. I also work in a kitchen, so I’m exposed to water and cleaning chemicals often. I’ve noticed redness, swelling, and pain around my nail, and there’s a little pus forming."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports general malaise and seeks assessment. Symptoms include acute onset of pain, redness, swelling, and pus around index and middle fingernails, possibly triggered by nail-biting and hangnail picking. Occupational exposure to water and cleaning chemicals. No lab results available. Retrieved information suggests paronychia as a likely diagnosis, with common causes including trauma, Candida, Staphylococcus, Streptococcus, and chemical exposure. No imaging or specific diagnostic tests performed. Missing: culture results, CBC, or imaging if needed."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 5,
+        "query_text": "Patient reports acute onset of pain, redness, swelling, and pus around index and middle fingernails, possibly triggered by hangnail picking and frequent hand washing with harsh soaps. Occupational exposure to water and cleaning chemicals. No lab results or imaging available. Diagnostic uncertainty: bacterial vs fungal infection, systemic involvement. Suggests paronychia.",
+        "skill_query_text": "Presenting problem: suspected paronychia. Evidence gathered: patient history of trauma (hangnail picking), occupational exposure, symptoms of redness, swelling, pain, pus. Ineffective action: lab request yielded no result. Missing: culture, CBC, imaging. Need workflow guidance on next diagnostic steps or confirmatory tests."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8039,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.7975,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7967,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.7975,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Acute Paronychia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9f7be7b1-8433-4397-9afd-f351c502c4ab': '{\"diagnosis\": \"Acute Paronychia\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '9f7be7b1-8433-4397-9afd-f351c502c4ab', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Acute Paronychia}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 863}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.8,
+        "conf_after": 0.8,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute Paronychia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute Paronychia}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20012636",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnosis_goal": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20012636",
+        "turn_id": 4,
+        "query_text": "Patient has intermittent finger pain, redness, swelling, and pus from index and middle fingers, started weeks ago, associated with nail-biting and frequent handwashing. No prior imaging or labs. Symptoms consistent with paronychia based on retrieved knowledge.",
+        "skill_query_text": "Patient presents with finger symptoms (pain, redness, swelling, pus) since weeks ago, linked to nail-biting and handwashing. Diagnosis of paronychia is supported by evidence. No imaging or labs done. Need guidance on next steps: culture, imaging, or referral to dermatology if diagnosis unclear."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_8a7d49ba57c8",
+              "type": "experience",
+              "score": 0.8105,
+              "outcome": "negative",
+              "text": "In a 67-year-old female with constipation alternating with diarrhea, abdominal cramping, syncope, and mucus in stool, failure to obtain a stool sample or imaging to rule out colorectal cancer is a critical diagnostic gap. The presence of syncope and mucus suggests a systemic or structural issue, not just IBS, and the absence of blood in stool was misleadingly reported by the patient without verification. This case highlights the need to prioritize targeted diagnostic tools (e.g., colonoscopy) over generic lab requests when red flags like syncope and mucus are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_10cd47c1ae0d",
+              "type": "experience",
+              "score": 0.8051,
+              "outcome": "negative",
+              "text": "In a patient with unexplained bruising and nosebleeds, requesting generic 'labs' without specifying coagulation or vascular panels is low-value; prioritize targeted coagulation testing to rule out acquired coagulation factor deficiency.",
+              "tags": []
+            },
+            {
+              "id": "exp_bc8c8550a370",
+              "type": "experience",
+              "score": 0.8009,
+              "outcome": "negative",
+              "text": "In a diabetic patient with chronic hip pain, the absence of trauma history and the presence of aching, grinding pain localized to the joint should prompt consideration of Charcot joint, especially if imaging is unavailable or inconclusive. This differentiates it from osteoarthritis, which typically presents with more mechanical pain and less atypical sensory loss.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Paronychia}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0e8d1ff7-2c5b-46df-bcbb-ddfd7e96fedb': '{\"diagnosis\": \"Paronychia\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '0e8d1ff7-2c5b-46df-bcbb-ddfd7e96fedb', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Paronychia}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 959}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.8,
+        "conf_after": 0.8,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Paronychia}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Paronychia}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": []
+}

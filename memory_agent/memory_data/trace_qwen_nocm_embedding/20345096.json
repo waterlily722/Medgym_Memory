@@ -1,0 +1,1540 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20345096",
+  "turns": [
+    {
+      "case_id": "20345096",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Abdominal bloating",
+        "diagnostic_strategy": "Current clinical problem: Abdominal bloating in a 64-year-old male. Key evidence gathered: patient age, gender, and chief complaint. Diagnostic uncertainty remains high; no specific findings or tests performed yet. Most useful missing information: detailed symptom history, physical exam findings, lab or imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 64-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 64-year-old male patient presenting with Abdominal bloating.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 64-year-old male presenting with abdominal bloating. No additional history, exam, lab, imaging, or tool results available. No interpretation of evidence performed. Missing information: detailed symptom history, physical exam findings, lab or imaging results."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 1,
+        "query_text": "Patient is a 64-year-old male presenting with abdominal bloating. No specific findings, tests, or history gathered yet. Diagnostic uncertainty remains high. Missing: detailed symptom history, physical exam, lab, or imaging results.",
+        "skill_query_text": "Presenting problem: Abdominal bloating in a 64-year-old male. Evidence gathered: age, gender, chief complaint. Uncertainty: diagnosis not yet possible. Missing: detailed symptom history, physical exam, lab, or imaging. Ineffective actions: none tried. Need: diagnostic workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7996,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7863,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8156,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8141,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8132,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8345,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8122,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8075,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the abdominal bloating start, and has it been progressively worsening?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been having abdominal bloating for ___ years. The episodes have been getting more frequent lately, and that’s why I came to the ER — they’re happening so often now that I can’t ignore them. I don’t know if they’ve been progressively worsening, but they’ve definitely become more common recently.'}",
+        "env_info": "{'response': [{'id': '4b73c421-aa8f-4c30-acee-78f2d07a5ea9', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did the abdominal bloating start, and has it been progressively worsening?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the abdominal bloating start, and has it been progressively worsening?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the abdominal bloating start, and has it been progressively worsening?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Abdominal bloating",
+        "diagnostic_strategy": "Current clinical problem: Abdominal bloating with increasing frequency. Key evidence: Patient reports bloating for ___ years, now occurring more frequently, prompting ER visit. Diagnostic uncertainty: Whether bloating is progressive or episodic; potential causes include functional GI disorders, chronic constipation, or structural issues. Most useful missing information: Duration of current episode, associated symptoms (e.g., pain, nausea, changes in bowel habits), and prior diagnostic workup. Existing evidence is insufficient to finalize diagnosis; further history and targeted testing needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the abdominal bloating start, and has it been progressively worsening?)\nresponse: I’ve been having abdominal bloating for ___ years. The episodes have been getting more frequent lately, and that’s why I came to the ER — they’re happening so often now that I can’t ignore them. I don’t know if they’ve been progressively worsening, but they’ve definitely become more common recently."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Abdominal bloating. Patient reports bloating for ___ years, now occurring more frequently, prompting ER visit. Patient states episodes are more common recently but is uncertain if worsening. No prior diagnostic workup or findings reported. No exam, lab, imaging, or tool results available. No treatment or risk information provided."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 2,
+        "query_text": "Chief complaint: Abdominal bloating. Patient reports bloating for ___ years, now occurring more frequently, prompting ER visit. Uncertainty: Whether bloating is progressive or episodic. Potential causes: functional GI disorders, chronic constipation, or structural issues. Missing: duration of current episode, associated symptoms (pain, nausea, bowel changes), prior diagnostic workup. No exam, lab, imaging, or tool results available.",
+        "skill_query_text": "Presenting problem: Abdominal bloating with increasing frequency. Uncertainty: Whether bloating is progressive or episodic. Evidence gathered: Patient reports bloating for ___ years, episodes now more common recently, unsure if worsening. No prior workup or results. Ineffective actions: none. Need: guidance on next diagnostic steps, targeted history questions, and which tests to prioritize."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8138,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.8022,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8393,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.837,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8352,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8338,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8333,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8296,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_f9b9fd0ff961"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_f9b9fd0ff961",
+            "memory_type": "skill",
+            "score": 0.8333,
+            "content": {
+              "skill": "When patient describes fatigue, weight loss, and gastrointestinal symptoms, use targeted questioning to elicit specific signs like hematemesis or melena.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient(question=Have you experienced any abdominal pain, nausea, or changes in bowel habits recently?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'b3a75550-c37f-4b1e-840b-01051d57c30e', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 106}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.2857142857142857,
+        "turn_reward": 0.05714285714285714,
+        "importance": 0.2857142857142857
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Abdominal bloating",
+        "diagnostic_strategy": "Current clinical problem: Abdominal bloating of recent increase in frequency. Key evidence gathered: Patient reports bloating for ___ years, now occurring more frequently; no reported nausea, vomiting, bowel habit changes, or weight loss. Diagnostic uncertainty: Whether bloating is functional, GI-related, or systemic. Most useful missing information: Timing of onset, dietary triggers, family history of GI disorders, and results of physical exam or basic labs. Existing evidence is not enough to finalize diagnosis; further assessment needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Abdominal bloating"
+        ],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient presents with abdominal bloating for ___ years, now occurring more frequently. No reported nausea, vomiting, changes in bowel habits, or weight loss. No abnormal findings reported. No prior diagnostic tests or imaging. No family history or dietary triggers provided. No physical exam or lab results available."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 3,
+        "query_text": "Patient presents with abdominal bloating for ___ years, now occurring more frequently. No nausea, vomiting, bowel habit changes, or weight loss reported. No abnormal findings, prior tests, imaging, family history, or dietary triggers provided. No physical exam or lab results available. Diagnostic uncertainty: functional, GI-related, or systemic cause.",
+        "skill_query_text": "Presenting problem: Abdominal bloating increasing in frequency. Evidence gathered: Patient denies nausea, vomiting, bowel changes, weight loss. Ineffective action: Asked about associated symptoms; patient denies any. Missing: Timing of onset, dietary triggers, family history, physical exam, basic labs. Need: Workflow guidance for next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.8116,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8072,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8323,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8301,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8266,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8541,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8456,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8288,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'669d41ea-08f2-4a09-a6ca-3189c9519a2c': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '669d41ea-08f2-4a09-a6ca-3189c9519a2c', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 190}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 3,
+        "query_text": "Patient presents with abdominal bloating for ___ years, now occurring more frequently. No nausea, vomiting, bowel habit changes, or weight loss reported. No abnormal findings, prior tests, imaging, family history, or dietary triggers provided. No physical exam or lab results available. Diagnostic uncertainty: functional, GI-related, or systemic cause.",
+        "skill_query_text": "Presenting problem: Abdominal bloating increasing in frequency. Evidence gathered: Patient denies nausea, vomiting, bowel changes, weight loss. Ineffective action: Asked about associated symptoms; patient denies any. Missing: Timing of onset, dietary triggers, family history, physical exam, basic labs. Need: Workflow guidance for next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.8116,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8072,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8323,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8301,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8266,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8541,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8456,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8288,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of chronic abdominal bloating in older adults"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'69c9729c-73f4-4bd5-b086-09f54100f70e': '[Document 1] (ID: 32359_3, Score: 0.879)\\n## Hard stool/Constipation\\nDistension of the rectum by retained feces induces alteration of gut motility and increases bacterial fermentation.\\n\\n# Causes\\nThe most common cause of bloating is Constipation, Pregnancy, IBS, Celiac disease, Lactose, fructose, and other carbohydrates intolerance, Pancreat...\\n\\n[Document 2] (ID: 32359_4, Score: 0.875)\\n# Risk Factors\\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\\n\\n# Screening\\nThere...\\n\\n[Document 3] (ID: 2027_0, Score: 0.873)\\nIrritable bowel syndrome in adults: diagnosis and management\\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\\n\\n[Document 4] (ID: 9978_0, Score: 0.866)\\nBloating resident survival guide\\nSynonyms and keywords:Approach to abdominal bloating, Approach to abdominal belching, Appr...[truncated]'}}",
+        "env_info": "{'response': [{'id': '69c9729c-73f4-4bd5-b086-09f54100f70e', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of chronic abdominal bloating in older adults\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 261}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of chronic abdominal bloating in older adults\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of chronic abdominal bloating in older adults\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Abdominal bloating",
+        "diagnostic_strategy": "Current clinical problem: Chronic abdominal bloating in an older adult with increasing frequency. Key evidence: Patient reports bloating for years, now more frequent; no other symptoms (nausea, vomiting, bowel changes, weight loss); labs unavailable. Diagnostic uncertainty: Differentiating between constipation, IBS, lactose intolerance, or other causes. Most useful missing information: Bowel habit details, dietary triggers, physical exam findings (e.g., abdominal distension, tenderness), and imaging or stool tests. Existing evidence is not enough to finalize diagnosis; further targeted history and physical exam needed.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=common causes of chronic abdominal bloating in older adults)\nresponse: [Document 1] (ID: 32359_3, Score: 0.879)\n## Hard stool/Constipation\nDistension of the rectum by retained feces induces alteration of gut motility and increases bacterial fermentation.\n\n# Causes\nThe most common cause of bloating is Constipation, Pregnancy, IBS, Celiac disease, Lactose, fructose, and other carbohydrates intolerance, Pancreat...\n\n[Document 2] (ID: 32359_4, Score: 0.875)\n# Risk Factors\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\n\n# Screening\nThere...\n\n[Document 3] (ID: 2027_0, Score: 0.873)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 9978_0, Score: 0.866)\nBloating resident survival guide\nSynonyms and keywords:Approach to abdominal bloating, Approach to abdominal belching, Approach to flatulence, Use of FODMAPs.\n\n# Overview\nBloating is one of the most common gastrointestinal complaints that is attributed by the patient as the subjective sensation of i...\n\n[Document 5] (ID: 32359_0, Score: 0.865)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy..."
+        ],
+        "prior_information_summary": "Chief complaint: Abdominal bloating. Patient reports bloating for years, now more frequent; no other symptoms (nausea, vomiting, bowel changes, weight loss). Labs requested but no result available. No imaging or exam results. Known risk factors: No dietary triggers identified. Diagnostic considerations: Constipation, IBS, lactose intolerance, or other causes. Missing: Bowel habit details, physical exam findings, stool tests, imaging. No low-value or no-result attempts."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 5,
+        "query_text": "Chief complaint: Abdominal bloating. Patient reports bloating for years, now more frequent; no other symptoms (nausea, vomiting, bowel changes, weight loss). Labs unavailable. Diagnostic uncertainty: Differentiating between constipation, IBS, lactose intolerance, or other causes. Missing: Bowel habit details, dietary triggers, physical exam findings (e.g., abdominal distension, tenderness), and imaging or stool tests.",
+        "skill_query_text": "Presenting problem: Chronic abdominal bloating in older adult. Current uncertainty: Differentiating between constipation, IBS, lactose intolerance, or other causes. Evidence gathered: Patient history (bloating for years, now more frequent, no other symptoms). Ineffective actions: Retrieved common causes of bloating. Missing: Bowel habit details, physical exam findings, stool tests, imaging. Need: Workflow guidance for targeted history and physical exam to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8059,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7841,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8271,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8256,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8247,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8464,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8303,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8287,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?"
+        },
+        "patient_or_tool_response": "{'question': 'I haven’t noticed any specific foods or habits that seem to trigger or worsen my bloating. The episodes just happen on their own, and I’ve been trying to reduce my food and fluid intake to help them go away — but I can’t say what exactly makes them worse.'}",
+        "env_info": "{'response': [{'id': '73e583d2-ec03-4d54-b56a-52def527722b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 749}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Abdominal bloating",
+        "diagnostic_strategy": "Current clinical problem: Chronic abdominal bloating with increasing frequency. Key evidence: Patient reports no specific triggers, no associated symptoms (nausea, vomiting, bowel changes, weight loss), no lab results available, and no imaging or exam results. Diagnostic uncertainty: Could be functional (e.g., IBS, lactose intolerance) or organic (e.g., constipation, bowel obstruction). Most useful missing information: Detailed dietary history, bowel habits, weight trends, and physical exam findings (e.g., abdominal distension, tenderness). Existing evidence is not enough to finalize diagnosis; further targeted history and physical exam are needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Abdominal bloating"
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Abdominal bloating. History: Bloating for ___ years, increasing frequency recently, no known triggers. No associated symptoms (nausea, vomiting, bowel changes, weight loss). Lab results: None available. Exam results: None available. Retrieved information: Common causes include constipation, IBS, lactose/fructose intolerance, chewing gum, carbonated beverages, leafy greens, beans, dairy. No specific diagnostic test results or imaging findings. No known risk factors or management data provided."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 6,
+        "query_text": "Chief complaint: Abdominal bloating. No specific triggers, no associated symptoms (nausea, vomiting, bowel changes, weight loss). No lab, imaging, or exam results available. Diagnostic uncertainty: Functional (e.g., IBS, lactose intolerance) or organic (e.g., constipation, bowel obstruction). Missing: Dietary history, bowel habits, weight trends, physical exam findings (e.g., abdominal distension, tenderness).",
+        "skill_query_text": "Presenting problem: Chronic abdominal bloating with increasing frequency. Uncertainty: Functional vs. organic cause. Evidence gathered: Chief complaint only. Missing: Dietary history, bowel habits, weight trends, physical exam findings. Ineffective actions: None tried. Need: Workflow guidance for targeted history and physical exam to narrow diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8017,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7836,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8305,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8265,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8238,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.834,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.822,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8158,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7909e840-1e39-43c4-8edf-b4a20ab920ec': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '7909e840-1e39-43c4-8edf-b4a20ab920ec', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 853}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 6,
+        "query_text": "Chief complaint: Abdominal bloating. No specific triggers, no associated symptoms (nausea, vomiting, bowel changes, weight loss). No lab, imaging, or exam results available. Diagnostic uncertainty: Functional (e.g., IBS, lactose intolerance) or organic (e.g., constipation, bowel obstruction). Missing: Dietary history, bowel habits, weight trends, physical exam findings (e.g., abdominal distension, tenderness).",
+        "skill_query_text": "Presenting problem: Chronic abdominal bloating with increasing frequency. Uncertainty: Functional vs. organic cause. Evidence gathered: Chief complaint only. Missing: Dietary history, bowel habits, weight trends, physical exam findings. Ineffective actions: None tried. Need: Workflow guidance for targeted history and physical exam to narrow diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8017,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7836,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8305,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8265,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8238,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.834,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.822,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8158,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "chronic abdominal bloating in elderly patients: differential diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'af3f290c-598f-4f08-adc7-b2263378d917': '[Document 1] (ID: 32359_5, Score: 0.863)\\n## History and Symptoms\\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\\n\\n[Document 2] (ID: 4317_48, Score: 0.863)\\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been reported in adults with DMD) ...\\n\\n[Document 3] (ID: 2027_0, Score: 0.863)\\nIrritable bowel syndrome in adults: diagnosis and management\\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\\n\\n[Document 4] (ID: 32359_6, Score: 0.857)\\n### Stool analysis\\nAntigen testing for Giardia\\n\\n## Electrocardiogram\\nThere are no ECG findings associated with bloating.\\n\\n...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'af3f290c-598f-4f08-adc7-b2263378d917', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"chronic abdominal bloating in elderly patients: differential diagnosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 927}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"chronic abdominal bloating in elderly patients: differential diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"chronic abdominal bloating in elderly patients: differential diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Abdominal bloating",
+        "diagnostic_strategy": "Current clinical problem: Chronic abdominal bloating in an elderly patient. Key evidence gathered: Patient reports bloating for years, increasing frequency, no associated nausea/vomiting/weight loss, no identifiable dietary triggers. No lab or imaging results available. Differential diagnosis includes IBS, constipation, lactose/fructose intolerance, or mechanical obstruction. Most useful missing information: Results of imaging (e.g., abdominal X-ray) to rule out obstruction or volvulus; stool analysis for pathogens; dietary history with specific food triggers. Existing evidence is insufficient to finalize diagnosis; further diagnostic testing is needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Abdominal bloating"
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient presents with chronic abdominal bloating for years, now more frequent. No nausea, vomiting, bowel habit changes, or weight loss reported. Labs and imaging not performed or returned. Differential diagnosis includes IBS, constipation, dietary intolerances, or obstruction. No specific dietary triggers identified. No ECG findings. Imaging and lab results unavailable. Patient has tried reducing food/fluid intake without success."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 8,
+        "query_text": "Chronic abdominal bloating for years, increasing frequency, no nausea/vomiting/weight loss, no dietary triggers identified. No lab or imaging results available. Differential: IBS, constipation, lactose/fructose intolerance, mechanical obstruction. No ECG findings. Patient tried reducing food/fluid intake without success.",
+        "skill_query_text": "Presenting problem: Chronic abdominal bloating in elderly patient. Uncertainty: Cannot differentiate IBS, constipation, dietary intolerances, or obstruction. Evidence gathered: Chief complaint, no labs/imaging, no dietary triggers. Missing: Imaging (e.g., abdominal X-ray), stool analysis, dietary history. Ineffective actions: Reducing food/fluid intake. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8024,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8019,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7891,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7785,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8337,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8279,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8262,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8474,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8277,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8108,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8143,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.8024,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '7e4a3963-ae8f-411c-bfc3-88617234cf05', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1418}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Abdominal bloating",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 8. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Abdominal bloating",
+          "initial_information: I am a 64-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 64-year-old male patient presenting with Abdominal bloating..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the abdominal bloating start, and has it been progressively worsening?)\nresponse: I’ve been having abdominal bloating for ___ years. The episodes have been getting more frequent lately, and that’s why I came to the ER — they’re happening so often now that I can’t ignore them. I don’t know if they’ve been progressively worsening, but they’ve definitely become more common recently.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=common causes of chronic abdominal bloating in older adults)\nresponse: [Document 1] (ID: 32359_3, Score: 0.879)\n## Hard stool/Constipation\nDistension of the rectum by retained feces induces alteration of gut motility and increases bacterial fermentation.\n\n# Causes\nThe most common cause of bloating is Constipation, Pregnancy, IBS, Celiac disease, Lactose, fructose, and other carbohydrates intolerance, Pancreat...\n\n[Document 2] (ID: 32359_4, Score: 0.875)\n# Risk Factors\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\n\n# Screening\nThere...\n\n[Document 3] (ID: 2027_0, Score: 0.873)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 9978_0, Score: 0.866)\nBloating resident survival guide\nSynonyms and keywords:Approach to abdominal bloating, Approach to abdominal belching, Approach to flatulence, Use of FODMAPs.\n\n# Overview\nBloating is one of the most common gastrointestinal complaints that is attributed by the patient as the subjective sensation of i...\n\n[Document 5] (ID: 32359_0, Score: 0.865)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?)\nresponse: I haven’t noticed any specific foods or habits that seem to trigger or worsen my bloating. The episodes just happen on their own, and I’ve been trying to reduce my food and fluid intake to help them go away — but I can’t say what exactly makes them worse.",
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=chronic abdominal bloating in elderly patients: differential diagnosis)\nresponse: [Document 1] (ID: 32359_5, Score: 0.863)\n## History and Symptoms\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\n\n[Document 2] (ID: 4317_48, Score: 0.863)\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been reported in adults with DMD) ...\n\n[Document 3] (ID: 2027_0, Score: 0.863)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 32359_6, Score: 0.857)\n### Stool analysis\nAntigen testing for Giardia\n\n## Electrocardiogram\nThere are no ECG findings associated with bloating.\n\n## X-ray\nAn abdominal x-ray may be helpful to rule out intestinal obstruction.\n\n## Echocardiography or Ultrasound\nAbdominal/Pelvic Ultrasound to look for ascites and rule out ova...\n\n[Document 5] (ID: 32359_0, Score: 0.852)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy...",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the abdominal bloating start, and has it been progressively worsening?)\nresponse: I’ve been having abdominal bloating for ___ years. The episodes have been getting more frequent lately, and that’s why I came to the ER — they’re happening so often now that I can’t ignore them. I don’t know if they’ve been progressively worsening, but they’ve definitely become more common recently.\ndoctor_action: ask_patient(question=Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of chronic abdominal bloating in older adults)\nresponse: [Document 1] (ID: 32359_3, Score: 0.879)\n## Hard stool/Constipation\nDistension of the rectum by retained feces induces alteration of gut motility and increases bacterial fermentation.\n\n# Causes\nThe most common cause of bloating is Constipation, Pregnancy, IBS, Celiac disease, Lactose, fructose, and other carbohydrates intolerance, Pancreat...\n\n[Document 2] (ID: 32359_4, Score: 0.875)\n# Risk Factors\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\n\n# Screening\nThere...\n\n[Document 3] (ID: 2027_0, Score: 0.873)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 9978_0, Score: 0.866)\nBloating resident survival guide\nSynonyms and keywords:Approach to abdominal bloating, Approach to abdominal belching, Approach to flatulence, Use of FODMAPs.\n\n# Overview\nBloating is one of the most common gastrointestinal complaints that is attributed by the patient as the subjective sensation of i...\n\n[Document 5] (ID: 32359_0, Score: 0.865)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy...\ndoctor_action: ask_patient(question=Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?)\nresponse: I haven’t noticed any specific foods or habits that seem to trigger or worsen my bloating. The episodes just happen on their own, and I’ve been trying to reduce my food and fluid intake to help them go away — but I can’t say what exactly makes them worse.\ndoctor_action: retrieve(query=chronic abdominal bloating in elderly patients: differential diagnosis)\nresponse: [Document 1] (ID: 32359_5, Score: 0.863)\n## History and Symptoms\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\n\n[Document 2] (ID: 4317_48, Score: 0.863)\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been reported in adults with DMD) ...\n\n[Document 3] (ID: 2027_0, Score: 0.863)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 32359_6, Score: 0.857)\n### Stool analysis\nAntigen testing for Giardia\n\n## Electrocardiogram\nThere are no ECG findings associated with bloating.\n\n## X-ray\nAn abdominal x-ray may be helpful to rule out intestinal obstruction.\n\n## Echocardiography or Ultrasound\nAbdominal/Pelvic Ultrasound to look for ascites and rule out ova...\n\n[Document 5] (ID: 32359_0, Score: 0.852)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy...\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 9,
+        "query_text": "Chief complaint: Abdominal bloating. Patient: 64-year-old male. Symptoms: Bloating for years, increasing frequency, no nausea/vomiting, no bowel changes/weight loss, no specific food triggers. Evidence: Retrieved common causes (constipation, IBS, lactose intolerance) and differential (imaging/labs not done). No labs or imaging results. Uncertainty: Diagnosing chronic bloating in elderly without diagnostic tests.",
+        "skill_query_text": "Presenting problem: Chronic abdominal bloating in 64-year-old male. Uncertainty: Differentiating causes without labs/imaging. Evidence gathered: Patient history, retrieved guidelines on causes and differential. Ineffective actions: Labs and imaging requests yielded no results. Need: Workflow guidance for next diagnostic step targeting evidence to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.8,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7967,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.796,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7846,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7764,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8369,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8267,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8235,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8271,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8078,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8072,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "chronic abdominal bloating in elderly: when to consider serious underlying causes"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f26e93d3-9390-46c1-9f1f-c06a9cc0e29f': '[Document 1] (ID: 32359_4, Score: 0.862)\\n# Risk Factors\\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\\n\\n# Screening\\nThere...\\n\\n[Document 2] (ID: 4317_48, Score: 0.856)\\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been reported in adults with DMD) ...\\n\\n[Document 3] (ID: 32359_5, Score: 0.855)\\n## History and Symptoms\\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\\n\\n[Document 4] (ID: 2027_0, Score: 0.854)\\nIrritable bowel syndrome in adults: diagnosis and management\\nThis guideline covers diagnosing and managing irritable bowel...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'f26e93d3-9390-46c1-9f1f-c06a9cc0e29f', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"chronic abdominal bloating in elderly: when to consider serious underlying causes\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1493}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"chronic abdominal bloating in elderly: when to consider serious underlying causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"chronic abdominal bloating in elderly: when to consider serious underlying causes\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20345096",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Abdominal bloating",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 9. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Abdominal bloating",
+          "initial_information: I am a 64-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 64-year-old male patient presenting with Abdominal bloating..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the abdominal bloating start, and has it been progressively worsening?)\nresponse: I’ve been having abdominal bloating for ___ years. The episodes have been getting more frequent lately, and that’s why I came to the ER — they’re happening so often now that I can’t ignore them. I don’t know if they’ve been progressively worsening, but they’ve definitely become more common recently.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=common causes of chronic abdominal bloating in older adults)\nresponse: [Document 1] (ID: 32359_3, Score: 0.879)\n## Hard stool/Constipation\nDistension of the rectum by retained feces induces alteration of gut motility and increases bacterial fermentation.\n\n# Causes\nThe most common cause of bloating is Constipation, Pregnancy, IBS, Celiac disease, Lactose, fructose, and other carbohydrates intolerance, Pancreat...\n\n[Document 2] (ID: 32359_4, Score: 0.875)\n# Risk Factors\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\n\n# Screening\nThere...\n\n[Document 3] (ID: 2027_0, Score: 0.873)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 9978_0, Score: 0.866)\nBloating resident survival guide\nSynonyms and keywords:Approach to abdominal bloating, Approach to abdominal belching, Approach to flatulence, Use of FODMAPs.\n\n# Overview\nBloating is one of the most common gastrointestinal complaints that is attributed by the patient as the subjective sensation of i...\n\n[Document 5] (ID: 32359_0, Score: 0.865)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?)\nresponse: I haven’t noticed any specific foods or habits that seem to trigger or worsen my bloating. The episodes just happen on their own, and I’ve been trying to reduce my food and fluid intake to help them go away — but I can’t say what exactly makes them worse.",
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=chronic abdominal bloating in elderly patients: differential diagnosis)\nresponse: [Document 1] (ID: 32359_5, Score: 0.863)\n## History and Symptoms\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\n\n[Document 2] (ID: 4317_48, Score: 0.863)\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been reported in adults with DMD) ...\n\n[Document 3] (ID: 2027_0, Score: 0.863)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 32359_6, Score: 0.857)\n### Stool analysis\nAntigen testing for Giardia\n\n## Electrocardiogram\nThere are no ECG findings associated with bloating.\n\n## X-ray\nAn abdominal x-ray may be helpful to rule out intestinal obstruction.\n\n## Echocardiography or Ultrasound\nAbdominal/Pelvic Ultrasound to look for ascites and rule out ova...\n\n[Document 5] (ID: 32359_0, Score: 0.852)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy...",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=chronic abdominal bloating in elderly: when to consider serious underlying causes)\nresponse: [Document 1] (ID: 32359_4, Score: 0.862)\n# Risk Factors\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\n\n# Screening\nThere...\n\n[Document 2] (ID: 4317_48, Score: 0.856)\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been reported in adults with DMD) ...\n\n[Document 3] (ID: 32359_5, Score: 0.855)\n## History and Symptoms\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\n\n[Document 4] (ID: 2027_0, Score: 0.854)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 5] (ID: 32359_6, Score: 0.854)\n### Stool analysis\nAntigen testing for Giardia\n\n## Electrocardiogram\nThere are no ECG findings associated with bloating.\n\n## X-ray\nAn abdominal x-ray may be helpful to rule out intestinal obstruction.\n\n## Echocardiography or Ultrasound\nAbdominal/Pelvic Ultrasound to look for ascites and rule out ova..."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the abdominal bloating start, and has it been progressively worsening?)\nresponse: I’ve been having abdominal bloating for ___ years. The episodes have been getting more frequent lately, and that’s why I came to the ER — they’re happening so often now that I can’t ignore them. I don’t know if they’ve been progressively worsening, but they’ve definitely become more common recently.\ndoctor_action: ask_patient(question=Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of chronic abdominal bloating in older adults)\nresponse: [Document 1] (ID: 32359_3, Score: 0.879)\n## Hard stool/Constipation\nDistension of the rectum by retained feces induces alteration of gut motility and increases bacterial fermentation.\n\n# Causes\nThe most common cause of bloating is Constipation, Pregnancy, IBS, Celiac disease, Lactose, fructose, and other carbohydrates intolerance, Pancreat...\n\n[Document 2] (ID: 32359_4, Score: 0.875)\n# Risk Factors\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\n\n# Screening\nThere...\n\n[Document 3] (ID: 2027_0, Score: 0.873)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 9978_0, Score: 0.866)\nBloating resident survival guide\nSynonyms and keywords:Approach to abdominal bloating, Approach to abdominal belching, Approach to flatulence, Use of FODMAPs.\n\n# Overview\nBloating is one of the most common gastrointestinal complaints that is attributed by the patient as the subjective sensation of i...\n\n[Document 5] (ID: 32359_0, Score: 0.865)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy...\ndoctor_action: ask_patient(question=Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?)\nresponse: I haven’t noticed any specific foods or habits that seem to trigger or worsen my bloating. The episodes just happen on their own, and I’ve been trying to reduce my food and fluid intake to help them go away — but I can’t say what exactly makes them worse.\ndoctor_action: retrieve(query=chronic abdominal bloating in elderly patients: differential diagnosis)\nresponse: [Document 1] (ID: 32359_5, Score: 0.863)\n## History and Symptoms\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\n\n[Document 2] (ID: 4317_48, Score: 0.863)\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been reported in adults with DMD) ...\n\n[Document 3] (ID: 2027_0, Score: 0.863)\nIrritable bowel syndrome in adults: diagnosis and management\nThis guideline covers diagnosing and managing irritable bowel syndrome (IBS) in people aged 18 and over. It details how to accurately diagnose IBS, and aims to improve the quality of life for adults with IBS by promoting effective manageme...\n\n[Document 4] (ID: 32359_6, Score: 0.857)\n### Stool analysis\nAntigen testing for Giardia\n\n## Electrocardiogram\nThere are no ECG findings associated with bloating.\n\n## X-ray\nAn abdominal x-ray may be helpful to rule out intestinal obstruction.\n\n## Echocardiography or Ultrasound\nAbdominal/Pelvic Ultrasound to look for ascites and rule out ova...\n\n[Document 5] (ID: 32359_0, Score: 0.852)\nBloating\nSynonyms and keywords: Post-prandial abdominal fullness\n\n# Overview\nBloating is described as a sensation of elevated abdominal pressure that may or may not be accompanied by objective abdominal distension, i.e. noticeable enlargement of the waist. Bloating and abdominal distension may be sy...\ndoctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20345096",
+        "turn_id": 10,
+        "query_text": "Chief complaint: Abdominal bloating. Patient: 64-year-old male. Symptoms: Bloating for ___ years, increasing frequency, no nausea/vomiting, no bowel changes or weight loss. No specific food triggers noted. No unintentional weight loss, appetite, or fatigue reported. Labs and imaging not performed. Differential: Constipation, IBS, lactose intolerance, dietary factors. Consider imaging for obstruction if severe. No prior diagnosis or test results available.",
+        "skill_query_text": "Presenting problem: Chronic abdominal bloating in 64-year-old male. Uncertainty: Differentiating functional vs. structural causes. Evidence gathered: Patient history, literature on causes (constipation, IBS, dietary triggers). Missing: Labs, imaging. Ineffective actions: Labs and imaging requests returned no results. Need: Workflow guidance on next diagnostic step — prioritize targeted exam or test to resolve largest diagnostic uncertainty, avoid repeating low-information actions."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7958,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7935,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8379,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8293,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            },
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8231,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8385,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8122,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_e3fe706a4ec8",
+              "type": "skill",
+              "score": 0.8087,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Irritable Bowel Syndrome (IBS)}."
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'138c0e43-a319-4fa3-af79-53929b529b8c': '{\"diagnosis\": \"Irritable Bowel Syndrome (IBS)\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '138c0e43-a319-4fa3-af79-53929b529b8c', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Irritable Bowel Syndrome (IBS)}.\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1990}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Irritable Bowel Syndrome (IBS)}.\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Irritable Bowel Syndrome (IBS)}.\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': 'b3a75550-c37f-4b1e-840b-01051d57c30e', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 106}",
+      "reward": 0.0,
+      "turn_reward": 0.05714285714285714,
+      "importance": 0.2857142857142857,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the abdominal bloating start, and has it been progressively worsening?)\nresponse: I’ve been having abdominal bloating for ___ years. The episodes have been getting more frequent lately, and that’s why I came to the ER — they’re happening so often now that I can’t ignore them. I don’t know if they’ve been progressively worsening, but they’ve definitely become more common recently."
+      ]
+    },
+    {
+      "turn_id": 3,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'669d41ea-08f2-4a09-a6ca-3189c9519a2c': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '669d41ea-08f2-4a09-a6ca-3189c9519a2c', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 190}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms alongside the bloating, such as nausea, vomiting, changes in bowel habits, or weight loss?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?"
+      },
+      "patient_or_tool_response": "{'question': 'I haven’t noticed any specific foods or habits that seem to trigger or worsen my bloating. The episodes just happen on their own, and I’ve been trying to reduce my food and fluid intake to help them go away — but I can’t say what exactly makes them worse.'}",
+      "env_info": "{'response': [{'id': '73e583d2-ec03-4d54-b56a-52def527722b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 749}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 retrieve_interaction: doctor_action: retrieve(query=common causes of chronic abdominal bloating in older adults)\nresponse: [Document 1] (ID: 32359_3, Score: 0.879)\n## Hard stool/Constipation\nDistension of the rectum by retained feces induces alteration of gut motility and increases bacterial fermentation.\n\n# Causes\nThe most common cause of bloating is Constipation, Pregnancy, IBS, Celiac disease, Lactose, fructose, and other carbohydrates intolerance, Pancreat...\n\n[Document 2] (ID: 32359_4, Score: 0.875)\n# Risk Factors\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\n\n...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "imaging"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'7909e840-1e39-43c4-8edf-b4a20ab920ec': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '7909e840-1e39-43c4-8edf-b4a20ab920ec', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 853}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific foods or habits that seem to trigger or worsen your bloating?)\nresponse: I haven’t noticed any specific foods or habits that seem to trigger or worsen my bloating. The episodes just happen on their own, and I’ve been trying to reduce my food and fluid intake to help them go away — but I can’t say what exactly makes them worse."
+      ]
+    },
+    {
+      "turn_id": 8,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '7e4a3963-ae8f-411c-bfc3-88617234cf05', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1418}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_8 retrieve_interaction: doctor_action: retrieve(query=chronic abdominal bloating in elderly patients: differential diagnosis)\nresponse: [Document 1] (ID: 32359_5, Score: 0.863)\n## History and Symptoms\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\n\n[Document 2] (ID: 4317_48, Score: 0.863)\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been r...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 9,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "chronic abdominal bloating in elderly: when to consider serious underlying causes"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'f26e93d3-9390-46c1-9f1f-c06a9cc0e29f': '[Document 1] (ID: 32359_4, Score: 0.862)\\n# Risk Factors\\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\\n\\n# Screening\\nThere...\\n\\n[Document 2] (ID: 4317_48, Score: 0.856)\\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus which has been reported in adults with DMD) ...\\n\\n[Document 3] (ID: 32359_5, Score: 0.855)\\n## History and Symptoms\\nHistory includes the onset of symptoms, the relationship to diet (eg, wheat, dairy, fructose, fiber, nonabsorbable sugars) diurnal variation, and the presence of symptoms suggestive of other functional gastrointestinal disorders, including constipation, diarrhea, and abdomina...\\n\\n[Document 4] (ID: 2027_0, Score: 0.854)\\nIrritable bowel syndrome in adults: diagnosis and management\\nThis guideline covers diagnosing and managing irritable bowel...[truncated]'}}",
+      "env_info": "{'response': [{'id': 'f26e93d3-9390-46c1-9f1f-c06a9cc0e29f', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"chronic abdominal bloating in elderly: when to consider serious underlying causes\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1493}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in appetite, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 10,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Irritable Bowel Syndrome (IBS)}."
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'138c0e43-a319-4fa3-af79-53929b529b8c': '{\"diagnosis\": \"Irritable Bowel Syndrome (IBS)\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '138c0e43-a319-4fa3-af79-53929b529b8c', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Irritable Bowel Syndrome (IBS)}.\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1990}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_10 retrieve_interaction: doctor_action: retrieve(query=chronic abdominal bloating in elderly: when to consider serious underlying causes)\nresponse: [Document 1] (ID: 32359_4, Score: 0.862)\n# Risk Factors\nRisk factors include chewing gum, hard candy, and carbonated beverages such as soda or beer. Foods that can produce excess bowel gas include leafy greens, beans, and bran foods. Dairy products can lead to bloating and flatulence in people who are lactose intolerant.\n\n# Screening\nThere...\n\n[Document 2] (ID: 4317_48, Score: 0.856)\nChronic mild abdominal bloating can sometimes improve with dietary measures by avoiding certain foods such as gluten, onions, beans, pulses etc.. Recurrent severe bloating with abdominal pain should be investigated with abdominal X ray to exclude volvulus whic...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

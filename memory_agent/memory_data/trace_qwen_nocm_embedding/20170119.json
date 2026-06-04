@@ -1,0 +1,1948 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20170119",
+  "turns": [
+    {
+      "case_id": "20170119",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 83-year-old female patient presenting with nonspecific subjective complaint of not feeling well. Key evidence gathered: Patient’s age, gender, and chief complaint. Diagnostic uncertainty remains high due to lack of specific symptoms, exam, lab, or imaging findings. Most useful missing information: Detailed history of symptoms, duration, associated features, and physical exam findings. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 83-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 83-year-old female patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is an 83-year-old female reporting nonspecific subjective complaint of not feeling well. No specific symptoms, exam, lab, or imaging findings provided. No history of associated features or duration. No physical exam or diagnostic results available. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 1,
+        "query_text": "83-year-old female, chief complaint: not feeling well recently. No specific symptoms, signs, lab, or imaging findings. No history of associated features or duration. No physical exam or diagnostic results available. Diagnostic uncertainty remains high due to insufficient evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 83-year-old female with nonspecific complaint of not feeling well. Evidence gathered: age, gender, chief complaint. Missing: detailed symptom history, duration, associated features, physical exam findings. No ineffective actions tried. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7986,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7745,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7453,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7371,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8184,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8109,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.7973,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7921,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7828,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'cb90cf3e-9616-4cad-a052-16bfe534ba40', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing and when they started?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient reports nonspecific subjective feeling of being unwell without defined symptoms. Key evidence gathered: Patient denies specific symptoms or known abnormalities. Diagnostic uncertainty remains high due to lack of specific symptom description or objective findings. Most useful missing information: Detailed description of symptoms, onset, duration, and associated factors. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general feeling of being unwell without specific symptoms. Patient denies any known problems or abnormal findings in any area. No objective findings, exam, lab, imaging, or tool results reported. No specific symptom description provided. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 2,
+        "query_text": "Patient reports general feeling of being unwell without specific symptoms. Denies known problems or abnormal findings. No objective findings, exam, lab, imaging, or tool results reported. No specific symptom description provided. Diagnostic uncertainty remains high due to lack of specific symptom description or objective findings.",
+        "skill_query_text": "Presenting problem: Patient reports nonspecific subjective feeling of being unwell without defined symptoms. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: Patient denies specific symptoms or known abnormalities. Missing evidence: Detailed description of symptoms, onset, duration, and associated factors. Ineffective actions tried: Asked patient to describe symptoms; response was denial of problems or abnormalities. Needed guidance: Action-selection workflow for managing nonspecific unwellness without objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8222,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7733,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7482,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7481,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8395,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_74f0bd084ae5",
+              "type": "experience",
+              "score": 0.8289,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication or prior evidence of abnormality yields no diagnostic value; avoid redundant lab requests when history and known findings (e.g., AVM) already guide diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8241,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8085,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7858,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7826,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8395,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had a fever lately, and I’ve been feeling really tired. I’ve also noticed I’m not as hungry as usual, and I’ve lost some weight without trying.'}",
+        "env_info": "{'response': [{'id': '0b75eadc-bff0-4499-bcac-c918a268edc1', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 73}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific symptoms of fever, fatigue, weight loss, and decreased appetite. Key evidence gathered: patient reports recent fever, fatigue, reduced appetite, and unintentional weight loss. Diagnostic uncertainty remains high; possible systemic illness, infection, or metabolic disorder. Most useful missing information: specific duration of symptoms, recent travel, exposure to illness, or relevant medical history. Existing evidence is not enough to finalize diagnosis; further targeted history or diagnostic tests needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?)\nresponse: I’ve had a fever lately, and I’ve been feeling really tired. I’ve also noticed I’m not as hungry as usual, and I’ve lost some weight without trying."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports not feeling well recently, seeking assessment and diagnosis. Turn 2: patient reported no known problems in the area and no abnormal findings related to it. Turn 3: patient reports recent fever, fatigue, reduced appetite, and unintentional weight loss. No lab, imaging, or exam results provided. No treatment recommended. Missing: duration of symptoms, travel history, exposure to illness, or relevant medical history."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 3,
+        "query_text": "Patient reports recent fever, fatigue, reduced appetite, and unintentional weight loss. No lab, imaging, or exam results provided. No treatment recommended. Missing: duration of symptoms, travel history, exposure to illness, or relevant medical history.",
+        "skill_query_text": "Presenting problem: non-specific symptoms of fever, fatigue, weight loss, decreased appetite. Evidence gathered: patient reports recent fever, fatigue, reduced appetite, unintentional weight loss. Uncertainty: possible systemic illness, infection, or metabolic disorder. Ineffective actions: none. Missing: duration of symptoms, travel history, exposure to illness, or relevant medical history. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8076,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7916,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7599,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7473,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e72fd139b659",
+              "type": "experience",
+              "score": 0.8302,
+              "outcome": "negative",
+              "text": "Dark urine, pale stools, and jaundice in a patient with fatigue and fever strongly suggest hepatobiliary pathology; do not apply this when the patient has no jaundice, no stool or urine changes, or when systemic signs point to non-liver causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8277,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.824,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8218,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8191,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8149,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ecc74a7d-6c0b-4fbb-98d8-ff71140e4805': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'ecc74a7d-6c0b-4fbb-98d8-ff71140e4805', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 154}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 3,
+        "query_text": "Patient reports recent fever, fatigue, reduced appetite, and unintentional weight loss. No lab, imaging, or exam results provided. No treatment recommended. Missing: duration of symptoms, travel history, exposure to illness, or relevant medical history.",
+        "skill_query_text": "Presenting problem: non-specific symptoms of fever, fatigue, weight loss, decreased appetite. Evidence gathered: patient reports recent fever, fatigue, reduced appetite, unintentional weight loss. Uncertainty: possible systemic illness, infection, or metabolic disorder. Ineffective actions: none. Missing: duration of symptoms, travel history, exposure to illness, or relevant medical history. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8076,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7916,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7599,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7473,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e72fd139b659",
+              "type": "experience",
+              "score": 0.8302,
+              "outcome": "negative",
+              "text": "Dark urine, pale stools, and jaundice in a patient with fatigue and fever strongly suggest hepatobiliary pathology; do not apply this when the patient has no jaundice, no stool or urine changes, or when systemic signs point to non-liver causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8277,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.824,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8218,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8191,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8149,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.8076,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of fever, fatigue, weight loss in elderly women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'10ec0f4c-7944-4927-865c-8e22c88ba630': '[Document 1] (ID: 4772_25, Score: 0.886)\\n# Special popula ions\\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\\nMost persons experience fever (83-99%), cough ...\\n\\n[Document 2] (ID: 19076_4, Score: 0.869)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 3] (ID: 4792_27, Score: 0.869)\\n# Resources and other considerations\\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\\nAdditional neurological manifestations ...\\n\\n[Document 4] (ID: 8402_51, Score: 0.866)\\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\\n- Pain in t...[truncated]'}}",
+        "env_info": "{'response': [{'id': '10ec0f4c-7944-4927-865c-8e22c88ba630', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of fever, fatigue, weight loss in elderly women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 225}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of fever, fatigue, weight loss in elderly women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of fever, fatigue, weight loss in elderly women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific symptoms of fatigue, fever, and weight loss. Key evidence gathered: patient reports fever, fatigue, reduced appetite, and weight loss. Diagnostic uncertainty remains high due to lack of specific diagnostic tests or imaging. Most useful missing information: results of requested labs, detailed physical exam findings, and clarification on duration and context of symptoms. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?)\nresponse: I’ve had a fever lately, and I’ve been feeling really tired. I’ve also noticed I’m not as hungry as usual, and I’ve lost some weight without trying."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of fever, fatigue, weight loss in elderly women)\nresponse: [Document 1] (ID: 4772_25, Score: 0.886)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 2] (ID: 19076_4, Score: 0.869)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 3] (ID: 4792_27, Score: 0.869)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 4] (ID: 8402_51, Score: 0.866)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...\n\n[Document 5] (ID: 4541_4, Score: 0.866)\nIn older children and adults, HA is typically symptomatic, with the majority of individuals developing anorexia, nausea, fatigue, fever and jaundice, usually lasting less than two months."
+        ],
+        "prior_information_summary": "Patient reports general uneasiness, fever, fatigue, weight loss, and reduced appetite. No specific physical exam or lab results available. No imaging or tool results. No specific diagnostic tests performed. No known history of relevant conditions. No management-relevant risk explicitly supported."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 5,
+        "query_text": "Patient reports fever, fatigue, weight loss, and reduced appetite. No specific physical exam, lab, or imaging results available. No relevant history or risk factors identified. Diagnostic uncertainty remains due to lack of specific tests.",
+        "skill_query_text": "Presenting problem: non-specific symptoms of fever, fatigue, weight loss, reduced appetite. Evidence gathered: patient-reported symptoms. Missing: lab results, physical exam findings. Ineffective actions: lab request returned no result, retrieval returned irrelevant documents. Need: guidance on next diagnostic steps or workflow for similar symptom clusters."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8089,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7732,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7414,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.732,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8289,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8257,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.8248,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8219,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8052,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7994,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any other symptoms such as cough, shortness of breath, or changes in mental clarity?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed I’ve been breathing faster than usual, and I’ve also been feeling confused or mentally foggy at times.'}",
+        "env_info": "{'response': [{'id': 'a77f19c0-5d11-41ba-8ef3-18c7f141dc99', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any other symptoms such as cough, shortness of breath, or changes in mental clarity?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 709}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any other symptoms such as cough, shortness of breath, or changes in mental clarity?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any other symptoms such as cough, shortness of breath, or changes in mental clarity?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific symptoms including fever, fatigue, weight loss, tachypnea, and mental fog. Key evidence gathered: history of fever, fatigue, weight loss, and now tachypnea and mental confusion. Diagnostic uncertainty remains high; possible systemic illness, infection, metabolic, or neurological etiology. Most useful missing information: recent imaging, specific lab markers (e.g., CBC, metabolic panel, inflammatory markers), and neurological exam findings. Existing evidence is not enough to finalize diagnosis; further targeted diagnostics are needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?)\nresponse: I’ve had a fever lately, and I’ve been feeling really tired. I’ve also noticed I’m not as hungry as usual, and I’ve lost some weight without trying.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of fever, fatigue, weight loss in elderly women)\nresponse: [Document 1] (ID: 4772_25, Score: 0.886)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 2] (ID: 19076_4, Score: 0.869)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 3] (ID: 4792_27, Score: 0.869)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 4] (ID: 8402_51, Score: 0.866)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...\n\n[Document 5] (ID: 4541_4, Score: 0.866)\nIn older children and adults, HA is typically symptomatic, with the majority of individuals developing anorexia, nausea, fatigue, fever and jaundice, usually lasting less than two months.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any other symptoms such as cough, shortness of breath, or changes in mental clarity?)\nresponse: I’ve noticed I’ve been breathing faster than usual, and I’ve also been feeling confused or mentally foggy at times."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports general malaise, fever, fatigue, weight loss, and reduced appetite. Recent findings include tachypnea and mental fog. Labs requested but no results available. Literature review suggests possible systemic illness, including infectious or neurological etiologies. No imaging or specific lab results yet. Missing: targeted diagnostics, neurological exam, and imaging to clarify etiology."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 6,
+        "query_text": "Patient reports fever, fatigue, weight loss, tachypnea, and mental fog. No lab or imaging results available. History includes reduced appetite. Uncertainty remains regarding systemic illness, infection, metabolic, or neurological etiology.",
+        "skill_query_text": "Presenting problem: non-specific symptoms including fever, fatigue, weight loss, tachypnea, and mental fog. Evidence gathered: patient history and chief complaint. Missing: lab results, imaging, neurological exam. Ineffective action: lab request returned no result. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7387,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8365,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8218,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.8162,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8231,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8083,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8011,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of systemic illness in elderly: fever, fatigue, weight loss, confusion, tachypnea"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'79367fda-2ba5-443f-8d5a-28e6f53d12a3': '[Document 1] (ID: 19076_4, Score: 0.869)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 2] (ID: 29501_10, Score: 0.867)\\n- Body as a Whole/Systemic: Allergic reaction, asthenia, cellulitis, substernal chest pain, chills, facial edema, lab test abnormal, malaise, neck pain, pelvic pain, pain, photosensitivity reaction.\\n- Cardiovascular: Atrial fibrillation, bradycardia, cardiac arrest, extrasystole, hypotension, migrai...\\n\\n[Document 3] (ID: 6561_9, Score: 0.865)\\n- Central Nervous System: Tiredness and dizziness have occurred in about 10 of 100 patients. Depression has been reported in about 5 of 100 patients. Mental confusion and short-term memory loss have been reported. Headache, somnolence, nightmares, and insomnia have also been reported.\\n- Cardiovascul...\\n\\n[Document 4] (ID: 27908_2, Score: 0.864)\\n## Symptoms\\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness o...[truncated]'}}",
+        "env_info": "{'response': [{'id': '79367fda-2ba5-443f-8d5a-28e6f53d12a3', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of systemic illness in elderly: fever, fatigue, weight loss, confusion, tachypnea\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 783}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of systemic illness in elderly: fever, fatigue, weight loss, confusion, tachypnea\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of systemic illness in elderly: fever, fatigue, weight loss, confusion, tachypnea\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 7. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 83-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 83-year-old female patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?)\nresponse: I’ve had a fever lately, and I’ve been feeling really tired. I’ve also noticed I’m not as hungry as usual, and I’ve lost some weight without trying.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of fever, fatigue, weight loss in elderly women)\nresponse: [Document 1] (ID: 4772_25, Score: 0.886)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 2] (ID: 19076_4, Score: 0.869)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 3] (ID: 4792_27, Score: 0.869)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 4] (ID: 8402_51, Score: 0.866)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...\n\n[Document 5] (ID: 4541_4, Score: 0.866)\nIn older children and adults, HA is typically symptomatic, with the majority of individuals developing anorexia, nausea, fatigue, fever and jaundice, usually lasting less than two months.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any other symptoms such as cough, shortness of breath, or changes in mental clarity?)\nresponse: I’ve noticed I’ve been breathing faster than usual, and I’ve also been feeling confused or mentally foggy at times.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=symptoms of systemic illness in elderly: fever, fatigue, weight loss, confusion, tachypnea)\nresponse: [Document 1] (ID: 19076_4, Score: 0.869)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 29501_10, Score: 0.867)\n- Body as a Whole/Systemic: Allergic reaction, asthenia, cellulitis, substernal chest pain, chills, facial edema, lab test abnormal, malaise, neck pain, pelvic pain, pain, photosensitivity reaction.\n- Cardiovascular: Atrial fibrillation, bradycardia, cardiac arrest, extrasystole, hypotension, migrai...\n\n[Document 3] (ID: 6561_9, Score: 0.865)\n- Central Nervous System: Tiredness and dizziness have occurred in about 10 of 100 patients. Depression has been reported in about 5 of 100 patients. Mental confusion and short-term memory loss have been reported. Headache, somnolence, nightmares, and insomnia have also been reported.\n- Cardiovascul...\n\n[Document 4] (ID: 27908_2, Score: 0.864)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 5] (ID: 11275_1, Score: 0.863)\n# Symptoms\nSymptoms include:\n- Patient appears like an 'elderly man'\n- Dry and flaking/peeling skin but no changes in color\n- Loss of muscle mass\n- Sunken eyes\n- Protruded cheeks\n- Loss of fullness near the mouth area giving rise to 'monkey-like' facies\n- Swelling of body (edema) is generally not se..."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any recent weight loss, fatigue, fever, or changes in appetite?)\nresponse: I’ve had a fever lately, and I’ve been feeling really tired. I’ve also noticed I’m not as hungry as usual, and I’ve lost some weight without trying.\ndoctor_action: retrieve(query=symptoms of fever, fatigue, weight loss in elderly women)\nresponse: [Document 1] (ID: 4772_25, Score: 0.886)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 2] (ID: 19076_4, Score: 0.869)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 3] (ID: 4792_27, Score: 0.869)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 4] (ID: 8402_51, Score: 0.866)\n- Sharp chest pain, coughing of blood, or sudden shortness of breath (indicating a possible clot in the lung)\n- Pain in the calf (indicating a possible clot in the leg)\n- Crushing chest pain or heaviness in the chest (indicating a possible heart attack)\n- Sudden severe headache or vomiting, dizzines...\n\n[Document 5] (ID: 4541_4, Score: 0.866)\nIn older children and adults, HA is typically symptomatic, with the majority of individuals developing anorexia, nausea, fatigue, fever and jaundice, usually lasting less than two months.\ndoctor_action: ask_patient(question=Have you noticed any other symptoms such as cough, shortness of breath, or changes in mental clarity?)\nresponse: I’ve noticed I’ve been breathing faster than usual, and I’ve also been feeling confused or mentally foggy at times.\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 7,
+        "query_text": "83-year-old female patient presents with fever, fatigue, weight loss, tachypnea, and mental confusion. No prior abnormal findings reported. Labs not performed. Relevant history: recent onset of systemic symptoms. Diagnostic uncertainty remains unresolved.",
+        "skill_query_text": "Presenting problem: elderly female with systemic symptoms (fever, fatigue, weight loss, confusion, tachypnea). Evidence gathered: patient history and literature on systemic illness. Labs not performed. Ineffective action: lab request yielded no result. Need guidance on next diagnostic action to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.7885,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7753,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.7614,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8201,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8018,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7962,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Systemic Infection or Underlying Malignancy}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c1df694c-c51b-47ac-bad0-39c135598bda': '{\"diagnosis\": \"Systemic Infection or Underlying Malignancy\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'c1df694c-c51b-47ac-bad0-39c135598bda', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Systemic Infection or Underlying Malignancy}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1336}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Systemic Infection or Underlying Malignancy}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Systemic Infection or Underlying Malignancy}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Known evidence: patient reports fever and fatigue, reduced appetite, no weight loss or night sweats. Leading uncertainty: differential diagnosis for fever and fatigue in elderly patients. Most useful missing evidence: specific exam findings, lab results, imaging, or history of recent infections. Diagnosis should not yet be finalized.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for fever and fatigue in elderly patients)\nresponse: [Document 1] (ID: 8371_3, Score: 0.881)\n## Diagnostic Criteria\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\n\n[Document 2] (ID: 391_11, Score: 0.872)\nClinical definitions have performed poorly in some studies of older patients. A study of nonhospitalized patients aged >60 years indicated that the presence of fever, cough, and acute onset had a positive predictive value of 30% for influenza (46). Among hospitalized patients aged >65 years with chr...\n\n[Document 3] (ID: 180_15, Score: 0.869)\nClinical case definitions have performed poorly in some studies of older patients. A study of nonhospitalized patients aged >60 years indicated that the presence of fever, cough, and acute onset had a positive predictive value of 30% for influenza (83). Among 56 hospi talized patients aged >65 years...\n\n[Document 4] (ID: 3446_66, Score: 0.867)\n), and the inability P p .01 to take oral medications (OR, 8.3; 95% CI, 1.4-50.3; ) P p .02 were found to be significant [bib_ref] Risk factors for pneumonia and other lower respiratory tract infections in elderly..., Loeb [/bib_ref].\nClinical presentation. The clinical presentation of CAP has frequ...\n\n[Document 5] (ID: 4772_25, Score: 0.864)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ..."
+        ],
+        "prior_information_summary": "Patient reports fever, fatigue, reduced appetite, no weight loss or night sweats. No recent infections reported. Labs requested but no result available. Previous retrieval of differential diagnoses for fever and fatigue in elderly patients yielded general information on influenza, pneumonia, and COVID-19 symptoms, but no specific actionable findings. No abnormal findings reported for physical exam or history."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 8,
+        "query_text": "Patient reports fever, fatigue, reduced appetite, no weight loss or night sweats. No recent infections. Labs requested, no results. No abnormal physical exam or history findings. Uncertainty: differential diagnosis for fever and fatigue in elderly patients.",
+        "skill_query_text": "Presenting problem: fever and fatigue in elderly patient. Evidence gathered: patient reports symptoms, labs ordered, no results. Ineffective action: prior retrieval of differential diagnoses yielded general info on influenza, pneumonia, COVID-19. Need workflow guidance on next diagnostic steps or specific tests to order."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.8137,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            },
+            {
+              "id": "exp_5bb7ae740c9a",
+              "type": "experience",
+              "score": 0.7937,
+              "outcome": "negative",
+              "text": "Absence of infection markers and imaging results in a post-surgical wound with dehiscence and fat necrosis is a critical gap that delays diagnosis and highlights the need for urgent vascular imaging to assess tissue integrity and vascular status.",
+              "tags": []
+            },
+            {
+              "id": "exp_73746601c1cd",
+              "type": "experience",
+              "score": 0.7861,
+              "outcome": "negative",
+              "text": "Serous drainage without redness or pain in a post-surgical wound, combined with fat necrosis, is a key negative finding that helps rule out infection and supports a diagnosis of wound dehiscence following vascular surgery.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.8103,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7981,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7948,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c192e149-60a3-456d-9e0b-035d723f2c00': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'c192e149-60a3-456d-9e0b-035d723f2c00', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1362}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 8,
+        "query_text": "Patient reports fever, fatigue, reduced appetite, no weight loss or night sweats. No recent infections. Labs requested, no results. No abnormal physical exam or history findings. Uncertainty: differential diagnosis for fever and fatigue in elderly patients.",
+        "skill_query_text": "Presenting problem: fever and fatigue in elderly patient. Evidence gathered: patient reports symptoms, labs ordered, no results. Ineffective action: prior retrieval of differential diagnoses yielded general info on influenza, pneumonia, COVID-19. Need workflow guidance on next diagnostic steps or specific tests to order."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.8137,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            },
+            {
+              "id": "exp_5bb7ae740c9a",
+              "type": "experience",
+              "score": 0.7937,
+              "outcome": "negative",
+              "text": "Absence of infection markers and imaging results in a post-surgical wound with dehiscence and fat necrosis is a critical gap that delays diagnosis and highlights the need for urgent vascular imaging to assess tissue integrity and vascular status.",
+              "tags": []
+            },
+            {
+              "id": "exp_73746601c1cd",
+              "type": "experience",
+              "score": 0.7861,
+              "outcome": "negative",
+              "text": "Serous drainage without redness or pain in a post-surgical wound, combined with fat necrosis, is a key negative finding that helps rule out infection and supports a diagnosis of wound dehiscence following vascular surgery.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.8103,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7981,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7948,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "blood test"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'be3c75a9-5ae0-4d0f-ac26-488bbd915f48': '{\"exam_type\": \"blood test\", \"source\": \"none\", \"result\": \"No result for \\\\\"blood test\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'be3c75a9-5ae0-4d0f-ac26-488bbd915f48', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"blood test\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1436}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"blood test\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"blood test\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_10 request_exam_interaction: doctor_action: request_exam(exam_type=blood test)\nresponse: {\"exam_type\": \"blood test\", \"source\": \"none\", \"result\": \"No result for \\\"blood test\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 8,
+        "query_text": "Patient reports fever, fatigue, reduced appetite, no weight loss or night sweats. No recent infections. Labs requested, no results. No abnormal physical exam or history findings. Uncertainty: differential diagnosis for fever and fatigue in elderly patients.",
+        "skill_query_text": "Presenting problem: fever and fatigue in elderly patient. Evidence gathered: patient reports symptoms, labs ordered, no results. Ineffective action: prior retrieval of differential diagnoses yielded general info on influenza, pneumonia, COVID-19. Need workflow guidance on next diagnostic steps or specific tests to order."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.8137,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            },
+            {
+              "id": "exp_5bb7ae740c9a",
+              "type": "experience",
+              "score": 0.7937,
+              "outcome": "negative",
+              "text": "Absence of infection markers and imaging results in a post-surgical wound with dehiscence and fat necrosis is a critical gap that delays diagnosis and highlights the need for urgent vascular imaging to assess tissue integrity and vascular status.",
+              "tags": []
+            },
+            {
+              "id": "exp_73746601c1cd",
+              "type": "experience",
+              "score": 0.7861,
+              "outcome": "negative",
+              "text": "Serous drainage without redness or pain in a post-surgical wound, combined with fat necrosis, is a key negative finding that helps rule out infection and supports a diagnosis of wound dehiscence following vascular surgery.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.8103,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7981,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7948,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Infection or systemic illness}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c1353aee-733e-4310-aa97-3dbc82d70f9f': '{\"diagnosis\": \"Infection or systemic illness\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'c1353aee-733e-4310-aa97-3dbc82d70f9f', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Infection or systemic illness}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1510}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Infection or systemic illness}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Infection or systemic illness}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnosis_goal": "Determine the cause of fever, tachycardia, tachypnea, and confusion in an elderly patient. Prioritize imaging and lab tests to identify infection, systemic inflammatory response, or cardiac/vascular causes. Previous attempts to retrieve differential diagnoses yielded broad lists without specific actionable evidence. Current turn adds no new clinical evidence or actionable insight.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=elderly patient with fever, tachycardia, tachypnea, and confusion: differential diagnosis)\nresponse: [Document 1] (ID: 8371_3, Score: 0.863)\n## Diagnostic Criteria\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\n\n[Document 2] (ID: 13638_11, Score: 0.861)\n## Differential diagnosis\nThe differential diagnosis for irrational and confused patients is a long one and includes anxiety reactions as well as intoxication with a variety of agents, to include hallucinogenic indoles (such as LSD), cannabinoids (such as the delta-9-tetrahydrocannabinol in marijuan...\n\n[Document 3] (ID: 23503_2, Score: 0.860)\n# Differential Diagnosis\nIn alphabetical order.  \n- Acute bacterial endocarditis\n- Coxsackievirus\n- Cutaneous vasculitis\n- Disseminated Intravascular Coagulation (DIC)\n- Echovirus\n- Erythema multiforme\n- Idiopathic thrombocytopenia purpura\n- Meningococcemia\n- Polyarteritis Nodosa\n- Rocky Mountain Sp...\n\n[Document 4] (ID: 11739_7, Score: 0.853)\n- The clinical manifestations of MAT differ from those of other tachyarrhythmias in that symptoms predominantly relate to the underlying precipitating illness rather than the arrhythmia itself.\n\n- Patients usually present with:\n\nIrregular heart rate greater than 100 beats per minute (mostly identifi...\n\n[Document 5] (ID: 21690_8, Score: 0.852)\n- The diagnostic evaluation of patients with this syndrome is complicated. In arriving at a diagnosis, it is important to exclude cases where the clinical presentation includes both serious medical illness (e.g., pneumonia, systemic infection, etc.) and untreated or inadequately treated extrapyramid..."
+        ],
+        "prior_information_summary": "Patient reports fever, tachycardia, tachypnea, and confusion. Previous lab request yielded no result. Multiple retrieve interactions returned broad differential diagnoses without specific actionable evidence. No imaging or targeted tests performed. Current turn adds no new clinical evidence or actionable insight."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 11,
+        "query_text": "Elderly patient with fever, tachycardia, tachypnea, and confusion. No lab results yet. No imaging or targeted tests performed. Previous differential diagnoses returned broad lists without actionable evidence.",
+        "skill_query_text": "Elderly patient presenting with fever, tachycardia, tachypnea, and confusion. Prior attempts to retrieve differential diagnoses yielded broad, non-actionable lists. No labs or imaging performed. Need workflow guidance on next diagnostic steps: which tests to order, which imaging to prioritize, and how to interpret results."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d85487062f20",
+              "type": "experience",
+              "score": 0.7981,
+              "outcome": "positive",
+              "text": "Requesting labs without prior evidence or clear indication is low-value when clinical signs strongly suggest cellulitis; prioritize imaging or culture instead to confirm infection extent.",
+              "tags": []
+            },
+            {
+              "id": "exp_7210c8d79a48",
+              "type": "experience",
+              "score": 0.7572,
+              "outcome": "positive",
+              "text": "In diabetic patients with progressive redness, swelling, warmth, and pain on the leg, a recent spider bite is a key discriminative clue supporting cellulitis over other differentials like abscess or deep vein thrombosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_47ecd1784624",
+              "type": "experience",
+              "score": 0.7516,
+              "outcome": "positive",
+              "text": "In patients with finger pain, redness, swelling, and pus, a history of nail-biting and frequent handwashing supports paronychia diagnosis, distinguishing it from other inflammatory or traumatic causes.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8337,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            },
+            {
+              "id": "exp_8a7d49ba57c8",
+              "type": "experience",
+              "score": 0.8319,
+              "outcome": "negative",
+              "text": "In a 67-year-old female with constipation alternating with diarrhea, abdominal cramping, syncope, and mucus in stool, failure to obtain a stool sample or imaging to rule out colorectal cancer is a critical diagnostic gap. The presence of syncope and mucus suggests a systemic or structural issue, not just IBS, and the absence of blood in stool was misleadingly reported by the patient without verification. This case highlights the need to prioritize targeted diagnostic tools (e.g., colonoscopy) over generic lab requests when red flags like syncope and mucus are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_50d24c08c94b",
+              "type": "experience",
+              "score": 0.8297,
+              "outcome": "negative",
+              "text": "In an elderly patient with nonspecific symptoms and no clinical findings, retrieving general information on common geriatric syndromes without targeted history or diagnostic tests is low-value and does not advance diagnosis; this action failed to rule in or rule out chemotherapy-related symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7964,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e961aa840a82"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_e961aa840a82",
+            "memory_type": "experience",
+            "score": 0.8337,
+            "content": {
+              "experience": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "elderly patient with fever, tachycardia, tachypnea, and confusion: most likely diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'480d1448-d03d-41f9-a7f9-56f5d96f501f': '[Document 1] (ID: 8371_3, Score: 0.870)\\n## Diagnostic Criteria\\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\\n\\n[Document 2] (ID: 22972_3, Score: 0.858)\\n## Vital signs:\\n- Fever: High-grade fevers that are usually accompanied by chills and night sweats.\\n- Tachycardia\\n- Tachypnea\\n## General:\\n- Patient looks ill\\n## Skin:\\n- Maculopapular or punctate rash\\n- Erythema nodosum\\n- Spider nevi if hepatic decompensation is present\\n## HEENT:\\n- Jaundice\\n- Congest...\\n\\n[Document 3] (ID: 27791_3, Score: 0.856)\\n## Diagnostic Criteria\\n- 0–19 years of age with fever >3 days\\nAND\\n- Two of the following:\\n- Rash or bilateral non-purulent conjunctivitis or mucocutaneous inflammation signs (oral, hands or feet)\\n- Hypotension or shock\\n- Features of myocardial dysfunction, pericarditis, valvulitis, or coronary abnor...\\n\\n[Document 4] (ID: 3056_12, Score: 0.856)\\n## Moderate\\nPatients \"under investigation\" for MIS-C should be considered for admission to the hospital for further observ...[truncated]'}}",
+        "env_info": "{'response': [{'id': '480d1448-d03d-41f9-a7f9-56f5d96f501f', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: most likely diagnosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 3080}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: most likely diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: most likely diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnosis_goal": "Current uncertainty: diagnosis of elderly patient with fever, tachycardia, tachypnea, and confusion. Useful evidence gathered: patient reports fever, fatigue, tachycardia, tachypnea, and confusion. Failed/low-value actions: lab request yielded no result; multiple retrieve interactions returned general or age-specific criteria without specific actionable findings. Next evidence route: prioritize imaging (e.g., chest X-ray) or targeted lab tests (e.g., inflammatory markers, cultures) to identify infection or systemic inflammatory syndrome.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, weight loss, or fatigue recently?)\nresponse: I’ve had a fever recently, and I’ve also been feeling more tired than usual. I haven’t noticed any significant weight loss, but my heart has been racing a bit, and I’ve been breathing faster than normal. I’m also a bit confused at times, especially when I’m trying to focus.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, dizziness, or episodes of fainting?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any swelling in your legs or ankles, or shortness of breath when lying down?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient presents with fever, tachycardia, tachypnea, and confusion. Initial history reveals no chest pain, dizziness, or edema. Labs were requested but returned no result. Multiple retrieve interactions returned general or age-specific criteria for systemic inflammatory responses, infections, or differential diagnoses, but no specific actionable findings. Current turn attempts to identify most likely diagnosis but returns broad criteria without narrowing the differential. Next step: obtain imaging or targeted labs to identify specific cause."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 12,
+        "query_text": "Patient is elderly, presenting with fever, fatigue, tachycardia, tachypnea, and confusion. No chest pain, dizziness, or edema reported. Labs requested but no result available. No prior imaging or specific diagnostic findings.",
+        "skill_query_text": "Elderly patient with fever, tachycardia, tachypnea, and confusion. History obtained; labs requested but no result. Previous retrieve interactions returned general criteria. Need actionable guidance on imaging (e.g., chest X-ray) or targeted labs (e.g., inflammatory markers, cultures) to identify infection or systemic inflammatory syndrome."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d85487062f20",
+              "type": "experience",
+              "score": 0.7882,
+              "outcome": "positive",
+              "text": "Requesting labs without prior evidence or clear indication is low-value when clinical signs strongly suggest cellulitis; prioritize imaging or culture instead to confirm infection extent.",
+              "tags": []
+            },
+            {
+              "id": "exp_7210c8d79a48",
+              "type": "experience",
+              "score": 0.7575,
+              "outcome": "positive",
+              "text": "In diabetic patients with progressive redness, swelling, warmth, and pain on the leg, a recent spider bite is a key discriminative clue supporting cellulitis over other differentials like abscess or deep vein thrombosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_47ecd1784624",
+              "type": "experience",
+              "score": 0.7438,
+              "outcome": "positive",
+              "text": "In patients with finger pain, redness, swelling, and pus, a history of nail-biting and frequent handwashing supports paronychia diagnosis, distinguishing it from other inflammatory or traumatic causes.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5672ff4e5d85",
+              "type": "experience",
+              "score": 0.841,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with palpitations, syncope, and fatigue, a key discriminative clue is the presence of symptoms occurring independently of heart racing episodes — this suggests a systemic or non-cardiac etiology and should prompt consideration of orthostatic hypotension or other non-arrhythmic causes, not just atrial fibrillation.",
+              "tags": []
+            },
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8403,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            },
+            {
+              "id": "exp_067cc3b01426",
+              "type": "experience",
+              "score": 0.8367,
+              "outcome": "negative",
+              "text": "In a patient presenting with sudden severe headache, slurred speech, left-sided weakness, dizziness, confusion, visual disturbances, and seizures — classic stroke red flags — failing to obtain neuroimaging or labs early is a critical missed step. This case demonstrates that even without head trauma or stressors, these symptoms strongly suggest acute neurological event; delaying imaging risks missing embolic stroke, which requires urgent intervention.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.807,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_e961aa840a82"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia as a likely diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a1d09a85-ff9b-4f3e-a4a6-b602c2e240a8': '[Document 1] (ID: 8371_3, Score: 0.889)\\n## Diagnostic Criteria\\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\\n\\n[Document 2] (ID: 20670_3, Score: 0.869)\\n## Physical Examination\\nPhysical examination may reveal fever or sometimes low body temperature, an increased respiratory rate, low blood pressure, a fast heart rate, or a low oxygen saturation, which is the amount of oxygen in the blood as indicated by either pulse oximetry or blood gas analysis. P...\\n\\n[Document 3] (ID: 20670_2, Score: 0.867)\\n# Epidemiology and Demographics\\nPneumonia is a common illness in all parts of the world. It is a major cause of death among all age groups. Mortality from pneumonia generally decreases with age until late adulthood. Elderly individuals, however, are at particular risk for pneumonia and associated mo...\\n\\n[Document 4] (ID: 3989_101, Score: 0.863)\\nPatients with acute respiratory infectious disease symptoms, such as fever, nasal discharge, pharyngeal pain, and cough, ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'a1d09a85-ff9b-4f3e-a4a6-b602c2e240a8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia as a likely diagnosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 3615}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia as a likely diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia as a likely diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnosis_goal": "Current uncertainty: differential diagnosis for elderly patient with fever, tachycardia, tachypnea, and confusion. Useful evidence gathered: patient reports fever, fatigue, tachycardia, tachypnea, and confusion. Failed/low-value actions: lab request yielded no result; prior retrievals provided broad differential lists without specific actionable evidence. Next evidence route: prioritize chest X-ray to assess for infiltrate, confirm pneumonia as leading hypothesis.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports fever, fatigue, tachycardia, tachypnea, and confusion. Previous attempts to retrieve specific differential diagnoses (e.g., infections, systemic inflammatory responses) yielded broad, non-specific results. Lab request returned no result. Current turn retrieves pneumonia as a likely diagnosis, which is clinically relevant and supports prioritizing imaging for confirmation."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 13,
+        "query_text": "Elderly patient with fever, tachycardia, tachypnea, and confusion. No lab results yet. Chief complaint: not feeling well. No prior specific diagnostic evidence.",
+        "skill_query_text": "Elderly patient presenting with fever, tachycardia, tachypnea, and confusion. Prior lab request yielded no result. Previous differentials too broad. Need actionable guidance to prioritize chest X-ray for pneumonia confirmation."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_5672ff4e5d85",
+              "type": "experience",
+              "score": 0.8377,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with palpitations, syncope, and fatigue, a key discriminative clue is the presence of symptoms occurring independently of heart racing episodes — this suggests a systemic or non-cardiac etiology and should prompt consideration of orthostatic hypotension or other non-arrhythmic causes, not just atrial fibrillation.",
+              "tags": []
+            },
+            {
+              "id": "exp_454a20ca5698",
+              "type": "experience",
+              "score": 0.8195,
+              "outcome": "negative",
+              "text": "A final diagnosis should not be made without ruling out supraventricular tachycardia, especially when EKG findings are not available — the differential diagnosis tools suggested distinguishing features based on EKG, but the absence of EKG data led to premature closure on atrial fibrillation without confirming or excluding the gold diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_057e1811f4c8",
+              "type": "experience",
+              "score": 0.8115,
+              "outcome": "negative",
+              "text": "Patient-reported symptoms of cold legs, weak pulses, and differential pulse pressures are highly discriminative for aortic coarctation and should trigger targeted imaging over broad lab requests.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.8016,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'08c5b3e8-3811-433f-88b3-59dae03f53fa': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '08c5b3e8-3811-433f-88b3-59dae03f53fa', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 4118}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnosis_goal": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_14 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 13,
+        "query_text": "Elderly patient with fever, tachycardia, tachypnea, and confusion. No lab results yet. Chief complaint: not feeling well. No prior specific diagnostic evidence.",
+        "skill_query_text": "Elderly patient presenting with fever, tachycardia, tachypnea, and confusion. Prior lab request yielded no result. Previous differentials too broad. Need actionable guidance to prioritize chest X-ray for pneumonia confirmation."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_5672ff4e5d85",
+              "type": "experience",
+              "score": 0.8377,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with palpitations, syncope, and fatigue, a key discriminative clue is the presence of symptoms occurring independently of heart racing episodes — this suggests a systemic or non-cardiac etiology and should prompt consideration of orthostatic hypotension or other non-arrhythmic causes, not just atrial fibrillation.",
+              "tags": []
+            },
+            {
+              "id": "exp_454a20ca5698",
+              "type": "experience",
+              "score": 0.8195,
+              "outcome": "negative",
+              "text": "A final diagnosis should not be made without ruling out supraventricular tachycardia, especially when EKG findings are not available — the differential diagnosis tools suggested distinguishing features based on EKG, but the absence of EKG data led to premature closure on atrial fibrillation without confirming or excluding the gold diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_057e1811f4c8",
+              "type": "experience",
+              "score": 0.8115,
+              "outcome": "negative",
+              "text": "Patient-reported symptoms of cold legs, weak pulses, and differential pulse pressures are highly discriminative for aortic coarctation and should trigger targeted imaging over broad lab requests.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.8016,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia diagnosis without imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5d5d6fd5-f064-4eba-b28f-96f5512f4633': '[Document 1] (ID: 8371_3, Score: 0.884)\\n## Diagnostic Criteria\\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\\n\\n[Document 2] (ID: 20670_3, Score: 0.875)\\n## Physical Examination\\nPhysical examination may reveal fever or sometimes low body temperature, an increased respiratory rate, low blood pressure, a fast heart rate, or a low oxygen saturation, which is the amount of oxygen in the blood as indicated by either pulse oximetry or blood gas analysis. P...\\n\\n[Document 3] (ID: 3316_4, Score: 0.871)\\n## 1.3\\nWhen evaluating an otherwise healthy adult with uncomplicated acute cough illness, the primary diagnostic objective should be to exclude the presence of pneumonia. Four prospective studies (1984 to 1990) examined the accuracy of patient history and physical examination for diagnosing radiogra...\\n\\n[Document 4] (ID: 8371_4, Score: 0.871)\\n## Physical Examination\\nPhysical examination is important in diagnosing  hospital-acquired pneumonia, finding include fever,...[truncated]'}}",
+        "env_info": "{'response': [{'id': '5d5d6fd5-f064-4eba-b28f-96f5512f4633', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia diagnosis without imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 4192}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia diagnosis without imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia diagnosis without imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20170119",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnosis_goal": "Determine if pneumonia is likely in an elderly patient presenting with fever, tachycardia, tachypnea, and confusion, given no imaging (CXR) or lab results available. Prioritize obtaining a chest X-ray to confirm or rule out pneumonia, as physical exam findings alone are insufficient for definitive diagnosis. Previous attempts to retrieve diagnostic criteria and differential diagnoses have been repeated without new actionable evidence.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_15 retrieve_interaction: doctor_action: retrieve(query=elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia diagnosis without imaging)\nresponse: [Document 1] (ID: 8371_3, Score: 0.884)\n## Diagnostic Criteria\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\n\n[Document 2] (ID: 20670_3, Score: 0.875)\n## Physical Examination\nPhysical examination may reveal fever or sometimes low body temperature, an increased respiratory rate, low blood pressure, a fast heart rate, or a low oxygen saturation, which is the amount of oxygen in the blood as indicated by either pulse oximetry or blood gas analysis. P...\n\n[Document 3] (ID: 3316_4, Score: 0.871)\n## 1.3\nWhen evaluating an otherwise healthy adult with uncomplicated acute cough illness, the primary diagnostic objective should be to exclude the presence of pneumonia. Four prospective studies (1984 to 1990) examined the accuracy of patient history and physical examination for diagnosing radiogra...\n\n[Document 4] (ID: 8371_4, Score: 0.871)\n## Physical Examination\nPhysical examination is important in diagnosing  hospital-acquired pneumonia, finding include fever, tachypnea, rhonchi, crackles and wheezes.  For ventilator-associated pneumonia, a deterioration in ventilator parameters such as, tachypnea, decreased tidal volume, increased ...\n\n[Document 5] (ID: 3266_33, Score: 0.870)\nThe clinical diagnosis of pneumonia can be exceedingly difficult. [bib_ref] Diagnosing pneumonia by physical examination: relevant or relic?, Wipf [/bib_ref] Excluding bacteremia from all sources, pneumonia is the only infection that is an important contributor to mortality for residents in LTCFs; 8..."
+        ],
+        "prior_information_summary": "Patient reports fever, tachycardia, tachypnea, and confusion. Previous attempts to obtain labs and CXR have yielded no results. Multiple retrieve interactions have been performed, repeatedly returning general diagnostic criteria and differential diagnoses for similar presentations, with no new actionable evidence. Physical exam findings are suggestive of systemic infection but insufficient for definitive diagnosis. Next step: obtain chest X-ray to confirm or rule out pneumonia."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_14 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20170119",
+        "turn_id": 15,
+        "query_text": "Elderly patient with fever, tachycardia, tachypnea, and confusion. No imaging or lab results available. Physical exam suggests systemic infection. No prior diagnostic tests performed.",
+        "skill_query_text": "Elderly patient presenting with fever, tachycardia, tachypnea, and confusion. Previous retrieve attempts returned general diagnostic criteria without actionable evidence. Need workflow guidance to obtain chest X-ray to confirm or rule out pneumonia."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d85487062f20",
+              "type": "experience",
+              "score": 0.7954,
+              "outcome": "positive",
+              "text": "Requesting labs without prior evidence or clear indication is low-value when clinical signs strongly suggest cellulitis; prioritize imaging or culture instead to confirm infection extent.",
+              "tags": []
+            },
+            {
+              "id": "exp_7210c8d79a48",
+              "type": "experience",
+              "score": 0.7642,
+              "outcome": "positive",
+              "text": "In diabetic patients with progressive redness, swelling, warmth, and pain on the leg, a recent spider bite is a key discriminative clue supporting cellulitis over other differentials like abscess or deep vein thrombosis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5672ff4e5d85",
+              "type": "experience",
+              "score": 0.8269,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with palpitations, syncope, and fatigue, a key discriminative clue is the presence of symptoms occurring independently of heart racing episodes — this suggests a systemic or non-cardiac etiology and should prompt consideration of orthostatic hypotension or other non-arrhythmic causes, not just atrial fibrillation.",
+              "tags": []
+            },
+            {
+              "id": "exp_0da6cb4409ed",
+              "type": "experience",
+              "score": 0.8265,
+              "outcome": "negative",
+              "text": "In a case with fatigue, cough, and dyspnea, failure to obtain imaging or lab results leads to premature closure on MDS with respiratory complications, when the gold diagnosis is viral pneumonia — missing CXR or labs prevents distinguishing between infectious and non-infectious causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_0975e496eff9",
+              "type": "experience",
+              "score": 0.8262,
+              "outcome": "negative",
+              "text": "Relying on general pneumonia guidelines without specific evidence of bacterial features (e.g., purulent sputum, infiltrate on CXR) risks misdiagnosing viral infections like enterovirus, which present similarly in elderly patients.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7965,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0975e496eff9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0975e496eff9",
+            "memory_type": "experience",
+            "score": 0.8262,
+            "content": {
+              "experience": "Relying on general pneumonia guidelines without specific evidence of bacterial features (e.g., purulent sputum, infiltrate on CXR) risks misdiagnosing viral infections like enterovirus, which present similarly in elderly patients.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "elderly patient with fever, tachycardia, tachypnea, and confusion: sepsis as a likely diagnosis"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': '6a995fa2-c9a4-4cea-8944-a71692d6f08f', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: sepsis as a likely diagnosis\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"6a995fa2-c9a4-4cea-8944-a71692d6f08f\", \"type\": \"function\", \"function\": {\"name\": \"retrieve\", \"arguments\": \"{\\\\\"query\\\\\": \\\\\"elderly patient with fever, tachycardia, tachypnea, and confusion: sepsis as a likely diagnosis\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 4675}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: sepsis as a likely diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"elderly patient with fever, tachycardia, tachypnea, and confusion: sepsis as a likely diagnosis\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_15 retrieve_interaction: doctor_action: retrieve(query=elderly patient with fever, tachycardia, tachypnea, and confusion: pneumonia diagnosis without imaging)\nresponse: [Document 1] (ID: 8371_3, Score: 0.884)\n## Diagnostic Criteria\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\n\n[Document 2] (ID: 20670_3, Score: 0.875)\n## Physical Examination\nPhysical examination may reveal fever or sometimes low body temperature, an increased respiratory rate, low blood pressure, a fast heart rate, or a low oxygen saturation, which is the amount of oxygen in the blood as...[truncated]"
+  ]
+}

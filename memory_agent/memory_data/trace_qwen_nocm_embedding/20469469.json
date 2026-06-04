@@ -1,0 +1,764 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20469469",
+  "turns": [
+    {
+      "case_id": "20469469",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "diverticulitis",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 33-year-old male patient presenting with diverticulitis. Key evidence gathered: Patient age, gender, and chief complaint. Diagnostic uncertainty: No specific symptoms, exam, lab, or imaging results yet. Most useful missing information: Detailed symptom history, physical exam findings, lab or imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 33-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 33-year-old male patient presenting with diverticulitis.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 33-year-old male presenting with diverticulitis. No additional history, exam, lab, or imaging results available. No specific symptoms or findings reported beyond chief complaint. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20469469",
+        "turn_id": 1,
+        "query_text": "33-year-old male, chief complaint: diverticulitis. No specific symptoms, signs, lab, or imaging results yet. No relevant history, exam, or imaging data available. Diagnostic uncertainty remains unresolved.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 33-year-old male with diverticulitis. Current uncertainty: No specific symptoms, exam, lab, or imaging results. Evidence gathered: Patient age, gender, chief complaint. Missing: Detailed symptom history, physical exam findings, lab or imaging results. Ineffective actions: None tried. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7898,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.773,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8207,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_960e55642b23",
+              "type": "experience",
+              "score": 0.81,
+              "outcome": "negative",
+              "text": "Failure to elicit bowel or bladder dysfunction during history-taking in a patient with radicular pain and urinary symptoms is a critical diagnostic omission; absence of these symptoms does not rule out cauda equina syndrome and should not delay urgent imaging.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8098,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8121,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8114,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any abdominal pain, particularly on the left side, along with fever, nausea, or changes in bowel habits?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I’ve had abdominal pain, especially on the left side, along with nausea and a fever. I’ve also noticed changes in my bowel habits—sometimes constipation, sometimes diarrhea. The pain is constant and tends to get worse over time.'}",
+        "env_info": "{'response': [{'id': 'e92f9266-9ea0-41b2-88f6-fdecf34b937b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any abdominal pain, particularly on the left side, along with fever, nausea, or changes in bowel habits?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any abdominal pain, particularly on the left side, along with fever, nausea, or changes in bowel habits?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any abdominal pain, particularly on the left side, along with fever, nausea, or changes in bowel habits?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20469469",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "diverticulitis",
+        "diagnostic_strategy": "Current clinical problem: suspected diverticulitis. Key evidence gathered: patient reports left-sided abdominal pain, fever, nausea, and alternating constipation/diarrhea with worsening pain over time. Diagnostic uncertainty remains: need to confirm presence of diverticular disease and rule out complications (e.g., abscess, perforation). Most useful missing information: imaging (CT scan) to visualize diverticula and assess for complications. Existing evidence is not enough to finalize diagnosis; requires imaging and possibly labs (WBC, CRP).",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any abdominal pain, particularly on the left side, along with fever, nausea, or changes in bowel habits?)\nresponse: Yes, I’ve had abdominal pain, especially on the left side, along with nausea and a fever. I’ve also noticed changes in my bowel habits—sometimes constipation, sometimes diarrhea. The pain is constant and tends to get worse over time."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: diverticulitis. Patient reports left-sided abdominal pain, fever, nausea, and alternating constipation/diarrhea with worsening pain over time. No imaging or lab results yet. No prior history or exam findings provided. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20469469",
+        "turn_id": 2,
+        "query_text": "Chief complaint: diverticulitis. Known symptoms: left-sided abdominal pain, fever, nausea, alternating constipation/diarrhea, worsening pain over time. No imaging or lab results. No prior history or exam findings. Diagnostic uncertainty: need to confirm diverticular disease and rule out complications (abscess, perforation).",
+        "skill_query_text": "Presenting problem: suspected diverticulitis. Evidence gathered: patient reports left-sided abdominal pain, fever, nausea, alternating bowel habits, worsening pain. Missing: imaging (CT scan) to visualize diverticula and assess complications. Ineffective actions: none. Need workflow guidance: next diagnostic steps including imaging and labs (WBC, CRP)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7915,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7907,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7697,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7609,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7574,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8461,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_ae72bb823e76",
+              "type": "experience",
+              "score": 0.8296,
+              "outcome": "negative",
+              "text": "Flank pain with fever, vomiting, and dysuria strongly suggests acute pyelonephritis; however, in the absence of urinalysis or imaging, this pattern may mimic renal calculi, especially when hematuria is present and the pain is unilateral and colicky.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8161,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.854,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.832,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a1317efdfcb6",
+              "type": "skill",
+              "score": 0.8187,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9df3f16d-76c9-42ca-8a61-176880592cc1': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '9df3f16d-76c9-42ca-8a61-176880592cc1', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 103}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.1111111111111111,
+        "conf_after": 0.1111111111111111,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20469469",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20469469",
+        "turn_id": 2,
+        "query_text": "Chief complaint: diverticulitis. Known symptoms: left-sided abdominal pain, fever, nausea, alternating constipation/diarrhea, worsening pain over time. No imaging or lab results. No prior history or exam findings. Diagnostic uncertainty: need to confirm diverticular disease and rule out complications (abscess, perforation).",
+        "skill_query_text": "Presenting problem: suspected diverticulitis. Evidence gathered: patient reports left-sided abdominal pain, fever, nausea, alternating bowel habits, worsening pain. Missing: imaging (CT scan) to visualize diverticula and assess complications. Ineffective actions: none. Need workflow guidance: next diagnostic steps including imaging and labs (WBC, CRP)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7915,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7907,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7697,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7609,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7574,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8461,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_ae72bb823e76",
+              "type": "experience",
+              "score": 0.8296,
+              "outcome": "negative",
+              "text": "Flank pain with fever, vomiting, and dysuria strongly suggests acute pyelonephritis; however, in the absence of urinalysis or imaging, this pattern may mimic renal calculi, especially when hematuria is present and the pain is unilateral and colicky.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8161,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.854,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.832,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a1317efdfcb6",
+              "type": "skill",
+              "score": 0.8187,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.7915,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "symptoms and diagnosis of diverticulitis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9229b7d9-a3bf-4dfc-9efe-184854bad4f1': '[Document 1] (ID: 15369_3, Score: 0.921)\\n## History and Symptoms\\nThe most common symptoms of diverticulitis include\\xa0left lower abdominal pain,\\xa0fever,\\xa0cramps, and\\xa0constipation. A positive history of change in bowel\\xa0habits is suggestive of diverticulitis. Less common symptoms include\\xa0flatulence,\\xa0nausea, and\\xa0vomiting.\\n\\n## Physical Examination...\\n\\n[Document 2] (ID: 15369_0, Score: 0.906)\\nDiverticulitis overview\\n\\n# Overview\\nDiverticulitis is a common disease of the digestive tract that affects the colon. Diverticulitis develops from diverticulosis, which involves the formation of pouches (diverticula) on the outside of the colon. Diverticulitis results when one of these diverticula b...\\n\\n[Document 3] (ID: 1705_4, Score: 0.903)\\n## Symptoms and signs of complicated acute diverticulitis\\nSuspect complicated acute diverticulitis and refer for same-day hospital assessment if the person has uncontrolled abdominal pain and any of the features in table\\xa01.\\nSymptom or sign\\nPossible complication\\nAbdominal mass on examination or peri-...\\n\\n[Document 4] (ID: 1705_13, Score: 0.901)\\n## Acute diverticulitis\\nGive people with acute diverticulitis, and their families and carers where appropriate, verbal and...[truncated]'}}",
+        "env_info": "{'response': [{'id': '9229b7d9-a3bf-4dfc-9efe-184854bad4f1', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms and diagnosis of diverticulitis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 174}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.1111111111111111,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.2222222222222222,
+        "turn_reward": 0.044444444444444446,
+        "importance": 0.2222222222222222
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and diagnosis of diverticulitis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms and diagnosis of diverticulitis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20469469",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "diverticulitis",
+        "diagnostic_strategy": "Current clinical problem: suspected acute diverticulitis based on chief complaint and patient-reported symptoms. Key evidence gathered: patient reports left lower quadrant pain, fever, nausea, and change in bowel habits (constipation/diarrhea). Diagnostic uncertainty remains: no lab results available to confirm or rule out infection or inflammation; imaging not yet performed. Most useful missing information: imaging (e.g., CT scan) to confirm diverticulitis and rule out complications. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any abdominal pain, particularly on the left side, along with fever, nausea, or changes in bowel habits?)\nresponse: Yes, I’ve had abdominal pain, especially on the left side, along with nausea and a fever. I’ve also noticed changes in my bowel habits—sometimes constipation, sometimes diarrhea. The pain is constant and tends to get worse over time."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: diverticulitis. Patient reports left lower quadrant pain, fever, nausea, and change in bowel habits (constipation/diarrhea). Pain is constant and worsening. No lab results available. No imaging performed. Documented symptoms align with acute diverticulitis (left lower quadrant pain, fever, nausea, change in bowel habits). No complications identified yet. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20469469",
+        "turn_id": 4,
+        "query_text": "Chief complaint: diverticulitis. Symptoms: left lower quadrant pain, fever, nausea, change in bowel habits (constipation/diarrhea). Pain is constant and worsening. No lab results available. No imaging performed. No complications identified. No treatment recommended.",
+        "skill_query_text": "Presenting problem: suspected acute diverticulitis. Evidence gathered: patient reports left lower quadrant pain, fever, nausea, change in bowel habits. Missing: imaging (e.g., CT scan) to confirm diagnosis and rule out complications. Ineffective action: lab request yielded no result. Need: workflow guidance for next diagnostic step."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7876,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7648,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8522,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_ae72bb823e76",
+              "type": "experience",
+              "score": 0.8299,
+              "outcome": "negative",
+              "text": "Flank pain with fever, vomiting, and dysuria strongly suggests acute pyelonephritis; however, in the absence of urinalysis or imaging, this pattern may mimic renal calculi, especially when hematuria is present and the pain is unilateral and colicky.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.821,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8523,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8344,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a1317efdfcb6",
+              "type": "skill",
+              "score": 0.8252,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any rectal bleeding or passage of mucus? Also, have you experienced any weight loss or significant fatigue recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed some painless rectal bleeding — bright red blood when I go to the bathroom. I haven’t lost weight recently, but I have been feeling more tired than usual, especially lately.'}",
+        "env_info": "{'response': [{'id': '33c04b89-dff8-4374-a30c-38f91632355f', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any rectal bleeding or passage of mucus? Also, have you experienced any weight loss or significant fatigue recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 683}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.4444444444444444,
+        "delta": 0.1111111111111111,
+        "turn_reward": 0.022222222222222223,
+        "importance": 0.1111111111111111
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any rectal bleeding or passage of mucus? Also, have you experienced any weight loss or significant fatigue recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any rectal bleeding or passage of mucus? Also, have you experienced any weight loss or significant fatigue recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20469469",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "diverticulitis",
+        "diagnostic_strategy": "Current clinical problem: suspected acute diverticulitis with possible complications. Key evidence gathered: left lower quadrant pain, fever, nausea, change in bowel habits, and now rectal bleeding and fatigue. Diagnostic uncertainty remains around presence of complications (e.g., abscess, perforation) and need for imaging or further labs. Most useful missing information: imaging (CT scan) to confirm diverticulitis and rule out complications. Existing evidence is not enough to finalize diagnosis; imaging and possibly labs are needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any abdominal pain, particularly on the left side, along with fever, nausea, or changes in bowel habits?)\nresponse: Yes, I’ve had abdominal pain, especially on the left side, along with nausea and a fever. I’ve also noticed changes in my bowel habits—sometimes constipation, sometimes diarrhea. The pain is constant and tends to get worse over time.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any rectal bleeding or passage of mucus? Also, have you experienced any weight loss or significant fatigue recently?)\nresponse: I’ve noticed some painless rectal bleeding — bright red blood when I go to the bathroom. I haven’t lost weight recently, but I have been feeling more tired than usual, especially lately."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: diverticulitis. History: left lower quadrant abdominal pain, fever, nausea, change in bowel habits (constipation/diarrhea), constant worsening pain. New findings: painless rectal bleeding (bright red), fatigue. No lab results available. Documented knowledge: diverticulitis commonly presents with left lower quadrant pain, fever, cramps, constipation, nausea, and rectal bleeding. Complicated cases require hospital referral if uncontrolled pain or signs of complications. No imaging performed yet. Missing: imaging (CT) to confirm diagnosis and rule out complications."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20469469",
+        "turn_id": 5,
+        "query_text": "Chief complaint: diverticulitis. Symptoms: left lower quadrant pain, fever, nausea, change in bowel habits (constipation/diarrhea), rectal bleeding (bright red), fatigue. No lab results available. No imaging performed. Uncertainty: presence of complications (abscess, perforation).",
+        "skill_query_text": "Presenting problem: suspected acute diverticulitis with possible complications. Evidence gathered: patient history and symptoms. Ineffective action: lab request yielded no result. Missing: imaging (CT) to confirm diagnosis and rule out complications. Need: workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8032,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7803,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7759,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8671,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8287,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_ae72bb823e76",
+              "type": "experience",
+              "score": 0.8264,
+              "outcome": "negative",
+              "text": "Flank pain with fever, vomiting, and dysuria strongly suggests acute pyelonephritis; however, in the absence of urinalysis or imaging, this pattern may mimic renal calculi, especially when hematuria is present and the pain is unilateral and colicky.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8427,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8319,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_c7a09230dc43",
+              "type": "skill",
+              "score": 0.8265,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Acute diverticulitis}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7361dd42-3b42-4755-a1eb-64b6846c87ce': '{\"diagnosis\": \"Acute diverticulitis\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '7361dd42-3b42-4755-a1eb-64b6846c87ce', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Acute diverticulitis}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 777}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4444444444444444,
+        "conf_after": 0.4444444444444444,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute diverticulitis}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute diverticulitis}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'9df3f16d-76c9-42ca-8a61-176880592cc1': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '9df3f16d-76c9-42ca-8a61-176880592cc1', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 103}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any abdominal pain, particularly on the left side, along with fever, nausea, or changes in bowel habits?)\nresponse: Yes, I’ve had abdominal pain, especially on the left side, along with nausea and a fever. I’ve also noticed changes in my bowel habits—sometimes constipation, sometimes diarrhea. The pain is constant and tends to get worse over time."
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Acute diverticulitis}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'7361dd42-3b42-4755-a1eb-64b6846c87ce': '{\"diagnosis\": \"Acute diverticulitis\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '7361dd42-3b42-4755-a1eb-64b6846c87ce', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Acute diverticulitis}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 777}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any rectal bleeding or passage of mucus? Also, have you experienced any weight loss or significant fatigue recently?)\nresponse: I’ve noticed some painless rectal bleeding — bright red blood when I go to the bathroom. I haven’t lost weight recently, but I have been feeling more tired than usual, especially lately."
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

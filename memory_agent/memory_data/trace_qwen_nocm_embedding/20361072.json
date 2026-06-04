@@ -1,0 +1,1406 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20361072",
+  "turns": [
+    {
+      "case_id": "20361072",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "s/p Motor vehicle crash",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 57-year-old female patient presenting with s/p Motor vehicle crash. Key evidence gathered: Patient is 57-year-old female, reports not feeling well recently, chief complaint is s/p motor vehicle crash. Diagnostic uncertainty: No specific symptoms, findings, or test results yet to inform diagnosis. Most useful missing information: Detailed history of injury, mechanism, symptoms, exam findings, lab/imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 57-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 57-year-old female patient presenting with s/p Motor vehicle crash.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is 57-year-old female, reports not feeling well recently, chief complaint is s/p motor vehicle crash. No additional history, symptoms, exam, lab, imaging, or tool results provided. No findings or interpretations available. No missing information explicitly noted. No low-value or no-result attempts."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 1,
+        "query_text": "Patient is 57-year-old female, chief complaint: s/p Motor vehicle crash, reports not feeling well recently. No symptoms, signs, findings, lab, imaging, or exam results yet. No relevant history, demographics beyond age and sex. No diagnostic uncertainty specified. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 57-year-old female post motor vehicle crash. Current uncertainty: No specific symptoms, findings, or test results to inform diagnosis. Evidence gathered: Patient is 57-year-old female, reports not feeling well, chief complaint is s/p motor vehicle crash. Missing evidence: Detailed injury history, mechanism, symptoms, exam, lab, imaging. Ineffective actions: None tried. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.7976,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.7844,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_8d1614328ae9",
+              "type": "experience",
+              "score": 0.7733,
+              "outcome": "negative",
+              "text": "Patient-reported purplish skin discoloration without trauma or pain, in the context of leg swelling, supports venous insufficiency; do not apply this when systemic symptoms, weight loss, or other organ involvement are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8092,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8072,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8058,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f43afddafa87",
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_f43afddafa87",
+            "memory_type": "experience",
+            "score": 0.7976,
+            "content": {
+              "experience": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.8058,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'a8afb60b-29bb-43a4-872b-93a23926a317', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.06666666666666667,
+        "delta": 0.06666666666666667,
+        "turn_reward": 0.013333333333333334,
+        "importance": 0.06666666666666667
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20361072",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "s/p Motor vehicle crash",
+        "diagnostic_strategy": "Current clinical problem: post-crash status with no reported symptoms or findings. Key evidence gathered: patient reports no problems or abnormal findings in the affected area. Diagnostic uncertainty remains: unclear if injury is occult or asymptomatic. Most useful missing information: specific timing of crash, mechanism of injury, and any objective findings (e.g., imaging, exam). Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports no problems or abnormal findings in the affected area. No objective findings or imaging results reported. No history of symptoms or injuries provided. No lab or exam results available. Timing or mechanism of injury not specified. No treatment or risk information provided."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 2,
+        "query_text": "s/p Motor vehicle crash. Patient reports no problems or abnormal findings in affected area. No objective findings, imaging, lab, or exam results. No history of symptoms or injuries. Timing or mechanism of injury not specified. Unclear if injury is occult or asymptomatic.",
+        "skill_query_text": "Presenting problem: post-crash status with no reported symptoms or findings. Evidence gathered: patient reports no problems; no objective findings. Ineffective action: asked about timing/mechanism and received negative response. Missing: specific timing, mechanism, objective findings. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8128,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_8d1614328ae9",
+              "type": "experience",
+              "score": 0.8071,
+              "outcome": "negative",
+              "text": "Patient-reported purplish skin discoloration without trauma or pain, in the context of leg swelling, supports venous insufficiency; do not apply this when systemic symptoms, weight loss, or other organ involvement are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.803,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8236,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8153,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_76d6d7ce801f",
+              "type": "skill",
+              "score": 0.8115,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f43afddafa87",
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?"
+        },
+        "patient_or_tool_response": "{'question': 'I was not told any specific symptoms I’ve been experiencing since the crash. I was unconscious on scene and intubated, and I don’t remember anything after that. I was flown to the hospital, and they treated me for internal bleeding and gave me fluids and blood. I’m not sure if I’m having pain, swelling, or trouble moving — I was not told.'}",
+        "env_info": "{'response': [{'id': '098afaa8-a17b-442e-8a86-f5a40a470958', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe any specific symptoms you\\\\u2019ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 76}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.06666666666666667,
+        "conf_after": 0.06666666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20361072",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "s/p Motor vehicle crash",
+        "diagnostic_strategy": "Current clinical problem: Post-crash patient with no recollection of symptoms due to unconsciousness and intubation. Key evidence gathered: Patient was treated for internal bleeding, no specific symptoms reported, no memory of post-crash events. Diagnostic uncertainty: Whether patient has undetected pain, swelling, or mobility issues. Most useful missing information: Detailed physical exam findings, imaging or lab results, or clarification on post-crash interventions. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: s/p Motor vehicle crash"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient s/p motor vehicle crash, unconscious on scene, intubated, flown to hospital, treated for internal bleeding, received fluids and blood. No specific symptoms reported since crash; patient has no memory of post-crash events. No abnormal findings reported by patient. No physical exam, imaging, or lab results provided. No treatment recommendations supported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 3,
+        "query_text": "s/p Motor vehicle crash, unconscious on scene, intubated, flown to hospital, treated for internal bleeding, received fluids and blood. No specific symptoms reported, no memory of post-crash events. No abnormal findings reported by patient. No physical exam, imaging, or lab results provided. Diagnostic uncertainty: undetected pain, swelling, or mobility issues.",
+        "skill_query_text": "Presenting problem: Post-crash patient with no recollection of symptoms. Evidence gathered: Treated for internal bleeding, no symptoms reported, no memory of events. Missing: Detailed physical exam, imaging, lab results, clarification on interventions. Ineffective action: Asked patient about crash events, received no abnormal findings. Need: Workflow guidance for identifying undetected pain, swelling, or mobility issues."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7891,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7766,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.809,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8035,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8031,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8203,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8134,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f43afddafa87",
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'46717626-5357-49f3-9851-d13010f72230': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '46717626-5357-49f3-9851-d13010f72230', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 209}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.06666666666666667,
+        "conf_after": 0.06666666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20361072",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 3,
+        "query_text": "s/p Motor vehicle crash, unconscious on scene, intubated, flown to hospital, treated for internal bleeding, received fluids and blood. No specific symptoms reported, no memory of post-crash events. No abnormal findings reported by patient. No physical exam, imaging, or lab results provided. Diagnostic uncertainty: undetected pain, swelling, or mobility issues.",
+        "skill_query_text": "Presenting problem: Post-crash patient with no recollection of symptoms. Evidence gathered: Treated for internal bleeding, no symptoms reported, no memory of events. Missing: Detailed physical exam, imaging, lab results, clarification on interventions. Ineffective action: Asked patient about crash events, received no abnormal findings. Need: Workflow guidance for identifying undetected pain, swelling, or mobility issues."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7891,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7766,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.809,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8035,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8031,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8203,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8134,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f43afddafa87"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'79df97b3-a797-478f-b4d7-49610ad0d545': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '79df97b3-a797-478f-b4d7-49610ad0d545', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 280}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.06666666666666667,
+        "conf_after": 0.06666666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20361072",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 3,
+        "query_text": "s/p Motor vehicle crash, unconscious on scene, intubated, flown to hospital, treated for internal bleeding, received fluids and blood. No specific symptoms reported, no memory of post-crash events. No abnormal findings reported by patient. No physical exam, imaging, or lab results provided. Diagnostic uncertainty: undetected pain, swelling, or mobility issues.",
+        "skill_query_text": "Presenting problem: Post-crash patient with no recollection of symptoms. Evidence gathered: Treated for internal bleeding, no symptoms reported, no memory of events. Missing: Detailed physical exam, imaging, lab results, clarification on interventions. Ineffective action: Asked patient about crash events, received no abnormal findings. Need: Workflow guidance for identifying undetected pain, swelling, or mobility issues."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7891,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7766,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.809,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8035,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8031,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8203,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8134,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f43afddafa87"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "post-MVC internal bleeding in 57-year-old female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a594df40-5864-47fc-816b-37ef61cfeed4': '[Document 1] (ID: 24514_2, Score: 0.843)\\n- Internal hemorrhage: Patients can develop catastrophic internal hemorrhages, such as from a bleeding peptic ulcer or splenic hemorrhage, which can cause exsanguination even without any external bleeding. It is a relatively common cause of unexpected, sudden death in patients who seemed previously ...\\n\\n[Document 2] (ID: 10978_4, Score: 0.843)\\n# Natural History, Complications, and Prognosis\\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\\n\\n[Document 3] (ID: 373_5, Score: 0.837)\\nOn October 17, a 51-year-old woman developed a large pimple on her forehead with erythema and swelling. On October 18, the lesion enlarged, was slightly painful, nonpruritic, and drained a small amount of yellowish fluid. She sought medical care, cervical and preauricular lymphadenopathy was noted o...\\n\\n[Document 4] (ID: 263_1, Score: 0.837)\\nNevada. On February 17, 2005, a previously healthy woman aged 46 years from Washoe County, Nevada, had onset of nonspecific l...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'a594df40-5864-47fc-816b-37ef61cfeed4', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"post-MVC internal bleeding in 57-year-old female\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 354}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.06666666666666667,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.26666666666666666,
+        "turn_reward": 0.05333333333333334,
+        "importance": 0.26666666666666666
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"post-MVC internal bleeding in 57-year-old female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"post-MVC internal bleeding in 57-year-old female\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20361072",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "s/p Motor vehicle crash",
+        "diagnostic_strategy": "Current clinical problem: Post-MVC patient with no reported symptoms or findings since crash, but treated for internal bleeding. Key evidence: Patient was unconscious, intubated, and treated for internal bleeding; no lab or imaging results available. Diagnostic uncertainty: Whether internal bleeding is resolved or if there are ongoing complications. Most useful missing information: Current physical exam findings, lab/imaging results, and patient-reported symptoms. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=post-MVC internal bleeding in 57-year-old female)\nresponse: [Document 1] (ID: 24514_2, Score: 0.843)\n- Internal hemorrhage: Patients can develop catastrophic internal hemorrhages, such as from a bleeding peptic ulcer or splenic hemorrhage, which can cause exsanguination even without any external bleeding. It is a relatively common cause of unexpected, sudden death in patients who seemed previously ...\n\n[Document 2] (ID: 10978_4, Score: 0.843)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 3] (ID: 373_5, Score: 0.837)\nOn October 17, a 51-year-old woman developed a large pimple on her forehead with erythema and swelling. On October 18, the lesion enlarged, was slightly painful, nonpruritic, and drained a small amount of yellowish fluid. She sought medical care, cervical and preauricular lymphadenopathy was noted o...\n\n[Document 4] (ID: 263_1, Score: 0.837)\nNevada. On February 17, 2005, a previously healthy woman aged 46 years from Washoe County, Nevada, had onset of nonspecific leg pain, which progressed during the next 24 hours to generalized myalgia. She visited a local hospital emergency department (ED), where a viral syndrome was diagnosed. She wa...\n\n[Document 5] (ID: 527_22, Score: 0.836)\nWhile working in an emergency room, you are asked to see a 31-year-old Asian-American woman who has had fever, nausea, and fatigue for the past 24 hours. She also reports dark urine and has had 3 light colored stools since yesterday. She has previously been healthy and has no previous history of jau..."
+        ],
+        "prior_information_summary": "Chief complaint: s/p Motor vehicle crash. History: Patient was unconscious on scene, intubated, flown to hospital, treated for internal bleeding, received fluids and blood. No specific symptoms reported since crash. No lab or imaging results available. No known prior medical history. No specific exam findings reported. No known risk factors or complications identified. No treatment or management plan explicitly supported."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 6,
+        "query_text": "Post-MVC patient, unconscious on scene, intubated, treated for internal bleeding. No reported symptoms or findings since crash. No lab or imaging results available. No prior medical history. No exam findings reported. Uncertainty: whether internal bleeding resolved or ongoing complications.",
+        "skill_query_text": "Presenting problem: Post-MVC patient with no symptoms since crash but treated for internal bleeding. Evidence gathered: unconsciousness, intubation, treatment for internal bleeding. Missing: current physical exam, lab/imaging results, patient-reported symptoms. Ineffective action: retrieved post-MVC internal bleeding cases. Need: workflow guidance on next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.8067,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.8014,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.8237,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            },
+            {
+              "id": "exp_7ef36fd51451",
+              "type": "experience",
+              "score": 0.8157,
+              "outcome": "negative",
+              "text": "Easy bruising, frequent nosebleeds, heavy menstrual bleeding, and prolonged bleeding after minor injuries strongly suggest a bleeding disorder like Von Willebrand Disease; do not dismiss this pattern as non-specific or benign without further lab confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8309,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8264,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8222,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_f43afddafa87"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been feeling more tired than usual, and sometimes I get dizzy when I stand up. I also noticed I’m having more frequent headaches, and I’ve been feeling a bit foggy mentally—like my brain isn’t quite as sharp as it used to be. I’m not sure if it’s just stress or something else, but it’s definitely affected my daily routine.'}",
+        "env_info": "{'response': [{'id': 'e43586f2-a1f0-467e-87be-edaca0da8bed', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 858}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?\"",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20361072",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "s/p Motor vehicle crash",
+        "diagnostic_strategy": "Current clinical problem: Post-MVC patient reporting new subjective symptoms (fatigue, dizziness, headaches, cognitive fog) since discharge. Key evidence gathered: History of internal bleeding, no lab/imaging results, no specific post-crash symptoms reported earlier. Diagnostic uncertainty: Whether these new symptoms are related to the MVC, post-traumatic complications, or unrelated stress. Most useful missing information: Specific neurological or systemic exam findings, lab/imaging results, or clarification on symptom onset timing. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?)\nresponse: I’ve been feeling more tired than usual, and sometimes I get dizzy when I stand up. I also noticed I’m having more frequent headaches, and I’ve been feeling a bit foggy mentally—like my brain isn’t quite as sharp as it used to be. I’m not sure if it’s just stress or something else, but it’s definitely affected my daily routine."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient s/p motor vehicle crash. No specific symptoms reported since crash (unconscious on scene, intubated, treated for internal bleeding). No lab or imaging results available. Retrieved documents on post-MVC internal bleeding and unrelated conditions (VWD, skin lesions, viral syndrome, liver issues) — not directly relevant. Current turn reports new symptoms: fatigue, dizziness, headaches, cognitive fog since discharge. No prior evidence of these symptoms. No specific exam or test results yet. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 7,
+        "query_text": "Patient s/p motor vehicle crash, reporting new symptoms since discharge: fatigue, dizziness, headaches, cognitive fog. History of internal bleeding. No lab/imaging results. No prior symptoms reported. No specific exam findings. Diagnostic uncertainty: whether symptoms relate to MVC, post-traumatic complications, or unrelated stress.",
+        "skill_query_text": "Presenting problem: post-MVC patient with new subjective symptoms (fatigue, dizziness, headaches, cognitive fog) since discharge. Evidence gathered: patient report of symptoms. Ineffective actions: none. Missing: neurological/systemic exam, lab/imaging results, symptom onset timing. Need: diagnostic decision workflow guidance for evaluating post-traumatic complications vs. unrelated causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7938,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7904,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7711,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7486,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7462,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_4b4b6f436ea3",
+              "type": "experience",
+              "score": 0.8436,
+              "outcome": "negative",
+              "text": "Shaking, numbness, and loss of consciousness following a recent traumatic event like a car accident strongly suggest acute stress reaction or PTSD with physiological symptoms; do not dismiss this pattern as purely neurological unless trauma is absent or inconsistent.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8418,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.8376,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8288,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8208,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8186,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of post-traumatic complications in 57-year-old female after MVC"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'84d0a8a8-8f04-4dad-a9f2-05381371ffd9': \"[Document 1] (ID: 28161_11, Score: 0.841)\\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Bevacizumab as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding...\\n\\n[Document 2] (ID: 14328_32, Score: 0.841)\\n- Musculoskeletal: Aseptic necrosis of femoral and humeral heads, calcinosis (following intra-articular or intralesional use), Charcot-like arthropathy, loss of muscle mass, muscle weakness, osteoporosis, pathologic fracture of long bones, post injection flare (following intra-articular use), steroi...\\n\\n[Document 3] (ID: 18994_11, Score: 0.838)\\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Avastin as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding com...\\n\\n[Document 4] (ID: 1150_90, Score: 0.838)\\n(2) reactions to medical procedures; (3) reactions to changes in one's physical condition and to the disability; and (...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '84d0a8a8-8f04-4dad-a9f2-05381371ffd9', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of post-traumatic complications in 57-year-old female after MVC\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 997}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.4666666666666667,
+        "delta": 0.13333333333333336,
+        "turn_reward": 0.026666666666666672,
+        "importance": 0.13333333333333336
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of post-traumatic complications in 57-year-old female after MVC\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of post-traumatic complications in 57-year-old female after MVC\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20361072",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "s/p Motor vehicle crash",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 7. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: s/p Motor vehicle crash",
+          "initial_information: I am a 57-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 57-year-old female patient presenting with s/p Motor vehicle crash..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?)\nresponse: I was not told any specific symptoms I’ve been experiencing since the crash. I was unconscious on scene and intubated, and I don’t remember anything after that. I was flown to the hospital, and they treated me for internal bleeding and gave me fluids and blood. I’m not sure if I’m having pain, swelling, or trouble moving — I was not told.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=post-MVC internal bleeding in 57-year-old female)\nresponse: [Document 1] (ID: 24514_2, Score: 0.843)\n- Internal hemorrhage: Patients can develop catastrophic internal hemorrhages, such as from a bleeding peptic ulcer or splenic hemorrhage, which can cause exsanguination even without any external bleeding. It is a relatively common cause of unexpected, sudden death in patients who seemed previously ...\n\n[Document 2] (ID: 10978_4, Score: 0.843)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 3] (ID: 373_5, Score: 0.837)\nOn October 17, a 51-year-old woman developed a large pimple on her forehead with erythema and swelling. On October 18, the lesion enlarged, was slightly painful, nonpruritic, and drained a small amount of yellowish fluid. She sought medical care, cervical and preauricular lymphadenopathy was noted o...\n\n[Document 4] (ID: 263_1, Score: 0.837)\nNevada. On February 17, 2005, a previously healthy woman aged 46 years from Washoe County, Nevada, had onset of nonspecific leg pain, which progressed during the next 24 hours to generalized myalgia. She visited a local hospital emergency department (ED), where a viral syndrome was diagnosed. She wa...\n\n[Document 5] (ID: 527_22, Score: 0.836)\nWhile working in an emergency room, you are asked to see a 31-year-old Asian-American woman who has had fever, nausea, and fatigue for the past 24 hours. She also reports dark urine and has had 3 light colored stools since yesterday. She has previously been healthy and has no previous history of jau...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?)\nresponse: I’ve been feeling more tired than usual, and sometimes I get dizzy when I stand up. I also noticed I’m having more frequent headaches, and I’ve been feeling a bit foggy mentally—like my brain isn’t quite as sharp as it used to be. I’m not sure if it’s just stress or something else, but it’s definitely affected my daily routine.",
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=symptoms of post-traumatic complications in 57-year-old female after MVC)\nresponse: [Document 1] (ID: 28161_11, Score: 0.841)\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Bevacizumab as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding...\n\n[Document 2] (ID: 14328_32, Score: 0.841)\n- Musculoskeletal: Aseptic necrosis of femoral and humeral heads, calcinosis (following intra-articular or intralesional use), Charcot-like arthropathy, loss of muscle mass, muscle weakness, osteoporosis, pathologic fracture of long bones, post injection flare (following intra-articular use), steroi...\n\n[Document 3] (ID: 18994_11, Score: 0.838)\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Avastin as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding com...\n\n[Document 4] (ID: 1150_90, Score: 0.838)\n(2) reactions to medical procedures; (3) reactions to changes in one's physical condition and to the disability; and (4) reactions and readjustments to one's social and family envir on ment. 56 These reactions may appear immediately or after some time, depending on the patient's individual and socia...\n\n[Document 5] (ID: 10978_4, Score: 0.837)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi..."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?)\nresponse: I was not told any specific symptoms I’ve been experiencing since the crash. I was unconscious on scene and intubated, and I don’t remember anything after that. I was flown to the hospital, and they treated me for internal bleeding and gave me fluids and blood. I’m not sure if I’m having pain, swelling, or trouble moving — I was not told.\ndoctor_action: retrieve(query=post-MVC internal bleeding in 57-year-old female)\nresponse: [Document 1] (ID: 24514_2, Score: 0.843)\n- Internal hemorrhage: Patients can develop catastrophic internal hemorrhages, such as from a bleeding peptic ulcer or splenic hemorrhage, which can cause exsanguination even without any external bleeding. It is a relatively common cause of unexpected, sudden death in patients who seemed previously ...\n\n[Document 2] (ID: 10978_4, Score: 0.843)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 3] (ID: 373_5, Score: 0.837)\nOn October 17, a 51-year-old woman developed a large pimple on her forehead with erythema and swelling. On October 18, the lesion enlarged, was slightly painful, nonpruritic, and drained a small amount of yellowish fluid. She sought medical care, cervical and preauricular lymphadenopathy was noted o...\n\n[Document 4] (ID: 263_1, Score: 0.837)\nNevada. On February 17, 2005, a previously healthy woman aged 46 years from Washoe County, Nevada, had onset of nonspecific leg pain, which progressed during the next 24 hours to generalized myalgia. She visited a local hospital emergency department (ED), where a viral syndrome was diagnosed. She wa...\n\n[Document 5] (ID: 527_22, Score: 0.836)\nWhile working in an emergency room, you are asked to see a 31-year-old Asian-American woman who has had fever, nausea, and fatigue for the past 24 hours. She also reports dark urine and has had 3 light colored stools since yesterday. She has previously been healthy and has no previous history of jau...\ndoctor_action: ask_patient(question=Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?)\nresponse: I’ve been feeling more tired than usual, and sometimes I get dizzy when I stand up. I also noticed I’m having more frequent headaches, and I’ve been feeling a bit foggy mentally—like my brain isn’t quite as sharp as it used to be. I’m not sure if it’s just stress or something else, but it’s definitely affected my daily routine.\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 8,
+        "query_text": "57-year-old female, s/p motor vehicle crash, unconscious on scene, intubated, treated for internal bleeding. Post-discharge: fatigue, dizziness, frequent headaches, mental fog. No specific symptoms since crash. Labs and imaging results not available. Unresolved diagnostic uncertainty: cause of post-traumatic symptoms.",
+        "skill_query_text": "Presenting problem: post-MVC symptoms in 57-year-old female. Evidence gathered: patient history, retrieved documents on internal bleeding and post-traumatic complications. Missing: labs, imaging. Ineffective actions: attempted labs and imaging with no results. Need: workflow guidance to select next diagnostic action resolving largest uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7861,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7751,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7747,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7487,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.739,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_4b4b6f436ea3",
+              "type": "experience",
+              "score": 0.8257,
+              "outcome": "negative",
+              "text": "Shaking, numbness, and loss of consciousness following a recent traumatic event like a car accident strongly suggest acute stress reaction or PTSD with physiological symptoms; do not dismiss this pattern as purely neurological unless trauma is absent or inconsistent.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8224,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.8122,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8212,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8193,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8149,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.8212,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "post-MVC cognitive symptoms and dizziness in 57-year-old female"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'309b83df-85cb-4f31-ba02-4f72ca3f869d': \"[Document 1] (ID: 8848_1, Score: 0.841)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 2] (ID: 25319_4, Score: 0.840)\\nA 75-year-old (race?) female presented for evaluation of an asymptomatic rash in her extremeties. Her past medical history was significant for discoid lupus erythematosus diagnosed (when?) achieving drug-induced remission with (treatment?) and (any other commorbidity?). Other chronic medications inc...\\n\\n[Document 3] (ID: 29537_8, Score: 0.839)\\n- Nervous System/Psychiatric: Parkinsonism, Bell's palsy, decreased mental acuity, involuntary choreoathetotic movements, symptoms of cerebrovascular insufficiency, psychic disturbances including nightmares and reversible mild psychoses or depression, headache, sedation, asthenia or weakness, dizzin...\\n\\n[Document 4] (ID: 114_372, Score: 0.837)\\n# S: Subjective\\nThe patient may present with symptoms involving various organ systems, including the following:\\nCNS, inclu...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '309b83df-85cb-4f31-ba02-4f72ca3f869d', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"post-MVC cognitive symptoms and dizziness in 57-year-old female\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1485}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4666666666666667,
+        "conf_after": 0.4666666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"post-MVC cognitive symptoms and dizziness in 57-year-old female\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"post-MVC cognitive symptoms and dizziness in 57-year-old female\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20361072",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "s/p Motor vehicle crash",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 8. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: s/p Motor vehicle crash",
+          "initial_information: I am a 57-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 57-year-old female patient presenting with s/p Motor vehicle crash..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?)\nresponse: I was not told any specific symptoms I’ve been experiencing since the crash. I was unconscious on scene and intubated, and I don’t remember anything after that. I was flown to the hospital, and they treated me for internal bleeding and gave me fluids and blood. I’m not sure if I’m having pain, swelling, or trouble moving — I was not told.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=post-MVC internal bleeding in 57-year-old female)\nresponse: [Document 1] (ID: 24514_2, Score: 0.843)\n- Internal hemorrhage: Patients can develop catastrophic internal hemorrhages, such as from a bleeding peptic ulcer or splenic hemorrhage, which can cause exsanguination even without any external bleeding. It is a relatively common cause of unexpected, sudden death in patients who seemed previously ...\n\n[Document 2] (ID: 10978_4, Score: 0.843)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 3] (ID: 373_5, Score: 0.837)\nOn October 17, a 51-year-old woman developed a large pimple on her forehead with erythema and swelling. On October 18, the lesion enlarged, was slightly painful, nonpruritic, and drained a small amount of yellowish fluid. She sought medical care, cervical and preauricular lymphadenopathy was noted o...\n\n[Document 4] (ID: 263_1, Score: 0.837)\nNevada. On February 17, 2005, a previously healthy woman aged 46 years from Washoe County, Nevada, had onset of nonspecific leg pain, which progressed during the next 24 hours to generalized myalgia. She visited a local hospital emergency department (ED), where a viral syndrome was diagnosed. She wa...\n\n[Document 5] (ID: 527_22, Score: 0.836)\nWhile working in an emergency room, you are asked to see a 31-year-old Asian-American woman who has had fever, nausea, and fatigue for the past 24 hours. She also reports dark urine and has had 3 light colored stools since yesterday. She has previously been healthy and has no previous history of jau...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?)\nresponse: I’ve been feeling more tired than usual, and sometimes I get dizzy when I stand up. I also noticed I’m having more frequent headaches, and I’ve been feeling a bit foggy mentally—like my brain isn’t quite as sharp as it used to be. I’m not sure if it’s just stress or something else, but it’s definitely affected my daily routine.",
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=symptoms of post-traumatic complications in 57-year-old female after MVC)\nresponse: [Document 1] (ID: 28161_11, Score: 0.841)\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Bevacizumab as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding...\n\n[Document 2] (ID: 14328_32, Score: 0.841)\n- Musculoskeletal: Aseptic necrosis of femoral and humeral heads, calcinosis (following intra-articular or intralesional use), Charcot-like arthropathy, loss of muscle mass, muscle weakness, osteoporosis, pathologic fracture of long bones, post injection flare (following intra-articular use), steroi...\n\n[Document 3] (ID: 18994_11, Score: 0.838)\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Avastin as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding com...\n\n[Document 4] (ID: 1150_90, Score: 0.838)\n(2) reactions to medical procedures; (3) reactions to changes in one's physical condition and to the disability; and (4) reactions and readjustments to one's social and family envir on ment. 56 These reactions may appear immediately or after some time, depending on the patient's individual and socia...\n\n[Document 5] (ID: 10978_4, Score: 0.837)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=post-MVC cognitive symptoms and dizziness in 57-year-old female)\nresponse: [Document 1] (ID: 8848_1, Score: 0.841)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 25319_4, Score: 0.840)\nA 75-year-old (race?) female presented for evaluation of an asymptomatic rash in her extremeties. Her past medical history was significant for discoid lupus erythematosus diagnosed (when?) achieving drug-induced remission with (treatment?) and (any other commorbidity?). Other chronic medications inc...\n\n[Document 3] (ID: 29537_8, Score: 0.839)\n- Nervous System/Psychiatric: Parkinsonism, Bell's palsy, decreased mental acuity, involuntary choreoathetotic movements, symptoms of cerebrovascular insufficiency, psychic disturbances including nightmares and reversible mild psychoses or depression, headache, sedation, asthenia or weakness, dizzin...\n\n[Document 4] (ID: 114_372, Score: 0.837)\n# S: Subjective\nThe patient may present with symptoms involving various organ systems, including the following:\nCNS, including the eye:\n- Floaters, scotomata (blind spots), \"flashing lights,\" loss of peripheral or field vision (chorioretinitis)\n- Headache, difficulty concentrating, sleepiness, perso...\n\n[Document 5] (ID: 6150_1, Score: 0.837)\n# Pathophysiology\n- The pathogenesis of post-chemotherapy cognitive impairment is not fully understood.\n- However, the underlying pathophysiology is believed to be caused by direct neurotoxicity.\n- Genes involved the development of post-chemotherapy cognitive impairment, include:\n- COMT nucleotide p..."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?)\nresponse: I was not told any specific symptoms I’ve been experiencing since the crash. I was unconscious on scene and intubated, and I don’t remember anything after that. I was flown to the hospital, and they treated me for internal bleeding and gave me fluids and blood. I’m not sure if I’m having pain, swelling, or trouble moving — I was not told.\ndoctor_action: retrieve(query=post-MVC internal bleeding in 57-year-old female)\nresponse: [Document 1] (ID: 24514_2, Score: 0.843)\n- Internal hemorrhage: Patients can develop catastrophic internal hemorrhages, such as from a bleeding peptic ulcer or splenic hemorrhage, which can cause exsanguination even without any external bleeding. It is a relatively common cause of unexpected, sudden death in patients who seemed previously ...\n\n[Document 2] (ID: 10978_4, Score: 0.843)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\n[Document 3] (ID: 373_5, Score: 0.837)\nOn October 17, a 51-year-old woman developed a large pimple on her forehead with erythema and swelling. On October 18, the lesion enlarged, was slightly painful, nonpruritic, and drained a small amount of yellowish fluid. She sought medical care, cervical and preauricular lymphadenopathy was noted o...\n\n[Document 4] (ID: 263_1, Score: 0.837)\nNevada. On February 17, 2005, a previously healthy woman aged 46 years from Washoe County, Nevada, had onset of nonspecific leg pain, which progressed during the next 24 hours to generalized myalgia. She visited a local hospital emergency department (ED), where a viral syndrome was diagnosed. She wa...\n\n[Document 5] (ID: 527_22, Score: 0.836)\nWhile working in an emergency room, you are asked to see a 31-year-old Asian-American woman who has had fever, nausea, and fatigue for the past 24 hours. She also reports dark urine and has had 3 light colored stools since yesterday. She has previously been healthy and has no previous history of jau...\ndoctor_action: ask_patient(question=Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?)\nresponse: I’ve been feeling more tired than usual, and sometimes I get dizzy when I stand up. I also noticed I’m having more frequent headaches, and I’ve been feeling a bit foggy mentally—like my brain isn’t quite as sharp as it used to be. I’m not sure if it’s just stress or something else, but it’s definitely affected my daily routine.\ndoctor_action: retrieve(query=symptoms of post-traumatic complications in 57-year-old female after MVC)\nresponse: [Document 1] (ID: 28161_11, Score: 0.841)\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Bevacizumab as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding...\n\n[Document 2] (ID: 14328_32, Score: 0.841)\n- Musculoskeletal: Aseptic necrosis of femoral and humeral heads, calcinosis (following intra-articular or intralesional use), Charcot-like arthropathy, loss of muscle mass, muscle weakness, osteoporosis, pathologic fracture of long bones, post injection flare (following intra-articular use), steroi...\n\n[Document 3] (ID: 18994_11, Score: 0.838)\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Avastin as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding com...\n\n[Document 4] (ID: 1150_90, Score: 0.838)\n(2) reactions to medical procedures; (3) reactions to changes in one's physical condition and to the disability; and (4) reactions and readjustments to one's social and family envir on ment. 56 These reactions may appear immediately or after some time, depending on the patient's individual and socia...\n\n[Document 5] (ID: 10978_4, Score: 0.837)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other invasi...\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20361072",
+        "turn_id": 9,
+        "query_text": "57-year-old female, s/p motor vehicle crash, unconscious on scene, intubated, treated for internal bleeding. Post-discharge: fatigue, dizziness, frequent headaches, cognitive fog. No labs or imaging results available. No specific symptoms reported since crash. Uncertainty: cause of post-trauma symptoms.",
+        "skill_query_text": "Presenting problem: post-MVC cognitive symptoms and dizziness in 57-year-old female. Evidence gathered: patient history, prior retrievals on internal bleeding and post-trauma complications. Ineffective actions: no labs or imaging results obtained. Need: guidance on next diagnostic action to resolve cognitive/dizziness uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7884,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7763,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7738,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7475,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.739,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_4b4b6f436ea3",
+              "type": "experience",
+              "score": 0.8274,
+              "outcome": "negative",
+              "text": "Shaking, numbness, and loss of consciousness following a recent traumatic event like a car accident strongly suggest acute stress reaction or PTSD with physiological symptoms; do not dismiss this pattern as purely neurological unless trauma is absent or inconsistent.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.824,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.8122,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8158,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8119,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8104,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Post-traumatic cognitive dysfunction with possible post-traumatic dizziness and fatigue following motor vehicle crash}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0ea91ac7-eeb6-4a18-956e-8f9e5a92425c': '{\"diagnosis\": \"Post-traumatic cognitive dysfunction with possible post-traumatic dizziness and fatigue following motor vehicle crash\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '0ea91ac7-eeb6-4a18-956e-8f9e5a92425c', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Post-traumatic cognitive dysfunction with possible post-traumatic dizziness and fatigue following motor vehicle crash}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1999}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4666666666666667,
+        "conf_after": 0.4666666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-traumatic cognitive dysfunction with possible post-traumatic dizziness and fatigue following motor vehicle crash}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-traumatic cognitive dysfunction with possible post-traumatic dizziness and fatigue following motor vehicle crash}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?"
+      },
+      "patient_or_tool_response": "{'question': 'I was not told any specific symptoms I’ve been experiencing since the crash. I was unconscious on scene and intubated, and I don’t remember anything after that. I was flown to the hospital, and they treated me for internal bleeding and gave me fluids and blood. I’m not sure if I’m having pain, swelling, or trouble moving — I was not told.'}",
+      "env_info": "{'response': [{'id': '098afaa8-a17b-442e-8a86-f5a40a470958', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe any specific symptoms you\\\\u2019ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 76}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the motor vehicle crash occur, and what were the immediate effects or injuries sustained?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 3,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'46717626-5357-49f3-9851-d13010f72230': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '46717626-5357-49f3-9851-d13010f72230', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 209}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any specific symptoms you’ve been experiencing since the crash? For example, pain, swelling, difficulty moving, or any other concerns?)\nresponse: I was not told any specific symptoms I’ve been experiencing since the crash. I was unconscious on scene and intubated, and I don’t remember anything after that. I was flown to the hospital, and they treated me for internal bleeding and gave me fluids and blood. I’m not sure if I’m having pain, swelling, or trouble moving — I was not told."
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?"
+      },
+      "patient_or_tool_response": "{'question': 'I’ve been feeling more tired than usual, and sometimes I get dizzy when I stand up. I also noticed I’m having more frequent headaches, and I’ve been feeling a bit foggy mentally—like my brain isn’t quite as sharp as it used to be. I’m not sure if it’s just stress or something else, but it’s definitely affected my daily routine.'}",
+      "env_info": "{'response': [{'id': 'e43586f2-a1f0-467e-87be-edaca0da8bed', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 858}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 retrieve_interaction: doctor_action: retrieve(query=post-MVC internal bleeding in 57-year-old female)\nresponse: [Document 1] (ID: 24514_2, Score: 0.843)\n- Internal hemorrhage: Patients can develop catastrophic internal hemorrhages, such as from a bleeding peptic ulcer or splenic hemorrhage, which can cause exsanguination even without any external bleeding. It is a relatively common cause of unexpected, sudden death in patients who seemed previously ...\n\n[Document 2] (ID: 10978_4, Score: 0.843)\n# Natural History, Complications, and Prognosis\nPatients with VWD can become symptomatic at any age. A typical history in a patient with mild to moderate disease includes epistaxis lasting longer than 10 minutes in childhood lifelong easy bruising, bleeding following dental extractions, other ...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "symptoms of post-traumatic complications in 57-year-old female after MVC"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'84d0a8a8-8f04-4dad-a9f2-05381371ffd9': \"[Document 1] (ID: 28161_11, Score: 0.841)\\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Bevacizumab as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding...\\n\\n[Document 2] (ID: 14328_32, Score: 0.841)\\n- Musculoskeletal: Aseptic necrosis of femoral and humeral heads, calcinosis (following intra-articular or intralesional use), Charcot-like arthropathy, loss of muscle mass, muscle weakness, osteoporosis, pathologic fracture of long bones, post injection flare (following intra-articular use), steroi...\\n\\n[Document 3] (ID: 18994_11, Score: 0.838)\\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Avastin as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding com...\\n\\n[Document 4] (ID: 1150_90, Score: 0.838)\\n(2) reactions to medical procedures; (3) reactions to changes in one's physical condition and to the disability; and (...[truncated]\"}}",
+      "env_info": "{'response': [{'id': '84d0a8a8-8f04-4dad-a9f2-05381371ffd9', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of post-traumatic complications in 57-year-old female after MVC\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 997}",
+      "reward": 0.0,
+      "turn_reward": 0.026666666666666672,
+      "importance": 0.13333333333333336,
+      "evidence_records": [
+        "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any new symptoms since being discharged from the hospital? For example, fatigue, dizziness, shortness of breath, or any changes in your overall well-being?)\nresponse: I’ve been feeling more tired than usual, and sometimes I get dizzy when I stand up. I also noticed I’m having more frequent headaches, and I’ve been feeling a bit foggy mentally—like my brain isn’t quite as sharp as it used to be. I’m not sure if it’s just stress or something else, but it’s definitely affected my daily routine."
+      ]
+    },
+    {
+      "turn_id": 8,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "post-MVC cognitive symptoms and dizziness in 57-year-old female"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'309b83df-85cb-4f31-ba02-4f72ca3f869d': \"[Document 1] (ID: 8848_1, Score: 0.841)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 2] (ID: 25319_4, Score: 0.840)\\nA 75-year-old (race?) female presented for evaluation of an asymptomatic rash in her extremeties. Her past medical history was significant for discoid lupus erythematosus diagnosed (when?) achieving drug-induced remission with (treatment?) and (any other commorbidity?). Other chronic medications inc...\\n\\n[Document 3] (ID: 29537_8, Score: 0.839)\\n- Nervous System/Psychiatric: Parkinsonism, Bell's palsy, decreased mental acuity, involuntary choreoathetotic movements, symptoms of cerebrovascular insufficiency, psychic disturbances including nightmares and reversible mild psychoses or depression, headache, sedation, asthenia or weakness, dizzin...\\n\\n[Document 4] (ID: 114_372, Score: 0.837)\\n# S: Subjective\\nThe patient may present with symptoms involving various organ systems, including the following:\\nCNS, inclu...[truncated]\"}}",
+      "env_info": "{'response': [{'id': '309b83df-85cb-4f31-ba02-4f72ca3f869d', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"post-MVC cognitive symptoms and dizziness in 57-year-old female\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1485}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_8 retrieve_interaction: doctor_action: retrieve(query=symptoms of post-traumatic complications in 57-year-old female after MVC)\nresponse: [Document 1] (ID: 28161_11, Score: 0.841)\nThe incidence of post-operative wound healing and/or bleeding complications was increased in patients with mCRC receiving Bevacizumab as compared to patients receiving only chemotherapy. Among patients requiring surgery on or within 60 days of receiving study treatment, wound healing and/or bleeding...\n\n[Document 2] (ID: 14328_32, Score: 0.841)\n- Musculoskeletal: Aseptic necrosis of femoral and humeral heads, calcinosis (following intra-articular or intralesional use), Charcot-like arthropathy, loss of muscle mass, muscle weakness, osteoporosis, pathologic fracture of long bones, post injection flare (follow...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 9,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Post-traumatic cognitive dysfunction with possible post-traumatic dizziness and fatigue following motor vehicle crash}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'0ea91ac7-eeb6-4a18-956e-8f9e5a92425c': '{\"diagnosis\": \"Post-traumatic cognitive dysfunction with possible post-traumatic dizziness and fatigue following motor vehicle crash\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '0ea91ac7-eeb6-4a18-956e-8f9e5a92425c', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Post-traumatic cognitive dysfunction with possible post-traumatic dizziness and fatigue following motor vehicle crash}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1999}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_9 retrieve_interaction: doctor_action: retrieve(query=post-MVC cognitive symptoms and dizziness in 57-year-old female)\nresponse: [Document 1] (ID: 8848_1, Score: 0.841)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 25319_4, Score: 0.840)\nA 75-year-old (race?) female presented for evaluation of an asymptomatic rash in her extremeties. Her past medical history was significant for discoid lupus erythematosus diagnosed (when?) achieving drug-induced remission with (treatment?) and (any other commorbidity?). Other chr...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

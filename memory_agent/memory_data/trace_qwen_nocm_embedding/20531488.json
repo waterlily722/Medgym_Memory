@@ -1,0 +1,864 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20531488",
+  "turns": [
+    {
+      "case_id": "20531488",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "facial droop, limb shaking",
+        "diagnostic_strategy": "Current clinical problem: 62-year-old male with facial droop and limb shaking, history of prior stroke with residual right arm. Key evidence gathered: patient age, gender, chief complaint, prior stroke history. Diagnostic uncertainty: unclear if current symptoms are new neurological event, stroke recurrence, or movement disorder. Most useful missing information: detailed neurological exam, imaging (CT/MRI), lab markers (e.g., glucose, electrolytes, INR), and history of recent trauma or medication changes. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 62-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 62-year-old male patient presenting with facial droop, limb shaking and hx prior stroke with residual right arm.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 62-year-old male with chief complaint of facial droop and limb shaking. History includes prior stroke with residual right arm. No additional findings, exams, labs, or imaging reported. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20531488",
+        "turn_id": 1,
+        "query_text": "62-year-old male with facial droop and limb shaking, history of prior stroke with residual right arm. No additional findings, exams, labs, or imaging reported. Diagnostic uncertainty: unclear if current symptoms are new neurological event, stroke recurrence, or movement disorder.",
+        "skill_query_text": "Presenting problem: 62-year-old male with facial droop and limb shaking, history of prior stroke with residual right arm. Evidence gathered: patient age, gender, chief complaint, prior stroke history. Missing: detailed neurological exam, imaging (CT/MRI), lab markers (glucose, electrolytes, INR), history of recent trauma or medication changes. Ineffective actions: none. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_40d04e5493d4",
+              "type": "experience",
+              "score": 0.772,
+              "outcome": "positive",
+              "text": "Fever, jaundice, and abdominal discomfort in a patient with known liver disease and history of hepatic encephalopathy strongly support hepatic encephalopathy exacerbation; do not apply this when there is recent trauma, systemic infection, or neurological focal signs suggesting alternative etiology.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8076,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_72c0937eff6d",
+              "type": "experience",
+              "score": 0.8067,
+              "outcome": "negative",
+              "text": "The absence of weakness, numbness, or tingling in the legs or feet, despite chronic back surgeries and amputation, is misleading — it does not rule out radicular pain or spinal pathology, especially when combined with systemic signs like dizziness and uncontrolled hypertension, which point to a hypertensive emergency exacerbating the pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.7996,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_5d33bd14f434",
+              "type": "skill",
+              "score": 0.812,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8116,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_c43dd2c62324",
+              "type": "skill",
+              "score": 0.8114,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any recent changes in your facial droop or limb shaking? Has it worsened or become more frequent?"
+        },
+        "patient_or_tool_response": "{'question': 'I noticed a recent episode where my limbs shook and my face drooped, along with slurred speech — my wife saw it happen around 12 PM today. It lasted a few minutes and then went back to normal. I’m not sure if it’s gotten worse or more frequent, but this was the first time in recent memory that it happened again. I was in good health before this, just took a nap.'}",
+        "env_info": "{'response': [{'id': '9a95ae4e-27f4-4a27-ace9-0069ad9c8308', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any recent changes in your facial droop or limb shaking? Has it worsened or become more frequent?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your facial droop or limb shaking? Has it worsened or become more frequent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your facial droop or limb shaking? Has it worsened or become more frequent?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20531488",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "facial droop, limb shaking",
+        "diagnostic_strategy": "Current clinical problem: acute onset of facial droop and limb shaking with slurred speech, possibly episodic. Key evidence: patient reports a recent episode lasting minutes, witnessed by spouse at 12 PM, with return to baseline. No prior history of similar events. Diagnostic uncertainty: whether this is a focal neurological event (e.g., transient ischemic attack, seizure, or metabolic/metabolic encephalopathy) or non-neurological (e.g., stress-induced tremor). Most useful missing information: timing of onset relative to triggers, associated symptoms (e.g., headache, fever, loss of consciousness), and prior medical history (e.g., hypertension, diabetes, recent infections). Existing evidence is insufficient to finalize diagnosis; requires further neurologic exam, imaging, or lab work.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your facial droop or limb shaking? Has it worsened or become more frequent?)\nresponse: I noticed a recent episode where my limbs shook and my face drooped, along with slurred speech — my wife saw it happen around 12 PM today. It lasted a few minutes and then went back to normal. I’m not sure if it’s gotten worse or more frequent, but this was the first time in recent memory that it happened again. I was in good health before this, just took a nap."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: facial droop, limb shaking. Patient reports a recent episode at 12 PM today, lasting minutes, with slurred speech, witnessed by spouse. Returned to baseline. Patient states this is the first time in recent memory. No prior history of similar events. Patient reports good health prior to this, just took a nap. No other symptoms reported. No prior imaging, lab, or exam results available. No known triggers or associated symptoms reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20531488",
+        "turn_id": 2,
+        "query_text": "Facial droop, limb shaking, slurred speech, acute onset, witnessed by spouse at 12 PM, resolved within minutes, returned to baseline. First episode in recent memory. No prior history. Patient reports good health prior, recently took nap. No associated symptoms, no triggers, no prior imaging or lab results. Uncertainty: focal neurological event (TIA, seizure, metabolic encephalopathy) vs non-neurological (stress-induced tremor).",
+        "skill_query_text": "Presenting problem: acute facial droop, limb shaking, slurred speech. Uncertainty: focal neurological event vs non-neurological. Evidence gathered: patient report of episode at 12 PM, resolved, no prior history. No prior imaging, labs, or exam. No ineffective actions tried. Need workflow guidance for next diagnostic steps: neurologic exam, imaging, or lab work to differentiate etiology."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7845,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_40d04e5493d4",
+              "type": "experience",
+              "score": 0.7825,
+              "outcome": "positive",
+              "text": "Fever, jaundice, and abdominal discomfort in a patient with known liver disease and history of hepatic encephalopathy strongly support hepatic encephalopathy exacerbation; do not apply this when there is recent trauma, systemic infection, or neurological focal signs suggesting alternative etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.776,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7752,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7725,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_4b4b6f436ea3",
+              "type": "experience",
+              "score": 0.82,
+              "outcome": "negative",
+              "text": "Shaking, numbness, and loss of consciousness following a recent traumatic event like a car accident strongly suggest acute stress reaction or PTSD with physiological symptoms; do not dismiss this pattern as purely neurological unless trauma is absent or inconsistent.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8161,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8154,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_5d33bd14f434",
+              "type": "skill",
+              "score": 0.8185,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_26da6452b76c",
+              "type": "skill",
+              "score": 0.8135,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_7c6b064f80ea",
+              "type": "skill",
+              "score": 0.8131,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6b14dbb9-932a-458a-bdf1-09320e7650d6': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '6b14dbb9-932a-458a-bdf1-09320e7650d6', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 137}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20531488",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20531488",
+        "turn_id": 2,
+        "query_text": "Facial droop, limb shaking, slurred speech, acute onset, witnessed by spouse at 12 PM, resolved within minutes, returned to baseline. First episode in recent memory. No prior history. Patient reports good health prior, recently took nap. No associated symptoms, no triggers, no prior imaging or lab results. Uncertainty: focal neurological event (TIA, seizure, metabolic encephalopathy) vs non-neurological (stress-induced tremor).",
+        "skill_query_text": "Presenting problem: acute facial droop, limb shaking, slurred speech. Uncertainty: focal neurological event vs non-neurological. Evidence gathered: patient report of episode at 12 PM, resolved, no prior history. No prior imaging, labs, or exam. No ineffective actions tried. Need workflow guidance for next diagnostic steps: neurologic exam, imaging, or lab work to differentiate etiology."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7845,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_40d04e5493d4",
+              "type": "experience",
+              "score": 0.7825,
+              "outcome": "positive",
+              "text": "Fever, jaundice, and abdominal discomfort in a patient with known liver disease and history of hepatic encephalopathy strongly support hepatic encephalopathy exacerbation; do not apply this when there is recent trauma, systemic infection, or neurological focal signs suggesting alternative etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.776,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7752,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7725,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_4b4b6f436ea3",
+              "type": "experience",
+              "score": 0.82,
+              "outcome": "negative",
+              "text": "Shaking, numbness, and loss of consciousness following a recent traumatic event like a car accident strongly suggest acute stress reaction or PTSD with physiological symptoms; do not dismiss this pattern as purely neurological unless trauma is absent or inconsistent.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8161,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8154,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_5d33bd14f434",
+              "type": "skill",
+              "score": 0.8185,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_26da6452b76c",
+              "type": "skill",
+              "score": 0.8135,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_7c6b064f80ea",
+              "type": "skill",
+              "score": 0.8131,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.776,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "transient facial droop and limb shaking in patient with prior stroke"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5d356d58-bc65-4487-a8fa-5ac3ab4197c0': '[Document 1] (ID: 3338_11, Score: 0.843)\\n## Prior stroke\\n\\n[Document 2] (ID: 4583_26, Score: 0.842)\\n# Level of Evidence = IV\\nThe signs and symptoms of stroke include:\\n Weakness: Leg, arm or facial weakness on one side of the body (hemiparesis) or numbness and tingling in the face, arm or leg (dysesthesia)\\n Trouble speaking: Slurred speech (dysarthria) or inability to speak and/or understand (aphas...\\n\\n[Document 3] (ID: 4583_123, Score: 0.834)\\n# Discussion of Evidence\\nUp to 30% of all stroke clients will deteriorate in the first 24 hours (Summers et al., 2009). However, during the first week, nearly 64% of clients experienced one or more complications (pain, temperature >38°C, progressing stroke, cardiovascular complications, infections  ...\\n\\n[Document 4] (ID: 16560_9, Score: 0.833)\\n- Nervous System. Mood changes (e.g. euphoria, dysphoria), weakness, headache, agitation, tremor, involuntary muscle movements (e.g. muscle twitches, myoclonus), severe convulsions, transient hallucinations and disorientation, confusion, delirium, visual disturbances. Inadvertent injection about a n...\\n\\n[Document 5] (ID: 11954_0, Score: 0.832)\\nTransient neurological attack\\nIn contract, for focal symptoms,...[truncated]'}}",
+        "env_info": "{'response': [{'id': '5d356d58-bc65-4487-a8fa-5ac3ab4197c0', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"transient facial droop and limb shaking in patient with prior stroke\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 208}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.5,
+        "delta": 0.5,
+        "turn_reward": 0.1,
+        "importance": 0.5
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"transient facial droop and limb shaking in patient with prior stroke\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"transient facial droop and limb shaking in patient with prior stroke\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20531488",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "facial droop, limb shaking",
+        "diagnostic_strategy": "Current clinical problem: transient facial droop and limb shaking, possibly related to prior stroke. Key evidence: patient reports recent episode with slurred speech, lasting minutes, resolved spontaneously. No lab results available. Diagnostic uncertainty: whether this is a recurrent stroke, transient ischemic attack, or other neurological event (e.g., tremor, myoclonus). Most useful missing information: neuroimaging (e.g., diffusion-weighted MRI) to rule out acute stroke. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your facial droop or limb shaking? Has it worsened or become more frequent?)\nresponse: I noticed a recent episode where my limbs shook and my face drooped, along with slurred speech — my wife saw it happen around 12 PM today. It lasted a few minutes and then went back to normal. I’m not sure if it’s gotten worse or more frequent, but this was the first time in recent memory that it happened again. I was in good health before this, just took a nap."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: facial droop, limb shaking. Patient reports recent episode with slurred speech, lasting minutes, resolved spontaneously. No lab results available. Documented prior stroke. Evidence suggests possible transient ischemic attack or neurological event (e.g., tremor, myoclonus). No imaging or specific diagnostic tests performed yet. Unresolved: need neuroimaging to confirm acute stroke or other etiology. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20531488",
+        "turn_id": 4,
+        "query_text": "Facial droop, limb shaking, recent episode with slurred speech lasting minutes, resolved spontaneously. No lab results. Prior stroke documented. Uncertainty: recurrent stroke, TIA, or neurological event (tremor/myoclonus). Missing: neuroimaging (e.g., diffusion-weighted MRI).",
+        "skill_query_text": "Presenting problem: transient facial droop and limb shaking with slurred speech episode. Evidence gathered: patient history, no labs. Ineffective action: requested labs — no result. Need: neuroimaging guidance to differentiate acute stroke vs. other etiology. Workflow guidance for next diagnostic step."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7897,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7858,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_40d04e5493d4",
+              "type": "experience",
+              "score": 0.7664,
+              "outcome": "positive",
+              "text": "Fever, jaundice, and abdominal discomfort in a patient with known liver disease and history of hepatic encephalopathy strongly support hepatic encephalopathy exacerbation; do not apply this when there is recent trauma, systemic infection, or neurological focal signs suggesting alternative etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7647,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7575,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_736cc3c016d8",
+              "type": "experience",
+              "score": 0.8219,
+              "outcome": "negative",
+              "text": "Seizures alone are insufficient to confirm cerebral AVM; additional imaging or neurologic findings are required to establish localization and etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_edb2e3f0b407",
+              "type": "experience",
+              "score": 0.8136,
+              "outcome": "negative",
+              "text": "Requesting labs for unexplained shaking and loss of consciousness without prior clinical context is low-yield; prioritize targeted history and trauma screening over lab requests in acute presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.81,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8164,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f7576bfbca26",
+              "type": "skill",
+              "score": 0.808,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8065,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any headaches, dizziness, or visual disturbances along with the facial droop and limb shaking?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'dc49347c-adaf-4be0-8757-939ff41b6184', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any headaches, dizziness, or visual disturbances along with the facial droop and limb shaking?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 678}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any headaches, dizziness, or visual disturbances along with the facial droop and limb shaking?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any headaches, dizziness, or visual disturbances along with the facial droop and limb shaking?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20531488",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "facial droop, limb shaking",
+        "diagnostic_strategy": "Current clinical problem: transient facial droop and limb shaking with slurred speech, possibly related to neurological event. Key evidence: patient reports recent episode with slurred speech, no prior history of similar events, no reported headaches, dizziness, or visual disturbances. Diagnostic uncertainty: whether this is a transient ischemic attack, seizure, or other neurological cause. Most useful missing information: neuroimaging (e.g., CT or MRI) to rule out acute stroke or structural lesion. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: facial droop, limb shaking",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your facial droop or limb shaking? Has it worsened or become more frequent?)\nresponse: I noticed a recent episode where my limbs shook and my face drooped, along with slurred speech — my wife saw it happen around 12 PM today. It lasted a few minutes and then went back to normal. I’m not sure if it’s gotten worse or more frequent, but this was the first time in recent memory that it happened again. I was in good health before this, just took a nap.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=transient facial droop and limb shaking in patient with prior stroke)\nresponse: [Document 1] (ID: 3338_11, Score: 0.843)\n## Prior stroke\n\n[Document 2] (ID: 4583_26, Score: 0.842)\n# Level of Evidence = IV\nThe signs and symptoms of stroke include:\n Weakness: Leg, arm or facial weakness on one side of the body (hemiparesis) or numbness and tingling in the face, arm or leg (dysesthesia)\n Trouble speaking: Slurred speech (dysarthria) or inability to speak and/or understand (aphas...\n\n[Document 3] (ID: 4583_123, Score: 0.834)\n# Discussion of Evidence\nUp to 30% of all stroke clients will deteriorate in the first 24 hours (Summers et al., 2009). However, during the first week, nearly 64% of clients experienced one or more complications (pain, temperature >38°C, progressing stroke, cardiovascular complications, infections  ...\n\n[Document 4] (ID: 16560_9, Score: 0.833)\n- Nervous System. Mood changes (e.g. euphoria, dysphoria), weakness, headache, agitation, tremor, involuntary muscle movements (e.g. muscle twitches, myoclonus), severe convulsions, transient hallucinations and disorientation, confusion, delirium, visual disturbances. Inadvertent injection about a n...\n\n[Document 5] (ID: 11954_0, Score: 0.832)\nTransient neurological attack\nIn contract, for focal symptoms, see Transient ischemic attack.\n\n# Etiology\n14% have acute stroke (diffusion-weighted imaging –positive)\n\n# Symptoms\nThe most common symptoms are:\n- Loss in consciousness (including syncope) or less commonly a decrease in consciousness\n- ..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: facial droop, limb shaking. Patient reports recent episode with slurred speech, witnessed by spouse at 12 PM, lasting minutes, resolved spontaneously. No prior history of similar events. Patient reports no headaches, dizziness, or visual disturbances. Labs requested but no result available. Literature review suggests transient neurological attack, including stroke and seizure-like symptoms, with possible acute stroke etiology. No imaging performed. Missing: neuroimaging to confirm or rule out acute stroke or structural lesion. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20531488",
+        "turn_id": 5,
+        "query_text": "Facial droop, limb shaking, slurred speech, witnessed at 12 PM, resolved spontaneously, no prior history, no headaches, dizziness, or visual disturbances, no labs result, no imaging performed, diagnostic uncertainty: transient ischemic attack, seizure, or other neurological cause.",
+        "skill_query_text": "Presenting problem: transient facial droop and limb shaking with slurred speech. Uncertainty: neurological cause (TIA, seizure). Evidence gathered: patient history, no labs, no imaging. Ineffective action: labs requested but no result. Need: guidance on next diagnostic step, specifically neuroimaging to rule out acute stroke or structural lesion."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_40d04e5493d4",
+              "type": "experience",
+              "score": 0.7436,
+              "outcome": "positive",
+              "text": "Fever, jaundice, and abdominal discomfort in a patient with known liver disease and history of hepatic encephalopathy strongly support hepatic encephalopathy exacerbation; do not apply this when there is recent trauma, systemic infection, or neurological focal signs suggesting alternative etiology.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7936,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.792,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_736cc3c016d8",
+              "type": "experience",
+              "score": 0.7915,
+              "outcome": "negative",
+              "text": "Seizures alone are insufficient to confirm cerebral AVM; additional imaging or neurologic findings are required to establish localization and etiology.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8048,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_5d33bd14f434",
+              "type": "skill",
+              "score": 0.8044,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_26da6452b76c",
+              "type": "skill",
+              "score": 0.7966,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Transient Ischemic Attack (TIA)}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'95d13040-6ed0-41ac-8632-462c5728fa63': '{\"diagnosis\": \"Transient Ischemic Attack (TIA)\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '95d13040-6ed0-41ac-8632-462c5728fa63', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Transient Ischemic Attack (TIA)}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 758}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Transient Ischemic Attack (TIA)}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Transient Ischemic Attack (TIA)}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20531488",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "facial droop, limb shaking",
+        "diagnostic_strategy": "Known evidence: prior stroke with right arm weakness, on coumadin; current episode includes facial droop, limb shaking, slurred speech — first occurrence. Leading uncertainty: whether this is a new stroke, transient ischemic attack, or other neurological event. Most useful missing evidence: imaging (CT/MRI) to confirm acute ischemic event or rule out other causes. Diagnosis should not yet be finalized due to lack of imaging and need for further evaluation.",
+        "efficient_turn_information": [
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any prior episodes like this, or any other neurological symptoms before today?)\nresponse: I had a prior stroke that left me with weakness in my right arm, and I’m on coumadin for that. I’ve never had any other neurological symptoms like seizures, headaches, numbness, or weakness before today. I also don’t have a history of facial droop or limb shaking — not even during my previous stroke. Today’s episode was the first time I’ve had facial droop, limb shaking, and slurred speech."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports facial droop, limb shaking, and slurred speech — first occurrence. Prior history: stroke with right arm weakness, on coumadin. No prior neurological symptoms (seizures, headaches, numbness, weakness). No prior facial droop or limb shaking even during previous stroke. Recent episode noted at 12 PM today, lasted minutes, resolved. No recent changes in symptoms reported. Labs and CXR not available. Retrieved information on transient ischemic attack and stroke differential diagnosis. No imaging performed yet."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20531488",
+        "turn_id": 6,
+        "query_text": "Patient presents with facial droop, limb shaking, and slurred speech — first occurrence. Prior history: stroke with right arm weakness, on coumadin. No prior neurological symptoms (seizures, headaches, numbness, weakness). No prior facial droop or limb shaking even during previous stroke. Labs and CXR not available. No imaging performed. Uncertainty: whether this is a new stroke, transient ischemic attack, or other neurological event.",
+        "skill_query_text": "Presenting problem: facial droop, limb shaking, slurred speech — first occurrence. Evidence gathered: prior stroke with right arm weakness, on coumadin; no prior neurological symptoms. Missing evidence: imaging (CT/MRI). Ineffective actions: none. Need workflow guidance: decision on next diagnostic step given current uncertainty and missing imaging."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_17c4c190bd39",
+              "type": "experience",
+              "score": 0.8301,
+              "outcome": "negative",
+              "text": "Patient history of thalamic hemorrhage and recent Benadryl use, combined with shaking episodes and unresponsiveness, supports Benadryl-induced seizure disorder; prior stroke history is a key discriminative clue.",
+              "tags": []
+            },
+            {
+              "id": "exp_1329f43af762",
+              "type": "experience",
+              "score": 0.8134,
+              "outcome": "negative",
+              "text": "Patient’s inability to recall sweating, palpitations, or dizziness during episodes suggests these symptoms were absent or minimal, which is clinically relevant for differentiating seizure from panic or syncope.",
+              "tags": []
+            },
+            {
+              "id": "exp_fc61e51f6149",
+              "type": "experience",
+              "score": 0.8114,
+              "outcome": "negative",
+              "text": "Absence of classic hypoglycemia symptoms (sweating, tremors, palpitations) in a patient with type 1 diabetes on insulin therapy should prompt consideration of autonomic neuropathy or atypical presentation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_cc4cd8feef03",
+              "type": "skill",
+              "score": 0.7911,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_ea446b076e24",
+              "type": "skill",
+              "score": 0.7872,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7856,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Transient Ischemic Attack (TIA)}."
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3ae6b1cb-1566-4f12-a100-e6809341ae3b': '{\"diagnosis\": \"Transient Ischemic Attack (TIA)\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '3ae6b1cb-1566-4f12-a100-e6809341ae3b', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Transient Ischemic Attack (TIA)}.\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 882}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Transient Ischemic Attack (TIA)}.\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Transient Ischemic Attack (TIA)}.\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 6,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Transient Ischemic Attack (TIA)}."
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'3ae6b1cb-1566-4f12-a100-e6809341ae3b': '{\"diagnosis\": \"Transient Ischemic Attack (TIA)\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '3ae6b1cb-1566-4f12-a100-e6809341ae3b', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Transient Ischemic Attack (TIA)}.\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 882}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any prior episodes like this, or any other neurological symptoms before today?)\nresponse: I had a prior stroke that left me with weakness in my right arm, and I’m on coumadin for that. I’ve never had any other neurological symptoms like seizures, headaches, numbness, or weakness before today. I also don’t have a history of facial droop or limb shaking — not even during my previous stroke. Today’s episode was the first time I’ve had facial droop, limb shaking, and slurred speech."
+      ]
+    }
+  ],
+  "ineffective_interactions": []
+}

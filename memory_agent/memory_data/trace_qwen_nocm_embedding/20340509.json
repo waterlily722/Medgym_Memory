@@ -1,0 +1,1468 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20340509",
+  "turns": [
+    {
+      "case_id": "20340509",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "scheduled admission for chemotherapy",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 68-year-old female patient presenting for scheduled chemotherapy admission. Key evidence gathered: Patient is 68-year-old female with recent subjective decline. No specific findings or test results yet. Diagnostic uncertainty remains high due to lack of detailed history, physical exam, or lab/imaging data. Most useful missing information: Detailed symptom history, physical exam findings, relevant lab/imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risks identified yet.",
+        "efficient_turn_information": [
+          "initial_information: I am a 68-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 68-year-old female patient presenting with scheduled admission for chemotherapy.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 68-year-old female scheduled for chemotherapy admission. She reports recent subjective decline. No specific symptoms, exam findings, lab results, or imaging data provided. No prior diagnostic information or test results available. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 1,
+        "query_text": "68-year-old female, scheduled for chemotherapy admission, reports recent subjective decline. No specific symptoms, exam findings, lab results, or imaging data provided. Diagnostic uncertainty remains high due to lack of detailed history, physical exam, or lab/imaging data. No management-relevant risks identified.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 68-year-old female presenting for scheduled chemotherapy admission. Current uncertainty: No specific findings or test results yet. Evidence gathered: Patient reports recent subjective decline. Missing: Detailed symptom history, physical exam findings, relevant lab/imaging results. Ineffective actions: None. Need: Workflow guidance for diagnostic decision-making with limited evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_2019ba9cf7b7",
+              "type": "experience",
+              "score": 0.8187,
+              "outcome": "negative",
+              "text": "Unintentional weight loss and fatigue in a 77-year-old female, especially when accompanied by fever, strongly suggest systemic infection or malignancy; do not apply this when the patient has no fever, no weight loss, or when symptoms are localized and non-systemic.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8087,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8024,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8105,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8037,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8033,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.8105,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did your symptoms start, and have they been progressively worsening?"
+        },
+        "patient_or_tool_response": "{'question': 'My symptoms started progressing in ___ when I began having fatigue, depression, and then memory and word-finding issues. Since my discharge, I’ve been feeling well. The only new symptom I’ve noticed is a headache from caffeine withdrawal after not drinking coffee. I don’t know if the headache or other symptoms have been getting worse — I was not told.'}",
+        "env_info": "{'response': [{'id': '39329054-86af-4129-a482-b82255f8024c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did your symptoms start, and have they been progressively worsening?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been progressively worsening?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been progressively worsening?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "scheduled admission for chemotherapy",
+        "diagnostic_strategy": "Current clinical problem: patient scheduled for chemotherapy with no specific symptoms reported beyond vague subjective concerns. Key evidence gathered: patient reports fatigue, depression, memory/word-finding issues since discharge, and a new caffeine withdrawal headache. Diagnostic uncertainty: unclear if symptoms are progressive or stable; no objective data or lab/imaging results. Most useful missing information: timeline of symptom onset, progression, and objective measures (e.g., cognitive testing, lab values). Existing evidence is insufficient to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did your symptoms start, and have they been progressively worsening?)\nresponse: My symptoms started progressing in ___ when I began having fatigue, depression, and then memory and word-finding issues. Since my discharge, I’ve been feeling well. The only new symptom I’ve noticed is a headache from caffeine withdrawal after not drinking coffee. I don’t know if the headache or other symptoms have been getting worse — I was not told."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient scheduled for chemotherapy. Chief complaint: scheduled admission for chemotherapy. Patient reports fatigue, depression, memory/word-finding issues since discharge, and a new caffeine withdrawal headache. Patient states unsure if symptoms are worsening. No objective findings or lab/imaging results provided. No treatment recommended."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 2,
+        "query_text": "Patient scheduled for chemotherapy. Symptoms: fatigue, depression, memory/word-finding issues since discharge, new caffeine withdrawal headache. Unclear if symptoms are progressive or stable. No objective data, lab, or imaging results. No treatment recommended. Patient unsure if symptoms worsening.",
+        "skill_query_text": "Presenting problem: patient scheduled for chemotherapy with vague subjective symptoms. Evidence gathered: patient reports fatigue, depression, memory/word-finding issues, and caffeine withdrawal headache. Uncertainty: unclear if symptoms are worsening. No objective findings. Ineffective actions: none. Need workflow guidance on next diagnostic steps or evidence collection."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7766,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7396,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7301,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8351,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8298,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8204,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8086,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8027,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8022,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4efdf93d-75b4-4062-ba27-879f22ddb8de': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '4efdf93d-75b4-4062-ba27-879f22ddb8de', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 112}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.25,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 2,
+        "query_text": "Patient scheduled for chemotherapy. Symptoms: fatigue, depression, memory/word-finding issues since discharge, new caffeine withdrawal headache. Unclear if symptoms are progressive or stable. No objective data, lab, or imaging results. No treatment recommended. Patient unsure if symptoms worsening.",
+        "skill_query_text": "Presenting problem: patient scheduled for chemotherapy with vague subjective symptoms. Evidence gathered: patient reports fatigue, depression, memory/word-finding issues, and caffeine withdrawal headache. Uncertainty: unclear if symptoms are worsening. No objective findings. Ineffective actions: none. Need workflow guidance on next diagnostic steps or evidence collection."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7766,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7396,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7301,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8351,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8298,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8204,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8086,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8027,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8022,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of chemotherapy-related cognitive dysfunction in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'67b6d69f-54cd-4e22-a851-44eef42f6393': '[Document 1] (ID: 6150_2, Score: 0.913)\\n# Risk Factors\\n- The most common risk factor in the development of post-chemotherapy cognitive impairment are number of cycles of chemotherapy.\\n\\n# Natural History, Complications and Prognosis\\n- The majority of patients with post-chemotherapy cognitive impairment are initially symptomatic.\\n- Early cl...\\n\\n[Document 2] (ID: 6150_0, Score: 0.912)\\nSandbox: Post-chemotherapy cognitive impairment\\nSynonyms and keywords: Chemotherapy-induced cognitive dysfunction; Chemo brain; Chemo fog; Chemobrain; PCCI\\n\\n# Overview\\nPost-chemotherapy cognitive impairment (also known as chemotherapy-induced cognitive dysfunction) is defined as the cognitive impair...\\n\\n[Document 3] (ID: 6150_1, Score: 0.907)\\n# Pathophysiology\\n- The pathogenesis of post-chemotherapy cognitive impairment is not fully understood.\\n- However, the underlying pathophysiology is believed to be caused by direct neurotoxicity.\\n- Genes involved the development of post-chemotherapy cognitive impairment, include:\\n- COMT nucleotide p...\\n\\n[Document 4] (ID: 6142_0, Score: 0.901)\\nPost-chemotherapy cognitive impairment overview\\n\\n# Overview\\nIn medicine, post-chemotherapy cognitive impairment (also known a...[truncated]'}}",
+        "env_info": "{'response': [{'id': '67b6d69f-54cd-4e22-a851-44eef42f6393', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of chemotherapy-related cognitive dysfunction in elderly patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 183}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.5,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of chemotherapy-related cognitive dysfunction in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of chemotherapy-related cognitive dysfunction in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "scheduled admission for chemotherapy",
+        "diagnostic_strategy": "Current clinical problem: Assessing cognitive symptoms in a patient scheduled for chemotherapy. Key evidence gathered: Patient reports progressive fatigue, depression, memory, and word-finding issues since starting chemotherapy; no lab results available. Diagnostic uncertainty: Whether symptoms are chemotherapy-related cognitive dysfunction or another cause (e.g., caffeine withdrawal). Most useful missing information: Confirmation of chemotherapy cycles, cognitive testing, or ruling out other etiologies. Existing evidence is not enough to finalize diagnosis; further assessment needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did your symptoms start, and have they been progressively worsening?)\nresponse: My symptoms started progressing in ___ when I began having fatigue, depression, and then memory and word-finding issues. Since my discharge, I’ve been feeling well. The only new symptom I’ve noticed is a headache from caffeine withdrawal after not drinking coffee. I don’t know if the headache or other symptoms have been getting worse — I was not told.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of chemotherapy-related cognitive dysfunction in elderly patients)\nresponse: [Document 1] (ID: 6150_2, Score: 0.913)\n# Risk Factors\n- The most common risk factor in the development of post-chemotherapy cognitive impairment are number of cycles of chemotherapy.\n\n# Natural History, Complications and Prognosis\n- The majority of patients with post-chemotherapy cognitive impairment are initially symptomatic.\n- Early cl...\n\n[Document 2] (ID: 6150_0, Score: 0.912)\nSandbox: Post-chemotherapy cognitive impairment\nSynonyms and keywords: Chemotherapy-induced cognitive dysfunction; Chemo brain; Chemo fog; Chemobrain; PCCI\n\n# Overview\nPost-chemotherapy cognitive impairment (also known as chemotherapy-induced cognitive dysfunction) is defined as the cognitive impair...\n\n[Document 3] (ID: 6150_1, Score: 0.907)\n# Pathophysiology\n- The pathogenesis of post-chemotherapy cognitive impairment is not fully understood.\n- However, the underlying pathophysiology is believed to be caused by direct neurotoxicity.\n- Genes involved the development of post-chemotherapy cognitive impairment, include:\n- COMT nucleotide p...\n\n[Document 4] (ID: 6142_0, Score: 0.901)\nPost-chemotherapy cognitive impairment overview\n\n# Overview\nIn medicine, post-chemotherapy cognitive impairment (also known as chemotherapy-induced cognitive dysfunction or, colloquially, as chemo brain or chemo fog) describes the cognitive impairment that can result from chemotherapy treatment. App...\n\n[Document 5] (ID: 6150_3, Score: 0.888)\n## Medical Therapy\n- There is no treatment for post-chemotherapy cognitive impairment; the mainstay of therapy is supportive care.\n- Common medical therapies for the treatment of post-chemotherapy cognitive impairment, include:\n- Hormonal therapy\n\n## Surgery\n- Surgery is not recommended for patients..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient scheduled for chemotherapy. Symptoms began progressing with fatigue, depression, memory, and word-finding issues since starting chemotherapy. Patient reports a new headache from caffeine withdrawal. No lab results available. Retrieved information on post-chemotherapy cognitive impairment (chemo brain), including risk factors, pathophysiology, and management. No treatment is available; supportive care is mainstay. Unclear if symptoms are chemotherapy-related or due to other causes (e.g., caffeine withdrawal)."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 4,
+        "query_text": "Patient scheduled for chemotherapy. Symptoms: progressive fatigue, depression, memory issues, word-finding difficulties since starting chemo. New symptom: headache from caffeine withdrawal. No lab results. Unclear if symptoms are chemotherapy-related cognitive dysfunction or another cause.",
+        "skill_query_text": "Presenting problem: Assessing cognitive symptoms in patient scheduled for chemotherapy. Evidence gathered: patient reports symptoms since chemo start, no labs. Ineffective action: requested labs — no result. Need guidance on next diagnostic steps, including cognitive testing or ruling out caffeine withdrawal."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8274,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8236,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_b421b29259bc",
+              "type": "experience",
+              "score": 0.8162,
+              "outcome": "negative",
+              "text": "Headache, disorientation, slurred speech, and intoxication in a patient with recent opioid use strongly suggest opioid withdrawal; do not apply this pattern if the patient has respiratory depression, constricted pupils, or a history of overdose.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8165,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8065,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.7988,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.7988,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '0d61b8eb-9233-4389-a767-e9ba838d02fd', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 647}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "scheduled admission for chemotherapy",
+        "diagnostic_strategy": "Current clinical problem: Assess for chemotherapy-related cognitive dysfunction in a patient scheduled for chemotherapy. Key evidence gathered: Patient reports no prior chemotherapy treatments or abnormal findings. Relevant history: Symptoms began with fatigue, depression, memory, and word-finding issues, with recent headache attributed to caffeine withdrawal. Diagnostic uncertainty: Whether cognitive symptoms are chemotherapy-related or due to other causes. Most useful missing information: Confirmation of prior chemotherapy exposure, type, and number of cycles. Existing evidence is not enough to finalize diagnosis; requires confirmation of chemotherapy history and further evaluation of cognitive symptoms.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: scheduled admission for chemotherapy"
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient scheduled for chemotherapy. Symptoms began with fatigue, depression, memory, and word-finding issues, with recent headache attributed to caffeine withdrawal. No prior chemotherapy treatments or abnormal findings reported. Lab request yielded no result. Literature review on chemotherapy-induced cognitive dysfunction retrieved, indicating risk factors include number of cycles, pathophysiology involves neurotoxicity, and no specific treatment exists. No prior chemotherapy exposure confirmed."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 5,
+        "query_text": "Patient scheduled for chemotherapy. Symptoms: fatigue, depression, memory issues, word-finding difficulties, recent headache attributed to caffeine withdrawal. No prior chemotherapy treatments or abnormal findings. Lab request pending. Diagnostic uncertainty: whether cognitive symptoms are chemotherapy-related or due to other causes. Missing: confirmation of prior chemotherapy exposure, type, and number of cycles.",
+        "skill_query_text": "Presenting problem: Assess chemotherapy-related cognitive dysfunction. Evidence gathered: patient reports no prior chemotherapy, symptoms began with fatigue, depression, memory, word-finding issues, headache attributed to caffeine withdrawal. Lab request yielded no result. Ineffective actions: none. Missing: confirmation of prior chemotherapy exposure, type, and number of cycles. Need: workflow guidance for evaluating cognitive symptoms in context of chemotherapy history."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8124,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7959,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7811,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7651,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7601,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8215,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8195,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8124,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8102,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8027,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.796,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'db1f630b-7c4e-414e-b78c-f8010ad9e29c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 726}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "scheduled admission for chemotherapy",
+        "diagnostic_strategy": "Current clinical problem: Assess for chemotherapy-related cognitive dysfunction in a patient scheduled for chemotherapy. Key evidence gathered: Patient reports no prior chemotherapy treatments or abnormalities. Relevant findings: Symptom onset coincides with chemotherapy initiation; patient reports fatigue, depression, memory issues, and caffeine withdrawal headache. Diagnostic uncertainty: Whether cognitive symptoms are chemotherapy-related or due to other causes. Most useful missing information: Confirmation of prior chemotherapy exposure, type, and number of cycles. Existing evidence is not enough to finalize diagnosis; further history and lab/imaging may be needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: scheduled admission for chemotherapy",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did your symptoms start, and have they been progressively worsening?)\nresponse: My symptoms started progressing in ___ when I began having fatigue, depression, and then memory and word-finding issues. Since my discharge, I’ve been feeling well. The only new symptom I’ve noticed is a headache from caffeine withdrawal after not drinking coffee. I don’t know if the headache or other symptoms have been getting worse — I was not told.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of chemotherapy-related cognitive dysfunction in elderly patients)\nresponse: [Document 1] (ID: 6150_2, Score: 0.913)\n# Risk Factors\n- The most common risk factor in the development of post-chemotherapy cognitive impairment are number of cycles of chemotherapy.\n\n# Natural History, Complications and Prognosis\n- The majority of patients with post-chemotherapy cognitive impairment are initially symptomatic.\n- Early cl...\n\n[Document 2] (ID: 6150_0, Score: 0.912)\nSandbox: Post-chemotherapy cognitive impairment\nSynonyms and keywords: Chemotherapy-induced cognitive dysfunction; Chemo brain; Chemo fog; Chemobrain; PCCI\n\n# Overview\nPost-chemotherapy cognitive impairment (also known as chemotherapy-induced cognitive dysfunction) is defined as the cognitive impair...\n\n[Document 3] (ID: 6150_1, Score: 0.907)\n# Pathophysiology\n- The pathogenesis of post-chemotherapy cognitive impairment is not fully understood.\n- However, the underlying pathophysiology is believed to be caused by direct neurotoxicity.\n- Genes involved the development of post-chemotherapy cognitive impairment, include:\n- COMT nucleotide p...\n\n[Document 4] (ID: 6142_0, Score: 0.901)\nPost-chemotherapy cognitive impairment overview\n\n# Overview\nIn medicine, post-chemotherapy cognitive impairment (also known as chemotherapy-induced cognitive dysfunction or, colloquially, as chemo brain or chemo fog) describes the cognitive impairment that can result from chemotherapy treatment. App...\n\n[Document 5] (ID: 6150_3, Score: 0.888)\n## Medical Therapy\n- There is no treatment for post-chemotherapy cognitive impairment; the mainstay of therapy is supportive care.\n- Common medical therapies for the treatment of post-chemotherapy cognitive impairment, include:\n- Hormonal therapy\n\n## Surgery\n- Surgery is not recommended for patients..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you received any chemotherapy treatments in the past, and if so, what type and how many cycles?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient scheduled for chemotherapy. Symptoms began with fatigue, depression, memory, and word-finding issues, possibly worsening; reports caffeine withdrawal headache. No prior chemotherapy exposure confirmed. Labs requested but no result available. Literature supports chemotherapy cycles as key risk factor for cognitive impairment; no treatment available, supportive care recommended. Unclear if symptoms are chemotherapy-related or due to other causes. No prior imaging or exam results available. Patient denies prior chemotherapy or abnormalities. No management-relevant risk explicitly supported."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 6,
+        "query_text": "Patient scheduled for chemotherapy. Symptoms: fatigue, depression, memory issues, word-finding problems, caffeine withdrawal headache. Onset coincides with chemotherapy initiation. No prior chemotherapy exposure confirmed. Labs requested but no result available. No imaging or prior exam results. Uncertainty: whether symptoms are chemotherapy-related or due to other causes.",
+        "skill_query_text": "Presenting problem: Assess chemotherapy-related cognitive dysfunction. Evidence gathered: patient reports symptom onset with chemotherapy, denies prior chemo. Ineffective actions: labs requested with no result, repeated patient questioning about chemo history. Missing: confirmation of prior chemo exposure, type, and cycles. Need: workflow guidance on next diagnostic steps or evidence prioritization."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8145,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7955,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7864,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7741,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7627,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.8249,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.823,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8159,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8196,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8063,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8021,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8145,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.7955,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Post-chemotherapy cognitive impairment (Chemo brain)}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'89fb57ff-10f2-42f4-b5a2-454f97082015': '{\"diagnosis\": \"Post-chemotherapy cognitive impairment (Chemo brain)\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '89fb57ff-10f2-42f4-b5a2-454f97082015', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Post-chemotherapy cognitive impairment (Chemo brain)}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 805}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-chemotherapy cognitive impairment (Chemo brain)}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Post-chemotherapy cognitive impairment (Chemo brain)}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "scheduled admission for chemotherapy",
+        "diagnostic_strategy": "Known evidence: patient is 68-year-old female scheduled for chemotherapy, no reported symptoms or abnormalities in appetite, weight, energy, pain, swelling, or recent infections. Labs not available. Leading uncertainty: whether chemotherapy is indicated and appropriate for this age group; potential need for supportive care (e.g., colony-stimulating factors, erythropoietin) and monitoring for acute adverse effects. Most useful missing evidence: complete lab results, cancer diagnosis, treatment indication, and patient’s functional status. Diagnosis should not yet be finalized.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, weight loss, fatigue, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, weight, or energy levels recently?)\nresponse: I’ve been feeling well since my discharge. I haven’t noticed any changes in my appetite, weight, or energy levels. I’m not sure if I’ve lost or gained weight, but I don’t think it’s noticeable. My energy has been good, and I’ve been able to keep up with my daily activities. I do have a headache from caffeine withdrawal since I stopped drinking coffee, but that’s not related to appetite or energy. I was not told anything specific about changes in those areas.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any pain, swelling, or unusual discharge from any part of your body, particularly in the abdomen, chest, or extremities?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent infections, colds, or illnesses that required medical attention?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "ineffective_turn_information": [
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common symptoms and considerations for 68-year-old female patient scheduled for chemotherapy)\nresponse: [Document 1] (ID: 1450_49, Score: 0.861)\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\nThese recommendations apply to women aged 18 and over\nThrombocytosis, 40 and ov...\n\n[Document 2] (ID: 4149_23, Score: 0.858)\nIn the curative setting, chemotherapy should be considered if indicated and in the presence of clear survival benefits, which may be less established in the older age group [bib_ref] Use and outcomes of adjuvant chemotherapy in older women with breast cancer, Giordano [/bib_ref]. If possible, a shor...\n\n[Document 3] (ID: 4016_10, Score: 0.858)\n## General treatment management recommendations for seniors with cancer\nOnce the patient has been assessed as we have previous described and based on the circuits and resources available at each center, an individualized treatment proposal will be made.\nWhatever the proposal is, there is a series of...\n\n[Document 4] (ID: 4016_19, Score: 0.857)\nIn short, we believe that the use of colony-stimulating factors should be at least contemplated in all seniors who receive cytotoxic chemotherapy. We must also be especially alert to anemia secondary to chemotherapy and begin early treatment with erythropoietin as per guideline recommendations, part...\n\n[Document 5] (ID: 4203_4, Score: 0.856)\nDuring chemotherapy delivery, the clinical focus is appropriately on acute, often symptomatic, but short-term adverse effects of drug treatment [bib_ref] Side effects of chemotherapy and combined chemohormonal therapy in women with early-stage..., Partridge [/bib_ref]. Acute cardiac effects include ..."
+        ],
+        "prior_information_summary": "Patient is 68-year-old female scheduled for chemotherapy. No reported symptoms of fever, weight loss, fatigue, night sweats, pain, swelling, or recent infections. No changes in appetite, weight, or energy levels reported. Headache from caffeine withdrawal noted but unrelated to appetite/energy. Labs not available. No known allergies or medications reported. No family or social history provided. No abnormal findings reported by patient. No specific cancer diagnosis or treatment indication provided."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 7,
+        "query_text": "68-year-old female, scheduled for chemotherapy, no reported symptoms (fever, weight loss, fatigue, night sweats, pain, swelling, recent infections), no changes in appetite/weight/energy, headache from caffeine withdrawal (unrelated to appetite/energy), labs not available, no known allergies or medications, no family/social history, no abnormal findings reported, no cancer diagnosis or treatment indication provided.",
+        "skill_query_text": "Presenting problem: 68-year-old female scheduled for chemotherapy. Uncertainty: whether chemotherapy is indicated and appropriate for this age group; need for supportive care (e.g., colony-stimulating factors, erythropoietin) and monitoring for acute adverse effects. Evidence gathered: patient reports no symptoms or changes in appetite/weight/energy; labs not available. Missing evidence: complete lab results, cancer diagnosis, treatment indication, functional status. Ineffective action: retrieval of general chemotherapy guidelines for seniors. Need: workflow guidance on chemotherapy appropriateness, supportive care protocols, and acute adverse effect monitoring for elderly patients."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_aa639a2730dd",
+              "type": "experience",
+              "score": 0.7993,
+              "outcome": "negative",
+              "text": "Absence of fever, night sweats, or weight loss in a patient with malignant airway obstruction due to stent occlusion is a negative finding that helps rule out systemic metastatic spread.",
+              "tags": []
+            },
+            {
+              "id": "exp_16f3e5ec430c",
+              "type": "experience",
+              "score": 0.7905,
+              "outcome": "negative",
+              "text": "In febrile neutropenia, absence of recent chemotherapy or treatment history does not rule out treatment-related neutropenia; lymphoma patients may have neutropenia from disease progression or prior therapy.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.7858,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.8013,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_e419326a635d",
+              "type": "skill",
+              "score": 0.762,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7572,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been diagnosed with any chronic illness or condition, such as diabetes, hypertension, or thyroid issues?"
+        },
+        "patient_or_tool_response": "{'question': 'I have a history of diabetes in my family — my mother had it. I don’t have diabetes myself, but I was told I have allergic asthma, GERD, insomnia, diverticulitis, a heart murmur, and deQuervain’s tenosynovitis from past surgeries. I don’t have hypertension or thyroid issues, and I was not diagnosed with any chronic illness beyond those.'}",
+        "env_info": "{'response': [{'id': '504c5b3e-7e7e-4cd6-a331-0c3cd8e06470', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been diagnosed with any chronic illness or condition, such as diabetes, hypertension, or thyroid issues?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 930}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been diagnosed with any chronic illness or condition, such as diabetes, hypertension, or thyroid issues?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been diagnosed with any chronic illness or condition, such as diabetes, hypertension, or thyroid issues?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "scheduled admission for chemotherapy",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 8. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: scheduled admission for chemotherapy",
+          "initial_information: I am a 68-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 68-year-old female patient presenting with scheduled admission for chemotherapy..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, weight loss, fatigue, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, weight, or energy levels recently?)\nresponse: I’ve been feeling well since my discharge. I haven’t noticed any changes in my appetite, weight, or energy levels. I’m not sure if I’ve lost or gained weight, but I don’t think it’s noticeable. My energy has been good, and I’ve been able to keep up with my daily activities. I do have a headache from caffeine withdrawal since I stopped drinking coffee, but that’s not related to appetite or energy. I was not told anything specific about changes in those areas.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any pain, swelling, or unusual discharge from any part of your body, particularly in the abdomen, chest, or extremities?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent infections, colds, or illnesses that required medical attention?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common symptoms and considerations for 68-year-old female patient scheduled for chemotherapy)\nresponse: [Document 1] (ID: 1450_49, Score: 0.861)\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\nThese recommendations apply to women aged 18 and over\nThrombocytosis, 40 and ov...\n\n[Document 2] (ID: 4149_23, Score: 0.858)\nIn the curative setting, chemotherapy should be considered if indicated and in the presence of clear survival benefits, which may be less established in the older age group [bib_ref] Use and outcomes of adjuvant chemotherapy in older women with breast cancer, Giordano [/bib_ref]. If possible, a shor...\n\n[Document 3] (ID: 4016_10, Score: 0.858)\n## General treatment management recommendations for seniors with cancer\nOnce the patient has been assessed as we have previous described and based on the circuits and resources available at each center, an individualized treatment proposal will be made.\nWhatever the proposal is, there is a series of...\n\n[Document 4] (ID: 4016_19, Score: 0.857)\nIn short, we believe that the use of colony-stimulating factors should be at least contemplated in all seniors who receive cytotoxic chemotherapy. We must also be especially alert to anemia secondary to chemotherapy and begin early treatment with erythropoietin as per guideline recommendations, part...\n\n[Document 5] (ID: 4203_4, Score: 0.856)\nDuring chemotherapy delivery, the clinical focus is appropriately on acute, often symptomatic, but short-term adverse effects of drug treatment [bib_ref] Side effects of chemotherapy and combined chemohormonal therapy in women with early-stage..., Partridge [/bib_ref]. Acute cardiac effects include ...",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been diagnosed with any chronic illness or condition, such as diabetes, hypertension, or thyroid issues?)\nresponse: I have a history of diabetes in my family — my mother had it. I don’t have diabetes myself, but I was told I have allergic asthma, GERD, insomnia, diverticulitis, a heart murmur, and deQuervain’s tenosynovitis from past surgeries. I don’t have hypertension or thyroid issues, and I was not diagnosed with any chronic illness beyond those."
+        ],
+        "ineffective_turn_information": [
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any specific symptoms such as fever, weight loss, fatigue, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite, weight, or energy levels recently?)\nresponse: I’ve been feeling well since my discharge. I haven’t noticed any changes in my appetite, weight, or energy levels. I’m not sure if I’ve lost or gained weight, but I don’t think it’s noticeable. My energy has been good, and I’ve been able to keep up with my daily activities. I do have a headache from caffeine withdrawal since I stopped drinking coffee, but that’s not related to appetite or energy. I was not told anything specific about changes in those areas.\ndoctor_action: ask_patient(question=Have you experienced any pain, swelling, or unusual discharge from any part of your body, particularly in the abdomen, chest, or extremities?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you had any recent infections, colds, or illnesses that required medical attention?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common symptoms and considerations for 68-year-old female patient scheduled for chemotherapy)\nresponse: [Document 1] (ID: 1450_49, Score: 0.861)\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\nThese recommendations apply to women aged 18 and over\nThrombocytosis, 40 and ov...\n\n[Document 2] (ID: 4149_23, Score: 0.858)\nIn the curative setting, chemotherapy should be considered if indicated and in the presence of clear survival benefits, which may be less established in the older age group [bib_ref] Use and outcomes of adjuvant chemotherapy in older women with breast cancer, Giordano [/bib_ref]. If possible, a shor...\n\n[Document 3] (ID: 4016_10, Score: 0.858)\n## General treatment management recommendations for seniors with cancer\nOnce the patient has been assessed as we have previous described and based on the circuits and resources available at each center, an individualized treatment proposal will be made.\nWhatever the proposal is, there is a series of...\n\n[Document 4] (ID: 4016_19, Score: 0.857)\nIn short, we believe that the use of colony-stimulating factors should be at least contemplated in all seniors who receive cytotoxic chemotherapy. We must also be especially alert to anemia secondary to chemotherapy and begin early treatment with erythropoietin as per guideline recommendations, part...\n\n[Document 5] (ID: 4203_4, Score: 0.856)\nDuring chemotherapy delivery, the clinical focus is appropriately on acute, often symptomatic, but short-term adverse effects of drug treatment [bib_ref] Side effects of chemotherapy and combined chemohormonal therapy in women with early-stage..., Partridge [/bib_ref]. Acute cardiac effects include ...\n\nIneffective/no-result interactions:\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 8,
+        "query_text": "68-year-old female, scheduled for chemotherapy, no recent fever, weight loss, fatigue, night sweats, appetite/weight/energy changes, pain/swelling/discharge, recent infections. History: allergic asthma, GERD, insomnia, diverticulitis, heart murmur, deQuervain’s tenosynovitis. Labs requested but no result. Uncertainty: no clear clinical cause identified for symptoms.",
+        "skill_query_text": "Presenting problem: 68-year-old female scheduled for chemotherapy. Uncertainty: no clear clinical cause for symptoms. Evidence gathered: patient history, symptom screening, literature on chemotherapy in seniors. Missing: lab results. Ineffective: labs request yielded no result. Need: guidance on next diagnostic action or targeted exam/tool to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_a31e7bd48ea4",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "positive",
+              "text": "Patient denied symptoms of shortness of breath, swelling, or weight loss despite morbid obesity; this negative finding helps rule out cardiac or systemic complications and supports a musculoskeletal focus.",
+              "tags": []
+            },
+            {
+              "id": "exp_ac2185067be4",
+              "type": "experience",
+              "score": 0.7928,
+              "outcome": "positive",
+              "text": "Requesting labs without prior clinical suspicion or relevant history yields no useful information; avoid low-yield lab requests early in the diagnostic trajectory.",
+              "tags": []
+            },
+            {
+              "id": "exp_d9e62fb4b859",
+              "type": "experience",
+              "score": 0.7835,
+              "outcome": "positive",
+              "text": "Back pain limiting exercise and knee pain in a patient with morbid obesity strongly suggest musculoskeletal complications from mechanical stress, supporting the diagnosis of Morbid Obesity with Associated Musculoskeletal Complications.",
+              "tags": []
+            },
+            {
+              "id": "exp_b03dd654a6b9",
+              "type": "experience",
+              "score": 0.778,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia; nail-biting is a useful discriminative clue.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_aa639a2730dd",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Absence of fever, night sweats, or weight loss in a patient with malignant airway obstruction due to stent occlusion is a negative finding that helps rule out systemic metastatic spread.",
+              "tags": []
+            },
+            {
+              "id": "exp_a35087bc6884",
+              "type": "experience",
+              "score": 0.8125,
+              "outcome": "negative",
+              "text": "Patient-reported coldness, dull ache, and delayed pulses in the right lower extremity, along with fatigue and poor weight gain since birth, are clinically significant and should not be dismissed as non-specific complaints.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7926,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7723,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7706,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_ac2185067be4"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3ad50e83-4528-4b60-95aa-165df25e5f38': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '3ad50e83-4528-4b60-95aa-165df25e5f38', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1061}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 8,
+        "query_text": "68-year-old female, scheduled for chemotherapy, no recent fever, weight loss, fatigue, night sweats, appetite/weight/energy changes, pain/swelling/discharge, recent infections. History: allergic asthma, GERD, insomnia, diverticulitis, heart murmur, deQuervain’s tenosynovitis. Labs requested but no result. Uncertainty: no clear clinical cause identified for symptoms.",
+        "skill_query_text": "Presenting problem: 68-year-old female scheduled for chemotherapy. Uncertainty: no clear clinical cause for symptoms. Evidence gathered: patient history, symptom screening, literature on chemotherapy in seniors. Missing: lab results. Ineffective: labs request yielded no result. Need: guidance on next diagnostic action or targeted exam/tool to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_a31e7bd48ea4",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "positive",
+              "text": "Patient denied symptoms of shortness of breath, swelling, or weight loss despite morbid obesity; this negative finding helps rule out cardiac or systemic complications and supports a musculoskeletal focus.",
+              "tags": []
+            },
+            {
+              "id": "exp_ac2185067be4",
+              "type": "experience",
+              "score": 0.7928,
+              "outcome": "positive",
+              "text": "Requesting labs without prior clinical suspicion or relevant history yields no useful information; avoid low-yield lab requests early in the diagnostic trajectory.",
+              "tags": []
+            },
+            {
+              "id": "exp_d9e62fb4b859",
+              "type": "experience",
+              "score": 0.7835,
+              "outcome": "positive",
+              "text": "Back pain limiting exercise and knee pain in a patient with morbid obesity strongly suggest musculoskeletal complications from mechanical stress, supporting the diagnosis of Morbid Obesity with Associated Musculoskeletal Complications.",
+              "tags": []
+            },
+            {
+              "id": "exp_b03dd654a6b9",
+              "type": "experience",
+              "score": 0.778,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia; nail-biting is a useful discriminative clue.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_aa639a2730dd",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Absence of fever, night sweats, or weight loss in a patient with malignant airway obstruction due to stent occlusion is a negative finding that helps rule out systemic metastatic spread.",
+              "tags": []
+            },
+            {
+              "id": "exp_a35087bc6884",
+              "type": "experience",
+              "score": 0.8125,
+              "outcome": "negative",
+              "text": "Patient-reported coldness, dull ache, and delayed pulses in the right lower extremity, along with fatigue and poor weight gain since birth, are clinically significant and should not be dismissed as non-specific complaints.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7926,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7723,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7706,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_ac2185067be4"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'bd49d8dd-3f9d-49d8-98bc-d631789e01fe': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'bd49d8dd-3f9d-49d8-98bc-d631789e01fe', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1135}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20340509",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_10 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20340509",
+        "turn_id": 8,
+        "query_text": "68-year-old female, scheduled for chemotherapy, no recent fever, weight loss, fatigue, night sweats, appetite/weight/energy changes, pain/swelling/discharge, recent infections. History: allergic asthma, GERD, insomnia, diverticulitis, heart murmur, deQuervain’s tenosynovitis. Labs requested but no result. Uncertainty: no clear clinical cause identified for symptoms.",
+        "skill_query_text": "Presenting problem: 68-year-old female scheduled for chemotherapy. Uncertainty: no clear clinical cause for symptoms. Evidence gathered: patient history, symptom screening, literature on chemotherapy in seniors. Missing: lab results. Ineffective: labs request yielded no result. Need: guidance on next diagnostic action or targeted exam/tool to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_a31e7bd48ea4",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "positive",
+              "text": "Patient denied symptoms of shortness of breath, swelling, or weight loss despite morbid obesity; this negative finding helps rule out cardiac or systemic complications and supports a musculoskeletal focus.",
+              "tags": []
+            },
+            {
+              "id": "exp_ac2185067be4",
+              "type": "experience",
+              "score": 0.7928,
+              "outcome": "positive",
+              "text": "Requesting labs without prior clinical suspicion or relevant history yields no useful information; avoid low-yield lab requests early in the diagnostic trajectory.",
+              "tags": []
+            },
+            {
+              "id": "exp_d9e62fb4b859",
+              "type": "experience",
+              "score": 0.7835,
+              "outcome": "positive",
+              "text": "Back pain limiting exercise and knee pain in a patient with morbid obesity strongly suggest musculoskeletal complications from mechanical stress, supporting the diagnosis of Morbid Obesity with Associated Musculoskeletal Complications.",
+              "tags": []
+            },
+            {
+              "id": "exp_b03dd654a6b9",
+              "type": "experience",
+              "score": 0.778,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia; nail-biting is a useful discriminative clue.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_aa639a2730dd",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Absence of fever, night sweats, or weight loss in a patient with malignant airway obstruction due to stent occlusion is a negative finding that helps rule out systemic metastatic spread.",
+              "tags": []
+            },
+            {
+              "id": "exp_a35087bc6884",
+              "type": "experience",
+              "score": 0.8125,
+              "outcome": "negative",
+              "text": "Patient-reported coldness, dull ache, and delayed pulses in the right lower extremity, along with fatigue and poor weight gain since birth, are clinically significant and should not be dismissed as non-specific complaints.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7926,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7723,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7706,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_ac2185067be4"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Asymptomatic patient scheduled for chemotherapy with no acute clinical concerns identified.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b0f95f5f-b300-447e-9378-064c476c23df': '{\"diagnosis\": \"Asymptomatic patient scheduled for chemotherapy with no acute clinical concerns identified.\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'b0f95f5f-b300-447e-9378-064c476c23df', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Asymptomatic patient scheduled for chemotherapy with no acute clinical concerns identified.}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1209}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asymptomatic patient scheduled for chemotherapy with no acute clinical concerns identified.}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asymptomatic patient scheduled for chemotherapy with no acute clinical concerns identified.}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": []
+}

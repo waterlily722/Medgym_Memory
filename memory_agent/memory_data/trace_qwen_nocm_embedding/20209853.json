@@ -1,0 +1,1499 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20209853",
+  "turns": [
+    {
+      "case_id": "20209853",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Current clinical problem: patient presents with fear of being alone at 45 years old. Key evidence gathered: patient is male, 45 years old, reports general poor well-being with chief complaint of fear of being alone. Diagnostic uncertainty remains high; no specific findings or tests yet. Most useful missing information: detailed history of onset, triggers, associated symptoms, mental health history, and any prior psychiatric or medical evaluations. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified yet.",
+        "efficient_turn_information": [
+          "initial_information: I am a 45-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 45-year-old male patient presenting with \"I'm afraid to be alone\".."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 45-year-old male presenting with chief complaint of \"I'm afraid to be alone\" and reports general poor well-being. No specific symptoms, exam, lab, imaging, or tool results provided. No prior psychiatric or medical history documented. No findings or tests performed yet. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 1,
+        "query_text": "Patient is a 45-year-old male presenting with chief complaint of \"I'm afraid to be alone\" and reports general poor well-being. No specific symptoms, exam, lab, imaging, or tool results provided. No prior psychiatric or medical history documented. No findings or tests performed yet.",
+        "skill_query_text": "Presenting problem: patient presents with fear of being alone at 45 years old. Evidence gathered: patient is male, 45 years old, reports general poor well-being. Uncertainty remains high. No specific findings or tests yet. Missing: detailed history of onset, triggers, associated symptoms, mental health history, and prior psychiatric or medical evaluations. Ineffective actions: none reported. Need: diagnostic decision workflow guidance."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.8011,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.7867,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7784,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8023,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7949,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.792,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.792,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been gradually worsening?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m afraid to be alone because when I’m by myself, I start thinking about hurting myself — especially when I’m ruminating on my problems, like not having money or being behind on child support. It’s gotten worse over time, not suddenly. Since I’ve been out of work and not getting my disability payments, I’ve had more free time to think, and that makes me feel more anxious and depressed. The fear started building up after I came home from the partial hospitalization, and now I’m scared to be alone even when my girlfriend is gone. I had a panic attack yesterday while alone at home, and that’s when I started thinking about overdosing or draining my blood. I took lorazepam and felt better, but the fear is still there.'}",
+        "env_info": "{'response': [{'id': '1ed980f8-a2d6-4e88-aad1-8c61c2cf5857', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe what you mean by \\'afraid to be alone\\'? Is this a sudden onset or has it been gradually worsening?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.08333333333333333,
+        "delta": 0.08333333333333333,
+        "turn_reward": 0.016666666666666666,
+        "importance": 0.08333333333333333
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been gradually worsening?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been gradually worsening?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Current clinical problem: patient reports fear of being alone with suicidal ideation, worsening over time, triggered by ruminative thoughts and recent life stressors (unemployment, delayed disability payments). Key evidence: history of panic attack, self-medication with lorazepam, recent partial hospitalization discharge. Diagnostic uncertainty: whether this is primarily anxiety disorder, depression, or emerging suicidal risk requiring urgent intervention. Most useful missing information: formal mental status exam, suicide risk assessment, history of prior psychiatric treatment, current medications, and recent lab/imaging if any. Existing evidence is not enough to finalize diagnosis; further assessment needed to determine risk level and appropriate next steps.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been gradually worsening?)\nresponse: I’m afraid to be alone because when I’m by myself, I start thinking about hurting myself — especially when I’m ruminating on my problems, like not having money or being behind on child support. It’s gotten worse over time, not suddenly. Since I’ve been out of work and not getting my disability payments, I’ve had more free time to think, and that makes me feel more anxious and depressed. The fear started building up after I came home from the partial hospitalization, and now I’m scared to be alone even when my girlfriend is gone. I had a panic attack yesterday while alone at home, and that’s when I started thinking about overdosing or draining my blood. I took lorazepam and felt better, but the fear is still there."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: \"I'm afraid to be alone\". Patient reports fear of being alone with suicidal ideation, worsening over time, triggered by ruminative thoughts on financial stress (unemployment, delayed disability payments). History of panic attack yesterday while alone, self-medicated with lorazepam. Fear began after discharge from partial hospitalization. Patient reports increased anxiety and depression due to more free time for rumination. No prior psychiatric treatment or lab/imaging results provided. No formal suicide risk assessment or mental status exam performed. No other relevant findings reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 2,
+        "query_text": "Patient reports fear of being alone with suicidal ideation, worsening over time, triggered by ruminative thoughts on financial stress (unemployment, delayed disability payments). History of panic attack, self-medicated with lorazepam. Fear began after discharge from partial hospitalization. Increased anxiety and depression due to more free time for rumination. No prior psychiatric treatment, no lab/imaging, no formal suicide risk assessment or mental status exam performed.",
+        "skill_query_text": "Presenting problem: fear of being alone with suicidal ideation. Current uncertainty: whether this is primarily anxiety disorder, depression, or emerging suicidal risk. Evidence gathered: patient history, panic attack, lorazepam use, recent partial hospitalization discharge. Missing: formal mental status exam, suicide risk assessment, prior psychiatric treatment, current medications, recent lab/imaging. Ineffective actions: none. Need: workflow guidance for assessing suicide risk and next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7502,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7308,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7282,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.8209,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8051,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.8017,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7875,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.7839,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7824,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5a4defcb-4ba6-442a-b4e6-1b33a0416579': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '5a4defcb-4ba6-442a-b4e6-1b33a0416579', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 211}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.08333333333333333,
+        "conf_after": 0.08333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 2,
+        "query_text": "Patient reports fear of being alone with suicidal ideation, worsening over time, triggered by ruminative thoughts on financial stress (unemployment, delayed disability payments). History of panic attack, self-medicated with lorazepam. Fear began after discharge from partial hospitalization. Increased anxiety and depression due to more free time for rumination. No prior psychiatric treatment, no lab/imaging, no formal suicide risk assessment or mental status exam performed.",
+        "skill_query_text": "Presenting problem: fear of being alone with suicidal ideation. Current uncertainty: whether this is primarily anxiety disorder, depression, or emerging suicidal risk. Evidence gathered: patient history, panic attack, lorazepam use, recent partial hospitalization discharge. Missing: formal mental status exam, suicide risk assessment, prior psychiatric treatment, current medications, recent lab/imaging. Ineffective actions: none. Need: workflow guidance for assessing suicide risk and next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7502,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7308,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7282,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.8209,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8051,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.8017,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7875,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.7839,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7824,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of depression and anxiety in adults with suicidal ideation"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e893534e-c8ce-463b-aac2-32ba01ca171c': '[Document 1] (ID: 21908_5, Score: 0.874)\\n# Natural History, Complications, and Prognosis\\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\\n- Elderly patients with severe depression,...\\n\\n[Document 2] (ID: 5609_5, Score: 0.872)\\n### Clinical Worsening and Suicide Risk\\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\\n\\n[Document 3] (ID: 28616_8, Score: 0.868)\\n- The following symptoms, anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania, have been reported in adult and pediatric patients being treated with antidepressants for major depressive disorder...\\n\\n[Document 4] (ID: 27944_5, Score: 0.867)\\n- The following symptoms, anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivit...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'e893534e-c8ce-463b-aac2-32ba01ca171c', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of depression and anxiety in adults with suicidal ideation\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 282}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.08333333333333333,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.33333333333333337,
+        "turn_reward": 0.06666666666666668,
+        "importance": 0.33333333333333337
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of depression and anxiety in adults with suicidal ideation\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of depression and anxiety in adults with suicidal ideation\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Current clinical problem: Patient reports fear of being alone with escalating suicidal ideation, panic attacks, and worsening anxiety/depression linked to financial stress and recent partial hospitalization. Key evidence: Patient describes specific suicidal thoughts (overdose, blood drainage), panic attack, and worsening over time. Diagnostic uncertainty: Whether this is primarily depression/anxiety with suicidal ideation or if there is an underlying medical or psychiatric condition exacerbating symptoms. Most useful missing information: Current mental health history, prior suicide attempts, medication history (including antidepressants), and recent psychiatric evaluation. Existing evidence is not enough to finalize diagnosis; further assessment needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"I'm afraid to be alone\""
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: \"I'm afraid to be alone\". Patient reports fear of being alone due to suicidal ideation, triggered by rumination on financial stress (not receiving disability payments), worsening over time since partial hospitalization. Describes panic attack yesterday, thoughts of overdosing or draining blood, and relief after taking lorazepam. No lab results available. Patient history includes recent partial hospitalization. No prior suicide attempts or psychiatric history provided. No imaging or exam results available. No medication history provided. No current mental health evaluation or treatment plan documented."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 4,
+        "query_text": "Patient reports fear of being alone with escalating suicidal ideation, panic attacks, and worsening anxiety/depression linked to financial stress and recent partial hospitalization. Describes specific suicidal thoughts (overdose, blood drainage), panic attack, and relief after taking lorazepam. No lab results, imaging, or exam results available. No prior suicide attempts, psychiatric history, medication history, or current mental health evaluation documented.",
+        "skill_query_text": "Presenting problem: Patient reports fear of being alone due to suicidal ideation triggered by financial stress and worsening since partial hospitalization. Evidence gathered: Chief complaint, panic attack description, lorazepam use. Missing: Mental health history, prior suicide attempts, medication history, recent psychiatric evaluation. Ineffective actions: None tried. Need: Diagnostic decision workflow guidance for assessing whether this is primarily depression/anxiety with suicidal ideation or if there is an underlying medical or psychiatric condition."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.8351,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.8026,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            },
+            {
+              "id": "exp_b421b29259bc",
+              "type": "experience",
+              "score": 0.802,
+              "outcome": "negative",
+              "text": "Headache, disorientation, slurred speech, and intoxication in a patient with recent opioid use strongly suggest opioid withdrawal; do not apply this pattern if the patient has respiratory depression, constricted pupils, or a history of overdose.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7872,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7864,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7823,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '2595dddc-a657-45ef-af99-759b1c1aec51', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 760}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4166666666666667,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Current clinical problem: patient reports fear of being alone with escalating suicidal ideation and recent panic attack. Key evidence: patient describes ruminative thoughts, worsening over time, history of partial hospitalization, recent lorazepam use, and self-reported anxiety/depression. Diagnostic uncertainty: whether this represents acute depression with suicidal risk, or a more complex psychiatric condition. Most useful missing information: history of prior mental health diagnoses, previous episodes of depression/anxiety/suicidal ideation, and specific triggers or protective factors. Existing evidence is not enough to finalize diagnosis; further clarification needed on prior mental health history and suicidal ideation details.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"I'm afraid to be alone\""
+        ],
+        "ineffective_turn_information": [
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Chief complaint: \"I'm afraid to be alone\". Patient reports fear of being alone due to intrusive thoughts about self-harm, worsening over time, triggered by unemployment and lack of disability payments. Describes panic attack yesterday, self-medicated with lorazepam. History of partial hospitalization. No lab results available. Retrieved documents indicate association between suicidal ideation, depression, and psychosocial dysfunction; symptoms including anxiety, panic attacks, insomnia, irritability, and impulsivity are relevant. No prior mental health diagnosis confirmed. No prior episodes of depression/anxiety/suicidal thoughts confirmed. No specific triggers or protective factors identified."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 5,
+        "query_text": "Patient reports fear of being alone with escalating suicidal ideation and recent panic attack. Symptoms include ruminative thoughts, worsening over time, triggered by unemployment and lack of disability payments. Self-medicated with lorazepam. History of partial hospitalization. No prior mental health diagnosis confirmed. No prior episodes of depression/anxiety/suicidal thoughts confirmed. No specific triggers or protective factors identified. No lab results available.",
+        "skill_query_text": "Presenting problem: patient reports fear of being alone with suicidal ideation and panic attack. Current uncertainty: whether acute depression with suicidal risk or more complex psychiatric condition. Evidence gathered: chief complaint, self-reported anxiety/depression, recent lorazepam use, history of partial hospitalization. Missing: prior mental health diagnoses, prior episodes of depression/anxiety/suicidal ideation, specific triggers or protective factors. Ineffective action: asked about prior episodes, received vague response. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.8251,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.8139,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.808,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8039,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7934,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.79,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I have been diagnosed with depression, anxiety, and trauma by a healthcare provider. I’ve also had substance abuse issues in the past. I was hospitalized for depression and had a partial hospitalization program, which helped a bit, but my mood has worsened since then. My psychiatrist has been managing my medications, including lorazepam, risperidone, and fluoxetine. I’ve also had panic attacks and have thoughts of harming myself when I’m alone or stressed.'}",
+        "env_info": "{'response': [{'id': '114aa570-215b-4ad3-9623-4c7378e539a7', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 827}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4166666666666667,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Current clinical problem: Patient reports fear of being alone with suicidal ideation, panic attacks, and worsening mood since discharge from partial hospitalization. Key evidence: History of depression, anxiety, trauma, substance abuse, current medications (lorazepam, risperidone, fluoxetine), recent panic attack, and suicidal thoughts triggered by isolation. Diagnostic uncertainty: Whether current symptoms represent relapse, medication inadequacy, or new psychosocial stressors (e.g., unemployment, financial strain). Most useful missing information: Recent lab results (not available), current medication adherence, suicidal plan details, and recent psychiatric evaluation. Evidence is not sufficient to finalize diagnosis; further assessment needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"I'm afraid to be alone\"",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been gradually worsening?)\nresponse: I’m afraid to be alone because when I’m by myself, I start thinking about hurting myself — especially when I’m ruminating on my problems, like not having money or being behind on child support. It’s gotten worse over time, not suddenly. Since I’ve been out of work and not getting my disability payments, I’ve had more free time to think, and that makes me feel more anxious and depressed. The fear started building up after I came home from the partial hospitalization, and now I’m scared to be alone even when my girlfriend is gone. I had a panic attack yesterday while alone at home, and that’s when I started thinking about overdosing or draining my blood. I took lorazepam and felt better, but the fear is still there.",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?)\nresponse: Yes, I have been diagnosed with depression, anxiety, and trauma by a healthcare provider. I’ve also had substance abuse issues in the past. I was hospitalized for depression and had a partial hospitalization program, which helped a bit, but my mood has worsened since then. My psychiatrist has been managing my medications, including lorazepam, risperidone, and fluoxetine. I’ve also had panic attacks and have thoughts of harming myself when I’m alone or stressed."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Chief complaint: \"I'm afraid to be alone\". History: Patient reports fear of being alone due to suicidal ideation, panic attacks, and worsening mood since discharge from partial hospitalization. Past diagnoses: Depression, anxiety, trauma, substance abuse. Current medications: Lorazepam, risperidone, fluoxetine. Recent events: Panic attack while alone, thoughts of self-harm, no recent lab results available. Psychosocial context: Unemployment, financial stress, increased rumination. No recent psychiatric evaluation or lab results. Previous attempt to clarify history was ineffective (turn 5)."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 6,
+        "query_text": "Chief complaint: \"I'm afraid to be alone\". Symptoms: Suicidal ideation, panic attacks, worsening mood since discharge from partial hospitalization. History: Depression, anxiety, trauma, substance abuse. Current meds: Lorazepam, risperidone, fluoxetine. Psychosocial: Unemployment, financial strain, increased rumination. Missing: Recent lab results, medication adherence, suicidal plan details, recent psychiatric evaluation.",
+        "skill_query_text": "Presenting problem: Fear of being alone with suicidal ideation and panic attacks post-discharge. Uncertainty: Whether symptoms reflect relapse, medication inadequacy, or new psychosocial stressors. Evidence gathered: Patient history, current meds, recent panic attack. Ineffective actions: Requested labs (no result), ineffective history clarification. Need: Workflow guidance for assessing medication adherence, suicidal risk, and psychosocial triggers."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7463,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7386,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7299,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.8042,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.794,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7994,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7891,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'85f8c71f-af17-47d2-b453-563c4aa53edb': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '85f8c71f-af17-47d2-b453-563c4aa53edb', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 973}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4166666666666667,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 6,
+        "query_text": "Chief complaint: \"I'm afraid to be alone\". Symptoms: Suicidal ideation, panic attacks, worsening mood since discharge from partial hospitalization. History: Depression, anxiety, trauma, substance abuse. Current meds: Lorazepam, risperidone, fluoxetine. Psychosocial: Unemployment, financial strain, increased rumination. Missing: Recent lab results, medication adherence, suicidal plan details, recent psychiatric evaluation.",
+        "skill_query_text": "Presenting problem: Fear of being alone with suicidal ideation and panic attacks post-discharge. Uncertainty: Whether symptoms reflect relapse, medication inadequacy, or new psychosocial stressors. Evidence gathered: Patient history, current meds, recent panic attack. Ineffective actions: Requested labs (no result), ineffective history clarification. Need: Workflow guidance for assessing medication adherence, suicidal risk, and psychosocial triggers."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7463,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7386,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7299,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.8042,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.794,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7994,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7891,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "risk factors for suicidal ideation in patients with depression and anxiety"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'98aa6e2d-1deb-48ac-ab0d-69610414d0cd': '[Document 1] (ID: 4480_5, Score: 0.887)\\n# Suicide risk\\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\\n\\n[Document 2] (ID: 21908_5, Score: 0.885)\\n# Natural History, Complications, and Prognosis\\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\\n- Elderly patients with severe depression,...\\n\\n[Document 3] (ID: 5609_5, Score: 0.868)\\n### Clinical Worsening and Suicide Risk\\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\\n\\n[Document 4] (ID: 28_20, Score: 0.863)\\n# Managing Risk of Suicide\\n- Advise risk of increased suicidality from antidepressants is small, most often associated with a...[truncated]'}}",
+        "env_info": "{'response': [{'id': '98aa6e2d-1deb-48ac-ab0d-69610414d0cd', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"risk factors for suicidal ideation in patients with depression and anxiety\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1047}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4166666666666667,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"risk factors for suicidal ideation in patients with depression and anxiety\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"risk factors for suicidal ideation in patients with depression and anxiety\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 7. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"I'm afraid to be alone\"",
+          "initial_information: I am a 45-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 45-year-old male patient presenting with \"I'm afraid to be alone\"..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been gradually worsening?)\nresponse: I’m afraid to be alone because when I’m by myself, I start thinking about hurting myself — especially when I’m ruminating on my problems, like not having money or being behind on child support. It’s gotten worse over time, not suddenly. Since I’ve been out of work and not getting my disability payments, I’ve had more free time to think, and that makes me feel more anxious and depressed. The fear started building up after I came home from the partial hospitalization, and now I’m scared to be alone even when my girlfriend is gone. I had a panic attack yesterday while alone at home, and that’s when I started thinking about overdosing or draining my blood. I took lorazepam and felt better, but the fear is still there.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of depression and anxiety in adults with suicidal ideation)\nresponse: [Document 1] (ID: 21908_5, Score: 0.874)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 2] (ID: 5609_5, Score: 0.872)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 3] (ID: 28616_8, Score: 0.868)\n- The following symptoms, anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania, have been reported in adult and pediatric patients being treated with antidepressants for major depressive disorder...\n\n[Document 4] (ID: 27944_5, Score: 0.867)\n- The following symptoms, anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania, have been reported in adult and pediatric patients being treated with antidepressants for major depressive disorder...\n\n[Document 5] (ID: 7653_0, Score: 0.867)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Suicide?\n...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?)\nresponse: Yes, I have been diagnosed with depression, anxiety, and trauma by a healthcare provider. I’ve also had substance abuse issues in the past. I was hospitalized for depression and had a partial hospitalization program, which helped a bit, but my mood has worsened since then. My psychiatrist has been managing my medications, including lorazepam, risperidone, and fluoxetine. I’ve also had panic attacks and have thoughts of harming myself when I’m alone or stressed.",
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=risk factors for suicidal ideation in patients with depression and anxiety)\nresponse: [Document 1] (ID: 4480_5, Score: 0.887)\n# Suicide risk\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\n\n[Document 2] (ID: 21908_5, Score: 0.885)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 3] (ID: 5609_5, Score: 0.868)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 4] (ID: 28_20, Score: 0.863)\n# Managing Risk of Suicide\n- Advise risk of increased suicidality from antidepressants is small, most often associated with adolescents, and occurs early in the course of treatment - Explain that increased risk may arise from improved motivational activation, occurring before improvement in the depr...\n\n[Document 5] (ID: 30794_73, Score: 0.860)\n- Clinical Worsening and Suicide Risk: Patients, their families, and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been gradually worsening?)\nresponse: I’m afraid to be alone because when I’m by myself, I start thinking about hurting myself — especially when I’m ruminating on my problems, like not having money or being behind on child support. It’s gotten worse over time, not suddenly. Since I’ve been out of work and not getting my disability payments, I’ve had more free time to think, and that makes me feel more anxious and depressed. The fear started building up after I came home from the partial hospitalization, and now I’m scared to be alone even when my girlfriend is gone. I had a panic attack yesterday while alone at home, and that’s when I started thinking about overdosing or draining my blood. I took lorazepam and felt better, but the fear is still there.\ndoctor_action: retrieve(query=symptoms of depression and anxiety in adults with suicidal ideation)\nresponse: [Document 1] (ID: 21908_5, Score: 0.874)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 2] (ID: 5609_5, Score: 0.872)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 3] (ID: 28616_8, Score: 0.868)\n- The following symptoms, anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania, have been reported in adult and pediatric patients being treated with antidepressants for major depressive disorder...\n\n[Document 4] (ID: 27944_5, Score: 0.867)\n- The following symptoms, anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania, have been reported in adult and pediatric patients being treated with antidepressants for major depressive disorder...\n\n[Document 5] (ID: 7653_0, Score: 0.867)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Suicide?\n...\ndoctor_action: ask_patient(question=Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?)\nresponse: Yes, I have been diagnosed with depression, anxiety, and trauma by a healthcare provider. I’ve also had substance abuse issues in the past. I was hospitalized for depression and had a partial hospitalization program, which helped a bit, but my mood has worsened since then. My psychiatrist has been managing my medications, including lorazepam, risperidone, and fluoxetine. I’ve also had panic attacks and have thoughts of harming myself when I’m alone or stressed.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 8,
+        "query_text": "Patient is a 45-year-old male presenting with fear of being alone, worsening over time, associated with suicidal ideation, panic attacks, and ruminative thoughts. History of depression, anxiety, trauma, and substance abuse. Currently on lorazepam, risperidone, and fluoxetine. No labs or imaging results available. Uncertainty remains regarding suicide risk escalation and treatment response.",
+        "skill_query_text": "Presenting problem: fear of being alone with suicidal ideation. Evidence gathered: patient history, symptoms, prior diagnoses, current meds. Ineffective actions: labs and imaging requests yielded no results. Need guidance on next diagnostic or therapeutic action to resolve uncertainty about suicide risk and treatment efficacy."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.8169,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7965,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.792,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8047,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7902,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.785,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Major Depressive Disorder with Suicidal Ideation and Anxiety Disorder}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'caa26994-2745-42af-a9e5-a63ef0c0de19': '{\"diagnosis\": \"Major Depressive Disorder with Suicidal Ideation and Anxiety Disorder\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'caa26994-2745-42af-a9e5-a63ef0c0de19', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Major Depressive Disorder with Suicidal Ideation and Anxiety Disorder}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1517}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4166666666666667,
+        "conf_after": 0.4166666666666667,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Major Depressive Disorder with Suicidal Ideation and Anxiety Disorder}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Major Depressive Disorder with Suicidal Ideation and Anxiety Disorder}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 9. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"I'm afraid to be alone\"",
+          "initial_information: I am a 45-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 45-year-old male patient presenting with \"I'm afraid to be alone\"..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been progressing over time?)\nresponse: I’ve been feeling increasingly afraid to be alone for a while now — it’s not sudden, but it’s gotten worse over time. After I was out of the hospital and did partial hospitalization, I started feeling more depressed and anxious, especially since I’ve had more free time to think about my problems. The fear really hit hard yesterday when I was alone at home and had a panic attack while thinking about my financial stress — I started thinking about overdosing or draining my own blood. That’s when I took lorazepam and felt better. Since then, I’ve been scared to be by myself, especially when I’m alone and ruminating on my problems. My girlfriend says she’s worried about my safety when she has to leave me home alone.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of anxiety disorder with suicidal ideation)\nresponse: [Document 1] (ID: 4480_5, Score: 0.885)\n# Suicide risk\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\n\n[Document 2] (ID: 7653_0, Score: 0.880)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Suicide?\n...\n\n[Document 3] (ID: 5609_5, Score: 0.879)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 4] (ID: 21908_5, Score: 0.874)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 5] (ID: 14990_7, Score: 0.874)\n- The following symptoms anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania have been reported in adult and pediatric patients being treated with antidepressants for MDD as well as for other in...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any previous history of depression, anxiety, or suicidal thoughts? Also, have you been treated for these conditions before?)\nresponse: Yes, I have a history of depression, anxiety, and trauma. I’ve also been treated for these conditions before — I’ve been hospitalized in a psychiatric unit and completed a two-week Latino Partial Hospitalization Program. My medications include lorazepam, risperidone, and fluoxetine, and I’ve seen outpatient psychiatrists. I’ve had suicidal thoughts in the past, including a recent plan to overdose, and I’ve been hospitalized for active suicidal ideation. I also have a history of substance abuse, including alcohol and cocaine, but I’ve been sober for months now. I’ve had panic attacks and have been treated for them with risperidone. I’ve had three jobs before my hospitalization, but I’ve had to quit two because I wasn’t there long enough to get paid medical leave. I’m currently without income and struggling with financial stressors, which have worsened my depression and anxiety.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for anxiety disorder with suicidal ideation and history of trauma and substance abuse)\nresponse: [Document 1] (ID: 33048_7, Score: 0.876)\n## Differential Diagnosis\n- Alcohol withdrawal\n- Anxiety disorders\n- Essential tremor\n- Hypoglycemia\n- Diabetic ketoacidosis\n- Seizure due to infections, head injury, poisonings\n\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\n\n# Sedative Intoxication\n\n## Differential D...\n\n[Document 2] (ID: 4480_92, Score: 0.872)\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for other anxiety and related disorders MDD oppositional defiant disorder ADHD SUD alcohol dependence and borderline personality disorder (BPD). Comorbid panic or mood disorders have b...\n\n[Document 3] (ID: 16933_2, Score: 0.872)\n# Differential Diagnosis\n- Adjustment disorders\n- Dissociative disorders\n- Obsessive-compulsive disorder\n- Panic disorder\n- Post traumatic stress disorder\n- Psychotic disorders\n- Traumatic brain injury\n\n# Epidemiology and Demographics\n\n## Prevalence\nThe prevalence of acute stress disorder in overall...\n\n[Document 4] (ID: 17698_1, Score: 0.867)\n## Anxiety disorders\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\n\n[Document 5] (ID: 4480_7, Score: 0.866)\nWhen a patient presents with excessive or uncontrollable anxiety it is important to identify other potential causes of the symptoms, including direct effects of a substance (e.g., drug abuse or medication) or medical condition (e.g., hyperthyroidism, cardiopulmonary disorders, traumatic brain injury...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your sleep patterns, appetite, or energy levels recently? Also, have you experienced any hallucinations, delusions, or paranoia?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been sleeping well or poorly recently? Are you sleeping more or less than usual?)\nresponse: I’ve been sleeping poorly lately. I’m sleeping less than usual—sometimes I feel like I’m barely getting any rest, even when I’m in bed for hours. It’s been happening during the times when I’m feeling more energized or “up,” which makes it hard to wind down.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any changes in your appetite or weight recently?)\nresponse: I’ve been feeling more depressed and anxious lately, and I’ve had more time to think about my problems, which has made me feel worse. I’ve been taking risperidone, and I think it’s helped with my sleep and appetite a little, but I’m not sure if my appetite has changed much. I haven’t weighed myself recently, so I don’t know if I’ve lost or gained weight. I’ve been without income for over a month, and that’s probably why I’m not eating as well as I should."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been progressing over time?)\nresponse: I’ve been feeling increasingly afraid to be alone for a while now — it’s not sudden, but it’s gotten worse over time. After I was out of the hospital and did partial hospitalization, I started feeling more depressed and anxious, especially since I’ve had more free time to think about my problems. The fear really hit hard yesterday when I was alone at home and had a panic attack while thinking about my financial stress — I started thinking about overdosing or draining my own blood. That’s when I took lorazepam and felt better. Since then, I’ve been scared to be by myself, especially when I’m alone and ruminating on my problems. My girlfriend says she’s worried about my safety when she has to leave me home alone.\ndoctor_action: retrieve(query=symptoms of anxiety disorder with suicidal ideation)\nresponse: [Document 1] (ID: 4480_5, Score: 0.885)\n# Suicide risk\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\n\n[Document 2] (ID: 7653_0, Score: 0.880)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Suicide?\n...\n\n[Document 3] (ID: 5609_5, Score: 0.879)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 4] (ID: 21908_5, Score: 0.874)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 5] (ID: 14990_7, Score: 0.874)\n- The following symptoms anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania have been reported in adult and pediatric patients being treated with antidepressants for MDD as well as for other in...\ndoctor_action: ask_patient(question=Have you had any previous history of depression, anxiety, or suicidal thoughts? Also, have you been treated for these conditions before?)\nresponse: Yes, I have a history of depression, anxiety, and trauma. I’ve also been treated for these conditions before — I’ve been hospitalized in a psychiatric unit and completed a two-week Latino Partial Hospitalization Program. My medications include lorazepam, risperidone, and fluoxetine, and I’ve seen outpatient psychiatrists. I’ve had suicidal thoughts in the past, including a recent plan to overdose, and I’ve been hospitalized for active suicidal ideation. I also have a history of substance abuse, including alcohol and cocaine, but I’ve been sober for months now. I’ve had panic attacks and have been treated for them with risperidone. I’ve had three jobs before my hospitalization, but I’ve had to quit two because I wasn’t there long enough to get paid medical leave. I’m currently without income and struggling with financial stressors, which have worsened my depression and anxiety.\ndoctor_action: retrieve(query=differential diagnosis for anxiety disorder with suicidal ideation and history of trauma and substance abuse)\nresponse: [Document 1] (ID: 33048_7, Score: 0.876)\n## Differential Diagnosis\n- Alcohol withdrawal\n- Anxiety disorders\n- Essential tremor\n- Hypoglycemia\n- Diabetic ketoacidosis\n- Seizure due to infections, head injury, poisonings\n\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\n\n# Sedative Intoxication\n\n## Differential D...\n\n[Document 2] (ID: 4480_92, Score: 0.872)\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for other anxiety and related disorders MDD oppositional defiant disorder ADHD SUD alcohol dependence and borderline personality disorder (BPD). Comorbid panic or mood disorders have b...\n\n[Document 3] (ID: 16933_2, Score: 0.872)\n# Differential Diagnosis\n- Adjustment disorders\n- Dissociative disorders\n- Obsessive-compulsive disorder\n- Panic disorder\n- Post traumatic stress disorder\n- Psychotic disorders\n- Traumatic brain injury\n\n# Epidemiology and Demographics\n\n## Prevalence\nThe prevalence of acute stress disorder in overall...\n\n[Document 4] (ID: 17698_1, Score: 0.867)\n## Anxiety disorders\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\n\n[Document 5] (ID: 4480_7, Score: 0.866)\nWhen a patient presents with excessive or uncontrollable anxiety it is important to identify other potential causes of the symptoms, including direct effects of a substance (e.g., drug abuse or medication) or medical condition (e.g., hyperthyroidism, cardiopulmonary disorders, traumatic brain injury...\ndoctor_action: ask_patient(question=Have you noticed any changes in your sleep patterns, appetite, or energy levels recently? Also, have you experienced any hallucinations, delusions, or paranoia?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you been sleeping well or poorly recently? Are you sleeping more or less than usual?)\nresponse: I’ve been sleeping poorly lately. I’m sleeping less than usual—sometimes I feel like I’m barely getting any rest, even when I’m in bed for hours. It’s been happening during the times when I’m feeling more energized or “up,” which makes it hard to wind down.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 9,
+        "query_text": "Chief complaint: \"I'm afraid to be alone\". Patient: 45-year-old male. Symptoms: worsening anxiety, panic attacks, suicidal ideation, insomnia, poor sleep, weight loss suspected. History: depression, anxiety, trauma, substance abuse (alcohol, cocaine), prior psychiatric hospitalization, partial hospitalization, medications: lorazepam, risperidone, fluoxetine. No labs performed. Uncertainty: differential diagnosis including anxiety disorders, PTSD, substance withdrawal, medical causes.",
+        "skill_query_text": "Presenting problem: patient with escalating fear of being alone, panic attacks, suicidal ideation. Evidence gathered: history of mental health conditions, current meds, sleep disturbance, no labs. Ineffective action: lab request yielded no result. Need guidance: next diagnostic step to resolve uncertainty in differential diagnosis (anxiety, PTSD, substance withdrawal, medical causes)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.8182,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7854,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_e419326a635d",
+              "type": "skill",
+              "score": 0.7711,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any hallucinations, delusions, or paranoia recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had some strange thoughts lately, like feeling like I’m being watched or that things aren’t quite real — sometimes I’d wake up convinced I had to do something huge, like save the world, even though I knew it didn’t make sense. I’ve also felt paranoid, like people were talking about me behind my back, even when there was no reason to think that. It’s been during those high-energy, restless times — I barely slept, felt unstoppable, and didn’t care about consequences. I’ve also had moments where I felt like I was losing touch with reality, especially when I was feeling really down or overwhelmed.'}",
+        "env_info": "{'response': [{'id': '7b5f4a4c-e060-436a-aed3-7a42ef37f776', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any hallucinations, delusions, or paranoia recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1805}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any hallucinations, delusions, or paranoia recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any hallucinations, delusions, or paranoia recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 10. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"I'm afraid to be alone\"",
+          "initial_information: I am a 45-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 45-year-old male patient presenting with \"I'm afraid to be alone\"..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been progressing over time?)\nresponse: I’ve been feeling increasingly afraid to be alone for a while now — it’s not sudden, but it’s gotten worse over time. After I was out of the hospital and did partial hospitalization, I started feeling more depressed and anxious, especially since I’ve had more free time to think about my problems. The fear really hit hard yesterday when I was alone at home and had a panic attack while thinking about my financial stress — I started thinking about overdosing or draining my own blood. That’s when I took lorazepam and felt better. Since then, I’ve been scared to be by myself, especially when I’m alone and ruminating on my problems. My girlfriend says she’s worried about my safety when she has to leave me home alone.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of anxiety disorder with suicidal ideation)\nresponse: [Document 1] (ID: 4480_5, Score: 0.885)\n# Suicide risk\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\n\n[Document 2] (ID: 7653_0, Score: 0.880)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Suicide?\n...\n\n[Document 3] (ID: 5609_5, Score: 0.879)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 4] (ID: 21908_5, Score: 0.874)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 5] (ID: 14990_7, Score: 0.874)\n- The following symptoms anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania have been reported in adult and pediatric patients being treated with antidepressants for MDD as well as for other in...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any previous history of depression, anxiety, or suicidal thoughts? Also, have you been treated for these conditions before?)\nresponse: Yes, I have a history of depression, anxiety, and trauma. I’ve also been treated for these conditions before — I’ve been hospitalized in a psychiatric unit and completed a two-week Latino Partial Hospitalization Program. My medications include lorazepam, risperidone, and fluoxetine, and I’ve seen outpatient psychiatrists. I’ve had suicidal thoughts in the past, including a recent plan to overdose, and I’ve been hospitalized for active suicidal ideation. I also have a history of substance abuse, including alcohol and cocaine, but I’ve been sober for months now. I’ve had panic attacks and have been treated for them with risperidone. I’ve had three jobs before my hospitalization, but I’ve had to quit two because I wasn’t there long enough to get paid medical leave. I’m currently without income and struggling with financial stressors, which have worsened my depression and anxiety.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for anxiety disorder with suicidal ideation and history of trauma and substance abuse)\nresponse: [Document 1] (ID: 33048_7, Score: 0.876)\n## Differential Diagnosis\n- Alcohol withdrawal\n- Anxiety disorders\n- Essential tremor\n- Hypoglycemia\n- Diabetic ketoacidosis\n- Seizure due to infections, head injury, poisonings\n\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\n\n# Sedative Intoxication\n\n## Differential D...\n\n[Document 2] (ID: 4480_92, Score: 0.872)\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for other anxiety and related disorders MDD oppositional defiant disorder ADHD SUD alcohol dependence and borderline personality disorder (BPD). Comorbid panic or mood disorders have b...\n\n[Document 3] (ID: 16933_2, Score: 0.872)\n# Differential Diagnosis\n- Adjustment disorders\n- Dissociative disorders\n- Obsessive-compulsive disorder\n- Panic disorder\n- Post traumatic stress disorder\n- Psychotic disorders\n- Traumatic brain injury\n\n# Epidemiology and Demographics\n\n## Prevalence\nThe prevalence of acute stress disorder in overall...\n\n[Document 4] (ID: 17698_1, Score: 0.867)\n## Anxiety disorders\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\n\n[Document 5] (ID: 4480_7, Score: 0.866)\nWhen a patient presents with excessive or uncontrollable anxiety it is important to identify other potential causes of the symptoms, including direct effects of a substance (e.g., drug abuse or medication) or medical condition (e.g., hyperthyroidism, cardiopulmonary disorders, traumatic brain injury...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your sleep patterns, appetite, or energy levels recently? Also, have you experienced any hallucinations, delusions, or paranoia?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been sleeping well or poorly recently? Are you sleeping more or less than usual?)\nresponse: I’ve been sleeping poorly lately. I’m sleeping less than usual—sometimes I feel like I’m barely getting any rest, even when I’m in bed for hours. It’s been happening during the times when I’m feeling more energized or “up,” which makes it hard to wind down.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any changes in your appetite or weight recently?)\nresponse: I’ve been feeling more depressed and anxious lately, and I’ve had more time to think about my problems, which has made me feel worse. I’ve been taking risperidone, and I think it’s helped with my sleep and appetite a little, but I’m not sure if my appetite has changed much. I haven’t weighed myself recently, so I don’t know if I’ve lost or gained weight. I’ve been without income for over a month, and that’s probably why I’m not eating as well as I should.",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any hallucinations, delusions, or paranoia recently?)\nresponse: I’ve had some strange thoughts lately, like feeling like I’m being watched or that things aren’t quite real — sometimes I’d wake up convinced I had to do something huge, like save the world, even though I knew it didn’t make sense. I’ve also felt paranoid, like people were talking about me behind my back, even when there was no reason to think that. It’s been during those high-energy, restless times — I barely slept, felt unstoppable, and didn’t care about consequences. I’ve also had moments where I felt like I was losing touch with reality, especially when I was feeling really down or overwhelmed."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been progressing over time?)\nresponse: I’ve been feeling increasingly afraid to be alone for a while now — it’s not sudden, but it’s gotten worse over time. After I was out of the hospital and did partial hospitalization, I started feeling more depressed and anxious, especially since I’ve had more free time to think about my problems. The fear really hit hard yesterday when I was alone at home and had a panic attack while thinking about my financial stress — I started thinking about overdosing or draining my own blood. That’s when I took lorazepam and felt better. Since then, I’ve been scared to be by myself, especially when I’m alone and ruminating on my problems. My girlfriend says she’s worried about my safety when she has to leave me home alone.\ndoctor_action: retrieve(query=symptoms of anxiety disorder with suicidal ideation)\nresponse: [Document 1] (ID: 4480_5, Score: 0.885)\n# Suicide risk\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\n\n[Document 2] (ID: 7653_0, Score: 0.880)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Suicide?\n...\n\n[Document 3] (ID: 5609_5, Score: 0.879)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 4] (ID: 21908_5, Score: 0.874)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 5] (ID: 14990_7, Score: 0.874)\n- The following symptoms anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania have been reported in adult and pediatric patients being treated with antidepressants for MDD as well as for other in...\ndoctor_action: ask_patient(question=Have you had any previous history of depression, anxiety, or suicidal thoughts? Also, have you been treated for these conditions before?)\nresponse: Yes, I have a history of depression, anxiety, and trauma. I’ve also been treated for these conditions before — I’ve been hospitalized in a psychiatric unit and completed a two-week Latino Partial Hospitalization Program. My medications include lorazepam, risperidone, and fluoxetine, and I’ve seen outpatient psychiatrists. I’ve had suicidal thoughts in the past, including a recent plan to overdose, and I’ve been hospitalized for active suicidal ideation. I also have a history of substance abuse, including alcohol and cocaine, but I’ve been sober for months now. I’ve had panic attacks and have been treated for them with risperidone. I’ve had three jobs before my hospitalization, but I’ve had to quit two because I wasn’t there long enough to get paid medical leave. I’m currently without income and struggling with financial stressors, which have worsened my depression and anxiety.\ndoctor_action: retrieve(query=differential diagnosis for anxiety disorder with suicidal ideation and history of trauma and substance abuse)\nresponse: [Document 1] (ID: 33048_7, Score: 0.876)\n## Differential Diagnosis\n- Alcohol withdrawal\n- Anxiety disorders\n- Essential tremor\n- Hypoglycemia\n- Diabetic ketoacidosis\n- Seizure due to infections, head injury, poisonings\n\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\n\n# Sedative Intoxication\n\n## Differential D...\n\n[Document 2] (ID: 4480_92, Score: 0.872)\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for other anxiety and related disorders MDD oppositional defiant disorder ADHD SUD alcohol dependence and borderline personality disorder (BPD). Comorbid panic or mood disorders have b...\n\n[Document 3] (ID: 16933_2, Score: 0.872)\n# Differential Diagnosis\n- Adjustment disorders\n- Dissociative disorders\n- Obsessive-compulsive disorder\n- Panic disorder\n- Post traumatic stress disorder\n- Psychotic disorders\n- Traumatic brain injury\n\n# Epidemiology and Demographics\n\n## Prevalence\nThe prevalence of acute stress disorder in overall...\n\n[Document 4] (ID: 17698_1, Score: 0.867)\n## Anxiety disorders\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\n\n[Document 5] (ID: 4480_7, Score: 0.866)\nWhen a patient presents with excessive or uncontrollable anxiety it is important to identify other potential causes of the symptoms, including direct effects of a substance (e.g., drug abuse or medication) or medical condition (e.g., hyperthyroidism, cardiopulmonary disorders, traumatic brain injury...\ndoctor_action: ask_patient(question=Have you noticed any changes in your sleep patterns, appetite, or energy levels recently? Also, have you experienced any hallucinations, delusions, or paranoia?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you been sleeping well or poorly recently? Are you sleeping more or less than usual?)\nresponse: I’ve been sleeping poorly lately. I’m sleeping less than usual—sometimes I feel like I’m barely getting any rest, even when I’m in bed for hours. It’s been happening during the times when I’m feeling more energized or “up,” which makes it hard to wind down.\ndoctor_action: ask_patient(question=Have you experienced any changes in your appetite or weight recently?)\nresponse: I’ve been feeling more depressed and anxious lately, and I’ve had more time to think about my problems, which has made me feel worse. I’ve been taking risperidone, and I think it’s helped with my sleep and appetite a little, but I’m not sure if my appetite has changed much. I haven’t weighed myself recently, so I don’t know if I’ve lost or gained weight. I’ve been without income for over a month, and that’s probably why I’m not eating as well as I should.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 10,
+        "query_text": "Chief complaint: \"I'm afraid to be alone\". Patient: 45-year-old male. Symptoms: worsening anxiety, panic attacks, suicidal ideation, insomnia, paranoia, hallucinations, poor sleep, weight loss, financial stress. History: depression, anxiety, trauma, substance abuse (alcohol, cocaine), prior hospitalizations, psychiatric meds (lorazepam, risperidone, fluoxetine). No labs performed. Uncertainty: differential diagnosis including anxiety disorders, PTSD, psychotic disorders, substance withdrawal.",
+        "skill_query_text": "Presenting problem: patient with escalating anxiety and suicidal ideation. Evidence gathered: patient history, symptoms, prior treatments, medication use. Ineffective action: lab request yielded no result. Missing: targeted exam or reasoning to resolve diagnostic uncertainty. Need: workflow guidance to select next diagnostic action based on current evidence and unresolved uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.8181,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7941,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7762,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "diagnosis for anxiety disorder with suicidal ideation, history of trauma, substance abuse, and psychotic symptoms"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e2d4f20b-f88f-4b30-933a-817e91e5a23a': \"[Document 1] (ID: 17698_1, Score: 0.881)\\n## Anxiety disorders\\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\\n\\n[Document 2] (ID: 114_572, Score: 0.874)\\n# Disorders\\nOther complaints may include the following:\\n- Overwhelming emotions caused by memories of the event - Emotional numbness\\n- Disruptions in consciousness, memory, or identity\\n- Depersonalization (i.e., a feeling of watching oneself act, while having no control over a situation)\\n- Derealiza...\\n\\n[Document 3] (ID: 14718_1, Score: 0.874)\\n## Prognosis\\nPoor prognostic factors include:\\n- Decrement in physical function\\n- Damage to occupational performance\\n- History of sexual abuse\\n\\n# Diagnostic Criteria\\n\\n# History and Symptoms\\n\\n## History\\nHistory includes:\\n- Checking your body multiple times in search of illness or other issues\\n- Going ...\\n\\n[Document 4] (ID: 4480_92, Score: 0.873)\\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for o...[truncated]\"}}",
+        "env_info": "{'response': [{'id': 'e2d4f20b-f88f-4b30-933a-817e91e5a23a', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"diagnosis for anxiety disorder with suicidal ideation, history of trauma, substance abuse, and psychotic symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1975}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis for anxiety disorder with suicidal ideation, history of trauma, substance abuse, and psychotic symptoms\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"diagnosis for anxiety disorder with suicidal ideation, history of trauma, substance abuse, and psychotic symptoms\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20209853",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "\"I'm afraid to be alone\"",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 11. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"I'm afraid to be alone\"",
+          "initial_information: I am a 45-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 45-year-old male patient presenting with \"I'm afraid to be alone\"..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been progressing over time?)\nresponse: I’ve been feeling increasingly afraid to be alone for a while now — it’s not sudden, but it’s gotten worse over time. After I was out of the hospital and did partial hospitalization, I started feeling more depressed and anxious, especially since I’ve had more free time to think about my problems. The fear really hit hard yesterday when I was alone at home and had a panic attack while thinking about my financial stress — I started thinking about overdosing or draining my own blood. That’s when I took lorazepam and felt better. Since then, I’ve been scared to be by myself, especially when I’m alone and ruminating on my problems. My girlfriend says she’s worried about my safety when she has to leave me home alone.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of anxiety disorder with suicidal ideation)\nresponse: [Document 1] (ID: 4480_5, Score: 0.885)\n# Suicide risk\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\n\n[Document 2] (ID: 7653_0, Score: 0.880)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Suicide?\n...\n\n[Document 3] (ID: 5609_5, Score: 0.879)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 4] (ID: 21908_5, Score: 0.874)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 5] (ID: 14990_7, Score: 0.874)\n- The following symptoms anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania have been reported in adult and pediatric patients being treated with antidepressants for MDD as well as for other in...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any previous history of depression, anxiety, or suicidal thoughts? Also, have you been treated for these conditions before?)\nresponse: Yes, I have a history of depression, anxiety, and trauma. I’ve also been treated for these conditions before — I’ve been hospitalized in a psychiatric unit and completed a two-week Latino Partial Hospitalization Program. My medications include lorazepam, risperidone, and fluoxetine, and I’ve seen outpatient psychiatrists. I’ve had suicidal thoughts in the past, including a recent plan to overdose, and I’ve been hospitalized for active suicidal ideation. I also have a history of substance abuse, including alcohol and cocaine, but I’ve been sober for months now. I’ve had panic attacks and have been treated for them with risperidone. I’ve had three jobs before my hospitalization, but I’ve had to quit two because I wasn’t there long enough to get paid medical leave. I’m currently without income and struggling with financial stressors, which have worsened my depression and anxiety.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for anxiety disorder with suicidal ideation and history of trauma and substance abuse)\nresponse: [Document 1] (ID: 33048_7, Score: 0.876)\n## Differential Diagnosis\n- Alcohol withdrawal\n- Anxiety disorders\n- Essential tremor\n- Hypoglycemia\n- Diabetic ketoacidosis\n- Seizure due to infections, head injury, poisonings\n\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\n\n# Sedative Intoxication\n\n## Differential D...\n\n[Document 2] (ID: 4480_92, Score: 0.872)\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for other anxiety and related disorders MDD oppositional defiant disorder ADHD SUD alcohol dependence and borderline personality disorder (BPD). Comorbid panic or mood disorders have b...\n\n[Document 3] (ID: 16933_2, Score: 0.872)\n# Differential Diagnosis\n- Adjustment disorders\n- Dissociative disorders\n- Obsessive-compulsive disorder\n- Panic disorder\n- Post traumatic stress disorder\n- Psychotic disorders\n- Traumatic brain injury\n\n# Epidemiology and Demographics\n\n## Prevalence\nThe prevalence of acute stress disorder in overall...\n\n[Document 4] (ID: 17698_1, Score: 0.867)\n## Anxiety disorders\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\n\n[Document 5] (ID: 4480_7, Score: 0.866)\nWhen a patient presents with excessive or uncontrollable anxiety it is important to identify other potential causes of the symptoms, including direct effects of a substance (e.g., drug abuse or medication) or medical condition (e.g., hyperthyroidism, cardiopulmonary disorders, traumatic brain injury...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your sleep patterns, appetite, or energy levels recently? Also, have you experienced any hallucinations, delusions, or paranoia?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been sleeping well or poorly recently? Are you sleeping more or less than usual?)\nresponse: I’ve been sleeping poorly lately. I’m sleeping less than usual—sometimes I feel like I’m barely getting any rest, even when I’m in bed for hours. It’s been happening during the times when I’m feeling more energized or “up,” which makes it hard to wind down.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any changes in your appetite or weight recently?)\nresponse: I’ve been feeling more depressed and anxious lately, and I’ve had more time to think about my problems, which has made me feel worse. I’ve been taking risperidone, and I think it’s helped with my sleep and appetite a little, but I’m not sure if my appetite has changed much. I haven’t weighed myself recently, so I don’t know if I’ve lost or gained weight. I’ve been without income for over a month, and that’s probably why I’m not eating as well as I should.",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any hallucinations, delusions, or paranoia recently?)\nresponse: I’ve had some strange thoughts lately, like feeling like I’m being watched or that things aren’t quite real — sometimes I’d wake up convinced I had to do something huge, like save the world, even though I knew it didn’t make sense. I’ve also felt paranoid, like people were talking about me behind my back, even when there was no reason to think that. It’s been during those high-energy, restless times — I barely slept, felt unstoppable, and didn’t care about consequences. I’ve also had moments where I felt like I was losing touch with reality, especially when I was feeling really down or overwhelmed.",
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=diagnosis for anxiety disorder with suicidal ideation, history of trauma, substance abuse, and psychotic symptoms)\nresponse: [Document 1] (ID: 17698_1, Score: 0.881)\n## Anxiety disorders\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\n\n[Document 2] (ID: 114_572, Score: 0.874)\n# Disorders\nOther complaints may include the following:\n- Overwhelming emotions caused by memories of the event - Emotional numbness\n- Disruptions in consciousness, memory, or identity\n- Depersonalization (i.e., a feeling of watching oneself act, while having no control over a situation)\n- Derealiza...\n\n[Document 3] (ID: 14718_1, Score: 0.874)\n## Prognosis\nPoor prognostic factors include:\n- Decrement in physical function\n- Damage to occupational performance\n- History of sexual abuse\n\n# Diagnostic Criteria\n\n# History and Symptoms\n\n## History\nHistory includes:\n- Checking your body multiple times in search of illness or other issues\n- Going ...\n\n[Document 4] (ID: 4480_92, Score: 0.873)\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for other anxiety and related disorders MDD oppositional defiant disorder ADHD SUD alcohol dependence and borderline personality disorder (BPD). Comorbid panic or mood disorders have b...\n\n[Document 5] (ID: 33048_7, Score: 0.873)\n## Differential Diagnosis\n- Alcohol withdrawal\n- Anxiety disorders\n- Essential tremor\n- Hypoglycemia\n- Diabetic ketoacidosis\n- Seizure due to infections, head injury, poisonings\n\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\n\n# Sedative Intoxication\n\n## Differential D..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been progressing over time?)\nresponse: I’ve been feeling increasingly afraid to be alone for a while now — it’s not sudden, but it’s gotten worse over time. After I was out of the hospital and did partial hospitalization, I started feeling more depressed and anxious, especially since I’ve had more free time to think about my problems. The fear really hit hard yesterday when I was alone at home and had a panic attack while thinking about my financial stress — I started thinking about overdosing or draining my own blood. That’s when I took lorazepam and felt better. Since then, I’ve been scared to be by myself, especially when I’m alone and ruminating on my problems. My girlfriend says she’s worried about my safety when she has to leave me home alone.\ndoctor_action: retrieve(query=symptoms of anxiety disorder with suicidal ideation)\nresponse: [Document 1] (ID: 4480_5, Score: 0.885)\n# Suicide risk\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\n\n[Document 2] (ID: 7653_0, Score: 0.880)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Suicide?\n...\n\n[Document 3] (ID: 5609_5, Score: 0.879)\n### Clinical Worsening and Suicide Risk\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\n\n[Document 4] (ID: 21908_5, Score: 0.874)\n# Natural History, Complications, and Prognosis\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\n- Elderly patients with severe depression,...\n\n[Document 5] (ID: 14990_7, Score: 0.874)\n- The following symptoms anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, and mania have been reported in adult and pediatric patients being treated with antidepressants for MDD as well as for other in...\ndoctor_action: ask_patient(question=Have you had any previous history of depression, anxiety, or suicidal thoughts? Also, have you been treated for these conditions before?)\nresponse: Yes, I have a history of depression, anxiety, and trauma. I’ve also been treated for these conditions before — I’ve been hospitalized in a psychiatric unit and completed a two-week Latino Partial Hospitalization Program. My medications include lorazepam, risperidone, and fluoxetine, and I’ve seen outpatient psychiatrists. I’ve had suicidal thoughts in the past, including a recent plan to overdose, and I’ve been hospitalized for active suicidal ideation. I also have a history of substance abuse, including alcohol and cocaine, but I’ve been sober for months now. I’ve had panic attacks and have been treated for them with risperidone. I’ve had three jobs before my hospitalization, but I’ve had to quit two because I wasn’t there long enough to get paid medical leave. I’m currently without income and struggling with financial stressors, which have worsened my depression and anxiety.\ndoctor_action: retrieve(query=differential diagnosis for anxiety disorder with suicidal ideation and history of trauma and substance abuse)\nresponse: [Document 1] (ID: 33048_7, Score: 0.876)\n## Differential Diagnosis\n- Alcohol withdrawal\n- Anxiety disorders\n- Essential tremor\n- Hypoglycemia\n- Diabetic ketoacidosis\n- Seizure due to infections, head injury, poisonings\n\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\n\n# Sedative Intoxication\n\n## Differential D...\n\n[Document 2] (ID: 4480_92, Score: 0.872)\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for other anxiety and related disorders MDD oppositional defiant disorder ADHD SUD alcohol dependence and borderline personality disorder (BPD). Comorbid panic or mood disorders have b...\n\n[Document 3] (ID: 16933_2, Score: 0.872)\n# Differential Diagnosis\n- Adjustment disorders\n- Dissociative disorders\n- Obsessive-compulsive disorder\n- Panic disorder\n- Post traumatic stress disorder\n- Psychotic disorders\n- Traumatic brain injury\n\n# Epidemiology and Demographics\n\n## Prevalence\nThe prevalence of acute stress disorder in overall...\n\n[Document 4] (ID: 17698_1, Score: 0.867)\n## Anxiety disorders\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\n\n[Document 5] (ID: 4480_7, Score: 0.866)\nWhen a patient presents with excessive or uncontrollable anxiety it is important to identify other potential causes of the symptoms, including direct effects of a substance (e.g., drug abuse or medication) or medical condition (e.g., hyperthyroidism, cardiopulmonary disorders, traumatic brain injury...\ndoctor_action: ask_patient(question=Have you noticed any changes in your sleep patterns, appetite, or energy levels recently? Also, have you experienced any hallucinations, delusions, or paranoia?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you been sleeping well or poorly recently? Are you sleeping more or less than usual?)\nresponse: I’ve been sleeping poorly lately. I’m sleeping less than usual—sometimes I feel like I’m barely getting any rest, even when I’m in bed for hours. It’s been happening during the times when I’m feeling more energized or “up,” which makes it hard to wind down.\ndoctor_action: ask_patient(question=Have you experienced any changes in your appetite or weight recently?)\nresponse: I’ve been feeling more depressed and anxious lately, and I’ve had more time to think about my problems, which has made me feel worse. I’ve been taking risperidone, and I think it’s helped with my sleep and appetite a little, but I’m not sure if my appetite has changed much. I haven’t weighed myself recently, so I don’t know if I’ve lost or gained weight. I’ve been without income for over a month, and that’s probably why I’m not eating as well as I should.\ndoctor_action: ask_patient(question=Have you experienced any hallucinations, delusions, or paranoia recently?)\nresponse: I’ve had some strange thoughts lately, like feeling like I’m being watched or that things aren’t quite real — sometimes I’d wake up convinced I had to do something huge, like save the world, even though I knew it didn’t make sense. I’ve also felt paranoid, like people were talking about me behind my back, even when there was no reason to think that. It’s been during those high-energy, restless times — I barely slept, felt unstoppable, and didn’t care about consequences. I’ve also had moments where I felt like I was losing touch with reality, especially when I was feeling really down or overwhelmed.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20209853",
+        "turn_id": 11,
+        "query_text": "Chief complaint: \"I'm afraid to be alone\". Patient: 45-year-old male. History: depression, anxiety, trauma, substance abuse (alcohol, cocaine), prior hospitalization, partial hospitalization, medications (lorazepam, risperidone, fluoxetine). Symptoms: worsening anxiety, panic attacks, suicidal ideation, insomnia, paranoia, hallucinations, weight loss suspected, poor sleep, financial stress. No labs performed. Uncertainty: diagnosis of anxiety disorder with psychotic features, comorbid PTSD, or substance withdrawal.",
+        "skill_query_text": "Presenting problem: patient with escalating anxiety, suicidal ideation, and psychotic symptoms. Evidence gathered: history of mental illness, current symptoms including insomnia, paranoia, hallucinations. Ineffective action: lab request yielded no result. Missing: targeted exam or diagnostic tool to resolve diagnostic uncertainty. Need: workflow guidance to select next diagnostic action that resolves largest remaining uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.8335,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7952,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7721,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Schizoaffective Disorder, Bipolar Type}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a75e68a8-4be4-4d96-81ee-dacfb627bc6d': '{\"diagnosis\": \"Schizoaffective Disorder, Bipolar Type\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'a75e68a8-4be4-4d96-81ee-dacfb627bc6d', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Schizoaffective Disorder, Bipolar Type}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2469}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Schizoaffective Disorder, Bipolar Type}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Schizoaffective Disorder, Bipolar Type}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'5a4defcb-4ba6-442a-b4e6-1b33a0416579': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '5a4defcb-4ba6-442a-b4e6-1b33a0416579', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 211}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe what you mean by 'afraid to be alone'? Is this a sudden onset or has it been progressing over time?)\nresponse: I’ve been feeling increasingly afraid to be alone for a while now — it’s not sudden, but it’s gotten worse over time. After I was out of the hospital and did partial hospitalization, I started feeling more depressed and anxious, especially since I’ve had more free time to think about my problems. The fear really hit hard yesterday when I was alone at home and had a panic attack while thinking about my financial stress — I started thinking about overdosing or draining my own blood. That’s when I took lorazepam and felt better. Since then, I’ve been scared to be by myself, especially when I’m alone ...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 4,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?"
+      },
+      "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+      "env_info": "{'response': [{'id': '2595dddc-a657-45ef-af99-759b1c1aec51', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any previous episodes of depression, anxiety, or suicidal thoughts? Have you ever been diagnosed with a mental health condition?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 760}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of anxiety disorder with suicidal ideation)\nresponse: [Document 1] (ID: 4480_5, Score: 0.885)\n# Suicide risk\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\n\n[Document 2] (ID: 7653_0, Score: 0.880)\nSuicidal ideation (patient information)\n\n# Overview\nSuicidal thoughts, also known as suicidal ideation, are thoughts about how to kill oneself, which can range from a detailed plan to a fleeting consideration and does not include the final act of killing oneself\n\n# What are the symptoms of Su...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?"
+      },
+      "patient_or_tool_response": "{'question': 'Yes, I have been diagnosed with depression, anxiety, and trauma by a healthcare provider. I’ve also had substance abuse issues in the past. I was hospitalized for depression and had a partial hospitalization program, which helped a bit, but my mood has worsened since then. My psychiatrist has been managing my medications, including lorazepam, risperidone, and fluoxetine. I’ve also had panic attacks and have thoughts of harming myself when I’m alone or stressed.'}",
+      "env_info": "{'response': [{'id': '114aa570-215b-4ad3-9623-4c7378e539a7', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you ever been diagnosed with depression, anxiety, or any other mental health condition by a healthcare provider?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 827}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any previous history of depression, anxiety, or suicidal thoughts? Also, have you been treated for these conditions before?)\nresponse: Yes, I have a history of depression, anxiety, and trauma. I’ve also been treated for these conditions before — I’ve been hospitalized in a psychiatric unit and completed a two-week Latino Partial Hospitalization Program. My medications include lorazepam, risperidone, and fluoxetine, and I’ve seen outpatient psychiatrists. I’ve had suicidal thoughts in the past, including a recent plan to overdose, and I’ve been hospitalized for active suicidal ideation. I also have a history of substance abuse, including alcohol and cocaine, but I’ve been sober for months now. I’ve had panic at...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "imaging"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'85f8c71f-af17-47d2-b453-563c4aa53edb': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '85f8c71f-af17-47d2-b453-563c4aa53edb', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 973}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for anxiety disorder with suicidal ideation and history of trauma and substance abuse)\nresponse: [Document 1] (ID: 33048_7, Score: 0.876)\n## Differential Diagnosis\n- Alcohol withdrawal\n- Anxiety disorders\n- Essential tremor\n- Hypoglycemia\n- Diabetic ketoacidosis\n- Seizure due to infections, head injury, poisonings\n\n## DSM-V Diagnostic Criteria for Sedative, Hypnotic, or Anxiolytic Withdrawal\n\n# Sedative Intoxication\n\n## Differential D...\n\n[Document 2] (ID: 4480_92, Score: 0.872)\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for other anxiety and related disorders MDD oppositional defiant disorder ADHD SUD alcohol dependence and borderline p...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "ASK",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "risk factors for suicidal ideation in patients with depression and anxiety"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'98aa6e2d-1deb-48ac-ab0d-69610414d0cd': '[Document 1] (ID: 4480_5, Score: 0.887)\\n# Suicide risk\\nIn large surveys, anxiety and related disorders were independently associated with a significant 1.7-2.5 times increased risk of suicide attempts ; however, data are conflicting as to whether the risk is moderated by gender. Increased risk of suicide attempts or completed suicide has ...\\n\\n[Document 2] (ID: 21908_5, Score: 0.885)\\n# Natural History, Complications, and Prognosis\\n- There is a strong association between current suicidal ideation, history of suicide attempts, and depression. It has been observed that past suicide attempts occur in the context of psychosocial dysfunction.\\n- Elderly patients with severe depression,...\\n\\n[Document 3] (ID: 5609_5, Score: 0.868)\\n### Clinical Worsening and Suicide Risk\\nPatients, their families and their caregivers should be encouraged to be alert to the emergence of anxiety, agitation, panic attacks, insomnia, irritability, hostility, aggressiveness, impulsivity, akathisia (psychomotor restlessness), hypomania, mania, other ...\\n\\n[Document 4] (ID: 28_20, Score: 0.863)\\n# Managing Risk of Suicide\\n- Advise risk of increased suicidality from antidepressants is small, most often associated with a...[truncated]'}}",
+      "env_info": "{'response': [{'id': '98aa6e2d-1deb-48ac-ab0d-69610414d0cd', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"risk factors for suicidal ideation in patients with depression and anxiety\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1047}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your sleep patterns, appetite, or energy levels recently? Also, have you experienced any hallucinations, delusions, or paranoia?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 8,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Major Depressive Disorder with Suicidal Ideation and Anxiety Disorder}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'caa26994-2745-42af-a9e5-a63ef0c0de19': '{\"diagnosis\": \"Major Depressive Disorder with Suicidal Ideation and Anxiety Disorder\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': 'caa26994-2745-42af-a9e5-a63ef0c0de19', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Major Depressive Disorder with Suicidal Ideation and Anxiety Disorder}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1517}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been sleeping well or poorly recently? Are you sleeping more or less than usual?)\nresponse: I’ve been sleeping poorly lately. I’m sleeping less than usual—sometimes I feel like I’m barely getting any rest, even when I’m in bed for hours. It’s been happening during the times when I’m feeling more energized or “up,” which makes it hard to wind down."
+      ]
+    },
+    {
+      "turn_id": 9,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any hallucinations, delusions, or paranoia recently?"
+      },
+      "patient_or_tool_response": "{'question': 'I’ve had some strange thoughts lately, like feeling like I’m being watched or that things aren’t quite real — sometimes I’d wake up convinced I had to do something huge, like save the world, even though I knew it didn’t make sense. I’ve also felt paranoid, like people were talking about me behind my back, even when there was no reason to think that. It’s been during those high-energy, restless times — I barely slept, felt unstoppable, and didn’t care about consequences. I’ve also had moments where I felt like I was losing touch with reality, especially when I was feeling really down or overwhelmed.'}",
+      "env_info": "{'response': [{'id': '7b5f4a4c-e060-436a-aed3-7a42ef37f776', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any hallucinations, delusions, or paranoia recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1805}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any changes in your appetite or weight recently?)\nresponse: I’ve been feeling more depressed and anxious lately, and I’ve had more time to think about my problems, which has made me feel worse. I’ve been taking risperidone, and I think it’s helped with my sleep and appetite a little, but I’m not sure if my appetite has changed much. I haven’t weighed myself recently, so I don’t know if I’ve lost or gained weight. I’ve been without income for over a month, and that’s probably why I’m not eating as well as I should."
+      ]
+    },
+    {
+      "turn_id": 10,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "diagnosis for anxiety disorder with suicidal ideation, history of trauma, substance abuse, and psychotic symptoms"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'e2d4f20b-f88f-4b30-933a-817e91e5a23a': \"[Document 1] (ID: 17698_1, Score: 0.881)\\n## Anxiety disorders\\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\\n\\n[Document 2] (ID: 114_572, Score: 0.874)\\n# Disorders\\nOther complaints may include the following:\\n- Overwhelming emotions caused by memories of the event - Emotional numbness\\n- Disruptions in consciousness, memory, or identity\\n- Depersonalization (i.e., a feeling of watching oneself act, while having no control over a situation)\\n- Derealiza...\\n\\n[Document 3] (ID: 14718_1, Score: 0.874)\\n## Prognosis\\nPoor prognostic factors include:\\n- Decrement in physical function\\n- Damage to occupational performance\\n- History of sexual abuse\\n\\n# Diagnostic Criteria\\n\\n# History and Symptoms\\n\\n## History\\nHistory includes:\\n- Checking your body multiple times in search of illness or other issues\\n- Going ...\\n\\n[Document 4] (ID: 4480_92, Score: 0.873)\\nAn estimated 75% of patients with PTSD have another comorbid psychiatric disorder ; and rates are particularly high for o...[truncated]\"}}",
+      "env_info": "{'response': [{'id': 'e2d4f20b-f88f-4b30-933a-817e91e5a23a', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"diagnosis for anxiety disorder with suicidal ideation, history of trauma, substance abuse, and psychotic symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1975}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any hallucinations, delusions, or paranoia recently?)\nresponse: I’ve had some strange thoughts lately, like feeling like I’m being watched or that things aren’t quite real — sometimes I’d wake up convinced I had to do something huge, like save the world, even though I knew it didn’t make sense. I’ve also felt paranoid, like people were talking about me behind my back, even when there was no reason to think that. It’s been during those high-energy, restless times — I barely slept, felt unstoppable, and didn’t care about consequences. I’ve also had moments where I felt like I was losing touch with reality, especially when I was feeling really down or overwhelmed."
+      ]
+    },
+    {
+      "turn_id": 11,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Schizoaffective Disorder, Bipolar Type}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'a75e68a8-4be4-4d96-81ee-dacfb627bc6d': '{\"diagnosis\": \"Schizoaffective Disorder, Bipolar Type\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': 'a75e68a8-4be4-4d96-81ee-dacfb627bc6d', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Schizoaffective Disorder, Bipolar Type}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2469}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_11 retrieve_interaction: doctor_action: retrieve(query=diagnosis for anxiety disorder with suicidal ideation, history of trauma, substance abuse, and psychotic symptoms)\nresponse: [Document 1] (ID: 17698_1, Score: 0.881)\n## Anxiety disorders\nAnxiety disorders are psychiatric disorders characterized by persistent and often debilitating worry or fear.  The anxiety experienced may worsen over time and impede an individual's ability to function.  Common symptoms of anxiety disorders include anxiety or excessive worrying...\n\n[Document 2] (ID: 114_572, Score: 0.874)\n# Disorders\nOther complaints may include the following:\n- Overwhelming emotions caused by memories of the event - Emotional numbness\n- Disruptions in consciousness, memory, or identity\n- Depersonalization (i.e., a feeling of wat...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

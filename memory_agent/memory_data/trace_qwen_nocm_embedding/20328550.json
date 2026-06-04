@@ -1,0 +1,1177 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20328550",
+  "turns": [
+    {
+      "case_id": "20328550",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "High-dose methotrexate infusion.",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 64-year-old female patient presenting with high-dose methotrexate infusion, admitted for CNS lymphoma. Key evidence gathered: Patient age, gender, and chief complaint. Diagnostic uncertainty remains high due to lack of specific symptoms, exam, lab, or imaging results. Most useful missing information: Detailed symptom history, relevant lab/imaging findings, and clinical context of methotrexate use. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 64-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 64-year-old female patient presenting with High-dose methotrexate infusion. and CNS lymphoma admitted for.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 64-year-old female. Chief complaint: High-dose methotrexate infusion. Admitted for CNS lymphoma. No specific symptoms, exam, lab, or imaging results provided. No treatment or risk information explicitly supported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20328550",
+        "turn_id": 1,
+        "query_text": "64-year-old female, chief complaint: high-dose methotrexate infusion, admitted for CNS lymphoma. No specific symptoms, exam, lab, or imaging results provided. No treatment or risk information explicitly supported.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 64-year-old female with high-dose methotrexate infusion admitted for CNS lymphoma. Evidence gathered: age, gender, chief complaint. Uncertainty remains due to lack of symptoms, exam, lab, or imaging results. No ineffective actions tried. Need workflow guidance on next diagnostic steps based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7681,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7478,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.7898,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.7806,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.771,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7909,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.7894,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7864,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.7864,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did you first start experiencing symptoms that led to your admission for high-dose methotrexate infusion and CNS lymphoma?"
+        },
+        "patient_or_tool_response": "{'question': 'I first started having symptoms in late ___ when I noticed my gait became unsteady and I kept falling forward, especially when trying to lean forward. I didn’t have headaches, nausea, vomiting, seizures, or loss of consciousness at that time.'}",
+        "env_info": "{'response': [{'id': 'ed51b1ec-30d1-4c43-a886-a5199a8e32dc', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did you first start experiencing symptoms that led to your admission for high-dose methotrexate infusion and CNS lymphoma?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first start experiencing symptoms that led to your admission for high-dose methotrexate infusion and CNS lymphoma?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first start experiencing symptoms that led to your admission for high-dose methotrexate infusion and CNS lymphoma?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20328550",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "High-dose methotrexate infusion.",
+        "diagnostic_strategy": "Current clinical problem: Assessing symptom onset and neurological presentation related to CNS lymphoma. Key evidence gathered: Patient reports onset of gait instability and falling forward in late ___, without headache, nausea, vomiting, seizures, or loss of consciousness. Diagnostic uncertainty: Timing and specific neurological correlates of CNS lymphoma remain unclear. Most useful missing information: Detailed timeline of symptom progression, imaging or lab results, and confirmation of CNS lymphoma diagnosis. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first start experiencing symptoms that led to your admission for high-dose methotrexate infusion and CNS lymphoma?)\nresponse: I first started having symptoms in late ___ when I noticed my gait became unsteady and I kept falling forward, especially when trying to lean forward. I didn’t have headaches, nausea, vomiting, seizures, or loss of consciousness at that time."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: High-dose methotrexate infusion. Patient reports onset of gait instability and falling forward in late ___, without headache, nausea, vomiting, seizures, or loss of consciousness. No imaging, lab, or tool results provided. No diagnosis confirmed. No treatment or risk information provided."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20328550",
+        "turn_id": 2,
+        "query_text": "Patient reports onset of gait instability and falling forward in late ___, without headache, nausea, vomiting, seizures, or loss of consciousness. No imaging, lab, or tool results provided. No diagnosis confirmed. No treatment or risk information provided.",
+        "skill_query_text": "Presenting problem: Assessing symptom onset and neurological presentation related to CNS lymphoma. Evidence gathered: Patient reports gait instability and falling forward in late ___. Uncertainty: Timing and specific neurological correlates of CNS lymphoma remain unclear. Missing: Detailed timeline of symptom progression, imaging or lab results, and confirmation of CNS lymphoma diagnosis. Ineffective actions: None. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8019,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7926,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7925,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7873,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7846,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c0369983a3f9",
+              "type": "experience",
+              "score": 0.8403,
+              "outcome": "negative",
+              "text": "Patient-reported gait instability and leg weakness without mention of ataxia, dysmetria, or lateral fall patterns does not support cerebellar dysfunction; consider spinal stenosis or peripheral neuropathy as more likely causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8344,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            },
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8323,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8025,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.798,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7973,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_c0369983a3f9",
+          "exp_227b2313bf9b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8019,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_c0369983a3f9",
+            "memory_type": "experience",
+            "score": 0.8403,
+            "content": {
+              "experience": "Patient-reported gait instability and leg weakness without mention of ataxia, dysmetria, or lateral fall patterns does not support cerebellar dysfunction; consider spinal stenosis or peripheral neuropathy as more likely causes.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_227b2313bf9b",
+            "memory_type": "experience",
+            "score": 0.8344,
+            "content": {
+              "experience": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent changes in vision, memory, or cognitive function?"
+        },
+        "patient_or_tool_response": "{'question': 'I have not had any recent changes in vision, memory, or cognitive function. My main issue has been unsteady gait and falling forward, especially when leaning forward — that’s the only neurological symptom I’ve had. I don’t recall any problems with memory, thinking, or vision.'}",
+        "env_info": "{'response': [{'id': 'ea7de257-1539-4ee3-aa2d-aea559085227', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent changes in vision, memory, or cognitive function?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 104}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent changes in vision, memory, or cognitive function?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent changes in vision, memory, or cognitive function?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20328550",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "High-dose methotrexate infusion.",
+        "diagnostic_strategy": "Current clinical problem: Neurological symptoms in a patient with CNS lymphoma and high-dose methotrexate infusion. Key evidence: Unsteady gait and falling forward on leaning forward, no recent changes in vision, memory, or cognitive function. Diagnostic uncertainty: Whether neurological symptoms are due to lymphoma progression, methotrexate toxicity, or other causes. Most useful missing information: Imaging (e.g., MRI brain) to assess for mass effect or edema, and lab markers (e.g., methotrexate levels, liver enzymes). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent changes in vision, memory, or cognitive function?)\nresponse: I have not had any recent changes in vision, memory, or cognitive function. My main issue has been unsteady gait and falling forward, especially when leaning forward — that’s the only neurological symptom I’ve had. I don’t recall any problems with memory, thinking, or vision."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: High-dose methotrexate infusion. History: Symptoms began in late ___ with unsteady gait and falling forward when leaning forward; no headaches, nausea, vomiting, seizures, or loss of consciousness initially. No recent changes in vision, memory, or cognitive function. No other neurological symptoms reported. No imaging, lab, or tool results provided. Missing: Imaging (e.g., MRI brain) and lab markers (e.g., methotrexate levels) to assess for lymphoma progression or toxicity. No low-value or no-result attempts."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20328550",
+        "turn_id": 3,
+        "query_text": "Patient presents with unsteady gait and falling forward when leaning forward, no recent changes in vision, memory, or cognitive function. Chief complaint: high-dose methotrexate infusion. Diagnostic uncertainty: whether symptoms are due to lymphoma progression, methotrexate toxicity, or other causes. Missing: MRI brain and methotrexate levels, liver enzymes. No imaging or lab results provided.",
+        "skill_query_text": "Current decision point: neurological symptoms in patient with CNS lymphoma and high-dose methotrexate infusion. Evidence gathered: patient denies changes in vision, memory, or cognition; unsteady gait and falling forward on leaning forward. No ineffective actions tried. Need workflow guidance on next diagnostic steps: imaging (MRI brain) and lab markers (methotrexate levels, liver enzymes)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7782,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7535,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8161,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_c0369983a3f9",
+              "type": "experience",
+              "score": 0.8078,
+              "outcome": "negative",
+              "text": "Patient-reported gait instability and leg weakness without mention of ataxia, dysmetria, or lateral fall patterns does not support cerebellar dysfunction; consider spinal stenosis or peripheral neuropathy as more likely causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.806,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.7991,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7985,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.7935,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c0369983a3f9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5847016b-993c-41aa-b738-778cbbec167e': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '5847016b-993c-41aa-b738-778cbbec167e', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 205}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20328550",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20328550",
+        "turn_id": 3,
+        "query_text": "Patient presents with unsteady gait and falling forward when leaning forward, no recent changes in vision, memory, or cognitive function. Chief complaint: high-dose methotrexate infusion. Diagnostic uncertainty: whether symptoms are due to lymphoma progression, methotrexate toxicity, or other causes. Missing: MRI brain and methotrexate levels, liver enzymes. No imaging or lab results provided.",
+        "skill_query_text": "Current decision point: neurological symptoms in patient with CNS lymphoma and high-dose methotrexate infusion. Evidence gathered: patient denies changes in vision, memory, or cognition; unsteady gait and falling forward on leaning forward. No ineffective actions tried. Need workflow guidance on next diagnostic steps: imaging (MRI brain) and lab markers (methotrexate levels, liver enzymes)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7782,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7535,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8161,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_c0369983a3f9",
+              "type": "experience",
+              "score": 0.8078,
+              "outcome": "negative",
+              "text": "Patient-reported gait instability and leg weakness without mention of ataxia, dysmetria, or lateral fall patterns does not support cerebellar dysfunction; consider spinal stenosis or peripheral neuropathy as more likely causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.806,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.7991,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7985,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.7935,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0dca2816ac84"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0dca2816ac84",
+            "memory_type": "experience",
+            "score": 0.8161,
+            "content": {
+              "experience": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "CNS lymphoma symptoms and diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'da61598c-f046-4080-bae3-b4c6a03bf67e': \"[Document 1] (ID: 6024_6, Score: 0.896)\\n# Risk Factors\\nThe most potent risk factor in the development of primary central nervous system lymphoma is a weakened or suppressed immune system in individuals who have acquired immunodeficiency syndrome (AIDS), received an organ transplant and are on immunosuppressants, inherited immunosuppressiv...\\n\\n[Document 2] (ID: 6024_7, Score: 0.894)\\n## Physical Examination\\nCommon physical examination findings of primary central nervous system lymphoma include vision loss, papilledema, altered mental status, apathy, depression, aphasia, cranioneuropathies, ataxia, and hemiparesis.\\n\\n## Laboratory Findings\\nLaboratory tests performed in a case susp...\\n\\n[Document 3] (ID: 6024_8, Score: 0.883)\\n## Other Diagnostic Studies\\nOther diagnostic studies for primary central nervous system lymphoma include magnetic resonance spectroscopy, magnetic resonance perfusion, scintigraphy, stereotactic biopsy, and polymerase chain reaction.\\n\\n# Treatment\\n\\n## Medical Therapy\\nThe treatment of primary central ...\\n\\n[Document 4] (ID: 114_493, Score: 0.882)\\n# A: Assessment\\nRule out other causes of the patient's neurologic changes. A partial differential diagnosis includes the fol...[truncated]\"}}",
+        "env_info": "{'response': [{'id': 'da61598c-f046-4080-bae3-b4c6a03bf67e', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"CNS lymphoma symptoms and diagnosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 276}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CNS lymphoma symptoms and diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CNS lymphoma symptoms and diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20328550",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "High-dose methotrexate infusion.",
+        "diagnostic_strategy": "Current clinical problem: Assessing neurological symptoms in a patient receiving high-dose methotrexate, with concern for CNS lymphoma. Key evidence gathered: Patient reports unsteady gait and falling forward (no vision, memory, or cognitive changes). Labs yielded no result. Current diagnostic uncertainty: Whether symptoms are due to methotrexate toxicity or CNS lymphoma. Most useful missing information: Imaging (e.g., MRI brain) or biopsy results to confirm or rule out CNS lymphoma. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: High-dose methotrexate infusion."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient admitted for high-dose methotrexate infusion. Chief complaint: unsteady gait and falling forward, especially when leaning forward. No reported changes in vision, memory, or cognitive function. Labs requested but returned no result. Retrieved information on CNS lymphoma: risk factors (immunosuppression), physical exam findings (ataxia, papilledema, etc.), diagnostic studies (MRI, biopsy), and differential diagnosis including CNS lymphoma. No imaging or biopsy performed yet. No treatment or risk information explicitly supported."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20328550",
+        "turn_id": 5,
+        "query_text": "Patient receiving high-dose methotrexate infusion, presenting with unsteady gait and falling forward; no vision, memory, or cognitive changes. Labs yielded no result. No imaging or biopsy performed. Uncertainty: symptoms due to methotrexate toxicity or CNS lymphoma. Relevant history: immunosuppression risk, ataxia findings in CNS lymphoma differential. No treatment or risk information explicitly supported.",
+        "skill_query_text": "Presenting problem: neurological symptoms (unsteady gait, falling forward) in patient on high-dose methotrexate. Uncertainty: methotrexate toxicity vs. CNS lymphoma. Evidence gathered: labs returned no result. Ineffective action: lab request yielded no result. Missing: imaging (e.g., MRI brain) or biopsy. Need workflow guidance for next diagnostic steps to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7653,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7469,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.7854,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.7819,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            },
+            {
+              "id": "exp_bef580faccef",
+              "type": "experience",
+              "score": 0.7695,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest a systemic inflammatory or coagulopathy process; do not apply this pattern when the patient has no petechiae or when symptoms are isolated to a single organ system without systemic signs.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8062,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.7977,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.7974,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any history of immunosuppressive therapy, organ transplant, or HIV/AIDS?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '5234acb4-3faf-4150-b465-1da4815b5161', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any history of immunosuppressive therapy, organ transplant, or HIV/AIDS?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 745}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any history of immunosuppressive therapy, organ transplant, or HIV/AIDS?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any history of immunosuppressive therapy, organ transplant, or HIV/AIDS?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20328550",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "High-dose methotrexate infusion.",
+        "diagnostic_strategy": "Current clinical problem: Assess risk factors for primary CNS lymphoma in a patient receiving high-dose methotrexate. Key evidence: Patient reports unsteady gait and falling forward without cognitive or visual symptoms; no immunosuppressive history or HIV/AIDS reported. Diagnostic uncertainty: Whether patient’s symptoms are due to methotrexate toxicity or CNS lymphoma. Most useful missing information: Results of labs, imaging, or biopsy. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: High-dose methotrexate infusion."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: High-dose methotrexate infusion. History: Symptoms began in late ___ with unsteady gait and falling forward; no headaches, nausea, vomiting, seizures, or loss of consciousness. No recent changes in vision, memory, or cognitive function. No history of immunosuppressive therapy, organ transplant, or HIV/AIDS. Labs: No result available. Diagnostic knowledge: CNS lymphoma risk factors include immunosuppression; symptoms include ataxia, vision loss, altered mental status. Other diagnostic studies include MRI, biopsy, PCR. Differential diagnosis includes CNS lymphoma. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20328550",
+        "turn_id": 6,
+        "query_text": "Patient receiving high-dose methotrexate infusion; presents with unsteady gait and falling forward; no cognitive or visual symptoms; no immunosuppressive history or HIV/AIDS; no lab results available; no imaging or biopsy results; diagnostic uncertainty: symptoms due to methotrexate toxicity or CNS lymphoma.",
+        "skill_query_text": "Presenting problem: unsteady gait and falling forward in patient on high-dose methotrexate. Uncertainty: methotrexate toxicity vs. CNS lymphoma. Evidence gathered: chief complaint, symptom onset, no immunosuppression history, no lab results. Ineffective action: request for labs returned no result. Need: guidance on next diagnostic steps (e.g., imaging, biopsy, PCR) to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.761,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7443,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7234,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8087,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.7963,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.7923,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7924,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7895,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7882,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_19bb6b569799"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_19bb6b569799",
+            "memory_type": "experience",
+            "score": 0.8087,
+            "content": {
+              "experience": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e480a3ba-d505-4bbf-8679-63289cf859f5': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'e480a3ba-d505-4bbf-8679-63289cf859f5', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 822}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20328550",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20328550",
+        "turn_id": 6,
+        "query_text": "Patient receiving high-dose methotrexate infusion; presents with unsteady gait and falling forward; no cognitive or visual symptoms; no immunosuppressive history or HIV/AIDS; no lab results available; no imaging or biopsy results; diagnostic uncertainty: symptoms due to methotrexate toxicity or CNS lymphoma.",
+        "skill_query_text": "Presenting problem: unsteady gait and falling forward in patient on high-dose methotrexate. Uncertainty: methotrexate toxicity vs. CNS lymphoma. Evidence gathered: chief complaint, symptom onset, no immunosuppression history, no lab results. Ineffective action: request for labs returned no result. Need: guidance on next diagnostic steps (e.g., imaging, biopsy, PCR) to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.761,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7443,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7234,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8087,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.7963,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.7923,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7924,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7895,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7882,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_19bb6b569799"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Ataxia as a symptom of CNS lymphoma"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'caf5dc91-8201-4b8a-8e98-e0b77b274b01': '[Document 1] (ID: 23272_0, Score: 0.895)\\nAtaxia overview\\n\\n# Overview\\nAtaxia (from Greek α-  + -τάξις , meaning \"lack of order\") is a neurological sign and symptom consisting of gross incoordination of muscle movements .  Ataxia is an aspecific clinical manifestation implying dysfunction of parts of the nervous system that coordinate moveme...\\n\\n[Document 2] (ID: 6024_6, Score: 0.876)\\n# Risk Factors\\nThe most potent risk factor in the development of primary central nervous system lymphoma is a weakened or suppressed immune system in individuals who have acquired immunodeficiency syndrome (AIDS), received an organ transplant and are on immunosuppressants, inherited immunosuppressiv...\\n\\n[Document 3] (ID: 6024_7, Score: 0.868)\\n## Physical Examination\\nCommon physical examination findings of primary central nervous system lymphoma include vision loss, papilledema, altered mental status, apathy, depression, aphasia, cranioneuropathies, ataxia, and hemiparesis.\\n\\n## Laboratory Findings\\nLaboratory tests performed in a case susp...\\n\\n[Document 4] (ID: 29597_13, Score: 0.868)\\n# Dysfunction\\nAtaxia is a complex of symptoms, generally involving a lack of coordination, that is often found in disease ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'caf5dc91-8201-4b8a-8e98-e0b77b274b01', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Ataxia as a symptom of CNS lymphoma\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 896}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Ataxia as a symptom of CNS lymphoma\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Ataxia as a symptom of CNS lymphoma\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20328550",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "High-dose methotrexate infusion.",
+        "diagnostic_strategy": "Current clinical problem: Assessing whether ataxia is consistent with CNS lymphoma in a patient receiving high-dose methotrexate. Key evidence: Patient reports unsteady gait and falling forward (suggesting cerebellar ataxia), no cognitive or visual symptoms, no immunosuppressive history. Diagnostic uncertainty: Whether ataxia is due to CNS lymphoma or another cause (e.g., drug toxicity, metabolic, or structural). Most useful missing information: Imaging results (MRI) to visualize CNS lesions, lab results for methotrexate levels or other metabolic markers. Existing evidence is not enough to finalize diagnosis; further diagnostic imaging and lab work are needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: High-dose methotrexate infusion."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient admitted for high-dose methotrexate infusion. Chief complaint: unsteady gait and falling forward, especially when leaning forward. No cognitive, visual, or other neurological symptoms reported. No history of immunosuppressive therapy, organ transplant, or HIV/AIDS. Labs and imaging results unavailable. Ataxia is a known physical exam finding in CNS lymphoma, and the patient’s symptoms align with cerebellar dysfunction. No definitive diagnosis yet; further imaging and lab work needed to confirm or rule out CNS lymphoma."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20328550",
+        "turn_id": 8,
+        "query_text": "Patient reports unsteady gait and falling forward (cerebellar ataxia), no cognitive or visual symptoms, no immunosuppressive history. Labs and imaging results unavailable. Ataxia consistent with CNS lymphoma in context of high-dose methotrexate infusion. Diagnostic uncertainty: whether ataxia is due to CNS lymphoma or another cause (drug toxicity, metabolic, structural).",
+        "skill_query_text": "Presenting problem: Assessing ataxia in patient on high-dose methotrexate. Uncertainty: whether ataxia is due to CNS lymphoma or other cause. Evidence gathered: chief complaint, physical exam findings. Missing: imaging (MRI) and lab results (methotrexate levels, metabolic markers). Ineffective actions: prior requests for labs and imaging yielded no results. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7668,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7519,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.7954,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_75ed16a525f6",
+              "type": "experience",
+              "score": 0.7886,
+              "outcome": "negative",
+              "text": "Absence of headache, visual disturbance, or bleeding in a patient with suspected dural AV fistula does not rule out the diagnosis; these are not universally present and should not be used as exclusion criteria.",
+              "tags": []
+            },
+            {
+              "id": "exp_bef580faccef",
+              "type": "experience",
+              "score": 0.7758,
+              "outcome": "negative",
+              "text": "Petechiae on palms and soles, combined with fever, tachycardia, dyspnea, and confusion, strongly suggest a systemic inflammatory or coagulopathy process; do not apply this pattern when the patient has no petechiae or when symptoms are isolated to a single organ system without systemic signs.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8046,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8038,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8015,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Primary Central Nervous System Lymphoma}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e227568e-889f-456d-839d-e039be1343a6': '{\"diagnosis\": \"Primary Central Nervous System Lymphoma\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'e227568e-889f-456d-839d-e039be1343a6', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Primary Central Nervous System Lymphoma}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1401}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Primary Central Nervous System Lymphoma}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Primary Central Nervous System Lymphoma}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

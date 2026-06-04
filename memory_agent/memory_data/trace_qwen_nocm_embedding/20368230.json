@@ -1,0 +1,2009 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20368230",
+  "turns": [
+    {
+      "case_id": "20368230",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 30-year-old female patient presenting for scheduled repeat C/S with active FM, denying CTX, LOF, VB. Key evidence gathered: chief complaint and patient demographics. Diagnostic uncertainty remains high due to lack of specific symptoms, exam, lab, or imaging results. Most useful missing information: detailed obstetric history, current vital signs, fetal status, and any recent complications. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "initial_information: I am a 30-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 30-year-old female patient presenting with ___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S Pt denies CTX, LOF, VB Notes active FM.."
+        ],
+        "prior_information_summary": "Patient is a 30-year-old female, G5P2022 at 39 weeks gestation, presenting for scheduled repeat C/S. Denies CTX, LOF, VB. Notes active FM. No additional history, exam, lab, imaging, or tool results provided. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 1,
+        "query_text": "30-year-old female, G5P2022 at 39 weeks gestation, presenting for scheduled repeat C/S. Denies CTX, LOF, VB. Notes active FM. No symptoms, signs, lab, imaging, or exam results provided. No prior history, demographics beyond age and parity, or risk factors specified. Diagnostic uncertainty remains due to lack of specific evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 30-year-old female at 39 weeks gestation for scheduled repeat C/S with active FM, denying CTX, LOF, VB. Evidence gathered: chief complaint and demographics. Missing: detailed obstetric history, vital signs, fetal status, recent complications. Ineffective action: initial information request was vague and redundant. Need workflow guidance on next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8092,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.8089,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.7997,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7968,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7943,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.7997,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '9d809275-7a7b-45c0-9c96-3e6e838d97fb', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.09090909090909091,
+        "turn_reward": 0.018181818181818184,
+        "importance": 0.09090909090909091
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for any active or recent symptoms in the perineal or pelvic region prior to scheduled repeat C/S. Key evidence gathered: Patient denies CTX, LOF, VB; notes active FM. Diagnostic uncertainty: No specific symptoms reported, but active FM may imply potential for labor-related changes. Most useful missing information: Confirmation of absence of symptoms or findings that might contraindicate C/S. Existing evidence is not enough to finalize diagnosis; further assessment needed to rule out active pathology or complications. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is 39 weeks pregnant, G5P2022, scheduled for repeat C/S. Denies CTX, LOF, VB. Notes active FM. No specific symptoms reported in response to question about recent symptoms. No lab, imaging, or exam results provided. No evidence of pathology or complications identified. No low-value or no-result attempts noted."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 2,
+        "query_text": "39-week pregnant G5P2022 scheduled for repeat C/S. Denies CTX, LOF, VB. Notes active FM. No specific symptoms reported. No lab, imaging, or exam results. No evidence of pathology or complications. Uncertainty: Active FM may imply labor-related changes; need confirmation of absence of symptoms or findings contraindicating C/S.",
+        "skill_query_text": "Presenting problem: Assess for active or recent perineal/pelvic symptoms prior to repeat C/S. Evidence gathered: Patient denies CTX, LOF, VB; notes active FM. Ineffective action: Asked about symptoms; response: no problems or abnormal findings. Missing: Confirmation of absence of symptoms or findings contraindicating C/S. Need: Workflow guidance on next diagnostic steps or reassurance based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.8235,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            },
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8142,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8215,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.82,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_db4806710656",
+              "type": "skill",
+              "score": 0.8185,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any changes in your menstrual cycle, such as heavier or more painful periods?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '1fba044c-055d-47fd-8238-804d19299e87', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any changes in your menstrual cycle, such as heavier or more painful periods?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 70}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.09090909090909091,
+        "conf_after": 0.09090909090909091,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in your menstrual cycle, such as heavier or more painful periods?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any changes in your menstrual cycle, such as heavier or more painful periods?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for any menstrual cycle changes relevant to preoperative evaluation for repeat C/S. Key evidence gathered: Patient denies changes in menstrual cycle (no heavier or more painful periods). Diagnostic uncertainty remains: No evidence of abnormal bleeding or pain; no data on hormonal status or prior gynecologic issues. Most useful missing information: History of prior pelvic surgery, presence of fibroids, or other structural abnormalities. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: ___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM"
+        ],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any changes in your menstrual cycle, such as heavier or more painful periods?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is 39, G5P2022, scheduled for repeat C/S. Denies CTX, LOF, VB. Notes active FM. Turn 2: Asked about recent symptoms; patient reported no problems. Turn 3: Asked about menstrual cycle changes; patient reports no changes. No lab, imaging, or exam results provided. No evidence of abnormal bleeding or pain. No prior pelvic surgery or structural abnormalities documented. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 3,
+        "query_text": "39 yo G5P2022 scheduled for repeat C/S. Denies CTX, LOF, VB. Notes active FM. No changes in menstrual cycle reported. No abnormal bleeding or pain. No prior pelvic surgery, fibroids, or structural abnormalities documented. No lab, imaging, or exam results. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Assess menstrual cycle changes for preoperative evaluation. Evidence gathered: Patient denies changes, no abnormal bleeding or pain. Missing: History of pelvic surgery, fibroids, hormonal status. Ineffective action: Asked about menstrual changes; patient denied issues. Need: Workflow guidance on next diagnostic steps given current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7926,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7598,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.834,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.8177,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.8147,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8189,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8069,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_db4806710656",
+              "type": "skill",
+              "score": 0.806,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any unusual fatigue, weight changes, or other systemic symptoms recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '1c63d2f8-5acf-48e4-bedb-b643c5fd8e62', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any unusual fatigue, weight changes, or other systemic symptoms recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 146}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.18181818181818182,
+        "conf_after": 0.18181818181818182,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual fatigue, weight changes, or other systemic symptoms recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual fatigue, weight changes, or other systemic symptoms recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for systemic symptoms in a pregnant patient scheduled for repeat C/S. Key evidence gathered: Patient denies CTX, LOF, VB; active FM noted. Diagnostic uncertainty: No systemic symptoms identified yet; need to rule out underlying conditions. Most useful missing information: Specific details on fatigue, weight changes, or other systemic symptoms. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any unusual fatigue, weight changes, or other systemic symptoms recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is 39, G5P2022, scheduled for repeat C/S. Denies CTX, LOF, VB. Notes active FM. Previous interactions: Turn 2 and 3 asked about general symptoms and menstrual cycle changes; patient responded with no problems or abnormal findings. Current turn: Asked about fatigue, weight changes, or systemic symptoms; patient again reports no issues. No systemic symptoms identified. No lab, imaging, or exam results provided. No treatment recommended."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 4,
+        "query_text": "39 yo G5P2022 @ 39, scheduled repeat C/S, denies CTX, LOF, VB, active FM, no systemic symptoms identified, no lab/imaging/exam results, no treatment recommended.",
+        "skill_query_text": "Assess for systemic symptoms in pregnant patient scheduled for repeat C/S; patient denies fatigue/weight changes; ineffective action: asked about systemic symptoms, patient denies issues; need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8249,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8093,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7838,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7734,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7491,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8226,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8199,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8182,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8489,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8368,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.825,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8249,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'83537050-0524-467e-9e13-5f03e0c26bdc': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '83537050-0524-467e-9e13-5f03e0c26bdc', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 220}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.18181818181818182,
+        "conf_after": 0.18181818181818182,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 4,
+        "query_text": "39 yo G5P2022 @ 39, scheduled repeat C/S, denies CTX, LOF, VB, active FM, no systemic symptoms identified, no lab/imaging/exam results, no treatment recommended.",
+        "skill_query_text": "Assess for systemic symptoms in pregnant patient scheduled for repeat C/S; patient denies fatigue/weight changes; ineffective action: asked about systemic symptoms, patient denies issues; need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8249,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8093,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7838,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7734,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7491,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8226,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8199,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8182,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8489,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8368,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.825,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.8093,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of reproductive health issues in 30-year-old women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8a0e34ca-ae13-48e7-8939-e03068427fd1': \"[Document 1] (ID: 31559_2, Score: 0.869)\\n## Female fertility after 30\\nWomen's fertility peaks in their early teens, and often deteriorates after 30. Of women trying to get pregnant, without using fertility drugs or in vitro fertilization:\\n- At age 30, 75% will get pregnant within one year, and 91% within four years.\\n- At age 35, 66% will g...\\n\\n[Document 2] (ID: 1702_2, Score: 0.867)\\nExplain to women that as well as a change in their menstrual cycle they may experience a variety of symptoms associated with menopause, including:\\n\\nvasomotor symptoms (for example, hot flushes and sweats)\\n\\nmusculoskeletal symptoms (for example, joint and muscle pain)\\n\\neffects on mood (for example, l...\\n\\n[Document 3] (ID: 1702_14, Score: 0.864)\\nVasomotor symptoms Menopausal symptoms such as hot flushes and night sweats caused by constriction and dilatation of blood vessels in the skin that can lead to a sudden increase in blood flow to allow heat loss. These symptoms can have a major impact on activities of daily living.# Context\\nMenopause...\\n\\n[Document 4] (ID: 20545_4, Score: 0.862)\\n# Differential Diagnosis\\nMenopause should be differentiated from other diseases presenting with menstrual irregularities (...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '8a0e34ca-ae13-48e7-8939-e03068427fd1', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of reproductive health issues in 30-year-old women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 291}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.18181818181818182,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.18181818181818182,
+        "turn_reward": 0.03636363636363637,
+        "importance": 0.18181818181818182
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of reproductive health issues in 30-year-old women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of reproductive health issues in 30-year-old women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for reproductive health concerns in a 39-year-old woman presenting for repeat C/S with no reported symptoms. Key evidence gathered: Patient denies CTX, LOF, VB; active FM noted. Diagnostic uncertainty: No specific symptoms reported; no lab results available. Most useful missing information: Detailed menstrual history, presence of vasomotor or other menopausal symptoms, or signs of hormonal imbalance. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of reproductive health issues in 30-year-old women)\nresponse: [Document 1] (ID: 31559_2, Score: 0.869)\n## Female fertility after 30\nWomen's fertility peaks in their early teens, and often deteriorates after 30. Of women trying to get pregnant, without using fertility drugs or in vitro fertilization:\n- At age 30, 75% will get pregnant within one year, and 91% within four years.\n- At age 35, 66% will g...\n\n[Document 2] (ID: 1702_2, Score: 0.867)\nExplain to women that as well as a change in their menstrual cycle they may experience a variety of symptoms associated with menopause, including:\n\nvasomotor symptoms (for example, hot flushes and sweats)\n\nmusculoskeletal symptoms (for example, joint and muscle pain)\n\neffects on mood (for example, l...\n\n[Document 3] (ID: 1702_14, Score: 0.864)\nVasomotor symptoms Menopausal symptoms such as hot flushes and night sweats caused by constriction and dilatation of blood vessels in the skin that can lead to a sudden increase in blood flow to allow heat loss. These symptoms can have a major impact on activities of daily living.# Context\nMenopause...\n\n[Document 4] (ID: 20545_4, Score: 0.862)\n# Differential Diagnosis\nMenopause should be differentiated from other diseases presenting with menstrual irregularities (oligomenorrhea/amenorrhea) that are include Sheehan's syndrome, Lymphocytic hypophysitis, Pituitary apoplexy, Empty sella syndrome, Pituitary cachexia, Hypothyroidism, Hypogonado...\n\n[Document 5] (ID: 6910_18, Score: 0.860)\n- Gastrointestinal symptoms (such as abdominal cramps and bloating)\n\n- Breakthrough bleeding\n\n- Spotting\n\n- Change in menstrual flow\n\n- Amenorrhea during or after use\n\n- Temporary infertility after discontinuation of use\n\n- Edema\n\n- Chloasma or melasma, which may persist\n\n- Breast changes: tendernes..."
+        ],
+        "prior_information_summary": "Patient is 39-year-old G5P2022 presenting for scheduled repeat C/S. Denies CTX, LOF, VB. Notes active FM. No reported symptoms in history. No lab results available. No exam findings reported. No menopausal or reproductive symptoms confirmed. No systemic symptoms reported. No evidence of hormonal or menstrual irregularities. No differential diagnosis established. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 6,
+        "query_text": "39-year-old G5P2022 presents for scheduled repeat C/S. Denies CTX, LOF, VB. Active FM noted. No reported symptoms. No lab results. No exam findings. No menopausal or reproductive symptoms confirmed. No systemic symptoms. No evidence of hormonal or menstrual irregularities. No differential diagnosis established.",
+        "skill_query_text": "Presenting problem: Assess reproductive health concerns in 39-year-old woman for repeat C/S. Uncertainty: No symptoms reported; no lab results. Evidence gathered: Denies CTX, LOF, VB; active FM. Ineffective actions: Retrieved symptoms of reproductive health issues in 30-year-olds. Needed: Workflow guidance for evaluating menopausal or hormonal concerns in this age group with no symptoms."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.834,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.8324,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.8269,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7819,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7771,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7728,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any hot flashes, night sweats, or mood changes recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '63e9d164-1d68-4af9-b09d-416e559316b4', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any hot flashes, night sweats, or mood changes recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 822}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any hot flashes, night sweats, or mood changes recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any hot flashes, night sweats, or mood changes recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for menopausal symptoms in a 39-year-old woman with active fertility management. Key evidence gathered: Patient denies hot flashes, night sweats, or mood changes; prior questions about menstrual changes, systemic symptoms, and labs yielded no result. Diagnostic uncertainty remains: unclear if menopausal symptoms are present or if fertility concerns are unrelated. Most useful missing information: confirmation of hormonal status or specific reproductive health indicators. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: ___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM"
+        ],
+        "ineffective_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any hot flashes, night sweats, or mood changes recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is 39-year-old G5P2022 presenting for scheduled repeat C/S, denies CTX, LOF, VB, notes active FM. Prior questions about menstrual changes, systemic symptoms, and labs yielded no result. Retrieved documents on reproductive health issues in 30-year-old women, including menopause symptoms (hot flashes, night sweats, mood changes) and differential diagnoses. Patient denies any of these symptoms in current turn. No lab results available. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 7,
+        "query_text": "39-year-old G5P2022 presents for scheduled repeat C/S, denies CTX, LOF, VB, notes active FM. Denies hot flashes, night sweats, mood changes. Prior questions about menstrual changes, systemic symptoms, labs yielded no result. No lab results available. Unclear if menopausal symptoms present or fertility concerns unrelated.",
+        "skill_query_text": "Assess menopausal symptoms in 39-year-old with active FM. Patient denies hot flashes, night sweats, mood changes. Prior questions and labs yielded no result. Ineffective action: asked about symptoms, patient denied. Missing: hormonal status or reproductive health indicators. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.812,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7817,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.761,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.757,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.8569,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.8298,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.8217,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8156,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8085,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8054,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in libido or sexual function?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'b9e16b80-bf2b-45c0-bf84-d5a35df1cc71', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in libido or sexual function?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 896}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in libido or sexual function?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in libido or sexual function?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for signs of reproductive health changes in a 39-year-old woman presenting for repeat C/S. Key evidence gathered: Patient denies CTX, LOF, VB; active FM noted. Diagnostic uncertainty: Whether reproductive symptoms (e.g., hot flashes, mood changes, libido changes) are present despite age-related fertility decline. Most useful missing information: Confirmation of presence or absence of vasomotor, mood, or sexual symptoms. Existing evidence is not enough to finalize diagnosis; further targeted symptom inquiry needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: ___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM"
+        ],
+        "ineffective_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in libido or sexual function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is 39-year-old G5P2022 presenting for scheduled repeat C/S. Denies CTX, LOF, VB; notes active FM. Previous inquiries about menstrual changes, systemic symptoms, and menopause-related symptoms (hot flashes, mood changes) yielded negative responses. Lab request returned no result. Retrieved documents on female fertility decline and menopause symptoms, but no clinical findings confirmed. No evidence of reproductive symptoms or systemic issues. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 8,
+        "query_text": "39-year-old G5P2022 presents for scheduled repeat C/S. Denies CTX, LOF, VB; active FM noted. No confirmed vasomotor, mood, or sexual symptoms. Lab results pending. No systemic or reproductive symptoms confirmed. Uncertainty remains regarding presence of menopause-related symptoms despite age-related fertility decline.",
+        "skill_query_text": "Presenting problem: Assess reproductive health changes in 39-year-old G5P2022. Uncertainty: Whether vasomotor, mood, or sexual symptoms are present. Evidence gathered: Denies CTX, LOF, VB; active FM. Ineffective action: Asked about libido; patient denied issues. Missing: Confirmation of symptoms. Need: Workflow guidance for targeted symptom inquiry to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_e38f9ec0f941",
+              "type": "experience",
+              "score": 0.7715,
+              "outcome": "negative",
+              "text": "Persistent request for Ativan combined with anxiety, insomnia, sweating, and panic attacks without drug use strongly suggests benzodiazepine dependence and withdrawal; do not apply this when symptoms are absent or when substance use history is unconfirmed.",
+              "tags": []
+            },
+            {
+              "id": "exp_714f9cbed6c5",
+              "type": "experience",
+              "score": 0.7646,
+              "outcome": "negative",
+              "text": "A history of recent trauma, even without prior psychiatric history, is a critical diagnostic clue for acute stress-related syndromes; failure to ask about trauma early leads to missed diagnoses.",
+              "tags": []
+            },
+            {
+              "id": "exp_b4146c0e67ab",
+              "type": "experience",
+              "score": 0.7594,
+              "outcome": "negative",
+              "text": "Patient’s report of suicidal ideation with a specific plan (jumping in front of a car) and denial of intent due to religious and familial constraints is a high-risk red flag; do not rely on patient’s stated barriers as protective factors without corroborating mental status exam or risk assessment.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8034,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.7999,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_db4806710656",
+              "type": "skill",
+              "score": 0.7986,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "common non-specific symptoms in 30-year-old women without clear diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c1f7293d-99be-40cc-b209-b26220116e84': '[Document 1] (ID: 8848_1, Score: 0.848)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 2] (ID: 19106_8, Score: 0.848)\\n- Low back pain, pain with certain movements\\n\\n- Urinary tract:\\n\\nDysuria, polyuria\\n\\n- Dysuria, polyuria\\n\\n- Psychological:\\n\\nStress, depression, anxiety, anger\\n\\n- Stress, depression, anxiety, anger\\n\\n- Be careful about the symptoms that suggest life-threatening conditions such as\\xa0:\\n\\nunexplained weight l...\\n\\n[Document 3] (ID: 22925_2, Score: 0.846)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 4] (ID: 5743_1, Score: 0.846)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more c...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'c1f7293d-99be-40cc-b209-b26220116e84', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common non-specific symptoms in 30-year-old women without clear diagnosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 965}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in 30-year-old women without clear diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific symptoms in 30-year-old women without clear diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for non-specific symptoms in a 30-year-old woman presenting for scheduled repeat C/S with no reported abnormalities. Key evidence gathered: Patient denies specific symptoms (fatigue, weight changes, menstrual changes, hot flashes, mood changes, libido changes). Labs requested but no result available. Retrieved documents list common non-specific symptoms (low back pain, urinary symptoms, psychological symptoms) and mention breast cancer referral criteria. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed physical exam findings, specific symptom history, or lab/imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=common non-specific symptoms in 30-year-old women without clear diagnosis)\nresponse: [Document 1] (ID: 8848_1, Score: 0.848)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 19106_8, Score: 0.848)\n- Low back pain, pain with certain movements\n\n- Urinary tract:\n\nDysuria, polyuria\n\n- Dysuria, polyuria\n\n- Psychological:\n\nStress, depression, anxiety, anger\n\n- Stress, depression, anxiety, anger\n\n- Be careful about the symptoms that suggest life-threatening conditions such as :\n\nunexplained weight l...\n\n[Document 3] (ID: 22925_2, Score: 0.846)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 5743_1, Score: 0.846)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 5] (ID: 1450_6, Score: 0.846)\n# Breast cancer\nRefer people using a suspected cancer pathway referral (for an appointment within 2 weeks) for breast cancer if they are:\naged 30 and over and have an unexplained breast lump with or without pain or\naged 50 and over with any of the following symptoms in one nipple only:\ndischarge\nret..."
+        ],
+        "prior_information_summary": "Chief complaint: 30-year-old G5P2022 at 39 weeks presenting for scheduled repeat C/S. Denies CTX, LOF, VB. Notes active FM. Patient denies specific symptoms: no menstrual changes, no fatigue, no weight changes, no hot flashes, no mood changes, no libido changes. Labs requested but no result available. Retrieved documents list common non-specific symptoms (low back pain, urinary symptoms, psychological symptoms) and mention breast cancer referral criteria. No specific findings or abnormalities reported. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 9,
+        "query_text": "30-year-old G5P2022 at 39 weeks, scheduled repeat C/S, denies CTX, LOF, VB, active FM. Denies fatigue, weight changes, menstrual changes, hot flashes, mood changes, libido changes. Labs requested, no results. No specific findings or abnormalities reported. Uncertainty remains due to lack of specific symptoms, exam, or lab/imaging results.",
+        "skill_query_text": "Presenting problem: Assess non-specific symptoms in 30-year-old woman for scheduled repeat C/S. Uncertainty: No specific findings. Evidence gathered: Patient denies key symptoms; labs ordered but no results. Ineffective: Previous retrieval of common non-specific symptoms (low back pain, urinary, psychological) without actionable diagnosis. Need: Workflow guidance for next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.8387,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.8316,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            },
+            {
+              "id": "exp_7e2e6f9ecf12",
+              "type": "experience",
+              "score": 0.8152,
+              "outcome": "negative",
+              "text": "Abdominal pain, bloating, and constipation in a young female with menstrual irregularities and signs of virilization (acne, weight gain, hirsutism) strongly suggest Polycystic Ovary Syndrome; do not rely on isolated GI symptoms without hormonal or endocrine context.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8199,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8194,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8099,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unexplained weight loss, persistent fatigue, or changes in appetite?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'ef27fc80-148a-4400-8276-6b5705acc122', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unexplained weight loss, persistent fatigue, or changes in appetite?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1503}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, persistent fatigue, or changes in appetite?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, persistent fatigue, or changes in appetite?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for systemic or reproductive health concerns in a 39-year-old G5P2022 presenting for repeat C/S. Key evidence gathered: Patient denies CTX, LOF, VB; active FM noted. Diagnostic uncertainty remains: No specific symptoms or findings identified to guide differential. Most useful missing information: Detailed history of menstrual irregularities, systemic symptoms (e.g., fatigue, weight changes, hot flashes), or lab/imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unexplained weight loss, persistent fatigue, or changes in appetite?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is 39-year-old G5P2022 presenting for scheduled repeat C/S. Denies CTX, LOF, VB; notes active FM. Multiple patient interactions (turns 2-9) asked about symptoms including menstrual changes, fatigue, weight, hot flashes, libido, and systemic symptoms; all responses were negative or non-specific. Lab request (turn 5) returned no result. Retrieval queries (turns 6, 9) returned general information on reproductive health, menopause, and non-specific symptoms in 30-year-old women, but no actionable findings. No diagnostic evidence or risk factors identified to date."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 10,
+        "query_text": "39-year-old G5P2022 presents for scheduled repeat C/S. Denies CTX, LOF, VB. Active FM noted. No specific symptoms or findings identified. No lab/imaging results. No systemic symptoms reported. Diagnostic uncertainty remains. No actionable findings or risk factors identified.",
+        "skill_query_text": "Presenting problem: Assess systemic or reproductive health concerns in 39-year-old G5P2022 for repeat C/S. Uncertainty: No specific symptoms or findings to guide differential. Evidence gathered: Patient denies CTX, LOF, VB; active FM. Ineffective actions: Asked about weight loss, fatigue, appetite changes — patient denies issues. Missing: Detailed menstrual history, systemic symptoms, lab/imaging results. Need: Workflow guidance for next diagnostic steps based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8029,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7993,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7738,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7556,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8184,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8159,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            },
+            {
+              "id": "exp_2019ba9cf7b7",
+              "type": "experience",
+              "score": 0.8127,
+              "outcome": "negative",
+              "text": "Unintentional weight loss and fatigue in a 77-year-old female, especially when accompanied by fever, strongly suggest systemic infection or malignancy; do not apply this when the patient has no fever, no weight loss, or when symptoms are localized and non-systemic.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.814,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8117,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8078,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_f01d7e38e72f"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_f01d7e38e72f",
+            "memory_type": "experience",
+            "score": 0.8159,
+            "content": {
+              "experience": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "non-specific symptoms in young adult females without clear diagnosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c9c4b684-7c32-4ee1-96d1-f36ffd45c94e': '[Document 1] (ID: 1450_50, Score: 0.849)\\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\\nIf no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent\\nThese recommendations apply to women aged 18\\xa0and over\\nUltrasound\\nsuggests soft tissu...\\n\\n[Document 2] (ID: 2255_5, Score: 0.848)\\nSymptom or sign present\\nnot known if a symptom or sign is present (not reported in the evidence)\\nBulging fontanelle\\nSymptom or sign present\\nSymptom or sign present\\nnot known if a symptom or sign is present (not reported in the evidence)\\nOnly relevant in children aged under 2\\xa0years\\nPhotophobia\\nSympto...\\n\\n[Document 3] (ID: 4903_42, Score: 0.845)\\n# Values and preferences:\\nThe lack of evidence for assessments and interventions in the postnatal period highlights the need for urgent high quality research into this area. However, even in the current situation, clear recommendations for routine postnatal care of the mother are needed for setting ...\\n\\n[Document 4] (ID: 380_145, Score: 0.845)\\nMany episodes of PID go unrecognized. Although some cases are asymptomatic, others are undiagnosed because the patient or ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'c9c4b684-7c32-4ee1-96d1-f36ffd45c94e', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific symptoms in young adult females without clear diagnosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1578}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in young adult females without clear diagnosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in young adult females without clear diagnosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for non-specific symptoms in a 39-year-old postpartum woman with no reported systemic or reproductive symptoms. Key evidence gathered: Patient denies symptoms related to menstrual changes, fatigue, weight changes, hot flashes, mood changes, libido changes, or unexplained weight loss. No lab results available. Diagnostic uncertainty remains high due to lack of specific clinical findings. Most useful missing information: Detailed history of any subtle or non-specific symptoms, objective exam findings, or imaging/labs. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=non-specific symptoms in young adult females without clear diagnosis)\nresponse: [Document 1] (ID: 1450_50, Score: 0.849)\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\nIf no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent\nThese recommendations apply to women aged 18 and over\nUltrasound\nsuggests soft tissu...\n\n[Document 2] (ID: 2255_5, Score: 0.848)\nSymptom or sign present\nnot known if a symptom or sign is present (not reported in the evidence)\nBulging fontanelle\nSymptom or sign present\nSymptom or sign present\nnot known if a symptom or sign is present (not reported in the evidence)\nOnly relevant in children aged under 2 years\nPhotophobia\nSympto...\n\n[Document 3] (ID: 4903_42, Score: 0.845)\n# Values and preferences:\nThe lack of evidence for assessments and interventions in the postnatal period highlights the need for urgent high quality research into this area. However, even in the current situation, clear recommendations for routine postnatal care of the mother are needed for setting ...\n\n[Document 4] (ID: 380_145, Score: 0.845)\nMany episodes of PID go unrecognized. Although some cases are asymptomatic, others are undiagnosed because the patient or the health-care provider fails to recognize the implications of mild or nonspecific symptoms or signs (e.g., abnormal bleeding, dyspareunia, or vaginal discharge ). Because of th...\n\n[Document 5] (ID: 100_9, Score: 0.844)\nInfants are typically asymptomatic at birth and then develop fever, pain, rash, and peripheral edema. Those infected during the intrapartum period may also develop neurologic disease (e.g., meningoencephalitis, white matter lesions, brain swelling, and intracranial hemorrhage), hemorrhagic symptoms,..."
+        ],
+        "prior_information_summary": "Patient is 39-year-old G5P2022 presenting for scheduled repeat C/S. Denies CTX, LOF, VB. Notes active FM. No reported symptoms related to menstrual changes, fatigue, weight changes, hot flashes, mood changes, libido changes, or unexplained weight loss. No lab results available. No objective exam findings reported. No imaging or tool results. No evidence of PID, postnatal complications, or breast cancer. No specific clinical cause identified. No high-value diagnostic information obtained. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 11,
+        "query_text": "39-year-old G5P2022 presents for scheduled repeat C/S. Denies CTX, LOF, VB. Notes active FM. No reported symptoms: menstrual changes, fatigue, weight changes, hot flashes, mood changes, libido changes, unexplained weight loss. No lab results, no objective exam findings, no imaging or tool results. No evidence of PID, postnatal complications, or breast cancer. No specific clinical cause identified. No high-value diagnostic information obtained. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Assess for non-specific symptoms in a 39-year-old postpartum woman with no reported systemic or reproductive symptoms. Evidence gathered: Patient denies symptoms related to menstrual changes, fatigue, weight changes, hot flashes, mood changes, libido changes, or unexplained weight loss. No lab results available. Diagnostic uncertainty remains high. Ineffective actions tried: Retrieve interaction for non-specific symptoms in young adult females without clear diagnosis. Missing: Detailed history of subtle symptoms, objective exam findings, imaging/labs. Need: Workflow guidance for managing diagnostic uncertainty in postpartum women with non-specific complaints."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.8353,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8351,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_2019ba9cf7b7",
+              "type": "experience",
+              "score": 0.8326,
+              "outcome": "negative",
+              "text": "Unintentional weight loss and fatigue in a 77-year-old female, especially when accompanied by fever, strongly suggest systemic infection or malignancy; do not apply this when the patient has no fever, no weight loss, or when symptoms are localized and non-systemic.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8106,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8101,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8069,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any unusual vaginal discharge, pain during intercourse, or pelvic discomfort?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '1567939c-83a6-4ecb-958e-9346767cb290', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any unusual vaginal discharge, pain during intercourse, or pelvic discomfort?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 2063}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual vaginal discharge, pain during intercourse, or pelvic discomfort?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any unusual vaginal discharge, pain during intercourse, or pelvic discomfort?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for reproductive health concerns in a 39-year-old G5P2022 presenting for scheduled repeat C/S. Key evidence gathered: Patient denies CTX, LOF, VB; active FM noted. Diagnostic uncertainty remains regarding potential underlying causes of menstrual or reproductive symptoms. Most useful missing information: Specific symptoms related to vaginal discharge, pelvic discomfort, or systemic changes (e.g., hot flashes, mood changes, weight changes). Existing evidence is insufficient to finalize diagnosis; further targeted inquiry or diagnostic testing is needed. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: ___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM"
+        ],
+        "ineffective_turn_information": [
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any unusual vaginal discharge, pain during intercourse, or pelvic discomfort?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is 39-year-old G5P2022 presenting for scheduled repeat C/S. Denies CTX, LOF, VB; active FM noted. Multiple inquiries made regarding vaginal discharge, pelvic discomfort, menstrual changes, systemic symptoms (fatigue, weight changes, hot flashes, mood changes, libido changes, unexplained weight loss), and lab results — all responses indicate absence of problems or abnormal findings. Lab request yielded no result. Retrieval queries returned general information on reproductive health, menopause, and non-specific symptoms in young adult females, but no specific diagnostic findings. No evidence of abnormal findings or symptoms to date."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 12,
+        "query_text": "39-year-old G5P2022 presents for scheduled repeat C/S. Denies CTX, LOF, VB. Active FM noted. No abnormal findings or symptoms reported. No lab results available. Uncertainty remains regarding underlying causes of menstrual/reproductive symptoms.",
+        "skill_query_text": "Presenting problem: Assess reproductive health concerns in 39-year-old G5P2022. Uncertainty: Potential causes of menstrual/reproductive symptoms. Evidence gathered: Denies CTX, LOF, VB; active FM. Ineffective action: Asked about vaginal discharge/pelvic discomfort — patient denies issues. Missing: Specific symptoms (vaginal discharge, pelvic discomfort, systemic changes). Need: Workflow guidance for targeted inquiry or diagnostic testing."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.8359,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.8278,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.8227,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_db4806710656",
+              "type": "skill",
+              "score": 0.8038,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8018,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7946,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific complaints in 30-year-old women with no clear physical findings"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e6b664c8-79d6-4918-9bf0-26d26dcd41a8': '[Document 1] (ID: 1450_50, Score: 0.835)\\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\\nIf no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent\\nThese recommendations apply to women aged 18\\xa0and over\\nUltrasound\\nsuggests soft tissu...\\n\\n[Document 2] (ID: 1450_6, Score: 0.834)\\n# Breast cancer\\nRefer people using a suspected cancer pathway referral (for an appointment within 2\\xa0weeks) for breast cancer if they are:\\naged 30\\xa0and over and have an unexplained breast lump with or without pain or\\naged 50\\xa0and over with any of the following symptoms in one nipple only:\\ndischarge\\nret...\\n\\n[Document 3] (ID: 1450_49, Score: 0.833)\\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\\nThese recommendations apply to women aged 18\\xa0and over\\nThrombocytosis, 40\\xa0and ov...\\n\\n[Document 4] (ID: 19106_8, Score: 0.831)\\n- Low back pain, pain with certain movements\\n\\n- Urinary tract:\\n\\nDysuria, polyuria\\n\\n- Dysuria, polyuria\\n\\n- Psychological:\\n\\n...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'e6b664c8-79d6-4918-9bf0-26d26dcd41a8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific complaints in 30-year-old women with no clear physical findings\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2137}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in 30-year-old women with no clear physical findings\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in 30-year-old women with no clear physical findings\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assessing non-specific complaints in a 30-year-old woman with no clear physical findings, scheduled for repeat C/S, and no reported symptoms. Key evidence gathered: Patient denies CTX, LOF, VB; active FM noted; no systemic symptoms, menstrual changes, or pelvic discomfort reported; labs unavailable; no abnormal findings reported. Diagnostic uncertainty: No clear clinical cause identified; differential includes non-specific symptoms, psychosocial factors, or undiagnosed conditions. Most useful missing information: Specific symptom details, lab results, imaging findings, or objective evidence. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_13 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in 30-year-old women with no clear physical findings)\nresponse: [Document 1] (ID: 1450_50, Score: 0.835)\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\nIf no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent\nThese recommendations apply to women aged 18 and over\nUltrasound\nsuggests soft tissu...\n\n[Document 2] (ID: 1450_6, Score: 0.834)\n# Breast cancer\nRefer people using a suspected cancer pathway referral (for an appointment within 2 weeks) for breast cancer if they are:\naged 30 and over and have an unexplained breast lump with or without pain or\naged 50 and over with any of the following symptoms in one nipple only:\ndischarge\nret...\n\n[Document 3] (ID: 1450_49, Score: 0.833)\nassess her carefully for other clinical causes of her symptoms and investigate if appropriate\nif no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent.\nThese recommendations apply to women aged 18 and over\nThrombocytosis, 40 and ov...\n\n[Document 4] (ID: 19106_8, Score: 0.831)\n- Low back pain, pain with certain movements\n\n- Urinary tract:\n\nDysuria, polyuria\n\n- Dysuria, polyuria\n\n- Psychological:\n\nStress, depression, anxiety, anger\n\n- Stress, depression, anxiety, anger\n\n- Be careful about the symptoms that suggest life-threatening conditions such as :\n\nunexplained weight l...\n\n[Document 5] (ID: 1562_7, Score: 0.831)\nsymptoms and signs of potential postnatal mental health problems and how to seek help\nsymptoms and signs of potential postnatal physical problems and how to seek help\nthe importance of pelvic floor exercises, how to do them and when to seek help (see the NICE guideline on pelvic floor dysfunction)\nf..."
+        ],
+        "prior_information_summary": "Patient: 30-year-old G5P2022 at 39 weeks, scheduled for repeat C/S. Denies CTX, LOF, VB. Notes active FM. No reported symptoms: no menstrual changes, no systemic symptoms (fatigue, weight changes), no hot flashes, night sweats, mood changes, libido changes, vaginal discharge, pelvic discomfort, or unexplained weight loss. Labs requested but no result available. No imaging or exam findings reported. No clear clinical cause identified. Differential includes non-specific symptoms, psychosocial factors, or undiagnosed conditions. No treatment recommended. No low-value or no-result attempts explicitly noted."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 13,
+        "query_text": "30-year-old G5P2022 at 39 weeks, scheduled repeat C/S. Denies CTX, LOF, VB. Active FM noted. No reported symptoms: no menstrual changes, systemic symptoms, hot flashes, night sweats, mood changes, libido changes, vaginal discharge, pelvic discomfort, unexplained weight loss. Labs unavailable. No imaging or exam findings. No clear clinical cause. Differential: non-specific symptoms, psychosocial factors, undiagnosed conditions.",
+        "skill_query_text": "Presenting problem: non-specific complaints in 30-year-old woman with no clear physical findings, scheduled for repeat C/S, denies CTX/LOF/VB, active FM. Evidence gathered: no symptoms reported, labs unavailable, no imaging/exam findings. Uncertainty: no clear cause. Ineffective actions: retrieve interaction for non-specific complaints yielded no actionable diagnosis. Need: workflow guidance for managing non-specific complaints without clear physical findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7648,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7622,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7365,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.8445,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.8373,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.825,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8175,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.812,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8076,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been under significant stress or experiencing anxiety or depression recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '318d4542-ab40-4d31-ba90-54487de782c6', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been under significant stress or experiencing anxiety or depression recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 2645}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been under significant stress or experiencing anxiety or depression recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been under significant stress or experiencing anxiety or depression recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: Assess for any psychosocial or systemic symptoms that may impact obstetric or reproductive health in a 39-year-old G5P2022. Key evidence gathered: Patient denies stress, anxiety, depression, hot flashes, night sweats, mood changes, libido changes, weight loss, fatigue, vaginal discharge, pelvic discomfort, or systemic symptoms. No labs performed. Diagnostic uncertainty remains: No clear evidence of menopausal symptoms, reproductive dysfunction, or psychosocial risk factors. Most useful missing information: Confirmation of lab results (if any), objective findings from exam, or specific symptoms not yet queried. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: ___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM"
+        ],
+        "ineffective_turn_information": [
+          "turn_14 ask_patient_interaction: doctor_action: ask_patient(question=Have you been under significant stress or experiencing anxiety or depression recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient is 39-year-old G5P2022 presenting for scheduled repeat C/S. Denies CTX, LOF, VB. Notes active FM. Patient denies: changes in menstrual cycle, fatigue, weight changes, hot flashes, night sweats, mood changes, libido changes, unexplained weight loss, vaginal discharge, pelvic discomfort, stress, anxiety, depression. Labs requested but no result available. Retrieved documents on reproductive health, menopause symptoms, non-specific symptoms in young adult females, and postnatal care, but no actionable findings. No clear diagnostic leads or risk factors identified. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 14,
+        "query_text": "39-year-old G5P2022 presents for scheduled repeat C/S. Denies CTX, LOF, VB. Notes active FM. Denies stress, anxiety, depression, hot flashes, night sweats, mood changes, libido changes, weight loss, fatigue, vaginal discharge, pelvic discomfort, systemic symptoms. No labs performed. No objective findings. Uncertainty remains regarding menopausal symptoms, reproductive dysfunction, or psychosocial risk factors. Missing: lab results, exam findings, or unasked symptoms.",
+        "skill_query_text": "Presenting problem: Assess psychosocial/systemic symptoms impacting obstetric/reproductive health in 39-year-old G5P2022. Evidence gathered: Patient denies relevant symptoms; no labs performed. Ineffective action: Asked about stress/anxiety/depression — patient denied. Missing: lab results, exam findings, or unreviewed symptoms. Need: Workflow guidance on next diagnostic steps or symptom screening."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7603,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7562,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7384,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.8444,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.8324,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.8169,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.812,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8109,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8099,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific complaints in young adult women with no identifiable physical cause"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'be58c8e3-3954-40d2-8858-a97754b9ee35': '[Document 1] (ID: 380_145, Score: 0.837)\\nMany episodes of PID go unrecognized. Although some cases are asymptomatic, others are undiagnosed because the patient or the health-care provider fails to recognize the implications of mild or nonspecific symptoms or signs (e.g., abnormal bleeding, dyspareunia, or vaginal discharge ). Because of th...\\n\\n[Document 2] (ID: 1562_7, Score: 0.835)\\nsymptoms and signs of potential postnatal mental health problems and how to seek help\\nsymptoms and signs of potential postnatal physical problems and how to seek help\\nthe importance of pelvic floor exercises, how to do them and when to seek help (see the NICE guideline on pelvic floor dysfunction)\\nf...\\n\\n[Document 3] (ID: 5174_8, Score: 0.834)\\n- (621.3) Endometrial hyperplasia, unspec.\\n- (622) Noninflammatory disorders of cervix\\n(622.1) Dysplasia, cervix, unspec.\\n(622.4) Stenosis, cervix\\n(622.7) Cervical polyp, NOS\\n- (622.1) Dysplasia, cervix, unspec.\\n- (622.4) Stenosis, cervix\\n- (622.7) Cervical polyp, NOS\\n- (623) Noninflammatory disorde...\\n\\n[Document 4] (ID: 1450_50, Score: 0.832)\\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\\nIf no other clinical cause is app...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'be58c8e3-3954-40d2-8858-a97754b9ee35', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific complaints in young adult women with no identifiable physical cause\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2716}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in young adult women with no identifiable physical cause\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in young adult women with no identifiable physical cause\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20368230",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "___ yo G5P2022 @ 39 ___ presents for scheduled repeat C/S\nPt\ndenies CTX, LOF, VB\nNotes active FM",
+        "diagnostic_strategy": "Current clinical problem: A 39-year-old G5P2022 presenting for scheduled repeat C/S with no reported specific symptoms or findings. Key evidence gathered: Patient denies CTX, LOF, VB; notes active FM; all symptom-based questions (menstrual, systemic, psychological, sexual, vaginal) returned negative responses; lab request yielded no result; multiple retrieval queries returned non-specific or generic information. Current diagnostic uncertainty: No clear physical or reproductive cause identified; possible non-specific complaints without identifiable etiology. Most useful missing information: Specific symptoms or signs that could point to a diagnosable condition (e.g., abnormal bleeding, dyspareunia, vaginal discharge, hot flashes, weight changes). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_15 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in young adult women with no identifiable physical cause)\nresponse: [Document 1] (ID: 380_145, Score: 0.837)\nMany episodes of PID go unrecognized. Although some cases are asymptomatic, others are undiagnosed because the patient or the health-care provider fails to recognize the implications of mild or nonspecific symptoms or signs (e.g., abnormal bleeding, dyspareunia, or vaginal discharge ). Because of th...\n\n[Document 2] (ID: 1562_7, Score: 0.835)\nsymptoms and signs of potential postnatal mental health problems and how to seek help\nsymptoms and signs of potential postnatal physical problems and how to seek help\nthe importance of pelvic floor exercises, how to do them and when to seek help (see the NICE guideline on pelvic floor dysfunction)\nf...\n\n[Document 3] (ID: 5174_8, Score: 0.834)\n- (621.3) Endometrial hyperplasia, unspec.\n- (622) Noninflammatory disorders of cervix\n(622.1) Dysplasia, cervix, unspec.\n(622.4) Stenosis, cervix\n(622.7) Cervical polyp, NOS\n- (622.1) Dysplasia, cervix, unspec.\n- (622.4) Stenosis, cervix\n- (622.7) Cervical polyp, NOS\n- (623) Noninflammatory disorde...\n\n[Document 4] (ID: 1450_50, Score: 0.832)\nAssess carefully for other clinical causes of her symptoms and investigate if appropriate\nIf no other clinical cause is apparent, advise her to return to her GP if her symptoms become more frequent and/or persistent\nThese recommendations apply to women aged 18 and over\nUltrasound\nsuggests soft tissu...\n\n[Document 5] (ID: 19106_8, Score: 0.832)\n- Low back pain, pain with certain movements\n\n- Urinary tract:\n\nDysuria, polyuria\n\n- Dysuria, polyuria\n\n- Psychological:\n\nStress, depression, anxiety, anger\n\n- Stress, depression, anxiety, anger\n\n- Be careful about the symptoms that suggest life-threatening conditions such as :\n\nunexplained weight l..."
+        ],
+        "prior_information_summary": "Patient is 39-year-old G5P2022 presenting for scheduled repeat C/S. Denies CTX, LOF, VB; notes active FM. All symptom-based questions (menstrual, systemic, psychological, sexual, vaginal) returned negative responses. Lab request yielded no result. Multiple retrieval queries returned non-specific or generic information (e.g., PID, postnatal issues, non-specific complaints, breast cancer referral criteria, etc.). No clear physical or reproductive cause identified. No management-relevant risk explicitly supported."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20368230",
+        "turn_id": 15,
+        "query_text": "39-year-old G5P2022 presenting for scheduled repeat C/S. Denies CTX, LOF, VB; notes active FM. All symptom-based questions (menstrual, systemic, psychological, sexual, vaginal) negative. Lab request no result. No clear physical or reproductive cause identified. No management-relevant risk supported.",
+        "skill_query_text": "Presenting problem: 39-year-old G5P2022 for scheduled repeat C/S with no specific symptoms or findings. Evidence gathered: denies CTX, LOF, VB; active FM; all symptom-based questions negative; lab no result. Ineffective actions: retrieval queries returned non-specific or generic info (e.g., PID, postnatal issues, non-specific complaints). Need workflow guidance for identifying specific symptoms or signs pointing to diagnosable condition."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.8322,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            },
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.831,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.8255,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8275,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8189,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8158,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Anxiety Disorder}"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': '869dc0e4-14ce-47e4-9659-2ab9e346bd00', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Anxiety Disorder}\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': 'Anxiety Disorder', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.09090909090909091, 'conf_after': 0.09090909090909091, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.18181818181818182, 'conf_after': 0.18181818181818182, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.18181818181818182, 'conf_after': 0.18181818181818182, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.18181818181818182, 'conf_after': 0.18181818181818182, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.18181818181818182, 'conf_after': 0.18181818181818182, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.18181818181818182, 'conf_after': 0.18181818181818182, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.18181818181818182, 'conf_after': 0.18181818181818182, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 7, 'conf_before': 0.18181818181818182, 'conf_after': 0.18181818181818182, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 3283}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.36363636363636365,
+        "conf_after": 0.36363636363636365,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Anxiety Disorder}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Anxiety Disorder}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_15 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in young adult women with no identifiable physical cause)\nresponse: [Document 1] (ID: 380_145, Score: 0.837)\nMany episodes of PID go unrecognized. Although some cases are asymptomatic, others are undiagnosed because the patient or the health-care provider fails to recognize the implications of mild or nonspecific symptoms or signs (e.g., abnormal bleeding, dyspareunia, or vaginal discharge ). Because of th...\n\n[Document 2] (ID: 1562_7, Score: 0.835)\nsymptoms and signs of potential postnatal mental health problems and how to seek help\nsymptoms and signs of potential postnatal physical problems and how to seek help\nthe importance of pelvic floor exercises, how to do them and when to seek help (see the NICE gu...[truncated]"
+  ]
+}

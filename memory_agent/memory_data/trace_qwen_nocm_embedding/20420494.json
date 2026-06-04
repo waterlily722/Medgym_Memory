@@ -1,0 +1,2160 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20420494",
+  "turns": [
+    {
+      "case_id": "20420494",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 28-year-old female patient presenting with iron deficiency anemia and history of multiple allergies. Key evidence gathered: Chief complaint and patient demographics. Diagnostic uncertainty: No lab, exam, or imaging data yet. Most useful missing information: Hemoglobin, ferritin, and complete blood count. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 28-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 28-year-old female patient presenting with Iron deficiency anemia and history of multiple allergies.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 28-year-old female presenting with iron deficiency anemia and history of multiple allergies. No lab, exam, or imaging results available. No interpretation of evidence yet. Missing information: Hemoglobin, ferritin, complete blood count. No low-value or no-result attempts."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 1,
+        "query_text": "Patient is a 28-year-old female presenting with iron deficiency anemia and history of multiple allergies. No lab, exam, or imaging results available. Missing information: Hemoglobin, ferritin, complete blood count. No interpretation of evidence yet.",
+        "skill_query_text": "Presenting problem: Assess and diagnose a 28-year-old female with iron deficiency anemia and multiple allergies. Current uncertainty: No lab, exam, or imaging data yet. Missing evidence: Hemoglobin, ferritin, complete blood count. No ineffective actions tried. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.8003,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7672,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.801,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            },
+            {
+              "id": "exp_c6d49e383884",
+              "type": "experience",
+              "score": 0.793,
+              "outcome": "negative",
+              "text": "Abnormal vaginal bleeding after menopause in a 46-year-old female is a high-yield red flag for endometrial cancer; this finding should prompt immediate diagnostic workup even without other systemic symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.7893,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8095,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8048,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7957,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.7957,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, weakness, pale skin, or shortness of breath?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '200b9772-b08d-4bd4-a775-caa6cd62cf8d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, weakness, pale skin, or shortness of breath?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, weakness, pale skin, or shortness of breath?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, weakness, pale skin, or shortness of breath?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnostic_strategy": "Current clinical problem: Iron deficiency anemia with no specific symptoms reported. Key evidence gathered: Patient is uncertain about symptoms. Diagnostic uncertainty: Whether patient has symptomatic iron deficiency anemia remains unclear. Most useful missing information: Specific symptoms (fatigue, weakness, pallor, dyspnea) or lab/imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, weakness, pale skin, or shortness of breath?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Chief complaint: Iron deficiency anemia. Patient is uncertain about specific symptoms related to anemia. No exam, lab, imaging, or tool results provided. No positive or negative findings reported. Missing: Specific symptoms (fatigue, weakness, pallor, dyspnea) or diagnostic test results. No low-value or no-result attempts noted."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 2,
+        "query_text": "Chief complaint: Iron deficiency anemia. Patient uncertain about specific symptoms. No exam, lab, imaging, or tool results provided. No positive or negative findings reported. Missing: Specific symptoms (fatigue, weakness, pallor, dyspnea) or diagnostic test results. No low-value or no-result attempts noted.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia with no specific symptoms reported. Current uncertainty: Whether patient has symptomatic iron deficiency anemia remains unclear. Evidence gathered: Patient is uncertain about symptoms. Missing: Specific symptoms or lab/imaging results. Ineffective action: Asked patient about symptoms; response was unhelpful. Need: Workflow guidance for eliciting specific symptoms or ordering diagnostic tests."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8197,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8148,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7942,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7717,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7654,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.8302,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8254,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.8241,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_db4806710656",
+              "type": "skill",
+              "score": 0.8333,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8329,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8327,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_f43afddafa87",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8197,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_f43afddafa87",
+            "memory_type": "experience",
+            "score": 0.8254,
+            "content": {
+              "experience": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced fatigue or weakness over the past few weeks?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': 'a3766fa7-0620-4b00-9d7e-07ef33744490', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced fatigue or weakness over the past few weeks?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 70}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced fatigue or weakness over the past few weeks?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced fatigue or weakness over the past few weeks?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnostic_strategy": "Current clinical problem: Iron deficiency anemia with unclear symptom correlation. Key evidence gathered: Patient reports uncertainty about fatigue/weakness symptoms. Diagnostic uncertainty remains high due to lack of specific symptom confirmation. Most useful missing information: Specific symptom history (e.g., duration, severity, associated signs). Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced fatigue or weakness over the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Chief complaint: Iron deficiency anemia. Patient reports uncertainty about fatigue/weakness symptoms. Previous attempt (turn_2) to elicit specific symptoms (fatigue, weakness, pale skin, shortness of breath) resulted in patient requesting more specific questioning. No positive or negative findings confirmed. No lab, exam, or imaging results provided. Missing: Specific symptom history, duration, severity, associated signs. No low-value or no-result attempts beyond current turn."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Iron deficiency anemia. Patient reports uncertainty about fatigue/weakness symptoms. No confirmed positive or negative findings. No lab, exam, or imaging results. Missing: Specific symptom history (duration, severity, associated signs). Diagnostic uncertainty remains high due to lack of specific symptom confirmation.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia with unclear symptom correlation. Current uncertainty: Patient’s symptom uncertainty. Evidence gathered: Patient requested more specific questioning. Ineffective action: Asked about fatigue/weakness; patient responded with request for specificity. Missing: Specific symptom history, duration, severity, associated signs. Need: Workflow guidance for eliciting specific symptom details."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8345,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8225,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.8016,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7808,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.774,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.8455,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8425,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            },
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.833,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8487,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_db4806710656",
+              "type": "skill",
+              "score": 0.8298,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8288,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_f43afddafa87"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any pale skin, dizziness, or difficulty concentrating recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '8c8fde45-8f88-4bf8-9562-4d5c532a33e8', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any pale skin, dizziness, or difficulty concentrating recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 123}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any pale skin, dizziness, or difficulty concentrating recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any pale skin, dizziness, or difficulty concentrating recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnostic_strategy": "Current clinical problem: Iron deficiency anemia. Key evidence gathered: No specific symptoms confirmed from patient. Diagnostic uncertainty remains high due to lack of positive or negative symptom confirmation. Most useful missing information: Specific symptom confirmation (e.g., fatigue, pallor, dizziness). Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any pale skin, dizziness, or difficulty concentrating recently?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Chief complaint: Iron deficiency anemia. Patient responses to symptom questions (turns 2-4) indicate uncertainty or lack of specific symptom confirmation. No positive or negative findings confirmed. No exam, lab, imaging, or tool results provided. Unresolved missing information: Specific symptoms related to iron deficiency anemia. Low-value attempts: Repeated symptom questioning without specific answers."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 4,
+        "query_text": "Chief complaint: Iron deficiency anemia. No specific symptoms confirmed. No positive or negative findings. No exam, lab, or imaging results. No relevant history or demographics provided. Diagnostic uncertainty remains high due to lack of symptom confirmation. Missing: Specific symptom confirmation (e.g., fatigue, pallor, dizziness).",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia. Current uncertainty: Diagnosis not finalized due to lack of symptom confirmation. Evidence gathered: Patient responses indicate uncertainty or lack of specific answers. Missing: Specific symptom confirmation. Ineffective actions: Repeated symptom questioning without specific answers. Needed: Workflow guidance for selecting next diagnostic action based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.794,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7853,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.8366,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.835,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_11e9003b56c8",
+              "type": "experience",
+              "score": 0.8082,
+              "outcome": "negative",
+              "text": "Repeated negative responses to non-specific symptom questions (weight, appetite, fatigue) are low-yield and should be replaced with targeted queries about reproductive symptoms or pelvic pain when lower abdominal pain and bleeding are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8145,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.814,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_db4806710656",
+              "type": "skill",
+              "score": 0.8099,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any episodes of shortness of breath, especially when exerting yourself?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t had any episodes of shortness of breath, especially when exerting myself. I feel well and have no complaints or concerns.'}",
+        "env_info": "{'response': [{'id': 'a2675820-a46e-4bf7-afcb-c8e947c968ca', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any episodes of shortness of breath, especially when exerting yourself?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 179}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any episodes of shortness of breath, especially when exerting yourself?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any episodes of shortness of breath, especially when exerting yourself?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnostic_strategy": "Current clinical problem: Iron deficiency anemia with no reported symptoms. Key evidence gathered: Patient denies shortness of breath on exertion. Diagnostic uncertainty remains: Whether patient has fatigue, weakness, pallor, or other systemic symptoms. Most useful missing information: Specific details on fatigue, weakness, pallor, dizziness, or cognitive changes. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any episodes of shortness of breath, especially when exerting yourself?)\nresponse: No, I haven’t had any episodes of shortness of breath, especially when exerting myself. I feel well and have no complaints or concerns."
+        ],
+        "prior_information_summary": "Chief complaint: Iron deficiency anemia. Patient denies shortness of breath on exertion. Previous questions about fatigue, weakness, pale skin, dizziness, or difficulty concentrating were met with uncertainty or requests for more specific questions. No positive or negative findings confirmed. No lab, imaging, or tool results provided. Unresolved: Specific symptoms related to iron deficiency anemia. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 5,
+        "query_text": "Chief complaint: Iron deficiency anemia. Patient denies shortness of breath on exertion. Diagnostic uncertainty: Whether patient has fatigue, weakness, pallor, dizziness, or cognitive changes. No positive or negative findings confirmed. No lab, imaging, or tool results provided. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia with no reported symptoms. Current uncertainty: Whether patient has fatigue, weakness, pallor, dizziness, or cognitive changes. Evidence gathered: Patient denies shortness of breath on exertion. Ineffective action: Asked about shortness of breath; response was negative. Missing: Specific details on fatigue, weakness, pallor, dizziness, or cognitive changes. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7963,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7708,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.8539,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.8284,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.82,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8336,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.815,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8101,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'234004d8-fd34-4eeb-8ced-174681cd4084': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '234004d8-fd34-4eeb-8ced-174681cd4084', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 254}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 5,
+        "query_text": "Chief complaint: Iron deficiency anemia. Patient denies shortness of breath on exertion. Diagnostic uncertainty: Whether patient has fatigue, weakness, pallor, dizziness, or cognitive changes. No positive or negative findings confirmed. No lab, imaging, or tool results provided. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia with no reported symptoms. Current uncertainty: Whether patient has fatigue, weakness, pallor, dizziness, or cognitive changes. Evidence gathered: Patient denies shortness of breath on exertion. Ineffective action: Asked about shortness of breath; response was negative. Missing: Specific details on fatigue, weakness, pallor, dizziness, or cognitive changes. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7963,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7708,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.8539,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.8284,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.82,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.8336,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.815,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8101,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of iron deficiency anemia in young women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'00ab4824-e24b-44aa-88a0-4a90df71abd8': '[Document 1] (ID: 394_50, Score: 0.889)\\n# Postpartum Women\\nWomen at risk for anemia at 4-6 weeks postpartum should be screened for anemia by using a Hb concentration or Hct test. The anemia criteria for nonpregnant women should be used (Table 6). Risk factors include anemia continued through the third trimester, excessive blood loss durin...\\n\\n[Document 2] (ID: 10729_0, Score: 0.883)\\nIron deficiency anemia overview\\n\\n# Overview\\nIron deficiency anemia occurs when body iron stores are inadequate to meet normal metabolic demands of the body. It is the most common cause of microcytic anemia.\\nIron deficiency anemia occurs in the setting of blood loss, insufficient dietary intake or po...\\n\\n[Document 3] (ID: 394_47, Score: 0.880)\\n# Screening\\n- Starting in adolescence, screen all nonpregnant women for anemia every 5-10 years throughout their childbearing years during routine health examinations.\\n- Annually screen for anemia women having risk factors for iron deficiency (e.g., extensive menstrual or other blood loss, low iron ...\\n\\n[Document 4] (ID: 394_40, Score: 0.879)\\nAnemia among pregnant women and anemia among all nonpregnant women of childbearing age should be considered together, becaus...[truncated]'}}",
+        "env_info": "{'response': [{'id': '00ab4824-e24b-44aa-88a0-4a90df71abd8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of iron deficiency anemia in young women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 325}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of iron deficiency anemia in young women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of iron deficiency anemia in young women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnostic_strategy": "Current clinical problem: Iron deficiency anemia in a young woman. Key evidence gathered: No lab results available; patient denies shortness of breath, but responses to symptom questions were noncommittal or unclear. Diagnostic uncertainty remains high due to lack of objective data and unclear symptom history. Most useful missing information: Lab results (e.g., Hb, ferritin, iron studies) and specific symptom confirmation (e.g., fatigue, pallor, dizziness). Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, weakness, pale skin, or shortness of breath?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced fatigue or weakness over the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any pale skin, dizziness, or difficulty concentrating recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any episodes of shortness of breath, especially when exerting yourself?)\nresponse: No, I haven’t had any episodes of shortness of breath, especially when exerting myself. I feel well and have no complaints or concerns.",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: Iron deficiency anemia. Patient denies shortness of breath. Symptom questions (fatigue, weakness, pallor, dizziness, concentration) elicited noncommittal or unclear responses. Lab request returned no result. No objective diagnostic data available. Screening guidelines for iron deficiency anemia in women are known but not yet applied. No confirmed symptoms or lab findings to support or refute diagnosis."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 7,
+        "query_text": "Chief complaint: Iron deficiency anemia. Patient denies shortness of breath. Symptom questions (fatigue, weakness, pallor, dizziness, concentration) elicited noncommittal or unclear responses. Lab request returned no result. No objective diagnostic data available. Screening guidelines for iron deficiency anemia in women are known but not yet applied. No confirmed symptoms or lab findings to support or refute diagnosis.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia in a young woman. Current uncertainty: Diagnosis not confirmed due to lack of objective data. Evidence gathered: Noncommittal symptom responses, no lab results. Ineffective actions: Multiple symptom questions yielded unclear responses; lab request returned no result. Needed guidance: Workflow for confirming iron deficiency anemia with appropriate lab tests and symptom clarification."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8039,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8019,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7724,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7703,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7602,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.8321,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.8188,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_2b6909cd0fe5",
+              "type": "experience",
+              "score": 0.8109,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screening questions (fatigue, fever, weight loss, etc.) without targeted follow-up or physical exam findings indicate a low-yield diagnostic approach; pivot to specific organ-system symptoms or objective findings.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8223,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8116,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8104,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_2b6909cd0fe5",
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.8019,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_2b6909cd0fe5",
+            "memory_type": "experience",
+            "score": 0.8109,
+            "content": {
+              "experience": "Repeated negative responses to broad symptom screening questions (fatigue, fever, weight loss, etc.) without targeted follow-up or physical exam findings indicate a low-yield diagnostic approach; pivot to specific organ-system symptoms or objective findings.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Do you have a history of heavy menstrual bleeding or any other sources of chronic blood loss?"
+        },
+        "patient_or_tool_response": "{'question': 'I have a history of endometriosis that was treated with an ablation, and I have iron deficiency anemia. I was not told specifically whether I had heavy menstrual bleeding or any other chronic blood loss.'}",
+        "env_info": "{'response': [{'id': '16b5218a-186f-4512-8d46-754290823265', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you have a history of heavy menstrual bleeding or any other sources of chronic blood loss?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 815}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have a history of heavy menstrual bleeding or any other sources of chronic blood loss?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have a history of heavy menstrual bleeding or any other sources of chronic blood loss?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnostic_strategy": "Current clinical problem: Iron deficiency anemia with suspected chronic blood loss. Key evidence gathered: Patient has history of endometriosis treated with ablation, no reported symptoms of fatigue, weakness, pale skin, or shortness of breath. Labs not yet performed. Diagnostic uncertainty: Whether chronic blood loss from endometriosis or other sources is the cause. Most useful missing information: Results of lab tests (e.g., ferritin, Hb, Hct) and confirmation of blood loss source. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Do you have a history of heavy menstrual bleeding or any other sources of chronic blood loss?)\nresponse: I have a history of endometriosis that was treated with an ablation, and I have iron deficiency anemia. I was not told specifically whether I had heavy menstrual bleeding or any other chronic blood loss."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Iron deficiency anemia. History: Patient has endometriosis treated with ablation. Symptoms: No reported fatigue, weakness, pale skin, dizziness, or shortness of breath. Exam: No results from labs. Tool results: No lab results available. Retrieval: Documented overview of iron deficiency anemia, screening guidelines, and symptom development. Unresolved: Specific source of chronic blood loss not confirmed. Low-value attempts: Multiple symptom questions (turns 2-5) received non-specific or negative responses. No lab results obtained (turn 6)."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 8,
+        "query_text": "Chief complaint: Iron deficiency anemia. History: Endometriosis treated with ablation. Symptoms: No reported fatigue, weakness, pale skin, dizziness, or shortness of breath. Labs: Not performed. Diagnostic uncertainty: Whether chronic blood loss from endometriosis or other sources is the cause. Missing: Lab results (e.g., ferritin, Hb, Hct) and confirmation of blood loss source.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia with suspected chronic blood loss. Current uncertainty: Source of blood loss not confirmed. Evidence gathered: History of endometriosis, no reported symptoms of anemia. Ineffective actions: Multiple symptom questions received non-specific responses; no lab results obtained. Needed: Workflow guidance for next diagnostic steps, including lab testing and source confirmation."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7899,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7758,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.8126,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.8119,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            },
+            {
+              "id": "exp_7f02c00ff139",
+              "type": "experience",
+              "score": 0.8082,
+              "outcome": "negative",
+              "text": "Menstrual irregularity, hot flashes, and night sweats in a 33-year-old female support menopause as a likely cause, but absence of lab confirmation or ruling out other causes (e.g., thyroid dysfunction) limits diagnostic certainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8169,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8121,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8112,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "iron deficiency anemia in patients with endometriosis"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a8e014fd-3545-4dc7-8086-2692ddaaf07c': '[Document 1] (ID: 3350_0, Score: 0.867)\\nBritish Society of Gastroenterology guidelines for the management of iron deficiency anaemia in adults\\n\\n[Document 2] (ID: 824_6, Score: 0.864)\\n# For patients with anemia and a serum ferritin level\\n\\n[Document 3] (ID: 17297_12, Score: 0.864)\\n- Trial 1 was a randomized, open-label, controlled clinical study in patients with iron deficiency anemia who had an unsatisfactory response to oral iron (Cohort 1) or who were intolerant to oral iron (Cohort 2) during the 14 day oral iron run-in period. Inclusion criteria prior to randomization inc...\\n\\n[Document 4] (ID: 3979_6, Score: 0.864)\\n## Oral and intravenous iron supplementation\\nThe ECAS study found that more than 40% of patients included had iron deficiency (ID) and, of these, approximately one-third had Hgb levels < 12 g/dl; the same study indicated that the prevalence of ID in patients with solid tumours was higher than in hae...\\n\\n[Document 5] (ID: 394_50, Score: 0.861)\\n# Postpartum Women\\nWomen at risk for anemia at 4-6 weeks postpartum should be screened for anemia by using a Hb concentration or Hct test. The anemia criteria for nonpregnant women should be used (Table 6). Risk factors include an...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'a8e014fd-3545-4dc7-8086-2692ddaaf07c', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"iron deficiency anemia in patients with endometriosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 904}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"iron deficiency anemia in patients with endometriosis\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"iron deficiency anemia in patients with endometriosis\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnostic_strategy": "Current clinical problem: Iron deficiency anemia in a patient with endometriosis history. Key evidence gathered: Patient reports no shortness of breath, denies specific symptoms (fatigue, weakness, pale skin, dizziness) except for history of endometriosis treated with ablation. No lab results available. Current diagnostic uncertainty: Whether chronic blood loss from endometriosis is the cause, and whether oral iron is sufficient. Most useful missing information: Serum ferritin level, hemoglobin, and history of menstrual bleeding. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Iron deficiency anemia"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, weakness, pale skin, or shortness of breath?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced fatigue or weakness over the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any pale skin, dizziness, or difficulty concentrating recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: Iron deficiency anemia. Patient denies shortness of breath, fatigue, weakness, pale skin, dizziness, or difficulty concentrating. History of endometriosis treated with ablation, but no confirmation of heavy menstrual bleeding or chronic blood loss. No lab results available. Retrieved documents on iron deficiency anemia in adults, postpartum women, and screening guidelines. No specific diagnostic test results or imaging findings. No treatment or management recommendations provided."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 9,
+        "query_text": "Chief complaint: Iron deficiency anemia. Patient denies shortness of breath, fatigue, weakness, pale skin, dizziness. History of endometriosis treated with ablation. No lab results available. Uncertainty: Whether chronic blood loss from endometriosis is the cause, and whether oral iron is sufficient. Missing: Serum ferritin, hemoglobin, history of menstrual bleeding.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia. Uncertainty: Cause of anemia (chronic blood loss from endometriosis?) and adequacy of oral iron. Evidence gathered: Patient denies specific symptoms, no lab results. Ineffective actions: Multiple failed symptom questions, no lab results obtained. Need: Workflow guidance on next diagnostic steps (e.g., serum ferritin, hemoglobin, menstrual history) and management decision for iron deficiency in endometriosis context."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7995,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7746,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5d5eb0540857",
+              "type": "experience",
+              "score": 0.8242,
+              "outcome": "negative",
+              "text": "Lightheadedness with movement and dizziness, especially when standing, along with shortness of breath after minimal exertion, are highly suggestive of anemia in elderly patients; do not apply this pattern if the patient has known cardiac disease, recent trauma, or systemic inflammatory signs.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7c9bc26aa71",
+              "type": "experience",
+              "score": 0.8152,
+              "outcome": "negative",
+              "text": "Gradual onset of fatigue accompanied by decreased appetite, nausea, and reduced fluid intake may indicate anemia or other systemic illness; do not assume anemia without corroborating lab evidence or excluding other causes like hypothyroidism or renal failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_526be5c350fb",
+              "type": "experience",
+              "score": 0.8065,
+              "outcome": "negative",
+              "text": "Ignoring menstrual history and physical signs of virilization in a young female with GI symptoms leads to misdiagnosis; PCOS is often missed when only abdominal complaints are pursued without hormonal or reproductive context.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8103,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_f9b9fd0ff961",
+              "type": "skill",
+              "score": 0.804,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8023,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Iron deficiency anemia secondary to endometriosis-related blood loss}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4ab931b9-f951-424d-b1f0-02c17464f38a': '{\"diagnosis\": \"Iron deficiency anemia secondary to endometriosis-related blood loss\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '4ab931b9-f951-424d-b1f0-02c17464f38a', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Iron deficiency anemia secondary to endometriosis-related blood loss}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1321}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Iron deficiency anemia secondary to endometriosis-related blood loss}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Iron deficiency anemia secondary to endometriosis-related blood loss}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnosis_goal": "Confirm iron deficiency anemia by identifying relevant symptoms (e.g., fatigue, pallor, GI symptoms) and ruling out secondary causes. Previous symptom questions yielded no specific responses; next step: consider lab tests (e.g., ferritin, TIBC) or dietary history.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any gastrointestinal symptoms, such as fatigue, loss of appetite, or changes in bowel habits, that might relate to iron absorption or dietary intake?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Repeated attempts to elicit specific symptoms related to iron deficiency anemia (fatigue, pallor, GI symptoms, cravings, hair/nail changes) have yielded no useful clinical information. Patient consistently responds with uncertainty and requests more specific questions. No diagnostic evidence or actionable data gathered. Next step: consider objective testing (e.g., lab work) or targeted dietary inquiry."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 10,
+        "query_text": "Patient presents with iron deficiency anemia. No specific symptoms elicited: fatigue, pallor, GI symptoms, cravings, hair/nail changes. No labs or dietary history obtained. No prior diagnostic evidence.",
+        "skill_query_text": "Patient presents with iron deficiency anemia. Symptom questions yielded no useful responses. No labs or dietary history collected. Need guidance on next diagnostic steps: lab tests (e.g., ferritin, TIBC) or targeted dietary inquiry."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_f85cf1e65831",
+              "type": "experience",
+              "score": 0.859,
+              "outcome": "negative",
+              "text": "In a patient presenting with dizziness, fatigue, pallor, and exertional dyspnea, the absence of gastrointestinal, urinary, or joint symptoms does not rule out melena; a targeted inquiry about hematemesis, black stools, or recent GI bleeding is essential to distinguish melena from anemia-related symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_cc58f67ef651",
+              "type": "experience",
+              "score": 0.8444,
+              "outcome": "negative",
+              "text": "When a patient reports neurological symptoms like dizziness and pallor, the absence of classic systemic symptoms (e.g., weight loss, fever, night sweats) should not lead to premature closure on anemia; consider melena as a differential and pursue targeted GI history and occult blood testing.",
+              "tags": []
+            },
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8409,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7877,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '60221c59-6fae-4d94-9295-30c09e334079', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 584}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnosis_goal": "Confirm presence of iron deficiency anemia by obtaining objective evidence (e.g., hemoglobin, ferritin, iron studies) and identifying potential causes (dietary, GI bleeding, menstrual loss). Previous symptom-based questioning yielded no useful clinical data; next step: order lab tests.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "prior_information_summary": "Multiple symptom-based questions (turns 2-11) elicited non-specific or unhelpful responses ('I’m not sure. Could you ask a more specific question?'). No clinically useful evidence gathered. Next step: order diagnostic labs (hemoglobin, ferritin, iron studies) to confirm or rule out iron deficiency anemia."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 11,
+        "query_text": "Patient presents with iron deficiency anemia. No clinically useful evidence gathered from symptom-based questioning. No labs or imaging performed. No PMH or medication history provided.",
+        "skill_query_text": "Presenting problem: iron deficiency anemia. Evidence gathered: none from symptom-based questioning. Failed action: asking about cognitive symptoms yielded unhelpful response. Need: workflow guidance to order diagnostic labs (hemoglobin, ferritin, iron studies)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_1c55cfe0d0f4",
+              "type": "experience",
+              "score": 0.8469,
+              "outcome": "negative",
+              "text": "Repeated patient questioning without targeted diagnostic tools (e.g., labs, imaging) in a case with vague symptoms and no red flags can lead to diagnostic delay — especially when the gold diagnosis (anemia) is not confirmed by objective data.",
+              "tags": []
+            },
+            {
+              "id": "exp_f85cf1e65831",
+              "type": "experience",
+              "score": 0.8356,
+              "outcome": "negative",
+              "text": "In a patient presenting with dizziness, fatigue, pallor, and exertional dyspnea, the absence of gastrointestinal, urinary, or joint symptoms does not rule out melena; a targeted inquiry about hematemesis, black stools, or recent GI bleeding is essential to distinguish melena from anemia-related symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8326,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7822,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1c55cfe0d0f4"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '84ea3fe0-917f-4ebe-933d-090639ffc381', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 651}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnosis_goal": "Confirm iron deficiency anemia by evaluating for gastrointestinal symptoms affecting iron absorption or intake; previous symptom questions yielded non-specific responses; next step: consider lab tests (e.g., ferritin, TIBC) or dietary history to identify potential causes.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Iron deficiency anemia"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, pale skin, or shortness of breath?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced fatigue, dizziness, or weakness in the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, such as feeling unusually tired or weak, over the past month?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like dizziness, shortness of breath, or palpitations when you exert yourself?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any signs of paleness, especially in your face, hands, or gums, over the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any episodes of feeling lightheaded or faint, especially when standing up quickly?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any unusual cravings, such as for non-food items like ice or dirt?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your hair or nails, such as brittleness, thinning, or ridges, over the past few months?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any gastrointestinal symptoms, such as fatigue, loss of appetite, or changes in bowel habits, that might relate to iron absorption or dietary intake?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports no specific symptoms related to iron deficiency anemia; previous questions about fatigue, pallor, GI symptoms, cravings, and cognitive effects yielded non-specific or unhelpful responses. Current turn confirms no recent GI issues affecting iron absorption or intake. Next step: pursue objective lab testing to confirm diagnosis and identify potential causes."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 12,
+        "query_text": "Chief complaint: Iron deficiency anemia. No specific symptoms reported: fatigue, pallor, dizziness, shortness of breath, cravings (pica), hair/nail changes, GI symptoms, or cognitive effects. No recent nausea, vomiting, or diarrhea. No prior lab results or imaging findings. No known PMH or medications related to iron status.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia. Evidence gathered: multiple symptom questions yielded non-specific or unhelpful responses. Failed actions: repeated questioning about fatigue, pallor, GI symptoms, cravings, cognitive effects, and nausea/vomiting—all returned 'not sure' or 'no issues'. Need: objective lab testing guidance (e.g., ferritin, TIBC) to confirm diagnosis and identify potential causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_f85cf1e65831",
+              "type": "experience",
+              "score": 0.8538,
+              "outcome": "negative",
+              "text": "In a patient presenting with dizziness, fatigue, pallor, and exertional dyspnea, the absence of gastrointestinal, urinary, or joint symptoms does not rule out melena; a targeted inquiry about hematemesis, black stools, or recent GI bleeding is essential to distinguish melena from anemia-related symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_cc58f67ef651",
+              "type": "experience",
+              "score": 0.8454,
+              "outcome": "negative",
+              "text": "When a patient reports neurological symptoms like dizziness and pallor, the absence of classic systemic symptoms (e.g., weight loss, fever, night sweats) should not lead to premature closure on anemia; consider melena as a differential and pursue targeted GI history and occult blood testing.",
+              "tags": []
+            },
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.829,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.783,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b1f8db3f-5f14-42c6-adbe-fc6174ca969d': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'b1f8db3f-5f14-42c6-adbe-fc6174ca969d', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 731}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnosis_goal": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 12,
+        "query_text": "Chief complaint: Iron deficiency anemia. No specific symptoms reported: fatigue, pallor, dizziness, shortness of breath, cravings (pica), hair/nail changes, GI symptoms, or cognitive effects. No recent nausea, vomiting, or diarrhea. No prior lab results or imaging findings. No known PMH or medications related to iron status.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia. Evidence gathered: multiple symptom questions yielded non-specific or unhelpful responses. Failed actions: repeated questioning about fatigue, pallor, GI symptoms, cravings, cognitive effects, and nausea/vomiting—all returned 'not sure' or 'no issues'. Need: objective lab testing guidance (e.g., ferritin, TIBC) to confirm diagnosis and identify potential causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_f85cf1e65831",
+              "type": "experience",
+              "score": 0.8538,
+              "outcome": "negative",
+              "text": "In a patient presenting with dizziness, fatigue, pallor, and exertional dyspnea, the absence of gastrointestinal, urinary, or joint symptoms does not rule out melena; a targeted inquiry about hematemesis, black stools, or recent GI bleeding is essential to distinguish melena from anemia-related symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_cc58f67ef651",
+              "type": "experience",
+              "score": 0.8454,
+              "outcome": "negative",
+              "text": "When a patient reports neurological symptoms like dizziness and pallor, the absence of classic systemic symptoms (e.g., weight loss, fever, night sweats) should not lead to premature closure on anemia; consider melena as a differential and pursue targeted GI history and occult blood testing.",
+              "tags": []
+            },
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.829,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.783,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of iron deficiency anemia in young women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'bd83e318-88af-4b85-8662-06c4cc71d0ab': '[Document 1] (ID: 394_50, Score: 0.889)\\n# Postpartum Women\\nWomen at risk for anemia at 4-6 weeks postpartum should be screened for anemia by using a Hb concentration or Hct test. The anemia criteria for nonpregnant women should be used (Table 6). Risk factors include anemia continued through the third trimester, excessive blood loss durin...\\n\\n[Document 2] (ID: 10729_0, Score: 0.883)\\nIron deficiency anemia overview\\n\\n# Overview\\nIron deficiency anemia occurs when body iron stores are inadequate to meet normal metabolic demands of the body. It is the most common cause of microcytic anemia.\\nIron deficiency anemia occurs in the setting of blood loss, insufficient dietary intake or po...\\n\\n[Document 3] (ID: 394_47, Score: 0.880)\\n# Screening\\n- Starting in adolescence, screen all nonpregnant women for anemia every 5-10 years throughout their childbearing years during routine health examinations.\\n- Annually screen for anemia women having risk factors for iron deficiency (e.g., extensive menstrual or other blood loss, low iron ...\\n\\n[Document 4] (ID: 394_40, Score: 0.879)\\nAnemia among pregnant women and anemia among all nonpregnant women of childbearing age should be considered together, becaus...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'bd83e318-88af-4b85-8662-06c4cc71d0ab', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of iron deficiency anemia in young women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 802}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of iron deficiency anemia in young women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of iron deficiency anemia in young women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnosis_goal": "Confirm diagnosis of iron deficiency anemia by obtaining lab results; previous patient interactions yielded no specific symptoms or findings. Next step: obtain lab results or clarify risk factors (e.g., menstrual blood loss, dietary intake) to guide targeted testing.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Iron deficiency anemia"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, pale skin, or shortness of breath?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced fatigue, dizziness, or weakness in the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, such as feeling unusually tired or weak, over the past month?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like dizziness, shortness of breath, or palpitations when you exert yourself?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any signs of paleness, especially in your face, hands, or gums, over the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any episodes of feeling lightheaded or faint, especially when standing up quickly?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any unusual cravings, such as for non-food items like ice or dirt?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your hair or nails, such as brittleness, thinning, or ridges, over the past few months?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any gastrointestinal symptoms, such as fatigue, loss of appetite, or changes in bowel habits, that might relate to iron absorption or dietary intake?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports uncertainty on all symptom-related questions (turns 2–11), with no specific findings. Lab request (turn 13) returned no result. Current turn (turn 14) retrieved general information on iron deficiency anemia in women, including screening guidelines and symptoms, but no new clinical data from patient or lab. Next step: obtain lab results or clarify risk factors."
+      },
+      "inefficient_turn_information": [
+        "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 14,
+        "query_text": "Chief complaint: Iron deficiency anemia. No specific symptoms or signs reported by patient. No lab results available. No prior diagnostic findings. No known PMH, medications, or demographics provided.",
+        "skill_query_text": "Presenting problem: Iron deficiency anemia. Patient uncertain on all symptom-related questions (turns 2–11). Lab request (turn 13) returned no result. Need guidance on next steps: obtain lab results or clarify risk factors (e.g., menstrual blood loss, dietary intake)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_1c55cfe0d0f4",
+              "type": "experience",
+              "score": 0.8275,
+              "outcome": "negative",
+              "text": "Repeated patient questioning without targeted diagnostic tools (e.g., labs, imaging) in a case with vague symptoms and no red flags can lead to diagnostic delay — especially when the gold diagnosis (anemia) is not confirmed by objective data.",
+              "tags": []
+            },
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.8264,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            },
+            {
+              "id": "exp_f85cf1e65831",
+              "type": "experience",
+              "score": 0.8251,
+              "outcome": "negative",
+              "text": "In a patient presenting with dizziness, fatigue, pallor, and exertional dyspnea, the absence of gastrointestinal, urinary, or joint symptoms does not rule out melena; a targeted inquiry about hematemesis, black stools, or recent GI bleeding is essential to distinguish melena from anemia-related symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7919,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1c55cfe0d0f4"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any episodes of dizziness, headaches, or shortness of breath during daily activities like walking or climbing stairs?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '32992cf8-91a7-4212-b6fd-9e7172113255', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any episodes of dizziness, headaches, or shortness of breath during daily activities like walking or climbing stairs?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1292}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any episodes of dizziness, headaches, or shortness of breath during daily activities like walking or climbing stairs?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any episodes of dizziness, headaches, or shortness of breath during daily activities like walking or climbing stairs?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20420494",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "Iron deficiency anemia",
+        "diagnosis_goal": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 15. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Iron deficiency anemia",
+          "initial_information: I am a 28-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 28-year-old female patient presenting with Iron deficiency anemia and history of multiple allergies..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, pale skin, or shortness of breath?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced fatigue, dizziness, or weakness in the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, such as feeling unusually tired or weak, over the past month?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like dizziness, shortness of breath, or palpitations when you exert yourself?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any signs of paleness, especially in your face, hands, or gums, over the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any episodes of feeling lightheaded or faint, especially when standing up quickly?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any unusual cravings, such as for non-food items like ice or dirt?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your hair or nails, such as brittleness, thinning, or ridges, over the past few months?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any gastrointestinal symptoms, such as fatigue, loss of appetite, or changes in bowel habits, that might relate to iron absorption or dietary intake?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_14 retrieve_interaction: doctor_action: retrieve(query=symptoms of iron deficiency anemia in young women)\nresponse: [Document 1] (ID: 394_50, Score: 0.889)\n# Postpartum Women\nWomen at risk for anemia at 4-6 weeks postpartum should be screened for anemia by using a Hb concentration or Hct test. The anemia criteria for nonpregnant women should be used (Table 6). Risk factors include anemia continued through the third trimester, excessive blood loss durin...\n\n[Document 2] (ID: 10729_0, Score: 0.883)\nIron deficiency anemia overview\n\n# Overview\nIron deficiency anemia occurs when body iron stores are inadequate to meet normal metabolic demands of the body. It is the most common cause of microcytic anemia.\nIron deficiency anemia occurs in the setting of blood loss, insufficient dietary intake or po...\n\n[Document 3] (ID: 394_47, Score: 0.880)\n# Screening\n- Starting in adolescence, screen all nonpregnant women for anemia every 5-10 years throughout their childbearing years during routine health examinations.\n- Annually screen for anemia women having risk factors for iron deficiency (e.g., extensive menstrual or other blood loss, low iron ...\n\n[Document 4] (ID: 394_40, Score: 0.879)\nAnemia among pregnant women and anemia among all nonpregnant women of childbearing age should be considered together, because childbearing increases the risk for iron deficiency (both during and after pregnancy) (41,42 ), and iron deficiency before pregnancy likely increases the risk for iron defici...\n\n[Document 5] (ID: 1185_545, Score: 0.879)\n# The development of defi ciency and symptoms\nTimescales for the development of anaemia are diffi cult to set, because it is infl uenced by the nature of requirements, losses, and diet. Anaemia manifests itself in fatigue, shortness of breath following any type of physical effort, dizziness, headach...",
+          "turn_15 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any episodes of dizziness, headaches, or shortness of breath during daily activities like walking or climbing stairs?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "ineffective_turn_information": [
+          "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, pale skin, or shortness of breath?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you experienced fatigue, dizziness, or weakness in the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you noticed any changes in your energy levels, such as feeling unusually tired or weak, over the past month?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you been experiencing any symptoms like dizziness, shortness of breath, or palpitations when you exert yourself?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you noticed any signs of paleness, especially in your face, hands, or gums, over the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you had any episodes of feeling lightheaded or faint, especially when standing up quickly?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you been experiencing any unusual cravings, such as for non-food items like ice or dirt?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you noticed any changes in your hair or nails, such as brittleness, thinning, or ridges, over the past few months?)\nresponse: I’m not sure. Could you ask a more specific question?\n\nIneffective/no-result interactions:\nturn_13 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20420494",
+        "turn_id": 15,
+        "query_text": "28-year-old female patient presenting with iron deficiency anemia, no prior labs, no specific symptoms identified (fatigue, dizziness, shortness of breath, pallor, pica, hair/nail changes, GI symptoms), history of multiple allergies.",
+        "skill_query_text": "28-year-old female with iron deficiency anemia, no labs performed (turn 13 failed), multiple symptom questions elicited with non-specific responses, need targeted exam or diagnostic tool guidance to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_f85cf1e65831",
+              "type": "experience",
+              "score": 0.8561,
+              "outcome": "negative",
+              "text": "In a patient presenting with dizziness, fatigue, pallor, and exertional dyspnea, the absence of gastrointestinal, urinary, or joint symptoms does not rule out melena; a targeted inquiry about hematemesis, black stools, or recent GI bleeding is essential to distinguish melena from anemia-related symptoms.",
+              "tags": []
+            },
+            {
+              "id": "exp_cc58f67ef651",
+              "type": "experience",
+              "score": 0.8431,
+              "outcome": "negative",
+              "text": "When a patient reports neurological symptoms like dizziness and pallor, the absence of classic systemic symptoms (e.g., weight loss, fever, night sweats) should not lead to premature closure on anemia; consider melena as a differential and pursue targeted GI history and occult blood testing.",
+              "tags": []
+            },
+            {
+              "id": "exp_e961aa840a82",
+              "type": "experience",
+              "score": 0.835,
+              "outcome": "negative",
+              "text": "In elderly patients presenting with fatigue, weight loss, and decreased appetite, failure to obtain basic labs (e.g., CBC, ferritin, TSH) or imaging (e.g., CXR) may miss anemia, malignancy, or systemic illness — key differentials that require objective evidence to rule in or out.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7781,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Do you feel unusually tired or weak when performing everyday tasks, such as getting out of bed or walking to the kitchen?"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': '03cdd87a-1686-457b-9905-4ac474521e43', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you feel unusually tired or weak when performing everyday tasks, such as getting out of bed or walking to the kitchen?\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"03cdd87a-1686-457b-9905-4ac474521e43\", \"type\": \"function\", \"function\": {\"name\": \"ask_patient\", \"arguments\": \"{\\\\\"question\\\\\": \\\\\"Do you feel unusually tired or weak when performing everyday tasks, such as getting out of bed or walking to the kitchen?\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 7, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 8, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 9, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 10, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 11, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 1358}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.75,
+        "conf_after": 0.75,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you feel unusually tired or weak when performing everyday tasks, such as getting out of bed or walking to the kitchen?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you feel unusually tired or weak when performing everyday tasks, such as getting out of bed or walking to the kitchen?\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced fatigue or weakness over the past few weeks?"
+      },
+      "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+      "env_info": "{'response': [{'id': 'a3766fa7-0620-4b00-9d7e-07ef33744490', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced fatigue or weakness over the past few weeks?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 70}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any specific symptoms related to your iron deficiency anemia, such as fatigue, pale skin, or shortness of breath?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 3,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you noticed any pale skin, dizziness, or difficulty concentrating recently?"
+      },
+      "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+      "env_info": "{'response': [{'id': '8c8fde45-8f88-4bf8-9562-4d5c532a33e8', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any pale skin, dizziness, or difficulty concentrating recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 123}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced fatigue, dizziness, or weakness in the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 4,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you had any episodes of shortness of breath, especially when exerting yourself?"
+      },
+      "patient_or_tool_response": "{'question': 'No, I haven’t had any episodes of shortness of breath, especially when exerting myself. I feel well and have no complaints or concerns.'}",
+      "env_info": "{'response': [{'id': 'a2675820-a46e-4bf7-afcb-c8e947c968ca', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any episodes of shortness of breath, especially when exerting yourself?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 179}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, such as feeling unusually tired or weak, over the past month?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'234004d8-fd34-4eeb-8ced-174681cd4084': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '234004d8-fd34-4eeb-8ced-174681cd4084', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 254}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like dizziness, shortness of breath, or palpitations when you exert yourself?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "symptoms of iron deficiency anemia in young women"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'00ab4824-e24b-44aa-88a0-4a90df71abd8': '[Document 1] (ID: 394_50, Score: 0.889)\\n# Postpartum Women\\nWomen at risk for anemia at 4-6 weeks postpartum should be screened for anemia by using a Hb concentration or Hct test. The anemia criteria for nonpregnant women should be used (Table 6). Risk factors include anemia continued through the third trimester, excessive blood loss durin...\\n\\n[Document 2] (ID: 10729_0, Score: 0.883)\\nIron deficiency anemia overview\\n\\n# Overview\\nIron deficiency anemia occurs when body iron stores are inadequate to meet normal metabolic demands of the body. It is the most common cause of microcytic anemia.\\nIron deficiency anemia occurs in the setting of blood loss, insufficient dietary intake or po...\\n\\n[Document 3] (ID: 394_47, Score: 0.880)\\n# Screening\\n- Starting in adolescence, screen all nonpregnant women for anemia every 5-10 years throughout their childbearing years during routine health examinations.\\n- Annually screen for anemia women having risk factors for iron deficiency (e.g., extensive menstrual or other blood loss, low iron ...\\n\\n[Document 4] (ID: 394_40, Score: 0.879)\\nAnemia among pregnant women and anemia among all nonpregnant women of childbearing age should be considered together, becaus...[truncated]'}}",
+      "env_info": "{'response': [{'id': '00ab4824-e24b-44aa-88a0-4a90df71abd8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of iron deficiency anemia in young women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 325}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any signs of paleness, especially in your face, hands, or gums, over the past few weeks?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Do you have a history of heavy menstrual bleeding or any other sources of chronic blood loss?"
+      },
+      "patient_or_tool_response": "{'question': 'I have a history of endometriosis that was treated with an ablation, and I have iron deficiency anemia. I was not told specifically whether I had heavy menstrual bleeding or any other chronic blood loss.'}",
+      "env_info": "{'response': [{'id': '16b5218a-186f-4512-8d46-754290823265', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you have a history of heavy menstrual bleeding or any other sources of chronic blood loss?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 815}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any episodes of feeling lightheaded or faint, especially when standing up quickly?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 8,
+      "doctor_action_type": "ASK",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "iron deficiency anemia in patients with endometriosis"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'a8e014fd-3545-4dc7-8086-2692ddaaf07c': '[Document 1] (ID: 3350_0, Score: 0.867)\\nBritish Society of Gastroenterology guidelines for the management of iron deficiency anaemia in adults\\n\\n[Document 2] (ID: 824_6, Score: 0.864)\\n# For patients with anemia and a serum ferritin level\\n\\n[Document 3] (ID: 17297_12, Score: 0.864)\\n- Trial 1 was a randomized, open-label, controlled clinical study in patients with iron deficiency anemia who had an unsatisfactory response to oral iron (Cohort 1) or who were intolerant to oral iron (Cohort 2) during the 14 day oral iron run-in period. Inclusion criteria prior to randomization inc...\\n\\n[Document 4] (ID: 3979_6, Score: 0.864)\\n## Oral and intravenous iron supplementation\\nThe ECAS study found that more than 40% of patients included had iron deficiency (ID) and, of these, approximately one-third had Hgb levels < 12 g/dl; the same study indicated that the prevalence of ID in patients with solid tumours was higher than in hae...\\n\\n[Document 5] (ID: 394_50, Score: 0.861)\\n# Postpartum Women\\nWomen at risk for anemia at 4-6 weeks postpartum should be screened for anemia by using a Hb concentration or Hct test. The anemia criteria for nonpregnant women should be used (Table 6). Risk factors include an...[truncated]'}}",
+      "env_info": "{'response': [{'id': 'a8e014fd-3545-4dc7-8086-2692ddaaf07c', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"iron deficiency anemia in patients with endometriosis\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 904}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any unusual cravings, such as for non-food items like ice or dirt?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 9,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Iron deficiency anemia secondary to endometriosis-related blood loss}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'4ab931b9-f951-424d-b1f0-02c17464f38a': '{\"diagnosis\": \"Iron deficiency anemia secondary to endometriosis-related blood loss\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '4ab931b9-f951-424d-b1f0-02c17464f38a', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Iron deficiency anemia secondary to endometriosis-related blood loss}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1321}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your hair or nails, such as brittleness, thinning, or ridges, over the past few months?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 10,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?"
+      },
+      "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+      "env_info": "{'response': [{'id': '60221c59-6fae-4d94-9295-30c09e334079', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 584}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any gastrointestinal symptoms, such as fatigue, loss of appetite, or changes in bowel habits, that might relate to iron absorption or dietary intake?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 11,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '84ea3fe0-917f-4ebe-933d-090639ffc381', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 651}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any symptoms like headaches, difficulty concentrating, or memory problems that might be related to your fatigue or anemia?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    },
+    {
+      "turn_id": 12,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'b1f8db3f-5f14-42c6-adbe-fc6174ca969d': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': 'b1f8db3f-5f14-42c6-adbe-fc6174ca969d', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 731}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent episodes of nausea, vomiting, or diarrhea that might affect your iron intake or absorption?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 14,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any episodes of dizziness, headaches, or shortness of breath during daily activities like walking or climbing stairs?"
+      },
+      "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+      "env_info": "{'response': [{'id': '32992cf8-91a7-4212-b6fd-9e7172113255', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any episodes of dizziness, headaches, or shortness of breath during daily activities like walking or climbing stairs?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1292}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_14 retrieve_interaction: doctor_action: retrieve(query=symptoms of iron deficiency anemia in young women)\nresponse: [Document 1] (ID: 394_50, Score: 0.889)\n# Postpartum Women\nWomen at risk for anemia at 4-6 weeks postpartum should be screened for anemia by using a Hb concentration or Hct test. The anemia criteria for nonpregnant women should be used (Table 6). Risk factors include anemia continued through the third trimester, excessive blood loss durin...\n\n[Document 2] (ID: 10729_0, Score: 0.883)\nIron deficiency anemia overview\n\n# Overview\nIron deficiency anemia occurs when body iron stores are inadequate to meet normal metabolic demands of the body. It is the most common cause of microcytic anemia.\nIron deficiency anemia occurs in the setting of blood loss, insufficient dietary intak...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 15,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Do you feel unusually tired or weak when performing everyday tasks, such as getting out of bed or walking to the kitchen?"
+      },
+      "patient_or_tool_response": "{}",
+      "env_info": "{'response': [{'id': '03cdd87a-1686-457b-9905-4ac474521e43', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you feel unusually tired or weak when performing everyday tasks, such as getting out of bed or walking to the kitchen?\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"03cdd87a-1686-457b-9905-4ac474521e43\", \"type\": \"function\", \"function\": {\"name\": \"ask_patient\", \"arguments\": \"{\\\\\"question\\\\\": \\\\\"Do you feel unusually tired or weak when performing everyday tasks, such as getting out of bed or walking to the kitchen?\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 7, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 8, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 9, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 10, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 11, 'conf_before': 0.75, 'conf_after': 0.75, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 1358}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_15 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any episodes of dizziness, headaches, or shortness of breath during daily activities like walking or climbing stairs?)\nresponse: I’m not sure. Could you ask a more specific question?"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_13 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

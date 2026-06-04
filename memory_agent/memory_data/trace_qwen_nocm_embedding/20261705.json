@@ -1,0 +1,1369 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20261705",
+  "turns": [
+    {
+      "case_id": "20261705",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "\"Just give me one more Ativan.\"",
+        "diagnostic_strategy": "Current clinical problem: A 41-year-old female presenting with request for Ativan, suggesting possible anxiety or sedative dependence. Key evidence gathered: Patient’s age, gender, and chief complaint. Diagnostic uncertainty: Whether this is anxiety, substance use, or another underlying condition. Most useful missing information: Detailed history of symptoms, substance use, mental health history, and physical exam findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 41-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 41-year-old female patient presenting with \"Just give me one more Ativan.\".."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 41-year-old female. Chief complaint: \"Just give me one more Ativan.\" No additional history, exam, lab, imaging, or tool results provided. No positive or negative findings reported. No interpretation of evidence available. Missing: Detailed symptom history, substance use history, mental health history, and physical exam findings."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20261705",
+        "turn_id": 1,
+        "query_text": "41-year-old female, chief complaint: \"Just give me one more Ativan.\" No positive or negative findings, no exam/lab/imaging results, no history provided. Diagnostic uncertainty: anxiety, substance use, or another condition. Missing: symptom history, substance use history, mental health history, physical exam findings.",
+        "skill_query_text": "Presenting problem: 41-year-old female requesting Ativan. Uncertainty: anxiety, substance use, or another condition. Evidence gathered: age, gender, chief complaint. No ineffective actions. Need workflow guidance on next diagnostic steps based on missing history and exam findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8048,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_b421b29259bc",
+              "type": "experience",
+              "score": 0.7953,
+              "outcome": "negative",
+              "text": "Headache, disorientation, slurred speech, and intoxication in a patient with recent opioid use strongly suggest opioid withdrawal; do not apply this pattern if the patient has respiratory depression, constricted pupils, or a history of overdose.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.7942,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7937,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.792,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7913,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "How long have you been feeling this way, and when did you first start using Ativan?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been feeling this way for about a year. I first started using Ativan around that time, but I’m not sure exactly when—I just know it’s been ongoing for the past year. I’ve been asking for more Ativan or opiates frequently, almost every 3 minutes during my visits.'}",
+        "env_info": "{'response': [{'id': '89f78873-8f3b-491f-bfe4-df51ceff7570', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"How long have you been feeling this way, and when did you first start using Ativan?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"How long have you been feeling this way, and when did you first start using Ativan?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"How long have you been feeling this way, and when did you first start using Ativan?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20261705",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "\"Just give me one more Ativan.\"",
+        "diagnostic_strategy": "Current clinical problem: patient is requesting repeated Ativan and opiates with unclear timeline of onset. Key evidence: patient reports symptoms lasting ~1 year, with frequent requests for medications (every 3 minutes). Diagnostic uncertainty: unclear if this reflects dependence, withdrawal, or underlying psychiatric condition. Most useful missing information: timeline of Ativan initiation, history of substance use, psychiatric history, and any prior treatment. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=How long have you been feeling this way, and when did you first start using Ativan?)\nresponse: I’ve been feeling this way for about a year. I first started using Ativan around that time, but I’m not sure exactly when—I just know it’s been ongoing for the past year. I’ve been asking for more Ativan or opiates frequently, almost every 3 minutes during my visits."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: \"Just give me one more Ativan.\" Patient reports symptoms lasting approximately 1 year, with initiation of Ativan around that time (exact date unknown). Patient frequently requests more Ativan or opiates, almost every 3 minutes during visits. No other history, exam, lab, imaging, or tool results provided. No treatment recommendations or management-relevant risks explicitly supported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20261705",
+        "turn_id": 2,
+        "query_text": "Patient reports symptoms lasting ~1 year, initiated with Ativan around that time (exact date unknown). Frequent requests for Ativan or opiates (every 3 minutes during visits). No other history, exam, lab, imaging, or tool results provided. Diagnostic uncertainty: unclear if dependence, withdrawal, or psychiatric condition. No management-relevant risk supported.",
+        "skill_query_text": "Presenting problem: patient requesting repeated Ativan/opiates with unclear timeline. Evidence gathered: symptom duration ~1 year, Ativan initiation around that time, frequent medication requests. Missing: timeline of Ativan initiation, substance use history, psychiatric history, prior treatment. Ineffective actions: none. Need: diagnostic decision workflow guidance for differentiating dependence, withdrawal, or psychiatric condition."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.819,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8069,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7669,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.754,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7508,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5bb46b08c88e",
+              "type": "experience",
+              "score": 0.8161,
+              "outcome": "negative",
+              "text": "Absence of lab results or imaging findings in opioid withdrawal cases does not preclude diagnosis if history and exam support opioid use and withdrawal symptoms, but must be contrasted with alternative diagnoses like toxic encephalopathy.",
+              "tags": []
+            },
+            {
+              "id": "exp_b421b29259bc",
+              "type": "experience",
+              "score": 0.814,
+              "outcome": "negative",
+              "text": "Headache, disorientation, slurred speech, and intoxication in a patient with recent opioid use strongly suggest opioid withdrawal; do not apply this pattern if the patient has respiratory depression, constricted pupils, or a history of overdose.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8128,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8144,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8047,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8009,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.8047,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '66f95412-5a06-45f9-b9c6-5ded99f79c9d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 109}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20261705",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "\"Just give me one more Ativan.\"",
+        "diagnostic_strategy": "Current clinical problem: Patient is requesting additional Ativan with no reported changes in mood, energy, or daily function since starting Ativan. Key evidence gathered: Patient reports ongoing use for ~1 year, frequent requests for more Ativan/opioids (almost every 3 minutes). Diagnostic uncertainty: Whether Ativan use is contributing to functional decline or if there is an underlying condition driving the request. Most useful missing information: Any history of substance use disorder, psychiatric evaluation, or objective measures of functioning. Existing evidence is not enough to finalize diagnosis; further assessment needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"Just give me one more Ativan.\""
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports feeling this way for about 1 year, started Ativan around that time, unsure of exact start date. Patient frequently requests more Ativan or opiates (almost every 3 minutes during visits). Patient reports no changes in mood, energy, or daily function since starting Ativan, and no abnormal findings reported. No other relevant history or findings provided."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20261705",
+        "turn_id": 3,
+        "query_text": "Patient reports ongoing use of Ativan for ~1 year, frequent requests for more Ativan/opioids (almost every 3 minutes), no reported changes in mood, energy, or daily function since starting Ativan, no abnormal findings reported, no history of substance use disorder, psychiatric evaluation, or objective measures of functioning provided.",
+        "skill_query_text": "Presenting problem: Patient requesting additional Ativan with no reported functional decline. Evidence gathered: Patient reports use for ~1 year, frequent requests, no changes in mood/energy/function. Missing: History of substance use disorder, psychiatric evaluation, objective functioning measures. Ineffective actions: None tried. Need: Workflow guidance for assessing whether Ativan use contributes to decline or if underlying condition drives request."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7814,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7553,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7289,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7286,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b421b29259bc",
+              "type": "experience",
+              "score": 0.7997,
+              "outcome": "negative",
+              "text": "Headache, disorientation, slurred speech, and intoxication in a patient with recent opioid use strongly suggest opioid withdrawal; do not apply this pattern if the patient has respiratory depression, constricted pupils, or a history of overdose.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7927,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_94716ed2e647",
+              "type": "experience",
+              "score": 0.7917,
+              "outcome": "negative",
+              "text": "Recent opioid use with timeline of last dose and concurrent benzodiazepines/barbiturates/amphetamines supports opioid withdrawal syndrome with altered mental status, but only if the patient lacks systemic signs of toxic encephalopathy or other metabolic derangements.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8104,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.7931,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7914,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d1fa0cbd-2f79-479e-ba94-68e77d3f50a9': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'd1fa0cbd-2f79-479e-ba94-68e77d3f50a9', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 189}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20261705",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20261705",
+        "turn_id": 3,
+        "query_text": "Patient reports ongoing use of Ativan for ~1 year, frequent requests for more Ativan/opioids (almost every 3 minutes), no reported changes in mood, energy, or daily function since starting Ativan, no abnormal findings reported, no history of substance use disorder, psychiatric evaluation, or objective measures of functioning provided.",
+        "skill_query_text": "Presenting problem: Patient requesting additional Ativan with no reported functional decline. Evidence gathered: Patient reports use for ~1 year, frequent requests, no changes in mood/energy/function. Missing: History of substance use disorder, psychiatric evaluation, objective functioning measures. Ineffective actions: None tried. Need: Workflow guidance for assessing whether Ativan use contributes to decline or if underlying condition drives request."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7814,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7553,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7289,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7286,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_b421b29259bc",
+              "type": "experience",
+              "score": 0.7997,
+              "outcome": "negative",
+              "text": "Headache, disorientation, slurred speech, and intoxication in a patient with recent opioid use strongly suggest opioid withdrawal; do not apply this pattern if the patient has respiratory depression, constricted pupils, or a history of overdose.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7927,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_94716ed2e647",
+              "type": "experience",
+              "score": 0.7917,
+              "outcome": "negative",
+              "text": "Recent opioid use with timeline of last dose and concurrent benzodiazepines/barbiturates/amphetamines supports opioid withdrawal syndrome with altered mental status, but only if the patient lacks systemic signs of toxic encephalopathy or other metabolic derangements.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8104,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.7931,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7914,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.7814,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Ativan dependence and withdrawal symptoms"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e168ca35-b0b8-49f2-8ce2-bd58723921e0': '[Document 1] (ID: 11266_14, Score: 0.917)\\n### Withdrawal\\nWithdrawal symptoms can occur after taking therapeutic doses of Ativan for as little as one week. Withdrawal symptoms include headaches, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, dysphoria, dizziness, derealization, depersonalization, num...\\n\\n[Document 2] (ID: 32929_2, Score: 0.890)\\n### Physical and Psychological Dependence\\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\\n\\n[Document 3] (ID: 15298_3, Score: 0.887)\\n### Physical and Psychological Dependence\\n- Withdrawal symptoms (similar in character to those noted with barbiturates and alcohol) have occurred following abrupt discontinuance of clorazepate. Withdrawal symptoms associated with the abrupt discontinuation of benzodiazepines have included convulsion...\\n\\n[Document 4] (ID: 4299_24, Score: 0.883)\\nPatients taking analgesics or sedatives for more than a week may develop neurological changes or physiological dependenc...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'e168ca35-b0b8-49f2-8ce2-bd58723921e0', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Ativan dependence and withdrawal symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 260}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Ativan dependence and withdrawal symptoms\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Ativan dependence and withdrawal symptoms\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20261705",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "\"Just give me one more Ativan.\"",
+        "diagnostic_strategy": "Current clinical problem: Patient is requesting more Ativan, suggesting possible dependence or withdrawal. Key evidence: Patient has been using Ativan for about a year, reports frequent requests for more medication, and denies functional or mood changes. Diagnostic uncertainty: Whether dependence or withdrawal is present, and whether lab or imaging evidence is needed. Most useful missing information: Duration of use, dosage, presence of withdrawal symptoms (e.g., anxiety, insomnia, tremor), and lab results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"Just give me one more Ativan.\"",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=How long have you been feeling this way, and when did you first start using Ativan?)\nresponse: I’ve been feeling this way for about a year. I first started using Ativan around that time, but I’m not sure exactly when—I just know it’s been ongoing for the past year. I’ve been asking for more Ativan or opiates frequently, almost every 3 minutes during my visits.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=Ativan dependence and withdrawal symptoms)\nresponse: [Document 1] (ID: 11266_14, Score: 0.917)\n### Withdrawal\nWithdrawal symptoms can occur after taking therapeutic doses of Ativan for as little as one week. Withdrawal symptoms include headaches, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, dysphoria, dizziness, derealization, depersonalization, num...\n\n[Document 2] (ID: 32929_2, Score: 0.890)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\n\n[Document 3] (ID: 15298_3, Score: 0.887)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (similar in character to those noted with barbiturates and alcohol) have occurred following abrupt discontinuance of clorazepate. Withdrawal symptoms associated with the abrupt discontinuation of benzodiazepines have included convulsion...\n\n[Document 4] (ID: 4299_24, Score: 0.883)\nPatients taking analgesics or sedatives for more than a week may develop neurological changes or physiological dependence. Withdrawal symptoms may occur if analgesics or sedatives are abruptly discontinued. Benzodiazepine withdrawal symptoms and signs are myalgia, tremor, headache, nausea, diaphores...\n\n[Document 5] (ID: 3027_36, Score: 0.877)\n## Evidence\nThe NICE, APA, ACP, and NSCCMHDA and University of Sydney CADE Clinic guidelines have described the withdrawal symptoms of antidepressants to include an increase in mood fluctuation (for example, hypersensitivity), gastrointestinal symptoms (nausea), neuromotor abnormalities (ataxia), va..."
+        ],
+        "prior_information_summary": "Patient reports using Ativan for approximately one year, with frequent requests for more medication (every 3 minutes during visits). Denies mood, energy, or functional changes since starting Ativan. Labs requested but no result available. Retrieved information on Ativan dependence and withdrawal symptoms, including possible symptoms (anxiety, insomnia, tremor, headache, nausea, etc.) and withdrawal syndromes similar to barbiturates and alcohol. No lab, imaging, or exam results available to support or refute dependence or withdrawal. No treatment recommendations supported."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20261705",
+        "turn_id": 5,
+        "query_text": "Patient reports using Ativan for about one year, frequently requests more medication (every 3 minutes during visits), denies mood, energy, or functional changes. No lab, imaging, or exam results available. Uncertainty: whether dependence or withdrawal is present. Missing: duration of use, dosage, withdrawal symptoms (anxiety, insomnia, tremor), lab results.",
+        "skill_query_text": "Presenting problem: Patient requesting more Ativan, suggesting possible dependence or withdrawal. Evidence gathered: patient history, no labs/imaging. Ineffective actions: requested labs (no result), retrieved Ativan withdrawal/dependence info. Need: workflow guidance on next diagnostic steps or management decisions based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8089,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8015,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7552,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7468,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7357,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8158,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_5bb46b08c88e",
+              "type": "experience",
+              "score": 0.8018,
+              "outcome": "negative",
+              "text": "Absence of lab results or imaging findings in opioid withdrawal cases does not preclude diagnosis if history and exam support opioid use and withdrawal symptoms, but must be contrasted with alternative diagnoses like toxic encephalopathy.",
+              "tags": []
+            },
+            {
+              "id": "exp_f43afddafa87",
+              "type": "experience",
+              "score": 0.8016,
+              "outcome": "negative",
+              "text": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8277,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8175,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8117,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_f43afddafa87"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.8089,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_f43afddafa87",
+            "memory_type": "experience",
+            "score": 0.8016,
+            "content": {
+              "experience": "Repeatedly asking about general symptoms without obtaining specific, actionable evidence (e.g., no labs or imaging results) leads to diagnostic uncertainty; do not rely on patient history alone when objective data is unavailable.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any symptoms like anxiety, insomnia, or sweating when you haven’t taken Ativan?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I’ve had symptoms like anxiety, insomnia, and sweating — even when I haven’t taken Ativan. I’ve been having constant panic attacks, and I’m not sleeping well. I feel terrible, hopeless, and exhausted. I’ve also been scratching my back a lot lately, which started last year. I’m really scared and overwhelmed by everything going on.'}",
+        "env_info": "{'response': [{'id': '47f3812f-8f97-4bbd-829e-8b33dee52c5e', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any symptoms like anxiety, insomnia, or sweating when you haven\\\\u2019t taken Ativan?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 745}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any symptoms like anxiety, insomnia, or sweating when you haven’t taken Ativan?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any symptoms like anxiety, insomnia, or sweating when you haven’t taken Ativan?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20261705",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "\"Just give me one more Ativan.\"",
+        "diagnostic_strategy": "Current clinical problem: Patient reports persistent anxiety, insomnia, sweating, panic attacks, and scratching, even without Ativan, suggesting possible benzodiazepine dependence or withdrawal. Key evidence: Patient has been using Ativan for ~1 year, reports worsening symptoms without the drug, and has no reported functional impairment. Diagnostic uncertainty: Whether symptoms are withdrawal-related, psychiatric, or due to another underlying condition. Most useful missing information: Results of labs (none available), detailed psychiatric evaluation, and history of prior substance use or trauma. Existing evidence is not enough to finalize diagnosis; further assessment needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=How long have you been feeling this way, and when did you first start using Ativan?)\nresponse: I’ve been feeling this way for about a year. I first started using Ativan around that time, but I’m not sure exactly when—I just know it’s been ongoing for the past year. I’ve been asking for more Ativan or opiates frequently, almost every 3 minutes during my visits.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=Ativan dependence and withdrawal symptoms)\nresponse: [Document 1] (ID: 11266_14, Score: 0.917)\n### Withdrawal\nWithdrawal symptoms can occur after taking therapeutic doses of Ativan for as little as one week. Withdrawal symptoms include headaches, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, dysphoria, dizziness, derealization, depersonalization, num...\n\n[Document 2] (ID: 32929_2, Score: 0.890)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\n\n[Document 3] (ID: 15298_3, Score: 0.887)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (similar in character to those noted with barbiturates and alcohol) have occurred following abrupt discontinuance of clorazepate. Withdrawal symptoms associated with the abrupt discontinuation of benzodiazepines have included convulsion...\n\n[Document 4] (ID: 4299_24, Score: 0.883)\nPatients taking analgesics or sedatives for more than a week may develop neurological changes or physiological dependence. Withdrawal symptoms may occur if analgesics or sedatives are abruptly discontinued. Benzodiazepine withdrawal symptoms and signs are myalgia, tremor, headache, nausea, diaphores...\n\n[Document 5] (ID: 3027_36, Score: 0.877)\n## Evidence\nThe NICE, APA, ACP, and NSCCMHDA and University of Sydney CADE Clinic guidelines have described the withdrawal symptoms of antidepressants to include an increase in mood fluctuation (for example, hypersensitivity), gastrointestinal symptoms (nausea), neuromotor abnormalities (ataxia), va...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any symptoms like anxiety, insomnia, or sweating when you haven’t taken Ativan?)\nresponse: Yes, I’ve had symptoms like anxiety, insomnia, and sweating — even when I haven’t taken Ativan. I’ve been having constant panic attacks, and I’m not sleeping well. I feel terrible, hopeless, and exhausted. I’ve also been scratching my back a lot lately, which started last year. I’m really scared and overwhelmed by everything going on."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports chronic use of Ativan for ~1 year, with frequent requests for more medication. Symptoms include anxiety, insomnia, sweating, panic attacks, and scratching (started last year), all occurring even without Ativan. No reported functional impairment or mood changes. Labs requested but no results available. Retrieved documents confirm benzodiazepine withdrawal symptoms include anxiety, insomnia, sweating, and panic attacks. Unresolved: Specific psychiatric evaluation, history of substance use or trauma, and lab results."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20261705",
+        "turn_id": 6,
+        "query_text": "Patient reports persistent anxiety, insomnia, sweating, panic attacks, and scratching for ~1 year, worsening without Ativan. No functional impairment or mood changes reported. Labs requested but no results available. Retrieved documents confirm benzodiazepine withdrawal symptoms include anxiety, insomnia, sweating, and panic attacks. Unresolved: psychiatric evaluation, substance use history, trauma history.",
+        "skill_query_text": "Presenting problem: Patient reports anxiety, insomnia, sweating, panic attacks, and scratching worsening without Ativan, suggesting possible benzodiazepine dependence or withdrawal. Evidence gathered: patient history, retrieved documents on withdrawal symptoms. Missing: psychiatric evaluation, substance use history, trauma history, lab results. Ineffective action: labs requested with no result. Need: diagnostic workflow guidance for next steps in evaluating benzodiazepine dependence or withdrawal."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8041,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7932,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7798,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7655,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7587,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_94716ed2e647",
+              "type": "experience",
+              "score": 0.828,
+              "outcome": "negative",
+              "text": "Recent opioid use with timeline of last dose and concurrent benzodiazepines/barbiturates/amphetamines supports opioid withdrawal syndrome with altered mental status, but only if the patient lacks systemic signs of toxic encephalopathy or other metabolic derangements.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8214,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_7d9f1b77fbcb",
+              "type": "experience",
+              "score": 0.8211,
+              "outcome": "negative",
+              "text": "Positive urine tox for benzos, barbiturates, and amphetamines in a patient with withdrawal symptoms does not confirm active intoxication; it may reflect withdrawal from benzodiazepines and should be interpreted in context of medication history and symptom profile.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8059,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7974,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.7871,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Benzodiazepine dependence and psychological symptoms"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9a0fbcdf-258e-4577-976c-8d3fec37dbb2': '[Document 1] (ID: 32929_2, Score: 0.910)\\n### Physical and Psychological Dependence\\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\\n\\n[Document 2] (ID: 15298_3, Score: 0.903)\\n### Physical and Psychological Dependence\\n- Withdrawal symptoms (similar in character to those noted with barbiturates and alcohol) have occurred following abrupt discontinuance of clorazepate. Withdrawal symptoms associated with the abrupt discontinuation of benzodiazepines have included convulsion...\\n\\n[Document 3] (ID: 22715_4, Score: 0.901)\\n- Abrupt termination of treatment may be accompanied by withdrawal symptoms. Symptoms reported following discontinuation of benzodiazepines include headache, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, rebound phenomena, dysphoria, dizziness, derealizatio...\\n\\n[Document 4] (ID: 24474_18, Score: 0.894)\\nBenzodiazepine dependence is a frequent complication when they are prescribed for or taken for longer than four weeks, w...[truncated]'}}",
+        "env_info": "{'response': [{'id': '9a0fbcdf-258e-4577-976c-8d3fec37dbb2', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Benzodiazepine dependence and psychological symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 867}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Benzodiazepine dependence and psychological symptoms\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Benzodiazepine dependence and psychological symptoms\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20261705",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "\"Just give me one more Ativan.\"",
+        "diagnostic_strategy": "Current clinical problem: Patient reports persistent request for Ativan with symptoms consistent with benzodiazepine withdrawal and dependence. Key evidence: Patient has used Ativan for ~1 year, reports anxiety, insomnia, sweating, panic attacks, and scratching without drug use. No lab results available. Diagnostic uncertainty: Whether dependence is confirmed, if withdrawal is clinically significant, and if psychological symptoms are primary or secondary to withdrawal. Most useful missing information: Detailed timeline of Ativan use, history of substance use, psychiatric evaluation, and lab results (e.g., liver function, electrolytes). Existing evidence is not enough to finalize diagnosis; further assessment needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"Just give me one more Ativan.\"",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=How long have you been feeling this way, and when did you first start using Ativan?)\nresponse: I’ve been feeling this way for about a year. I first started using Ativan around that time, but I’m not sure exactly when—I just know it’s been ongoing for the past year. I’ve been asking for more Ativan or opiates frequently, almost every 3 minutes during my visits.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=Ativan dependence and withdrawal symptoms)\nresponse: [Document 1] (ID: 11266_14, Score: 0.917)\n### Withdrawal\nWithdrawal symptoms can occur after taking therapeutic doses of Ativan for as little as one week. Withdrawal symptoms include headaches, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, dysphoria, dizziness, derealization, depersonalization, num...\n\n[Document 2] (ID: 32929_2, Score: 0.890)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\n\n[Document 3] (ID: 15298_3, Score: 0.887)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (similar in character to those noted with barbiturates and alcohol) have occurred following abrupt discontinuance of clorazepate. Withdrawal symptoms associated with the abrupt discontinuation of benzodiazepines have included convulsion...\n\n[Document 4] (ID: 4299_24, Score: 0.883)\nPatients taking analgesics or sedatives for more than a week may develop neurological changes or physiological dependence. Withdrawal symptoms may occur if analgesics or sedatives are abruptly discontinued. Benzodiazepine withdrawal symptoms and signs are myalgia, tremor, headache, nausea, diaphores...\n\n[Document 5] (ID: 3027_36, Score: 0.877)\n## Evidence\nThe NICE, APA, ACP, and NSCCMHDA and University of Sydney CADE Clinic guidelines have described the withdrawal symptoms of antidepressants to include an increase in mood fluctuation (for example, hypersensitivity), gastrointestinal symptoms (nausea), neuromotor abnormalities (ataxia), va...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any symptoms like anxiety, insomnia, or sweating when you haven’t taken Ativan?)\nresponse: Yes, I’ve had symptoms like anxiety, insomnia, and sweating — even when I haven’t taken Ativan. I’ve been having constant panic attacks, and I’m not sleeping well. I feel terrible, hopeless, and exhausted. I’ve also been scratching my back a lot lately, which started last year. I’m really scared and overwhelmed by everything going on."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports chronic use of Ativan for approximately 1 year, with frequent requests for additional medication. No reported functional impairment or mood changes. No lab results available. Patient reports anxiety, insomnia, sweating, panic attacks, and scratching without Ativan use. Documented evidence supports benzodiazepine withdrawal symptoms including anxiety, insomnia, sweating, and psychological dependence. No psychiatric or substance use history provided. No imaging or tool results available. No treatment recommendations supported by input."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20261705",
+        "turn_id": 7,
+        "query_text": "Patient reports chronic Ativan use for ~1 year, with anxiety, insomnia, sweating, panic attacks, and scratching without drug use. No lab results, imaging, or psychiatric history available. Uncertainty: confirmed dependence, clinical significance of withdrawal, primary vs secondary psychological symptoms.",
+        "skill_query_text": "Presenting problem: persistent Ativan request with withdrawal symptoms. Evidence gathered: patient history, withdrawal symptom documentation. Missing: lab results, psychiatric evaluation, substance use history. Ineffective action: lab request yielded no result. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8113,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7989,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7734,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7569,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7549,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5bb46b08c88e",
+              "type": "experience",
+              "score": 0.8253,
+              "outcome": "negative",
+              "text": "Absence of lab results or imaging findings in opioid withdrawal cases does not preclude diagnosis if history and exam support opioid use and withdrawal symptoms, but must be contrasted with alternative diagnoses like toxic encephalopathy.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.8231,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_b421b29259bc",
+              "type": "experience",
+              "score": 0.8138,
+              "outcome": "negative",
+              "text": "Headache, disorientation, slurred speech, and intoxication in a patient with recent opioid use strongly suggest opioid withdrawal; do not apply this pattern if the patient has respiratory depression, constricted pupils, or a history of overdose.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8213,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8129,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8041,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_5bb46b08c88e"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_5bb46b08c88e",
+            "memory_type": "experience",
+            "score": 0.8253,
+            "content": {
+              "experience": "Absence of lab results or imaging findings in opioid withdrawal cases does not preclude diagnosis if history and exam support opioid use and withdrawal symptoms, but must be contrasted with alternative diagnoses like toxic encephalopathy.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Benzodiazepine Dependence with Withdrawal Symptoms}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e0ff640b-2b08-4c42-892f-49bfb808b85d': '{\"diagnosis\": \"Benzodiazepine Dependence with Withdrawal Symptoms\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'e0ff640b-2b08-4c42-892f-49bfb808b85d', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Benzodiazepine Dependence with Withdrawal Symptoms}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1336}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Benzodiazepine Dependence with Withdrawal Symptoms}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Benzodiazepine Dependence with Withdrawal Symptoms}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20261705",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "\"Just give me one more Ativan.\"",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 6. Low-information/no-result turns already attempted: 3; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: \"Just give me one more Ativan.\"",
+          "initial_information: I am a 41-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 41-year-old female patient presenting with \"Just give me one more Ativan.\"..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first start feeling unwell, and how has your condition progressed?)\nresponse: I first started feeling unwell about a year ago, when things got much worse medically. I was feeling hopeful around that time, thought I’d gotten over the worst and had successfully gotten off some opiates. But since then, it’s been really hard — I’m scared about financial and personal stressors, have few friends involved now, and I’m still close to my sister. I’m also very involved in caring for my mom, even though I’m often hospitalized every few days, which makes it hard to keep up with outpatient appointments or reconnect with my psychiatrist.\n\nI’ve been having constant panic attacks and feel terrible. I started scratching my back with my nails over the past year. I call my nurse frequently to get opiates or benzodiazepines, and I’ve struggled with the team about medications. I’m asking for more Ativan or opiates at least every three minutes during interviews. I feel anhedonia, depressed, hopeless, and have poor sleep, appetite, concentration, and energy. I also feel excessive guilt and isolate at home. I’ve tried guided imagery to cope with anxiety, like thinking about a beach.\n\nI don’t remember exactly when the panic attacks started, but they’ve been frequent and ongoing. I’ve had some hospitalizations for panic and depression, and I’ve tried several medications in the past, including antidepressants and benzodiazepines, but nothing has really worked well for me. I’ve never thought about suicide or harmed anyone.",
+          "turn_3 retrieve_interaction: doctor_action: retrieve(query=symptoms of chronic anxiety and depression with benzodiazepine dependence)\nresponse: [Document 1] (ID: 32929_2, Score: 0.897)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\n\n[Document 2] (ID: 22715_4, Score: 0.893)\n- Abrupt termination of treatment may be accompanied by withdrawal symptoms. Symptoms reported following discontinuation of benzodiazepines include headache, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, rebound phenomena, dysphoria, dizziness, derealizatio...\n\n[Document 3] (ID: 11612_19, Score: 0.892)\n# Dependence\nDiazepam as with other benzodiazepine drugs can cause physical dependence, addiction and what is known as the benzodiazepine withdrawal syndrome. Withdrawal from diazepam or other benzodiazepines often leads to withdrawal symptoms which are similar to those seen during alcohol and barbi...\n\n[Document 4] (ID: 15298_3, Score: 0.884)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (similar in character to those noted with barbiturates and alcohol) have occurred following abrupt discontinuance of clorazepate. Withdrawal symptoms associated with the abrupt discontinuation of benzodiazepines have included convulsion...\n\n[Document 5] (ID: 30387_6, Score: 0.880)\nIt should be noted that slow reduction of the dosage over a period of months at a rate which the individual can tolerate greatly minimises the severity of the withdrawal symptoms. It is usually recommended for individuals dependent on benzodiazepines cross to an equivalent dose of diazepam to gradua...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight changes, or changes in appetite or sleep patterns?)\nresponse: I’ve been losing weight and have poor appetite. I’ve also been having trouble sleeping.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood or behavior recently, such as increased irritability or social withdrawal?)\nresponse: Yes, I’ve noticed changes in my mood and behavior. I’ve been feeling very down, hopeless, and have lost interest in things I used to enjoy. I’ve been isolating myself at home and not seeing friends much anymore. I also feel constantly anxious and have frequent panic attacks. I’ve been scratching my back a lot with my nails, which started about a year ago. I’m also struggling with sleep, appetite, and concentration, and I feel exhausted all the time. I’ve been very focused on getting more Ativan or opiates, and I’ve been calling my nurse often for them. I don’t feel like things will ever get better."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did you first start feeling unwell, and how has your condition progressed?)\nresponse: I first started feeling unwell about a year ago, when things got much worse medically. I was feeling hopeful around that time, thought I’d gotten over the worst and had successfully gotten off some opiates. But since then, it’s been really hard — I’m scared about financial and personal stressors, have few friends involved now, and I’m still close to my sister. I’m also very involved in caring for my mom, even though I’m often hospitalized every few days, which makes it hard to keep up with outpatient appointments or reconnect with my psychiatrist.\n\nI’ve been having constant panic attacks and feel terrible. I started scratching my back with my nails over the past year. I call my nurse frequently to get opiates or benzodiazepines, and I’ve struggled with the team about medications. I’m asking for more Ativan or opiates at least every three minutes during interviews. I feel anhedonia, depressed, hopeless, and have poor sleep, appetite, concentration, and energy. I also feel excessive guilt and isolate at home. I’ve tried guided imagery to cope with anxiety, like thinking about a beach.\n\nI don’t remember exactly when the panic attacks started, but they’ve been frequent and ongoing. I’ve had some hospitalizations for panic and depression, and I’ve tried several medications in the past, including antidepressants and benzodiazepines, but nothing has really worked well for me. I’ve never thought about suicide or harmed anyone.\ndoctor_action: retrieve(query=symptoms of chronic anxiety and depression with benzodiazepine dependence)\nresponse: [Document 1] (ID: 32929_2, Score: 0.897)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\n\n[Document 2] (ID: 22715_4, Score: 0.893)\n- Abrupt termination of treatment may be accompanied by withdrawal symptoms. Symptoms reported following discontinuation of benzodiazepines include headache, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, rebound phenomena, dysphoria, dizziness, derealizatio...\n\n[Document 3] (ID: 11612_19, Score: 0.892)\n# Dependence\nDiazepam as with other benzodiazepine drugs can cause physical dependence, addiction and what is known as the benzodiazepine withdrawal syndrome. Withdrawal from diazepam or other benzodiazepines often leads to withdrawal symptoms which are similar to those seen during alcohol and barbi...\n\n[Document 4] (ID: 15298_3, Score: 0.884)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (similar in character to those noted with barbiturates and alcohol) have occurred following abrupt discontinuance of clorazepate. Withdrawal symptoms associated with the abrupt discontinuation of benzodiazepines have included convulsion...\n\n[Document 5] (ID: 30387_6, Score: 0.880)\nIt should be noted that slow reduction of the dosage over a period of months at a rate which the individual can tolerate greatly minimises the severity of the withdrawal symptoms. It is usually recommended for individuals dependent on benzodiazepines cross to an equivalent dose of diazepam to gradua...\ndoctor_action: ask_patient(question=Have you experienced any recent weight changes, or changes in appetite or sleep patterns?)\nresponse: I’ve been losing weight and have poor appetite. I’ve also been having trouble sleeping.\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20261705",
+        "turn_id": 8,
+        "query_text": "41-year-old female patient presenting with \"Just give me one more Ativan.\" Reports chronic anxiety, depression, panic attacks, anhedonia, hopelessness, poor sleep, appetite, concentration, and energy. Has been scratching back with nails for 1 year. History of hospitalizations for panic/depression, tried antidepressants and benzodiazepines without success. Currently dependent on benzodiazepines, requesting frequent opiates/Ativan. Weight loss, poor appetite, social withdrawal, excessive guilt. No labs, CXR, or imaging results available.",
+        "skill_query_text": "Presenting problem: patient requesting benzodiazepines frequently, with chronic anxiety/depression and benzodiazepine dependence. Evidence gathered: patient history, symptoms, withdrawal signs, failed prior treatments. Missing: labs, CXR, imaging. Ineffective actions: 3 low-information/no-result exam requests. Need: workflow guidance to resolve diagnostic uncertainty without repeating ineffective exams, prioritize targeted evidence or reasoning."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_a31e7bd48ea4",
+              "type": "experience",
+              "score": 0.7869,
+              "outcome": "positive",
+              "text": "Patient denied symptoms of shortness of breath, swelling, or weight loss despite morbid obesity; this negative finding helps rule out cardiac or systemic complications and supports a musculoskeletal focus.",
+              "tags": []
+            },
+            {
+              "id": "exp_b03dd654a6b9",
+              "type": "experience",
+              "score": 0.7785,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia; nail-biting is a useful discriminative clue.",
+              "tags": []
+            },
+            {
+              "id": "exp_d9e62fb4b859",
+              "type": "experience",
+              "score": 0.7731,
+              "outcome": "positive",
+              "text": "Back pain limiting exercise and knee pain in a patient with morbid obesity strongly suggest musculoskeletal complications from mechanical stress, supporting the diagnosis of Morbid Obesity with Associated Musculoskeletal Complications.",
+              "tags": []
+            },
+            {
+              "id": "exp_ac2185067be4",
+              "type": "experience",
+              "score": 0.7683,
+              "outcome": "positive",
+              "text": "Requesting labs without prior clinical suspicion or relevant history yields no useful information; avoid low-yield lab requests early in the diagnostic trajectory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_9268ded7338f",
+              "type": "experience",
+              "score": 0.8104,
+              "outcome": "negative",
+              "text": "Patient’s report of being locked up during deaths and inability to mourn, combined with acute depression and fear of self-harm, supports a grief-related depressive episode but lacks evidence to rule out bipolar disorder.",
+              "tags": []
+            },
+            {
+              "id": "exp_613a82743119",
+              "type": "experience",
+              "score": 0.8079,
+              "outcome": "negative",
+              "text": "Patient’s history of trauma, substance abuse, and prior psychiatric hospitalizations, combined with psychotic symptoms, should prompt consideration of schizoaffective disorder over unipolar depression or anxiety disorders.",
+              "tags": []
+            },
+            {
+              "id": "exp_17c4c190bd39",
+              "type": "experience",
+              "score": 0.7972,
+              "outcome": "negative",
+              "text": "Patient history of thalamic hemorrhage and recent Benadryl use, combined with shaking episodes and unresponsiveness, supports Benadryl-induced seizure disorder; prior stroke history is a key discriminative clue.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.8062,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7865,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_e419326a635d",
+              "type": "skill",
+              "score": 0.7745,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_ac2185067be4"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Chronic anxiety disorder with benzodiazepine dependence and major depressive disorder}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b5ad9f1b-6b38-4508-b6fa-bedf23289fe0': '{\"diagnosis\": \"Chronic anxiety disorder with benzodiazepine dependence and major depressive disorder\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'b5ad9f1b-6b38-4508-b6fa-bedf23289fe0', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Chronic anxiety disorder with benzodiazepine dependence and major depressive disorder}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1292}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.5,
+        "delta": 0.5,
+        "turn_reward": 0.1,
+        "importance": 0.5
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic anxiety disorder with benzodiazepine dependence and major depressive disorder}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic anxiety disorder with benzodiazepine dependence and major depressive disorder}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '66f95412-5a06-45f9-b9c6-5ded99f79c9d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your mood, energy levels, or ability to function daily since starting Ativan?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 109}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first start feeling unwell, and how has your condition progressed?)\nresponse: I first started feeling unwell about a year ago, when things got much worse medically. I was feeling hopeful around that time, thought I’d gotten over the worst and had successfully gotten off some opiates. But since then, it’s been really hard — I’m scared about financial and personal stressors, have few friends involved now, and I’m still close to my sister. I’m also very involved in caring for my mom, even though I’m often hospitalized every few days, which makes it hard to keep up with outpatient appointments or reconnect with my psychiatrist.\n\nI’ve been having constant panic attacks and feel terrible. I started scratching my bac...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 3,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'d1fa0cbd-2f79-479e-ba94-68e77d3f50a9': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': 'd1fa0cbd-2f79-479e-ba94-68e77d3f50a9', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 189}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_3 retrieve_interaction: doctor_action: retrieve(query=symptoms of chronic anxiety and depression with benzodiazepine dependence)\nresponse: [Document 1] (ID: 32929_2, Score: 0.897)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\n\n[Document 2] (ID: 22715_4, Score: 0.893)\n- Abrupt termination of treatment may be accompanied by withdrawal symptoms. Symptoms reported following discontinuation of benzodiazepines include headache, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, rebound phenomena, dys...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Benzodiazepine Dependence with Withdrawal Symptoms}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'e0ff640b-2b08-4c42-892f-49bfb808b85d': '{\"diagnosis\": \"Benzodiazepine Dependence with Withdrawal Symptoms\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': 'e0ff640b-2b08-4c42-892f-49bfb808b85d', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Benzodiazepine Dependence with Withdrawal Symptoms}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1336}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight changes, or changes in appetite or sleep patterns?)\nresponse: I’ve been losing weight and have poor appetite. I’ve also been having trouble sleeping."
+      ]
+    },
+    {
+      "turn_id": 8,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Chronic anxiety disorder with benzodiazepine dependence and major depressive disorder}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'b5ad9f1b-6b38-4508-b6fa-bedf23289fe0': '{\"diagnosis\": \"Chronic anxiety disorder with benzodiazepine dependence and major depressive disorder\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': 'b5ad9f1b-6b38-4508-b6fa-bedf23289fe0', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Chronic anxiety disorder with benzodiazepine dependence and major depressive disorder}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1292}",
+      "reward": 0.0,
+      "turn_reward": 0.1,
+      "importance": 0.5,
+      "evidence_records": [
+        "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood or behavior recently, such as increased irritability or social withdrawal?)\nresponse: Yes, I’ve noticed changes in my mood and behavior. I’ve been feeling very down, hopeless, and have lost interest in things I used to enjoy. I’ve been isolating myself at home and not seeing friends much anymore. I also feel constantly anxious and have frequent panic attacks. I’ve been scratching my back a lot with my nails, which started about a year ago. I’m also struggling with sleep, appetite, and concentration, and I feel exhausted all the time. I’ve been very focused on getting more Ativan or opiates, and I’ve been calling my nurse often for them. I don’t feel like things will ever get better...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

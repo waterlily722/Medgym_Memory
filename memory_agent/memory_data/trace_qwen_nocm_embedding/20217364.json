@@ -1,0 +1,2172 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20217364",
+  "turns": [
+    {
+      "case_id": "20217364",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Current clinical problem: 77-year-old male presenting with fall. Key evidence gathered: patient age, gender, and chief complaint. Diagnostic uncertainty: cause of fall not yet determined. Most useful missing information: mechanism of fall, history of falls, medications, vitals, neurological exam, and imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 77-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 77-year-old male patient presenting with Fall.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 77-year-old male presenting with fall. No additional history, exam, lab, imaging, or tool results provided. No positive or negative findings reported. No interpretation of evidence available. Missing information: mechanism of fall, history of falls, medications, vitals, neurological exam, and imaging results. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 1,
+        "query_text": "77-year-old male presenting with fall. Known: age, gender, chief complaint. Uncertainty: cause of fall. Missing: mechanism of fall, history of falls, medications, vitals, neurological exam, imaging results. No positive or negative findings reported. No prior interpretation or risk assessment.",
+        "skill_query_text": "Presenting problem: 77-year-old male with fall. Uncertainty: cause of fall. Evidence gathered: age, gender, chief complaint. Missing: mechanism of fall, history of falls, medications, vitals, neurological exam, imaging results. Ineffective actions: none. Need: diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7928,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7898,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7817,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8009,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.798,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.7976,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the fall occur, and were there any injuries or symptoms immediately after the fall?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'b4342fdf-4909-4ace-96bc-34acd4b950b3', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did the fall occur, and were there any injuries or symptoms immediately after the fall?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.14285714285714285,
+        "turn_reward": 0.02857142857142857,
+        "importance": 0.14285714285714285
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the fall occur, and were there any injuries or symptoms immediately after the fall?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the fall occur, and were there any injuries or symptoms immediately after the fall?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Current clinical problem: patient fell, need to assess for injury or symptom onset. Key evidence gathered: no reported immediate injuries or symptoms. Diagnostic uncertainty remains: unclear if fall caused injury or if symptoms are delayed. Most useful missing information: timeline of fall, specific injury or symptom details, physical exam findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Fall. No reported immediate injuries or symptoms. No specific timeline or physical exam findings provided. No lab, imaging, or tool results available. Missing: details of fall timing, specific injury or symptom description, physical exam results. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 2,
+        "query_text": "Chief complaint: Fall. No reported immediate injuries or symptoms. No timeline, specific injury or symptom details, or physical exam findings provided. No lab, imaging, or tool results available. Diagnostic uncertainty: unclear if fall caused injury or if symptoms are delayed.",
+        "skill_query_text": "Presenting problem: patient fell. Current uncertainty: unclear if fall caused injury or if symptoms are delayed. Evidence gathered: no immediate injuries or symptoms reported. Missing: timeline of fall, specific injury or symptom description, physical exam results. Ineffective action: asked patient about fall timing and immediate symptoms, received no relevant response. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7988,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7849,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7527,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7493,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7472,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8297,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            },
+            {
+              "id": "exp_dcca035af749",
+              "type": "experience",
+              "score": 0.8017,
+              "outcome": "negative",
+              "text": "Requesting labs without prior targeted diagnostic reasoning or evidence collection yields no actionable insight; prioritize symptom-focused questioning and differential diagnosis over premature lab requests.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8013,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8274,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8101,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8093,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_227b2313bf9b",
+          "exp_dcca035af749",
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.7988,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_227b2313bf9b",
+            "memory_type": "experience",
+            "score": 0.8297,
+            "content": {
+              "experience": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_dcca035af749",
+            "memory_type": "experience",
+            "score": 0.8017,
+            "content": {
+              "experience": "Requesting labs without prior targeted diagnostic reasoning or evidence collection yields no actionable insight; prioritize symptom-focused questioning and differential diagnosis over premature lab requests.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.8093,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '647ae533-5a02-4e03-b7cd-a2dcfdd44d23', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe any other symptoms you\\\\u2019ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 76}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Current clinical problem: Fall with no reported additional symptoms. Key evidence gathered: Patient denies dizziness, weakness, confusion, or balance issues. Diagnostic uncertainty remains: Cause of fall unknown; need to assess for neurological, orthopedic, or systemic contributors. Most useful missing information: History of prior falls, medication use, balance or mobility history, and physical exam findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Fall"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Fall. Patient denies dizziness, weakness, confusion, or balance issues. No reported injuries or symptoms immediately after fall. No prior fall history, medication use, or balance/mobility history provided. No exam, lab, imaging, or tool results available. Unresolved missing information: History of prior falls, medication use, balance or mobility history, and physical exam findings. No low-value or no-result attempts."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Fall. Patient denies dizziness, weakness, confusion, or balance issues. No reported injuries or symptoms immediately after fall. No prior fall history, medication use, or balance/mobility history provided. No exam, lab, imaging, or tool results available. Diagnostic uncertainty: Cause of fall unknown; need to assess for neurological, orthopedic, or systemic contributors.",
+        "skill_query_text": "Presenting problem: Fall with no reported additional symptoms. Evidence gathered: Patient denies dizziness, weakness, confusion, or balance issues. Ineffective actions tried: Asked about timing of fall and immediate symptoms; patient denies issues. Missing evidence: History of prior falls, medication use, balance or mobility history, and physical exam findings. Need: Workflow guidance for next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8016,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7855,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7597,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7592,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7452,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8373,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.8212,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            },
+            {
+              "id": "exp_d1b3fdaf2477",
+              "type": "experience",
+              "score": 0.8194,
+              "outcome": "negative",
+              "text": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8104,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8063,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7976,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_227b2313bf9b",
+          "exp_d1b3fdaf2477"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_d1b3fdaf2477",
+            "memory_type": "experience",
+            "score": 0.8194,
+            "content": {
+              "experience": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent changes in vision, hearing, or cognitive function?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'f6101339-4ffc-47f7-94f0-b66c729a9c14', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent changes in vision, hearing, or cognitive function?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 159}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in vision, hearing, or cognitive function?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in vision, hearing, or cognitive function?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Current clinical problem: Fall with no reported injuries or symptoms. Key evidence gathered: No recent changes in vision, hearing, or cognitive function reported. Diagnostic uncertainty remains: Cause of fall unknown; need to assess for neurological, vestibular, or musculoskeletal contributors. Most useful missing information: History of prior falls, medication use, balance or gait issues, and physical exam findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Fall. No recent changes in vision, hearing, or cognitive function reported. No injuries or symptoms immediately after fall reported. No dizziness, weakness, confusion, or balance issues reported. No prior fall history, medication use, or physical exam findings provided. No lab, imaging, or tool results available. Unresolved missing information: History of prior falls, medication use, balance or gait issues, and physical exam findings."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 4,
+        "query_text": "Chief complaint: Fall. No recent changes in vision, hearing, or cognitive function reported. No injuries or symptoms immediately after fall reported. No dizziness, weakness, confusion, or balance issues reported. No prior fall history, medication use, balance or gait issues, or physical exam findings provided. No lab, imaging, or tool results available. Diagnostic uncertainty: Cause of fall unknown; need to assess for neurological, vestibular, or musculoskeletal contributors.",
+        "skill_query_text": "Presenting problem: Fall with no reported injuries or symptoms. Evidence gathered: No recent changes in vision, hearing, or cognitive function reported. Ineffective action: Asked about vision/hearing/cognitive changes — patient reported no issues. Missing evidence: History of prior falls, medication use, balance or gait issues, and physical exam findings. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7836,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7704,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7491,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7462,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7369,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d1b3fdaf2477",
+              "type": "experience",
+              "score": 0.8343,
+              "outcome": "negative",
+              "text": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "tags": []
+            },
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8274,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.8142,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8191,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8035,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.7945,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_d1b3fdaf2477",
+          "exp_227b2313bf9b"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4269b5d0-229f-4b56-8701-2527ca8636a5': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '4269b5d0-229f-4b56-8701-2527ca8636a5', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 232}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 4,
+        "query_text": "Chief complaint: Fall. No recent changes in vision, hearing, or cognitive function reported. No injuries or symptoms immediately after fall reported. No dizziness, weakness, confusion, or balance issues reported. No prior fall history, medication use, balance or gait issues, or physical exam findings provided. No lab, imaging, or tool results available. Diagnostic uncertainty: Cause of fall unknown; need to assess for neurological, vestibular, or musculoskeletal contributors.",
+        "skill_query_text": "Presenting problem: Fall with no reported injuries or symptoms. Evidence gathered: No recent changes in vision, hearing, or cognitive function reported. Ineffective action: Asked about vision/hearing/cognitive changes — patient reported no issues. Missing evidence: History of prior falls, medication use, balance or gait issues, and physical exam findings. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7836,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7704,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7491,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7462,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7369,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d1b3fdaf2477",
+              "type": "experience",
+              "score": 0.8343,
+              "outcome": "negative",
+              "text": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "tags": []
+            },
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8274,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.8142,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8191,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8035,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.7945,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_d1b3fdaf2477",
+          "exp_227b2313bf9b"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.7704,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'abd4bbdb-5f39-4634-8aef-50cd5fa011f1': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'abd4bbdb-5f39-4634-8aef-50cd5fa011f1', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 303}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 4,
+        "query_text": "Chief complaint: Fall. No recent changes in vision, hearing, or cognitive function reported. No injuries or symptoms immediately after fall reported. No dizziness, weakness, confusion, or balance issues reported. No prior fall history, medication use, balance or gait issues, or physical exam findings provided. No lab, imaging, or tool results available. Diagnostic uncertainty: Cause of fall unknown; need to assess for neurological, vestibular, or musculoskeletal contributors.",
+        "skill_query_text": "Presenting problem: Fall with no reported injuries or symptoms. Evidence gathered: No recent changes in vision, hearing, or cognitive function reported. Ineffective action: Asked about vision/hearing/cognitive changes — patient reported no issues. Missing evidence: History of prior falls, medication use, balance or gait issues, and physical exam findings. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7836,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7704,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7491,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7462,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7369,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d1b3fdaf2477",
+              "type": "experience",
+              "score": 0.8343,
+              "outcome": "negative",
+              "text": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "tags": []
+            },
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8274,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.8142,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8191,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8035,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.7945,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_227b2313bf9b"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of falls in elderly males"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8f5e329a-afbe-490d-b9e0-f0c3025ca86d': \"[Document 1] (ID: 33604_2, Score: 0.862)\\n## Elderly\\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\\n\\n[Document 2] (ID: 98_5, Score: 0.862)\\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\\n\\n[Document 3] (ID: 4826_6, Score: 0.860)\\n# Evidence-to-recommendations table Problem Explanation\\nIs the problem a priority?\\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\\n\\n[Document 4] (ID: 20278_0, Score: 0.858)\\nFalling (accident)\\n\\n# Introduction\\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerv...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '8f5e329a-afbe-490d-b9e0-f0c3025ca86d', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of falls in elderly males\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 377}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.14285714285714285,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.14285714285714285,
+        "turn_reward": 0.02857142857142857,
+        "importance": 0.14285714285714285
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of falls in elderly males\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of falls in elderly males\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Current clinical problem: Fall in an elderly male. Key evidence gathered: No reported injuries or symptoms immediately after fall; no recent changes in vision, hearing, or cognition; no lab or CXR results available. Diagnostic uncertainty remains high due to lack of specific clinical data (e.g., medication use, balance issues, fall mechanism). Most useful missing information: Medication history, balance or dizziness symptoms, fall mechanism, and imaging or lab results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall..."
+        ],
+        "prior_information_summary": "Chief complaint: Fall. Patient reports no injuries or symptoms immediately after fall. No recent changes in vision, hearing, or cognition. Labs and CXR requested but no results available. No specific clinical data (e.g., medication use, balance issues) provided. No imaging or lab results to interpret. Missing key information: Medication history, fall mechanism, balance or dizziness symptoms. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 7,
+        "query_text": "Chief complaint: Fall. Patient reports no injuries or symptoms immediately after fall. No recent changes in vision, hearing, or cognition. Labs and CXR requested but no results available. No medication use, balance issues, or fall mechanism reported. No imaging or lab results to interpret. Diagnostic uncertainty remains high due to lack of specific clinical data.",
+        "skill_query_text": "Presenting problem: Fall in elderly male. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: No reported injuries, no recent changes in vision/hearing/cognition, no lab or CXR results. Missing: Medication history, balance/dizziness symptoms, fall mechanism. Ineffective actions: Retrieved common causes of falls in elderly males. Need: Workflow guidance for next diagnostic steps given current evidence gaps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.823,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8217,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7672,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7627,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7552,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8384,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            },
+            {
+              "id": "exp_d1b3fdaf2477",
+              "type": "experience",
+              "score": 0.8168,
+              "outcome": "negative",
+              "text": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.8149,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8101,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_a7cb0d7b57f5",
+              "type": "skill",
+              "score": 0.8032,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8018,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_227b2313bf9b",
+          "exp_d1b3fdaf2477"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Are you currently taking any prescription medications or supplements?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not taking any prescription medications or supplements right now.'}",
+        "env_info": "{'response': [{'id': '53676d96-5f03-4f16-b924-76c35b65375c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Are you currently taking any prescription medications or supplements?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 893}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Are you currently taking any prescription medications or supplements?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Are you currently taking any prescription medications or supplements?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Current clinical problem: Fall with no reported injuries or symptoms. Key evidence gathered: Patient denies current prescription medications or supplements. Diagnostic uncertainty remains high due to lack of imaging, lab results, or history of balance issues, dizziness, or cognitive changes. Most useful missing information: Results of CXR and labs (if available), history of prior falls, balance or vision issues, and medication history (including over-the-counter or supplements). Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Fall"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall..."
+        ],
+        "prior_information_summary": "Chief complaint: Fall. Patient denies current prescription medications or supplements. No reported injuries or symptoms immediately after fall. No recent symptoms of dizziness, weakness, confusion, or balance issues. No recent changes in vision, hearing, or cognitive function. Labs and CXR results unavailable. Retrieved information on common causes of falls in elderly males, including medication use, bone fragility, and vestibular decline. No definitive diagnostic evidence gathered. Missing: Imaging, lab results, history of prior falls, balance or vision issues, and medication history (including over-the-counter or supplements)."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 8,
+        "query_text": "Chief complaint: Fall. Patient denies current prescription medications or supplements. No reported injuries or symptoms immediately after fall. No recent symptoms of dizziness, weakness, confusion, or balance issues. No recent changes in vision, hearing, or cognitive function. Labs and CXR results unavailable. Missing: Imaging, lab results, history of prior falls, balance or vision issues, and medication history (including over-the-counter or supplements).",
+        "skill_query_text": "Presenting problem: Fall with no reported injuries or symptoms. Evidence gathered: Patient denies current medications or supplements. Ineffective actions: Asked about symptoms, requested labs and CXR (no results). Retrieved common causes of falls in elderly males. Missing: Imaging, lab results, history of prior falls, balance or vision issues, and medication history. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8113,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8103,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_b421b29259bc",
+              "type": "experience",
+              "score": 0.7948,
+              "outcome": "negative",
+              "text": "Headache, disorientation, slurred speech, and intoxication in a patient with recent opioid use strongly suggest opioid withdrawal; do not apply this pattern if the patient has respiratory depression, constricted pupils, or a history of overdose.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.814,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8074,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8031,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any recent changes in your balance, strength, or mobility?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'e918107f-f0f7-4894-8829-1ac763f7b46e', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any recent changes in your balance, strength, or mobility?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 943}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your balance, strength, or mobility?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your balance, strength, or mobility?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 8. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Fall",
+          "initial_information: I am a 77-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 77-year-old male patient presenting with Fall..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall...",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall...\ndoctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 9,
+        "query_text": "77-year-old male patient with fall; no reported injuries or symptoms post-fall; no recent dizziness, weakness, confusion, balance issues, vision/hearing changes; not taking prescription meds or supplements; retrieved common causes of falls in elderly males; no lab or CXR results available.",
+        "skill_query_text": "Presenting problem: fall in 77-year-old male; uncertainty: cause of fall; evidence gathered: patient history, retrieved common causes of falls; missing: lab and CXR results; ineffective actions: attempted labs and CXR with no results; need: guidance on next diagnostic action to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_eb3a62fc75cd",
+              "type": "experience",
+              "score": 0.7906,
+              "outcome": "negative",
+              "text": "Bilateral, painless, gradual vision loss with dyschromatopsia (especially red washout) in an elderly patient supports nutritional optic neuropathy; do not apply this when there is pain, acute onset, or systemic symptoms suggesting other etiologies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7894,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7843,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7917,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7913,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.7879,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of falls in elderly without medication history"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'863bbc3a-b2da-4772-ab64-1dd7f4e69cc3': \"[Document 1] (ID: 98_5, Score: 0.872)\\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\\n\\n[Document 2] (ID: 4826_6, Score: 0.865)\\n# Evidence-to-recommendations table Problem Explanation\\nIs the problem a priority?\\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\\n\\n[Document 3] (ID: 20278_0, Score: 0.858)\\nFalling (accident)\\n\\n# Introduction\\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\\n\\n[Document 4] (ID: 2359_10, Score: 0.855)\\n## Causes of unwitnessed falls among older inpatients\\nWhat are the causes of unwitnessed falls among older inpatients?\\nA larg...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '863bbc3a-b2da-4772-ab64-1dd7f4e69cc3', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of falls in elderly without medication history\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1016}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of falls in elderly without medication history\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of falls in elderly without medication history\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 9. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Fall",
+          "initial_information: I am a 77-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 77-year-old male patient presenting with Fall..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall...",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly without medication history)\nresponse: [Document 1] (ID: 98_5, Score: 0.872)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 2] (ID: 4826_6, Score: 0.865)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 3] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 4] (ID: 2359_10, Score: 0.855)\n## Causes of unwitnessed falls among older inpatients\nWhat are the causes of unwitnessed falls among older inpatients?\nA large proportion of inpatient falls are unwitnessed. Although staff may deduce reasons for the fall and/or the patient (if able and if asked) may describe their own perception of ...\n\n[Document 5] (ID: 4826_0, Score: 0.854)\nIn older people, falls are the most prominent external cause of unintentional injury. Research suggests that one third of community-dwelling people aged over 65 years fall each year and almost half of them experience recurrent falls (1)(2)(3)(4)(5)(6)(7)(8)(9)(10). Incidents of falls by older people..."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall...\ndoctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.\ndoctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 10,
+        "query_text": "Chief complaint: Fall. Patient: 77-year-old male. No reported symptoms (dizziness, weakness, confusion, balance issues, vision/hearing changes). No current medications or supplements. No recent changes in mobility or strength. Retrieved: common causes of falls in elderly males and elderly without medication history. No lab or CXR results available.",
+        "skill_query_text": "Presenting problem: Fall in 77-year-old male. Uncertainty: underlying cause of fall. Evidence gathered: patient history (no symptoms, no meds), retrieved evidence on fall causes in elderly. Missing: lab and CXR results. Ineffective actions: attempted labs and CXR with no results. Need: guidance on next diagnostic action to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7918,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7888,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7809,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7808,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7395,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d1b3fdaf2477",
+              "type": "experience",
+              "score": 0.8313,
+              "outcome": "negative",
+              "text": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.828,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            },
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8118,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8137,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8121,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8103,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_1bbf2cf34150",
+          "exp_d1b3fdaf2477",
+          "exp_227b2313bf9b"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '68b0c848-6b03-49ce-873c-e256d3e56cbf', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1548}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 10. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Fall",
+          "initial_information: I am a 77-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 77-year-old male patient presenting with Fall..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall...",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly without medication history)\nresponse: [Document 1] (ID: 98_5, Score: 0.872)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 2] (ID: 4826_6, Score: 0.865)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 3] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 4] (ID: 2359_10, Score: 0.855)\n## Causes of unwitnessed falls among older inpatients\nWhat are the causes of unwitnessed falls among older inpatients?\nA large proportion of inpatient falls are unwitnessed. Although staff may deduce reasons for the fall and/or the patient (if able and if asked) may describe their own perception of ...\n\n[Document 5] (ID: 4826_0, Score: 0.854)\nIn older people, falls are the most prominent external cause of unintentional injury. Research suggests that one third of community-dwelling people aged over 65 years fall each year and almost half of them experience recurrent falls (1)(2)(3)(4)(5)(6)(7)(8)(9)(10). Incidents of falls by older people...",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall...\ndoctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.\ndoctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of falls in elderly without medication history)\nresponse: [Document 1] (ID: 98_5, Score: 0.872)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 2] (ID: 4826_6, Score: 0.865)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 3] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 4] (ID: 2359_10, Score: 0.855)\n## Causes of unwitnessed falls among older inpatients\nWhat are the causes of unwitnessed falls among older inpatients?\nA large proportion of inpatient falls are unwitnessed. Although staff may deduce reasons for the fall and/or the patient (if able and if asked) may describe their own perception of ...\n\n[Document 5] (ID: 4826_0, Score: 0.854)\nIn older people, falls are the most prominent external cause of unintentional injury. Research suggests that one third of community-dwelling people aged over 65 years fall each year and almost half of them experience recurrent falls (1)(2)(3)(4)(5)(6)(7)(8)(9)(10). Incidents of falls by older people...\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 11,
+        "query_text": "77-year-old male patient with fall; no reported injuries or symptoms post-fall; no dizziness, lightheadedness, syncope, balance issues, vision/hearing/cognitive changes, or medication use; prior retrieval of common causes of falls in elderly males and elderly without medication history; no labs or CXR results available.",
+        "skill_query_text": "Presenting problem: fall in 77-year-old male; current uncertainty: cause of fall; evidence gathered: patient denies symptoms, no meds, no prior findings; missing: labs, CXR; ineffective actions: labs and CXR requested with no results; need: targeted exam or reasoning workflow to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7913,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.791,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7837,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7756,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7366,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_d1b3fdaf2477",
+              "type": "experience",
+              "score": 0.8278,
+              "outcome": "negative",
+              "text": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.8202,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            },
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.8131,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8061,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8003,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.794,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_d1b3fdaf2477",
+          "exp_227b2313bf9b"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-medication related causes of falls in elderly"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0db9c68e-db91-4f52-a716-9a21840650b1': \"[Document 1] (ID: 98_5, Score: 0.874)\\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\\n\\n[Document 2] (ID: 4826_6, Score: 0.870)\\n# Evidence-to-recommendations table Problem Explanation\\nIs the problem a priority?\\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\\n\\n[Document 3] (ID: 20278_0, Score: 0.867)\\nFalling (accident)\\n\\n# Introduction\\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\\n\\n[Document 4] (ID: 2359_10, Score: 0.867)\\n## Causes of unwitnessed falls among older inpatients\\nWhat are the causes of unwitnessed falls among older inpatients?\\nA larg...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '0db9c68e-db91-4f52-a716-9a21840650b1', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-medication related causes of falls in elderly\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1630}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-medication related causes of falls in elderly\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-medication related causes of falls in elderly\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Current clinical problem: Fall in elderly patient. Key evidence gathered: No reported injuries, no symptoms (dizziness, weakness, confusion, balance issues, vision/hearing/cognitive changes, medication use, balance/mobility changes, syncope). No lab or CXR results available. Current diagnostic uncertainty: Cannot rule out underlying neurological, vestibular, or musculoskeletal causes without further data. Most useful missing information: Detailed mechanism of fall, history of prior falls, neurological exam, balance assessment, and imaging (e.g., head CT or spine X-ray if indicated). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Fall"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Fall. Patient reports no injuries or symptoms post-fall. No dizziness, weakness, confusion, balance issues, vision/hearing/cognitive changes, medication use, balance/mobility changes, or syncope. No lab or CXR results available. Multiple retrieval queries on non-medication related causes of falls in elderly returned general epidemiological data. No actionable findings or risk factors identified. No evidence of underlying pathology or risk factors for recurrent falls. No imaging or lab data to support or rule out specific causes."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 12,
+        "query_text": "Chief complaint: Fall. Patient reports no injuries or symptoms (dizziness, weakness, confusion, balance issues, vision/hearing/cognitive changes, medication use, balance/mobility changes, syncope). No lab or CXR results available. No history of prior falls or neurological/mobility changes. Diagnostic uncertainty: Cannot rule out neurological, vestibular, or musculoskeletal causes without further data. Missing: Detailed fall mechanism, neurological exam, balance assessment, imaging (head CT/spine X-ray if indicated).",
+        "skill_query_text": "Presenting problem: Fall in elderly patient. Current uncertainty: Cannot rule out neurological, vestibular, or musculoskeletal causes. Evidence gathered: No symptoms, no lab/CXR results, no medication use, no balance/mobility changes. Ineffective actions: Multiple patient interviews on symptoms and history yielded negative responses. Missing: Detailed fall mechanism, neurological exam, balance assessment, imaging. Need: Workflow guidance on next diagnostic steps to identify underlying cause."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8176,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8078,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.767,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.763,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7495,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_227b2313bf9b",
+              "type": "experience",
+              "score": 0.843,
+              "outcome": "negative",
+              "text": "Requesting labs or imaging without prior targeted history or physical exam findings in gait/balance issues yields no diagnostic value and wastes resources; prioritize targeted questions about falls, cognition, or urinary symptoms first.",
+              "tags": []
+            },
+            {
+              "id": "exp_d1b3fdaf2477",
+              "type": "experience",
+              "score": 0.8356,
+              "outcome": "negative",
+              "text": "Falls without cognitive or sensory symptoms in elderly patients with gait issues are more likely due to musculoskeletal or vestibular causes, not neurodegenerative conditions like NPH, unless there is a clear history of progressive cognitive decline or urinary incontinence.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.8261,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8109,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8045,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8024,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_227b2313bf9b",
+          "exp_d1b3fdaf2477"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your vision, hearing, or mobility recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '3432f795-1c6d-4f63-acda-6dcda60a0e63', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your vision, hearing, or mobility recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 2162}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, hearing, or mobility recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your vision, hearing, or mobility recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 12. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Fall",
+          "initial_information: I am a 77-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 77-year-old male patient presenting with Fall..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall...",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_10 retrieve_interaction: doctor_action: retrieve(query=common causes of falls in elderly without medication history)\nresponse: [Document 1] (ID: 98_5, Score: 0.872)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 2] (ID: 4826_6, Score: 0.865)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 3] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 4] (ID: 2359_10, Score: 0.855)\n## Causes of unwitnessed falls among older inpatients\nWhat are the causes of unwitnessed falls among older inpatients?\nA large proportion of inpatient falls are unwitnessed. Although staff may deduce reasons for the fall and/or the patient (if able and if asked) may describe their own perception of ...\n\n[Document 5] (ID: 4826_0, Score: 0.854)\nIn older people, falls are the most prominent external cause of unintentional injury. Research suggests that one third of community-dwelling people aged over 65 years fall each year and almost half of them experience recurrent falls (1)(2)(3)(4)(5)(6)(7)(8)(9)(10). Incidents of falls by older people...",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_12 retrieve_interaction: doctor_action: retrieve(query=non-medication related causes of falls in elderly)\nresponse: [Document 1] (ID: 98_5, Score: 0.874)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 2] (ID: 4826_6, Score: 0.870)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 3] (ID: 20278_0, Score: 0.867)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 4] (ID: 2359_10, Score: 0.867)\n## Causes of unwitnessed falls among older inpatients\nWhat are the causes of unwitnessed falls among older inpatients?\nA large proportion of inpatient falls are unwitnessed. Although staff may deduce reasons for the fall and/or the patient (if able and if asked) may describe their own perception of ...\n\n[Document 5] (ID: 4826_0, Score: 0.867)\nIn older people, falls are the most prominent external cause of unintentional injury. Research suggests that one third of community-dwelling people aged over 65 years fall each year and almost half of them experience recurrent falls (1)(2)(3)(4)(5)(6)(7)(8)(9)(10). Incidents of falls by older people...",
+          "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your vision, hearing, or mobility recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of falls in elderly males)\nresponse: [Document 1] (ID: 33604_2, Score: 0.862)\n## Elderly\nStephen Lord at the University of New South Wales studied 80,000 elderly persons in Australia and found that the risk of falling increases for any who are taking multiple prescription medications and for all who are taking psychoactive drugs.  This increased risk was demonstrated through ...\n\n[Document 2] (ID: 98_5, Score: 0.862)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 3] (ID: 4826_6, Score: 0.860)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 4] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 5] (ID: 20278_1, Score: 0.858)\n# Falls from buildings\nFalls from buildings are often accidental but can also be caused intentionally, such as by defenestration. Injuries resulting in falls from buildings vary depending on the building's height, and also depend on the type of person (infant, child, adult, elderly adult, etc.) Fall...\ndoctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.\ndoctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of falls in elderly without medication history)\nresponse: [Document 1] (ID: 98_5, Score: 0.872)\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\n\n[Document 2] (ID: 4826_6, Score: 0.865)\n# Evidence-to-recommendations table Problem Explanation\nIs the problem a priority?\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\n\n[Document 3] (ID: 20278_0, Score: 0.858)\nFalling (accident)\n\n# Introduction\nFalling is a major cause of personal injury, especially for the elderly whose vision, nerve conduction and muscles are weaker, whose vestibular sense is diminished, whose neurological responses are extended, whose bones have grown brittle, and who consume medicatio...\n\n[Document 4] (ID: 2359_10, Score: 0.855)\n## Causes of unwitnessed falls among older inpatients\nWhat are the causes of unwitnessed falls among older inpatients?\nA large proportion of inpatient falls are unwitnessed. Although staff may deduce reasons for the fall and/or the patient (if able and if asked) may describe their own perception of ...\n\n[Document 5] (ID: 4826_0, Score: 0.854)\nIn older people, falls are the most prominent external cause of unintentional injury. Research suggests that one third of community-dwelling people aged over 65 years fall each year and almost half of them experience recurrent falls (1)(2)(3)(4)(5)(6)(7)(8)(9)(10). Incidents of falls by older people...\ndoctor_action: ask_patient(question=Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 13,
+        "query_text": "77-year-old male patient presenting with fall. No reported symptoms (dizziness, weakness, confusion, balance issues, vision/hearing changes, syncope). No current medications or supplements. No known positive or negative findings. No lab or imaging results available. Relevant history: elderly male, fall occurred, no prior injuries reported. Uncertainty: cause of fall remains unresolved.",
+        "skill_query_text": "Presenting problem: fall in 77-year-old male. Current uncertainty: cause of fall unknown. Evidence gathered: patient denies symptoms, no meds, no prior injuries. Missing evidence: lab and imaging results. Ineffective actions: labs and CXR requested but returned no results. Need workflow guidance: next diagnostic action to resolve largest remaining uncertainty without repeating low-information queries."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7998,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_eb3a62fc75cd",
+              "type": "experience",
+              "score": 0.7976,
+              "outcome": "negative",
+              "text": "Bilateral, painless, gradual vision loss with dyschromatopsia (especially red washout) in an elderly patient supports nutritional optic neuropathy; do not apply this when there is pain, acute onset, or systemic symptoms suggesting other etiologies.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7959,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8136,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8072,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8059,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of falls in elderly with no symptoms"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'969b9ada-c3f8-4bc2-bf9a-c4bc8140e4e8': \"[Document 1] (ID: 4826_6, Score: 0.862)\\n# Evidence-to-recommendations table Problem Explanation\\nIs the problem a priority?\\nNo Uncertain ✓ Falls are the leading cause of injury in older people aged 65 years and over. Between 30% and 40% of community-dwelling adults aged 65 years or older fall at least once per year. Therefore, prevention o...\\n\\n[Document 2] (ID: 2359_10, Score: 0.857)\\n## Causes of unwitnessed falls among older inpatients\\nWhat are the causes of unwitnessed falls among older inpatients?\\nA large proportion of inpatient falls are unwitnessed. Although staff may deduce reasons for the fall and/or the patient (if able and if asked) may describe their own perception of ...\\n\\n[Document 3] (ID: 98_5, Score: 0.856)\\nSource: CDC's National Hospital Discharge Survey. 1988 1989 1990 1991 1992 1993 1994 1995 1996  equally likely to cause hip fracture. Biomechanical studies have demonstrated that, although both bone strength and the force of the impact are important factors, the point of impact must be on or near th...\\n\\n[Document 4] (ID: 3968_36, Score: 0.855)\\n## Risk factors for falls\\nRisk factors for falls play a key role in the occurrence of fractures, especially in the oldest age...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '969b9ada-c3f8-4bc2-bf9a-c4bc8140e4e8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of falls in elderly with no symptoms\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2235}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of falls in elderly with no symptoms\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of falls in elderly with no symptoms\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217364",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Fall",
+        "diagnostic_strategy": "Current clinical problem: Evaluation of a fall in an elderly patient with no reported symptoms or injuries. Key evidence gathered: Patient denies any recent symptoms (dizziness, weakness, confusion, balance issues, vision/hearing changes, syncope, mobility changes, or medication use). No lab or imaging results available. Diagnostic uncertainty remains high due to lack of objective findings or history of risk factors. Most useful missing information: Details of the fall (timing, mechanism, location), presence of injuries, and any prior fall history. Existing evidence is insufficient to finalize diagnosis; further targeted history or physical exam is needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Fall"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.",
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your vision, hearing, or mobility recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Fall. Patient denies any symptoms (dizziness, weakness, confusion, balance issues, vision/hearing changes, syncope, mobility changes) or medication use. No lab or imaging results available. Multiple retrieval queries on causes of falls in elderly (with/without symptoms, with/without medication) returned general evidence on risk factors and epidemiology, but no specific patient-related findings. No objective evidence or history of injury or prior falls. No result for labs or CXR. All patient responses are negative or uninformative."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217364",
+        "turn_id": 14,
+        "query_text": "Chief complaint: Fall. Patient denies symptoms (dizziness, weakness, confusion, balance issues, vision/hearing changes, syncope, mobility changes, medication use). No lab or imaging results. No history of prior falls or injuries. Diagnostic uncertainty remains high due to lack of objective findings or risk factors. Missing: Details of fall (timing, mechanism, location), presence of injuries, prior fall history.",
+        "skill_query_text": "Presenting problem: Evaluation of a fall in an elderly patient. Current uncertainty: No objective findings or history of risk factors. Evidence gathered: Patient denies symptoms, no labs or imaging results, no medication use. Ineffective actions: Multiple history questions yielded negative or uninformative responses. Missing: Details of fall, injury status, prior fall history. Need: Workflow guidance for targeted history or physical exam to identify risk factors or injury."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8231,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8036,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7867,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8322,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8105,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Unspecified cause of fall in elderly male without identifiable risk factors}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a4e885bd-1eff-473d-a306-7a1c9ce0d7b1': '{\"diagnosis\": \"Unspecified cause of fall in elderly male without identifiable risk factors\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'a4e885bd-1eff-473d-a306-7a1c9ce0d7b1', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Unspecified cause of fall in elderly male without identifiable risk factors}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2759}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Unspecified cause of fall in elderly male without identifiable risk factors}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Unspecified cause of fall in elderly male without identifiable risk factors}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the fall occur, and were there any injuries or symptoms immediately after the fall?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+    "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe any other symptoms you’ve been experiencing recently, such as dizziness, weakness, confusion, or balance issues?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+    "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in vision, hearing, or cognitive function?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+    "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Are you currently taking any prescription medications or supplements?)\nresponse: I’m not taking any prescription medications or supplements right now.",
+    "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your balance, strength, or mobility?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+    "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any dizziness, lightheadedness, or syncope (fainting) in the past?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+    "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your vision, hearing, or mobility recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+  ]
+}

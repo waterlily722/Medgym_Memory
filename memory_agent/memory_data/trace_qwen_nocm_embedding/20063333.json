@@ -1,0 +1,1127 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20063333",
+  "turns": [
+    {
+      "case_id": "20063333",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 58-year-old male patient presenting with nonspecific subjective complaints. Key evidence gathered: Patient reports general malaise without specific symptoms. Diagnostic uncertainty remains high due to lack of specific history, exam, or diagnostic findings. Most useful missing information: Detailed history of symptoms, duration, associated features, and relevant medical history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 58-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 58-year-old male patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 58-year-old male reporting general malaise without specific symptoms. No exam, lab, imaging, or tool results available. No history of specific symptoms, duration, or associated features provided. No prior findings or diagnostic tests performed. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20063333",
+        "turn_id": 1,
+        "query_text": "58-year-old male, chief complaint: general malaise without specific symptoms. No exam, lab, or imaging results. No history of symptom duration or associated features. No prior diagnostic findings. High diagnostic uncertainty due to insufficient evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 58-year-old male with nonspecific malaise. Evidence gathered: Patient reports general malaise, no specific symptoms. No exam, lab, or imaging results. No history of symptom duration or associated features. No ineffective actions tried. Need workflow guidance on next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7335,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8142,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_081e48e222ba",
+              "type": "experience",
+              "score": 0.8119,
+              "outcome": "negative",
+              "text": "Repeatedly requesting labs or imaging without first obtaining targeted history or ruling out high-yield findings (like occult blood in stool) wastes diagnostic resources and delays definitive diagnosis in cases with clear red flags.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8087,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7889,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7875,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7824,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8142,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'e370ab67-7088-47fd-b0ba-6da8c1184ea1', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing and when they started?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.3333333333333333,
+        "turn_reward": 0.06666666666666667,
+        "importance": 0.3333333333333333
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20063333",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: Patient denies specific symptoms or known abnormalities. Diagnostic uncertainty remains high due to lack of specific symptom details or objective findings. Most useful missing information: Detailed description of symptoms, onset, duration, and associated factors. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general feeling of unwellness without specific symptoms. Patient denies any known problems or abnormal findings in any area. No exam, lab, imaging, or tool results available. No specific symptom details provided. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20063333",
+        "turn_id": 2,
+        "query_text": "Patient reports general feeling of unwellness without specific symptoms. Patient denies any known problems or abnormal findings. No exam, lab, imaging, or tool results available. No specific symptom details provided. Diagnostic uncertainty remains high due to lack of specific symptom details or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: Patient denies specific symptoms or known abnormalities. Missing evidence: Detailed description of symptoms, onset, duration, and associated factors. Ineffective actions tried: Asked patient to describe symptoms, received denial of problems. Needed guidance: Action-selection workflow for handling non-specific complaints with no objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.748,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8391,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_74f0bd084ae5",
+              "type": "experience",
+              "score": 0.8291,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication or prior evidence of abnormality yields no diagnostic value; avoid redundant lab requests when history and known findings (e.g., AVM) already guide diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8259,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7884,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7785,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7739,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much.'}",
+        "env_info": "{'response': [{'id': '95f91649-4f11-41fd-b2ff-c47119a5f833', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 73}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20063333",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: patient reports fever, unintentional weight loss, fatigue, and decreased appetite. Diagnostic uncertainty remains high due to lack of specific localization or etiology. Most useful missing information: details on duration, progression, associated symptoms, and relevant medical history. Existing evidence is not enough to finalize diagnosis; further targeted history, physical exam, or lab tests are needed. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?)\nresponse: I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general feeling unwell. Turn 2: asked about specific symptoms and onset; patient responded with no known problems or abnormal findings in that area. Turn 3: patient reports fever, unintentional weight loss, fatigue, and decreased appetite. No lab, imaging, or exam results provided. No treatment recommended. Missing: duration, progression, associated symptoms, and relevant medical history."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20063333",
+        "turn_id": 3,
+        "query_text": "Patient reports fever, unintentional weight loss, fatigue, and decreased appetite. No lab, imaging, or exam results provided. No treatment recommended. Missing: duration, progression, associated symptoms, and relevant medical history. Diagnostic uncertainty remains high due to lack of specific localization or etiology.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Evidence gathered: fever, unintentional weight loss, fatigue, decreased appetite. Ineffective actions: none. Missing: duration, progression, associated symptoms, relevant medical history. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7478,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8312,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8269,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8245,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8292,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7828,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7825,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'86d6cffc-7dcc-4763-be6e-eb08de540869': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '86d6cffc-7dcc-4763-be6e-eb08de540869', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 164}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20063333",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20063333",
+        "turn_id": 3,
+        "query_text": "Patient reports fever, unintentional weight loss, fatigue, and decreased appetite. No lab, imaging, or exam results provided. No treatment recommended. Missing: duration, progression, associated symptoms, and relevant medical history. Diagnostic uncertainty remains high due to lack of specific localization or etiology.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Evidence gathered: fever, unintentional weight loss, fatigue, decreased appetite. Ineffective actions: none. Missing: duration, progression, associated symptoms, relevant medical history. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7478,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8312,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8269,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8245,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8292,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7828,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7825,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e85cdfea-c310-4421-baa3-752d9222d36e': '[Document 1] (ID: 19076_4, Score: 0.876)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 2] (ID: 4772_25, Score: 0.864)\\n# Special popula ions\\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\\nMost persons experience fever (83-99%), cough ...\\n\\n[Document 3] (ID: 114_185, Score: 0.863)\\n# Symptoms with Possible Relationship to Nutritional Deficiencies\\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\\n\\n[Document 4] (ID: 4792_27, Score: 0.863)\\n# Resources and other considerations\\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'e85cdfea-c310-4421-baa3-752d9222d36e', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 235}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20063333",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific symptoms including fever, weight loss, fatigue, and decreased appetite. Key evidence gathered: patient reports these symptoms, and a literature search returned relevant symptoms including general uneasiness, headache, and possible nutritional deficiencies. Diagnostic uncertainty remains high due to lack of specific diagnostic tests or imaging. Most useful missing information: results of requested labs, and clarification on duration and severity of symptoms. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?)\nresponse: I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.876)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 4772_25, Score: 0.864)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 3] (ID: 114_185, Score: 0.863)\n# Symptoms with Possible Relationship to Nutritional Deficiencies\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\n\n[Document 4] (ID: 4792_27, Score: 0.863)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 5] (ID: 27908_2, Score: 0.862)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l..."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient reports general uneasiness, fever, weight loss, fatigue, and decreased appetite. No specific abnormal findings reported. Labs requested but no result available. Literature search returned symptoms including headache, muscle stiffness, and possible nutritional deficiencies. No specific diagnosis or risk identified. Missing: detailed symptom timeline, lab results, imaging, or specific physical exam findings."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20063333",
+        "turn_id": 5,
+        "query_text": "Patient reports fever, weight loss, fatigue, and decreased appetite. No specific abnormal findings. Labs requested but no result available. Literature search returned symptoms including headache, muscle stiffness, and possible nutritional deficiencies. No specific diagnosis or risk identified. Missing: detailed symptom timeline, lab results, imaging, or specific physical exam findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific symptoms including fever, weight loss, fatigue, and decreased appetite. Evidence gathered: patient reports symptoms, literature search returned related symptoms. Missing: lab results, symptom timeline, imaging. Ineffective action: labs requested but no result available. Need: guidance on next diagnostic steps or workflow for managing non-specific symptoms."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7595,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.841,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8301,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_2bc67f1b419d",
+              "type": "experience",
+              "score": 0.8281,
+              "outcome": "negative",
+              "text": "Patient-reported weight loss, fatigue, and poor diet without toxin exposure strongly supports nutritional optic neuropathy; do not apply this when diet is unchanged or when other systemic causes of vision loss are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8208,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.788,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7876,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any night sweats, cough, or shortness of breath?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '575c7039-aa32-42be-bde9-d7424f1bf9ed', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any night sweats, cough, or shortness of breath?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 744}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any night sweats, cough, or shortness of breath?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any night sweats, cough, or shortness of breath?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20063333",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific symptoms of fatigue, weight loss, and decreased appetite. Key evidence gathered: fever, weight loss, fatigue, decreased appetite. Diagnostic uncertainty remains high; no specific diagnosis yet. Most useful missing information: presence of night sweats, cough, shortness of breath, or other systemic symptoms. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?)\nresponse: I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.876)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 4772_25, Score: 0.864)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 3] (ID: 114_185, Score: 0.863)\n# Symptoms with Possible Relationship to Nutritional Deficiencies\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\n\n[Document 4] (ID: 4792_27, Score: 0.863)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 5] (ID: 27908_2, Score: 0.862)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any night sweats, cough, or shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general uneasiness, fever, weight loss, fatigue, and decreased appetite. No night sweats, cough, or shortness of breath reported. Labs requested but no result available. Literature review returned general symptom associations including fever, weight loss, fatigue, and decreased appetite, but no specific diagnosis. No other relevant findings reported. Missing information: detailed history, specific symptom onset, and further diagnostic tests."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20063333",
+        "turn_id": 6,
+        "query_text": "Patient reports fatigue, weight loss, decreased appetite, and fever. No night sweats, cough, or shortness of breath. Labs requested but no result available. No specific diagnosis. Missing: night sweats, cough, shortness of breath, detailed symptom onset.",
+        "skill_query_text": "Presenting problem: non-specific symptoms of fatigue, weight loss, decreased appetite, and fever. Uncertainty: no specific diagnosis. Evidence gathered: fever, weight loss, fatigue, decreased appetite. Ineffective actions: labs requested with no result, literature review returned general symptom associations. Need: guidance on next diagnostic steps or workflow for unexplained systemic symptoms."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7413,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8471,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8335,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8149,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7768,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7721,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'744a0b1e-6719-4910-9431-9b6f986d41e3': \"[Document 1] (ID: 19076_4, Score: 0.870)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 2] (ID: 28450_4, Score: 0.863)\\n## Common Causes\\n- Unintentional weight loss:\\n- Nicotine and smoking (may be an intentional caue).\\n- Drug side effects (mentioned below)\\n- Age >65 years:\\nMalignancies (specifically digestive and non-hematologic)\\nNeurological disorders: Dementia, stroke, parkinson's disease\\nOral disorders\\nChronic dis...\\n\\n[Document 3] (ID: 8779_1, Score: 0.863)\\n### Age >65 years\\n- Malignancies (specifically digestive and non-hematologic)\\n- Dementia\\n- Stroke\\n- Parkinson's disease\\n- Polymyalgia rheumatica\\n- Oral disorders.\\n\\n### Age <65 years\\n- Endocrine disorders\\n- Infections such as TB and HIV\\n- Psychiatric disorders such as depression, anxiety, and OCD\\n- M...\\n\\n[Document 4] (ID: 5453_5, Score: 0.859)\\n- Wasting syndrome in the absence of a concurrent illness other than HIV infection that could explain the following finding...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '744a0b1e-6719-4910-9431-9b6f986d41e3', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 818}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20063333",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 7. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 58-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 58-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?)\nresponse: I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.876)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 4772_25, Score: 0.864)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 3] (ID: 114_185, Score: 0.863)\n# Symptoms with Possible Relationship to Nutritional Deficiencies\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\n\n[Document 4] (ID: 4792_27, Score: 0.863)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 5] (ID: 27908_2, Score: 0.862)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any night sweats, cough, or shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.870)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 28450_4, Score: 0.863)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis...\n\n[Document 3] (ID: 8779_1, Score: 0.863)\n### Age >65 years\n- Malignancies (specifically digestive and non-hematologic)\n- Dementia\n- Stroke\n- Parkinson's disease\n- Polymyalgia rheumatica\n- Oral disorders.\n\n### Age <65 years\n- Endocrine disorders\n- Infections such as TB and HIV\n- Psychiatric disorders such as depression, anxiety, and OCD\n- M...\n\n[Document 4] (ID: 5453_5, Score: 0.859)\n- Wasting syndrome in the absence of a concurrent illness other than HIV infection that could explain the following findings: a) persistent weight loss more than 10% of baseline OR b) downward crossing of at least two of the following percantile lines on the weight-for-age chart (e.g., 95th, 75th, 5...\n\n[Document 5] (ID: 4541_4, Score: 0.859)\nIn older children and adults, HA is typically symptomatic, with the majority of individuals developing anorexia, nausea, fatigue, fever and jaundice, usually lasting less than two months."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?)\nresponse: I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much.\ndoctor_action: retrieve(query=symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.876)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 4772_25, Score: 0.864)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 3] (ID: 114_185, Score: 0.863)\n# Symptoms with Possible Relationship to Nutritional Deficiencies\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\n\n[Document 4] (ID: 4792_27, Score: 0.863)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 5] (ID: 27908_2, Score: 0.862)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\ndoctor_action: ask_patient(question=Have you experienced any night sweats, cough, or shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20063333",
+        "turn_id": 7,
+        "query_text": "58-year-old male patient presents with fever, weight loss, fatigue, and decreased appetite. No night sweats, cough, or shortness of breath reported. Labs not performed. Relevant history includes general uneasiness, possible muscle stiffness, headache, and possible nutritional deficiency symptoms. Unresolved diagnostic uncertainty: common causes of these symptoms in this age group.",
+        "skill_query_text": "Presenting problem: 58-year-old male with fever, weight loss, fatigue, decreased appetite. Evidence gathered: patient history, symptom retrieval results. Ineffective action: lab request yielded no result. Need workflow guidance: next diagnostic step to resolve uncertainty about common causes (e.g., malignancy, infection, psychiatric) without repeating low-information actions."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.743,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8257,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8129,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8108,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8005,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7739,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7661,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any recent changes in your lifestyle, stress levels, or any known chronic illnesses?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '9cfbd47e-bc0a-4cf1-b993-73f7a3e4691b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any recent changes in your lifestyle, stress levels, or any known chronic illnesses?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1337}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your lifestyle, stress levels, or any known chronic illnesses?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any recent changes in your lifestyle, stress levels, or any known chronic illnesses?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20063333",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 8. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 58-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 58-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?)\nresponse: I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.876)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 4772_25, Score: 0.864)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 3] (ID: 114_185, Score: 0.863)\n# Symptoms with Possible Relationship to Nutritional Deficiencies\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\n\n[Document 4] (ID: 4792_27, Score: 0.863)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 5] (ID: 27908_2, Score: 0.862)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any night sweats, cough, or shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.870)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 28450_4, Score: 0.863)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis...\n\n[Document 3] (ID: 8779_1, Score: 0.863)\n### Age >65 years\n- Malignancies (specifically digestive and non-hematologic)\n- Dementia\n- Stroke\n- Parkinson's disease\n- Polymyalgia rheumatica\n- Oral disorders.\n\n### Age <65 years\n- Endocrine disorders\n- Infections such as TB and HIV\n- Psychiatric disorders such as depression, anxiety, and OCD\n- M...\n\n[Document 4] (ID: 5453_5, Score: 0.859)\n- Wasting syndrome in the absence of a concurrent illness other than HIV infection that could explain the following findings: a) persistent weight loss more than 10% of baseline OR b) downward crossing of at least two of the following percantile lines on the weight-for-age chart (e.g., 95th, 75th, 5...\n\n[Document 5] (ID: 4541_4, Score: 0.859)\nIn older children and adults, HA is typically symptomatic, with the majority of individuals developing anorexia, nausea, fatigue, fever and jaundice, usually lasting less than two months.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your lifestyle, stress levels, or any known chronic illnesses?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?)\nresponse: I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much.\ndoctor_action: retrieve(query=symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.876)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 4772_25, Score: 0.864)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost persons experience fever (83-99%), cough ...\n\n[Document 3] (ID: 114_185, Score: 0.863)\n# Symptoms with Possible Relationship to Nutritional Deficiencies\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\n\n[Document 4] (ID: 4792_27, Score: 0.863)\n# Resources and other considerations\nClinical management of COVID-19: living guideline -World Health Organization (WHO)  (66). Loss of smell (anosmia) or loss of taste (ageusia) preceding the onset of respiratory symptoms has also been reported (14)(176) (67).\nAdditional neurological manifestations ...\n\n[Document 5] (ID: 27908_2, Score: 0.862)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\ndoctor_action: ask_patient(question=Have you experienced any night sweats, cough, or shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.870)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 28450_4, Score: 0.863)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis...\n\n[Document 3] (ID: 8779_1, Score: 0.863)\n### Age >65 years\n- Malignancies (specifically digestive and non-hematologic)\n- Dementia\n- Stroke\n- Parkinson's disease\n- Polymyalgia rheumatica\n- Oral disorders.\n\n### Age <65 years\n- Endocrine disorders\n- Infections such as TB and HIV\n- Psychiatric disorders such as depression, anxiety, and OCD\n- M...\n\n[Document 4] (ID: 5453_5, Score: 0.859)\n- Wasting syndrome in the absence of a concurrent illness other than HIV infection that could explain the following findings: a) persistent weight loss more than 10% of baseline OR b) downward crossing of at least two of the following percantile lines on the weight-for-age chart (e.g., 95th, 75th, 5...\n\n[Document 5] (ID: 4541_4, Score: 0.859)\nIn older children and adults, HA is typically symptomatic, with the majority of individuals developing anorexia, nausea, fatigue, fever and jaundice, usually lasting less than two months.\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20063333",
+        "turn_id": 8,
+        "query_text": "58-year-old male patient reports fever, weight loss, fatigue, decreased appetite; no night sweats, cough, shortness of breath, or known chronic illness; labs not performed; differential includes malignancies, infections, psychiatric disorders based on age and symptoms.",
+        "skill_query_text": "Presenting problem: fever, weight loss, fatigue, decreased appetite in 58-year-old male. Evidence gathered: patient history, symptom retrieval. Ineffective action: labs request yielded no result. Need workflow guidance for next diagnostic step targeting evidence to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7191,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8212,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.805,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7985,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7975,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7706,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7626,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Malignancy}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b2587a2d-5ff7-4d0b-8d7a-41c2836f442e': '{\"diagnosis\": \"Malignancy\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'b2587a2d-5ff7-4d0b-8d7a-41c2836f442e', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Malignancy}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1414}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Malignancy}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Malignancy}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?"
+      },
+      "patient_or_tool_response": "{'question': 'I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much.'}",
+      "env_info": "{'response': [{'id': '95f91649-4f11-41fd-b2ff-c47119a5f833', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 73}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 3,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'86d6cffc-7dcc-4763-be6e-eb08de540869': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '86d6cffc-7dcc-4763-be6e-eb08de540869', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 164}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any other symptoms such as fever, weight loss, fatigue, or changes in appetite?)\nresponse: I’ve had a fever, and I’ve also noticed I’ve lost some weight without trying. I’ve been feeling really tired lately, and my appetite has dropped—sometimes I just don’t feel like eating much."
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any night sweats, cough, or shortness of breath?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '575c7039-aa32-42be-bde9-d7424f1bf9ed', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any night sweats, cough, or shortness of breath?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 744}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.876)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 4772_25, Score: 0.864)\n# Special popula ions\nThere is insufficient information on the performance and impact of prognostic models in pregnant women. Therefore, the GDG concluded that the recommendation applies to pregnant women. Presenting signs and symptoms of COVID-19 vary.\nMost ...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'744a0b1e-6719-4910-9431-9b6f986d41e3': \"[Document 1] (ID: 19076_4, Score: 0.870)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 2] (ID: 28450_4, Score: 0.863)\\n## Common Causes\\n- Unintentional weight loss:\\n- Nicotine and smoking (may be an intentional caue).\\n- Drug side effects (mentioned below)\\n- Age >65 years:\\nMalignancies (specifically digestive and non-hematologic)\\nNeurological disorders: Dementia, stroke, parkinson's disease\\nOral disorders\\nChronic dis...\\n\\n[Document 3] (ID: 8779_1, Score: 0.863)\\n### Age >65 years\\n- Malignancies (specifically digestive and non-hematologic)\\n- Dementia\\n- Stroke\\n- Parkinson's disease\\n- Polymyalgia rheumatica\\n- Oral disorders.\\n\\n### Age <65 years\\n- Endocrine disorders\\n- Infections such as TB and HIV\\n- Psychiatric disorders such as depression, anxiety, and OCD\\n- M...\\n\\n[Document 4] (ID: 5453_5, Score: 0.859)\\n- Wasting syndrome in the absence of a concurrent illness other than HIV infection that could explain the following finding...[truncated]\"}}",
+      "env_info": "{'response': [{'id': '744a0b1e-6719-4910-9431-9b6f986d41e3', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 818}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any night sweats, cough, or shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you noticed any recent changes in your lifestyle, stress levels, or any known chronic illnesses?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '9cfbd47e-bc0a-4cf1-b993-73f7a3e4691b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any recent changes in your lifestyle, stress levels, or any known chronic illnesses?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1337}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 retrieve_interaction: doctor_action: retrieve(query=common causes of fever, weight loss, fatigue, and decreased appetite in 58-year-old male)\nresponse: [Document 1] (ID: 19076_4, Score: 0.870)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 2] (ID: 28450_4, Score: 0.863)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, ...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 8,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Malignancy}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'b2587a2d-5ff7-4d0b-8d7a-41c2836f442e': '{\"diagnosis\": \"Malignancy\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': 'b2587a2d-5ff7-4d0b-8d7a-41c2836f442e', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Malignancy}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1414}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any recent changes in your lifestyle, stress levels, or any known chronic illnesses?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

@@ -1,0 +1,1203 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20270472",
+  "turns": [
+    {
+      "case_id": "20270472",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "shortness of breath",
+        "diagnostic_strategy": "Current clinical problem: 23-year-old female with shortness of breath at 33w2d gestation, with history of asthma. Key evidence gathered: patient age, gender, chief complaint, and asthma history. Diagnostic uncertainty remains: cause of shortness of breath (e.g., asthma exacerbation, pulmonary edema, or other gestational complications). Most useful missing information: current oxygen saturation, respiratory rate, lung exam findings, and recent asthma medication use. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 23-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 23-year-old female patient presenting with shortness of breath and hx asthma at 33w2d gestation presents with.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 23-year-old female presenting with shortness of breath. History includes asthma. No other findings, exams, labs, or imaging results provided. No interpretation of evidence available. Missing: oxygen saturation, respiratory rate, lung exam, recent asthma medication use. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20270472",
+        "turn_id": 1,
+        "query_text": "23-year-old female, 33w2d gestation, chief complaint: shortness of breath, history of asthma. Known: age, gender, chief complaint, asthma history. Missing: oxygen saturation, respiratory rate, lung exam findings, recent asthma medication use. Uncertainty: cause of shortness of breath (asthma exacerbation, pulmonary edema, or other gestational complications).",
+        "skill_query_text": "Presenting problem: shortness of breath in 23-year-old female at 33w2d gestation with asthma history. Evidence gathered: age, gender, chief complaint, asthma history. Missing: oxygen saturation, respiratory rate, lung exam, recent asthma medication use. Ineffective actions: none. Need: diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8245,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.8027,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8163,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_e1ec677d6e3c",
+              "type": "experience",
+              "score": 0.8065,
+              "outcome": "negative",
+              "text": "Hemoptysis in a 58-year-old male with smoking history and COPD strongly suggests bronchiectasis or lung cancer; do not apply this when the patient has no smoking history, no COPD, or when hemoptysis is minimal and isolated without systemic signs.",
+              "tags": []
+            },
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.7956,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8351,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8295,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8195,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_6ccf7d71e646"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_6ccf7d71e646",
+            "memory_type": "skill",
+            "score": 0.8295,
+            "content": {
+              "skill": "When a patient presents with worsening shortness of breath and a history of asthma, ask about recent environmental triggers or allergen exposure to narrow the differential diagnosis.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient(question=Have you been exposed to any recent infections or environmental triggers, such as smoke or allergens?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did the shortness of breath begin, and has it been progressively worsening?"
+        },
+        "patient_or_tool_response": "{'question': 'I started having shortness of breath and cough around ___ when I had a fever and then developed a productive cough with green sputum. I haven’t needed my albuterol inhaler in ___ years, but I started using it again in the last 2 days. I’m not sure if it’s been progressively worsening, but I’ve felt worse since then.'}",
+        "env_info": "{'response': [{'id': '3b956ff4-b95e-4a27-8656-a7b2dd39206b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did the shortness of breath begin, and has it been progressively worsening?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.1111111111111111,
+        "delta": 0.1111111111111111,
+        "turn_reward": 0.022222222222222223,
+        "importance": 0.1111111111111111
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the shortness of breath begin, and has it been progressively worsening?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did the shortness of breath begin, and has it been progressively worsening?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20270472",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "shortness of breath",
+        "diagnostic_strategy": "Current clinical problem: shortness of breath with possible respiratory infection or exacerbation. Key evidence: recent fever, productive cough with green sputum, recent albuterol use. Diagnostic uncertainty: whether this is viral, bacterial, or exacerbation of underlying condition. Most useful missing information: duration of symptoms, prior medical history, smoking status, oxygen saturation, chest exam findings. Existing evidence is not enough to finalize diagnosis; further assessment needed.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the shortness of breath begin, and has it been progressively worsening?)\nresponse: I started having shortness of breath and cough around ___ when I had a fever and then developed a productive cough with green sputum. I haven’t needed my albuterol inhaler in ___ years, but I started using it again in the last 2 days. I’m not sure if it’s been progressively worsening, but I’ve felt worse since then."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: shortness of breath. Patient reports onset around ___ with fever, followed by productive cough with green sputum. Albuterol inhaler use resumed in last 2 days; not used in ___ years. Patient is uncertain if symptoms have progressively worsened but feels worse since then. No other findings or tests reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20270472",
+        "turn_id": 2,
+        "query_text": "Chief complaint: shortness of breath. Symptoms: recent fever, productive cough with green sputum, recent albuterol use. Uncertainty: viral, bacterial, or exacerbation of underlying condition. Missing: duration of symptoms, prior medical history, smoking status, oxygen saturation, chest exam findings.",
+        "skill_query_text": "Presenting problem: shortness of breath with possible respiratory infection or exacerbation. Evidence gathered: recent fever, productive cough with green sputum, albuterol use resumed in last 2 days. Ineffective actions: none. Needed guidance: decision workflow for determining cause (viral, bacterial, or exacerbation) and next steps based on missing data (duration, history, smoking, oxygen, exam)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8481,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7914,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7815,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7779,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7475,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8424,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_7da9992169f9",
+              "type": "experience",
+              "score": 0.8212,
+              "outcome": "negative",
+              "text": "Fever, cough, and sputum production are key discriminative features for pneumonia; their absence in the initial history should not be ignored and may indicate a need for broader differential or further investigation.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8163,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8259,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8257,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8083,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_7da9992169f9",
+          "skill_6ccf7d71e646"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_7da9992169f9",
+            "memory_type": "experience",
+            "score": 0.8212,
+            "content": {
+              "experience": "Fever, cough, and sputum production are key discriminative features for pneumonia; their absence in the initial history should not be ignored and may indicate a need for broader differential or further investigation.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'179d04bb-2830-4636-bc5a-eb56de1dfe32': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '179d04bb-2830-4636-bc5a-eb56de1dfe32', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 119}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.1111111111111111,
+        "conf_after": 0.1111111111111111,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20270472",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20270472",
+        "turn_id": 2,
+        "query_text": "Chief complaint: shortness of breath. Symptoms: recent fever, productive cough with green sputum, recent albuterol use. Uncertainty: viral, bacterial, or exacerbation of underlying condition. Missing: duration of symptoms, prior medical history, smoking status, oxygen saturation, chest exam findings.",
+        "skill_query_text": "Presenting problem: shortness of breath with possible respiratory infection or exacerbation. Evidence gathered: recent fever, productive cough with green sputum, albuterol use resumed in last 2 days. Ineffective actions: none. Needed guidance: decision workflow for determining cause (viral, bacterial, or exacerbation) and next steps based on missing data (duration, history, smoking, oxygen, exam)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8481,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7914,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7815,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7779,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7475,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8424,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_7da9992169f9",
+              "type": "experience",
+              "score": 0.8212,
+              "outcome": "negative",
+              "text": "Fever, cough, and sputum production are key discriminative features for pneumonia; their absence in the initial history should not be ignored and may indicate a need for broader differential or further investigation.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8163,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8259,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8257,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8083,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "skill_6ccf7d71e646"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_1bbf2cf34150",
+            "memory_type": "experience",
+            "score": 0.7914,
+            "content": {
+              "experience": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          },
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.7779,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'23e9b72b-57eb-49c1-8975-9498f863900a': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '23e9b72b-57eb-49c1-8975-9498f863900a', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 190}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.1111111111111111,
+        "conf_after": 0.1111111111111111,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20270472",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20270472",
+        "turn_id": 2,
+        "query_text": "Chief complaint: shortness of breath. Symptoms: recent fever, productive cough with green sputum, recent albuterol use. Uncertainty: viral, bacterial, or exacerbation of underlying condition. Missing: duration of symptoms, prior medical history, smoking status, oxygen saturation, chest exam findings.",
+        "skill_query_text": "Presenting problem: shortness of breath with possible respiratory infection or exacerbation. Evidence gathered: recent fever, productive cough with green sputum, albuterol use resumed in last 2 days. Ineffective actions: none. Needed guidance: decision workflow for determining cause (viral, bacterial, or exacerbation) and next steps based on missing data (duration, history, smoking, oxygen, exam)."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8481,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.7914,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7815,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7779,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7475,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8424,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_7da9992169f9",
+              "type": "experience",
+              "score": 0.8212,
+              "outcome": "negative",
+              "text": "Fever, cough, and sputum production are key discriminative features for pneumonia; their absence in the initial history should not be ignored and may indicate a need for broader differential or further investigation.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8163,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8259,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8257,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8083,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "skill_6ccf7d71e646"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "asthma exacerbation in pregnancy with green sputum and shortness of breath"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'1e27a8d1-af80-49ff-b2b9-e5b42847aba0': '[Document 1] (ID: 3096_9, Score: 0.858)\\nBackground. Patients with PPRD are at increased risk of respiratory morbidity, cough and wheeze, and respiratory hospitalizations, and asthma is diagnosed in up to 25% [bib_ref] Rehospitalization in the first year of life among infants with bronchopulmonary dysplasia, Smith [/bib_ref] [bib_ref] Pulm...\\n\\n[Document 2] (ID: 3152_45, Score: 0.854)\\n## Anti-immunoglobulin e\\nAt present, this is only licensed for severe allergic asthma in patients over 12 years of age. It is likely that associated AR would also improve in patients who respond with an improvement in their asthma control. Future use may include combined treatment with immunotherapy...\\n\\n[Document 3] (ID: 3096_3, Score: 0.848)\\n# Results\\nQuestion 1: Should infants, children, and adolescents born preterm (gestational age less than 37 wk) with PPRD and who have respiratory symptoms (wheezing, cough, tachypnea) receive shortacting, inhaled bronchodilators? Question 2: Should infants, children, and adolescents born preterm (ge...\\n\\n[Document 4] (ID: 3096_10, Score: 0.847)\\nChildren with atopy or asthma (or a family history of these conditions) may benefit from bronchodilators [bib_ref] Manageme...[truncated]'}}",
+        "env_info": "{'response': [{'id': '1e27a8d1-af80-49ff-b2b9-e5b42847aba0', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"asthma exacerbation in pregnancy with green sputum and shortness of breath\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 264}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.1111111111111111,
+        "conf_after": 0.2222222222222222,
+        "delta": 0.1111111111111111,
+        "turn_reward": 0.022222222222222223,
+        "importance": 0.1111111111111111
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma exacerbation in pregnancy with green sputum and shortness of breath\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma exacerbation in pregnancy with green sputum and shortness of breath\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20270472",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "shortness of breath",
+        "diagnostic_strategy": "Current clinical problem: shortness of breath with green sputum and recent albuterol use. Key evidence: patient reports onset with fever, productive cough, and recent albuterol use. Diagnostic uncertainty: whether asthma exacerbation or another respiratory condition (e.g., infection). Most useful missing information: CXR and lab results, timing of symptom onset, and pregnancy status. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: shortness of breath"
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: shortness of breath. Patient reports onset with fever, productive cough with green sputum, and recent albuterol use. No lab or CXR results available. No pregnancy status provided. No other symptoms or history explicitly reported. No treatment or management plan recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20270472",
+        "turn_id": 5,
+        "query_text": "Chief complaint: shortness of breath. Symptoms: fever, productive cough with green sputum, recent albuterol use. No lab or CXR results. No pregnancy status. No other symptoms or history reported. Diagnostic uncertainty: asthma exacerbation vs. other respiratory condition. Evidence insufficient for final diagnosis.",
+        "skill_query_text": "Presenting problem: shortness of breath with green sputum and recent albuterol use. Uncertainty: asthma exacerbation vs. other respiratory condition. Evidence gathered: patient reports fever, productive cough. Missing: CXR and lab results, timing of symptom onset, pregnancy status. Ineffective actions: requested labs and CXR, no results returned. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8452,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.804,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.792,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7457,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8294,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8043,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.8038,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8353,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8322,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8199,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "skill_6ccf7d71e646"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any fever, chills, or night sweats along with the shortness of breath and cough?"
+        },
+        "patient_or_tool_response": "{'question': 'I had a subjective fever and then started having a productive cough with green sputum. I also have shortness of breath and cough. I don’t recall any chills or night sweats specifically, but I’m not sure if I had them.'}",
+        "env_info": "{'response': [{'id': 'd2bbc6e8-00d8-4945-9178-5e9f085229f3', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any fever, chills, or night sweats along with the shortness of breath and cough?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 779}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2222222222222222,
+        "conf_after": 0.2222222222222222,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, or night sweats along with the shortness of breath and cough?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, or night sweats along with the shortness of breath and cough?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20270472",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "shortness of breath",
+        "diagnostic_strategy": "Current clinical problem: shortness of breath with productive cough and subjective fever. Key evidence: patient reports fever, green sputum, recent albuterol use, and uncertainty about chills/night sweats. Diagnostic uncertainty: whether this is asthma exacerbation, infection (e.g., pneumonia), or other respiratory condition. Most useful missing information: objective exam findings (e.g., CXR, labs), history of smoking or comorbidities, and confirmation of fever/chills. Existing evidence is not enough to finalize diagnosis; further diagnostic workup is needed.",
+        "efficient_turn_information": [
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, or night sweats along with the shortness of breath and cough?)\nresponse: I had a subjective fever and then started having a productive cough with green sputum. I also have shortness of breath and cough. I don’t recall any chills or night sweats specifically, but I’m not sure if I had them."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: shortness of breath. Patient reports onset around ___ with fever, productive cough with green sputum, and recent albuterol use (last 2 days). No chills or night sweats confirmed. Labs and CXR results unavailable. Retrieved documents suggest asthma exacerbation in pregnancy with green sputum and shortness of breath, but no diagnostic confirmation. No treatment recommendations provided."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20270472",
+        "turn_id": 6,
+        "query_text": "Chief complaint: shortness of breath. Symptoms: productive cough with green sputum, subjective fever, recent albuterol use. Uncertainty: asthma exacerbation, infection (e.g., pneumonia), or other respiratory condition. Missing: objective exam findings (e.g., CXR, labs), history of smoking or comorbidities, confirmation of fever/chills. No chills or night sweats confirmed. Labs and CXR unavailable.",
+        "skill_query_text": "Presenting problem: shortness of breath with productive cough and subjective fever. Current uncertainty: whether asthma exacerbation, infection, or other respiratory condition. Evidence gathered: patient reports fever, green sputum, recent albuterol use, no confirmed chills/night sweats. Missing: objective findings (CXR, labs), smoking/comorbidities, fever confirmation. Ineffective actions: none. Need: diagnostic workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 5,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.8427,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_1bbf2cf34150",
+              "type": "experience",
+              "score": 0.8158,
+              "outcome": "positive",
+              "text": "Repeated requests for labs, CXR, or imaging without prior targeted history or physical exam yield no useful evidence; prioritize symptom-focused questioning before ordering diagnostic tests.",
+              "tags": []
+            },
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8036,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7891,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7459,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8441,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_7da9992169f9",
+              "type": "experience",
+              "score": 0.8209,
+              "outcome": "negative",
+              "text": "Fever, cough, and sputum production are key discriminative features for pneumonia; their absence in the initial history should not be ignored and may indicate a need for broader differential or further investigation.",
+              "tags": []
+            },
+            {
+              "id": "exp_f01d7e38e72f",
+              "type": "experience",
+              "score": 0.819,
+              "outcome": "negative",
+              "text": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8333,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8302,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8131,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_1bbf2cf34150",
+          "exp_4edec57c6eb9",
+          "exp_7da9992169f9",
+          "exp_f01d7e38e72f",
+          "skill_6ccf7d71e646"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_f01d7e38e72f",
+            "memory_type": "experience",
+            "score": 0.819,
+            "content": {
+              "experience": "Asking about fever, chills, or weight loss without obtaining lab results misses critical differentials; in this case, absence of systemic signs and lack of labs prevented ruling out infection or malignancy.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Asthma exacerbation with possible bacterial superinfection in pregnancy}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'38141643-02b0-4a33-9178-220fc17eee6c': '{\"diagnosis\": \"Asthma exacerbation with possible bacterial superinfection in pregnancy\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '38141643-02b0-4a33-9178-220fc17eee6c', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Asthma exacerbation with possible bacterial superinfection in pregnancy}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 881}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2222222222222222,
+        "conf_after": 0.2222222222222222,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asthma exacerbation with possible bacterial superinfection in pregnancy}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Asthma exacerbation with possible bacterial superinfection in pregnancy}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20270472",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "shortness of breath",
+        "diagnosis_goal": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 6. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: shortness of breath",
+          "initial_information: I am a 23-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 23-year-old female patient presenting with shortness of breath and hx asthma at 33w2d gestation presents with..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the shortness of breath start, and has it been progressively worsening?)\nresponse: I started having shortness of breath and cough around ___ when I had a subjective fever and then developed a productive cough with green sputum. I haven’t needed to use my albuterol inhaler in ___ years, but I started using it again in the last 2 days. I’m not sure if the shortness of breath has been progressively worsening — I’m not sure how to describe the progression.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=asthma exacerbation in pregnancy with green sputum and fever)\nresponse: [Document 1] (ID: 3096_9, Score: 0.856)\nBackground. Patients with PPRD are at increased risk of respiratory morbidity, cough and wheeze, and respiratory hospitalizations, and asthma is diagnosed in up to 25% [bib_ref] Rehospitalization in the first year of life among infants with bronchopulmonary dysplasia, Smith [/bib_ref] [bib_ref] Pulm...\n\n[Document 2] (ID: 3152_45, Score: 0.855)\n## Anti-immunoglobulin e\nAt present, this is only licensed for severe allergic asthma in patients over 12 years of age. It is likely that associated AR would also improve in patients who respond with an improvement in their asthma control. Future use may include combined treatment with immunotherapy...\n\n[Document 3] (ID: 4227_4, Score: 0.847)\nLimited data is available on maternal outcomes in COVID-19 infection in pregnancy. However, in data from other viral illnesses such as influenza, SARS and MERS, pregnant women are more likely to develop viral pneumonitis, with higher morbidity and mortality compared to non-pregnant women [bib_ref] S...\n\n[Document 4] (ID: 4077_5, Score: 0.847)\nSome patients whose fetus has an anomaly or disorder will also have SARS-CoV-2 infection of varying severity. The effects of this infection on mothers and fetuses are currently unknown, and the effect of pregnancy on the clinical course of COVID-19 disease has not been accurately characterized [bib_...\n\n[Document 5] (ID: 256_48, Score: 0.846)\nA 20% fall in FEV 1 was considered evidence of bronchial hyperreactivity. F o rty -six su b jects p a r tic ip a te d in e x e rc ise te s tin g , co n sistin g of fre e running sufficient to increase the heart rate to 140 beats/m inute. A fall in FEV 1 of more than 9% was re g a rd e d as in d ic a...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, night sweats, or chest pain along with the shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=bronchitis in pregnancy with green sputum and fever)\nresponse: [Document 1] (ID: 4077_5, Score: 0.860)\nSome patients whose fetus has an anomaly or disorder will also have SARS-CoV-2 infection of varying severity. The effects of this infection on mothers and fetuses are currently unknown, and the effect of pregnancy on the clinical course of COVID-19 disease has not been accurately characterized [bib_...\n\n[Document 2] (ID: 3316_5, Score: 0.853)\nNotably absent from all of the rules is the presence of purulent sputum. Many patients and physicians seem to believe that purulent sputum signifies that a bacterial infection is present and antibiotic therapy is indicated. [bib_ref] Colour of respiratory discharge and antibiotic use, Mainous [/bib_...\n\n[Document 3] (ID: 310_14, Score: 0.851)\nThe risk for adverse effects on the fetus and the risk that the mother will develop chronic Q fever are highest when an acute infection occurs during the first trimester (81,82). Untreated infection in the first trimester is more likely to result in miscarriage, whereas infection later in pregnancy ...\n\n[Document 4] (ID: 3359_54, Score: 0.850)\nBronchitis is an inflammatory conditionof the tracheobronchial tree. It is both acute and chronic and is caused by a variety of irritants and infectiousagents. Productive cough is the commondenominator of this condition, and the sputum produced ranges from mucoid to frankly purulent.\nAcute bronchiti...\n\n[Document 5] (ID: 4227_4, Score: 0.850)\nLimited data is available on maternal outcomes in COVID-19 infection in pregnancy. However, in data from other viral illnesses such as influenza, SARS and MERS, pregnant women are more likely to develop viral pneumonitis, with higher morbidity and mortality compared to non-pregnant women [bib_ref] S..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did the shortness of breath start, and has it been progressively worsening?)\nresponse: I started having shortness of breath and cough around ___ when I had a subjective fever and then developed a productive cough with green sputum. I haven’t needed to use my albuterol inhaler in ___ years, but I started using it again in the last 2 days. I’m not sure if the shortness of breath has been progressively worsening — I’m not sure how to describe the progression.\ndoctor_action: retrieve(query=asthma exacerbation in pregnancy with green sputum and fever)\nresponse: [Document 1] (ID: 3096_9, Score: 0.856)\nBackground. Patients with PPRD are at increased risk of respiratory morbidity, cough and wheeze, and respiratory hospitalizations, and asthma is diagnosed in up to 25% [bib_ref] Rehospitalization in the first year of life among infants with bronchopulmonary dysplasia, Smith [/bib_ref] [bib_ref] Pulm...\n\n[Document 2] (ID: 3152_45, Score: 0.855)\n## Anti-immunoglobulin e\nAt present, this is only licensed for severe allergic asthma in patients over 12 years of age. It is likely that associated AR would also improve in patients who respond with an improvement in their asthma control. Future use may include combined treatment with immunotherapy...\n\n[Document 3] (ID: 4227_4, Score: 0.847)\nLimited data is available on maternal outcomes in COVID-19 infection in pregnancy. However, in data from other viral illnesses such as influenza, SARS and MERS, pregnant women are more likely to develop viral pneumonitis, with higher morbidity and mortality compared to non-pregnant women [bib_ref] S...\n\n[Document 4] (ID: 4077_5, Score: 0.847)\nSome patients whose fetus has an anomaly or disorder will also have SARS-CoV-2 infection of varying severity. The effects of this infection on mothers and fetuses are currently unknown, and the effect of pregnancy on the clinical course of COVID-19 disease has not been accurately characterized [bib_...\n\n[Document 5] (ID: 256_48, Score: 0.846)\nA 20% fall in FEV 1 was considered evidence of bronchial hyperreactivity. F o rty -six su b jects p a r tic ip a te d in e x e rc ise te s tin g , co n sistin g of fre e running sufficient to increase the heart rate to 140 beats/m inute. A fall in FEV 1 of more than 9% was re g a rd e d as in d ic a...\ndoctor_action: ask_patient(question=Have you experienced any recent weight loss, night sweats, or chest pain along with the shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20270472",
+        "turn_id": 7,
+        "query_text": "23-year-old female, 33w2d gestation, presenting with shortness of breath, productive cough with green sputum, subjective fever, recent albuterol inhaler use, no weight loss, night sweats, or chest pain. History of asthma. No labs or CXR results available.",
+        "skill_query_text": "Patient with shortness of breath, green sputum, fever, and recent albuterol use in pregnancy; prior retrieval of asthma exacerbation and bronchitis in pregnancy documents; labs and CXR not performed; need targeted diagnostic guidance to resolve uncertainty about bacterial vs. viral vs. asthma exacerbation."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_d85487062f20",
+              "type": "experience",
+              "score": 0.7819,
+              "outcome": "positive",
+              "text": "Requesting labs without prior evidence or clear indication is low-value when clinical signs strongly suggest cellulitis; prioritize imaging or culture instead to confirm infection extent.",
+              "tags": []
+            },
+            {
+              "id": "exp_7210c8d79a48",
+              "type": "experience",
+              "score": 0.7574,
+              "outcome": "positive",
+              "text": "In diabetic patients with progressive redness, swelling, warmth, and pain on the leg, a recent spider bite is a key discriminative clue supporting cellulitis over other differentials like abscess or deep vein thrombosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_47ecd1784624",
+              "type": "experience",
+              "score": 0.753,
+              "outcome": "positive",
+              "text": "In patients with finger pain, redness, swelling, and pus, a history of nail-biting and frequent handwashing supports paronychia diagnosis, distinguishing it from other inflammatory or traumatic causes.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_fec3b5bf9e1c",
+              "type": "experience",
+              "score": 0.8384,
+              "outcome": "negative",
+              "text": "In a 67-year-old female presenting with dizziness, nausea, fatigue, and cognitive impairment, requesting imaging without prior targeted neurologic or metabolic workup yields no result and fails to advance diagnosis; prioritize specific labs or imaging based on differential (e.g., vestibular, metabolic, cerebrovascular) rather than broad imaging requests.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08c15c13a5e",
+              "type": "experience",
+              "score": 0.829,
+              "outcome": "negative",
+              "text": "In a patient presenting with vague complaints, the absence of fever, weight loss, or recent infections does not rule out heart failure; orthopnea and exertional dyspnea are key discriminative symptoms that should prompt targeted imaging or lab work to differentiate cardiac from non-cardiac causes.",
+              "tags": []
+            },
+            {
+              "id": "exp_9e403d5a1df7",
+              "type": "experience",
+              "score": 0.8187,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR without prior clinical suspicion or specific symptoms yields no diagnostic value; in the absence of actionable findings, the next step should be focused on eliciting discriminative symptoms like orthopnea or exertional dyspnea rather than repeating low-yield tool requests.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.7754,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_9e403d5a1df7"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_9e403d5a1df7",
+            "memory_type": "experience",
+            "score": 0.8187,
+            "content": {
+              "experience": "Requesting labs or CXR without prior clinical suspicion or specific symptoms yields no diagnostic value; in the absence of actionable findings, the next step should be focused on eliciting discriminative symptoms like orthopnea or exertional dyspnea rather than repeating low-yield tool requests.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Acute bacterial bronchitis in pregnancy}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'300c4cce-2214-483d-b70b-dd4ddb7b83a3': '{\"diagnosis\": \"Acute bacterial bronchitis in pregnancy\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '300c4cce-2214-483d-b70b-dd4ddb7b83a3', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Acute bacterial bronchitis in pregnancy}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1373}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4444444444444444,
+        "conf_after": 0.4444444444444444,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute bacterial bronchitis in pregnancy}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Acute bacterial bronchitis in pregnancy}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'179d04bb-2830-4636-bc5a-eb56de1dfe32': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '179d04bb-2830-4636-bc5a-eb56de1dfe32', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 119}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did the shortness of breath start, and has it been progressively worsening?)\nresponse: I started having shortness of breath and cough around ___ when I had a subjective fever and then developed a productive cough with green sputum. I haven’t needed to use my albuterol inhaler in ___ years, but I started using it again in the last 2 days. I’m not sure if the shortness of breath has been progressively worsening — I’m not sure how to describe the progression."
+      ]
+    },
+    {
+      "turn_id": 4,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "asthma exacerbation in pregnancy with green sputum and shortness of breath"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'1e27a8d1-af80-49ff-b2b9-e5b42847aba0': '[Document 1] (ID: 3096_9, Score: 0.858)\\nBackground. Patients with PPRD are at increased risk of respiratory morbidity, cough and wheeze, and respiratory hospitalizations, and asthma is diagnosed in up to 25% [bib_ref] Rehospitalization in the first year of life among infants with bronchopulmonary dysplasia, Smith [/bib_ref] [bib_ref] Pulm...\\n\\n[Document 2] (ID: 3152_45, Score: 0.854)\\n## Anti-immunoglobulin e\\nAt present, this is only licensed for severe allergic asthma in patients over 12 years of age. It is likely that associated AR would also improve in patients who respond with an improvement in their asthma control. Future use may include combined treatment with immunotherapy...\\n\\n[Document 3] (ID: 3096_3, Score: 0.848)\\n# Results\\nQuestion 1: Should infants, children, and adolescents born preterm (gestational age less than 37 wk) with PPRD and who have respiratory symptoms (wheezing, cough, tachypnea) receive shortacting, inhaled bronchodilators? Question 2: Should infants, children, and adolescents born preterm (ge...\\n\\n[Document 4] (ID: 3096_10, Score: 0.847)\\nChildren with atopy or asthma (or a family history of these conditions) may benefit from bronchodilators [bib_ref] Manageme...[truncated]'}}",
+      "env_info": "{'response': [{'id': '1e27a8d1-af80-49ff-b2b9-e5b42847aba0', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"asthma exacerbation in pregnancy with green sputum and shortness of breath\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 264}",
+      "reward": 0.0,
+      "turn_reward": 0.022222222222222223,
+      "importance": 0.1111111111111111,
+      "evidence_records": [
+        "turn_4 retrieve_interaction: doctor_action: retrieve(query=asthma exacerbation in pregnancy with green sputum and fever)\nresponse: [Document 1] (ID: 3096_9, Score: 0.856)\nBackground. Patients with PPRD are at increased risk of respiratory morbidity, cough and wheeze, and respiratory hospitalizations, and asthma is diagnosed in up to 25% [bib_ref] Rehospitalization in the first year of life among infants with bronchopulmonary dysplasia, Smith [/bib_ref] [bib_ref] Pulm...\n\n[Document 2] (ID: 3152_45, Score: 0.855)\n## Anti-immunoglobulin e\nAt present, this is only licensed for severe allergic asthma in patients over 12 years of age. It is likely that associated AR would also improve in patients who respond with an improvement in their asthma control. Future use may include combined treatment w...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you experienced any fever, chills, or night sweats along with the shortness of breath and cough?"
+      },
+      "patient_or_tool_response": "{'question': 'I had a subjective fever and then started having a productive cough with green sputum. I also have shortness of breath and cough. I don’t recall any chills or night sweats specifically, but I’m not sure if I had them.'}",
+      "env_info": "{'response': [{'id': 'd2bbc6e8-00d8-4945-9178-5e9f085229f3', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any fever, chills, or night sweats along with the shortness of breath and cough?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 779}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, night sweats, or chest pain along with the shortness of breath?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Acute bacterial bronchitis in pregnancy}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'300c4cce-2214-483d-b70b-dd4ddb7b83a3': '{\"diagnosis\": \"Acute bacterial bronchitis in pregnancy\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '300c4cce-2214-483d-b70b-dd4ddb7b83a3', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Acute bacterial bronchitis in pregnancy}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1373}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 retrieve_interaction: doctor_action: retrieve(query=bronchitis in pregnancy with green sputum and fever)\nresponse: [Document 1] (ID: 4077_5, Score: 0.860)\nSome patients whose fetus has an anomaly or disorder will also have SARS-CoV-2 infection of varying severity. The effects of this infection on mothers and fetuses are currently unknown, and the effect of pregnancy on the clinical course of COVID-19 disease has not been accurately characterized [bib_...\n\n[Document 2] (ID: 3316_5, Score: 0.853)\nNotably absent from all of the rules is the presence of purulent sputum. Many patients and physicians seem to believe that purulent sputum signifies that a bacterial infection is present and antibiotic therapy is indicated. [bib_ref] Colour of respiratory discharge and antibiotic use, Mainous...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

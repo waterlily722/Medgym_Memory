@@ -1,0 +1,824 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20217646",
+  "turns": [
+    {
+      "case_id": "20217646",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Right Parietal AVM",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 57-year-old male patient presenting with Right Parietal AVM. Key evidence gathered: Patient age, gender, and chief complaint. Diagnostic uncertainty remains high due to lack of imaging, lab, or exam findings. Most useful missing information: Imaging confirmation of AVM location and extent, neurological exam findings, and vascular studies. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 57-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 57-year-old male patient presenting with Right Parietal AVM.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 57-year-old male presenting with Right Parietal AVM. No imaging, lab, or exam findings provided. No neurological or vascular assessment completed. No history of symptoms beyond general malaise. No prior treatments or risk factors reported. Missing: Imaging confirmation, neurological exam, vascular studies."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20217646",
+        "turn_id": 1,
+        "query_text": "57-year-old male, chief complaint: Right Parietal AVM. No imaging, lab, or exam findings. No neurological or vascular assessment. No prior treatments or risk factors. Uncertainty remains due to lack of diagnostic evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 57-year-old male with Right Parietal AVM. Evidence gathered: Age, gender, chief complaint. Missing: Imaging, neurological exam, vascular studies. No ineffective actions tried. Need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8096,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8055,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.7993,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7992,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.7932,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7879,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent headaches, seizures, or neurological symptoms such as weakness or numbness?"
+        },
+        "patient_or_tool_response": "{'question': 'I had a seizure initially that led to the discovery of the AVM. Since then, I’ve had no recent headaches, seizures, or neurological symptoms like weakness or numbness. I’ve been feeling okay since my last procedure.'}",
+        "env_info": "{'response': [{'id': 'd8d32a03-488e-492e-888a-775d2fde153b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent headaches, seizures, or neurological symptoms such as weakness or numbness?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.25,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent headaches, seizures, or neurological symptoms such as weakness or numbness?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent headaches, seizures, or neurological symptoms such as weakness or numbness?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217646",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Right Parietal AVM",
+        "diagnostic_strategy": "Current clinical problem: Monitoring stability of right parietal AVM post-procedure. Key evidence: Patient reports no recent headaches, seizures, or neurological symptoms since initial seizure. Diagnostic uncertainty: Whether current clinical status indicates stability or potential for recurrence. Most useful missing information: Imaging or lab results confirming absence of new vascular changes or neurological compromise. Existing evidence is not enough to finalize diagnosis; requires objective imaging or functional assessment. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent headaches, seizures, or neurological symptoms such as weakness or numbness?)\nresponse: I had a seizure initially that led to the discovery of the AVM. Since then, I’ve had no recent headaches, seizures, or neurological symptoms like weakness or numbness. I’ve been feeling okay since my last procedure."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Right Parietal AVM. Patient reports initial seizure led to AVM discovery; since then, no recent headaches, seizures, or neurological symptoms (weakness/numbness). Patient reports feeling okay since last procedure. No imaging, lab, or tool results provided. No unresolved missing information explicitly stated. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20217646",
+        "turn_id": 2,
+        "query_text": "Patient presents with right parietal AVM. Known: Initial seizure led to AVM discovery; since then, no recent headaches, seizures, weakness, or numbness reported. Patient reports feeling okay since last procedure. No imaging, lab, or functional assessment results provided. Diagnostic uncertainty: Whether current status indicates stability or potential for recurrence. Objective imaging or functional assessment needed to resolve uncertainty.",
+        "skill_query_text": "Current decision point: Monitoring stability of right parietal AVM post-procedure. Evidence gathered: Patient reports no recent neurological symptoms since last procedure. Missing: Imaging or lab results confirming absence of new vascular changes or neurological compromise. Ineffective actions: None reported. Needed: Workflow guidance for selecting next diagnostic steps to confirm stability or detect recurrence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7688,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.757,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7059,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.8214,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8097,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8057,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8043,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7937,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7912,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e62568d8-d09e-41bd-b300-3509d742f6d0': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'e62568d8-d09e-41bd-b300-3509d742f6d0', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 93}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217646",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217646",
+        "turn_id": 2,
+        "query_text": "Patient presents with right parietal AVM. Known: Initial seizure led to AVM discovery; since then, no recent headaches, seizures, weakness, or numbness reported. Patient reports feeling okay since last procedure. No imaging, lab, or functional assessment results provided. Diagnostic uncertainty: Whether current status indicates stability or potential for recurrence. Objective imaging or functional assessment needed to resolve uncertainty.",
+        "skill_query_text": "Current decision point: Monitoring stability of right parietal AVM post-procedure. Evidence gathered: Patient reports no recent neurological symptoms since last procedure. Missing: Imaging or lab results confirming absence of new vascular changes or neurological compromise. Ineffective actions: None reported. Needed: Workflow guidance for selecting next diagnostic steps to confirm stability or detect recurrence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7688,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.757,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7059,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.8214,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8097,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8057,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8043,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7937,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7912,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Right Parietal AVM symptoms and management"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'4bccfd6c-5c8d-410f-8a36-c36bba469277': '[Document 1] (ID: 8568_1, Score: 0.877)\\n# Natural History, Complications and Prognosis\\n- About 10% of cases in which excess bleeding occurs as the first symptom are deadly.  Some patients may have permanent seizures, brain and nervous system (neurological) problems.\\n- The risk of hemorrhage from cerebral AVM is approximately 3% annually. ...\\n\\n[Document 2] (ID: 5361_2, Score: 0.869)\\n# Treatment options\\nFinding the best treatment for an AVM that is found on an x-ray or other imaging tests but is not causing any symptoms can be difficult. Your doctor will discuss with you:\\nThe risk that your AVM will break open (rupture). If this happens, there may be permanent brain damage.\\nThe ...\\n\\n[Document 3] (ID: 8056_1, Score: 0.869)\\n# Diagnosis\\nThere are four diagnostic criteria. If three or four are met, a patient has definite HHT, while two gives a possible diagnosis:\\n- Spontaneous recurrent epistaxis\\n- Multiple teleangiectasias on typical locations (see above)\\n- Proven visceral AVM (lung, liver, brain, spine)\\n- First-degree ...\\n\\n[Document 4] (ID: 5361_3, Score: 0.867)\\n# What to expect (Outlook/Prognosis)?\\nAbout 10% of cases in which excess bleeding (hemorrhage) is the first symptom are deadl...[truncated]'}}",
+        "env_info": "{'response': [{'id': '4bccfd6c-5c8d-410f-8a36-c36bba469277', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Right Parietal AVM symptoms and management\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 167}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.5,
+        "delta": 0.25,
+        "turn_reward": 0.05,
+        "importance": 0.25
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Right Parietal AVM symptoms and management\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Right Parietal AVM symptoms and management\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217646",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Right Parietal AVM",
+        "diagnostic_strategy": "Current clinical problem: Right parietal AVM with history of initial seizure. Key evidence: patient reports no recent neurological symptoms, imaging result unavailable. Diagnostic uncertainty: unclear if AVM is symptomatic or asymptomatic; no imaging data to assess size, location, or risk of hemorrhage. Most useful missing information: imaging results (e.g., MRI or CT) to evaluate AVM characteristics and risk stratification. Existing evidence is not enough to finalize diagnosis or management plan. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Right Parietal AVM"
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: Right Parietal AVM. Patient history: initial seizure led to AVM discovery; no recent headaches, seizures, or neurological symptoms (e.g., weakness, numbness). Imaging: no result available. Documented information: risk of hemorrhage ~3% annually; potential for permanent neurological damage; treatment options discussed; diagnostic criteria for HHT not met. Missing: imaging results to assess AVM characteristics and risk. No treatment or management recommendations provided."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217646",
+        "turn_id": 4,
+        "query_text": "Right parietal AVM, history of initial seizure, no recent neurological symptoms, no imaging results available, diagnostic uncertainty regarding symptomatic status and hemorrhage risk, missing imaging to assess size/location/risk stratification.",
+        "skill_query_text": "Presenting problem: Right parietal AVM with initial seizure history. Current uncertainty: unclear if symptomatic or asymptomatic; no imaging to assess risk. Evidence gathered: patient reports no recent symptoms. Ineffective action: request for imaging returned no result. Need: workflow guidance on next diagnostic steps given missing imaging data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8269,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.8048,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8002,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8055,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8023,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6258544f0cba",
+              "type": "skill",
+              "score": 0.8005,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you undergone any imaging tests (like MRI or CT) or procedures related to the AVM since the initial seizure?"
+        },
+        "patient_or_tool_response": "{'question': 'Yes, I had imaging tests after the AVM surgery. I had a post-resection angiogram to check if there was any remaining shunting or nidus, and also a CT head without contrast to look at the surgical changes and any bleeding or complications. The angiogram showed no evidence of active shunting or AVM nidus, and the CT showed expected post-op changes like pneumocephalus and some blood in the resection area.'}",
+        "env_info": "{'response': [{'id': '811ea0dd-41d7-4cc7-979e-2b85719c0ddf', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you undergone any imaging tests (like MRI or CT) or procedures related to the AVM since the initial seizure?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 671}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you undergone any imaging tests (like MRI or CT) or procedures related to the AVM since the initial seizure?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you undergone any imaging tests (like MRI or CT) or procedures related to the AVM since the initial seizure?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217646",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Right Parietal AVM",
+        "diagnostic_strategy": "Current clinical problem: Post-surgical status of right parietal AVM. Key evidence gathered: Patient reports no recent neurological symptoms, and post-op imaging (angiogram and CT) shows no active shunting or nidus, with expected post-op changes. Diagnostic uncertainty: Whether the AVM is fully resected and if there is residual risk of hemorrhage or neurological sequelae. Most useful missing information: Long-term follow-up imaging or functional assessment to confirm stability. Existing evidence is sufficient to rule out active AVM but not enough to fully finalize long-term prognosis or management plan.",
+        "efficient_turn_information": [
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you undergone any imaging tests (like MRI or CT) or procedures related to the AVM since the initial seizure?)\nresponse: Yes, I had imaging tests after the AVM surgery. I had a post-resection angiogram to check if there was any remaining shunting or nidus, and also a CT head without contrast to look at the surgical changes and any bleeding or complications. The angiogram showed no evidence of active shunting or AVM nidus, and the CT showed expected post-op changes like pneumocephalus and some blood in the resection area."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Right Parietal AVM. History: Initial seizure led to discovery of AVM. No recent headaches, seizures, or neurological symptoms reported. Imaging attempt (turn_3) yielded no result. Retrieved documents (turn_4) provide general information on AVM symptoms, management, diagnosis, and prognosis, but no specific patient data. Current imaging (turn_5) confirms no active shunting or nidus, with expected post-op changes including pneumocephalus and blood in resection area. No further symptoms or complications reported."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217646",
+        "turn_id": 5,
+        "query_text": "Patient presents with right parietal AVM post-surgery. No recent neurological symptoms. Post-op imaging (angiogram and CT) shows no active shunting or nidus, with expected changes including pneumocephalus and blood in resection area. Uncertainty remains regarding full resection and long-term risk of hemorrhage or sequelae. Missing: long-term follow-up imaging or functional assessment.",
+        "skill_query_text": "Current decision point: Post-surgical status of right parietal AVM. Evidence gathered: Imaging confirms no active shunting or nidus, with expected post-op changes. No ineffective actions tried. Need workflow guidance on next steps for confirming stability or managing residual risk, given current evidence is sufficient to rule out active AVM but not long-term prognosis."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.8047,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7999,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7965,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_845cdad6d53c",
+              "type": "skill",
+              "score": 0.7885,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7833,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.7829,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Right Parietal AVM with successful surgical resection and no evidence of residual shunting or nidus. Patient is stable with no current neurological symptoms.}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'aa8379ed-6974-4cc5-8a9c-057b21be8e98': '{\"diagnosis\": \"Right Parietal AVM with successful surgical resection and no evidence of residual shunting or nidus. Patient is stable with no current neurological symptoms.\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'aa8379ed-6974-4cc5-8a9c-057b21be8e98', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Right Parietal AVM with successful surgical resection and no evidence of residual shunting or nidus. Patient is stable with no current neurological symptoms.}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 813}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Right Parietal AVM with successful surgical resection and no evidence of residual shunting or nidus. Patient is stable with no current neurol",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Right Parietal AVM with successful surgical resection and no evidence of residual shunting or nidus. Patient is stable with no current neurological symptoms.}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217646",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnosis_goal": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217646",
+        "turn_id": 5,
+        "query_text": "Right parietal AVM, history of nosebleeds, dizziness, headaches, leg coldness, weak pulse, feeding difficulties, fatigue, fainting spells. No known bleeding disorders or family history. Lab result pending. No new diagnostic evidence obtained.",
+        "skill_query_text": "Patient presents with right parietal AVM; seeks HHT/family history for diagnostic guidance. Patient denies any known bleeding disorders or family history. Previous attempt to elicit HHT/family history yielded negative response. Need workflow guidance on next diagnostic step given current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_5aa4e3bc69d1",
+              "type": "experience",
+              "score": 0.8651,
+              "outcome": "negative",
+              "text": "In a case of suspected dural AV fistula, the absence of a history of trauma or head injury is not diagnostic but should not be overinterpreted; the key discriminative evidence lies in the combination of unilateral neurological deficits (e.g., arm weakness) and systemic symptoms (e.g., cold extremities, weak pulses, fatigue), which together suggest a vascular malformation rather than a traumatic or inflammatory cause.",
+              "tags": []
+            },
+            {
+              "id": "exp_4d0092f794e1",
+              "type": "experience",
+              "score": 0.8414,
+              "outcome": "negative",
+              "text": "The patient’s description of unilateral arm weakness without numbness or facial droop, combined with systemic symptoms like cold extremities and weak pulses, should prompt consideration of dural AV fistula as a differential, especially when trauma is ruled out — this combination is highly discriminative for vascular malformations over other neurological or systemic conditions.",
+              "tags": []
+            },
+            {
+              "id": "exp_cc58f67ef651",
+              "type": "experience",
+              "score": 0.8411,
+              "outcome": "negative",
+              "text": "When a patient reports neurological symptoms like dizziness and pallor, the absence of classic systemic symptoms (e.g., weight loss, fever, night sweats) should not lead to premature closure on anemia; consider melena as a differential and pursue targeted GI history and occult blood testing.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.8107,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_5aa4e3bc69d1"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "Symptoms of Hemorrhagic Telangiectasia (HHT) and its association with AVMs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'49752ec0-9705-473b-b762-e579ff9a709b': '[Document 1] (ID: 8056_0, Score: 0.915)\\nHereditary hemorrhagic telangiectasia\\nSynonyms and keywords: HHT, Osler-Weber-Rendu syndrome\\n\\n# Overview\\nHereditary hemorrhagic telangiectasia (HHT), also known as Osler-Weber-Rendu syndrome, is an autosomal dominant genetic disorder that leads to vascular malformations.\\n\\n# Signs and symptoms\\nHHT is...\\n\\n[Document 2] (ID: 5307_1, Score: 0.905)\\n# Diagnosis\\nAn experienced health care provider can detect telangiectases during a physical examination. There is often a family history of hereditary hemorrhagic telangiectasia.\\nSigns include:\\n- Abnormal blood vessels that bleed easily in the throat, bowels, or airways\\n- AVM seen on chest x-ray\\n- D...\\n\\n[Document 3] (ID: 5307_0, Score: 0.901)\\nHereditary hemorrhagic telangiectasia (patient information)\\nFor the WikiDoc page for this topic, click here\\n\\n# Overview\\nHereditary hemorrhagic telangiectasia, also called Osler-Weber-Rendu Syndrome, is an inherited disorder of the blood vessels that can cause excessive bleeding.\\n\\n# What are the symp...\\n\\n[Document 4] (ID: 8056_1, Score: 0.891)\\n# Diagnosis\\nThere are four diagnostic criteria. If three or four are met, a patient has definite HHT, while two gives a possi...[truncated]'}}",
+        "env_info": "{'response': [{'id': '49752ec0-9705-473b-b762-e579ff9a709b', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Symptoms of Hemorrhagic Telangiectasia (HHT) and its association with AVMs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 883}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Symptoms of Hemorrhagic Telangiectasia (HHT) and its association with AVMs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Symptoms of Hemorrhagic Telangiectasia (HHT) and its association with AVMs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20217646",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Right Parietal AVM",
+        "diagnosis_goal": "Determine if patient meets diagnostic criteria for Hereditary Hemorrhagic Telangiectasia (HHT) based on presence of AVM, epistaxis, and family history. Prioritize imaging and family history inquiry. Current turn retrieved HHT diagnostic criteria but did not yield new clinical evidence or actionable next step.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Right Parietal AVM"
+        ],
+        "ineffective_turn_information": [
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=Symptoms of Hemorrhagic Telangiectasia (HHT) and its association with AVMs)\nresponse: [Document 1] (ID: 8056_0, Score: 0.915)\nHereditary hemorrhagic telangiectasia\nSynonyms and keywords: HHT, Osler-Weber-Rendu syndrome\n\n# Overview\nHereditary hemorrhagic telangiectasia (HHT), also known as Osler-Weber-Rendu syndrome, is an autosomal dominant genetic disorder that leads to vascular malformations.\n\n# Signs and symptoms\nHHT is...\n\n[Document 2] (ID: 5307_1, Score: 0.905)\n# Diagnosis\nAn experienced health care provider can detect telangiectases during a physical examination. There is often a family history of hereditary hemorrhagic telangiectasia.\nSigns include:\n- Abnormal blood vessels that bleed easily in the throat, bowels, or airways\n- AVM seen on chest x-ray\n- D...\n\n[Document 3] (ID: 5307_0, Score: 0.901)\nHereditary hemorrhagic telangiectasia (patient information)\nFor the WikiDoc page for this topic, click here\n\n# Overview\nHereditary hemorrhagic telangiectasia, also called Osler-Weber-Rendu Syndrome, is an inherited disorder of the blood vessels that can cause excessive bleeding.\n\n# What are the symp...\n\n[Document 4] (ID: 8056_1, Score: 0.891)\n# Diagnosis\nThere are four diagnostic criteria. If three or four are met, a patient has definite HHT, while two gives a possible diagnosis:\n- Spontaneous recurrent epistaxis\n- Multiple teleangiectasias on typical locations (see above)\n- Proven visceral AVM (lung, liver, brain, spine)\n- First-degree ...\n\n[Document 5] (ID: 17750_16, Score: 0.889)\nRendu-Osler-Weber syndrome, also known as hereditary hemorrhagic telangiectasia (HHT), is an autosomal dominant hemorrhagic disorder characterized by multiple cutaneous, systemic, and/or pulmonary arteriovenous malformations (AVMs). Almost invariably, the patients have epistaxis, but bleeding may oc..."
+        ],
+        "prior_information_summary": "Patient reports headaches, dizziness, shortness of breath, cold legs, weak pulse, feeding difficulties, fatigue, fainting episodes, and occasional nosebleeds. Labs and imaging requests returned no results. Family history inquiry yielded no evidence of HHT. Current turn retrieved HHT diagnostic criteria but did not add new clinical evidence or actionable next step. Next step: confirm family history and consider imaging or lab tests if not already done."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20217646",
+        "turn_id": 7,
+        "query_text": "Right parietal AVM, history of epistaxis, family history of HHT not confirmed, no prior imaging or lab results, symptoms include headaches, dizziness, shortness of breath, cold legs, weak pulse, feeding difficulties, fatigue, fainting episodes.",
+        "skill_query_text": "Patient presents with right parietal AVM and epistaxis; HHT diagnostic criteria retrieved but no new evidence. Family history inquiry incomplete, imaging and labs pending. Need guidance on next diagnostic steps: confirm family history, order imaging or labs if not done."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 1,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_5aa4e3bc69d1",
+              "type": "experience",
+              "score": 0.844,
+              "outcome": "negative",
+              "text": "In a case of suspected dural AV fistula, the absence of a history of trauma or head injury is not diagnostic but should not be overinterpreted; the key discriminative evidence lies in the combination of unilateral neurological deficits (e.g., arm weakness) and systemic symptoms (e.g., cold extremities, weak pulses, fatigue), which together suggest a vascular malformation rather than a traumatic or inflammatory cause.",
+              "tags": []
+            },
+            {
+              "id": "exp_067cc3b01426",
+              "type": "experience",
+              "score": 0.8376,
+              "outcome": "negative",
+              "text": "In a patient presenting with sudden severe headache, slurred speech, left-sided weakness, dizziness, confusion, visual disturbances, and seizures — classic stroke red flags — failing to obtain neuroimaging or labs early is a critical missed step. This case demonstrates that even without head trauma or stressors, these symptoms strongly suggest acute neurological event; delaying imaging risks missing embolic stroke, which requires urgent intervention.",
+              "tags": []
+            },
+            {
+              "id": "exp_cc58f67ef651",
+              "type": "experience",
+              "score": 0.8349,
+              "outcome": "negative",
+              "text": "When a patient reports neurological symptoms like dizziness and pallor, the absence of classic systemic symptoms (e.g., weight loss, fever, night sweats) should not lead to premature closure on anemia; consider melena as a differential and pursue targeted GI history and occult blood testing.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_f4bdc6bf3e53",
+              "type": "skill",
+              "score": 0.798,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_5aa4e3bc69d1"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Hereditary Hemorrhagic Telangiectasia (HHT) with Right Parietal AVM}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0950bc17-0a62-4edb-9eeb-3dc86f20fa18': '{\"diagnosis\": \"Hereditary Hemorrhagic Telangiectasia (HHT) with Right Parietal AVM\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '0950bc17-0a62-4edb-9eeb-3dc86f20fa18', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Hereditary Hemorrhagic Telangiectasia (HHT) with Right Parietal AVM}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1421}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.5,
+        "conf_after": 0.5,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Hereditary Hemorrhagic Telangiectasia (HHT) with Right Parietal AVM}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Hereditary Hemorrhagic Telangiectasia (HHT) with Right Parietal AVM}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_7 retrieve_interaction: doctor_action: retrieve(query=Symptoms of Hemorrhagic Telangiectasia (HHT) and its association with AVMs)\nresponse: [Document 1] (ID: 8056_0, Score: 0.915)\nHereditary hemorrhagic telangiectasia\nSynonyms and keywords: HHT, Osler-Weber-Rendu syndrome\n\n# Overview\nHereditary hemorrhagic telangiectasia (HHT), also known as Osler-Weber-Rendu syndrome, is an autosomal dominant genetic disorder that leads to vascular malformations.\n\n# Signs and symptoms\nHHT is...\n\n[Document 2] (ID: 5307_1, Score: 0.905)\n# Diagnosis\nAn experienced health care provider can detect telangiectases during a physical examination. There is often a family history of hereditary hemorrhagic telangiectasia.\nSigns include:\n- Abnormal blood vessels that bleed easily in the throat, bowels, or airways...[truncated]"
+  ]
+}

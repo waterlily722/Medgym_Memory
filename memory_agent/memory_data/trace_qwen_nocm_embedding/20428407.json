@@ -1,0 +1,975 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20428407",
+  "turns": [
+    {
+      "case_id": "20428407",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Coronary artery disease",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 77-year-old female patient presenting with coronary artery disease. Key evidence gathered: Patient is 77-year-old female with recent decline in well-being. Diagnostic uncertainty remains high due to lack of specific symptoms, exam, lab, or imaging data. Most useful missing information: Detailed symptom history, risk factors, vital signs, and diagnostic test results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 77-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 77-year-old female patient presenting with Coronary artery disease.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 77-year-old female presenting with coronary artery disease. She reports recent decline in well-being. No specific symptoms, exam, lab, or imaging data provided. No diagnostic test results or risk factor details available. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20428407",
+        "turn_id": 1,
+        "query_text": "77-year-old female, presenting with coronary artery disease, recent decline in well-being, no specific symptoms, exam, lab, or imaging data, no diagnostic test results or risk factor details available, no management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 77-year-old female with coronary artery disease. Current uncertainty: Diagnosis not finalized due to lack of specific symptoms, exam, lab, or imaging data. Evidence gathered: Patient reports recent decline in well-being. Missing: Detailed symptom history, risk factors, vital signs, diagnostic test results. Ineffective actions: None recorded. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_f4b69ab7b32b",
+              "type": "experience",
+              "score": 0.7896,
+              "outcome": "negative",
+              "text": "Lower extremity swelling in an elderly patient with dyspnea on exertion and palpitations (atrial fibrillation) supports heart failure as a likely cause, but does not distinguish between systolic dysfunction or valvular disease without echocardiogram or BNP; do not apply this when no cardiac exam or imaging is available.",
+              "tags": []
+            },
+            {
+              "id": "exp_4fe6edefa023",
+              "type": "experience",
+              "score": 0.7891,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and neither test would reliably differentiate aortic stenosis from heart failure without echocardiogram or BNP; do not rely on labs or CXR alone in elderly patients with dyspnea and palpitations.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.7843,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7901,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.786,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7859,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_03d62c742a12"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_03d62c742a12",
+            "memory_type": "skill",
+            "score": 0.7901,
+            "content": {
+              "skill": "When initial lab requests yield no results, switch to targeted patient history questions to gather clinically actionable evidence.",
+              "procedure": [
+                {
+                  "action_type": "ASK_PATIENT",
+                  "action_label": "ask_patient(question=Have you experienced any recent difficulty swallowing, voice changes, or shortness of breath?)"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any chest pain, shortness of breath, or fatigue recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been feeling unusually tired lately, and I’ve had some shortness of breath, especially when I’m active. I also had a sharp chest pain a few days ago that lasted a while and made me sweat. It wasn’t constant, but it was worrying. I’m not sure if it’s related to my heart, but I’m concerned because I’ve had a history of heart issues.'}",
+        "env_info": "{'response': [{'id': 'cfeac40b-b987-4c51-8fdf-fa1e9188880c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any chest pain, shortness of breath, or fatigue recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or fatigue recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chest pain, shortness of breath, or fatigue recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20428407",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Coronary artery disease",
+        "diagnostic_strategy": "Current clinical problem: suspected coronary artery disease with possible acute or chronic symptoms. Key evidence gathered: patient reports fatigue, exertional dyspnea, and episodic sharp chest pain with diaphoresis. Diagnostic uncertainty remains: whether symptoms are cardiac in origin or due to other causes. Most useful missing information: ECG, cardiac biomarkers, imaging (e.g., stress test or angiography), and history of prior cardiac events. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, shortness of breath, or fatigue recently?)\nresponse: I’ve been feeling unusually tired lately, and I’ve had some shortness of breath, especially when I’m active. I also had a sharp chest pain a few days ago that lasted a while and made me sweat. It wasn’t constant, but it was worrying. I’m not sure if it’s related to my heart, but I’m concerned because I’ve had a history of heart issues."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Coronary artery disease. Patient reports fatigue, exertional shortness of breath, and episodic sharp chest pain with sweating. Patient has history of heart issues. No lab, imaging, or exam results provided. No prior findings or tests documented. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20428407",
+        "turn_id": 2,
+        "query_text": "Patient presents with fatigue, exertional dyspnea, and episodic sharp chest pain with diaphoresis. History of heart issues. No lab, imaging, or exam results available. Diagnostic uncertainty: cardiac origin vs other causes. No prior findings or tests documented.",
+        "skill_query_text": "Presenting problem: suspected coronary artery disease. Evidence gathered: patient reports fatigue, exertional dyspnea, episodic sharp chest pain with sweating, and history of heart issues. Missing: ECG, cardiac biomarkers, stress test, angiography, prior cardiac events. No ineffective actions tried. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7972,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7614,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_f4b69ab7b32b",
+              "type": "experience",
+              "score": 0.8308,
+              "outcome": "negative",
+              "text": "Lower extremity swelling in an elderly patient with dyspnea on exertion and palpitations (atrial fibrillation) supports heart failure as a likely cause, but does not distinguish between systolic dysfunction or valvular disease without echocardiogram or BNP; do not apply this when no cardiac exam or imaging is available.",
+              "tags": []
+            },
+            {
+              "id": "exp_4fe6edefa023",
+              "type": "experience",
+              "score": 0.8267,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and neither test would reliably differentiate aortic stenosis from heart failure without echocardiogram or BNP; do not rely on labs or CXR alone in elderly patients with dyspnea and palpitations.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8256,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8244,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8115,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8104,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'ccf26300-aaa1-4c21-92d6-4ae66c581936': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'ccf26300-aaa1-4c21-92d6-4ae66c581936', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 124}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20428407",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20428407",
+        "turn_id": 2,
+        "query_text": "Patient presents with fatigue, exertional dyspnea, and episodic sharp chest pain with diaphoresis. History of heart issues. No lab, imaging, or exam results available. Diagnostic uncertainty: cardiac origin vs other causes. No prior findings or tests documented.",
+        "skill_query_text": "Presenting problem: suspected coronary artery disease. Evidence gathered: patient reports fatigue, exertional dyspnea, episodic sharp chest pain with sweating, and history of heart issues. Missing: ECG, cardiac biomarkers, stress test, angiography, prior cardiac events. No ineffective actions tried. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7972,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7614,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_f4b69ab7b32b",
+              "type": "experience",
+              "score": 0.8308,
+              "outcome": "negative",
+              "text": "Lower extremity swelling in an elderly patient with dyspnea on exertion and palpitations (atrial fibrillation) supports heart failure as a likely cause, but does not distinguish between systolic dysfunction or valvular disease without echocardiogram or BNP; do not apply this when no cardiac exam or imaging is available.",
+              "tags": []
+            },
+            {
+              "id": "exp_4fe6edefa023",
+              "type": "experience",
+              "score": 0.8267,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and neither test would reliably differentiate aortic stenosis from heart failure without echocardiogram or BNP; do not rely on labs or CXR alone in elderly patients with dyspnea and palpitations.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8256,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8244,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8115,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8104,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4fe6edefa023"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4fe6edefa023",
+            "memory_type": "experience",
+            "score": 0.8267,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and neither test would reliably differentiate aortic stenosis from heart failure without echocardiogram or BNP; do not rely on labs or CXR alone in elderly patients with dyspnea and palpitations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'9e9e233e-14e5-435a-8a06-e85af6e0ba6f': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '9e9e233e-14e5-435a-8a06-e85af6e0ba6f', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 195}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20428407",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20428407",
+        "turn_id": 2,
+        "query_text": "Patient presents with fatigue, exertional dyspnea, and episodic sharp chest pain with diaphoresis. History of heart issues. No lab, imaging, or exam results available. Diagnostic uncertainty: cardiac origin vs other causes. No prior findings or tests documented.",
+        "skill_query_text": "Presenting problem: suspected coronary artery disease. Evidence gathered: patient reports fatigue, exertional dyspnea, episodic sharp chest pain with sweating, and history of heart issues. Missing: ECG, cardiac biomarkers, stress test, angiography, prior cardiac events. No ineffective actions tried. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7972,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7614,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_f4b69ab7b32b",
+              "type": "experience",
+              "score": 0.8308,
+              "outcome": "negative",
+              "text": "Lower extremity swelling in an elderly patient with dyspnea on exertion and palpitations (atrial fibrillation) supports heart failure as a likely cause, but does not distinguish between systolic dysfunction or valvular disease without echocardiogram or BNP; do not apply this when no cardiac exam or imaging is available.",
+              "tags": []
+            },
+            {
+              "id": "exp_4fe6edefa023",
+              "type": "experience",
+              "score": 0.8267,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and neither test would reliably differentiate aortic stenosis from heart failure without echocardiogram or BNP; do not rely on labs or CXR alone in elderly patients with dyspnea and palpitations.",
+              "tags": []
+            },
+            {
+              "id": "exp_173335590b9e",
+              "type": "experience",
+              "score": 0.8256,
+              "outcome": "negative",
+              "text": "Fever, fatigue, weight loss, confusion, and tachypnea in an elderly patient strongly suggest systemic infection or malignancy; do not apply this pattern when symptoms are localized, acute, or accompanied by clear infectious signs like cough or purulent discharge.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8244,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8115,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8104,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4fe6edefa023"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of coronary artery disease in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b15ffd1d-58e0-4db2-b312-3d513e2876c5': '[Document 1] (ID: 5224_6, Score: 0.893)\\n## Elderly\\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\\n\\n[Document 2] (ID: 10582_2, Score: 0.874)\\n## Pretest Probability\\nPretest probability of coronary artery disease is assessed basing upon the age, gender and the symptoms. Patients  are stratified into very low, low, intermediate, and high risk for CAD.\\n\\n## History and Symptoms\\nCoronary heart disease may be asymptomatic, or have symptoms such...\\n\\n[Document 3] (ID: 19085_3, Score: 0.870)\\n# Screening\\nThere is insufficient evidence to recommend routine screening for chest pain\\n\\n# Natural History, Complications, and Prognosis\\nAngina pectoris is defined as a retrosternal chest discomfort that increases gradually in intensity (over several minutes). Percipitant factors are physical or em...\\n\\n[Document 4] (ID: 2099_8, Score: 0.866)\\ntheir symptoms are not satisfactorily controlled with optimal medical treatment and\\nrevascularisation is considered appropr...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'b15ffd1d-58e0-4db2-b312-3d513e2876c5', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of coronary artery disease in elderly patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 269}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.6,
+        "delta": 0.39999999999999997,
+        "turn_reward": 0.08,
+        "importance": 0.39999999999999997
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of coronary artery disease in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of coronary artery disease in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20428407",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Coronary artery disease",
+        "diagnostic_strategy": "Current clinical problem: Assessing risk and presentation of coronary artery disease in an elderly patient with reported symptoms including fatigue, shortness of breath, and chest pain. Key evidence gathered: Patient reports chest pain, shortness of breath, and fatigue; no lab or CXR results available. Diagnostic uncertainty: Whether symptoms are indicative of CAD or another condition; need to determine pretest probability based on age, gender, and symptoms. Most useful missing information: Results of labs and CXR, patient’s history of heart issues, and specific symptom characteristics (e.g., duration, radiation, relief). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Coronary artery disease"
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports chest pain, shortness of breath, and fatigue; no lab or CXR results available. Patient has history of heart issues. No diagnostic tests performed yet. No results for labs or CXR found. No other relevant findings reported. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20428407",
+        "turn_id": 5,
+        "query_text": "Patient reports chest pain, shortness of breath, and fatigue; no lab or CXR results available. Patient has history of heart issues. No diagnostic tests performed yet. No results for labs or CXR found. No other relevant findings reported.",
+        "skill_query_text": "Presenting problem: Assessing risk and presentation of coronary artery disease in an elderly patient. Evidence gathered: Patient reports chest pain, shortness of breath, and fatigue; no lab or CXR results available. History of heart issues. No tests performed. Uncertainty: Whether symptoms indicate CAD or another condition. Missing: Lab and CXR results, specific symptom characteristics. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_4fe6edefa023",
+              "type": "experience",
+              "score": 0.865,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and neither test would reliably differentiate aortic stenosis from heart failure without echocardiogram or BNP; do not rely on labs or CXR alone in elderly patients with dyspnea and palpitations.",
+              "tags": []
+            },
+            {
+              "id": "exp_388b631a95e8",
+              "type": "experience",
+              "score": 0.833,
+              "outcome": "negative",
+              "text": "Fatigue, dizziness, and tachycardia in a patient with suspected dural AV fistula are key systemic symptoms that support the diagnosis when no focal neurological or vascular signs are present; do not rely on these alone without imaging confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.8285,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.8248,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8167,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_390be2a6fde1",
+              "type": "skill",
+              "score": 0.8111,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4fe6edefa023"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any history of diabetes, hypertension, or smoking?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '723ac00e-ffac-4208-84e7-23f441372d07', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any history of diabetes, hypertension, or smoking?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 729}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any history of diabetes, hypertension, or smoking?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any history of diabetes, hypertension, or smoking?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20428407",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Coronary artery disease",
+        "diagnostic_strategy": "Current clinical problem: Assess risk factors and symptoms for coronary artery disease. Key evidence gathered: Patient reports fatigue, shortness of breath, and sharp chest pain with sweating; no known history of diabetes, hypertension, or smoking. Diagnostic uncertainty: Whether these symptoms are cardiac-related and whether risk factors are present. Most useful missing information: Results of labs and CXR, which are currently unavailable. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Coronary artery disease",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, shortness of breath, or fatigue recently?)\nresponse: I’ve been feeling unusually tired lately, and I’ve had some shortness of breath, especially when I’m active. I also had a sharp chest pain a few days ago that lasted a while and made me sweat. It wasn’t constant, but it was worrying. I’m not sure if it’s related to my heart, but I’m concerned because I’ve had a history of heart issues.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of coronary artery disease in elderly patients)\nresponse: [Document 1] (ID: 5224_6, Score: 0.893)\n## Elderly\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\n\n[Document 2] (ID: 10582_2, Score: 0.874)\n## Pretest Probability\nPretest probability of coronary artery disease is assessed basing upon the age, gender and the symptoms. Patients  are stratified into very low, low, intermediate, and high risk for CAD.\n\n## History and Symptoms\nCoronary heart disease may be asymptomatic, or have symptoms such...\n\n[Document 3] (ID: 19085_3, Score: 0.870)\n# Screening\nThere is insufficient evidence to recommend routine screening for chest pain\n\n# Natural History, Complications, and Prognosis\nAngina pectoris is defined as a retrosternal chest discomfort that increases gradually in intensity (over several minutes). Percipitant factors are physical or em...\n\n[Document 4] (ID: 2099_8, Score: 0.866)\ntheir symptoms are not satisfactorily controlled with optimal medical treatment and\nrevascularisation is considered appropriate and\nPCI is not appropriate.\nOffer PCI to people with stable angina and suitable coronary anatomy when:\ntheir symptoms are not satisfactorily controlled with optimal medical...\n\n[Document 5] (ID: 12036_2, Score: 0.865)\n- Diabetes mellitus: Like hypertension, patients with diabetes mellitus seem to have a higher risk to develope coronary artery disease. Because diabetes mellitus damage both coronary arteries and myocardial capillary vessels.\n\n- Drinking too much alcohol: Data has demonstrated too much alcohol damag..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any history of diabetes, hypertension, or smoking?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Coronary artery disease. Patient reports fatigue, shortness of breath, and sharp chest pain with sweating, especially during activity; history of heart issues. No known history of diabetes, hypertension, or smoking. Labs and CXR results unavailable. Retrieved documents on CAD symptoms, pretest probability, screening, and risk factors (diabetes, alcohol). Unresolved: Need lab and imaging results to assess cardiac status. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20428407",
+        "turn_id": 6,
+        "query_text": "Patient reports fatigue, shortness of breath, and sharp chest pain with sweating, especially during activity; history of heart issues; no known history of diabetes, hypertension, or smoking; labs and CXR results unavailable; unresolved diagnostic uncertainty regarding cardiac origin of symptoms.",
+        "skill_query_text": "Presenting problem: Coronary artery disease. Current uncertainty: Whether symptoms are cardiac-related and if risk factors are present. Evidence gathered: Patient history and symptoms. Missing: Labs and CXR results. Ineffective actions: Requested labs and CXR, no results returned. Need workflow guidance on next diagnostic steps given current evidence and missing data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_578be592e412",
+              "type": "experience",
+              "score": 0.8346,
+              "outcome": "negative",
+              "text": "Unintentional weight loss, fatigue, and cognitive decline in an elderly male patient without fever or night sweats should prompt consideration of systemic metabolic or endocrine causes like diabetes, not just malignancy or neurological disorders; do not apply this when systemic signs or imaging suggest localized or infectious etiology.",
+              "tags": []
+            },
+            {
+              "id": "exp_e966f5270f02",
+              "type": "experience",
+              "score": 0.8207,
+              "outcome": "negative",
+              "text": "Shortness of breath, especially when lying down, combined with confusion, sweating, and tachycardia, strongly suggests heart failure or sepsis; do not assume pneumonia without fever, cough, or sputum production.",
+              "tags": []
+            },
+            {
+              "id": "exp_c715a3cba6fc",
+              "type": "experience",
+              "score": 0.8199,
+              "outcome": "negative",
+              "text": "Chest pain, palpitations, and shortness of breath in the context of increasing anxiety and recent heavy alcohol use strongly suggest alcohol withdrawal syndrome; do not apply this when the patient has no history of alcohol use or when symptoms are clearly attributable to another known condition like myocardial infarction.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8252,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_b4ce35674ffa",
+              "type": "skill",
+              "score": 0.821,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8125,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Coronary Artery Disease}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'429198bf-f6bb-45f9-b531-95471584c5ee': '{\"diagnosis\": \"Coronary Artery Disease\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '429198bf-f6bb-45f9-b531-95471584c5ee', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Coronary Artery Disease}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 800}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Coronary Artery Disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Coronary Artery Disease}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20428407",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Coronary artery disease",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 6. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Coronary artery disease",
+          "initial_information: I am a 77-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 77-year-old female patient presenting with Coronary artery disease..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, shortness of breath, or fatigue recently?)\nresponse: I’ve been feeling unusually tired lately, and I do get shortness of breath when I’m active. I also had some chest discomfort — not sharp, more like a pressure or heaviness — especially when I’m lying down or after exertion. It’s not constant, but it comes and goes, and I’m worried it might be something serious.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of coronary artery disease in elderly patients)\nresponse: [Document 1] (ID: 5224_6, Score: 0.893)\n## Elderly\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\n\n[Document 2] (ID: 10582_2, Score: 0.874)\n## Pretest Probability\nPretest probability of coronary artery disease is assessed basing upon the age, gender and the symptoms. Patients  are stratified into very low, low, intermediate, and high risk for CAD.\n\n## History and Symptoms\nCoronary heart disease may be asymptomatic, or have symptoms such...\n\n[Document 3] (ID: 19085_3, Score: 0.870)\n# Screening\nThere is insufficient evidence to recommend routine screening for chest pain\n\n# Natural History, Complications, and Prognosis\nAngina pectoris is defined as a retrosternal chest discomfort that increases gradually in intensity (over several minutes). Percipitant factors are physical or em...\n\n[Document 4] (ID: 2099_8, Score: 0.866)\ntheir symptoms are not satisfactorily controlled with optimal medical treatment and\nrevascularisation is considered appropriate and\nPCI is not appropriate.\nOffer PCI to people with stable angina and suitable coronary anatomy when:\ntheir symptoms are not satisfactorily controlled with optimal medical...\n\n[Document 5] (ID: 12036_2, Score: 0.865)\n- Diabetes mellitus: Like hypertension, patients with diabetes mellitus seem to have a higher risk to develope coronary artery disease. Because diabetes mellitus damage both coronary arteries and myocardial capillary vessels.\n\n- Drinking too much alcohol: Data has demonstrated too much alcohol damag...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you been diagnosed with any other conditions such as diabetes, hypertension, or high cholesterol?)\nresponse: I have been diagnosed with hypercholesterolemia. I was not told I have diabetes or hypertension.",
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=coronary artery disease management in elderly patients with hypercholesterolemia)\nresponse: [Document 1] (ID: 4348_21, Score: 0.858)\n## Older patients\nCompared with the younger populations, older patients are more susceptible to possible threats to quality of life due to conditions like sarcopenia, frailty, and malnutrition. The goals of any dyslipidemia treatment for older patients should be to prevent cerebrocardiovascular dise...\n\n[Document 2] (ID: 11110_25, Score: 0.854)\n### Lipid Management\nIn patients with established coronary artery disease, the recommended goal for total cholesterol is 130 mg/dl and LDL-C is 100 mg/dl, while the HDL-C and triglyceride concentrations serve as preferred markers for risk assessment. In patients with CAD, a fasting lipid-profile may...\n\n[Document 3] (ID: 971_9, Score: 0.854)\nFor most low-risk subjects (FRS  0 AU) because the proportional benefit from statin therapy will be similar to that in other treatment groups. Treatment of this group would follow the intermediate risk approach. The treatment approach recommended for primary prevention patients is outlined in Figure...\n\n[Document 4] (ID: 5224_6, Score: 0.853)\n## Elderly\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\n\n[Document 5] (ID: 3721_54, Score: 0.852)\nIn the IMPROVE-IT conducted on 18,144 patients who were admitted for acute coronary syndrome within 10 days of the study, simvastatin/ezetimibe therapy reduced relative risk for CVD by 6.4%. In the subgroup analysis, relative risk was reduced by 14% in the diabetes group, showing a greater CVD preve..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any chest pain, shortness of breath, or fatigue recently?)\nresponse: I’ve been feeling unusually tired lately, and I do get shortness of breath when I’m active. I also had some chest discomfort — not sharp, more like a pressure or heaviness — especially when I’m lying down or after exertion. It’s not constant, but it comes and goes, and I’m worried it might be something serious.\ndoctor_action: retrieve(query=symptoms of coronary artery disease in elderly patients)\nresponse: [Document 1] (ID: 5224_6, Score: 0.893)\n## Elderly\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\n\n[Document 2] (ID: 10582_2, Score: 0.874)\n## Pretest Probability\nPretest probability of coronary artery disease is assessed basing upon the age, gender and the symptoms. Patients  are stratified into very low, low, intermediate, and high risk for CAD.\n\n## History and Symptoms\nCoronary heart disease may be asymptomatic, or have symptoms such...\n\n[Document 3] (ID: 19085_3, Score: 0.870)\n# Screening\nThere is insufficient evidence to recommend routine screening for chest pain\n\n# Natural History, Complications, and Prognosis\nAngina pectoris is defined as a retrosternal chest discomfort that increases gradually in intensity (over several minutes). Percipitant factors are physical or em...\n\n[Document 4] (ID: 2099_8, Score: 0.866)\ntheir symptoms are not satisfactorily controlled with optimal medical treatment and\nrevascularisation is considered appropriate and\nPCI is not appropriate.\nOffer PCI to people with stable angina and suitable coronary anatomy when:\ntheir symptoms are not satisfactorily controlled with optimal medical...\n\n[Document 5] (ID: 12036_2, Score: 0.865)\n- Diabetes mellitus: Like hypertension, patients with diabetes mellitus seem to have a higher risk to develope coronary artery disease. Because diabetes mellitus damage both coronary arteries and myocardial capillary vessels.\n\n- Drinking too much alcohol: Data has demonstrated too much alcohol damag...\ndoctor_action: ask_patient(question=Have you been diagnosed with any other conditions such as diabetes, hypertension, or high cholesterol?)\nresponse: I have been diagnosed with hypercholesterolemia. I was not told I have diabetes or hypertension.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20428407",
+        "turn_id": 7,
+        "query_text": "77-year-old female with chest pressure/heaviness when lying down or after exertion, shortness of breath with activity, fatigue; diagnosed with hypercholesterolemia; no diabetes or hypertension; retrieved: symptoms of CAD in elderly, CAD management in elderly with hypercholesterolemia; no labs or CXR results available.",
+        "skill_query_text": "Presenting problem: Coronary artery disease in 77-year-old female with hypercholesterolemia. Uncertainty: Confirm diagnosis and management. Evidence gathered: patient history, retrieved documents on CAD in elderly and management with hypercholesterolemia. Missing: labs, CXR. Ineffective: labs and CXR requests yielded no results. Need: workflow guidance for next diagnostic action targeting evidence gaps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_a31e7bd48ea4",
+              "type": "experience",
+              "score": 0.802,
+              "outcome": "positive",
+              "text": "Patient denied symptoms of shortness of breath, swelling, or weight loss despite morbid obesity; this negative finding helps rule out cardiac or systemic complications and supports a musculoskeletal focus.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_2048ff53c72d",
+              "type": "experience",
+              "score": 0.8123,
+              "outcome": "negative",
+              "text": "Swelling in feet/ankles, abdominal bloating, nocturia, and orthopnea in an elderly patient with weight gain and fatigue are highly suggestive of heart failure.",
+              "tags": []
+            },
+            {
+              "id": "exp_d1318546ee8d",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "negative",
+              "text": "Bilateral leg numbness, tingling, and gait instability in a 56-year-old female with diabetes strongly suggest diabetic peripheral neuropathy; these are key discriminative findings.",
+              "tags": []
+            },
+            {
+              "id": "exp_2ad02e2429e9",
+              "type": "experience",
+              "score": 0.7893,
+              "outcome": "negative",
+              "text": "Weak pulses in the right leg and cold sensation, especially with exertion, are suggestive of peripheral vascular compromise and should prompt consideration of aortic stenosis with peripheral symptoms.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7889,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7761,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_dbc65485cd84",
+              "type": "skill",
+              "score": 0.7621,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Coronary Artery Disease}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f83801cf-bbec-490d-880e-73ea1756977b': '{\"diagnosis\": \"Coronary Artery Disease\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': 'f83801cf-bbec-490d-880e-73ea1756977b', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Coronary Artery Disease}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1288}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.6,
+        "conf_after": 0.6,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Coronary Artery Disease}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Coronary Artery Disease}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'ccf26300-aaa1-4c21-92d6-4ae66c581936': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': 'ccf26300-aaa1-4c21-92d6-4ae66c581936', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 124}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chest pain, shortness of breath, or fatigue recently?)\nresponse: I’ve been feeling unusually tired lately, and I do get shortness of breath when I’m active. I also had some chest discomfort — not sharp, more like a pressure or heaviness — especially when I’m lying down or after exertion. It’s not constant, but it comes and goes, and I’m worried it might be something serious."
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you had any history of diabetes, hypertension, or smoking?"
+      },
+      "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+      "env_info": "{'response': [{'id': '723ac00e-ffac-4208-84e7-23f441372d07', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any history of diabetes, hypertension, or smoking?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 729}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 retrieve_interaction: doctor_action: retrieve(query=symptoms of coronary artery disease in elderly patients)\nresponse: [Document 1] (ID: 5224_6, Score: 0.893)\n## Elderly\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\n\n[Document 2] (ID: 10582_2, Score: 0.874)\n## Pretest Probability\nPretest probability of coronary artery disease is assessed basing upon the age, gender and the symptoms. Patients  are stratified into very low, low, intermediate, and high risk for CAD.\n\n## History and Symptoms\nCoronary heart disease may be asymptomatic, or have s...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Coronary Artery Disease}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'429198bf-f6bb-45f9-b531-95471584c5ee': '{\"diagnosis\": \"Coronary Artery Disease\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '429198bf-f6bb-45f9-b531-95471584c5ee', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Coronary Artery Disease}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 800}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you been diagnosed with any other conditions such as diabetes, hypertension, or high cholesterol?)\nresponse: I have been diagnosed with hypercholesterolemia. I was not told I have diabetes or hypertension."
+      ]
+    },
+    {
+      "turn_id": 7,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Coronary Artery Disease}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'f83801cf-bbec-490d-880e-73ea1756977b': '{\"diagnosis\": \"Coronary Artery Disease\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': 'f83801cf-bbec-490d-880e-73ea1756977b', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Coronary Artery Disease}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1288}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 retrieve_interaction: doctor_action: retrieve(query=coronary artery disease management in elderly patients with hypercholesterolemia)\nresponse: [Document 1] (ID: 4348_21, Score: 0.858)\n## Older patients\nCompared with the younger populations, older patients are more susceptible to possible threats to quality of life due to conditions like sarcopenia, frailty, and malnutrition. The goals of any dyslipidemia treatment for older patients should be to prevent cerebrocardiovascular dise...\n\n[Document 2] (ID: 11110_25, Score: 0.854)\n### Lipid Management\nIn patients with established coronary artery disease, the recommended goal for total cholesterol is 130 mg/dl and LDL-C is 100 mg/dl, while the HDL-C and triglyceride concentrations serve as preferred markers for risk assessment. In patient...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+    "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

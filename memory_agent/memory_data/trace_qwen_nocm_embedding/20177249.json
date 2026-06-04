@@ -1,0 +1,1976 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20177249",
+  "turns": [
+    {
+      "case_id": "20177249",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 23-year-old female patient presenting with decreased fetal movement and a non-reactive non-stress test. Key evidence gathered: Patient is 23 years old, female, reports poor well-being and decreased fetal movement. Diagnostic uncertainty: Whether fetal distress or maternal factors are causing decreased movement. Most useful missing information: Fetal heart rate tracing details, maternal history of pregnancy complications, recent ultrasound findings, or maternal vitals. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 23-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 23-year-old female patient presenting with Decreased fetal movement, non-reactive non-stress test, poorly.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 23-year-old female reporting poor well-being and decreased fetal movement, with a non-reactive non-stress test. No additional findings, exam, lab, imaging, or tool results provided. No history of pregnancy complications or maternal vitals reported. No interpretation of evidence available. Missing: Fetal heart rate tracing details, maternal history, recent ultrasound findings, or maternal vitals."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 1,
+        "query_text": "23-year-old female, reports poor well-being and decreased fetal movement, non-reactive non-stress test. No fetal heart rate tracing details, maternal history of pregnancy complications, recent ultrasound findings, or maternal vitals. Diagnostic uncertainty: fetal distress vs maternal factors.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 23-year-old female with decreased fetal movement and non-reactive non-stress test. Evidence gathered: patient age, gender, poor well-being. Missing: fetal heart rate tracing, maternal history, ultrasound findings, maternal vitals. Ineffective actions: none. Need: diagnostic decision workflow guidance."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.8249,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            },
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8074,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7863,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8074,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8059,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8044,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.8074,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did you first notice the decreased fetal movement?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '0d32a9b2-8148-4c10-9cde-b59093b43ecf', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did you first notice the decreased fetal movement?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0625,
+        "delta": 0.0625,
+        "turn_reward": 0.0125,
+        "importance": 0.0625
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first notice the decreased fetal movement?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did you first notice the decreased fetal movement?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Current clinical problem: Decreased fetal movement with non-reactive non-stress test. Key evidence gathered: Patient reports no prior issues or abnormal findings in the area. Diagnostic uncertainty remains high due to lack of specific timing or context for decreased movement. Most useful missing information: Exact timing of onset of decreased fetal movement, maternal history of prior fetal compromise, and results of further fetal monitoring or imaging. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice the decreased fetal movement?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Decreased fetal movement, non-reactive non-stress test, poorly. Patient reports no prior problems or abnormal findings in the area. No specific timing or context provided for onset of decreased movement. No additional exam, lab, imaging, or tool results reported. Missing: Timing of decreased movement, maternal history of fetal compromise, further fetal monitoring results. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 2,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient reports no prior issues or abnormal findings. No specific timing or context for onset. No exam, lab, or imaging results reported. Diagnostic uncertainty remains high due to lack of timing, maternal history of fetal compromise, and further monitoring/imaging results.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement with non-reactive non-stress test. Uncertainty: Diagnosis not finalized due to missing timing of onset, maternal history of fetal compromise, and further monitoring/imaging results. Ineffective action: Asked patient about timing of onset, received no relevant response. Need: Workflow guidance for next diagnostic steps given current evidence and unresolved uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 2,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8096,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.8071,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8115,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8052,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8031,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any vaginal bleeding, abdominal pain, or contractions during this time?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I did not experience any vaginal bleeding, abdominal pain, or contractions during this time.'}",
+        "env_info": "{'response': [{'id': '3c56323f-23e3-4378-8152-bb4c9592c763', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any vaginal bleeding, abdominal pain, or contractions during this time?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 68}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.125,
+        "conf_after": 0.1875,
+        "delta": 0.0625,
+        "turn_reward": 0.0125,
+        "importance": 0.0625
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any vaginal bleeding, abdominal pain, or contractions during this time?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any vaginal bleeding, abdominal pain, or contractions during this time?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Current clinical problem: Decreased fetal movement with non-reactive non-stress test. Key evidence gathered: Patient denies vaginal bleeding, abdominal pain, or contractions. Diagnostic uncertainty remains: cause of decreased fetal movement and non-reactive test. Most useful missing information: fetal heart rate tracing details, ultrasound findings, maternal history of prior complications. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Decreased fetal movement, non-reactive non-stress test, poorly"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice the decreased fetal movement?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, or contractions. Patient reports no prior problems or abnormal findings related to fetal movement. No lab, imaging, or tool results provided. Missing: fetal heart rate tracing, ultrasound findings, maternal history of complications. No low-value or no-result attempts."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, or contractions. No prior problems or abnormal findings reported. No lab, imaging, or tool results provided. Missing: fetal heart rate tracing, ultrasound findings, maternal history of complications. Diagnostic uncertainty: cause of decreased fetal movement and non-reactive test.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement with non-reactive non-stress test. Current uncertainty: cause of decreased fetal movement and non-reactive test. Evidence gathered: patient denies bleeding, pain, or contractions. Missing: fetal heart rate tracing, ultrasound findings, maternal history of complications. Ineffective action: asked patient about timing of symptom onset, received unhelpful response. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7898,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7643,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.833,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            },
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8232,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8161,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8103,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'672f637a-3148-4160-9b48-12e22cc8524e': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '672f637a-3148-4160-9b48-12e22cc8524e', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 133}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.1875,
+        "conf_after": 0.1875,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, or contractions. No prior problems or abnormal findings reported. No lab, imaging, or tool results provided. Missing: fetal heart rate tracing, ultrasound findings, maternal history of complications. Diagnostic uncertainty: cause of decreased fetal movement and non-reactive test.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement with non-reactive non-stress test. Current uncertainty: cause of decreased fetal movement and non-reactive test. Evidence gathered: patient denies bleeding, pain, or contractions. Missing: fetal heart rate tracing, ultrasound findings, maternal history of complications. Ineffective action: asked patient about timing of symptom onset, received unhelpful response. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7898,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7643,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.833,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            },
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8232,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8161,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8103,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REVIEW_IMAGE",
+        "arguments": {
+          "exam_type": "CXR"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b1e69cda-3a61-4214-bb2c-0a670d3bf0f2': '{\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\\\"CXR\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'b1e69cda-3a61-4214-bb2c-0a670d3bf0f2', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"CXR\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 204}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.1875,
+        "conf_after": 0.1875,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REVIEW_IMAGE",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"CXR\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, or contractions. No prior problems or abnormal findings reported. No lab, imaging, or tool results provided. Missing: fetal heart rate tracing, ultrasound findings, maternal history of complications. Diagnostic uncertainty: cause of decreased fetal movement and non-reactive test.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement with non-reactive non-stress test. Current uncertainty: cause of decreased fetal movement and non-reactive test. Evidence gathered: patient denies bleeding, pain, or contractions. Missing: fetal heart rate tracing, ultrasound findings, maternal history of complications. Ineffective action: asked patient about timing of symptom onset, received unhelpful response. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7898,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7643,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.833,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            },
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8232,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8161,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8103,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "query": "Decreased fetal movement, non-reactive non-stress test in pregnant women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'147e3627-68a4-47cf-be98-d36d7f96a3f4': '[Document 1] (ID: 25124_0, Score: 0.883)\\nNonstress test\\n\\n# Overview\\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\\n\\n# Interpretation\\n- The NST is part of the biophysical profile, a formal prenatal test for ...\\n\\n[Document 2] (ID: 23385_0, Score: 0.865)\\nCardiotocograph\\n\\n# Overview\\nThe cardiotocograph, more commonly known as an electronic fetal monitor or external fetal monitor (EFM) or non-stress test (NST), is used to monitor a pregnant woman, typically in the third trimester. A cardiotocograph measures simultaneously both the fetal heart rate and...\\n\\n[Document 3] (ID: 3301_8, Score: 0.861)\\n## | noninva s ive fe tal rh (d) t yping in the fir s t trime s ter\\nNon-invasive prenatal testing of cell-free DNA in the first trimester of pregnancy may be used to determine fetal Rh(D) status. Such a policy has recently been introduced into clinical practice in countries such as Denmark, the Neth...\\n\\n[Document 4] (ID: 30288_1, Score: 0.859)\\n## Prenatal diagnosis\\nA decrease or cessation of fetal activity may be an indication of fetal distress or death, though it...[truncated]'}}",
+        "env_info": "{'response': [{'id': '147e3627-68a4-47cf-be98-d36d7f96a3f4', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Decreased fetal movement, non-reactive non-stress test in pregnant women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 278}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.1875,
+        "conf_after": 0.3125,
+        "delta": 0.125,
+        "turn_reward": 0.025,
+        "importance": 0.125
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Decreased fetal movement, non-reactive non-stress test in pregnant women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Decreased fetal movement, non-reactive non-stress test in pregnant women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Current clinical problem: Decreased fetal movement with non-reactive non-stress test. Key evidence gathered: Patient denies vaginal bleeding, abdominal pain, or contractions. No lab or CXR results available. Current diagnostic uncertainty: Whether decreased fetal movement indicates fetal distress or is benign near term. Most useful missing information: Fetal movement count history, biophysical profile results, or ultrasound findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Decreased fetal movement, non-reactive non-stress test, poorly"
+        ],
+        "ineffective_turn_information": [
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=Decreased fetal movement, non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.883)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 23385_0, Score: 0.865)\nCardiotocograph\n\n# Overview\nThe cardiotocograph, more commonly known as an electronic fetal monitor or external fetal monitor (EFM) or non-stress test (NST), is used to monitor a pregnant woman, typically in the third trimester. A cardiotocograph measures simultaneously both the fetal heart rate and...\n\n[Document 3] (ID: 3301_8, Score: 0.861)\n## | noninva s ive fe tal rh (d) t yping in the fir s t trime s ter\nNon-invasive prenatal testing of cell-free DNA in the first trimester of pregnancy may be used to determine fetal Rh(D) status. Such a policy has recently been introduced into clinical practice in countries such as Denmark, the Neth...\n\n[Document 4] (ID: 30288_1, Score: 0.859)\n## Prenatal diagnosis\nA decrease or cessation of fetal activity may be an indication of fetal distress or death, though it is not entirely uncommon for a healthy fetus to exhibit such changes, particularly near the end of a pregnancy when there is considerably little space in the uterus for the fetu...\n\n[Document 5] (ID: 4695_78, Score: 0.858)\n# Summary of evidence and considerations\nEffects of daily maternal fetal movement counting compared with standard ANC (EB Table B.2.1)\nThe evidence on the effects of daily fetal movement counting was derived from a Cochrane review (107). Two RCTs from HICs contributed data for this comparison. One w..."
+        ],
+        "prior_information_summary": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, or contractions. No lab or CXR results available. Retrieved information on non-stress test interpretation and fetal movement significance, but no actionable clinical data. Missing: Fetal movement count history, biophysical profile, or ultrasound findings."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 6,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, or contractions. No lab or CXR results available. Diagnostic uncertainty: Whether decreased fetal movement indicates fetal distress or is benign near term. Missing: Fetal movement count history, biophysical profile, or ultrasound findings.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement with non-reactive non-stress test. Evidence gathered: Patient denies bleeding, pain, or contractions. Ineffective action: Retrieved general NST/EFM information but no actionable clinical data. Missing: Fetal movement count history, biophysical profile, or ultrasound findings. Need: Workflow guidance for next diagnostic steps based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7945,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7691,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.842,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.837,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8246,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8173,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.8135,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8106,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent infections, fever, or exposure to sick individuals?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'f315783b-360f-43b3-a000-723ff2355762', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent infections, fever, or exposure to sick individuals?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 785}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3125,
+        "conf_after": 0.3125,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent infections, fever, or exposure to sick individuals?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent infections, fever, or exposure to sick individuals?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Current clinical problem: Decreased fetal movement with non-reactive non-stress test. Key evidence gathered: No vaginal bleeding, abdominal pain, or contractions; no lab or CXR results available; patient denies recent infections, fever, or exposure. Diagnostic uncertainty remains high due to lack of fetal heart rate variability or biophysical profile data. Most useful missing information: Fetal heart rate tracing, biophysical profile, maternal infection history, or ultrasound findings. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Decreased fetal movement, non-reactive non-stress test, poorly"
+        ],
+        "ineffective_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent infections, fever, or exposure to sick individuals?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, or contractions. No lab or CXR results available. Retrieved documents on NST interpretation and fetal movement reduction, but no actionable clinical data. Patient denies recent infections, fever, or exposure. No diagnostic tests performed or results obtained beyond initial history. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 7,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Known: No vaginal bleeding, abdominal pain, or contractions; no lab or CXR results; patient denies recent infections, fever, or exposure. Uncertainty: Lack of fetal heart rate variability or biophysical profile data. Missing: Fetal heart rate tracing, biophysical profile, maternal infection history, ultrasound findings.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement with non-reactive non-stress test. Evidence gathered: Initial history, no lab/CXR, patient denies infections/fever/exposure. Ineffective action: Asked about recent infections/fever/exposure (patient denied). Missing: Fetal heart rate tracing, biophysical profile, maternal infection history, ultrasound. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7826,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7553,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.751,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8366,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_4126f32894e7",
+              "type": "experience",
+              "score": 0.8285,
+              "outcome": "negative",
+              "text": "Painless, steady, watery vaginal leakage in a 34-week pregnant patient, especially with a sensation of the baby descending, strongly suggests PROM; avoid this interpretation if there are contractions, back pain, or abdominal cramping.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8235,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8433,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.831,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.821,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "query": "Causes of decreased fetal movement and non-reactive non-stress test in 23-year-old pregnant woman"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'46300a64-944d-4134-bb53-374aeffafef8': '[Document 1] (ID: 25124_0, Score: 0.867)\\nNonstress test\\n\\n# Overview\\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\\n\\n# Interpretation\\n- The NST is part of the biophysical profile, a formal prenatal test for ...\\n\\n[Document 2] (ID: 1181_733, Score: 0.858)\\n# Signs of foetal distress mainly include:\\n- bradycardia less than 110 beats/min; - tachycardia greater than 170 beats/min, frequently also observed when the mother has fever; - loss of beat-to-beat variability; - late decelerations of the foetal heart rate in response to uterine contractions.\\nIn ad...\\n\\n[Document 3] (ID: 26535_11, Score: 0.852)\\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\\n\\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\\n\\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\\n\\n[Document 4] (ID: 23630_12, Score: 0.852)\\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\\n\\n- Pleural...[truncated]'}}",
+        "env_info": "{'response': [{'id': '46300a64-944d-4134-bb53-374aeffafef8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Causes of decreased fetal movement and non-reactive non-stress test in 23-year-old pregnant woman\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 858}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3125,
+        "conf_after": 0.375,
+        "delta": 0.0625,
+        "turn_reward": 0.0125,
+        "importance": 0.0625
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Causes of decreased fetal movement and non-reactive non-stress test in 23-year-old pregnant woman\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Causes of decreased fetal movement and non-reactive non-stress test in 23-year-old pregnant woman\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Current clinical problem: Decreased fetal movement and non-reactive non-stress test in a 23-year-old pregnant woman. Key evidence gathered: Patient denies vaginal bleeding, abdominal pain, contractions, or recent infections/fever. No lab or CXR results available. Diagnostic uncertainty remains high due to lack of imaging or fetal ultrasound data. Most useful missing information: Fetal ultrasound findings, maternal temperature, and detailed fetal heart rate variability assessment. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Decreased fetal movement, non-reactive non-stress test, poorly"
+        ],
+        "ineffective_turn_information": [
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=Causes of decreased fetal movement and non-reactive non-stress test in 23-year-old pregnant woman)\nresponse: [Document 1] (ID: 25124_0, Score: 0.867)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 1181_733, Score: 0.858)\n# Signs of foetal distress mainly include:\n- bradycardia less than 110 beats/min; - tachycardia greater than 170 beats/min, frequently also observed when the mother has fever; - loss of beat-to-beat variability; - late decelerations of the foetal heart rate in response to uterine contractions.\nIn ad...\n\n[Document 3] (ID: 26535_11, Score: 0.852)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 4] (ID: 23630_12, Score: 0.852)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 5] (ID: 30537_8, Score: 0.851)\n## Fetal assessments\n- ultrasound is used for many functions:\nDating the gestational age of a pregnancy, most accurate in first trimester\nDetecting fetal anomalies in the second trimester\nbiophysical profiles (BPP)\nBlood flow velocity in umbilical cord -- decrease/absence/reversal or diastolic blood..."
+        ],
+        "prior_information_summary": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, contractions, or recent infections/fever. No lab or CXR results available. Previous retrieval attempts returned general information on NST interpretation, fetal distress signs, and ultrasound uses, but no specific actionable findings. No fetal ultrasound or detailed fetal heart rate variability data obtained. Missing key diagnostic information to assess fetal well-being."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 8,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, contractions, or recent infections/fever. No lab or CXR results available. No fetal ultrasound or detailed fetal heart rate variability data obtained. Diagnostic uncertainty remains high due to lack of imaging or fetal ultrasound data.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement and non-reactive non-stress test in a 23-year-old pregnant woman. Evidence gathered: Patient denies symptoms; no lab or CXR results; no fetal ultrasound or detailed fetal heart rate variability data. Ineffective actions: Previous retrieval returned general NST interpretation and fetal distress signs, no actionable findings. Need workflow guidance for next diagnostic steps based on missing fetal ultrasound and heart rate variability data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7719,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7424,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.733,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8355,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8208,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8183,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.808,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.7984,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7973,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'f4fd7f63-bc4a-4537-89a6-9551f8308b5a': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'f4fd7f63-bc4a-4537-89a6-9551f8308b5a', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1414}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.375,
+        "conf_after": 0.375,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 8,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, contractions, or recent infections/fever. No lab or CXR results available. No fetal ultrasound or detailed fetal heart rate variability data obtained. Diagnostic uncertainty remains high due to lack of imaging or fetal ultrasound data.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement and non-reactive non-stress test in a 23-year-old pregnant woman. Evidence gathered: Patient denies symptoms; no lab or CXR results; no fetal ultrasound or detailed fetal heart rate variability data. Ineffective actions: Previous retrieval returned general NST interpretation and fetal distress signs, no actionable findings. Need workflow guidance for next diagnostic steps based on missing fetal ultrasound and heart rate variability data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7719,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7424,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.733,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8355,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8208,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8183,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.808,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.7984,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7973,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "microbiology"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'65faadc0-f56c-4ab1-bc8e-b6bded8ebda8': '{\"exam_type\": \"microbiology\", \"source\": \"none\", \"result\": \"No result for \\\\\"microbiology\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '65faadc0-f56c-4ab1-bc8e-b6bded8ebda8', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"microbiology\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1488}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.375,
+        "conf_after": 0.375,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"microbiology\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_9 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_10 request_exam_interaction: doctor_action: request_exam(exam_type=microbiology)\nresponse: {\"exam_type\": \"microbiology\", \"source\": \"none\", \"result\": \"No result for \\\"microbiology\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 8,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient denies vaginal bleeding, abdominal pain, contractions, or recent infections/fever. No lab or CXR results available. No fetal ultrasound or detailed fetal heart rate variability data obtained. Diagnostic uncertainty remains high due to lack of imaging or fetal ultrasound data.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement and non-reactive non-stress test in a 23-year-old pregnant woman. Evidence gathered: Patient denies symptoms; no lab or CXR results; no fetal ultrasound or detailed fetal heart rate variability data. Ineffective actions: Previous retrieval returned general NST interpretation and fetal distress signs, no actionable findings. Need workflow guidance for next diagnostic steps based on missing fetal ultrasound and heart rate variability data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_119d7641a66f",
+              "type": "experience",
+              "score": 0.7719,
+              "outcome": "positive",
+              "text": "Elderly patients with GI bleeding often present without hematemesis; relying solely on classic signs like hematemesis misses a significant proportion of upper GI bleeds, especially in this demographic.",
+              "tags": []
+            },
+            {
+              "id": "exp_362a5aa04a79",
+              "type": "experience",
+              "score": 0.7424,
+              "outcome": "positive",
+              "text": "Black tarry stools and coffee-ground vomiting strongly suggest upper gastrointestinal bleeding; this pattern is highly specific and should prompt immediate diagnostic workup even without hematemesis.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.733,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0786eab39093",
+              "type": "experience",
+              "score": 0.8355,
+              "outcome": "negative",
+              "text": "Requesting labs or CXR in a pregnant patient presenting with vaginal fluid leakage is low-yield unless there is suspicion of infection or other systemic complications; focus on history and physical findings first.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8208,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8183,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.808,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.7984,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.7973,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Fetal distress or fetal demise}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'01da8e5d-fe2b-412d-8853-a4e41297d750': '{\"diagnosis\": \"Fetal distress or fetal demise\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '01da8e5d-fe2b-412d-8853-a4e41297d750', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Fetal distress or fetal demise}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1562}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.375,
+        "conf_after": 0.375,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Fetal distress or fetal demise}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Fetal distress or fetal demise}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 9. Low-information/no-result turns already attempted: 3; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Decreased fetal movement, non-reactive non-stress test, poorly",
+          "initial_information: I am a 23-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 23-year-old female patient presenting with Decreased fetal movement, non-reactive non-stress test, poorly..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice the decreased fetal movement?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any vaginal bleeding, contractions, or pelvic pain recently?)\nresponse: No, I did not experience any vaginal bleeding, contractions, or pelvic pain recently. I denied those symptoms when I was evaluated.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=Decreased fetal movement non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.887)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 23385_0, Score: 0.868)\nCardiotocograph\n\n# Overview\nThe cardiotocograph, more commonly known as an electronic fetal monitor or external fetal monitor (EFM) or non-stress test (NST), is used to monitor a pregnant woman, typically in the third trimester. A cardiotocograph measures simultaneously both the fetal heart rate and...\n\n[Document 3] (ID: 3301_8, Score: 0.867)\n## | noninva s ive fe tal rh (d) t yping in the fir s t trime s ter\nNon-invasive prenatal testing of cell-free DNA in the first trimester of pregnancy may be used to determine fetal Rh(D) status. Such a policy has recently been introduced into clinical practice in countries such as Denmark, the Neth...\n\n[Document 4] (ID: 2079_0, Score: 0.860)\nHigh-throughput non-invasive prenatal testing for fetal RHD genotype\nEvidence-based recommendations on high-throughput non-invasive prenatal testing (NIPT) for fetal RHD genotype.\n# Recommendations\nHigh-throughput non‑invasive prenatal testing (NIPT) for fetal RHD genotype is recommended as a cost-e...\n\n[Document 5] (ID: 779_44, Score: 0.859)\nThe biophysical profile (BPP) classically includes an ultrasound assessment of fetal well-being and a non-stress test. Performing both components increases the duration of the pregnant person's visit but both elements are not always necessary. When the BPP is normal, the NST is often unnecessary. Co...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent changes in your diet, activity level, or exposure to toxins or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=causes of decreased fetal movement and non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.876)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 8146_2, Score: 0.863)\n- Decline in progesterone action\n\n- Breakdown in maternal-fetal tolerance.\n\n- Placental abruption, Placenta previa\n\n- Smoking\n\n- Maternal age 40\n\n- Poor nutrition, low body mass index\n\n- Fetal anomaly\n\n- Fetal growth restriction, oligohydramnios, polyhydramnios\n\n- Vaginal bleeding\n\n- Premature prete...\n\n[Document 3] (ID: 26535_11, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 4] (ID: 23630_12, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 5] (ID: 1292_20, Score: 0.858)\n## Underlying causes and conservative measures\nIf there are any concerns about the baby's wellbeing, be aware of the possible underlying causes and start 1 or more of the following conservative measures based on an assessment of the most likely cause(s):\nmaternal position (as this can affect uterine...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any nausea, vomiting, or changes in appetite recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any nausea, vomiting, or changes in appetite in the past week?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did you first notice the decreased fetal movement?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any vaginal bleeding, contractions, or pelvic pain recently?)\nresponse: No, I did not experience any vaginal bleeding, contractions, or pelvic pain recently. I denied those symptoms when I was evaluated.\ndoctor_action: retrieve(query=Decreased fetal movement non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.887)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 23385_0, Score: 0.868)\nCardiotocograph\n\n# Overview\nThe cardiotocograph, more commonly known as an electronic fetal monitor or external fetal monitor (EFM) or non-stress test (NST), is used to monitor a pregnant woman, typically in the third trimester. A cardiotocograph measures simultaneously both the fetal heart rate and...\n\n[Document 3] (ID: 3301_8, Score: 0.867)\n## | noninva s ive fe tal rh (d) t yping in the fir s t trime s ter\nNon-invasive prenatal testing of cell-free DNA in the first trimester of pregnancy may be used to determine fetal Rh(D) status. Such a policy has recently been introduced into clinical practice in countries such as Denmark, the Neth...\n\n[Document 4] (ID: 2079_0, Score: 0.860)\nHigh-throughput non-invasive prenatal testing for fetal RHD genotype\nEvidence-based recommendations on high-throughput non-invasive prenatal testing (NIPT) for fetal RHD genotype.\n# Recommendations\nHigh-throughput non‑invasive prenatal testing (NIPT) for fetal RHD genotype is recommended as a cost-e...\n\n[Document 5] (ID: 779_44, Score: 0.859)\nThe biophysical profile (BPP) classically includes an ultrasound assessment of fetal well-being and a non-stress test. Performing both components increases the duration of the pregnant person's visit but both elements are not always necessary. When the BPP is normal, the NST is often unnecessary. Co...\ndoctor_action: ask_patient(question=Have you had any recent changes in your diet, activity level, or exposure to toxins or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=causes of decreased fetal movement and non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.876)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 8146_2, Score: 0.863)\n- Decline in progesterone action\n\n- Breakdown in maternal-fetal tolerance.\n\n- Placental abruption, Placenta previa\n\n- Smoking\n\n- Maternal age 40\n\n- Poor nutrition, low body mass index\n\n- Fetal anomaly\n\n- Fetal growth restriction, oligohydramnios, polyhydramnios\n\n- Vaginal bleeding\n\n- Premature prete...\n\n[Document 3] (ID: 26535_11, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 4] (ID: 23630_12, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 5] (ID: 1292_20, Score: 0.858)\n## Underlying causes and conservative measures\nIf there are any concerns about the baby's wellbeing, be aware of the possible underlying causes and start 1 or more of the following conservative measures based on an assessment of the most likely cause(s):\nmaternal position (as this can affect uterine...\ndoctor_action: ask_patient(question=Have you been experiencing any nausea, vomiting, or changes in appetite recently?)\nresponse: I’m not sure. Could you ask a more specific question?\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 11,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient: 23-year-old female. No vaginal bleeding, contractions, or pelvic pain. No recent diet/activity changes or toxin exposure. No nausea/vomiting or appetite changes reported. Relevant history: Prior retrieval of causes of decreased fetal movement and non-reactive NST. No labs, CXR, or imaging results available.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement, non-reactive NST. Current uncertainty: Underlying cause of non-reactive test. Evidence gathered: Patient history, prior retrievals of NST-related causes. Missing: Labs, CXR, imaging. Ineffective actions: Previous lab, CXR, and imaging requests yielded no results. Need: Workflow guidance for next diagnostic action to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_cc7c18da85e5",
+              "type": "experience",
+              "score": 0.8065,
+              "outcome": "negative",
+              "text": "Easy bruising, nosebleeds, and heavy menstrual periods without fever, weight loss, or visual symptoms suggest coagulation disorder rather than giant cell arteritis; absence of temporal artery tenderness and visual changes is a key negative clue.",
+              "tags": []
+            },
+            {
+              "id": "exp_2834c1011da1",
+              "type": "experience",
+              "score": 0.7755,
+              "outcome": "negative",
+              "text": "Lack of available lab results (CBC, neutrophil count) in febrile neutropenia prevents definitive diagnosis and increases risk of misclassification or delayed intervention.",
+              "tags": []
+            },
+            {
+              "id": "exp_16f3e5ec430c",
+              "type": "experience",
+              "score": 0.7729,
+              "outcome": "negative",
+              "text": "In febrile neutropenia, absence of recent chemotherapy or treatment history does not rule out treatment-related neutropenia; lymphoma patients may have neutropenia from disease progression or prior therapy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7837,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7795,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7674,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any loss of appetite or nausea in the past week?"
+        },
+        "patient_or_tool_response": "{'question': 'I’m not sure. Could you ask a more specific question?'}",
+        "env_info": "{'response': [{'id': '55005de1-9116-42f6-8fff-9c29390edc6e', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any loss of appetite or nausea in the past week?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1600}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3125,
+        "conf_after": 0.3125,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any loss of appetite or nausea in the past week?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any loss of appetite or nausea in the past week?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 10. Low-information/no-result turns already attempted: 3; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Decreased fetal movement, non-reactive non-stress test, poorly",
+          "initial_information: I am a 23-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 23-year-old female patient presenting with Decreased fetal movement, non-reactive non-stress test, poorly..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice the decreased fetal movement?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any vaginal bleeding, contractions, or pelvic pain recently?)\nresponse: No, I did not experience any vaginal bleeding, contractions, or pelvic pain recently. I denied those symptoms when I was evaluated.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=Decreased fetal movement non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.887)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 23385_0, Score: 0.868)\nCardiotocograph\n\n# Overview\nThe cardiotocograph, more commonly known as an electronic fetal monitor or external fetal monitor (EFM) or non-stress test (NST), is used to monitor a pregnant woman, typically in the third trimester. A cardiotocograph measures simultaneously both the fetal heart rate and...\n\n[Document 3] (ID: 3301_8, Score: 0.867)\n## | noninva s ive fe tal rh (d) t yping in the fir s t trime s ter\nNon-invasive prenatal testing of cell-free DNA in the first trimester of pregnancy may be used to determine fetal Rh(D) status. Such a policy has recently been introduced into clinical practice in countries such as Denmark, the Neth...\n\n[Document 4] (ID: 2079_0, Score: 0.860)\nHigh-throughput non-invasive prenatal testing for fetal RHD genotype\nEvidence-based recommendations on high-throughput non-invasive prenatal testing (NIPT) for fetal RHD genotype.\n# Recommendations\nHigh-throughput non‑invasive prenatal testing (NIPT) for fetal RHD genotype is recommended as a cost-e...\n\n[Document 5] (ID: 779_44, Score: 0.859)\nThe biophysical profile (BPP) classically includes an ultrasound assessment of fetal well-being and a non-stress test. Performing both components increases the duration of the pregnant person's visit but both elements are not always necessary. When the BPP is normal, the NST is often unnecessary. Co...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent changes in your diet, activity level, or exposure to toxins or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=causes of decreased fetal movement and non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.876)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 8146_2, Score: 0.863)\n- Decline in progesterone action\n\n- Breakdown in maternal-fetal tolerance.\n\n- Placental abruption, Placenta previa\n\n- Smoking\n\n- Maternal age 40\n\n- Poor nutrition, low body mass index\n\n- Fetal anomaly\n\n- Fetal growth restriction, oligohydramnios, polyhydramnios\n\n- Vaginal bleeding\n\n- Premature prete...\n\n[Document 3] (ID: 26535_11, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 4] (ID: 23630_12, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 5] (ID: 1292_20, Score: 0.858)\n## Underlying causes and conservative measures\nIf there are any concerns about the baby's wellbeing, be aware of the possible underlying causes and start 1 or more of the following conservative measures based on an assessment of the most likely cause(s):\nmaternal position (as this can affect uterine...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any nausea, vomiting, or changes in appetite recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any nausea, vomiting, or changes in appetite in the past week?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any loss of appetite or nausea in the past week?)\nresponse: I’m not sure. Could you ask a more specific question?"
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did you first notice the decreased fetal movement?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any vaginal bleeding, contractions, or pelvic pain recently?)\nresponse: No, I did not experience any vaginal bleeding, contractions, or pelvic pain recently. I denied those symptoms when I was evaluated.\ndoctor_action: retrieve(query=Decreased fetal movement non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.887)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 23385_0, Score: 0.868)\nCardiotocograph\n\n# Overview\nThe cardiotocograph, more commonly known as an electronic fetal monitor or external fetal monitor (EFM) or non-stress test (NST), is used to monitor a pregnant woman, typically in the third trimester. A cardiotocograph measures simultaneously both the fetal heart rate and...\n\n[Document 3] (ID: 3301_8, Score: 0.867)\n## | noninva s ive fe tal rh (d) t yping in the fir s t trime s ter\nNon-invasive prenatal testing of cell-free DNA in the first trimester of pregnancy may be used to determine fetal Rh(D) status. Such a policy has recently been introduced into clinical practice in countries such as Denmark, the Neth...\n\n[Document 4] (ID: 2079_0, Score: 0.860)\nHigh-throughput non-invasive prenatal testing for fetal RHD genotype\nEvidence-based recommendations on high-throughput non-invasive prenatal testing (NIPT) for fetal RHD genotype.\n# Recommendations\nHigh-throughput non‑invasive prenatal testing (NIPT) for fetal RHD genotype is recommended as a cost-e...\n\n[Document 5] (ID: 779_44, Score: 0.859)\nThe biophysical profile (BPP) classically includes an ultrasound assessment of fetal well-being and a non-stress test. Performing both components increases the duration of the pregnant person's visit but both elements are not always necessary. When the BPP is normal, the NST is often unnecessary. Co...\ndoctor_action: ask_patient(question=Have you had any recent changes in your diet, activity level, or exposure to toxins or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=causes of decreased fetal movement and non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.876)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 8146_2, Score: 0.863)\n- Decline in progesterone action\n\n- Breakdown in maternal-fetal tolerance.\n\n- Placental abruption, Placenta previa\n\n- Smoking\n\n- Maternal age 40\n\n- Poor nutrition, low body mass index\n\n- Fetal anomaly\n\n- Fetal growth restriction, oligohydramnios, polyhydramnios\n\n- Vaginal bleeding\n\n- Premature prete...\n\n[Document 3] (ID: 26535_11, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 4] (ID: 23630_12, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 5] (ID: 1292_20, Score: 0.858)\n## Underlying causes and conservative measures\nIf there are any concerns about the baby's wellbeing, be aware of the possible underlying causes and start 1 or more of the following conservative measures based on an assessment of the most likely cause(s):\nmaternal position (as this can affect uterine...\ndoctor_action: ask_patient(question=Have you been experiencing any nausea, vomiting, or changes in appetite recently?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you had any nausea, vomiting, or changes in appetite in the past week?)\nresponse: I’m not sure. Could you ask a more specific question?\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 12,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient: 23-year-old female. No vaginal bleeding, contractions, or pelvic pain. No recent diet/activity changes or toxin/infection exposure. No nausea/vomiting or appetite changes reported. Retrieved: causes of decreased fetal movement and non-reactive NST including placental abruption, fetal anomaly, maternal age, poor nutrition, smoking, etc. No lab, CXR, or imaging results available.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement, non-reactive NST. Uncertainty: underlying cause of non-reactive test. Evidence gathered: patient history (no bleeding, contractions, pain, diet changes, nausea), retrieved literature on causes. Missing: lab, CXR, imaging results. Ineffective actions: attempted labs, CXR, imaging — no results. Need: workflow guidance on next diagnostic step to resolve largest remaining uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_b03dd654a6b9",
+              "type": "experience",
+              "score": 0.7657,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia; nail-biting is a useful discriminative clue.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_aa639a2730dd",
+              "type": "experience",
+              "score": 0.8045,
+              "outcome": "negative",
+              "text": "Absence of fever, night sweats, or weight loss in a patient with malignant airway obstruction due to stent occlusion is a negative finding that helps rule out systemic metastatic spread.",
+              "tags": []
+            },
+            {
+              "id": "exp_cc7c18da85e5",
+              "type": "experience",
+              "score": 0.8003,
+              "outcome": "negative",
+              "text": "Easy bruising, nosebleeds, and heavy menstrual periods without fever, weight loss, or visual symptoms suggest coagulation disorder rather than giant cell arteritis; absence of temporal artery tenderness and visual changes is a key negative clue.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.7856,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7812,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7775,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7735,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any nausea or vomiting in the past week?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '34682cad-f5ef-417d-af77-c5b220719c32', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any nausea or vomiting in the past week?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1655}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3125,
+        "conf_after": 0.3125,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any nausea or vomiting in the past week?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any nausea or vomiting in the past week?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 11. Low-information/no-result turns already attempted: 3; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Decreased fetal movement, non-reactive non-stress test, poorly",
+          "initial_information: I am a 23-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 23-year-old female patient presenting with Decreased fetal movement, non-reactive non-stress test, poorly..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did you first notice the decreased fetal movement?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any vaginal bleeding, contractions, or pelvic pain recently?)\nresponse: No, I did not experience any vaginal bleeding, contractions, or pelvic pain recently. I denied those symptoms when I was evaluated.",
+          "turn_5 retrieve_interaction: doctor_action: retrieve(query=Decreased fetal movement non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.887)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 23385_0, Score: 0.868)\nCardiotocograph\n\n# Overview\nThe cardiotocograph, more commonly known as an electronic fetal monitor or external fetal monitor (EFM) or non-stress test (NST), is used to monitor a pregnant woman, typically in the third trimester. A cardiotocograph measures simultaneously both the fetal heart rate and...\n\n[Document 3] (ID: 3301_8, Score: 0.867)\n## | noninva s ive fe tal rh (d) t yping in the fir s t trime s ter\nNon-invasive prenatal testing of cell-free DNA in the first trimester of pregnancy may be used to determine fetal Rh(D) status. Such a policy has recently been introduced into clinical practice in countries such as Denmark, the Neth...\n\n[Document 4] (ID: 2079_0, Score: 0.860)\nHigh-throughput non-invasive prenatal testing for fetal RHD genotype\nEvidence-based recommendations on high-throughput non-invasive prenatal testing (NIPT) for fetal RHD genotype.\n# Recommendations\nHigh-throughput non‑invasive prenatal testing (NIPT) for fetal RHD genotype is recommended as a cost-e...\n\n[Document 5] (ID: 779_44, Score: 0.859)\nThe biophysical profile (BPP) classically includes an ultrasound assessment of fetal well-being and a non-stress test. Performing both components increases the duration of the pregnant person's visit but both elements are not always necessary. When the BPP is normal, the NST is often unnecessary. Co...",
+          "turn_6 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent changes in your diet, activity level, or exposure to toxins or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=causes of decreased fetal movement and non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.876)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 8146_2, Score: 0.863)\n- Decline in progesterone action\n\n- Breakdown in maternal-fetal tolerance.\n\n- Placental abruption, Placenta previa\n\n- Smoking\n\n- Maternal age 40\n\n- Poor nutrition, low body mass index\n\n- Fetal anomaly\n\n- Fetal growth restriction, oligohydramnios, polyhydramnios\n\n- Vaginal bleeding\n\n- Premature prete...\n\n[Document 3] (ID: 26535_11, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 4] (ID: 23630_12, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 5] (ID: 1292_20, Score: 0.858)\n## Underlying causes and conservative measures\nIf there are any concerns about the baby's wellbeing, be aware of the possible underlying causes and start 1 or more of the following conservative measures based on an assessment of the most likely cause(s):\nmaternal position (as this can affect uterine...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you been experiencing any nausea, vomiting, or changes in appetite recently?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any nausea, vomiting, or changes in appetite in the past week?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any loss of appetite or nausea in the past week?)\nresponse: I’m not sure. Could you ask a more specific question?",
+          "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any nausea or vomiting in the past week?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did you first notice the decreased fetal movement?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any vaginal bleeding, contractions, or pelvic pain recently?)\nresponse: No, I did not experience any vaginal bleeding, contractions, or pelvic pain recently. I denied those symptoms when I was evaluated.\ndoctor_action: retrieve(query=Decreased fetal movement non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.887)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 23385_0, Score: 0.868)\nCardiotocograph\n\n# Overview\nThe cardiotocograph, more commonly known as an electronic fetal monitor or external fetal monitor (EFM) or non-stress test (NST), is used to monitor a pregnant woman, typically in the third trimester. A cardiotocograph measures simultaneously both the fetal heart rate and...\n\n[Document 3] (ID: 3301_8, Score: 0.867)\n## | noninva s ive fe tal rh (d) t yping in the fir s t trime s ter\nNon-invasive prenatal testing of cell-free DNA in the first trimester of pregnancy may be used to determine fetal Rh(D) status. Such a policy has recently been introduced into clinical practice in countries such as Denmark, the Neth...\n\n[Document 4] (ID: 2079_0, Score: 0.860)\nHigh-throughput non-invasive prenatal testing for fetal RHD genotype\nEvidence-based recommendations on high-throughput non-invasive prenatal testing (NIPT) for fetal RHD genotype.\n# Recommendations\nHigh-throughput non‑invasive prenatal testing (NIPT) for fetal RHD genotype is recommended as a cost-e...\n\n[Document 5] (ID: 779_44, Score: 0.859)\nThe biophysical profile (BPP) classically includes an ultrasound assessment of fetal well-being and a non-stress test. Performing both components increases the duration of the pregnant person's visit but both elements are not always necessary. When the BPP is normal, the NST is often unnecessary. Co...\ndoctor_action: ask_patient(question=Have you had any recent changes in your diet, activity level, or exposure to toxins or infections?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=causes of decreased fetal movement and non-reactive non-stress test in pregnant women)\nresponse: [Document 1] (ID: 25124_0, Score: 0.876)\nNonstress test\n\n# Overview\nThe nonstress test or NST is a Doppler time series recording of the heart beat of a fetus in utero simultaneous with the abdominal and/or uterine contractions of the pregnant woman.\n\n# Interpretation\n- The NST is part of the biophysical profile, a formal prenatal test for ...\n\n[Document 2] (ID: 8146_2, Score: 0.863)\n- Decline in progesterone action\n\n- Breakdown in maternal-fetal tolerance.\n\n- Placental abruption, Placenta previa\n\n- Smoking\n\n- Maternal age 40\n\n- Poor nutrition, low body mass index\n\n- Fetal anomaly\n\n- Fetal growth restriction, oligohydramnios, polyhydramnios\n\n- Vaginal bleeding\n\n- Premature prete...\n\n[Document 3] (ID: 26535_11, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 4] (ID: 23630_12, Score: 0.858)\n- Generalized skin edema, placental edema, polyhydramnios, and ascites are usually seen in early pregnancy.\n\n- Pleural effusion and pericardial effusion are findings seen later (rarely seen <15 weeks gestational age).\n\n- Ultrasonography may detect structural heart diseases, holoprosencephaly, or omp...\n\n[Document 5] (ID: 1292_20, Score: 0.858)\n## Underlying causes and conservative measures\nIf there are any concerns about the baby's wellbeing, be aware of the possible underlying causes and start 1 or more of the following conservative measures based on an assessment of the most likely cause(s):\nmaternal position (as this can affect uterine...\ndoctor_action: ask_patient(question=Have you been experiencing any nausea, vomiting, or changes in appetite recently?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you had any nausea, vomiting, or changes in appetite in the past week?)\nresponse: I’m not sure. Could you ask a more specific question?\ndoctor_action: ask_patient(question=Have you noticed any loss of appetite or nausea in the past week?)\nresponse: I’m not sure. Could you ask a more specific question?\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 13,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Patient: 23-year-old female. No vaginal bleeding, contractions, or pelvic pain. No recent changes in diet, activity, toxins, or infections. No nausea, vomiting, or appetite changes reported. Relevant history: Prior retrieval of causes of decreased fetal movement and non-reactive NST. No labs, CXR, or imaging results available.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement, non-reactive NST. Uncertainty: Underlying cause of fetal non-reactivity. Evidence gathered: Patient history, prior retrievals of NST interpretation and causes. Missing: Labs, CXR, imaging. Ineffective actions: Previous lab, CXR, and imaging requests yielded no results. Need: Workflow guidance for next diagnostic action to resolve uncertainty without repeating low-information requests."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_cc7c18da85e5",
+              "type": "experience",
+              "score": 0.8081,
+              "outcome": "negative",
+              "text": "Easy bruising, nosebleeds, and heavy menstrual periods without fever, weight loss, or visual symptoms suggest coagulation disorder rather than giant cell arteritis; absence of temporal artery tenderness and visual changes is a key negative clue.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.7928,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            },
+            {
+              "id": "exp_5bb7ae740c9a",
+              "type": "experience",
+              "score": 0.7846,
+              "outcome": "negative",
+              "text": "Absence of infection markers and imaging results in a post-surgical wound with dehiscence and fat necrosis is a critical gap that delays diagnosis and highlights the need for urgent vascular imaging to assess tissue integrity and vascular status.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7788,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7757,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.763,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "fetal growth restriction and decreased fetal movement in pregnant women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3ef9a12d-51ed-45e4-a2f8-b58f5ca44344': \"[Document 1] (ID: 35924_2, Score: 0.876)\\n### Variation in growth\\nThere is much variation in the growth of the fetus. When fetal size is less than expected, that condition is known as intrauterine growth restriction (IUGR) also called fetal growth restriction (FGR); factors affecting fetal growth can be maternal, placental, or fetal.\\nMatern...\\n\\n[Document 2] (ID: 1736_15, Score: 0.868)\\nFull details of the evidence and the committee's discussion are in evidence review B: screening for fetal growth restriction.\\n\\nLoading. Please wait.\\n\\nOffer weekly ultrasound monitoring for TAPS from 16\\xa0weeks of pregnancy using middle cerebral artery peak systolic velocity (MCA‑PSV) to women whose pr...\\n\\n[Document 3] (ID: 4232_1, Score: 0.864)\\n1.1. Need for developing case definitions and guidelines for data collection, analysis, and presentation for fetal growth restriction as an adverse event following immunization Fetuses that fail to meet their growth potential in utero are at risk for adverse antenatal and postnatal events such as st...\\n\\n[Document 4] (ID: 24817_1, Score: 0.863)\\n## Second trimester\\nBy about the twelfth week, the fetus is able to kick and curl its toes, and may grasp its feet or scra...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '3ef9a12d-51ed-45e4-a2f8-b58f5ca44344', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"fetal growth restriction and decreased fetal movement in pregnant women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1725}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3125,
+        "conf_after": 0.375,
+        "delta": 0.0625,
+        "turn_reward": 0.0125,
+        "importance": 0.0625
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"fetal growth restriction and decreased fetal movement in pregnant women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"fetal growth restriction and decreased fetal movement in pregnant women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Known evidence: decreased fetal movement, non-reactive non-stress test. Leading uncertainty: possible fetal growth restriction (FGR) or other causes such as placental insufficiency, maternal factors, or fetal anomalies. Most useful missing evidence: fetal ultrasound, maternal history of risk factors, lab results. Diagnosis should not yet be finalized.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Decreased fetal movement, non-reactive non-stress test, poorly"
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports no vaginal bleeding, contractions, or pelvic pain. No recent changes in diet, activity, toxins, or infections. No nausea, vomiting, or appetite changes. No lab results, CXR, or imaging results available. Patient denies symptoms related to nausea, vomiting, or appetite. No known allergies or medications. No family or social history provided. No known risk factors for fetal growth restriction or placental issues. No prior abnormal findings reported."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 14,
+        "query_text": "Chief complaint: Decreased fetal movement, non-reactive non-stress test. Known: No vaginal bleeding, contractions, pelvic pain, recent diet/activity changes, toxins, infections, nausea, vomiting, appetite changes. No lab, CXR, or imaging results. No allergies, medications, family/social history, known risk factors for FGR or placental issues. Unresolved uncertainty: possible fetal growth restriction or other causes.",
+        "skill_query_text": "Presenting problem: Decreased fetal movement, non-reactive non-stress test. Uncertainty: possible fetal growth restriction or other causes. Evidence gathered: chief complaint only. Missing: fetal ultrasound, maternal risk factors, lab results. Ineffective actions: none. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_cc7c18da85e5",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "negative",
+              "text": "Easy bruising, nosebleeds, and heavy menstrual periods without fever, weight loss, or visual symptoms suggest coagulation disorder rather than giant cell arteritis; absence of temporal artery tenderness and visual changes is a key negative clue.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.784,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            },
+            {
+              "id": "exp_5bb7ae740c9a",
+              "type": "experience",
+              "score": 0.7691,
+              "outcome": "negative",
+              "text": "Absence of infection markers and imaging results in a post-surgical wound with dehiscence and fat necrosis is a critical gap that delays diagnosis and highlights the need for urgent vascular imaging to assess tissue integrity and vascular status.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7686,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7676,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7639,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "oligohydramnios and decreased fetal movement in pregnant women"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a10fe4f1-a440-4012-a2cd-b52682df480f': '[Document 1] (ID: 2694_1, Score: 0.891)\\n# Indications\\nAn abnormally low volume of amniotic fluid surrounding the fetus is termed oligohydramnios.\\nOligohydramnios may be the result of decreased fetal urine production or excretion, or excessive loss of amniotic fluid. Causes of oligohydramnios include premature preterm rupture of amniotic m...\\n\\n[Document 2] (ID: 14972_17, Score: 0.878)\\nPerform serial ultrasound examinations to assess the intra-amniotic environment. Fetal testing may be appropriate, based on the week of gestation. Patients and physicians should be aware, however, that oligohydramnios may not appear until after the fetus has sustained irreversible injury. If oligohy...\\n\\n[Document 3] (ID: 32996_23, Score: 0.874)\\n# Use in Specific Populations\\n### Pregnancy\\nPregnancy Category (FDA): D\\n- Use of drugs that act on the renin-angiotensin system during the second and third trimesters of pregnancy reduces fetal renal function and increases fetal and neonatal morbidity and death. Resulting oligohydramnios can be asso...\\n\\n[Document 4] (ID: 26523_23, Score: 0.874)\\n# Use in Specific Populations\\n### Pregnancy\\nPregnancy Category (FDA): D\\n- Use of drugs that act on the renin-angiotensi...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'a10fe4f1-a440-4012-a2cd-b52682df480f', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"oligohydramnios and decreased fetal movement in pregnant women\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2216}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.375,
+        "conf_after": 0.375,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"oligohydramnios and decreased fetal movement in pregnant women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"oligohydramnios and decreased fetal movement in pregnant women\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20177249",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "Decreased fetal movement, non-reactive non-stress test, poorly",
+        "diagnostic_strategy": "Known evidence: decreased fetal movement, non-reactive non-stress test. Leading uncertainty: possible oligohydramnios or fetal growth restriction. Most useful missing evidence: ultrasound findings, amniotic fluid volume, fetal biophysical profile. Diagnosis should not yet be finalized.",
+        "efficient_turn_information": [
+          "turn_15 retrieve_interaction: doctor_action: retrieve(query=oligohydramnios and decreased fetal movement in pregnant women)\nresponse: [Document 1] (ID: 2694_1, Score: 0.891)\n# Indications\nAn abnormally low volume of amniotic fluid surrounding the fetus is termed oligohydramnios.\nOligohydramnios may be the result of decreased fetal urine production or excretion, or excessive loss of amniotic fluid. Causes of oligohydramnios include premature preterm rupture of amniotic m...\n\n[Document 2] (ID: 14972_17, Score: 0.878)\nPerform serial ultrasound examinations to assess the intra-amniotic environment. Fetal testing may be appropriate, based on the week of gestation. Patients and physicians should be aware, however, that oligohydramnios may not appear until after the fetus has sustained irreversible injury. If oligohy...\n\n[Document 3] (ID: 32996_23, Score: 0.874)\n# Use in Specific Populations\n### Pregnancy\nPregnancy Category (FDA): D\n- Use of drugs that act on the renin-angiotensin system during the second and third trimesters of pregnancy reduces fetal renal function and increases fetal and neonatal morbidity and death. Resulting oligohydramnios can be asso...\n\n[Document 4] (ID: 26523_23, Score: 0.874)\n# Use in Specific Populations\n### Pregnancy\nPregnancy Category (FDA): D\n- Use of drugs that act on the renin-angiotensin system during the second and third trimesters of pregnancy reduces fetal renal function and increases fetal and neonatal morbidity and death. Resulting oligohydramnios can be asso...\n\n[Document 5] (ID: 30764_5, Score: 0.874)\n- If hypotension occurs, the patient should be placed in a supine position, and, if necessary, treated with intravenous infusion of physiological saline. xxxxxx treatment usually can be continued following restoration of blood pressure and volume.\n- Use of drugs that act on the renin-angiotensin sys..."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports no vaginal bleeding, contractions, or pelvic pain. No recent changes in diet, activity, toxins, or infections. No nausea, vomiting, or appetite changes. Labs, CXR, and imaging results unavailable. Retrieved documents indicate possible causes: oligohydramnios, fetal growth restriction, placental abruption, smoking, maternal age 40, poor nutrition, fetal anomaly, and maternal position. No definitive findings yet."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_8 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20177249",
+        "turn_id": 15,
+        "query_text": "Chief complaint: decreased fetal movement, non-reactive non-stress test. Known: no vaginal bleeding, contractions, pelvic pain, recent diet/activity changes, toxins, infections, nausea, vomiting, appetite changes. Labs, CXR, imaging unavailable. Uncertainty: possible oligohydramnios or fetal growth restriction. Missing: ultrasound findings, amniotic fluid volume, fetal biophysical profile. Diagnosis not finalized.",
+        "skill_query_text": "Presenting problem: decreased fetal movement, non-reactive non-stress test. Uncertainty: oligohydramnios or fetal growth restriction. Evidence gathered: no bleeding, contractions, pain, dietary changes, toxins, infections, nausea, vomiting, appetite changes. Missing: ultrasound, amniotic fluid volume, biophysical profile. Ineffective actions: none. Need: workflow guidance for next diagnostic steps based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_cc7c18da85e5",
+              "type": "experience",
+              "score": 0.8022,
+              "outcome": "negative",
+              "text": "Easy bruising, nosebleeds, and heavy menstrual periods without fever, weight loss, or visual symptoms suggest coagulation disorder rather than giant cell arteritis; absence of temporal artery tenderness and visual changes is a key negative clue.",
+              "tags": []
+            },
+            {
+              "id": "exp_5bb7ae740c9a",
+              "type": "experience",
+              "score": 0.7817,
+              "outcome": "negative",
+              "text": "Absence of infection markers and imaging results in a post-surgical wound with dehiscence and fat necrosis is a critical gap that delays diagnosis and highlights the need for urgent vascular imaging to assess tissue integrity and vascular status.",
+              "tags": []
+            },
+            {
+              "id": "exp_dc4774153899",
+              "type": "experience",
+              "score": 0.7748,
+              "outcome": "negative",
+              "text": "Patient’s history of recent fever, chills, and discontinuation of revlimid due to systemic symptoms, followed by development of painful nodule and redness, supports drug-induced hypersensitivity reaction over cellulitis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.7857,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7694,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7641,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "fetal anomalies and decreased fetal movement in pregnant women"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': 'faccef7b-228e-4ffb-bf2d-847fa21aaded', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"fetal anomalies and decreased fetal movement in pregnant women\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"faccef7b-228e-4ffb-bf2d-847fa21aaded\", \"type\": \"function\", \"function\": {\"name\": \"retrieve\", \"arguments\": \"{\\\\\"query\\\\\": \\\\\"fetal anomalies and decreased fetal movement in pregnant women\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.125, 'conf_after': 0.125, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 2736}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.375,
+        "conf_after": 0.375,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"fetal anomalies and decreased fetal movement in pregnant women\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"fetal anomalies and decreased fetal movement in pregnant women\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 15,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "fetal anomalies and decreased fetal movement in pregnant women"
+      },
+      "patient_or_tool_response": "{}",
+      "env_info": "{'response': [{'id': 'faccef7b-228e-4ffb-bf2d-847fa21aaded', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"fetal anomalies and decreased fetal movement in pregnant women\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"faccef7b-228e-4ffb-bf2d-847fa21aaded\", \"type\": \"function\", \"function\": {\"name\": \"retrieve\", \"arguments\": \"{\\\\\"query\\\\\": \\\\\"fetal anomalies and decreased fetal movement in pregnant women\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.125, 'conf_after': 0.125, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.1875, 'conf_after': 0.1875, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 2736}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_15 retrieve_interaction: doctor_action: retrieve(query=oligohydramnios and decreased fetal movement in pregnant women)\nresponse: [Document 1] (ID: 2694_1, Score: 0.891)\n# Indications\nAn abnormally low volume of amniotic fluid surrounding the fetus is termed oligohydramnios.\nOligohydramnios may be the result of decreased fetal urine production or excretion, or excessive loss of amniotic fluid. Causes of oligohydramnios include premature preterm rupture of amniotic m...\n\n[Document 2] (ID: 14972_17, Score: 0.878)\nPerform serial ultrasound examinations to assess the intra-amniotic environment. Fetal testing may be appropriate, based on the week of gestation. Patients and physicians should be aware, however, that oligohydramnios may not appear until after the fetus has sustained irreversib...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": []
+}

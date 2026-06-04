@@ -1,0 +1,1803 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20037839",
+  "turns": [
+    {
+      "case_id": "20037839",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 65-year-old female patient presenting with nonspecific subjective complaints. Key evidence gathered: Patient reports general malaise without specific symptoms. Diagnostic uncertainty remains high due to lack of specific history, exam, lab, or imaging findings. Most useful missing information: Detailed history of symptoms, duration, associated features, and relevant medical history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 65-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 65-year-old female patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 65-year-old female reporting general malaise without specific symptoms. No history, exam, lab, imaging, or tool results provided. No findings or interpretations available. Missing information: Detailed symptom history, duration, associated features, and relevant medical history. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 1,
+        "query_text": "65-year-old female, chief complaint: general malaise without specific symptoms. No history, exam, lab, or imaging findings. No positive or negative findings. No relevant demographics or prior conditions provided. Diagnostic uncertainty remains high due to lack of specific symptom history, duration, associated features, and medical history.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 65-year-old female with nonspecific subjective complaints. Evidence gathered: Patient reports general malaise without specific symptoms. No history, exam, lab, or imaging results. No ineffective actions tried. Need workflow guidance for next diagnostic steps given insufficient evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7388,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8141,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8114,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8103,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7803,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7762,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7746,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8141,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing recently? For example, have you had fever, cough, shortness of breath, fatigue, or any other discomfort?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '14037d3f-019d-4a77-9016-2277565ee7eb', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing recently? For example, have you had fever, cough, shortness of breath, fatigue, or any other discomfort?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently? For example, have you had fever, cough, shortness of breath, fatigue, or any other discomfort?\"}}\n</too",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing recently? For example, have you had fever, cough, shortness of breath, fatigue, or any other discomfort?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell without defined symptoms. Key evidence gathered: Patient denies fever, cough, shortness of breath, fatigue, or other discomfort. Diagnostic uncertainty remains high due to lack of specific symptomatology. Most useful missing information: Detailed description of subjective symptoms, duration, severity, and any associated factors. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently? For example, have you had fever, cough, shortness of breath, fatigue, or any other discomfort?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general feeling of unwellness without specific symptoms. Patient denies fever, cough, shortness of breath, fatigue, or other discomfort. No abnormal findings reported. No lab, imaging, or exam results available. No management-relevant risk identified. Missing: Detailed symptom description, duration, severity, and associated factors."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 2,
+        "query_text": "Patient reports general feeling of unwellness without specific symptoms. Denies fever, cough, shortness of breath, fatigue, or other discomfort. No abnormal findings, lab, imaging, or exam results available. No management-relevant risk identified. Missing: Detailed symptom description, duration, severity, and associated factors.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell without defined symptoms. Evidence gathered: Patient denies fever, cough, shortness of breath, fatigue, or other discomfort. Ineffective action: Asked about specific symptoms; patient denies any problems. Missing: Detailed symptom description, duration, severity, and associated factors. Need: Workflow guidance for next diagnostic steps given lack of specific symptomatology."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7501,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8236,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8134,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8102,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7859,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7827,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7808,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent weight loss, night sweats, or changes in appetite?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'f951560c-15fd-4729-a0e8-028fab4a4134', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent weight loss, night sweats, or changes in appetite?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 92}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, night sweats, or changes in appetite?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent weight loss, night sweats, or changes in appetite?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: Patient denies recent weight loss, night sweats, or appetite changes. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed history of symptoms, physical exam findings, and potential lab/imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, night sweats, or changes in appetite?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports not feeling well recently, seeking assessment and diagnosis. Patient denies recent weight loss, night sweats, or appetite changes. Patient also denies fever, cough, shortness of breath, fatigue, or other discomfort (from turn 2). No objective findings or test results reported. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 3,
+        "query_text": "Patient reports not feeling well recently, denies recent weight loss, night sweats, appetite changes, fever, cough, shortness of breath, or fatigue. No objective findings, lab, or imaging results reported. No management-relevant risk identified. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Evidence gathered: Patient denies weight loss, night sweats, appetite changes, fever, cough, shortness of breath, fatigue. Ineffective action: Asked about weight loss, night sweats, appetite changes — patient denies. Missing: Detailed symptom history, physical exam findings, lab/imaging results. Need: Workflow guidance for next diagnostic steps given current uncertainty and lack of objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7901,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7891,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7845,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any swelling, pain, or unusual lumps in your body, especially in the neck, armpits, or groin?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '92b500a5-dfde-4bba-b1d6-588409915d16', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any swelling, pain, or unusual lumps in your body, especially in the neck, armpits, or groin?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 167}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, pain, or unusual lumps in your body, especially in the neck, armpits, or groin?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, pain, or unusual lumps in your body, especially in the neck, armpits, or groin?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell. Key evidence gathered: No fever, cough, shortness of breath, fatigue, weight loss, night sweats, or abnormal lumps/swelling reported. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed history of symptom onset, duration, associated symptoms, and any recent exposures or medical events. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing recently? For example, have you had fever, cough, shortness of breath, fatigue, or any other discomfort?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent weight loss, night sweats, or changes in appetite?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any swelling, pain, or unusual lumps in your body, especially in the neck, armpits, or groin?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No fever, cough, shortness of breath, fatigue, weight loss, night sweats, or abnormal lumps/swelling reported. No relevant exam, lab, imaging, or tool results provided. No specific history of recent exposures or medical events. Missing information: Detailed symptom onset, duration, associated symptoms, and recent exposures. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 4,
+        "query_text": "Patient reports general malaise without specific symptoms. No fever, cough, shortness of breath, fatigue, weight loss, night sweats, or abnormal lumps/swelling reported. No exam, lab, imaging, or tool results provided. No relevant history of recent exposures or medical events. Missing: symptom onset, duration, associated symptoms, recent exposures. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell. Current uncertainty: No specific symptoms or objective findings. Evidence gathered: No fever, cough, shortness of breath, fatigue, weight loss, night sweats, or abnormal lumps/swelling reported. Ineffective actions tried: Asking about specific symptoms (fever, cough, weight loss, lumps) yielded negative responses. Missing evidence: Detailed symptom onset, duration, associated symptoms, recent exposures. Need: Workflow guidance for next diagnostic steps given current negative findings and lack of specific history."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7556,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8292,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8276,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8264,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7832,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.783,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any recent changes in your energy levels, such as feeling unusually tired or weak?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '916640c8-bc61-4164-8e6b-93a6823529f4', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any recent changes in your energy levels, such as feeling unusually tired or weak?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 253}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in your energy levels, such as feeling unusually tired or weak?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any recent changes in your energy levels, such as feeling unusually tired or weak?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: No reported fever, cough, shortness of breath, weight loss, night sweats, appetite changes, swelling, pain, or lumps. No reported fatigue or weakness. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed history of recent functional changes, potential exposure to illness, or objective lab/imaging findings. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your energy levels, such as feeling unusually tired or weak?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports not feeling well recently, seeking assessment and diagnosis. No reported fever, cough, shortness of breath, fatigue, weight loss, night sweats, appetite changes, swelling, pain, or lumps. No abnormal findings reported. No objective lab, imaging, or tool results provided. No specific symptoms identified. No low-value or no-result attempts noted."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 5,
+        "query_text": "Patient reports not feeling well recently. No fever, cough, shortness of breath, fatigue, weight loss, night sweats, appetite changes, swelling, pain, or lumps reported. No objective lab, imaging, or tool results provided. No specific symptoms identified. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: No reported fever, cough, shortness of breath, fatigue, weight loss, night sweats, appetite changes, swelling, pain, or lumps. Ineffective action: Asked about energy levels, patient denied issues. Missing: Detailed history of recent functional changes, potential exposure to illness, or objective lab/imaging findings. Need: Workflow guidance for next diagnostic steps based on current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7905,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7879,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7856,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7827f2f5-2df8-47a3-bec5-4f6d58558c5b': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '7827f2f5-2df8-47a3-bec5-4f6d58558c5b', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 330}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 5,
+        "query_text": "Patient reports not feeling well recently. No fever, cough, shortness of breath, fatigue, weight loss, night sweats, appetite changes, swelling, pain, or lumps reported. No objective lab, imaging, or tool results provided. No specific symptoms identified. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: No reported fever, cough, shortness of breath, fatigue, weight loss, night sweats, appetite changes, swelling, pain, or lumps. Ineffective action: Asked about energy levels, patient denied issues. Missing: Detailed history of recent functional changes, potential exposure to illness, or objective lab/imaging findings. Need: Workflow guidance for next diagnostic steps based on current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7905,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7879,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7856,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "common symptoms and causes in 65-year-old female patients without specific complaints"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'94a1a7b7-73fe-41a9-b413-ce6da91069c3': '[Document 1] (ID: 4019_9, Score: 0.865)\\n## Symptoms and signs\\nCommon symptoms and signs of both nonfibrotic and fibrotic HP include dyspnea, cough, and midinspiratory squeaks (or chirping rales or squawks). Less frequently, there may be constitutional symptoms such as weight loss, flu-like symptoms (chills, low-grade fever, and malaise), ...\\n\\n[Document 2] (ID: 22925_2, Score: 0.865)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 3] (ID: 5743_1, Score: 0.865)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 4] (ID: 8848_1, Score: 0.861)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more co...[truncated]'}}",
+        "env_info": "{'response': [{'id': '94a1a7b7-73fe-41a9-b413-ce6da91069c3', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common symptoms and causes in 65-year-old female patients without specific complaints\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 401}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common symptoms and causes in 65-year-old female patients without specific complaints\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common symptoms and causes in 65-year-old female patients without specific complaints\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell without clear symptoms. Key evidence gathered: Patient denies specific symptoms (fever, cough, shortness of breath, weight loss, night sweats, lumps, fatigue) and no lab results available. Diagnostic uncertainty remains high due to lack of objective findings. Most useful missing information: Specific symptom details, physical exam findings, imaging or lab results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_7 retrieve_interaction: doctor_action: retrieve(query=common symptoms and causes in 65-year-old female patients without specific complaints)\nresponse: [Document 1] (ID: 4019_9, Score: 0.865)\n## Symptoms and signs\nCommon symptoms and signs of both nonfibrotic and fibrotic HP include dyspnea, cough, and midinspiratory squeaks (or chirping rales or squawks). Less frequently, there may be constitutional symptoms such as weight loss, flu-like symptoms (chills, low-grade fever, and malaise), ...\n\n[Document 2] (ID: 22925_2, Score: 0.865)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 3] (ID: 5743_1, Score: 0.865)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 8848_1, Score: 0.861)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 5] (ID: 6561_9, Score: 0.855)\n- Central Nervous System: Tiredness and dizziness have occurred in about 10 of 100 patients. Depression has been reported in about 5 of 100 patients. Mental confusion and short-term memory loss have been reported. Headache, somnolence, nightmares, and insomnia have also been reported.\n- Cardiovascul..."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. Denies fever, cough, shortness of breath, weight loss, night sweats, lumps, or fatigue. No lab results available. No physical exam or imaging results recorded. No specific diagnosis or risk factors identified. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 7,
+        "query_text": "Patient reports general malaise without specific symptoms. Denies fever, cough, shortness of breath, weight loss, night sweats, lumps, or fatigue. No lab results, physical exam, or imaging results available. No relevant history or demographics provided. Diagnostic uncertainty remains high due to lack of objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell. Evidence gathered: Patient denies specific symptoms, no lab results, no physical exam or imaging. Ineffective action: Attempted retrieval of common symptoms in 65-year-old females without specific complaints. Missing: Specific symptom details, physical exam findings, imaging or lab results. Need: Workflow guidance for next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7366,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.834,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8314,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_081e48e222ba",
+              "type": "experience",
+              "score": 0.8178,
+              "outcome": "negative",
+              "text": "Repeatedly requesting labs or imaging without first obtaining targeted history or ruling out high-yield findings (like occult blood in stool) wastes diagnostic resources and delays definitive diagnosis in cases with clear red flags.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7954,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7927,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7869,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675",
+          "exp_081e48e222ba"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_081e48e222ba",
+            "memory_type": "experience",
+            "score": 0.8178,
+            "content": {
+              "experience": "Repeatedly requesting labs or imaging without first obtaining targeted history or ruling out high-yield findings (like occult blood in stool) wastes diagnostic resources and delays definitive diagnosis in cases with clear red flags.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any cognitive changes, such as memory loss, confusion, or difficulty concentrating?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '595883bd-38fa-49ce-9b02-849ea4c8e6c3', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any cognitive changes, such as memory loss, confusion, or difficulty concentrating?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 945}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any cognitive changes, such as memory loss, confusion, or difficulty concentrating?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any cognitive changes, such as memory loss, confusion, or difficulty concentrating?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell. Key evidence gathered: No reported fever, cough, shortness of breath, weight loss, night sweats, lumps, or fatigue. No lab results available. Cognitive function reported as normal. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed history of recent functional changes, specific symptoms, or objective exam findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any cognitive changes, such as memory loss, confusion, or difficulty concentrating?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No fever, cough, shortness of breath, weight loss, night sweats, lumps, or fatigue reported. No lab results available. Cognitive function reported as normal. No objective findings or exam results documented. No specific diagnosis supported. No management-relevant risk identified. Previous attempts to retrieve common symptoms and causes for 65-year-old female patients without specific complaints returned general information about HP, age, gender, and race distributions, but no actionable findings. No result for lab request."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 8,
+        "query_text": "Patient reports general malaise without specific symptoms. No fever, cough, shortness of breath, weight loss, night sweats, lumps, or fatigue. No lab results. Cognitive function normal. No objective findings or exam results. No specific diagnosis supported. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Patient reports nonspecific malaise. Uncertainty: No specific symptoms or objective findings. Evidence gathered: Chief complaint only. Missing: Detailed history of functional changes, specific symptoms, objective exam findings. Ineffective action: Asked about cognitive changes; patient reported no issues. Need: Workflow guidance for next diagnostic steps given lack of specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7392,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8172,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8158,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8149,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.781,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7726,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.767,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your sleep patterns, such as insomnia or excessive sleepiness?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '02e94254-fca6-43f7-8490-b25bb23fe98c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your sleep patterns, such as insomnia or excessive sleepiness?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1021}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your sleep patterns, such as insomnia or excessive sleepiness?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your sleep patterns, such as insomnia or excessive sleepiness?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell without clear symptoms. Key evidence gathered: No reported changes in sleep, appetite, weight, swelling, energy, cognition, or specific systemic symptoms. No lab results available. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed history of systemic symptoms, objective exam findings, or diagnostic test results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_9 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your sleep patterns, such as insomnia or excessive sleepiness?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No reported changes in sleep, appetite, weight, swelling, energy, or cognition. No lab results available. No objective findings reported. No specific diagnostic test results. No known systemic symptoms. No history of fever, cough, shortness of breath, fatigue, or other specific complaints. No evidence of weight loss, night sweats, or unusual lumps. No cognitive changes reported. No known abnormal findings. No diagnostic test results retrieved. No specific clinical findings to interpret. Missing: Objective exam, lab results, or specific symptom history to narrow diagnostic uncertainty."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 9,
+        "query_text": "Patient reports general malaise without specific symptoms. No reported changes in sleep, appetite, weight, swelling, energy, or cognition. No lab results available. No objective findings reported. No specific diagnostic test results. No known systemic symptoms. No history of fever, cough, shortness of breath, fatigue, or other specific complaints. No evidence of weight loss, night sweats, or unusual lumps. No cognitive changes reported. No known abnormal findings. Diagnostic uncertainty remains high due to lack of specific findings.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell without clear symptoms. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: No reported changes in sleep, appetite, weight, swelling, energy, cognition, or specific systemic symptoms. No lab results available. Ineffective action tried: Asked about sleep patterns; patient reported no issues. Missing: Detailed history of systemic symptoms, objective exam findings, or diagnostic test results. Need: Workflow guidance for next diagnostic steps given current lack of specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7486,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8298,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8223,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8213,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7889,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7863,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7832,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, abdominal pain, or changes in bowel habits?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'c33d63d3-b918-4a5f-9fe2-50c6e1285ba7', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, abdominal pain, or changes in bowel habits?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1097}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, abdominal pain, or changes in bowel habits?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, abdominal pain, or changes in bowel habits?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell without clear symptoms. Key evidence gathered: No gastrointestinal, systemic, neurological, or sleep-related symptoms reported. No lab results available. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed history of systemic symptoms, objective exam findings, or diagnostic test results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any gastrointestinal symptoms, such as nausea, vomiting, abdominal pain, or changes in bowel habits?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No gastrointestinal, systemic, neurological, or sleep-related symptoms reported. Lab request returned no result. Retrieved documents suggest possible associations with age, gender, and systemic symptoms (e.g., fatigue, weight loss, cognitive changes) but no direct match to current presentation. No objective findings or diagnostic test results available. Missing: Specific symptom details, exam findings, or diagnostic test results."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 10,
+        "query_text": "Patient reports general malaise without specific symptoms. No gastrointestinal, systemic, neurological, or sleep-related symptoms reported. No lab results available. No objective findings or diagnostic test results available. Missing: Specific symptom details, exam findings, or diagnostic test results.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell without clear symptoms. Current uncertainty: Diagnosis not yet possible due to lack of specific findings. Evidence gathered: No gastrointestinal, systemic, neurological, or sleep-related symptoms reported. Lab request returned no result. Ineffective action: Asked about gastrointestinal symptoms; patient denied any issues. Needed guidance: Workflow for gathering specific symptom details, objective exam findings, or diagnostic test results."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7525,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8376,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8357,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_081e48e222ba",
+              "type": "experience",
+              "score": 0.8292,
+              "outcome": "negative",
+              "text": "Repeatedly requesting labs or imaging without first obtaining targeted history or ruling out high-yield findings (like occult blood in stool) wastes diagnostic resources and delays definitive diagnosis in cases with clear red flags.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7893,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7818,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7793,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675",
+          "exp_081e48e222ba"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any urinary or reproductive system symptoms, such as pain during urination, blood in urine, or changes in menstrual cycle?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '664d3f35-d9f9-4a9b-b779-e6e8bff72aa2', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any urinary or reproductive system symptoms, such as pain during urination, blood in urine, or changes in menstrual cycle?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1177}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any urinary or reproductive system symptoms, such as pain during urination, blood in urine, or changes in menstrual cycle?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any urinary or reproductive system symptoms, such as pain during urination, blood in urine, or changes in menstrual cycle?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with nonspecific complaint of feeling unwell without clear symptoms. Key evidence gathered: No positive findings in history of urinary/reproductive symptoms, no weight loss, night sweats, swelling, lumps, fatigue, cognitive changes, sleep disturbances, or GI symptoms. Labs requested but no result available. Retrieval of general symptom information for 65-year-old female patients without specific complaints returned vague, non-specific data. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Specific symptoms, lab results, or imaging findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_11 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any urinary or reproductive system symptoms, such as pain during urination, blood in urine, or changes in menstrual cycle?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. History negative for urinary/reproductive symptoms, weight loss, night sweats, swelling, lumps, fatigue, cognitive changes, sleep disturbances, or GI symptoms. Labs requested but no result available. Retrieval of general symptom information for 65-year-old female patients without specific complaints returned non-specific data. No objective findings or diagnostic leads identified. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 11,
+        "query_text": "Patient reports general malaise without specific symptoms. History negative for urinary/reproductive symptoms, weight loss, night sweats, swelling, lumps, fatigue, cognitive changes, sleep disturbances, or GI symptoms. Labs requested but no result available. No objective findings or diagnostic leads identified. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Patient presents with nonspecific complaint of feeling unwell without clear symptoms. Current uncertainty: Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Evidence gathered: No positive findings in history, labs requested but no result available. Ineffective action: Asked about urinary/reproductive symptoms — patient denied any issues. Needed guidance: Workflow for managing nonspecific complaints in 65-year-old female patients with no specific symptoms or lab results."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.763,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8496,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8416,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8387,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7877,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7853,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7786,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "non-specific symptoms in elderly patients and possible underlying conditions"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3c907607-ae0c-4b35-874a-f84ce7b2e45e': '[Document 1] (ID: 5224_6, Score: 0.869)\\n## Elderly\\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\\n\\n[Document 2] (ID: 4772_126, Score: 0.865)\\n- Older patients may present with atypical symptoms (including delirium) of COVID-19, especially those with cognitive decline and dementia  (see Table 6.1); health workers should take this into account during the screening process.\\n- Provide accessible information to older people and their caregiver...\\n\\n[Document 3] (ID: 2901_23, Score: 0.862)\\n## Rationale\\nElderly COVID-19 patients are characterized by numerous underlying diseases, multiple complications, variable conditions, and limited nutritional intake [bib_ref] Analysis of clinical characteristics of elderly patients with novel coronavirus pneumonia, Zhang [/bib_ref] , suggesting tha...\\n\\n[Document 4] (ID: 8371_3, Score: 0.860)\\n## Diagnostic Criteria\\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosi...[truncated]'}}",
+        "env_info": "{'response': [{'id': '3c907607-ae0c-4b35-874a-f84ce7b2e45e', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific symptoms in elderly patients and possible underlying conditions\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1262}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly patients and possible underlying conditions\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly patients and possible underlying conditions\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of feeling unwell without clear symptoms. Key evidence gathered: No positive findings from symptom screening (turns 2-11), no lab results (turn 6), and literature suggests elderly patients may present with atypical symptoms including delirium or cognitive changes. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Specific symptom details, lab/imaging results, or objective signs of illness. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_12 retrieve_interaction: doctor_action: retrieve(query=non-specific symptoms in elderly patients and possible underlying conditions)\nresponse: [Document 1] (ID: 5224_6, Score: 0.869)\n## Elderly\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\n\n[Document 2] (ID: 4772_126, Score: 0.865)\n- Older patients may present with atypical symptoms (including delirium) of COVID-19, especially those with cognitive decline and dementia  (see Table 6.1); health workers should take this into account during the screening process.\n- Provide accessible information to older people and their caregiver...\n\n[Document 3] (ID: 2901_23, Score: 0.862)\n## Rationale\nElderly COVID-19 patients are characterized by numerous underlying diseases, multiple complications, variable conditions, and limited nutritional intake [bib_ref] Analysis of clinical characteristics of elderly patients with novel coronavirus pneumonia, Zhang [/bib_ref] , suggesting tha...\n\n[Document 4] (ID: 8371_3, Score: 0.860)\n## Diagnostic Criteria\nIn hospitalised patient who develop respiratory symptoms and fever one should consider the diagnosis.  The likelyhood increases when upon investigation symptoms are found of respiratory insufficiency, purulent secretions, newly developed infiltrate on the chest X-Ray, and incr...\n\n[Document 5] (ID: 4792_138, Score: 0.859)\nOlder age has been reported as a risk factor for increased mortality in those affected by COVID-19. Other risk factors that have been reported are: smoking, diabetes, hypertension, cardiovascular, cancer, chronic lung disease, and functional decline (344)(345) (346). Since older people are often aff..."
+        ],
+        "prior_information_summary": "Patient reports non-specific symptoms without clear complaints. Symptom screening (turns 2-11) yielded no positive findings: no fever, cough, shortness of breath, weight loss, night sweats, swelling, pain, lumps, fatigue, cognitive changes, sleep disturbances, GI symptoms, or urinary/reproductive issues. Lab request (turn 6) returned no result. Literature review (turns 7, 12) suggests elderly patients may present with atypical symptoms including delirium or cognitive changes, and risk factors include comorbidities, age, and functional decline. No objective findings or diagnostic criteria met. Missing: specific symptom details, lab/imaging results, or objective signs of illness."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 12,
+        "query_text": "Patient reports non-specific complaints of feeling unwell without clear symptoms. Symptom screening (turns 2-11) yielded no positive findings: no fever, cough, shortness of breath, weight loss, night sweats, swelling, pain, lumps, fatigue, cognitive changes, sleep disturbances, GI symptoms, or urinary/reproductive issues. Lab request (turn 6) returned no result. Literature suggests elderly patients may present with atypical symptoms including delirium or cognitive changes. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Missing: specific symptom details, lab/imaging results, or objective signs of illness.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaints of feeling unwell without clear symptoms. Current uncertainty: No positive findings from symptom screening, no lab results, and no objective signs. Ineffective actions tried: Retrieval of non-specific symptoms in elderly patients and possible underlying conditions (turn 12). Missing evidence: Specific symptom details, lab/imaging results, or objective signs of illness. Need: Workflow guidance for next diagnostic steps given current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7398,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.8276,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8228,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8197,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.8077,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7864,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7844,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you had any recent exposure to sick individuals or traveled to areas with outbreaks?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '85907d93-c621-4cbe-ace6-2ca9006db93d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you had any recent exposure to sick individuals or traveled to areas with outbreaks?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1730}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent exposure to sick individuals or traveled to areas with outbreaks?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you had any recent exposure to sick individuals or traveled to areas with outbreaks?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell without clear symptoms. Key evidence gathered: No recent exposure or travel, no specific symptoms reported across multiple systems (respiratory, GI, urinary, cognitive, sleep), no lab results available. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed symptom description, lab or imaging results, or objective signs. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified from current data.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_13 ask_patient_interaction: doctor_action: ask_patient(question=Have you had any recent exposure to sick individuals or traveled to areas with outbreaks?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No recent exposure or travel reported. No symptoms of fever, cough, weight loss, night sweats, swelling, fatigue, cognitive changes, sleep disturbances, GI issues, or urinary/reproductive symptoms. Lab request yielded no result. Retrieved documents suggest non-specific symptoms in elderly may relate to systemic conditions or infections (e.g., COVID-19 in elderly with atypical presentations), but no direct correlation established. No objective findings or diagnostic clues yet available."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 13,
+        "query_text": "Patient reports general malaise without specific symptoms. No recent exposure or travel. No fever, cough, weight loss, night sweats, swelling, fatigue, cognitive changes, sleep disturbances, GI issues, or urinary/reproductive symptoms. No lab results available. No objective findings or diagnostic clues. Diagnostic uncertainty remains high due to lack of specific findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell without clear symptoms. Evidence gathered: No recent exposure or travel, no specific symptoms reported, no lab results. Ineffective action: Asked about exposure/travel, patient denied. Missing: Detailed symptom description, lab or imaging results, objective signs. Need: Workflow guidance for next diagnostic steps given current uncertainty and lack of specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7575,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8347,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8293,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8275,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7975,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7957,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7939,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific symptoms in elderly women and possible systemic conditions"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'273141e2-a3a6-4ab2-a06a-164caeb3945c': '[Document 1] (ID: 19106_8, Score: 0.856)\\n- Low back pain, pain with certain movements\\n\\n- Urinary tract:\\n\\nDysuria, polyuria\\n\\n- Dysuria, polyuria\\n\\n- Psychological:\\n\\nStress, depression, anxiety, anger\\n\\n- Stress, depression, anxiety, anger\\n\\n- Be careful about the symptoms that suggest life-threatening conditions such as\\xa0:\\n\\nunexplained weight l...\\n\\n[Document 2] (ID: 19181_3, Score: 0.853)\\n- Lymphoma\\n\\n- Malaria\\n\\n- Menopause\\n\\n- Mycobacterium avium complex infection\\n\\n- Natalizumab\\n\\n- Niacin\\n\\n- Nitroglycerin\\n\\n- Nocardiosis\\n\\n- Oat cell carcinoma of the lung\\n\\n- Obstructive sleep apnea\\n\\n- Omeprazole\\n\\n- Osteomyelitis\\n\\n- Pegaspargase\\n\\n- Pentamidine inhalation\\n\\n- Perimenopause\\n\\n- Pheochromocyt...\\n\\n[Document 3] (ID: 4019_9, Score: 0.849)\\n## Symptoms and signs\\nCommon symptoms and signs of both nonfibrotic and fibrotic HP include dyspnea, cough, and midinspiratory squeaks (or chirping rales or squawks). Less frequently, there may be constitutional symptoms such as weight loss, flu-like symptoms (chills, low-grade fever, and malaise), ...\\n\\n[Document 4] (ID: 5224_6, Score: 0.849)\\n## Elderly\\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD...[truncated]'}}",
+        "env_info": "{'response': [{'id': '273141e2-a3a6-4ab2-a06a-164caeb3945c', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific symptoms in elderly women and possible systemic conditions\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1804}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly women and possible systemic conditions\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific symptoms in elderly women and possible systemic conditions\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific systemic complaints in an elderly woman. Key evidence gathered: No positive findings from patient history (no weight loss, no lumps, no cognitive changes, no sleep issues, no GI or urinary symptoms, no exposure). Labs not performed. Current diagnostic uncertainty: No clear etiology; possible systemic conditions (e.g., menopause, lymphoma, infection, or metabolic) remain under consideration. Most useful missing information: Specific symptoms, lab results, or imaging findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_14 retrieve_interaction: doctor_action: retrieve(query=non-specific symptoms in elderly women and possible systemic conditions)\nresponse: [Document 1] (ID: 19106_8, Score: 0.856)\n- Low back pain, pain with certain movements\n\n- Urinary tract:\n\nDysuria, polyuria\n\n- Dysuria, polyuria\n\n- Psychological:\n\nStress, depression, anxiety, anger\n\n- Stress, depression, anxiety, anger\n\n- Be careful about the symptoms that suggest life-threatening conditions such as :\n\nunexplained weight l...\n\n[Document 2] (ID: 19181_3, Score: 0.853)\n- Lymphoma\n\n- Malaria\n\n- Menopause\n\n- Mycobacterium avium complex infection\n\n- Natalizumab\n\n- Niacin\n\n- Nitroglycerin\n\n- Nocardiosis\n\n- Oat cell carcinoma of the lung\n\n- Obstructive sleep apnea\n\n- Omeprazole\n\n- Osteomyelitis\n\n- Pegaspargase\n\n- Pentamidine inhalation\n\n- Perimenopause\n\n- Pheochromocyt...\n\n[Document 3] (ID: 4019_9, Score: 0.849)\n## Symptoms and signs\nCommon symptoms and signs of both nonfibrotic and fibrotic HP include dyspnea, cough, and midinspiratory squeaks (or chirping rales or squawks). Less frequently, there may be constitutional symptoms such as weight loss, flu-like symptoms (chills, low-grade fever, and malaise), ...\n\n[Document 4] (ID: 5224_6, Score: 0.849)\n## Elderly\nElderly patients represent a group of patients who have more comorbidities and who are both at risk for both CAD as well as for associated complications. However, they do derive equivalent or greater benefit from intervention when compared to younger patients. This group is likely to pres...\n\n[Document 5] (ID: 17273_3, Score: 0.848)\n- Risk factors for arterial vascular disease (e.g., hypertension, diabetes mellitus, tobacco use, hypercholesterolemia, and obesity) and/or venous thromboembolism (e.g., personal history or family history of VTE, obesity, and systemic lupus erythematosus) should be managed appropriately.\n- In the Wo..."
+        ],
+        "prior_information_summary": "Patient reports non-specific systemic complaints. No positive findings from history: no weight loss, no lumps, no cognitive changes, no sleep issues, no GI or urinary symptoms, no exposure. Labs not performed. No imaging or exam results available. No specific symptoms identified. No evidence of systemic disease confirmed. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 14,
+        "query_text": "Patient reports non-specific systemic complaints. No positive findings from history: no weight loss, no lumps, no cognitive changes, no sleep issues, no GI or urinary symptoms, no exposure. Labs not performed. No imaging or exam results available. No specific symptoms identified. No evidence of systemic disease confirmed.",
+        "skill_query_text": "Presenting problem: non-specific systemic complaints in elderly woman. Current uncertainty: no clear etiology; possible systemic conditions remain under consideration. Evidence gathered: no positive findings, no labs, no imaging. Ineffective actions: retrieval of non-specific symptoms in elderly women and possible systemic conditions yielded low-relevance documents. Need workflow guidance on next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.75,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8445,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8256,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8239,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7813,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.777,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7632,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unexplained weight loss, even if it's minor?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '2aaac640-a88c-46b5-a515-987608ffecce', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unexplained weight loss, even if it\\'s minor?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 2349}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, even if it's minor?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, even if it's minor?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20037839",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of feeling unwell without clear symptoms. Key evidence gathered: No weight loss, no fever, no cough, no shortness of breath, no cognitive changes, no sleep disturbances, no GI or urinary symptoms, no recent exposure. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed history of systemic symptoms, lab results, imaging findings, or objective signs. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified from current data.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_15 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unexplained weight loss, even if it's minor?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise without specific symptoms. No weight loss, no fever, no cough, no shortness of breath, no fatigue, no cognitive changes, no sleep disturbances, no GI or urinary symptoms, no recent exposure. Labs requested but no result available. Retrieved documents suggest possible systemic conditions in elderly patients, including infections, malignancies, and metabolic issues, but no specific findings confirmed. No objective evidence yet to guide diagnosis."
+      },
+      "inefficient_turn_information": [
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20037839",
+        "turn_id": 15,
+        "query_text": "Patient reports general malaise without specific symptoms. No weight loss, no fever, no cough, no shortness of breath, no fatigue, no cognitive changes, no sleep disturbances, no GI or urinary symptoms, no recent exposure. Labs requested but no result available. No objective evidence yet to guide diagnosis.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaints of feeling unwell without clear symptoms. Current uncertainty: Diagnosis remains undetermined due to lack of specific findings. Evidence gathered: No weight loss, no fever, no cough, no shortness of breath, no cognitive changes, no sleep disturbances, no GI or urinary symptoms, no recent exposure. Missing evidence: Detailed history of systemic symptoms, lab results, imaging findings. Ineffective action tried: Asked about unexplained weight loss, patient denied. Need: Workflow guidance for next diagnostic steps given current evidence and uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7468,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8222,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8128,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8088,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7937,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7786,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7766,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any persistent fatigue or lack of energy that interferes with your daily activities?"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': 'dbf35850-cdd9-4099-9292-fc779a45361d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any persistent fatigue or lack of energy that interferes with your daily activities?\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"dbf35850-cdd9-4099-9292-fc779a45361d\", \"type\": \"function\", \"function\": {\"name\": \"ask_patient\", \"arguments\": \"{\\\\\"question\\\\\": \\\\\"Have you noticed any persistent fatigue or lack of energy that interferes with your daily activities?\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 7, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 8, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 9, 'conf_before': 0.3333333333333333, 'conf_after': 0.3333333333333333, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 2422}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.3333333333333333,
+        "conf_after": 0.3333333333333333,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any persistent fatigue or lack of energy that interferes with your daily activities?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any persistent fatigue or lack of energy that interferes with your daily activities?\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_15 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unexplained weight loss, even if it's minor?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+  ]
+}

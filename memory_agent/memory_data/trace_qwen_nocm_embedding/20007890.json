@@ -1,0 +1,515 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20007890",
+  "turns": [
+    {
+      "case_id": "20007890",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 32-year-old female patient presenting with nonspecific subjective complaints. Key evidence gathered: Patient’s self-reported symptoms and request for diagnosis. Diagnostic uncertainty remains high due to lack of specific symptoms, exam, lab, or imaging data. Most useful missing information: Detailed symptom history, physical exam findings, and relevant diagnostic tests. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 32-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 32-year-old female patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 32-year-old female reporting nonspecific subjective symptoms and seeking assessment and diagnosis. No specific symptoms, exam, lab, or imaging data provided. No prior findings or test results available. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 1,
+        "query_text": "Patient is a 32-year-old female reporting nonspecific subjective complaints and seeking assessment and diagnosis. No specific symptoms, exam, lab, or imaging data provided. No prior findings or test results available. Diagnostic uncertainty remains high due to lack of specific clinical evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose a 32-year-old female with nonspecific subjective complaints. Evidence gathered: Patient’s self-reported symptoms and request for diagnosis. Missing: Detailed symptom history, physical exam findings, and relevant diagnostic tests. Ineffective actions: None recorded. Need: Workflow guidance for next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8042,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7859,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8042,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did your symptoms first start, and have they been continuous or intermittent?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '8ab06cc2-ae2c-4f68-9d2a-3fb924b5877f', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms first start, and have they been continuous or intermittent?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20007890",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: Patient denies specific symptoms or known abnormalities. Diagnostic uncertainty remains high due to lack of specific history or findings. Most useful missing information: Detailed timeline of symptoms, nature of discomfort, associated symptoms, and relevant medical history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did your symptoms first start, and have they been continuous or intermittent?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general feeling of unwellness without specific symptoms. No known abnormalities reported. No specific history or findings provided. No lab, imaging, or exam results available. No relevant risk factors or management implications identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 2,
+        "query_text": "Patient reports general feeling of unwellness without specific symptoms. No known abnormalities reported. No specific history or findings provided. No lab, imaging, or exam results available. No relevant risk factors or management implications identified.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Current uncertainty: Diagnostic uncertainty remains high due to lack of specific history or findings. Evidence gathered: Patient denies specific symptoms or known abnormalities. Missing evidence: Detailed timeline of symptoms, nature of discomfort, associated symptoms, and relevant medical history. Ineffective actions tried: Asked about symptom onset and associated findings; patient denied any problems. Needed guidance: Action-selection workflow for managing non-specific complaints with insufficient evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8373,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8077,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.7916,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been having episodes of wheezing, shortness of breath, and chest tightness that come and go — sometimes worse at night or after exercise. I also cough a lot, especially when exposed to triggers like dust, smoke, or cold air. I’ve noticed my symptoms get worse when I’m stressed or when I’ve had a cold. I’ve also lost most of my sense of smell, and I’ve had trouble breathing after taking ibuprofen or other pain relievers — sometimes even after just a small dose. I’ve had nasal congestion and runny nose for a long time, and I’ve noticed polyps in my nose. My asthma symptoms don’t always respond well to usual treatments, and I’ve had to go to the ER a few times when things get really bad.'}",
+        "env_info": "{'response': [{'id': '3217580c-8282-4c44-b2cf-3e5eb8dbd75d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 73}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20007890",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with intermittent respiratory symptoms including wheezing, shortness of breath, chest tightness, cough, and loss of smell, with possible nasal polyps and poor response to asthma treatment. Key evidence: Symptoms triggered by allergens, stress, colds, and NSAIDs; history of ER visits. Diagnostic uncertainty: Differentiating asthma exacerbation, allergic rhinitis, nasal polyps, or possible allergic or inflammatory condition affecting olfaction and respiratory response. Most useful missing information: Detailed history of asthma medications, recent imaging or allergy testing, nasal endoscopy findings, and specific NSAID reactions. Evidence is not yet sufficient to finalize diagnosis; further diagnostic workup needed.",
+        "efficient_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?)\nresponse: I’ve been having episodes of wheezing, shortness of breath, and chest tightness that come and go — sometimes worse at night or after exercise. I also cough a lot, especially when exposed to triggers like dust, smoke, or cold air. I’ve noticed my symptoms get worse when I’m stressed or when I’ve had a cold. I’ve also lost most of my sense of smell, and I’ve had trouble breathing after taking ibuprofen or other pain relievers — sometimes even after just a small dose. I’ve had nasal congestion and runny nose for a long time, and I’ve noticed polyps in my nose. My asthma symptoms don’t always respond well to usual treatments, and I’ve had to go to the ER a few times when things get really bad."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general malaise seeking assessment. Turn 2: Asked about symptom onset and continuity; response indicated no known issues in that area. Turn 3: Patient describes intermittent wheezing, shortness of breath, chest tightness, cough triggered by allergens, stress, colds, and NSAIDs; loss of smell, nasal congestion, runny nose, nasal polyps, poor asthma control, and ER visits. No prior diagnostic tests or imaging reported. No treatment recommendations or risks provided."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 3,
+        "query_text": "Patient reports intermittent wheezing, shortness of breath, chest tightness, cough triggered by allergens, stress, colds, and NSAIDs; loss of smell, nasal congestion, runny nose, nasal polyps, poor asthma control, and ER visits. No prior diagnostic tests or imaging reported.",
+        "skill_query_text": "Presenting problem: Patient with intermittent respiratory symptoms and loss of smell, poor asthma response, nasal polyps, and NSAID reactions. Uncertainty: Differentiating asthma exacerbation, allergic rhinitis, or inflammatory condition. Evidence gathered: Symptom history, triggers, ER visits. Missing: Asthma medication history, imaging, allergy testing, nasal endoscopy. Ineffective actions: None. Need: Diagnostic workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'16a1ab29-f949-404c-b5d2-4f7e79bfc58b': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '16a1ab29-f949-404c-b5d2-4f7e79bfc58b', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 286}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20007890",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 3,
+        "query_text": "Patient reports intermittent wheezing, shortness of breath, chest tightness, cough triggered by allergens, stress, colds, and NSAIDs; loss of smell, nasal congestion, runny nose, nasal polyps, poor asthma control, and ER visits. No prior diagnostic tests or imaging reported.",
+        "skill_query_text": "Presenting problem: Patient with intermittent respiratory symptoms and loss of smell, poor asthma response, nasal polyps, and NSAID reactions. Uncertainty: Differentiating asthma exacerbation, allergic rhinitis, or inflammatory condition. Evidence gathered: Symptom history, triggers, ER visits. Missing: Asthma medication history, imaging, allergy testing, nasal endoscopy. Ineffective actions: None. Need: Diagnostic workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'25942189-61a4-4c27-a62f-de72936076aa': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '25942189-61a4-4c27-a62f-de72936076aa', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 357}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20007890",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 3,
+        "query_text": "Patient reports intermittent wheezing, shortness of breath, chest tightness, cough triggered by allergens, stress, colds, and NSAIDs; loss of smell, nasal congestion, runny nose, nasal polyps, poor asthma control, and ER visits. No prior diagnostic tests or imaging reported.",
+        "skill_query_text": "Presenting problem: Patient with intermittent respiratory symptoms and loss of smell, poor asthma response, nasal polyps, and NSAID reactions. Uncertainty: Differentiating asthma exacerbation, allergic rhinitis, or inflammatory condition. Evidence gathered: Symptom history, triggers, ER visits. Missing: Asthma medication history, imaging, allergy testing, nasal endoscopy. Ineffective actions: None. Need: Diagnostic workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "asthma with nasal polyps and loss of smell"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e003d97c-989f-48f1-ab53-9979c9229181': \"[Document 1] (ID: 3152_10, Score: 0.898)\\nIn asthma with aspirin sensitivity -36-96% have nasal polyps with rhinosinusitis [bib_ref] Nasal polyps in asthma and rhinitis. A review of 6,037 patients, Settipane [/bib_ref].\\nFamily history. A family history of atopy, seasonal rhinitis or asthma makes the diagnosis of AR more likely [bib_ref] Fre...\\n\\n[Document 2] (ID: 21817_0, Score: 0.883)\\nSandbox:Christina\\nWikidoc\\n# Nasal polyp\\n# Diagnosis\\n## History and symtoms\\nNasal polyps don't cause any symptoms and could be an incidental finding if it's smaller in size. Larger polyps or clusters cause many symptoms of obstruction like lack of smell or taste, stuffy nose, facial pain or headache,...\\n\\n[Document 3] (ID: 28946_0, Score: 0.879)\\nNasal polyp\\n\\n# Overview\\nNasal polyps are polypoidal masses arising mainly from the mucous membranes of the nose and paranasal sinuses.\\n\\n# Diagnosis\\nThey are overgrowths of the mucosa that frequently accompany allergic rhinitis.  They are freely moveable and non-tender.  Nasal polyps are usually clas...\\n\\n[Document 4] (ID: 21817_3, Score: 0.870)\\n# Epidemology\\nNasal polyposis is a common disease in the population and has been estimated to as 1-4%. Nasal polyposis oc...[truncated]\"}}",
+        "env_info": "{'response': [{'id': 'e003d97c-989f-48f1-ab53-9979c9229181', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"asthma with nasal polyps and loss of smell\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 431}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.4,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma with nasal polyps and loss of smell\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"asthma with nasal polyps and loss of smell\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20007890",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 5. Low-information/no-result turns already attempted: 2; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 32-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 32-year-old female patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did your symptoms first start, and have they been continuous or intermittent?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?)\nresponse: I’ve been having episodes of wheezing, shortness of breath, and chest tightness that come and go — sometimes worse at night or after exercise. I also cough a lot, especially when exposed to triggers like dust, smoke, or cold air. I’ve noticed my symptoms get worse when I’m stressed or when I’ve had a cold. I’ve also lost most of my sense of smell, and I’ve had trouble breathing after taking ibuprofen or other pain relievers — sometimes even after just a small dose. I’ve had nasal congestion and runny nose for a long time, and I’ve noticed polyps in my nose. My asthma symptoms don’t always respond well to usual treatments, and I’ve had to go to the ER a few times when things get really bad.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=asthma with nasal polyps and loss of smell)\nresponse: [Document 1] (ID: 3152_10, Score: 0.898)\nIn asthma with aspirin sensitivity -36-96% have nasal polyps with rhinosinusitis [bib_ref] Nasal polyps in asthma and rhinitis. A review of 6,037 patients, Settipane [/bib_ref].\nFamily history. A family history of atopy, seasonal rhinitis or asthma makes the diagnosis of AR more likely [bib_ref] Fre...\n\n[Document 2] (ID: 21817_0, Score: 0.883)\nSandbox:Christina\nWikidoc\n# Nasal polyp\n# Diagnosis\n## History and symtoms\nNasal polyps don't cause any symptoms and could be an incidental finding if it's smaller in size. Larger polyps or clusters cause many symptoms of obstruction like lack of smell or taste, stuffy nose, facial pain or headache,...\n\n[Document 3] (ID: 28946_0, Score: 0.879)\nNasal polyp\n\n# Overview\nNasal polyps are polypoidal masses arising mainly from the mucous membranes of the nose and paranasal sinuses.\n\n# Diagnosis\nThey are overgrowths of the mucosa that frequently accompany allergic rhinitis.  They are freely moveable and non-tender.  Nasal polyps are usually clas...\n\n[Document 4] (ID: 21817_3, Score: 0.870)\n# Epidemology\nNasal polyposis is a common disease in the population and has been estimated to as 1-4%. Nasal polyposis occurs more in men compared to women. The prevalence of nasal polyps increases substantially between 40 to 60 years of age. Since the exact etiology of nasal polyp is unclear, studi...\n\n[Document 5] (ID: 21817_2, Score: 0.864)\n# Etiology\nAlthough the etiology of the disease is unclear, it is a common disease affecting 4% of the population. It is often associated with many pathogenic conditions like aspirin sensitivity(36%), asthma(7%), cystic fibrosis(20%) and especially chronic rhinosinusitis. Other conditions with nasal..."
+        ],
+        "ineffective_turn_information": [
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did your symptoms first start, and have they been continuous or intermittent?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Can you describe the nature of your symptoms? For example, are they pain, fatigue, fever, or something else?)\nresponse: I’ve been having episodes of wheezing, shortness of breath, and chest tightness that come and go — sometimes worse at night or after exercise. I also cough a lot, especially when exposed to triggers like dust, smoke, or cold air. I’ve noticed my symptoms get worse when I’m stressed or when I’ve had a cold. I’ve also lost most of my sense of smell, and I’ve had trouble breathing after taking ibuprofen or other pain relievers — sometimes even after just a small dose. I’ve had nasal congestion and runny nose for a long time, and I’ve noticed polyps in my nose. My asthma symptoms don’t always respond well to usual treatments, and I’ve had to go to the ER a few times when things get really bad.\n\nIneffective/no-result interactions:\nturn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 6,
+        "query_text": "32-year-old female patient presents with episodic wheezing, shortness of breath, chest tightness, chronic cough, nasal congestion, runny nose, nasal polyps, loss of smell, and poor response to usual asthma treatments. Symptoms worsen with stress, colds, and NSAIDs. No prior lab or imaging results available.",
+        "skill_query_text": "Presenting problem: patient with asthma-like symptoms and nasal polyps with aspirin sensitivity. Evidence gathered: patient history and retrieval of asthma with nasal polyps and loss of smell. Ineffective actions: no result from labs or imaging. Need guidance on next diagnostic action to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Aspirin-exacerbated respiratory disease (AERD) with nasal polyps and asthma}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'622400b4-e500-447e-ba9c-ab4d0c67309a': '{\"diagnosis\": \"Aspirin-exacerbated respiratory disease (AERD) with nasal polyps and asthma\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '622400b4-e500-447e-ba9c-ab4d0c67309a', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Aspirin-exacerbated respiratory disease (AERD) with nasal polyps and asthma}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 983}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aspirin-exacerbated respiratory disease (AERD) with nasal polyps and asthma}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aspirin-exacerbated respiratory disease (AERD) with nasal polyps and asthma}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20007890",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnosis_goal": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_6 request_exam_interaction: doctor_action: request_exam(exam_type=CXR)\nresponse: {\"exam_type\": \"CXR\", \"source\": \"none\", \"result\": \"No result for \\\"CXR\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_7 request_exam_interaction: doctor_action: request_exam(exam_type=microbiology)\nresponse: {\"exam_type\": \"microbiology\", \"source\": \"none\", \"result\": \"No result for \\\"microbiology\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20007890",
+        "turn_id": 3,
+        "query_text": "Patient has asthma, aspirin sensitivity, loss of smell, nasal polyps, wheezing, shortness of breath, chest tightness, cough, especially in mornings, triggered by perfumes, dust, cold air, exercise. History of reactions to aspirin and ibuprofen with bronchospasm and hives. No prior testing. Avoid NSAIDs and aspirin until diagnosis confirmed.",
+        "skill_query_text": "Patient presents with asthma, aspirin sensitivity, loss of smell, nasal polyps, and symptom exacerbation with triggers. Diagnosis goal: confirm Samter’s triad (AERD) via aspirin challenge or IgE testing. No prior testing performed. Need guidance on next diagnostic steps, avoiding NSAIDs, and referral to allergist/ENT specialist."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 0,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) / Samter's Triad}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'00284a34-928b-4b17-bed9-6e8b2b8d8d32': '{\"diagnosis\": \"Aspirin-Exacerbated Respiratory Disease (AERD) / Samter\\'s Triad\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '00284a34-928b-4b17-bed9-6e8b2b8d8d32', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) / Samter\\'s Triad}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1035}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) / Samter's Triad}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Aspirin-Exacerbated Respiratory Disease (AERD) / Samter's Triad}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": []
+}

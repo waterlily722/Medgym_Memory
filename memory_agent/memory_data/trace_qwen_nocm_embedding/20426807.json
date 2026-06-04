@@ -1,0 +1,1047 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20426807",
+  "turns": [
+    {
+      "case_id": "20426807",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Impending left femur fracture",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose a 65-year-old female patient presenting with impending left femur fracture. Key evidence gathered: Patient is 65-year-old female with recent general malaise and chief complaint of impending femur fracture. Diagnostic uncertainty remains high due to lack of specific clinical, imaging, or lab findings. Most useful missing information: Detailed history of trauma, mechanism of injury, pain characteristics, mobility limitations, and relevant imaging or lab results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 65-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 65-year-old female patient presenting with Impending left femur fracture.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 65-year-old female with recent general malaise and chief complaint of impending left femur fracture. No specific clinical, imaging, or lab findings provided. No history of trauma, mechanism of injury, pain characteristics, or mobility limitations documented. No diagnostic tests or results available. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20426807",
+        "turn_id": 1,
+        "query_text": "65-year-old female, chief complaint: impending left femur fracture, recent general malaise, no specific clinical, imaging, or lab findings, no trauma history, no pain characteristics or mobility limitations documented.",
+        "skill_query_text": "Assess and diagnose 65-year-old female with impending left femur fracture; no specific findings, no trauma mechanism, no imaging or lab results; no ineffective actions tried; need workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7469,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7307,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7066,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.7951,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_d08ad5ed97ae",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "negative",
+              "text": "In elderly patients with gait and balance issues, a history of falls alone is insufficient to support a diagnosis of NPH; cognitive decline, urinary incontinence, and progressive gait deterioration are required discriminative features.",
+              "tags": []
+            },
+            {
+              "id": "exp_fc137e9b29f4",
+              "type": "experience",
+              "score": 0.7928,
+              "outcome": "negative",
+              "text": "Swelling, redness, and warmth around the hip with a history of trauma are not specific to osteoarthritis; they suggest acute inflammatory or infectious processes such as septic arthritis or bursitis, which require urgent differentiation from degenerative conditions.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_22c863e5aedf",
+              "type": "skill",
+              "score": 0.8072,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_76d6d7ce801f",
+              "type": "skill",
+              "score": 0.7979,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_14c12495f9b6",
+              "type": "skill",
+              "score": 0.7962,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "skill_14c12495f9b6"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "skill_14c12495f9b6",
+            "memory_type": "skill",
+            "score": 0.7962,
+            "content": {
+              "skill": "When initial patient history is non-informative, use targeted retrieval to narrow differential diagnosis based on key symptoms.",
+              "procedure": [
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "ASK",
+                  "action_label": "ask_patient"
+                },
+                {
+                  "action_type": "RETRIEVE",
+                  "action_label": "retrieve"
+                }
+              ],
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any trauma or fall that could have led to this issue?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'bfbe8c66-835e-40ca-a3bb-0f71ed0c5eca', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any trauma or fall that could have led to this issue?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any trauma or fall that could have led to this issue?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any trauma or fall that could have led to this issue?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20426807",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Impending left femur fracture",
+        "diagnostic_strategy": "Current clinical problem: Impending left femur fracture. Key evidence gathered: Patient denies trauma or fall. Diagnostic uncertainty remains high due to lack of mechanism or supporting findings. Most useful missing information: Imaging results (X-ray, CT) or physical exam findings (pain, swelling, deformity). Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any trauma or fall that could have led to this issue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Impending left femur fracture. Patient denies trauma or fall. No abnormal findings reported. No imaging, exam, or lab results available. Missing: imaging, physical exam findings. No low-value or no-result attempts."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20426807",
+        "turn_id": 2,
+        "query_text": "Chief complaint: Impending left femur fracture. Patient denies trauma or fall. No abnormal findings reported. No imaging, exam, or lab results available. Missing: imaging, physical exam findings. Diagnostic uncertainty remains high due to lack of mechanism or supporting findings.",
+        "skill_query_text": "Presenting problem: Impending left femur fracture. Current uncertainty: Diagnosis not finalized due to lack of mechanism or supporting findings. Evidence gathered: Patient denies trauma or fall. Ineffective action tried: Asked about trauma/fall, patient denies any issues. Missing: Imaging (X-ray, CT) or physical exam findings. Need: Workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7462,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7349,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7094,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8298,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8278,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_72c0937eff6d",
+              "type": "experience",
+              "score": 0.8056,
+              "outcome": "negative",
+              "text": "The absence of weakness, numbness, or tingling in the legs or feet, despite chronic back surgeries and amputation, is misleading — it does not rule out radicular pain or spinal pathology, especially when combined with systemic signs like dizziness and uncontrolled hypertension, which point to a hypertensive emergency exacerbating the pain.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_22c863e5aedf",
+              "type": "skill",
+              "score": 0.8171,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_76d6d7ce801f",
+              "type": "skill",
+              "score": 0.817,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8058,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_3019d75ebc50"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_3019d75ebc50",
+            "memory_type": "experience",
+            "score": 0.8278,
+            "content": {
+              "experience": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any swelling, pain, or tenderness in your left thigh or groin area recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '1ce00674-a0a8-48b1-8cb8-a3eaee2fdf2c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any swelling, pain, or tenderness in your left thigh or groin area recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 73}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, pain, or tenderness in your left thigh or groin area recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any swelling, pain, or tenderness in your left thigh or groin area recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20426807",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Impending left femur fracture",
+        "diagnostic_strategy": "Current clinical problem: Impending left femur fracture. Key evidence gathered: Patient denies recent trauma or symptoms (swelling, pain, tenderness) in left thigh or groin. Diagnostic uncertainty remains high due to lack of objective findings or imaging. Most useful missing information: Imaging (X-ray or CT) of left femur to confirm or rule out fracture. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any swelling, pain, or tenderness in your left thigh or groin area recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Impending left femur fracture. Patient denies recent trauma (turn_2) and denies swelling, pain, or tenderness in left thigh or groin (turn_3). No imaging or objective findings reported. No treatment recommended. Missing: imaging to confirm or rule out fracture."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20426807",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Impending left femur fracture. Patient denies recent trauma, swelling, pain, or tenderness in left thigh or groin. No imaging or objective findings reported. Diagnostic uncertainty remains high. Missing: imaging (X-ray or CT) of left femur.",
+        "skill_query_text": "Presenting problem: Impending left femur fracture. Uncertainty: diagnosis not confirmed. Evidence gathered: patient denies symptoms; no imaging. Ineffective action: asked about symptoms, patient denied issues. Needed: guidance on next diagnostic step (imaging) to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7503,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7499,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7032,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8127,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_fc137e9b29f4",
+              "type": "experience",
+              "score": 0.8127,
+              "outcome": "negative",
+              "text": "Swelling, redness, and warmth around the hip with a history of trauma are not specific to osteoarthritis; they suggest acute inflammatory or infectious processes such as septic arthritis or bursitis, which require urgent differentiation from degenerative conditions.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8069,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8084,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_76d6d7ce801f",
+              "type": "skill",
+              "score": 0.8066,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8021,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'df994475-520a-4f19-b94d-6017a9f97d9c': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'df994475-520a-4f19-b94d-6017a9f97d9c', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 151}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.2,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20426807",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20426807",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Impending left femur fracture. Patient denies recent trauma, swelling, pain, or tenderness in left thigh or groin. No imaging or objective findings reported. Diagnostic uncertainty remains high. Missing: imaging (X-ray or CT) of left femur.",
+        "skill_query_text": "Presenting problem: Impending left femur fracture. Uncertainty: diagnosis not confirmed. Evidence gathered: patient denies symptoms; no imaging. Ineffective action: asked about symptoms, patient denied issues. Needed: guidance on next diagnostic step (imaging) to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7503,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7499,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7032,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8127,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_fc137e9b29f4",
+              "type": "experience",
+              "score": 0.8127,
+              "outcome": "negative",
+              "text": "Swelling, redness, and warmth around the hip with a history of trauma are not specific to osteoarthritis; they suggest acute inflammatory or infectious processes such as septic arthritis or bursitis, which require urgent differentiation from degenerative conditions.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8069,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8084,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_76d6d7ce801f",
+              "type": "skill",
+              "score": 0.8066,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8021,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_3019d75ebc50"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "imaging"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5daba5d1-1588-4dd6-913b-8ba5f5d0872c': '{\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\\\"imaging\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '5daba5d1-1588-4dd6-913b-8ba5f5d0872c', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"imaging\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 222}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.2,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"imaging\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20426807",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20426807",
+        "turn_id": 3,
+        "query_text": "Chief complaint: Impending left femur fracture. Patient denies recent trauma, swelling, pain, or tenderness in left thigh or groin. No imaging or objective findings reported. Diagnostic uncertainty remains high. Missing: imaging (X-ray or CT) of left femur.",
+        "skill_query_text": "Presenting problem: Impending left femur fracture. Uncertainty: diagnosis not confirmed. Evidence gathered: patient denies symptoms; no imaging. Ineffective action: asked about symptoms, patient denied issues. Needed: guidance on next diagnostic step (imaging) to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7503,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7499,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7032,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8127,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_fc137e9b29f4",
+              "type": "experience",
+              "score": 0.8127,
+              "outcome": "negative",
+              "text": "Swelling, redness, and warmth around the hip with a history of trauma are not specific to osteoarthritis; they suggest acute inflammatory or infectious processes such as septic arthritis or bursitis, which require urgent differentiation from degenerative conditions.",
+              "tags": []
+            },
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8069,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.8084,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_76d6d7ce801f",
+              "type": "skill",
+              "score": 0.8066,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8021,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "Impending left femur fracture in elderly patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'71f2288f-e9a9-4263-bccf-8045952904d7': \"[Document 1] (ID: 27379_4, Score: 0.862)\\n# Epidemiology and Demographics\\nThe Hip fracture is an important problem of all ages specially for the older people. It is most commonly occurs in women. The available epidemiological information differed between countries, but totally it's been globally estimated that hip fractures \\naffect around 5...\\n\\n[Document 2] (ID: 10807_3, Score: 0.862)\\n# Screening\\nThe risk of neck of femur fracture due to osteoporosis is threatening, affecting one out of two postmenopausal women and one out of five men older than 50 years. The 10-year risk for osteoporosis-related neck of femur fracture in a 65-year-old white woman with no other risk factor is 9.3...\\n\\n[Document 3] (ID: 4098_0, Score: 0.855)\\nUpdated Recommendations for the Diagnosis and Management of Osteoporosis: A Local Perspective\\n\\n[bib_ref] Hip fractures in the elderly: A worldwide projection, Cooper [/bib_ref]\\n\\n## What is new in this report?\\n- A review of local data, especially in relation to population specific BMD values and the ...\\n\\n[Document 4] (ID: 27379_6, Score: 0.853)\\n# Classification \\nHip fractures classified into:\\nIntracapsular fractures (known as femoral neck fractures):\\n45% of all acu...[truncated]\"}}",
+        "env_info": "{'response': [{'id': '71f2288f-e9a9-4263-bccf-8045952904d7', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"Impending left femur fracture in elderly patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 296}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2,
+        "conf_after": 0.4,
+        "delta": 0.2,
+        "turn_reward": 0.04000000000000001,
+        "importance": 0.2
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Impending left femur fracture in elderly patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"Impending left femur fracture in elderly patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20426807",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Impending left femur fracture",
+        "diagnostic_strategy": "Current clinical problem: Impending left femur fracture. Key evidence gathered: No trauma or fall reported (turn 2, 3), no lab or imaging results available (turn 4, 5). Current diagnostic uncertainty: Whether fracture is imminent, and if osteoporosis or other risk factors are present. Most useful missing information: Patient’s age, gender, history of osteoporosis, recent falls, and imaging or lab results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Impending left femur fracture"
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any trauma or fall that could have led to this issue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any swelling, pain, or tenderness in your left thigh or groin area recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: Impending left femur fracture. Patient reports no trauma or fall (turn 2, 3). No lab or imaging results available (turn 4, 5). Retrieved documents (turn 6) provide epidemiology, risk factors for osteoporosis-related femur fractures, classification of hip fractures, and surgical recommendations for elderly patients with comorbidities. No specific patient history or physical findings provided. Missing: Age, gender, osteoporosis history, recent falls, imaging or lab results."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20426807",
+        "turn_id": 6,
+        "query_text": "Chief complaint: Impending left femur fracture. No trauma or fall reported. No lab or imaging results available. No specific patient history or physical findings provided. Missing: Age, gender, osteoporosis history, recent falls, imaging or lab results. Diagnostic uncertainty: Whether fracture is imminent and if osteoporosis or other risk factors are present.",
+        "skill_query_text": "Presenting problem: Impending left femur fracture. Current uncertainty: Whether fracture is imminent and if osteoporosis or other risk factors are present. Evidence gathered: No trauma or fall reported, no lab or imaging results. Ineffective actions: Asked about trauma/fall and requested labs/imaging — no results. Missing: Age, gender, osteoporosis history, recent falls. Need: Workflow guidance for next diagnostic steps given current evidence and prior ineffective actions."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7473,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7363,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7243,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_0dca2816ac84",
+              "type": "experience",
+              "score": 0.8294,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "tags": []
+            },
+            {
+              "id": "exp_9ef2509e63b0",
+              "type": "experience",
+              "score": 0.8237,
+              "outcome": "negative",
+              "text": "Absence of fever, redness, or warmth in acute knee trauma with swelling and inability to bear weight does not rule out fracture or ligament tear; do not assume infection is absent without imaging or lab confirmation.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.822,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_22c863e5aedf",
+              "type": "skill",
+              "score": 0.8209,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_03d62c742a12",
+              "type": "skill",
+              "score": 0.8204,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_76d6d7ce801f",
+              "type": "skill",
+              "score": 0.818,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_0dca2816ac84",
+          "exp_3019d75ebc50"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_0dca2816ac84",
+            "memory_type": "experience",
+            "score": 0.8294,
+            "content": {
+              "experience": "Requesting labs without clinical justification or prior evidence of systemic involvement is low-yield in gait and balance issues; prioritize targeted neurological or musculoskeletal exams instead.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Do you have any history of osteoporosis, prior fractures, or other bone-related conditions?"
+        },
+        "patient_or_tool_response": "{'question': 'I have multiple myeloma, which can cause bone lesions, and I’ve had a bony lesion in my right hip. I don’t recall any prior fractures, but I’m not sure if that’s due to the myeloma or not. I also have osteoarthritis (OA), but I don’t know if that’s related to bone density or osteoporosis. I was not told if I have osteoporosis or other bone-related conditions.'}",
+        "env_info": "{'response': [{'id': '36ad559c-0fb6-4263-bcda-49ff92628905', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you have any history of osteoporosis, prior fractures, or other bone-related conditions?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 792}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have any history of osteoporosis, prior fractures, or other bone-related conditions?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have any history of osteoporosis, prior fractures, or other bone-related conditions?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20426807",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Impending left femur fracture",
+        "diagnostic_strategy": "Current clinical problem: Impending left femur fracture. Key evidence gathered: Patient has multiple myeloma with bone lesions (right hip), osteoarthritis, and uncertainty about prior fractures or osteoporosis. Diagnostic uncertainty remains: whether bone fragility is due to myeloma, osteoporosis, or other factors. Most useful missing information: confirmation of osteoporosis diagnosis, history of prior fractures, and imaging or lab results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Do you have any history of osteoporosis, prior fractures, or other bone-related conditions?)\nresponse: I have multiple myeloma, which can cause bone lesions, and I’ve had a bony lesion in my right hip. I don’t recall any prior fractures, but I’m not sure if that’s due to the myeloma or not. I also have osteoarthritis (OA), but I don’t know if that’s related to bone density or osteoporosis. I was not told if I have osteoporosis or other bone-related conditions."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Impending left femur fracture. History: No trauma or fall reported (turn 2). No swelling, pain, or tenderness reported in left thigh or groin (turn 3). Labs requested (turn 4) — no result available. Imaging requested (turn 5) — no result available. Retrieved documents (turn 6) suggest osteoporosis-related fracture risk in elderly, classification of femoral neck fractures, and surgical considerations for elderly with comorbidities. Patient reports multiple myeloma with bone lesions (right hip), osteoarthritis, and uncertainty about prior fractures or osteoporosis (turn 7). No prior fractures confirmed. No osteoporosis diagnosis provided. No imaging or lab results available. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=imaging)\nresponse: {\"exam_type\": \"imaging\", \"source\": \"none\", \"result\": \"No result for \\\"imaging\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20426807",
+        "turn_id": 7,
+        "query_text": "Impending left femur fracture. Patient has multiple myeloma with bone lesions (right hip), osteoarthritis. No prior fractures confirmed. No osteoporosis diagnosis. No imaging or lab results available. Uncertainty: bone fragility due to myeloma, osteoporosis, or other factors.",
+        "skill_query_text": "Presenting problem: Impending left femur fracture. Evidence gathered: patient history of multiple myeloma, osteoarthritis, no prior fractures confirmed. Missing: osteoporosis diagnosis, imaging/lab results. Ineffective actions: none. Need: workflow guidance for diagnosing bone fragility cause and next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 3,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7674,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.757,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7233,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_8ea9562f6fa8",
+              "type": "experience",
+              "score": 0.8318,
+              "outcome": "negative",
+              "text": "Localized hip pain with stiffness, tenderness, swelling, and grinding after trauma suggests osteoarthritis rather than fracture, as fractures typically present with deformity, inability to move, or open wounds; this pattern is reinforced by uncontrolled diabetes as a risk factor for secondary degeneration.",
+              "tags": []
+            },
+            {
+              "id": "exp_8dfb5705d60c",
+              "type": "experience",
+              "score": 0.8209,
+              "outcome": "negative",
+              "text": "Trauma history with progressive pain, stiffness, and grinding in the hip supports osteoarthritis with secondary degeneration, not acute fracture, especially when no deformity or inability to move is present.",
+              "tags": []
+            },
+            {
+              "id": "exp_fc137e9b29f4",
+              "type": "experience",
+              "score": 0.8205,
+              "outcome": "negative",
+              "text": "Swelling, redness, and warmth around the hip with a history of trauma are not specific to osteoarthritis; they suggest acute inflammatory or infectious processes such as septic arthritis or bursitis, which require urgent differentiation from degenerative conditions.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_6c9d0ad35967",
+              "type": "skill",
+              "score": 0.805,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_22c863e5aedf",
+              "type": "skill",
+              "score": 0.8049,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_23f68bacaf60",
+              "type": "skill",
+              "score": 0.8034,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Impending left femur fracture due to underlying osteoporosis and multiple myeloma-induced bone lesions}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'830aa87e-e5ef-4bbe-a1e3-711cb342afe2': '{\"diagnosis\": \"Impending left femur fracture due to underlying osteoporosis and multiple myeloma-induced bone lesions\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '830aa87e-e5ef-4bbe-a1e3-711cb342afe2', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Impending left femur fracture due to underlying osteoporosis and multiple myeloma-induced bone lesions}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 933}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.4,
+        "conf_after": 0.4,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Impending left femur fracture due to underlying osteoporosis and multiple myeloma-induced bone lesions}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Impending left femur fracture due to underlying osteoporosis and multiple myeloma-induced bone lesions}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 7,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Impending left femur fracture due to underlying osteoporosis and multiple myeloma-induced bone lesions}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'830aa87e-e5ef-4bbe-a1e3-711cb342afe2': '{\"diagnosis\": \"Impending left femur fracture due to underlying osteoporosis and multiple myeloma-induced bone lesions\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '830aa87e-e5ef-4bbe-a1e3-711cb342afe2', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Impending left femur fracture due to underlying osteoporosis and multiple myeloma-induced bone lesions}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 933}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Do you have any history of osteoporosis, prior fractures, or other bone-related conditions?)\nresponse: I have multiple myeloma, which can cause bone lesions, and I’ve had a bony lesion in my right hip. I don’t recall any prior fractures, but I’m not sure if that’s due to the myeloma or not. I also have osteoarthritis (OA), but I don’t know if that’s related to bone density or osteoporosis. I was not told if I have osteoporosis or other bone-related conditions."
+      ]
+    }
+  ],
+  "ineffective_interactions": []
+}

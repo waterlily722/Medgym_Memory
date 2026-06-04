@@ -1,0 +1,2313 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20133289",
+  "turns": [
+    {
+      "case_id": "20133289",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Assessing a 50-year-old male patient presenting with nonspecific subjective complaints. Key evidence gathered: Patient reports general malaise without specific symptoms. Diagnostic uncertainty remains high due to lack of objective findings or history. Most useful missing information: Detailed symptom history, vital signs, physical exam findings, and any relevant lab or imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [
+          "initial_information: I am a 50-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 50-year-old male patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 50-year-old male reporting general malaise without specific symptoms. No objective findings, lab, imaging, or exam results available. No history or physical exam details provided. No prior tests or interventions mentioned. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 1,
+        "query_text": "50-year-old male, chief complaint: general malaise without specific symptoms. No objective findings, lab, imaging, or exam results. No history or physical exam details. No prior tests or interventions. Diagnostic uncertainty remains high due to insufficient evidence.",
+        "skill_query_text": "Presenting problem: Assess and diagnose 50-year-old male with nonspecific malaise. Evidence gathered: Patient reports general malaise, no objective findings. Missing: Detailed symptom history, vital signs, physical exam, lab/imaging. Ineffective actions: None tried. Need: Diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8044,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7616,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7379,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7334,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8129,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8101,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_081e48e222ba",
+              "type": "experience",
+              "score": 0.8095,
+              "outcome": "negative",
+              "text": "Repeatedly requesting labs or imaging without first obtaining targeted history or ruling out high-yield findings (like occult blood in stool) wastes diagnostic resources and delays definitive diagnosis in cases with clear red flags.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8203,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7967,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7885,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8129,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "When did your symptoms start, and have they been getting worse over time?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '6c5f463d-54b3-468c-8925-24cccfc6ca57', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"When did your symptoms start, and have they been getting worse over time?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been getting worse over time?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"When did your symptoms start, and have they been getting worse over time?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: Patient denies specific symptoms or known abnormalities. Diagnostic uncertainty remains high due to lack of specific history or findings. Most useful missing information: Detailed symptom timeline, nature of 'not feeling well', associated symptoms, and relevant medical history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did your symptoms start, and have they been getting worse over time?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Patient reports not feeling well recently, seeking assessment and diagnosis. No specific symptoms or abnormalities reported. Patient denies problems in any area and reports no known abnormal findings. No exam, lab, imaging, or tool results available. No history or findings to interpret. Missing information: Detailed symptom timeline, nature of 'not feeling well', associated symptoms, and relevant medical history. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 2,
+        "query_text": "Patient reports non-specific complaint of feeling unwell, denies specific symptoms or known abnormalities. No exam, lab, or imaging results available. No relevant history or findings. Diagnostic uncertainty remains high due to lack of detailed symptom timeline, nature of 'not feeling well', associated symptoms, and relevant medical history.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Current uncertainty: Insufficient evidence to finalize diagnosis. Evidence gathered: Patient denies specific symptoms or abnormalities. Missing evidence: Detailed symptom timeline, nature of 'not feeling well', associated symptoms, and relevant medical history. Ineffective actions tried: Asked about symptom onset and worsening, patient denied problems. Needed guidance: Workflow for managing non-specific complaints with no specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8288,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.766,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7443,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.736,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8469,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8312,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_74f0bd084ae5",
+              "type": "experience",
+              "score": 0.8299,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication or prior evidence of abnormality yields no diagnostic value; avoid redundant lab requests when history and known findings (e.g., AVM) already guide diagnosis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8128,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7933,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7928,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, weight loss, fever, or any specific pain or discomfort?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '4ef98a77-2317-44c6-8dcc-fb50266d9fa4', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, weight loss, fever, or any specific pain or discomfort?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 73}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, weight loss, fever, or any specific pain or discomfort?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, weight loss, fever, or any specific pain or discomfort?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with vague subjective complaint of not feeling well. Key evidence gathered: No specific symptoms reported (fatigue, weight loss, fever, pain) in response to detailed inquiry. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed symptom timeline, physical exam findings, lab or imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, weight loss, fever, or any specific pain or discomfort?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Patient reports not feeling well recently, seeking assessment and diagnosis. Turn 2: Patient reported no problems or abnormal findings when asked about symptom onset or progression. Turn 3: Patient again reported no problems or abnormal findings when asked to describe general symptoms (fatigue, weight loss, fever, pain). No specific symptoms, exam, lab, or imaging results provided. No treatment recommended."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 3,
+        "query_text": "Patient reports not feeling well recently. No specific symptoms (fatigue, weight loss, fever, pain) reported. No physical exam, lab, or imaging results provided. No relevant history or demographics specified. Diagnostic uncertainty remains high due to lack of specific findings.",
+        "skill_query_text": "Presenting problem: Patient reports vague subjective complaint of not feeling well. Current uncertainty: No specific symptoms, exam, lab, or imaging results. Ineffective action: Asked patient to describe symptoms; response was no problems or abnormal findings. Missing evidence: Detailed symptom timeline, physical exam findings, lab or imaging results. Need: Workflow guidance for next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8221,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7834,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7473,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7441,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8401,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8243,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8225,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8109,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.802,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7967,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unexplained weight loss, fatigue, or night sweats recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '548b4533-501c-4fa7-8f21-b5d4908046ac', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unexplained weight loss, fatigue, or night sweats recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 161}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, fatigue, or night sweats recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unexplained weight loss, fatigue, or night sweats recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: Patient denies unexplained weight loss, fatigue, or night sweats. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed symptom timeline, specific complaints, and any relevant medical history or risk factors. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unexplained weight loss, fatigue, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general feeling of unwellness without specific symptoms. Denies unexplained weight loss, fatigue, or night sweats. Previous questions about symptom onset and general symptoms were answered with denial of problems. No objective findings or lab/imaging results available. No specific risk factors or history provided. No results from prior checks."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 4,
+        "query_text": "Patient reports general feeling of unwellness without specific symptoms. Denies unexplained weight loss, fatigue, or night sweats. No objective findings, lab/imaging results, or relevant history provided. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Evidence gathered: Patient denies weight loss, fatigue, or night sweats. Ineffective action: Asked about weight loss, fatigue, night sweats — patient denied. Missing: Detailed symptom timeline, specific complaints, relevant medical history or risk factors. Need: Workflow guidance for next diagnostic steps given current uncertainty and lack of specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8146,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7734,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7482,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.745,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8287,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.827,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.8235,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8271,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8187,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8085,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'a2e161e5-f976-4aee-93fb-d69f19dec624': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'a2e161e5-f976-4aee-93fb-d69f19dec624', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 236}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 4,
+        "query_text": "Patient reports general feeling of unwellness without specific symptoms. Denies unexplained weight loss, fatigue, or night sweats. No objective findings, lab/imaging results, or relevant history provided. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Evidence gathered: Patient denies weight loss, fatigue, or night sweats. Ineffective action: Asked about weight loss, fatigue, night sweats — patient denied. Missing: Detailed symptom timeline, specific complaints, relevant medical history or risk factors. Need: Workflow guidance for next diagnostic steps given current uncertainty and lack of specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8146,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7734,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7482,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.745,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8287,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.827,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_a26218b83ba0",
+              "type": "experience",
+              "score": 0.8235,
+              "outcome": "negative",
+              "text": "Weight loss, anorexia, and low energy reported by the patient are significant depressive symptoms that support Major Depressive Disorder; however, without a mental status exam or suicidal risk assessment, these findings alone are insufficient to rule out schizophrenia or other psychotic disorders.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8271,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8187,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8085,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_4edec57c6eb9",
+            "memory_type": "experience",
+            "score": 0.8146,
+            "content": {
+              "experience": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "outcome_type": "positive",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common symptoms and causes in 50-year-old male with non-specific complaints"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5761dd25-b25f-4c0f-83c6-dd5ea8281357': '[Document 1] (ID: 8848_1, Score: 0.855)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 2] (ID: 13438_3, Score: 0.853)\\n# Natural History, Complications and Prognosis\\nNatural history: The age of onset before age of 50 is female predominant and after age of 60 is male predominant. Between the age of 50-60 there is no significant different between male and female. About 50 percent of patiens have ptosis and diplopia as...\\n\\n[Document 3] (ID: 22925_2, Score: 0.853)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 4] (ID: 5743_1, Score: 0.853)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more c...[truncated]'}}",
+        "env_info": "{'response': [{'id': '5761dd25-b25f-4c0f-83c6-dd5ea8281357', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common symptoms and causes in 50-year-old male with non-specific complaints\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 307}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common symptoms and causes in 50-year-old male with non-specific complaints\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common symptoms and causes in 50-year-old male with non-specific complaints\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Non-specific complaints in a 50-year-old male. Key evidence gathered: Patient denies specific symptoms (fatigue, weight loss, night sweats, pain) and no lab results available. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed symptom timeline, physical exam findings, and targeted diagnostic tests. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=common symptoms and causes in 50-year-old male with non-specific complaints)\nresponse: [Document 1] (ID: 8848_1, Score: 0.855)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 13438_3, Score: 0.853)\n# Natural History, Complications and Prognosis\nNatural history: The age of onset before age of 50 is female predominant and after age of 60 is male predominant. Between the age of 50-60 there is no significant different between male and female. About 50 percent of patiens have ptosis and diplopia as...\n\n[Document 3] (ID: 22925_2, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 5743_1, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 5] (ID: 26346_1, Score: 0.850)\n# Differentiating  from other Diseases\n-  must be differentiated from other diseases that cause , , and , such as:\n\n# Epidemiology and Demographics\n- The prevalence of  is approximately  per 100,000 individuals worldwide.\n- In , the incidence of  was estimated to be  cases per 100,000 individuals in..."
+        ],
+        "prior_information_summary": "Patient reports non-specific complaints. Denied symptoms of fatigue, weight loss, night sweats, or pain. No lab results available. No physical exam findings recorded. No specific diagnostic tests performed. No relevant history or findings to narrow differential diagnosis. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 6,
+        "query_text": "Patient reports non-specific complaints, denies fatigue, weight loss, night sweats, or pain. No lab results, physical exam findings, or diagnostic tests performed. No relevant history or findings to narrow differential diagnosis. Diagnostic uncertainty remains high due to lack of specific findings.",
+        "skill_query_text": "Presenting problem: Non-specific complaints in a 50-year-old male. Evidence gathered: Patient denies specific symptoms, no lab results, no physical exam findings, no diagnostic tests performed. Ineffective action: Attempted retrieval of common symptoms and causes with no actionable results. Need workflow guidance on next diagnostic steps, including targeted tests or history collection."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8211,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7637,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7416,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7303,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8323,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8249,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.821,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8451,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8054,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7884,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your energy levels, appetite, or ability to perform daily activities recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '136ba6f5-bba6-4952-aade-dba3d84743fe', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your energy levels, appetite, or ability to perform daily activities recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 857}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, appetite, or ability to perform daily activities recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your energy levels, appetite, or ability to perform daily activities recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of feeling unwell without clear symptoms. Key evidence gathered: Patient denies changes in energy, appetite, or daily function; no lab results available; literature review returned general demographic data without specific diagnostic relevance. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Specific symptoms (e.g., fever, weight loss, pain), lab/imaging results, or functional capacity assessment. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did your symptoms start, and have they been getting worse over time?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, weight loss, fever, or any specific pain or discomfort?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unexplained weight loss, fatigue, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=common symptoms and causes in 50-year-old male with non-specific complaints)\nresponse: [Document 1] (ID: 8848_1, Score: 0.855)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 13438_3, Score: 0.853)\n# Natural History, Complications and Prognosis\nNatural history: The age of onset before age of 50 is female predominant and after age of 60 is male predominant. Between the age of 50-60 there is no significant different between male and female. About 50 percent of patiens have ptosis and diplopia as...\n\n[Document 3] (ID: 22925_2, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 5743_1, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 5] (ID: 26346_1, Score: 0.850)\n# Differentiating  from other Diseases\n-  must be differentiated from other diseases that cause , , and , such as:\n\n# Epidemiology and Demographics\n- The prevalence of  is approximately  per 100,000 individuals worldwide.\n- In , the incidence of  was estimated to be  cases per 100,000 individuals in..."
+        ],
+        "prior_information_summary": "Patient reports non-specific complaint of feeling unwell. Denies changes in energy, appetite, or daily function. No lab results available. Literature review returned general demographic data without specific diagnostic relevance. No specific symptoms identified. No objective findings reported. No management-relevant risk identified."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 7,
+        "query_text": "Patient reports non-specific complaint of feeling unwell. Denies changes in energy, appetite, or daily function. No lab results available. No objective findings reported. No specific symptoms identified. No management-relevant risk identified. Literature review returned general demographic data without specific diagnostic relevance. Diagnostic uncertainty remains high.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaints of feeling unwell without clear symptoms. Evidence gathered: Patient denies changes in energy, appetite, or daily function; no lab results available; literature review returned general demographic data. Ineffective actions: Asking about symptoms, requesting labs, retrieving general demographic data. Missing evidence: Specific symptoms (e.g., fever, weight loss, pain), lab/imaging results, functional capacity assessment. Need: Workflow guidance for next diagnostic steps given current uncertainty and lack of specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.811,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7595,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7427,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7241,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8254,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8181,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_74f0bd084ae5",
+              "type": "experience",
+              "score": 0.8152,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication or prior evidence of abnormality yields no diagnostic value; avoid redundant lab requests when history and known findings (e.g., AVM) already guide diagnosis.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8318,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8151,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8078,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_c7e42a4e6675",
+          "exp_74f0bd084ae5"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_74f0bd084ae5",
+            "memory_type": "experience",
+            "score": 0.8152,
+            "content": {
+              "experience": "Requesting labs without clinical indication or prior evidence of abnormality yields no diagnostic value; avoid redundant lab requests when history and known findings (e.g., AVM) already guide diagnosis.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Do you have a family history of any chronic illnesses or autoimmune diseases?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '0f5bba06-4263-4f3b-ad87-e20f54b6be1c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you have a family history of any chronic illnesses or autoimmune diseases?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 935}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have a family history of any chronic illnesses or autoimmune diseases?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you have a family history of any chronic illnesses or autoimmune diseases?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of feeling unwell. Key evidence gathered: No specific symptoms identified (fatigue, weight loss, fever, pain, etc.), no family history of chronic or autoimmune diseases reported, no lab results available, and no clear diagnostic direction from retrieved documents. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed symptom timeline, objective exam findings, and specific lab or imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Do you have a family history of any chronic illnesses or autoimmune diseases?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Patient reports not feeling well recently, seeking assessment and diagnosis. History: No specific symptoms reported (fatigue, weight loss, fever, pain, etc.) in turns 2-7. Family history: No chronic or autoimmune diseases reported in turn 8. Lab results: No result found for labs in turn 5. Retrieved documents (turn 6) provide general demographic and epidemiological data but no specific diagnostic guidance. No objective exam or imaging results available. No actionable findings to date. All patient responses are negative or uninformative, with no clinical signal to reduce uncertainty."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 8,
+        "query_text": "Patient reports non-specific complaints of feeling unwell. No specific symptoms (fatigue, weight loss, fever, pain) identified. No family history of chronic or autoimmune diseases. No lab or imaging results available. No objective exam findings. No actionable findings. Diagnostic uncertainty remains high due to lack of specific findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaints of feeling unwell. Evidence gathered: No specific symptoms, no family history, no lab/imaging results, no objective exam findings. Ineffective action: Asked about family history of chronic/autoimmune diseases — patient responded negatively. Missing: Detailed symptom timeline, objective exam findings, specific lab/imaging results. Need: Workflow guidance for next diagnostic steps given current lack of actionable findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8225,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.777,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7535,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.743,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8424,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8309,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8223,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8307,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.8212,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8091,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common non-specific complaints in 50-year-old males and potential underlying causes"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'d6900096-65c7-4ba6-a26e-5fefb7292a81': '[Document 1] (ID: 19076_3, Score: 0.846)\\n## Diagnostic Criteria\\n- Age 50 years or more\\n- New developed headache\\n- Tenderness of the superficial temporal artery\\n- Elevated sedimentation rate, at least 50\\xa0mm/hour (blood test that reveals inflammatory activity)\\n- Giant cell arteritis in a biopsy specimen from the temporal artery\\n- Age when di...\\n\\n[Document 2] (ID: 22925_2, Score: 0.845)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 3] (ID: 5743_1, Score: 0.845)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 4] (ID: 3907_7, Score: 0.844)\\n## Recommendation:\\nOverseas, prevalence has been reported to be between 1.3 and 16.2 in 100,000, and the incidence has been...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'd6900096-65c7-4ba6-a26e-5fefb7292a81', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common non-specific complaints in 50-year-old males and potential underlying causes\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1007}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific complaints in 50-year-old males and potential underlying causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common non-specific complaints in 50-year-old males and potential underlying causes\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints in a 50-year-old male. Key evidence gathered: No specific symptoms reported by patient (fatigue, weight loss, fever, pain, etc.), no lab results available, no family history of chronic illness or autoimmune disease. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed symptom timeline, objective exam findings, lab or imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified from current data.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=common non-specific complaints in 50-year-old males and potential underlying causes)\nresponse: [Document 1] (ID: 19076_3, Score: 0.846)\n## Diagnostic Criteria\n- Age 50 years or more\n- New developed headache\n- Tenderness of the superficial temporal artery\n- Elevated sedimentation rate, at least 50 mm/hour (blood test that reveals inflammatory activity)\n- Giant cell arteritis in a biopsy specimen from the temporal artery\n- Age when di...\n\n[Document 2] (ID: 22925_2, Score: 0.845)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 3] (ID: 5743_1, Score: 0.845)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 3907_7, Score: 0.844)\n## Recommendation:\nOverseas, prevalence has been reported to be between 1.3 and 16.2 in 100,000, and the incidence has been reported to be between 0.41 and 1.22. Prevalence is increasing each year. It is common among men, and the median age at diagnosis is between 37 and 55 years. In Japan, it is es...\n\n[Document 5] (ID: 28450_4, Score: 0.844)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis..."
+        ],
+        "prior_information_summary": "Patient reports non-specific complaints, seeking assessment. No specific symptoms reported (fatigue, weight loss, fever, pain, etc.) in turns 2-8. No lab results available (turn 5). Patient denies family history of chronic illness or autoimmune disease (turn 8). All patient interactions returned no new clinical information. No objective exam, imaging, or lab findings documented. No evidence to support or rule out specific diagnoses. No low-value or no-result attempts identified beyond the current turn's retrieval."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 9,
+        "query_text": "Patient, 50-year-old male, reports non-specific complaints without specific symptoms (fatigue, weight loss, fever, pain). No lab results, no family history of chronic illness or autoimmune disease. No objective exam, imaging, or lab findings. Diagnostic uncertainty remains high due to lack of specific findings. Missing: detailed symptom timeline, objective exam findings, lab or imaging results.",
+        "skill_query_text": "Presenting problem: non-specific complaints in 50-year-old male. Uncertainty: no specific diagnosis possible. Evidence gathered: no lab results, no family history, no objective findings. Ineffective actions: retrieval of common non-specific complaints yielded no actionable diagnostic leads. Need: workflow guidance for next diagnostic steps given current lack of findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7911,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7602,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7499,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8341,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8241,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8199,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8248,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7885,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7779,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unintentional weight loss, changes in appetite, or new onset of fatigue?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '19824b14-b674-4bbc-a1e2-83b8701ca927', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unintentional weight loss, changes in appetite, or new onset of fatigue?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1569}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unintentional weight loss, changes in appetite, or new onset of fatigue?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unintentional weight loss, changes in appetite, or new onset of fatigue?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Non-specific complaint of feeling unwell in a 50-year-old male. Key evidence gathered: Patient denies unintentional weight loss, appetite changes, fatigue, family history of chronic/autoimmune disease, or recent functional decline. No lab results available. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed symptom timeline, physical exam findings, and targeted lab/imaging results (e.g., CBC, ESR, temporal artery biopsy if indicated). Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in appetite, or new onset of fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: Patient reports not feeling well recently, seeking assessment and diagnosis. History: Patient denies unintentional weight loss, appetite changes, fatigue, family history of chronic/autoimmune disease, or recent functional decline across multiple interactions (turns 2-10). Exam: No exam performed. Labs: Requested but no result available. Retrieval: Retrieved documents on non-specific complaints in 50-year-old males, including potential causes like malignancy, autoimmune conditions, and temporal arteritis, but no actionable findings. Unresolved: No specific symptoms or objective findings to narrow diagnosis. Low-value attempts: Multiple redundant patient history questions yielded negative responses without new diagnostic insight."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 10,
+        "query_text": "Patient reports non-specific complaint of feeling unwell in a 50-year-old male. Denies unintentional weight loss, appetite changes, fatigue, family history of chronic/autoimmune disease, or recent functional decline. No lab results available. No physical exam performed. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Non-specific complaint of feeling unwell in 50-year-old male. Current uncertainty: No specific symptoms or objective findings to narrow diagnosis. Evidence gathered: Negative responses to history questions, no lab results, no exam performed. Ineffective actions: Redundant history questions yielded no new insight. Needed guidance: Workflow for evaluating non-specific complaints with missing targeted lab/imaging results."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8097,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7823,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7476,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7364,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8227,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8148,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8114,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8204,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7906,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7881,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific complaints in 50-year-old males: possible systemic diseases"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'1e19068d-5e36-4a99-b42f-1461096ce9c6': '[Document 1] (ID: 19076_3, Score: 0.851)\\n## Diagnostic Criteria\\n- Age 50 years or more\\n- New developed headache\\n- Tenderness of the superficial temporal artery\\n- Elevated sedimentation rate, at least 50\\xa0mm/hour (blood test that reveals inflammatory activity)\\n- Giant cell arteritis in a biopsy specimen from the temporal artery\\n- Age when di...\\n\\n[Document 2] (ID: 3907_7, Score: 0.844)\\n## Recommendation:\\nOverseas, prevalence has been reported to be between 1.3 and 16.2 in 100,000, and the incidence has been reported to be between 0.41 and 1.22. Prevalence is increasing each year. It is common among men, and the median age at diagnosis is between 37 and 55 years. In Japan, it is es...\\n\\n[Document 3] (ID: 16994_38, Score: 0.844)\\n- ≥1/1000 patients and <1/100 patients - menstruation irregular, erectile dysfunction, amenorrhea, breast pain; <1/1000 patients - gynaecomastia, priapism\\n- Respiratory, Thoracic, and Mediastinal Disorders:\\n- ≥1/100 patients - nasal congestion, dyspnea, pneumonia aspiration\\n- Skin and Subcutaneous T...\\n\\n[Document 4] (ID: 15955_2, Score: 0.842)\\n# Differential Diagnosis\\n- Advanced age\\n- Chronic active hepatitis\\n- Cirrhosis\\n- Drugs\\n- HIV infection\\n- Mixed Connective...[truncated]'}}",
+        "env_info": "{'response': [{'id': '1e19068d-5e36-4a99-b42f-1461096ce9c6', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific complaints in 50-year-old males: possible systemic diseases\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1646}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in 50-year-old males: possible systemic diseases\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in 50-year-old males: possible systemic diseases\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints in a 50-year-old male. Key evidence gathered: No specific symptoms reported by patient (fatigue, weight loss, fever, pain, etc.), no lab results available, and multiple retrieval attempts yielded general or non-specific information. Diagnostic uncertainty remains high due to lack of specific findings. Most useful missing information: Detailed symptom timeline, objective exam findings, and lab/imaging results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in 50-year-old males: possible systemic diseases)\nresponse: [Document 1] (ID: 19076_3, Score: 0.851)\n## Diagnostic Criteria\n- Age 50 years or more\n- New developed headache\n- Tenderness of the superficial temporal artery\n- Elevated sedimentation rate, at least 50 mm/hour (blood test that reveals inflammatory activity)\n- Giant cell arteritis in a biopsy specimen from the temporal artery\n- Age when di...\n\n[Document 2] (ID: 3907_7, Score: 0.844)\n## Recommendation:\nOverseas, prevalence has been reported to be between 1.3 and 16.2 in 100,000, and the incidence has been reported to be between 0.41 and 1.22. Prevalence is increasing each year. It is common among men, and the median age at diagnosis is between 37 and 55 years. In Japan, it is es...\n\n[Document 3] (ID: 16994_38, Score: 0.844)\n- ≥1/1000 patients and <1/100 patients - menstruation irregular, erectile dysfunction, amenorrhea, breast pain; <1/1000 patients - gynaecomastia, priapism\n- Respiratory, Thoracic, and Mediastinal Disorders:\n- ≥1/100 patients - nasal congestion, dyspnea, pneumonia aspiration\n- Skin and Subcutaneous T...\n\n[Document 4] (ID: 15955_2, Score: 0.842)\n# Differential Diagnosis\n- Advanced age\n- Chronic active hepatitis\n- Cirrhosis\n- Drugs\n- HIV infection\n- Mixed Connective Tissue Disease\n- Multiple Sclerosis\n- Necrotizing vasculitis\n- Periarteritis nodosa\n- Pregnant women\n- Pulmonary Fibrosis\n- Raynaud's Disease\n- Rheumatoid Arthritis\n- Silicone ge...\n\n[Document 5] (ID: 3033_46, Score: 0.841)\nMany chronic diseases, such as HIV infection/AIDS, COPD, ESRD, and bowel inflammatory diseases, have been associated with hypogonadism [bib_ref] Is late-onset hypogonadotropic hypogonadism a specific age-dependent disease, or merely an epiphenomenon..., Corona [/bib_ref] [bib_ref] A perspective on m..."
+        ],
+        "prior_information_summary": "Patient reports non-specific complaints, seeking assessment. No specific symptoms reported (fatigue, weight loss, fever, pain, etc.) despite multiple questions. No lab results available. Retrieval attempts yielded general or non-specific information on systemic diseases, differential diagnoses, and epidemiology, but no actionable findings. No objective exam or imaging results. No family history or risk factors identified. No result for requested labs. No useful diagnostic information obtained to reduce uncertainty."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 11,
+        "query_text": "Patient, 50-year-old male, reports non-specific complaints. No specific symptoms (fatigue, weight loss, fever, pain) reported. No lab results, exam, or imaging findings available. No relevant history or risk factors identified. Diagnostic uncertainty remains high due to insufficient evidence.",
+        "skill_query_text": "Presenting problem: non-specific complaints in 50-year-old male. Evidence gathered: chief complaint only. Ineffective actions: retrieval of general systemic disease lists and differential diagnoses yielded no actionable findings. Missing: detailed symptom timeline, objective exam, lab/imaging results. Need: workflow guidance for next diagnostic steps given current evidence gap."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.802,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7788,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7514,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7369,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.816,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8061,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8059,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8192,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7997,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7787,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_3019d75ebc50"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_3019d75ebc50",
+            "memory_type": "experience",
+            "score": 0.816,
+            "content": {
+              "experience": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your libido, erectile dysfunction, or other signs of hormonal imbalance?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'cce17e8f-fe59-40ad-9898-92e60d9ef4bc', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your libido, erectile dysfunction, or other signs of hormonal imbalance?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 2235}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your libido, erectile dysfunction, or other signs of hormonal imbalance?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your libido, erectile dysfunction, or other signs of hormonal imbalance?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Non-specific complaints in a 50-year-old male. Key evidence gathered: No reported changes in libido, erectile dysfunction, or hormonal imbalance; no weight loss, fatigue, or night sweats; no family history of chronic or autoimmune diseases; no lab results available. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed symptom timeline, specific physical exam findings, lab or imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your libido, erectile dysfunction, or other signs of hormonal imbalance?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports non-specific complaints, seeking assessment. No reported changes in libido, erectile dysfunction, or hormonal imbalance. No weight loss, fatigue, or night sweats. No family history of chronic or autoimmune diseases. Lab request returned no result. Retrieved documents suggest possible systemic causes (e.g., hypogonadism, infections, autoimmune diseases) but no specific findings. No actionable diagnostic evidence yet. No result for labs. No specific symptoms confirmed. No clear direction for next steps."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 12,
+        "query_text": "Patient reports non-specific complaints, seeking assessment. No reported changes in libido, erectile dysfunction, or hormonal imbalance. No weight loss, fatigue, or night sweats. No family history of chronic or autoimmune diseases. No lab results available. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed symptom timeline, specific physical exam findings, lab or imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "skill_query_text": "Presenting problem: Non-specific complaints in a 50-year-old male. Current uncertainty: No specific symptoms or objective findings to guide diagnosis. Evidence gathered: No reported changes in libido, erectile dysfunction, or hormonal imbalance; no weight loss, fatigue, or night sweats; no family history of chronic or autoimmune diseases; no lab results available. Ineffective actions tried: Asked about libido, erectile dysfunction, and hormonal imbalance — patient denied issues. Needed guidance: Workflow for next diagnostic steps given lack of specific findings and negative initial screening."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8186,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7704,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7507,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7502,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8339,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8262,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8238,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8055,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7844,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7727,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_3019d75ebc50"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific complaints in 50-year-old males: common systemic conditions to consider"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'7e63af10-a630-4e6e-a5fa-15c2809014c6': '[Document 1] (ID: 22925_2, Score: 0.853)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 2] (ID: 5743_1, Score: 0.853)\\n## Age\\n- Patients of all age groups may develop .\\n-  is more commonly observed among patients aged  years old.\\n-  is more commonly observed among .\\n\\n## Gender\\n-  affects men and women equally.\\n-  are more commonly affected with  than .\\n- The  to  ratio is approximately  to 1.\\n\\n## Race\\n- There is no ...\\n\\n[Document 3] (ID: 3611_3, Score: 0.843)\\nTo ensure broad outreach to multidisciplinary audiences, these recommendations are published in several journals simultaneously. syndrome associated with advancing age and characterized by symptoms and a deficiency in serum testosterone levels (below the young healthy adult male reference range) [bi...\\n\\n[Document 4] (ID: 19076_3, Score: 0.842)\\n## Diagnostic Criteria\\n- Age 50 years or more\\n- New developed headache\\n- Tenderness of the superficial temporal artery\\n- El...[truncated]'}}",
+        "env_info": "{'response': [{'id': '7e63af10-a630-4e6e-a5fa-15c2809014c6', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific complaints in 50-year-old males: common systemic conditions to consider\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2312}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in 50-year-old males: common systemic conditions to consider\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in 50-year-old males: common systemic conditions to consider\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Non-specific complaints in a 50-year-old male. Key evidence gathered: No specific symptoms reported by patient (fatigue, weight loss, night sweats, appetite changes, libido issues, etc.), no lab results available, and multiple retrieval attempts yielded generic or non-specific information. Diagnostic uncertainty remains high due to lack of concrete findings. Most useful missing information: Specific symptoms, lab results, or imaging findings. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_13 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in 50-year-old males: common systemic conditions to consider)\nresponse: [Document 1] (ID: 22925_2, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 5743_1, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 3] (ID: 3611_3, Score: 0.843)\nTo ensure broad outreach to multidisciplinary audiences, these recommendations are published in several journals simultaneously. syndrome associated with advancing age and characterized by symptoms and a deficiency in serum testosterone levels (below the young healthy adult male reference range) [bi...\n\n[Document 4] (ID: 19076_3, Score: 0.842)\n## Diagnostic Criteria\n- Age 50 years or more\n- New developed headache\n- Tenderness of the superficial temporal artery\n- Elevated sedimentation rate, at least 50 mm/hour (blood test that reveals inflammatory activity)\n- Giant cell arteritis in a biopsy specimen from the temporal artery\n- Age when di...\n\n[Document 5] (ID: 14617_1, Score: 0.842)\n# Commonly Overlapping Conditions\nAdding to the complexity of the clinical picture are overlapping conditions, for example:\n- Myalgic encephalomyelitis (ME)\n- Chronic fatigue syndrome\n- Post-viral fatigue syndrome\n- Post-infectious neuromyasthenia\n- Yuppie flu\n- Chronic pain\n- Food intolerance syndr..."
+        ],
+        "prior_information_summary": "Chief complaint: Patient reports not feeling well recently, seeking assessment and diagnosis. Patient reports no specific symptoms (fatigue, weight loss, night sweats, appetite changes, libido issues, etc.) in response to multiple questions. No lab results available. Multiple retrieval attempts yielded generic or non-specific information about systemic conditions in 50-year-old males, including potential overlaps with chronic fatigue, hypogonadism, and giant cell arteritis, but no actionable findings. No relevant history or exam results provided."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 13,
+        "query_text": "Patient reports non-specific complaints, no specific symptoms (fatigue, weight loss, night sweats, appetite changes, libido issues), no lab results, no imaging or exam findings, no relevant history or demographics provided, diagnostic uncertainty remains high due to lack of concrete findings.",
+        "skill_query_text": "Presenting problem: non-specific complaints in 50-year-old male. Evidence gathered: no specific symptoms, no lab/imaging results. Ineffective actions: retrieval of generic systemic conditions (e.g., chronic fatigue, hypogonadism, giant cell arteritis) yielded non-actionable info. Need: workflow guidance for next diagnostic steps given current lack of specific findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.81,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7427,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7303,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7127,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8234,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8123,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8265,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8073,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_1243d80c7992",
+              "type": "skill",
+              "score": 0.7942,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9",
+          "exp_3019d75ebc50",
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any chronic fatigue, muscle weakness, or unexplained aches and pains?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '26b4105a-25b5-4b67-8789-02867c91559d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any chronic fatigue, muscle weakness, or unexplained aches and pains?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 2828}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chronic fatigue, muscle weakness, or unexplained aches and pains?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any chronic fatigue, muscle weakness, or unexplained aches and pains?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 14. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 50-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 50-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=When did your symptoms start, and have they been getting worse over time?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, weight loss, fever, or any specific pain or discomfort?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unexplained weight loss, fatigue, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=common symptoms and causes in 50-year-old male with non-specific complaints)\nresponse: [Document 1] (ID: 8848_1, Score: 0.855)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 13438_3, Score: 0.853)\n# Natural History, Complications and Prognosis\nNatural history: The age of onset before age of 50 is female predominant and after age of 60 is male predominant. Between the age of 50-60 there is no significant different between male and female. About 50 percent of patiens have ptosis and diplopia as...\n\n[Document 3] (ID: 22925_2, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 5743_1, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 5] (ID: 26346_1, Score: 0.850)\n# Differentiating  from other Diseases\n-  must be differentiated from other diseases that cause , , and , such as:\n\n# Epidemiology and Demographics\n- The prevalence of  is approximately  per 100,000 individuals worldwide.\n- In , the incidence of  was estimated to be  cases per 100,000 individuals in...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or ability to perform daily activities recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Do you have a family history of any chronic illnesses or autoimmune diseases?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=common non-specific complaints in 50-year-old males and potential underlying causes)\nresponse: [Document 1] (ID: 19076_3, Score: 0.846)\n## Diagnostic Criteria\n- Age 50 years or more\n- New developed headache\n- Tenderness of the superficial temporal artery\n- Elevated sedimentation rate, at least 50 mm/hour (blood test that reveals inflammatory activity)\n- Giant cell arteritis in a biopsy specimen from the temporal artery\n- Age when di...\n\n[Document 2] (ID: 22925_2, Score: 0.845)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 3] (ID: 5743_1, Score: 0.845)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 3907_7, Score: 0.844)\n## Recommendation:\nOverseas, prevalence has been reported to be between 1.3 and 16.2 in 100,000, and the incidence has been reported to be between 0.41 and 1.22. Prevalence is increasing each year. It is common among men, and the median age at diagnosis is between 37 and 55 years. In Japan, it is es...\n\n[Document 5] (ID: 28450_4, Score: 0.844)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in appetite, or new onset of fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in 50-year-old males: possible systemic diseases)\nresponse: [Document 1] (ID: 19076_3, Score: 0.851)\n## Diagnostic Criteria\n- Age 50 years or more\n- New developed headache\n- Tenderness of the superficial temporal artery\n- Elevated sedimentation rate, at least 50 mm/hour (blood test that reveals inflammatory activity)\n- Giant cell arteritis in a biopsy specimen from the temporal artery\n- Age when di...\n\n[Document 2] (ID: 3907_7, Score: 0.844)\n## Recommendation:\nOverseas, prevalence has been reported to be between 1.3 and 16.2 in 100,000, and the incidence has been reported to be between 0.41 and 1.22. Prevalence is increasing each year. It is common among men, and the median age at diagnosis is between 37 and 55 years. In Japan, it is es...\n\n[Document 3] (ID: 16994_38, Score: 0.844)\n- ≥1/1000 patients and <1/100 patients - menstruation irregular, erectile dysfunction, amenorrhea, breast pain; <1/1000 patients - gynaecomastia, priapism\n- Respiratory, Thoracic, and Mediastinal Disorders:\n- ≥1/100 patients - nasal congestion, dyspnea, pneumonia aspiration\n- Skin and Subcutaneous T...\n\n[Document 4] (ID: 15955_2, Score: 0.842)\n# Differential Diagnosis\n- Advanced age\n- Chronic active hepatitis\n- Cirrhosis\n- Drugs\n- HIV infection\n- Mixed Connective Tissue Disease\n- Multiple Sclerosis\n- Necrotizing vasculitis\n- Periarteritis nodosa\n- Pregnant women\n- Pulmonary Fibrosis\n- Raynaud's Disease\n- Rheumatoid Arthritis\n- Silicone ge...\n\n[Document 5] (ID: 3033_46, Score: 0.841)\nMany chronic diseases, such as HIV infection/AIDS, COPD, ESRD, and bowel inflammatory diseases, have been associated with hypogonadism [bib_ref] Is late-onset hypogonadotropic hypogonadism a specific age-dependent disease, or merely an epiphenomenon..., Corona [/bib_ref] [bib_ref] A perspective on m...",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your libido, erectile dysfunction, or other signs of hormonal imbalance?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_13 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in 50-year-old males: common systemic conditions to consider)\nresponse: [Document 1] (ID: 22925_2, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 5743_1, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 3] (ID: 3611_3, Score: 0.843)\nTo ensure broad outreach to multidisciplinary audiences, these recommendations are published in several journals simultaneously. syndrome associated with advancing age and characterized by symptoms and a deficiency in serum testosterone levels (below the young healthy adult male reference range) [bi...\n\n[Document 4] (ID: 19076_3, Score: 0.842)\n## Diagnostic Criteria\n- Age 50 years or more\n- New developed headache\n- Tenderness of the superficial temporal artery\n- Elevated sedimentation rate, at least 50 mm/hour (blood test that reveals inflammatory activity)\n- Giant cell arteritis in a biopsy specimen from the temporal artery\n- Age when di...\n\n[Document 5] (ID: 14617_1, Score: 0.842)\n# Commonly Overlapping Conditions\nAdding to the complexity of the clinical picture are overlapping conditions, for example:\n- Myalgic encephalomyelitis (ME)\n- Chronic fatigue syndrome\n- Post-viral fatigue syndrome\n- Post-infectious neuromyasthenia\n- Yuppie flu\n- Chronic pain\n- Food intolerance syndr...",
+          "turn_14 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any chronic fatigue, muscle weakness, or unexplained aches and pains?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=When did your symptoms start, and have they been getting worse over time?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Can you describe your general symptoms in more detail? For example, are you experiencing fatigue, weight loss, fever, or any specific pain or discomfort?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any unexplained weight loss, fatigue, or night sweats recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common symptoms and causes in 50-year-old male with non-specific complaints)\nresponse: [Document 1] (ID: 8848_1, Score: 0.855)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 2] (ID: 13438_3, Score: 0.853)\n# Natural History, Complications and Prognosis\nNatural history: The age of onset before age of 50 is female predominant and after age of 60 is male predominant. Between the age of 50-60 there is no significant different between male and female. About 50 percent of patiens have ptosis and diplopia as...\n\n[Document 3] (ID: 22925_2, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 5743_1, Score: 0.853)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 5] (ID: 26346_1, Score: 0.850)\n# Differentiating  from other Diseases\n-  must be differentiated from other diseases that cause , , and , such as:\n\n# Epidemiology and Demographics\n- The prevalence of  is approximately  per 100,000 individuals worldwide.\n- In , the incidence of  was estimated to be  cases per 100,000 individuals in...\ndoctor_action: ask_patient(question=Have you noticed any changes in your energy levels, appetite, or ability to perform daily activities recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Do you have a family history of any chronic illnesses or autoimmune diseases?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=common non-specific complaints in 50-year-old males and potential underlying causes)\nresponse: [Document 1] (ID: 19076_3, Score: 0.846)\n## Diagnostic Criteria\n- Age 50 years or more\n- New developed headache\n- Tenderness of the superficial temporal artery\n- Elevated sedimentation rate, at least 50 mm/hour (blood test that reveals inflammatory activity)\n- Giant cell arteritis in a biopsy specimen from the temporal artery\n- Age when di...\n\n[Document 2] (ID: 22925_2, Score: 0.845)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 3] (ID: 5743_1, Score: 0.845)\n## Age\n- Patients of all age groups may develop .\n-  is more commonly observed among patients aged  years old.\n-  is more commonly observed among .\n\n## Gender\n-  affects men and women equally.\n-  are more commonly affected with  than .\n- The  to  ratio is approximately  to 1.\n\n## Race\n- There is no ...\n\n[Document 4] (ID: 3907_7, Score: 0.844)\n## Recommendation:\nOverseas, prevalence has been reported to be between 1.3 and 16.2 in 100,000, and the incidence has been reported to be between 0.41 and 1.22. Prevalence is increasing each year. It is common among men, and the median age at diagnosis is between 37 and 55 years. In Japan, it is es...\n\n[Document 5] (ID: 28450_4, Score: 0.844)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis...\ndoctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in appetite, or new onset of fatigue?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 14,
+        "query_text": "50-year-old male, chief complaint: not feeling well recently. No specific symptoms reported: no weight loss, fatigue, night sweats, appetite changes, libido issues, muscle weakness, or chronic aches. No family history of chronic/autoimmune disease. No labs performed. No imaging or exam results. Uncertainty: non-specific complaints in 50-year-old male with no clear findings.",
+        "skill_query_text": "Presenting problem: 50-year-old male with non-specific complaints. Evidence gathered: patient denies key symptoms (weight loss, fatigue, etc.), no labs/imaging. Ineffective action: lab request yielded no result. Need: guidance on next diagnostic step to resolve uncertainty without repeating low-information actions."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7968,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7907,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7642,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.751,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8196,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8169,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8168,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8342,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7914,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.7876,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "non-specific complaints in 50-year-old males: possible psychiatric or functional causes"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3f2da1ae-8272-4233-89d3-b62ed35d6237': '[Document 1] (ID: 5805_14, Score: 0.847)\\n(F52.8) Other sexual dysfunction, not caused by organic disorder or disease\\n(F52.9) Unspecified sexual dysfunction, not caused by organic disorder or disease\\n- (F52.0) Lack or loss of sexual desire\\n- (F52.1) Sexual aversion and lack of sexual enjoyment\\n- (F52.2) Failure of genital response\\n- (F52.3)...\\n\\n[Document 2] (ID: 22606_8, Score: 0.846)\\n- (F52.1) Sexual aversion and lack of sexual enjoyment\\n- (F52.2) Failure of genital response\\n- (F52.3) Orgasmic dysfunction\\n- (F52.4) Premature ejaculation\\n- (F52.5) Nonorganic vaginismus\\n- (F52.6) Nonorganic dyspareunia\\n- (F52.7) Excessive sexual drive\\n- (F52.8) Other sexual dysfunction, not caused...\\n\\n[Document 3] (ID: 22610_10, Score: 0.845)\\n(R46.8) Other symptoms and signs involving appearance and behaviour\\n\\n- (R46.0) Very low level of personal hygiene\\n\\n- (R46.1) Bizarre personal appearance\\n\\n- (R46.2) Strange and inexplicable behaviour\\n\\n- (R46.3) Overactivity\\n\\n- (R46.4) Slowness and poor responsiveness\\n\\n- (R46.5) Suspiciousness and mar...\\n\\n[Document 4] (ID: 5045_10, Score: 0.845)\\n(R46.8) Other symptoms and signs involving appearance and behaviour\\n\\n- (R46.0) Very low level of personal hygiene\\n\\n- (R4...[truncated]'}}",
+        "env_info": "{'response': [{'id': '3f2da1ae-8272-4233-89d3-b62ed35d6237', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"non-specific complaints in 50-year-old males: possible psychiatric or functional causes\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2904}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in 50-year-old males: possible psychiatric or functional causes\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"non-specific complaints in 50-year-old males: possible psychiatric or functional causes\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20133289",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints in a 50-year-old male, seeking assessment and diagnosis. Key evidence gathered: No positive or negative findings from patient history, physical exam, or labs. All patient responses indicate absence of symptoms or abnormalities. Diagnostic uncertainty remains high due to lack of specific clinical data. Most useful missing information: Detailed symptom timeline, objective physical exam findings, and lab results. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified from current data.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_15 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in 50-year-old males: possible psychiatric or functional causes)\nresponse: [Document 1] (ID: 5805_14, Score: 0.847)\n(F52.8) Other sexual dysfunction, not caused by organic disorder or disease\n(F52.9) Unspecified sexual dysfunction, not caused by organic disorder or disease\n- (F52.0) Lack or loss of sexual desire\n- (F52.1) Sexual aversion and lack of sexual enjoyment\n- (F52.2) Failure of genital response\n- (F52.3)...\n\n[Document 2] (ID: 22606_8, Score: 0.846)\n- (F52.1) Sexual aversion and lack of sexual enjoyment\n- (F52.2) Failure of genital response\n- (F52.3) Orgasmic dysfunction\n- (F52.4) Premature ejaculation\n- (F52.5) Nonorganic vaginismus\n- (F52.6) Nonorganic dyspareunia\n- (F52.7) Excessive sexual drive\n- (F52.8) Other sexual dysfunction, not caused...\n\n[Document 3] (ID: 22610_10, Score: 0.845)\n(R46.8) Other symptoms and signs involving appearance and behaviour\n\n- (R46.0) Very low level of personal hygiene\n\n- (R46.1) Bizarre personal appearance\n\n- (R46.2) Strange and inexplicable behaviour\n\n- (R46.3) Overactivity\n\n- (R46.4) Slowness and poor responsiveness\n\n- (R46.5) Suspiciousness and mar...\n\n[Document 4] (ID: 5045_10, Score: 0.845)\n(R46.8) Other symptoms and signs involving appearance and behaviour\n\n- (R46.0) Very low level of personal hygiene\n\n- (R46.1) Bizarre personal appearance\n\n- (R46.2) Strange and inexplicable behaviour\n\n- (R46.3) Overactivity\n\n- (R46.4) Slowness and poor responsiveness\n\n- (R46.5) Suspiciousness and mar...\n\n[Document 5] (ID: 29238_11, Score: 0.842)\n- (R46.1) Bizarre personal appearance\n\n- (R46.2) Strange and inexplicable behaviour\n\n- (R46.3) Overactivity\n\n- (R46.4) Slowness and poor responsiveness\n\n- (R46.5) Suspiciousness and marked evasiveness\n\n- (R46.6) Undue concern and preoccupation with stressful events\n\n- (R46.7) Verbosity and circumsta..."
+        ],
+        "prior_information_summary": "Chief complaint: Patient reports not feeling well recently, seeking assessment and diagnosis. History: Patient denies any specific symptoms including fatigue, weight loss, fever, pain, changes in libido, appetite, or activity levels. No family history of chronic or autoimmune diseases reported. Exam: No labs performed; no results available. Retrieval attempts: Multiple searches for non-specific complaints in 50-year-old males yielded general information on psychiatric, systemic, and functional causes, but no specific findings. All patient responses indicate absence of abnormalities. No objective evidence or diagnostic leads identified. No low-value or no-result attempts beyond the current turn."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20133289",
+        "turn_id": 15,
+        "query_text": "Patient is a 50-year-old male with non-specific complaints, no positive or negative findings from history, physical exam, or labs. Patient denies specific symptoms including fatigue, weight loss, fever, pain, changes in libido, appetite, or activity levels. No family history of chronic or autoimmune diseases. No objective evidence or diagnostic leads identified. Diagnostic uncertainty remains high due to lack of specific clinical data. Missing: detailed symptom timeline, objective physical exam findings, and lab results.",
+        "skill_query_text": "Presenting problem: non-specific complaints in 50-year-old male. Current uncertainty: no diagnostic leads identified. Evidence gathered: no positive or negative findings, no labs performed, patient denies specific symptoms. Ineffective actions: retrieval attempts for non-specific complaints yielded general psychiatric/systemic causes without specific findings. Needed: workflow guidance for next diagnostic steps given lack of objective evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.788,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7568,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7548,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8247,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.8152,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8145,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8241,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7881,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_1243d80c7992",
+              "type": "skill",
+              "score": 0.7802,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_4edec57c6eb9"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your mood, such as depression, anxiety, or unusual behavior recently?"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': '800d40ff-b35a-46a4-a612-a9f820ce7a45', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your mood, such as depression, anxiety, or unusual behavior recently?\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"800d40ff-b35a-46a4-a612-a9f820ce7a45\", \"type\": \"function\", \"function\": {\"name\": \"ask_patient\", \"arguments\": \"{\\\\\"question\\\\\": \\\\\"Have you noticed any changes in your mood, such as depression, anxiety, or unusual behavior recently?\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.25, 'conf_after': 0.25, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.25, 'conf_after': 0.25, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.25, 'conf_after': 0.25, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.25, 'conf_after': 0.25, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.25, 'conf_after': 0.25, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.25, 'conf_after': 0.25, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 7, 'conf_before': 0.25, 'conf_after': 0.25, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 3582}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.25,
+        "conf_after": 0.25,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your mood, such as depression, anxiety, or unusual behavior recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your mood, such as depression, anxiety, or unusual behavior recently?\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_15 retrieve_interaction: doctor_action: retrieve(query=non-specific complaints in 50-year-old males: possible psychiatric or functional causes)\nresponse: [Document 1] (ID: 5805_14, Score: 0.847)\n(F52.8) Other sexual dysfunction, not caused by organic disorder or disease\n(F52.9) Unspecified sexual dysfunction, not caused by organic disorder or disease\n- (F52.0) Lack or loss of sexual desire\n- (F52.1) Sexual aversion and lack of sexual enjoyment\n- (F52.2) Failure of genital response\n- (F52.3)...\n\n[Document 2] (ID: 22606_8, Score: 0.846)\n- (F52.1) Sexual aversion and lack of sexual enjoyment\n- (F52.2) Failure of genital response\n- (F52.3) Orgasmic dysfunction\n- (F52.4) Premature ejaculation\n- (F52.5) Nonorganic vaginismus\n- (F52.6) Nonorganic dyspareunia\n- (F52.7) Excessive sexual drive\n...[truncated]"
+  ]
+}

@@ -1,0 +1,906 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20131412",
+  "turns": [
+    {
+      "case_id": "20131412",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "diagnostic_strategy": "Current clinical problem: Assess and diagnose 43-year-old female patient presenting with Altered MS and history of opiate dependence. Key evidence gathered: Patient reports altered mental status and history of opiate dependence. Diagnostic uncertainty: Etiology of altered mental status unclear; need to determine if opiate-related, metabolic, infectious, or other. Most useful missing information: Detailed history of opiate use, recent medication changes, vital signs, lab results (e.g., glucose, BUN, creatinine, toxicology), and imaging if available. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 43-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 43-year-old female patient presenting with Altered MS and history of opiate dependence who.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 43-year-old female presenting with altered mental status (Altered MS) and history of opiate dependence. No additional findings, exam, lab, imaging, or tool results provided. No interpretation of evidence available. Missing information: Detailed history of opiate use, recent medication changes, vital signs, lab results, and imaging. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 1,
+        "query_text": "43-year-old female with altered mental status and history of opiate dependence. Etiology unclear; need to determine if opiate-related, metabolic, infectious, or other. Missing: detailed opiate use history, recent medication changes, vital signs, lab results (glucose, BUN, creatinine, toxicology), imaging.",
+        "skill_query_text": "Presenting problem: 43-year-old female with altered mental status and opiate dependence. Uncertainty: Etiology unclear. Evidence gathered: patient reports altered mental status and history of opiate dependence. Missing: detailed opiate use, recent meds, vitals, labs, imaging. Ineffective actions: none. Need: diagnostic decision workflow guidance."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7736,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8022,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.7954,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.7913,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7978,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.787,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7852,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?"
+        },
+        "patient_or_tool_response": "{'question': 'I had a headache that felt like pressure over my forehead and crown, and it was constant. I took Advil, but it didn’t help. I was disoriented to time and events when I was found. I also had slurred speech and appeared intoxicated, according to EMS. I don’t remember anything after pulling over except waking up with paramedics around me. I don’t have nausea, dizziness, or changes in consciousness beyond being disoriented. My toes and fingers are numb from peripheral neuropathy, but no other numbness or tingling. No muscle weakness or gait disturbance.'}",
+        "env_info": "{'response': [{'id': '51a8935f-7a6e-44e7-9274-d0eff6fe5eb2', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "diagnostic_strategy": "Current clinical problem: Altered mental status with headache, disorientation, slurred speech, and reported intoxication. Key evidence: Headache (pressure, unrelieved by Advil), disorientation, slurred speech, no nausea/dizziness, peripheral neuropathy-related numbness, no muscle weakness or gait disturbance. Diagnostic uncertainty: Differentiating acute neurological event (e.g., stroke, metabolic encephalopathy, intoxication) from chronic condition (e.g., peripheral neuropathy). Most useful missing information: Neurological exam, lab values (e.g., glucose, BUN, electrolytes, alcohol screen), imaging (CT/MRI head). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?)\nresponse: I had a headache that felt like pressure over my forehead and crown, and it was constant. I took Advil, but it didn’t help. I was disoriented to time and events when I was found. I also had slurred speech and appeared intoxicated, according to EMS. I don’t remember anything after pulling over except waking up with paramedics around me. I don’t have nausea, dizziness, or changes in consciousness beyond being disoriented. My toes and fingers are numb from peripheral neuropathy, but no other numbness or tingling. No muscle weakness or gait disturbance."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: Altered MS. Patient reports headache (pressure over forehead/crown, constant, unrelieved by Advil), disorientation to time/events, slurred speech, appeared intoxicated (EMS report), no nausea/dizziness, no other consciousness changes. Peripheral neuropathy causes numbness in toes/fingers, no other numbness/tingling, no muscle weakness or gait disturbance. No lab/imaging results or exam findings yet. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 2,
+        "query_text": "Altered mental status with headache (pressure, unrelieved by Advil), disorientation, slurred speech, reported intoxication (EMS), no nausea/dizziness, peripheral neuropathy-related numbness in toes/fingers, no muscle weakness or gait disturbance. No lab/imaging or exam results. Uncertainty: Differentiating acute neurological event (stroke, metabolic encephalopathy, intoxication) from chronic condition (peripheral neuropathy).",
+        "skill_query_text": "Presenting problem: Altered mental status with headache, disorientation, slurred speech, reported intoxication. Evidence gathered: Patient history including peripheral neuropathy symptoms. Missing: Neurological exam, lab values (glucose, BUN, electrolytes, alcohol screen), imaging (CT/MRI head). Ineffective actions: None reported. Need: Diagnostic decision workflow guidance to differentiate acute vs chronic causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7651,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7649,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7546,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.734,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8062,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.7998,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.8036,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7978,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7877,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'53fb6504-164e-4d43-a63a-42e03b5184e1': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '53fb6504-164e-4d43-a63a-42e03b5184e1', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 169}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 2,
+        "query_text": "Altered mental status with headache (pressure, unrelieved by Advil), disorientation, slurred speech, reported intoxication (EMS), no nausea/dizziness, peripheral neuropathy-related numbness in toes/fingers, no muscle weakness or gait disturbance. No lab/imaging or exam results. Uncertainty: Differentiating acute neurological event (stroke, metabolic encephalopathy, intoxication) from chronic condition (peripheral neuropathy).",
+        "skill_query_text": "Presenting problem: Altered mental status with headache, disorientation, slurred speech, reported intoxication. Evidence gathered: Patient history including peripheral neuropathy symptoms. Missing: Neurological exam, lab values (glucose, BUN, electrolytes, alcohol screen), imaging (CT/MRI head). Ineffective actions: None reported. Need: Diagnostic decision workflow guidance to differentiate acute vs chronic causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7651,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7649,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7546,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.734,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.8143,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8062,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.7998,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.8036,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7978,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7877,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_19bb6b569799"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_19bb6b569799",
+            "memory_type": "experience",
+            "score": 0.8062,
+            "content": {
+              "experience": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "opiate overdose symptoms including headache, disorientation, slurred speech, and intoxication"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'645e6864-1cbc-453f-aba2-26c65c53e7ee': '[Document 1] (ID: 30864_18, Score: 0.877)\\n### Signs and Symptoms\\n- Acute overdosage with opioids can be manifested by respiratory depression, somnolence progressing to stupor or coma, skeletal muscle flaccidity, cold and clammy skin, constricted pupils, and sometimes pulmonary edema, bradycardia, hypotension and death. Marked mydriasis rath...\\n\\n[Document 2] (ID: 8105_6, Score: 0.869)\\n# In case of emergency/overdose\\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the victim has collapsed or is not breathing, call local emergency services at 911.\\nSymptoms of overdose may include:\\n- slow, shallow, or irregular breathing\\n- blue or purple color to the...\\n\\n[Document 3] (ID: 19951_12, Score: 0.865)\\n### Signs and Symptoms\\n- Symptoms of oral overdose may occur within 15 minutes beginning with CNS depression, absent or sluggish reflexes, underventilation, hypotension, and hypothermia and may progress to pulmonary edema and death.\\n- Hemorrhagic blisters may develop, especially at pressure points.\\n...\\n\\n[Document 4] (ID: 10949_4, Score: 0.865)\\n# In case of emergency/overdose\\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the vic...[truncated]'}}",
+        "env_info": "{'response': [{'id': '645e6864-1cbc-453f-aba2-26c65c53e7ee', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"opiate overdose symptoms including headache, disorientation, slurred speech, and intoxication\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 240}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"opiate overdose symptoms including headache, disorientation, slurred speech, and intoxication\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"opiate overdose symptoms including headache, disorientation, slurred speech, and intoxication\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "diagnostic_strategy": "Current clinical problem: patient presents with altered mental status (AMS) including headache, disorientation, slurred speech, and intoxication. Key evidence: patient reports headache, disorientation, slurred speech, and EMS noted intoxication; no lab results available. Diagnostic uncertainty: unclear if AMS is due to opioid overdose, other intoxication, or neurological cause. Most useful missing information: history of opioid use, recent medication use, toxicology screen, and physical exam findings (e.g., pupil size, respiratory rate, vital signs). Existing evidence is not enough to finalize diagnosis; further investigation needed.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Altered MS",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?)\nresponse: I had a headache that felt like pressure over my forehead and crown, and it was constant. I took Advil, but it didn’t help. I was disoriented to time and events when I was found. I also had slurred speech and appeared intoxicated, according to EMS. I don’t remember anything after pulling over except waking up with paramedics around me. I don’t have nausea, dizziness, or changes in consciousness beyond being disoriented. My toes and fingers are numb from peripheral neuropathy, but no other numbness or tingling. No muscle weakness or gait disturbance.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=opiate overdose symptoms including headache, disorientation, slurred speech, and intoxication)\nresponse: [Document 1] (ID: 30864_18, Score: 0.877)\n### Signs and Symptoms\n- Acute overdosage with opioids can be manifested by respiratory depression, somnolence progressing to stupor or coma, skeletal muscle flaccidity, cold and clammy skin, constricted pupils, and sometimes pulmonary edema, bradycardia, hypotension and death. Marked mydriasis rath...\n\n[Document 2] (ID: 8105_6, Score: 0.869)\n# In case of emergency/overdose\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the victim has collapsed or is not breathing, call local emergency services at 911.\nSymptoms of overdose may include:\n- slow, shallow, or irregular breathing\n- blue or purple color to the...\n\n[Document 3] (ID: 19951_12, Score: 0.865)\n### Signs and Symptoms\n- Symptoms of oral overdose may occur within 15 minutes beginning with CNS depression, absent or sluggish reflexes, underventilation, hypotension, and hypothermia and may progress to pulmonary edema and death.\n- Hemorrhagic blisters may develop, especially at pressure points.\n...\n\n[Document 4] (ID: 10949_4, Score: 0.865)\n# In case of emergency/overdose\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the victim has collapsed or is not breathing, call local emergency services at 911.\nSymptoms of overdose may include:\n- tiredness\n- weakness\n- wobbliness, unsteadiness, or incoordination ...\n\n[Document 5] (ID: 15697_17, Score: 0.865)\n- Following an acute overdosage, toxicity may result from the Oxycodone or the acetaminophen.\nSigns and Symptoms\n- Toxicity from Oxycodone poisoning includes the opioid triad of: pinpoint pupils, depression of respiration, and loss of consciousness.  Serious overdosage with Oxycodone is characterize..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient presents with altered mental status (AMS) including headache, disorientation, slurred speech, and intoxication. Patient reports headache, disorientation, slurred speech, and EMS noted intoxication; no nausea, dizziness, or gait disturbance. Peripheral neuropathy causes numbness in toes and fingers. No lab results available. No toxicology screen or physical exam findings (e.g., pupil size, respiratory rate) provided. No result for labs request. No other relevant history provided."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 4,
+        "query_text": "Patient presents with altered mental status including headache, disorientation, slurred speech, and intoxication as reported by patient and EMS. No nausea, dizziness, gait disturbance, or other neurological symptoms reported. Peripheral neuropathy causes numbness in toes and fingers. No lab results, toxicology screen, or physical exam findings (e.g., pupil size, respiratory rate) available. Unclear if AMS is due to opioid overdose, other intoxication, or neurological cause.",
+        "skill_query_text": "Presenting problem: altered mental status with headache, disorientation, slurred speech, and intoxication. Evidence gathered: patient history and EMS report. Missing: history of opioid use, recent medication use, toxicology screen, physical exam findings (pupil size, respiratory rate, vital signs). Ineffective action: lab request returned no result. Need workflow guidance on next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 2,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7576,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.718,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8024,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7993,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_fa4d286109a3",
+              "type": "experience",
+              "score": 0.7887,
+              "outcome": "negative",
+              "text": "Patient’s report of headaches starting after a car accident and known AVM finding supports AVM-related headache; do not rely on absence of thunderclap headache history to rule out AVM, as patients may not recognize or report this specific symptom.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7969,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7907,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.784,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_19bb6b569799"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you used any opioids or other substances recently, including prescription medications or illicit drugs?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve been using methadone and suboxone, but I got them from the street — my last methadone dose was yesterday morning, and my last suboxone was yesterday evening. I also think I’m going through withdrawal from Valium because I lost my prescription. I don’t know if I’ve used any other opioids or illicit substances recently, but my urine tox showed positive for benzos, barbiturates, and amphetamines. I’m not sure what that means or if it’s from something I used or just from withdrawal.'}",
+        "env_info": "{'response': [{'id': '54df65ec-ca56-4958-a0cc-608dda290e74', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you used any opioids or other substances recently, including prescription medications or illicit drugs?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 799}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you used any opioids or other substances recently, including prescription medications or illicit drugs?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you used any opioids or other substances recently, including prescription medications or illicit drugs?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "diagnostic_strategy": "Current clinical problem: altered mental status with possible substance use. Key evidence: patient reports methadone and suboxone use, withdrawal symptoms from Valium, positive urine tox for benzos, barbiturates, and amphetamines, and prior symptoms including headache, disorientation, slurred speech, and intoxication. Diagnostic uncertainty: whether altered mental status is due to opioid withdrawal, intoxication, or other substances; whether withdrawal or acute toxicity is driving symptoms. Most useful missing information: exact timing and dose of last opioid use, confirmation of withdrawal vs. acute toxicity, and results of labs or imaging if available. Existing evidence is not enough to finalize diagnosis; further clarification needed on substance use history and toxicology interpretation.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Altered MS",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?)\nresponse: I had a headache that felt like pressure over my forehead and crown, and it was constant. I took Advil, but it didn’t help. I was disoriented to time and events when I was found. I also had slurred speech and appeared intoxicated, according to EMS. I don’t remember anything after pulling over except waking up with paramedics around me. I don’t have nausea, dizziness, or changes in consciousness beyond being disoriented. My toes and fingers are numb from peripheral neuropathy, but no other numbness or tingling. No muscle weakness or gait disturbance.",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you used any opioids or other substances recently, including prescription medications or illicit drugs?)\nresponse: I’ve been using methadone and suboxone, but I got them from the street — my last methadone dose was yesterday morning, and my last suboxone was yesterday evening. I also think I’m going through withdrawal from Valium because I lost my prescription. I don’t know if I’ve used any other opioids or illicit substances recently, but my urine tox showed positive for benzos, barbiturates, and amphetamines. I’m not sure what that means or if it’s from something I used or just from withdrawal."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Patient presents with altered mental status. Symptoms include headache, disorientation, slurred speech, and intoxication reported by EMS. No nausea, dizziness, or gait disturbance. Peripheral neuropathy causes numbness in toes and fingers. Patient reports using methadone and suboxone from street sources, last doses yesterday morning and evening. Suspects withdrawal from Valium due to lost prescription. Urine tox positive for benzos, barbiturates, and amphetamines; patient uncertain if this reflects use or withdrawal. Labs requested but no result available. Documented overdose symptoms include CNS depression, respiratory depression, and intoxication, but no lab or imaging results to confirm diagnosis. No other relevant findings reported."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 5,
+        "query_text": "Altered mental status with headache, disorientation, slurred speech, and intoxication. Patient reports methadone and suboxone use (street sources, last doses yesterday morning/evening), suspected Valium withdrawal. Urine tox positive for benzos, barbiturates, amphetamines. No nausea, dizziness, gait disturbance. Peripheral neuropathy causes numbness in toes/fingers. Labs requested but no result. Diagnostic uncertainty: whether altered mental status due to opioid withdrawal, intoxication, or other substances; whether withdrawal or acute toxicity is driving symptoms.",
+        "skill_query_text": "Presenting problem: altered mental status. Uncertainty: whether withdrawal or acute toxicity is driving symptoms. Evidence gathered: patient history of methadone/suboxone use, suspected Valium withdrawal, positive urine tox for benzos/barbiturates/amphetamines, symptoms including headache, disorientation, slurred speech. Ineffective action: labs requested but no result. Need workflow guidance: how to interpret toxicology results in context of withdrawal vs. acute toxicity, next steps for diagnostic clarification."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 4,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_4edec57c6eb9",
+              "type": "experience",
+              "score": 0.7755,
+              "outcome": "positive",
+              "text": "Requesting labs or CXR in this case was ineffective because no results were available and the diagnosis was resolved through history and symptom pattern; avoid redundant tool requests when clinical history and targeted questions already support a diagnosis.",
+              "tags": []
+            },
+            {
+              "id": "exp_c173039167f9",
+              "type": "experience",
+              "score": 0.7596,
+              "outcome": "positive",
+              "text": "Gradual worsening of shortness of breath from exertion to rest, combined with cough producing yellow sputum and frequent albuterol use, strongly supports asthma exacerbation in an elderly patient; do not apply this pattern if symptoms are acute, systemic, or associated with trauma or joint pain.",
+              "tags": []
+            },
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7538,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            },
+            {
+              "id": "exp_474412aec170",
+              "type": "experience",
+              "score": 0.7222,
+              "outcome": "positive",
+              "text": "History of asthma, exposure to allergens (dust, dander, mold), and worsening symptoms triggered by smoke or perfumes are key discriminative evidence for asthma exacerbation; do not apply this when exposure is absent or symptoms are non-respiratory.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.808,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7936,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.7933,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7842,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7818,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7799,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "withdrawal symptoms from methadone, suboxone, and benzodiazepines including headache, disorientation, slurred speech, and intoxication"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'21846e24-7e50-48b7-b746-cf39519982e5': '[Document 1] (ID: 22755_4, Score: 0.885)\\n- During the induction phase of methadone maintenance treatment, patients are being withdrawn from heroin and may therefore show typical withdrawal symptoms, which should be differentiated from methadone-induced side-effects. They may exhibit some or all of the following symptoms associated with acu...\\n\\n[Document 2] (ID: 22715_4, Score: 0.875)\\n- Abrupt termination of treatment may be accompanied by withdrawal symptoms. Symptoms reported following discontinuation of benzodiazepines include headache, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, rebound phenomena, dysphoria, dizziness, derealizatio...\\n\\n[Document 3] (ID: 11266_14, Score: 0.874)\\n### Withdrawal\\nWithdrawal symptoms can occur after taking therapeutic doses of Ativan for as little as one week. Withdrawal symptoms include headaches, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, dysphoria, dizziness, derealization, depersonalization, num...\\n\\n[Document 4] (ID: 32929_2, Score: 0.872)\\n### Physical and Psychological Dependence\\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in charact...[truncated]'}}",
+        "env_info": "{'response': [{'id': '21846e24-7e50-48b7-b746-cf39519982e5', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"withdrawal symptoms from methadone, suboxone, and benzodiazepines including headache, disorientation, slurred speech, and intoxication\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 957}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"withdrawal symptoms from methadone, suboxone, and benzodiazepines including headache, disorientation, slurred speech, and intoxication\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"withdrawal symptoms from methadone, suboxone, and benzodiazepines including headache, disorientation, slurred speech, and intoxication\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20131412",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Altered MS",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 6. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Altered MS",
+          "initial_information: I am a 43-year-old F patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 43-year-old female patient presenting with Altered MS and history of opiate dependence who..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?)\nresponse: I had a headache that felt like pressure over my forehead and crown, and it was constant. I took Advil, but it didn’t help. I was disoriented to time and events when I was found. I also had slurred speech and appeared intoxicated, according to EMS. I don’t remember anything after pulling over except waking up with paramedics around me. I don’t have nausea, dizziness, or changes in consciousness beyond being disoriented. My toes and fingers are numb from peripheral neuropathy, but no other numbness or tingling. No muscle weakness or gait disturbance.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=opiate overdose symptoms including headache, disorientation, slurred speech, and intoxication)\nresponse: [Document 1] (ID: 30864_18, Score: 0.877)\n### Signs and Symptoms\n- Acute overdosage with opioids can be manifested by respiratory depression, somnolence progressing to stupor or coma, skeletal muscle flaccidity, cold and clammy skin, constricted pupils, and sometimes pulmonary edema, bradycardia, hypotension and death. Marked mydriasis rath...\n\n[Document 2] (ID: 8105_6, Score: 0.869)\n# In case of emergency/overdose\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the victim has collapsed or is not breathing, call local emergency services at 911.\nSymptoms of overdose may include:\n- slow, shallow, or irregular breathing\n- blue or purple color to the...\n\n[Document 3] (ID: 19951_12, Score: 0.865)\n### Signs and Symptoms\n- Symptoms of oral overdose may occur within 15 minutes beginning with CNS depression, absent or sluggish reflexes, underventilation, hypotension, and hypothermia and may progress to pulmonary edema and death.\n- Hemorrhagic blisters may develop, especially at pressure points.\n...\n\n[Document 4] (ID: 10949_4, Score: 0.865)\n# In case of emergency/overdose\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the victim has collapsed or is not breathing, call local emergency services at 911.\nSymptoms of overdose may include:\n- tiredness\n- weakness\n- wobbliness, unsteadiness, or incoordination ...\n\n[Document 5] (ID: 15697_17, Score: 0.865)\n- Following an acute overdosage, toxicity may result from the Oxycodone or the acetaminophen.\nSigns and Symptoms\n- Toxicity from Oxycodone poisoning includes the opioid triad of: pinpoint pupils, depression of respiration, and loss of consciousness.  Serious overdosage with Oxycodone is characterize...",
+          "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you used any opioids or other substances recently, including prescription medications or illicit drugs?)\nresponse: I’ve been using methadone and suboxone, but I got them from the street — my last methadone dose was yesterday morning, and my last suboxone was yesterday evening. I also think I’m going through withdrawal from Valium because I lost my prescription. I don’t know if I’ve used any other opioids or illicit substances recently, but my urine tox showed positive for benzos, barbiturates, and amphetamines. I’m not sure what that means or if it’s from something I used or just from withdrawal.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=withdrawal symptoms from methadone, suboxone, and benzodiazepines including headache, disorientation, slurred speech, and intoxication)\nresponse: [Document 1] (ID: 22755_4, Score: 0.885)\n- During the induction phase of methadone maintenance treatment, patients are being withdrawn from heroin and may therefore show typical withdrawal symptoms, which should be differentiated from methadone-induced side-effects. They may exhibit some or all of the following symptoms associated with acu...\n\n[Document 2] (ID: 22715_4, Score: 0.875)\n- Abrupt termination of treatment may be accompanied by withdrawal symptoms. Symptoms reported following discontinuation of benzodiazepines include headache, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, rebound phenomena, dysphoria, dizziness, derealizatio...\n\n[Document 3] (ID: 11266_14, Score: 0.874)\n### Withdrawal\nWithdrawal symptoms can occur after taking therapeutic doses of Ativan for as little as one week. Withdrawal symptoms include headaches, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, dysphoria, dizziness, derealization, depersonalization, num...\n\n[Document 4] (ID: 32929_2, Score: 0.872)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in character to those noted with barbiturates and alcohol (convulsions, tremor, abdominal and muscle cramps, vomiting, and sweating), have occurred following abrupt discontinuance of oxazepa...\n\n[Document 5] (ID: 15298_3, Score: 0.870)\n### Physical and Psychological Dependence\n- Withdrawal symptoms (similar in character to those noted with barbiturates and alcohol) have occurred following abrupt discontinuance of clorazepate. Withdrawal symptoms associated with the abrupt discontinuation of benzodiazepines have included convulsion..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?)\nresponse: I had a headache that felt like pressure over my forehead and crown, and it was constant. I took Advil, but it didn’t help. I was disoriented to time and events when I was found. I also had slurred speech and appeared intoxicated, according to EMS. I don’t remember anything after pulling over except waking up with paramedics around me. I don’t have nausea, dizziness, or changes in consciousness beyond being disoriented. My toes and fingers are numb from peripheral neuropathy, but no other numbness or tingling. No muscle weakness or gait disturbance.\ndoctor_action: retrieve(query=opiate overdose symptoms including headache, disorientation, slurred speech, and intoxication)\nresponse: [Document 1] (ID: 30864_18, Score: 0.877)\n### Signs and Symptoms\n- Acute overdosage with opioids can be manifested by respiratory depression, somnolence progressing to stupor or coma, skeletal muscle flaccidity, cold and clammy skin, constricted pupils, and sometimes pulmonary edema, bradycardia, hypotension and death. Marked mydriasis rath...\n\n[Document 2] (ID: 8105_6, Score: 0.869)\n# In case of emergency/overdose\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the victim has collapsed or is not breathing, call local emergency services at 911.\nSymptoms of overdose may include:\n- slow, shallow, or irregular breathing\n- blue or purple color to the...\n\n[Document 3] (ID: 19951_12, Score: 0.865)\n### Signs and Symptoms\n- Symptoms of oral overdose may occur within 15 minutes beginning with CNS depression, absent or sluggish reflexes, underventilation, hypotension, and hypothermia and may progress to pulmonary edema and death.\n- Hemorrhagic blisters may develop, especially at pressure points.\n...\n\n[Document 4] (ID: 10949_4, Score: 0.865)\n# In case of emergency/overdose\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the victim has collapsed or is not breathing, call local emergency services at 911.\nSymptoms of overdose may include:\n- tiredness\n- weakness\n- wobbliness, unsteadiness, or incoordination ...\n\n[Document 5] (ID: 15697_17, Score: 0.865)\n- Following an acute overdosage, toxicity may result from the Oxycodone or the acetaminophen.\nSigns and Symptoms\n- Toxicity from Oxycodone poisoning includes the opioid triad of: pinpoint pupils, depression of respiration, and loss of consciousness.  Serious overdosage with Oxycodone is characterize...\ndoctor_action: ask_patient(question=Have you used any opioids or other substances recently, including prescription medications or illicit drugs?)\nresponse: I’ve been using methadone and suboxone, but I got them from the street — my last methadone dose was yesterday morning, and my last suboxone was yesterday evening. I also think I’m going through withdrawal from Valium because I lost my prescription. I don’t know if I’ve used any other opioids or illicit substances recently, but my urine tox showed positive for benzos, barbiturates, and amphetamines. I’m not sure what that means or if it’s from something I used or just from withdrawal.\n\nIneffective/no-result interactions:\nturn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20131412",
+        "turn_id": 6,
+        "query_text": "Patient is a 43-year-old female with altered mental status, headache, disorientation, slurred speech, and intoxication appearance. History of opiate dependence. Reports using methadone and suboxone from street sources. Urine toxicology positive for benzos, barbiturates, amphetamines. Peripheral neuropathy with numbness in toes and fingers. No nausea, dizziness, or gait disturbance. No lab results available. Diagnostic uncertainty: differentiating opiate overdose vs. withdrawal symptoms.",
+        "skill_query_text": "Presenting problem: altered mental status with headache, disorientation, slurred speech. Evidence gathered: patient history of methadone/suboxone use, urine tox positive for benzos/barbiturates/amphetamines, prior retrieval of opiate overdose and withdrawal symptoms. Ineffective action: lab request yielded no result. Need guidance: next diagnostic action to resolve uncertainty between opiate overdose and withdrawal, avoiding repeat low-information turns."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_3468871911d7",
+              "type": "experience",
+              "score": 0.787,
+              "outcome": "negative",
+              "text": "Self-reported daily alcohol consumption and missed medications in a patient with acute anxiety and cardiac symptoms should prompt consideration of alcohol withdrawal, even without classic tremors or seizures; do not overlook this in patients with psychiatric comorbidities or substance use history.",
+              "tags": []
+            },
+            {
+              "id": "exp_eb3a62fc75cd",
+              "type": "experience",
+              "score": 0.7809,
+              "outcome": "negative",
+              "text": "Bilateral, painless, gradual vision loss with dyschromatopsia (especially red washout) in an elderly patient supports nutritional optic neuropathy; do not apply this when there is pain, acute onset, or systemic symptoms suggesting other etiologies.",
+              "tags": []
+            },
+            {
+              "id": "exp_7b1a3eea54b6",
+              "type": "experience",
+              "score": 0.7744,
+              "outcome": "negative",
+              "text": "Repeated non-informative patient dialogues about headache characteristics without eliciting key red flags (e.g., thunderclap, focal deficits) are low-yield; prioritize targeted questions about trauma history and known vascular anomalies.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7908,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.774,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_6ccf7d71e646",
+              "type": "skill",
+              "score": 0.7739,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Opioid Withdrawal Syndrome with Possible Concurrent Benzodiazepine Withdrawal}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'2c7afc16-8d01-48e7-9f6f-6a0ad992a1cd': '{\"diagnosis\": \"Opioid Withdrawal Syndrome with Possible Concurrent Benzodiazepine Withdrawal\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '2c7afc16-8d01-48e7-9f6f-6a0ad992a1cd', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Opioid Withdrawal Syndrome with Possible Concurrent Benzodiazepine Withdrawal}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1453}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Opioid Withdrawal Syndrome with Possible Concurrent Benzodiazepine Withdrawal}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Opioid Withdrawal Syndrome with Possible Concurrent Benzodiazepine Withdrawal}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [
+    {
+      "turn_id": 2,
+      "doctor_action_type": "REQUEST_LAB",
+      "tool_name": "request_exam",
+      "arguments": {
+        "exam_type": "labs"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'53fb6504-164e-4d43-a63a-42e03b5184e1': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+      "env_info": "{'response': [{'id': '53fb6504-164e-4d43-a63a-42e03b5184e1', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 169}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any specific symptoms such as confusion, dizziness, nausea, or changes in consciousness recently?)\nresponse: I had a headache that felt like pressure over my forehead and crown, and it was constant. I took Advil, but it didn’t help. I was disoriented to time and events when I was found. I also had slurred speech and appeared intoxicated, according to EMS. I don’t remember anything after pulling over except waking up with paramedics around me. I don’t have nausea, dizziness, or changes in consciousness beyond being disoriented. My toes and fingers are numb from peripheral neuropathy, but no other numbness or tingling. No muscle weakness or gait disturbance."
+      ]
+    },
+    {
+      "turn_id": 4,
+      "doctor_action_type": "ASK",
+      "tool_name": "ask_patient",
+      "arguments": {
+        "question": "Have you used any opioids or other substances recently, including prescription medications or illicit drugs?"
+      },
+      "patient_or_tool_response": "{'question': 'I’ve been using methadone and suboxone, but I got them from the street — my last methadone dose was yesterday morning, and my last suboxone was yesterday evening. I also think I’m going through withdrawal from Valium because I lost my prescription. I don’t know if I’ve used any other opioids or illicit substances recently, but my urine tox showed positive for benzos, barbiturates, and amphetamines. I’m not sure what that means or if it’s from something I used or just from withdrawal.'}",
+      "env_info": "{'response': [{'id': '54df65ec-ca56-4958-a0cc-608dda290e74', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you used any opioids or other substances recently, including prescription medications or illicit drugs?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 799}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_4 retrieve_interaction: doctor_action: retrieve(query=opiate overdose symptoms including headache, disorientation, slurred speech, and intoxication)\nresponse: [Document 1] (ID: 30864_18, Score: 0.877)\n### Signs and Symptoms\n- Acute overdosage with opioids can be manifested by respiratory depression, somnolence progressing to stupor or coma, skeletal muscle flaccidity, cold and clammy skin, constricted pupils, and sometimes pulmonary edema, bradycardia, hypotension and death. Marked mydriasis rath...\n\n[Document 2] (ID: 8105_6, Score: 0.869)\n# In case of emergency/overdose\nIn case of overdose, call your local poison control center at 1-800-222-1222. If the victim has collapsed or is not breathing, call local emergency services at 911.\nSymptoms of overdose may include:\n- slow, shallow, o...[truncated]"
+      ]
+    },
+    {
+      "turn_id": 5,
+      "doctor_action_type": "UPDATE_HYPOTHESIS",
+      "tool_name": "retrieve",
+      "arguments": {
+        "query": "withdrawal symptoms from methadone, suboxone, and benzodiazepines including headache, disorientation, slurred speech, and intoxication"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'21846e24-7e50-48b7-b746-cf39519982e5': '[Document 1] (ID: 22755_4, Score: 0.885)\\n- During the induction phase of methadone maintenance treatment, patients are being withdrawn from heroin and may therefore show typical withdrawal symptoms, which should be differentiated from methadone-induced side-effects. They may exhibit some or all of the following symptoms associated with acu...\\n\\n[Document 2] (ID: 22715_4, Score: 0.875)\\n- Abrupt termination of treatment may be accompanied by withdrawal symptoms. Symptoms reported following discontinuation of benzodiazepines include headache, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, rebound phenomena, dysphoria, dizziness, derealizatio...\\n\\n[Document 3] (ID: 11266_14, Score: 0.874)\\n### Withdrawal\\nWithdrawal symptoms can occur after taking therapeutic doses of Ativan for as little as one week. Withdrawal symptoms include headaches, anxiety, tension, depression, insomnia, restlessness, confusion, irritability, sweating, dysphoria, dizziness, derealization, depersonalization, num...\\n\\n[Document 4] (ID: 32929_2, Score: 0.872)\\n### Physical and Psychological Dependence\\n- Withdrawal symptoms (Benzodiazepine withdrawal syndrome), similar in charact...[truncated]'}}",
+      "env_info": "{'response': [{'id': '21846e24-7e50-48b7-b746-cf39519982e5', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"withdrawal symptoms from methadone, suboxone, and benzodiazepines including headache, disorientation, slurred speech, and intoxication\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 957}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_5 ask_patient_interaction: doctor_action: ask_patient(question=Have you used any opioids or other substances recently, including prescription medications or illicit drugs?)\nresponse: I’ve been using methadone and suboxone, but I got them from the street — my last methadone dose was yesterday morning, and my last suboxone was yesterday evening. I also think I’m going through withdrawal from Valium because I lost my prescription. I don’t know if I’ve used any other opioids or illicit substances recently, but my urine tox showed positive for benzos, barbiturates, and amphetamines. I’m not sure what that means or if it’s from something I used or just from withdrawal."
+      ]
+    },
+    {
+      "turn_id": 6,
+      "doctor_action_type": "FINALIZE_DIAGNOSIS",
+      "tool_name": "diagnosis",
+      "arguments": {
+        "final_response": "The final diagnosis is: \\boxed{Opioid Withdrawal Syndrome with Possible Concurrent Benzodiazepine Withdrawal}"
+      },
+      "patient_or_tool_response": "{'tool_outputs': {'2c7afc16-8d01-48e7-9f6f-6a0ad992a1cd': '{\"diagnosis\": \"Opioid Withdrawal Syndrome with Possible Concurrent Benzodiazepine Withdrawal\", \"done\": true}'}}",
+      "env_info": "{'response': [{'id': '2c7afc16-8d01-48e7-9f6f-6a0ad992a1cd', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Opioid Withdrawal Syndrome with Possible Concurrent Benzodiazepine Withdrawal}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1453}",
+      "reward": 0.0,
+      "turn_reward": 0.0,
+      "importance": 0.0,
+      "evidence_records": [
+        "turn_6 retrieve_interaction: doctor_action: retrieve(query=withdrawal symptoms from methadone, suboxone, and benzodiazepines including headache, disorientation, slurred speech, and intoxication)\nresponse: [Document 1] (ID: 22755_4, Score: 0.885)\n- During the induction phase of methadone maintenance treatment, patients are being withdrawn from heroin and may therefore show typical withdrawal symptoms, which should be differentiated from methadone-induced side-effects. They may exhibit some or all of the following symptoms associated with acu...\n\n[Document 2] (ID: 22715_4, Score: 0.875)\n- Abrupt termination of treatment may be accompanied by withdrawal symptoms. Symptoms reported following discontinuation of benzodiazepines include headache, anxiety, tension, depression, insomnia, restlessne...[truncated]"
+      ]
+    }
+  ],
+  "ineffective_interactions": [
+    "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+  ]
+}

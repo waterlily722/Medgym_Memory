@@ -1,0 +1,895 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20136375",
+  "turns": [
+    {
+      "case_id": "20136375",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "diagnostic_strategy": "Current clinical problem: 76-year-old male with nausea and vomiting, suspected CLL. Key evidence gathered: patient age, gender, chief complaint, and suspected underlying condition (CLL). Diagnostic uncertainty remains: need to confirm CLL status, assess for complications (e.g., infection, dehydration, electrolyte imbalance), and determine if nausea/vomiting is due to CLL or another cause. Most useful missing information: results of CBC, electrolytes, and possibly imaging or biopsy. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: I am a 76-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 76-year-old male patient presenting with nausea, vomiting and CLL.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 76-year-old male presenting with nausea and vomiting. Suspected underlying condition: CLL. No lab, imaging, or exam results provided. No complications or risk factors explicitly reported. No prior treatments or history provided. No low-value or no-result attempts reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 1,
+        "query_text": "76-year-old male with nausea and vomiting, suspected CLL. No lab, imaging, or exam results provided. No complications or risk factors explicitly reported. Diagnostic uncertainty: confirm CLL status, assess for infection, dehydration, electrolyte imbalance, and determine if nausea/vomiting is due to CLL or another cause.",
+        "skill_query_text": "Presenting problem: 76-year-old male with nausea and vomiting, suspected CLL. Evidence gathered: age, gender, chief complaint, suspected condition. Uncertainty: confirm CLL, assess complications. Missing: CBC, electrolytes, imaging, biopsy. Ineffective actions: none. Need: diagnostic decision workflow guidance for next steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7415,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8314,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.816,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_5064c012bbfc",
+              "type": "experience",
+              "score": 0.8102,
+              "outcome": "negative",
+              "text": "Fever and chills in a patient with fatigue and cough suggest systemic infection, not MDS, unless there is clear evidence of bone marrow failure or cytopenias; do not assume MDS without objective hematologic findings.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.7988,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7977,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7895,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any fever, weight loss, or night sweats along with your nausea and vomiting?"
+        },
+        "patient_or_tool_response": "{'question': 'No, I haven’t had any fever, weight loss, or night sweats along with my nausea and vomiting.'}",
+        "env_info": "{'response': [{'id': '23a3f801-f216-4a35-b052-d960ca11791f', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any fever, weight loss, or night sweats along with your nausea and vomiting?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 1.0,
+        "delta": 1.0,
+        "turn_reward": 0.2,
+        "importance": 1.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, weight loss, or night sweats along with your nausea and vomiting?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, weight loss, or night sweats along with your nausea and vomiting?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "diagnostic_strategy": "Current clinical problem: nausea and vomiting. Key evidence gathered: patient denies fever, weight loss, or night sweats. Diagnostic uncertainty remains: possible infectious, metabolic, or gastrointestinal etiology. Most useful missing information: history of recent travel, medication use, alcohol intake, or prior similar episodes. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, weight loss, or night sweats along with your nausea and vomiting?)\nresponse: No, I haven’t had any fever, weight loss, or night sweats along with my nausea and vomiting."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: nausea, vomiting. Patient denies fever, weight loss, or night sweats. No other relevant findings or test results reported. Missing: history of recent travel, medication use, alcohol intake, or prior similar episodes."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 2,
+        "query_text": "Chief complaint: nausea, vomiting. Patient denies fever, weight loss, or night sweats. No other findings or test results reported. Missing: history of recent travel, medication use, alcohol intake, or prior similar episodes. Diagnostic uncertainty: possible infectious, metabolic, or gastrointestinal etiology.",
+        "skill_query_text": "Presenting problem: nausea and vomiting. Evidence gathered: patient denies fever, weight loss, or night sweats. Ineffective actions: none. Missing evidence: history of recent travel, medication use, alcohol intake, or prior similar episodes. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7452,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8097,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8061,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8028,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8204,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8125,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8022,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'3516bb73-ab43-48b4-92c3-9abded136a3c': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': '3516bb73-ab43-48b4-92c3-9abded136a3c', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 71}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 2,
+        "query_text": "Chief complaint: nausea, vomiting. Patient denies fever, weight loss, or night sweats. No other findings or test results reported. Missing: history of recent travel, medication use, alcohol intake, or prior similar episodes. Diagnostic uncertainty: possible infectious, metabolic, or gastrointestinal etiology.",
+        "skill_query_text": "Presenting problem: nausea and vomiting. Evidence gathered: patient denies fever, weight loss, or night sweats. Ineffective actions: none. Missing evidence: history of recent travel, medication use, alcohol intake, or prior similar episodes. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7452,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8097,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8061,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8028,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8204,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8125,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8022,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "query": "symptoms of nausea and vomiting in CLL patients"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'115c60dc-f562-4844-a1e3-a0d62a682ea8': '[Document 1] (ID: 20298_7, Score: 0.867)\\n- Based on experience with the intravenous and oral use of fludarabine phosphate, the most common adverse reactions include myelosuppression (neutropenia, thrombocytopenia and anemia), fever and chills, infection, and nausea and vomiting. Other commonly reported events include malaise, fatigue, anor...\\n\\n[Document 2] (ID: 5526_0, Score: 0.861)\\nNausea, vomiting, diarrhea, fatigue and abdominal pain\\n\\n# Differentials based on nausea, vomiting, diarrhea, fatigue and abdominal pain\\nGastric dumping syndrome should be differentiated from other diseases presenting with nausea, vomiting, diarrhea, fatigue and abdominal pain. The differentials incl...\\n\\n[Document 3] (ID: 27635_27, Score: 0.859)\\n# Patient Counseling Information\\nAdvise patients to seek immediate medical attention for any of the following:\\n- Signs and symptoms of infusion reactions including dizziness, nausea, chills, fever, vomiting, diarrhea, breathing problems, or chest pain.\\n- Symptoms of tumor lysis syndrome such as naus...\\n\\n[Document 4] (ID: 31685_7, Score: 0.859)\\n- Ten patients (9%) discontinued treatment due to adverse reactions in the trial (N=111). The most frequent adverse react...[truncated]'}}",
+        "env_info": "{'response': [{'id': '115c60dc-f562-4844-a1e3-a0d62a682ea8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of nausea and vomiting in CLL patients\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 142}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of nausea and vomiting in CLL patients\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of nausea and vomiting in CLL patients\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "diagnostic_strategy": "Current clinical problem: nausea and vomiting. Key evidence gathered: patient denies fever, weight loss, or night sweats; lab results unavailable. Diagnostic uncertainty remains high due to lack of specific etiology. Most useful missing information: recent medication history, imaging or specific lab markers (e.g., CBC, liver enzymes). Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of nausea and vomiting in CLL patients)\nresponse: [Document 1] (ID: 20298_7, Score: 0.867)\n- Based on experience with the intravenous and oral use of fludarabine phosphate, the most common adverse reactions include myelosuppression (neutropenia, thrombocytopenia and anemia), fever and chills, infection, and nausea and vomiting. Other commonly reported events include malaise, fatigue, anor...\n\n[Document 2] (ID: 5526_0, Score: 0.861)\nNausea, vomiting, diarrhea, fatigue and abdominal pain\n\n# Differentials based on nausea, vomiting, diarrhea, fatigue and abdominal pain\nGastric dumping syndrome should be differentiated from other diseases presenting with nausea, vomiting, diarrhea, fatigue and abdominal pain. The differentials incl...\n\n[Document 3] (ID: 27635_27, Score: 0.859)\n# Patient Counseling Information\nAdvise patients to seek immediate medical attention for any of the following:\n- Signs and symptoms of infusion reactions including dizziness, nausea, chills, fever, vomiting, diarrhea, breathing problems, or chest pain.\n- Symptoms of tumor lysis syndrome such as naus...\n\n[Document 4] (ID: 31685_7, Score: 0.859)\n- Ten patients (9%) discontinued treatment due to adverse reactions in the trial (N=111). The most frequent adverse reaction leading to treatment discontinuation was subdural hematoma (1.8%). Adverse reactions leading to dose reduction occurred in 14% of patients.\n- Patients with MCL who develop lym...\n\n[Document 5] (ID: 31116_6, Score: 0.858)\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculoskeletal pain (2.1%), nausea (2.1%..."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Chief complaint: nausea, vomiting. Patient denies fever, weight loss, or night sweats. Lab request returned no result. Retrieved documents suggest nausea/vomiting may be related to chemotherapy (e.g., fludarabine), infusion reactions, or tumor lysis syndrome. No specific lab or imaging results available. Missing: medication history, CBC, liver enzymes, imaging. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 4,
+        "query_text": "Chief complaint: nausea, vomiting. Patient denies fever, weight loss, night sweats. Lab results unavailable. No imaging or specific lab markers (CBC, liver enzymes) available. Missing: recent medication history. Diagnostic uncertainty remains due to lack of specific etiology.",
+        "skill_query_text": "Presenting problem: nausea and vomiting. Evidence gathered: patient denies fever, weight loss, night sweats; lab results unavailable. Ineffective actions: none. Missing: medication history, CBC, liver enzymes, imaging. Need workflow guidance on next diagnostic steps given current uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.817,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8062,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.7978,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8253,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8122,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7988,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you been taking any new medications or supplements recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'cb77df10-c446-4b80-81e4-36fce0a1b568', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been taking any new medications or supplements recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 658}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been taking any new medications or supplements recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been taking any new medications or supplements recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "diagnostic_strategy": "Current clinical problem: nausea and vomiting. Key evidence gathered: no fever, weight loss, or night sweats (turn 2); no lab results (turn 3); literature suggests nausea/vomiting can be associated with chemotherapy (fludarabine) or other conditions like gastric dumping or tumor lysis syndrome (turn 4). Current diagnostic uncertainty: unclear etiology; could be medication-related, GI, or systemic. Most useful missing information: recent medication/supplement use (current turn), and specific lab/imaging results. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: nausea, vomiting",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, weight loss, or night sweats along with your nausea and vomiting?)\nresponse: No, I haven’t had any fever, weight loss, or night sweats along with my nausea and vomiting.",
+          "turn_4 retrieve_interaction: doctor_action: retrieve(query=symptoms of nausea and vomiting in CLL patients)\nresponse: [Document 1] (ID: 20298_7, Score: 0.867)\n- Based on experience with the intravenous and oral use of fludarabine phosphate, the most common adverse reactions include myelosuppression (neutropenia, thrombocytopenia and anemia), fever and chills, infection, and nausea and vomiting. Other commonly reported events include malaise, fatigue, anor...\n\n[Document 2] (ID: 5526_0, Score: 0.861)\nNausea, vomiting, diarrhea, fatigue and abdominal pain\n\n# Differentials based on nausea, vomiting, diarrhea, fatigue and abdominal pain\nGastric dumping syndrome should be differentiated from other diseases presenting with nausea, vomiting, diarrhea, fatigue and abdominal pain. The differentials incl...\n\n[Document 3] (ID: 27635_27, Score: 0.859)\n# Patient Counseling Information\nAdvise patients to seek immediate medical attention for any of the following:\n- Signs and symptoms of infusion reactions including dizziness, nausea, chills, fever, vomiting, diarrhea, breathing problems, or chest pain.\n- Symptoms of tumor lysis syndrome such as naus...\n\n[Document 4] (ID: 31685_7, Score: 0.859)\n- Ten patients (9%) discontinued treatment due to adverse reactions in the trial (N=111). The most frequent adverse reaction leading to treatment discontinuation was subdural hematoma (1.8%). Adverse reactions leading to dose reduction occurred in 14% of patients.\n- Patients with MCL who develop lym...\n\n[Document 5] (ID: 31116_6, Score: 0.858)\n- Dosage reductions occurred due to adverse reactions in 23% of patients which showed pancreatic enzymes increase (10%), abdominal pain (4.2%), anemia (2.1%), blood bilirubin increase (2.1%), dizziness (2.1%), fatigue (2.1%), hepatic enzymes increase (2.1%), musculoskeletal pain (2.1%), nausea (2.1%..."
+        ],
+        "ineffective_turn_information": [
+          "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "Chief complaint: nausea, vomiting. Patient denies fever, weight loss, or night sweats. Lab request yielded no result. Literature review indicates nausea/vomiting can be associated with chemotherapy (fludarabine), gastric dumping, or tumor lysis syndrome. Patient reports no new medications or supplements. Missing: specific lab/imaging results, detailed medication history, and clinical context (e.g., cancer history)."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 5,
+        "query_text": "Chief complaint: nausea, vomiting. Patient denies fever, weight loss, or night sweats. No lab results available. Literature suggests possible associations with fludarabine chemotherapy, gastric dumping, or tumor lysis syndrome. No new medications or supplements reported. Missing specific lab/imaging results and detailed medication history.",
+        "skill_query_text": "Presenting problem: nausea and vomiting. Evidence gathered: no fever, weight loss, or night sweats; no lab results; literature suggests fludarabine, gastric dumping, or tumor lysis syndrome. Ineffective action: lab request yielded no result. Missing: specific lab/imaging results, detailed medication history. Need workflow guidance on next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8093,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8079,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8027,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8097,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8031,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.7895,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "CLL complications causing nausea and vomiting"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b0858f81-bfd6-4994-8c45-d00ed920adff': '[Document 1] (ID: 20298_7, Score: 0.872)\\n- Based on experience with the intravenous and oral use of fludarabine phosphate, the most common adverse reactions include myelosuppression (neutropenia, thrombocytopenia and anemia), fever and chills, infection, and nausea and vomiting. Other commonly reported events include malaise, fatigue, anor...\\n\\n[Document 2] (ID: 16881_2, Score: 0.861)\\n# Complications\\nMinor complications include nausea, vomiting, abdominal cramps, and bloating. Patients with altered mental status or a compromised and unprotected airway are at risk for pulmonary aspiration.\\n\\n[Document 3] (ID: 3743_22, Score: 0.859)\\nAt EoL, possible causes of nausea and vomiting (NV) include: emetogenic medications (e.g. opioids), recent ChT or RT, psychological causes (anxiety, fear), biochemical causes (e.g. hypercalcaemia, hyponatraemia, uraemia, raised creatinine), increased intracranial pressure, vestibular dysfunction, ex...\\n\\n[Document 4] (ID: 31685_7, Score: 0.857)\\n- Ten patients (9%) discontinued treatment due to adverse reactions in the trial (N=111). The most frequent adverse reaction leading to treatment discontinuation was subdural hematoma (1.8%). Adverse reactions leading...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'b0858f81-bfd6-4994-8c45-d00ed920adff', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"CLL complications causing nausea and vomiting\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 727}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CLL complications causing nausea and vomiting\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CLL complications causing nausea and vomiting\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "diagnostic_strategy": "Current clinical problem: nausea and vomiting in a patient with possible CLL. Key evidence gathered: patient denies fever, weight loss, or night sweats; no lab results available; patient reports no new medications or supplements. Diagnostic uncertainty remains high due to lack of specific lab or imaging findings. Most useful missing information: results of labs (if available), imaging, or specific medication history. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: nausea, vomiting"
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient presents with nausea and vomiting. Denies fever, weight loss, or night sweats. Requested labs yielded no result. Retrieved information on nausea/vomiting in CLL patients, including possible causes such as myelosuppression, emetogenic medications, biochemical causes, and complications. Patient reports no new medications or supplements. No lab or imaging results available. No specific diagnosis or risk factors confirmed."
+      },
+      "inefficient_turn_information": [
+        "turn_3 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 6,
+        "query_text": "Patient presents with nausea and vomiting. Denies fever, weight loss, or night sweats. No lab or imaging results available. No new medications or supplements reported. Diagnostic uncertainty remains high due to lack of specific lab or imaging findings. No management-relevant risk explicitly supported.",
+        "skill_query_text": "Presenting problem: nausea and vomiting in a patient with possible CLL. Evidence gathered: patient denies fever, weight loss, or night sweats; no lab results available; no new medications or supplements reported. Missing: lab results, imaging, specific medication history. Ineffective actions: none. Need: diagnostic decision workflow guidance for managing nausea/vomiting in CLL with limited evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_19bb6b569799",
+              "type": "experience",
+              "score": 0.8237,
+              "outcome": "negative",
+              "text": "Requesting labs without clinical indication for infection or metabolic cause is low-yield in acute neurologic presentations; prioritize neurologic exam and imaging over labs when red flags like bladder/bowel dysfunction or foot drop are present.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8113,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8052,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fe7cc518818",
+              "type": "skill",
+              "score": 0.8308,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_134774038db7",
+              "type": "skill",
+              "score": 0.8229,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_863291d4654d",
+              "type": "skill",
+              "score": 0.8158,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{Chronic Lymphocytic Leukemia (CLL) with associated nausea and vomiting as a complication}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'6eb48bd0-b66b-4967-a5b0-53e28ad487eb': '{\"diagnosis\": \"Chronic Lymphocytic Leukemia (CLL) with associated nausea and vomiting as a complication\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '6eb48bd0-b66b-4967-a5b0-53e28ad487eb', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{Chronic Lymphocytic Leukemia (CLL) with associated nausea and vomiting as a complication}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1226}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic Lymphocytic Leukemia (CLL) with associated nausea and vomiting as a complication}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{Chronic Lymphocytic Leukemia (CLL) with associated nausea and vomiting as a complication}\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "diagnostic_strategy": "Known evidence: chief complaint of nausea and vomiting, no fever, chills, weight loss, abdominal pain, or recent medication changes. Labs not performed or available. Differential includes gastric dumping, cyclic vomiting syndrome, metabolic causes, or central nervous system issues. Most useful missing evidence: detailed history of vomiting pattern, fluid intake, dietary changes, and physical exam findings. Diagnosis not yet finalized.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any recent changes in your diet or fluid intake?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Chief complaint: nausea, vomiting. Patient denies fever, chills, weight loss (turn 2). Denies abdominal pain (turn 3). Labs requested (turn 4) — no result available. Differential diagnosis retrieved (turn 5) — includes gastric dumping, cyclic vomiting syndrome, metabolic, CNS, and psychological causes. Patient denies recent medication changes (turn 6). Patient denies recent diet or fluid intake changes (turn 7)."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 7,
+        "query_text": "Chief complaint: nausea, vomiting. No fever, chills, weight loss, abdominal pain, or recent medication changes. Labs not performed or available. Differential: gastric dumping, cyclic vomiting syndrome, metabolic, CNS, psychological. Missing: vomiting pattern, fluid intake, dietary changes, physical exam findings. Diagnosis not finalized.",
+        "skill_query_text": "Presenting problem: nausea, vomiting. Uncertainty: differential diagnosis not resolved. Evidence gathered: patient denies fever, chills, weight loss, abdominal pain, recent meds, diet/fluid changes. Ineffective action: asked about diet/fluid changes — patient denies changes. Need: workflow guidance for next diagnostic steps."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.8166,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7987,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7958,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "CLL complications leading to nausea and vomiting"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'b4e03cbb-4b8e-4a99-a0a6-8d8ce82174a7': '[Document 1] (ID: 20298_7, Score: 0.875)\\n- Based on experience with the intravenous and oral use of fludarabine phosphate, the most common adverse reactions include myelosuppression (neutropenia, thrombocytopenia and anemia), fever and chills, infection, and nausea and vomiting. Other commonly reported events include malaise, fatigue, anor...\\n\\n[Document 2] (ID: 16881_2, Score: 0.861)\\n# Complications\\nMinor complications include nausea, vomiting, abdominal cramps, and bloating. Patients with altered mental status or a compromised and unprotected airway are at risk for pulmonary aspiration.\\n\\n[Document 3] (ID: 31685_7, Score: 0.860)\\n- Ten patients (9%) discontinued treatment due to adverse reactions in the trial (N=111). The most frequent adverse reaction leading to treatment discontinuation was subdural hematoma (1.8%). Adverse reactions leading to dose reduction occurred in 14% of patients.\\n- Patients with MCL who develop lym...\\n\\n[Document 4] (ID: 30930_7, Score: 0.856)\\nThe most common adverse reactions (≥20%) of any grade were neutropenia, diarrhea, nausea, anemia, upper respiratory tract infection, thrombocytopenia, and fatigue.\\nSerious adverse reactions were reported in 43.8% of p...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'b4e03cbb-4b8e-4a99-a0a6-8d8ce82174a7', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"CLL complications leading to nausea and vomiting\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 807}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CLL complications leading to nausea and vomiting\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"CLL complications leading to nausea and vomiting\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20136375",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "nausea, vomiting",
+        "diagnostic_strategy": "Known evidence: patient reports nausea and vomiting without fever, chills, weight loss, abdominal pain, recent medication changes, or diet/fluid changes. Labs unavailable. Differential includes CLL complications (e.g., fludarabine side effects), psychological, biochemical, or other systemic causes. Most useful missing evidence: lab results, imaging, or specific medication history. Diagnosis not yet finalized.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_8 retrieve_interaction: doctor_action: retrieve(query=CLL complications leading to nausea and vomiting)\nresponse: [Document 1] (ID: 20298_7, Score: 0.875)\n- Based on experience with the intravenous and oral use of fludarabine phosphate, the most common adverse reactions include myelosuppression (neutropenia, thrombocytopenia and anemia), fever and chills, infection, and nausea and vomiting. Other commonly reported events include malaise, fatigue, anor...\n\n[Document 2] (ID: 16881_2, Score: 0.861)\n# Complications\nMinor complications include nausea, vomiting, abdominal cramps, and bloating. Patients with altered mental status or a compromised and unprotected airway are at risk for pulmonary aspiration.\n\n[Document 3] (ID: 31685_7, Score: 0.860)\n- Ten patients (9%) discontinued treatment due to adverse reactions in the trial (N=111). The most frequent adverse reaction leading to treatment discontinuation was subdural hematoma (1.8%). Adverse reactions leading to dose reduction occurred in 14% of patients.\n- Patients with MCL who develop lym...\n\n[Document 4] (ID: 30930_7, Score: 0.856)\nThe most common adverse reactions (≥20%) of any grade were neutropenia, diarrhea, nausea, anemia, upper respiratory tract infection, thrombocytopenia, and fatigue.\nSerious adverse reactions were reported in 43.8% of patients. The most frequent serious adverse reactions (≥2%) were pneumonia, febrile ...\n\n[Document 5] (ID: 3743_22, Score: 0.855)\nAt EoL, possible causes of nausea and vomiting (NV) include: emetogenic medications (e.g. opioids), recent ChT or RT, psychological causes (anxiety, fear), biochemical causes (e.g. hypercalcaemia, hyponatraemia, uraemia, raised creatinine), increased intracranial pressure, vestibular dysfunction, ex..."
+        ],
+        "prior_information_summary": "Patient reports nausea and vomiting. No fever, chills, or weight loss (turn_2). No abdominal pain (turn_3). Labs requested (turn_4) — no result available. Differential diagnosis retrieved (turn_5) including gastric dumping, psychological, biochemical, and systemic causes. No recent medication changes (turn_6). No recent diet/fluid changes (turn_7)."
+      },
+      "inefficient_turn_information": [
+        "turn_4 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20136375",
+        "turn_id": 8,
+        "query_text": "Patient presents with nausea and vomiting. No fever, chills, weight loss, abdominal pain, recent medication changes, or diet/fluid changes. Labs unavailable. Differential includes CLL complications (e.g., fludarabine side effects), psychological, biochemical, or systemic causes. Most useful missing evidence: lab results, imaging, or specific medication history. Diagnosis not yet finalized.",
+        "skill_query_text": "Presenting problem: nausea and vomiting. Current uncertainty: differential diagnosis not finalized. Evidence gathered: patient history (no fever, chills, weight loss, abdominal pain, recent meds or diet changes), labs requested but unavailable. Ineffective actions: retrieval of CLL complications led to relevant but non-definitive findings. Need: workflow guidance on next diagnostic steps given missing lab/imaging and unresolved differential."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_206ac138be50",
+              "type": "skill",
+              "score": 0.803,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_47c0fc07cacc",
+              "type": "skill",
+              "score": 0.7841,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_9a06bc1a8b80",
+              "type": "skill",
+              "score": 0.7661,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "diagnosis",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "final_response": "The final diagnosis is: \\boxed{CLL-related nausea and vomiting}"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'0885f9fe-ce1b-423f-91e2-f1e241214160': '{\"diagnosis\": \"CLL-related nausea and vomiting\", \"done\": true}'}}",
+        "env_info": "{'response': [{'id': '0885f9fe-ce1b-423f-91e2-f1e241214160', 'type': 'function', 'function': {'name': 'diagnosis', 'arguments': '{\"final_response\": \"The final diagnosis is: \\\\\\\\boxed{CLL-related nausea and vomiting}\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1303}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 1.0,
+        "conf_after": 1.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{CLL-related nausea and vomiting}\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"diagnosis\", \"arguments\": {\"final_response\": \"The final diagnosis is: \\\\boxed{CLL-related nausea and vomiting}\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": [
+    "turn_8 retrieve_interaction: doctor_action: retrieve(query=CLL complications leading to nausea and vomiting)\nresponse: [Document 1] (ID: 20298_7, Score: 0.875)\n- Based on experience with the intravenous and oral use of fludarabine phosphate, the most common adverse reactions include myelosuppression (neutropenia, thrombocytopenia and anemia), fever and chills, infection, and nausea and vomiting. Other commonly reported events include malaise, fatigue, anor...\n\n[Document 2] (ID: 16881_2, Score: 0.861)\n# Complications\nMinor complications include nausea, vomiting, abdominal cramps, and bloating. Patients with altered mental status or a compromised and unprotected airway are at risk for pulmonary aspiration.\n\n[Document 3] (ID: 31685_7, Score: 0.860)\n- Ten patients (9%) discontinued treatment d...[truncated]"
+  ]
+}

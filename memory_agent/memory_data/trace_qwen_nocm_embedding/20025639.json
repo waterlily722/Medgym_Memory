@@ -1,0 +1,1797 @@
+{
+  "schema": "memory_trace.memory_only.v4",
+  "case_id": "20025639",
+  "turns": [
+    {
+      "case_id": "20025639",
+      "turn_id": 1,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific subjective complaint of feeling unwell. Key evidence gathered: Patient is a 30-year-old male with no specific symptoms or findings yet. Diagnostic uncertainty remains high due to lack of objective data. Most useful missing information: Detailed history of symptoms, duration, associated features, and any relevant past medical or social history. Existing evidence is insufficient to finalize diagnosis. No management-relevant risks identified yet.",
+        "efficient_turn_information": [
+          "initial_information: I am a 30-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 30-year-old male patient based on the available clinical presentation.."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient is a 30-year-old male reporting general unwellness without specific symptoms. No objective findings, lab, imaging, or exam results available. No history or risk factors provided. No prior tests or interventions performed. No results or findings to interpret. Missing: Detailed symptom history, duration, associated features, past medical history, and social context."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 1,
+        "query_text": "Patient is a 30-year-old male reporting general unwellness without specific symptoms. No objective findings, lab, imaging, or exam results available. No history or risk factors provided. Missing: Detailed symptom history, duration, associated features, past medical history, and social context.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific subjective complaint of feeling unwell. Evidence gathered: Patient is 30-year-old male, no specific symptoms or findings yet. Uncertainty remains high due to lack of objective data. Missing: Detailed symptom history, duration, associated features, past medical/social history. Ineffective actions: None tried. Need: Workflow guidance for next diagnostic steps based on current evidence."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7463,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8167,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8011,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7971,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7823,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.78,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7791,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": [
+          {
+            "memory_id": "exp_c7e42a4e6675",
+            "memory_type": "experience",
+            "score": 0.8167,
+            "content": {
+              "experience": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "outcome_type": "negative",
+              "tags": []
+            }
+          }
+        ]
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Can you describe the specific symptoms you've been experiencing and when they started?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': 'ee1719c6-4964-4fc0-853c-bb82469e79c7', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Can you describe the specific symptoms you\\'ve been experiencing and when they started?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 0}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Can you describe the specific symptoms you've been experiencing and when they started?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 2,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with vague complaint of not feeling well without specific symptoms. Key evidence gathered: Patient denies specific problems or abnormal findings. Diagnostic uncertainty remains high due to lack of specific symptom details or objective findings. Most useful missing information: Detailed description of symptoms, onset, duration, and associated factors. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports not feeling well recently, seeking assessment and diagnosis. No specific symptoms reported. Patient denies problems or abnormal findings in any area. No exam, lab, imaging, or tool results available. No relevant positive or negative findings identified. Missing information: Detailed symptom description, onset, duration, and associated factors. No low-value or no-result attempts recorded."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 2,
+        "query_text": "Patient reports not feeling well recently, seeking assessment and diagnosis. No specific symptoms reported. Patient denies problems or abnormal findings in any area. No exam, lab, imaging, or tool results available. No positive or negative findings identified. Missing: Detailed symptom description, onset, duration, and associated factors. Diagnostic uncertainty remains high due to lack of specific symptom details or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with vague complaint of not feeling well without specific symptoms. Evidence gathered: Patient denies specific problems or abnormal findings. Missing evidence: Detailed symptom description, onset, duration, and associated factors. Ineffective action tried: Asked patient to describe symptoms; response was denial of problems. Needed guidance: Workflow for handling vague complaints with no objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7579,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8424,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8357,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_081e48e222ba",
+              "type": "experience",
+              "score": 0.827,
+              "outcome": "negative",
+              "text": "Repeatedly requesting labs or imaging without first obtaining targeted history or ruling out high-yield findings (like occult blood in stool) wastes diagnostic resources and delays definitive diagnosis in cases with clear red flags.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.788,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7792,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7752,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '621878d9-f975-458d-a8cc-4eb2da73fa4b', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 73}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 3,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaint of feeling unwell. Key evidence gathered: Patient denies fever, chills, night sweats, weight loss, or fatigue. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings. Most useful missing information: Detailed symptom timeline, recent exposures, or physical exam findings. Existing evidence is insufficient to finalize diagnosis. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general unwellness without specific symptoms. Denies fever, chills, night sweats, weight loss, or fatigue. No objective findings reported. No relevant exam, lab, or imaging results available. Missing: Detailed symptom timeline, physical exam findings, or exposure history. No low-value or no-result attempts identified."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 3,
+        "query_text": "Patient reports general unwellness without specific symptoms. Denies fever, chills, night sweats, weight loss, or fatigue. No objective findings, exam, lab, or imaging results available. Missing: Detailed symptom timeline, physical exam findings, or exposure history. Diagnostic uncertainty remains high due to lack of specific symptoms or objective findings.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific complaint of feeling unwell. Evidence gathered: Patient denies fever, chills, night sweats, weight loss, or fatigue. Ineffective actions tried: Asking about specific symptoms and general symptoms yielded negative responses. Missing: Detailed symptom timeline, physical exam findings, or exposure history. Need: Workflow guidance for next diagnostic steps given current uncertainty and lack of objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7575,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_c7e42a4e6675",
+              "type": "experience",
+              "score": 0.8346,
+              "outcome": "negative",
+              "text": "Requesting labs without specific clinical context or prior evidence of abnormality yields no diagnostic value; prioritize targeted history and symptom correlation over untargeted lab requests in ambiguous presentations.",
+              "tags": []
+            },
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8309,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.8306,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7907,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7888,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.785,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [
+          "exp_c7e42a4e6675"
+        ],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your appetite, energy levels, or sleep patterns?"
+        },
+        "patient_or_tool_response": "{'question': 'I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.'}",
+        "env_info": "{'response': [{'id': '70caedc0-f567-4003-a42e-f448ff97b970', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your appetite, energy levels, or sleep patterns?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 151}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite, energy levels, or sleep patterns?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your appetite, energy levels, or sleep patterns?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 4,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific subjective complaints of fatigue, appetite changes, sleep disruption, irritability, and cognitive difficulty. Key evidence gathered: Patient reports reduced appetite, low energy, disrupted sleep, irritability, and difficulty focusing. Diagnostic uncertainty remains high due to lack of objective findings or specific symptom clusters. Most useful missing information: Any history of recent illness, weight change, medication use, or psychiatric history. Existing evidence is insufficient to finalize diagnosis; further targeted history or diagnostic testing may be needed. No management-relevant risk identified.",
+        "efficient_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general malaise and seeks assessment. Turn 2: Asked about specific symptoms and onset; patient reported no issues in that area. Turn 3: Asked about fever, chills, night sweats, weight loss, or fatigue; patient reported no issues in that area. Turn 4: Asked about appetite, energy, and sleep patterns; patient reported reduced appetite, low energy, disrupted sleep, irritability, and difficulty focusing. No objective findings or diagnostic tests performed. No psychiatric or medication history provided. No weight change or recent illness reported."
+      },
+      "inefficient_turn_information": [],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 4,
+        "query_text": "Patient reports reduced appetite, low energy, disrupted sleep, irritability, and difficulty focusing. No objective findings or diagnostic tests performed. No psychiatric or medication history provided. No weight change or recent illness reported. Diagnostic uncertainty remains high due to lack of specific symptom clusters or objective evidence.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific subjective complaints of fatigue, appetite changes, sleep disruption, irritability, and cognitive difficulty. Evidence gathered: Patient reports reduced appetite, low energy, disrupted sleep, irritability, and difficulty focusing. No objective findings or tests performed. No psychiatric or medication history provided. Ineffective actions tried: None. Need workflow guidance for next diagnostic steps given current uncertainty and lack of objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7677,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7627,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7568,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "request_exam",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "exam_type": "labs"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'c4ceb458-253c-4ced-b6d8-42fd0e38a04f': '{\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\\\"labs\\\\\" found in the record and no knowledge base available for an approximate answer.\"}'}}",
+        "env_info": "{'response': [{'id': 'c4ceb458-253c-4ced-b6d8-42fd0e38a04f', 'type': 'function', 'function': {'name': 'request_exam', 'arguments': '{\"exam_type\": \"labs\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 330}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"request_exam\", \"arguments\": {\"exam_type\": \"labs\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 5,
+      "case_memory": {
+        "chief_complaint": null,
+        "diagnostic_strategy": null,
+        "efficient_turn_information": [],
+        "ineffective_turn_information": [],
+        "prior_information_summary": null
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 4,
+        "query_text": "Patient reports reduced appetite, low energy, disrupted sleep, irritability, and difficulty focusing. No objective findings or diagnostic tests performed. No psychiatric or medication history provided. No weight change or recent illness reported. Diagnostic uncertainty remains high due to lack of specific symptom clusters or objective evidence.",
+        "skill_query_text": "Presenting problem: Patient presents with non-specific subjective complaints of fatigue, appetite changes, sleep disruption, irritability, and cognitive difficulty. Evidence gathered: Patient reports reduced appetite, low energy, disrupted sleep, irritability, and difficulty focusing. No objective findings or tests performed. No psychiatric or medication history provided. Ineffective actions tried: None. Need workflow guidance for next diagnostic steps given current uncertainty and lack of objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7677,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7627,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7568,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        }
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'fda05222-fea5-4e22-b93c-ff13dc6f9723': '[Document 1] (ID: 10843_3, Score: 0.870)\\n## Major\\n- weight gain\\n- facial swelling\\n- depression, mania, or other psychiatric symptoms\\n- unusual fatigue or weakness\\n- Mental confusion/indecisiveness\\n- blurred vision\\n- abdominal pain\\n- peptic ulcer\\n- infections\\n- painful hips or shoulders\\n- osteoporosis\\n- acne breakouts\\n- insomnia\\n- severe jo...\\n\\n[Document 2] (ID: 27908_2, Score: 0.867)\\n## Symptoms\\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\\n\\n[Document 3] (ID: 19076_4, Score: 0.866)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 4] (ID: 21652_13, Score: 0.865)\\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'fda05222-fea5-4e22-b93c-ff13dc6f9723', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 401}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 6,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of fatigue, poor appetite, insomnia, and irritability. Key evidence gathered: Patient reports low energy, reduced appetite, sleep disruption, and increased irritability. Diagnostic uncertainty remains high due to lack of objective lab or imaging findings. Most useful missing information: Specific lab results, physical exam findings, or imaging to rule out systemic or psychiatric causes. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified in current data.",
+        "efficient_turn_information": [
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ..."
+        ],
+        "prior_information_summary": "Patient reports general uneasiness, fatigue, poor appetite, insomnia, and irritability. No fever, chills, night sweats, or weight loss reported in prior turns. Lab request returned no result. Patient describes reduced appetite, low energy, sleep disruption, and increased irritability. No objective findings or imaging available. No specific diagnosis or risk identified. Prior interactions include non-specific symptom inquiry and lab request with no result."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 6,
+        "query_text": "Patient reports fatigue, poor appetite, insomnia, and irritability. No fever, chills, night sweats, or weight loss. No objective lab or imaging findings. No specific diagnosis or risk identified. Patient is 30-year-old male. No prior abnormal findings reported.",
+        "skill_query_text": "Presenting problem: non-specific complaints of fatigue, poor appetite, insomnia, and irritability. Evidence gathered: patient-reported symptoms, no lab/imaging results, ineffective lab request and symptom retrieval. Ineffective actions: prior symptom inquiry yielded no specific findings. Need workflow guidance on next diagnostic steps given current uncertainty and lack of objective data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 0,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7675,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7656,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7483,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '17ffc5e7-fe38-40d5-9606-10f720f47220', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 932}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 7,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 7. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 30-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 30-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.\ndoctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 7,
+        "query_text": "30-year-old male patient reports recent fatigue, poor appetite, insomnia, irritability, and low energy. No fever, weight loss, or bleeding noted. Labs requested but no result available. Symptoms suggest possible psychiatric or systemic cause.",
+        "skill_query_text": "Presenting problem: patient with non-specific symptoms of fatigue, poor appetite, insomnia, and irritability. Evidence gathered: patient history and literature review. Ineffective action: labs request yielded no result. Need guidance on next diagnostic step to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7392,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8234,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8193,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8073,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7749,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7713,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7628,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '1048ff25-0eb1-4ead-bf29-b98cd888c6ad', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1011}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 8,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific subjective complaints of fatigue, poor appetite, sleep disruption, and irritability. Key evidence gathered: Patient reports reduced appetite, low energy, disrupted sleep, and irritability. Diagnostic uncertainty remains high due to lack of objective lab or imaging findings. Most useful missing information: Objective lab results, physical exam findings, and clarification on weight changes or other systemic symptoms. Existing evidence is not enough to finalize diagnosis. No management-relevant risk identified in current data.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports general malaise and seeks assessment. Key symptoms: reduced appetite, low energy, disrupted sleep, irritability. No fever, chills, weight loss, or bleeding reported. Lab request yielded no result. Literature review suggests possible links to fatigue, insomnia, irritability, and appetite changes, but no specific diagnosis supported. No objective findings yet. No self-harm or mood changes reported. No weight loss or bowel changes confirmed. No known psychiatric or systemic findings reported."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 8,
+        "query_text": "Patient reports fatigue, poor appetite, sleep disruption, and irritability. No fever, chills, weight loss, bleeding, self-harm, or mood changes reported. No objective lab or imaging findings. No psychiatric or systemic findings confirmed. Diagnostic uncertainty remains high due to lack of objective evidence.",
+        "skill_query_text": "Presenting problem: Patient with non-specific subjective complaints of fatigue, poor appetite, sleep disruption, and irritability. Evidence gathered: Patient denies mood changes or self-harm. Lab results pending. Ineffective action: Asked about mood/self-harm, patient denied. Missing: Objective lab/imaging, physical exam, weight change clarification. Need: Workflow guidance on next diagnostic steps given current uncertainty and lack of objective findings."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.8149,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.8099,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8077,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7959,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7852,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.779,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "FINALIZE_DIAGNOSIS",
+        "arguments": {
+          "query": "differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'8f6e111b-b20a-45ea-8ab3-bbd14b4da59b': '[Document 1] (ID: 19497_1, Score: 0.858)\\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\\n\\nThe clinical evaluation should include:\\n\\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\\n\\n[Document 2] (ID: 114_266, Score: 0.858)\\n# Section 5: Common Complaints\\n- Inquire about substance use or abuse.\\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\\n- Conduct a nutritional assessment.\\n# O: Objective\\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\\n\\n[Document 3] (ID: 114_578, Score: 0.857)\\n# A: Assessment\\nA partial differential diagnosis includes the following:\\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\\n- Caffeine intake\\n\\n# Pain\\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\\n\\n[Document 4] (ID: 14094_20, Score: 0.857)\\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\\n\\n- ...[truncated]'}}",
+        "env_info": "{'response': [{'id': '8f6e111b-b20a-45ea-8ab3-bbd14b4da59b', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1094}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "FINALIZE_DIAGNOSIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 9,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 9. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 30-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 30-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri..."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.\ndoctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\ndoctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 9,
+        "query_text": "30-year-old male patient reports chronic fatigue, poor appetite, insomnia, irritability, and low energy. No fever, weight loss, or bleeding noted. No history of substance use or psychiatric symptoms reported. Labs not performed. Differential includes depression, metabolic issues, or systemic illness.",
+        "skill_query_text": "Presenting problem: chronic fatigue, insomnia, poor appetite, irritability in young adult male. Evidence gathered: symptom history, negative findings for fever/weight loss/bleeding. Ineffective action: labs request yielded no result. Need workflow guidance on next diagnostic step: targeted exam or differential refinement."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.8001,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7938,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.7929,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7803,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7735,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7524,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Do you consume caffeine, alcohol, or any recreational substances regularly?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '2d241ebf-452e-4cd4-8af5-4b0b3e00124d', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Do you consume caffeine, alcohol, or any recreational substances regularly?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 1601}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.0,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you consume caffeine, alcohol, or any recreational substances regularly?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Do you consume caffeine, alcohol, or any recreational substances regularly?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 10,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 10. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 30-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 30-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Do you consume caffeine, alcohol, or any recreational substances regularly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.\ndoctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\ndoctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri...\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 10,
+        "query_text": "30-year-old male patient reports chronic fatigue, poor appetite, insomnia, irritability, low energy, and sleep disruption. No fever, weight loss, or bleeding noted. No history of depression, substance use, or medication side effects. Labs not performed. Differential includes psychiatric, metabolic, and systemic causes.",
+        "skill_query_text": "Presenting problem: chronic fatigue, insomnia, poor appetite, irritability in young adult male. Evidence gathered: symptom history, no fever/weight loss/bleeding, no substance use. Ineffective: labs request yielded no result. Need workflow guidance on next diagnostic step: targeted exam, lab, or reasoning to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.7972,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7919,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.7907,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7824,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7732,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7574,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "common causes of chronic fatigue, insomnia, and poor appetite in 30-year-old male without known medical history"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'39ab856a-d315-47d8-8657-601a583046f8': '[Document 1] (ID: 1041_11, Score: 0.868)\\n# Common causes and risk factors\\n- All ages: Increased requirements due to growth, low socioeconomic status, lack of balanced diet, (including ethnic groups with low iron high fibre/phytates diet e.g., Asians), celiac disease, bleeding from any source, e.g., frequent nosebleeds, GI diseases includin...\\n\\n[Document 2] (ID: 31399_1, Score: 0.852)\\n## Chronic\\n- Aging\\n- Allergic Rhinitis\\n- Amyloidosis\\n- Amyotrophic Lateral Sclerosis\\n- Aortic aneurysm\\n- Bronchial carcinoma\\n- Bronchogenic tumor\\n- Chondromas\\n- Chronic cough, severe cold\\n- Chronic inhalation of chemical irritant agents (professional activity)\\n- Chronic sinusitis\\n- Drugs\\n- Edema of ...\\n\\n[Document 3] (ID: 19076_4, Score: 0.852)\\n## History and Symptoms\\n- Fever\\n- general uneasiness\\n- weight loss\\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\\n- persisting headache\\n- pain in the jaw or ear while eating\\n- double vision\\n- partial loss of vision or blind spots\\n- In rare occasions stroke....\\n\\n[Document 4] (ID: 10843_3, Score: 0.849)\\n## Major\\n- weight gain\\n- facial swelling\\n- depression, mania, or other psychiatric symptoms\\n- unusual fatigue or weakness...[truncated]'}}",
+        "env_info": "{'response': [{'id': '39ab856a-d315-47d8-8657-601a583046f8', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"common causes of chronic fatigue, insomnia, and poor appetite in 30-year-old male without known medical history\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 1672}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.0,
+        "conf_after": 0.14285714285714285,
+        "delta": 0.14285714285714285,
+        "turn_reward": 0.02857142857142857,
+        "importance": 0.14285714285714285
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of chronic fatigue, insomnia, and poor appetite in 30-year-old male without known medical history\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"common causes of chronic fatigue, insomnia, and poor appetite in 30-year-old male without known medical history\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 11,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 11. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 30-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 30-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Do you consume caffeine, alcohol, or any recreational substances regularly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=common causes of chronic fatigue, insomnia, and poor appetite in 30-year-old male without known medical history)\nresponse: [Document 1] (ID: 1041_11, Score: 0.868)\n# Common causes and risk factors\n- All ages: Increased requirements due to growth, low socioeconomic status, lack of balanced diet, (including ethnic groups with low iron high fibre/phytates diet e.g., Asians), celiac disease, bleeding from any source, e.g., frequent nosebleeds, GI diseases includin...\n\n[Document 2] (ID: 31399_1, Score: 0.852)\n## Chronic\n- Aging\n- Allergic Rhinitis\n- Amyloidosis\n- Amyotrophic Lateral Sclerosis\n- Aortic aneurysm\n- Bronchial carcinoma\n- Bronchogenic tumor\n- Chondromas\n- Chronic cough, severe cold\n- Chronic inhalation of chemical irritant agents (professional activity)\n- Chronic sinusitis\n- Drugs\n- Edema of ...\n\n[Document 3] (ID: 19076_4, Score: 0.852)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 10843_3, Score: 0.849)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 5] (ID: 28450_4, Score: 0.847)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis..."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.\ndoctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\ndoctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri...\ndoctor_action: ask_patient(question=Do you consume caffeine, alcohol, or any recreational substances regularly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 11,
+        "query_text": "30-year-old male patient reports chronic fatigue, poor appetite, insomnia, irritability, low energy, and sleep disruption. No fever, weight loss, or bleeding noted. No known medical history. No substance use or medication history provided. Labs not performed. Differential includes psychiatric, nutritional, and systemic causes.",
+        "skill_query_text": "Presenting problem: chronic fatigue, insomnia, poor appetite, irritability in 30-year-old male. Evidence gathered: patient history of symptoms, no fever/weight loss/bleeding, no substance use. Labs not performed. Ineffective action: lab request yielded no result. Need guidance on next diagnostic step: targeted exam or reasoning to resolve diagnostic uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7336,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8126,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_62cc075ac8dd",
+              "type": "experience",
+              "score": 0.8088,
+              "outcome": "negative",
+              "text": "Itching, especially on arms and legs, in an elderly female with gastrointestinal symptoms and new antihistamine use may be a red herring or unrelated, but when combined with fatigue and abdominal discomfort, it should not be dismissed as benign without further investigation for systemic disease like cancer.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8052,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7825,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7788,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7575,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '104589c7-3f33-4844-9f01-f8a68f7cb04c', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 2228}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 12,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 12. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 30-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 30-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Do you consume caffeine, alcohol, or any recreational substances regularly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=common causes of chronic fatigue, insomnia, and poor appetite in 30-year-old male without known medical history)\nresponse: [Document 1] (ID: 1041_11, Score: 0.868)\n# Common causes and risk factors\n- All ages: Increased requirements due to growth, low socioeconomic status, lack of balanced diet, (including ethnic groups with low iron high fibre/phytates diet e.g., Asians), celiac disease, bleeding from any source, e.g., frequent nosebleeds, GI diseases includin...\n\n[Document 2] (ID: 31399_1, Score: 0.852)\n## Chronic\n- Aging\n- Allergic Rhinitis\n- Amyloidosis\n- Amyotrophic Lateral Sclerosis\n- Aortic aneurysm\n- Bronchial carcinoma\n- Bronchogenic tumor\n- Chondromas\n- Chronic cough, severe cold\n- Chronic inhalation of chemical irritant agents (professional activity)\n- Chronic sinusitis\n- Drugs\n- Edema of ...\n\n[Document 3] (ID: 19076_4, Score: 0.852)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 10843_3, Score: 0.849)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 5] (ID: 28450_4, Score: 0.847)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis...",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.\ndoctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\ndoctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri...\ndoctor_action: ask_patient(question=Do you consume caffeine, alcohol, or any recreational substances regularly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 12,
+        "query_text": "30-year-old male patient reports chronic fatigue, poor appetite, insomnia, irritability, and disrupted sleep. No fever, weight loss, or bleeding noted. No known medical history or substance use. Labs not performed. Differential includes psychiatric, metabolic, and systemic causes.",
+        "skill_query_text": "Presenting problem: chronic fatigue, insomnia, poor appetite, irritability in 30-year-old male. Evidence gathered: patient history, symptom review, literature on differential diagnosis. Ineffective action: lab request yielded no result. Need guidance on next diagnostic step targeting unresolved uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.7961,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7907,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.7907,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7622,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7602,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7402,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "possible diagnoses for chronic fatigue, insomnia, poor appetite, and irritability in young adult without known medical history"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'e21eff4f-3306-4d7c-be06-aec2dc83a402': '[Document 1] (ID: 1041_11, Score: 0.868)\\n# Common causes and risk factors\\n- All ages: Increased requirements due to growth, low socioeconomic status, lack of balanced diet, (including ethnic groups with low iron high fibre/phytates diet e.g., Asians), celiac disease, bleeding from any source, e.g., frequent nosebleeds, GI diseases includin...\\n\\n[Document 2] (ID: 19497_1, Score: 0.868)\\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\\n\\nThe clinical evaluation should include:\\n\\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\\n\\n[Document 3] (ID: 114_185, Score: 0.867)\\n# Symptoms with Possible Relationship to Nutritional Deficiencies\\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\\n\\n[Document 4] (ID: 14094_20, Score: 0.864)\\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\\n\\n- ...[truncated]'}}",
+        "env_info": "{'response': [{'id': 'e21eff4f-3306-4d7c-be06-aec2dc83a402', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"possible diagnoses for chronic fatigue, insomnia, poor appetite, and irritability in young adult without known medical history\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2307}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"possible diagnoses for chronic fatigue, insomnia, poor appetite, and irritability in young adult without known medical history\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"possible diagnoses for chronic fatigue, insomnia, poor appetite, and irritability in young adult without known medical history\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 13,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Maintain a focused differential diagnosis, preserve early important positive/negative evidence, and choose the next action that resolves the largest remaining diagnostic uncertainty. Evidence-bearing turns captured: 13. Low-information/no-result turns already attempted: 1; avoid repeating the same query and switch to targeted exam/tool evidence or reasoning.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis.",
+          "initial_information: I am a 30-year-old M patient. I haven't been feeling well recently. My main issue is: Assess and diagnose the 30-year-old male patient based on the available clinical presentation..",
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_4 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.",
+          "turn_6 retrieve_interaction: doctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_9 retrieve_interaction: doctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri...",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Do you consume caffeine, alcohol, or any recreational substances regularly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_11 retrieve_interaction: doctor_action: retrieve(query=common causes of chronic fatigue, insomnia, and poor appetite in 30-year-old male without known medical history)\nresponse: [Document 1] (ID: 1041_11, Score: 0.868)\n# Common causes and risk factors\n- All ages: Increased requirements due to growth, low socioeconomic status, lack of balanced diet, (including ethnic groups with low iron high fibre/phytates diet e.g., Asians), celiac disease, bleeding from any source, e.g., frequent nosebleeds, GI diseases includin...\n\n[Document 2] (ID: 31399_1, Score: 0.852)\n## Chronic\n- Aging\n- Allergic Rhinitis\n- Amyloidosis\n- Amyotrophic Lateral Sclerosis\n- Aortic aneurysm\n- Bronchial carcinoma\n- Bronchogenic tumor\n- Chondromas\n- Chronic cough, severe cold\n- Chronic inhalation of chemical irritant agents (professional activity)\n- Chronic sinusitis\n- Drugs\n- Edema of ...\n\n[Document 3] (ID: 19076_4, Score: 0.852)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 10843_3, Score: 0.849)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 5] (ID: 28450_4, Score: 0.847)\n## Common Causes\n- Unintentional weight loss:\n- Nicotine and smoking (may be an intentional caue).\n- Drug side effects (mentioned below)\n- Age >65 years:\nMalignancies (specifically digestive and non-hematologic)\nNeurological disorders: Dementia, stroke, parkinson's disease\nOral disorders\nChronic dis...",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_13 retrieve_interaction: doctor_action: retrieve(query=possible diagnoses for chronic fatigue, insomnia, poor appetite, and irritability in young adult without known medical history)\nresponse: [Document 1] (ID: 1041_11, Score: 0.868)\n# Common causes and risk factors\n- All ages: Increased requirements due to growth, low socioeconomic status, lack of balanced diet, (including ethnic groups with low iron high fibre/phytates diet e.g., Asians), celiac disease, bleeding from any source, e.g., frequent nosebleeds, GI diseases includin...\n\n[Document 2] (ID: 19497_1, Score: 0.868)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 3] (ID: 114_185, Score: 0.867)\n# Symptoms with Possible Relationship to Nutritional Deficiencies\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\n\n[Document 4] (ID: 14094_20, Score: 0.864)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 10843_3, Score: 0.863)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo..."
+        ],
+        "ineffective_turn_information": [
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+        ],
+        "prior_information_summary": "doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your appetite, energy levels, or sleep patterns?)\nresponse: I’ve noticed my appetite has been off lately—I’ve been eating less than usual, and sometimes I just don’t feel hungry even when I’m around food. My energy levels are really low; I’m tired all the time, even after sleeping, and I don’t have the stamina to do things I used to enjoy. My sleep has been really disrupted too—I’ve been having trouble falling asleep, and when I do, I wake up frequently, sometimes in the middle of the night with no memory of how I got there. I’ve also noticed that I’m more irritable and have trouble focusing during the day, which I think might be connected to the sleep issues.\ndoctor_action: retrieve(query=symptoms of fatigue, weight loss, poor appetite, insomnia, and irritability in 30-year-old male)\nresponse: [Document 1] (ID: 10843_3, Score: 0.870)\n## Major\n- weight gain\n- facial swelling\n- depression, mania, or other psychiatric symptoms\n- unusual fatigue or weakness\n- Mental confusion/indecisiveness\n- blurred vision\n- abdominal pain\n- peptic ulcer\n- infections\n- painful hips or shoulders\n- osteoporosis\n- acne breakouts\n- insomnia\n- severe jo...\n\n[Document 2] (ID: 27908_2, Score: 0.867)\n## Symptoms\n- Physical — headaches, nausea or diarrhea, extreme body temperature changes, excessive sweating, shortness or breath, light-headedness or fainting, rapid heart beat, and/or dry mouth.\n- Emotional — excessive feelings of fear, disappointment, anger, depression, uncontrollable crying or l...\n\n[Document 3] (ID: 19076_4, Score: 0.866)\n## History and Symptoms\n- Fever\n- general uneasiness\n- weight loss\n- inflammation of the muscles causing stiffness in the shoulders; neck; and/or upper arms\n- persisting headache\n- pain in the jaw or ear while eating\n- double vision\n- partial loss of vision or blind spots\n- In rare occasions stroke....\n\n[Document 4] (ID: 21652_13, Score: 0.865)\n- Difficulty sleeping, anxiety, nervousness, abdominal pain/cramps, nausea and/or vomiting, low energy, joint and muscle pain, and headache.\n\n- The incidence was less than 10% for:\n\n- Loss of appetite, diarrhea, constipation, increased thirst, increased energy, feeling down, irritability, dizziness,...\n\n[Document 5] (ID: 14094_20, Score: 0.860)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\ndoctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\ndoctor_action: retrieve(query=differential diagnosis for chronic fatigue, insomnia, poor appetite, and irritability in young adult male)\nresponse: [Document 1] (ID: 19497_1, Score: 0.858)\nAll other known causes of chronic fatigue must have been ruled out, specifically clinical depression, side effects of medication, eating disorders and substance abuse.\n\nThe clinical evaluation should include:\n\n- A thorough history that covers medical and psychosocial circumstances at the onset of fa...\n\n[Document 2] (ID: 114_266, Score: 0.858)\n# Section 5: Common Complaints\n- Inquire about substance use or abuse.\n- Obtain a list of all current medications, including herbal and over-the-counter preparations.\n- Conduct a nutritional assessment.\n# O: Objective\nCheck vital signs and orthostatic blood pressure and heart rate measurements, if i...\n\n[Document 3] (ID: 114_578, Score: 0.857)\n# A: Assessment\nA partial differential diagnosis includes the following:\n- Alcohol intake (interferes with sleep 2-4 hours after ingestion, may cause nocturnal awakening)\n- Caffeine intake\n\n# Pain\nUnderlying systemic medical conditions that can interfere with sleep, such as delirium, lung disease, c...\n\n[Document 4] (ID: 14094_20, Score: 0.857)\n- Gastrointestinal Disorders: diarrhea, dyspepsia, gastroesophageal reflux disease, flatulence, abdominal distension\n\n- General Disorders: fatigue, peripheral edema, irritability, pyrexia\n\n- Infections: urinary tract infection, cystitis\n\n- Injury, Poisoning, and Procedural Complications: contusion, ...\n\n[Document 5] (ID: 13256_7, Score: 0.852)\n- General Disorders: Fatigue.\n- Gastrointestinal Disorders: Abdominal pain, abdominal discomfort, flatulence, nausea, upper abdominal pain, vomiting.\n- Hepatobiliary Disorders: Cholecystitis, cholelithiasis, hepatitis.\n- Immune System Disorders: Immune reconstitution syndrome.\n- Metabolism and Nutri...\ndoctor_action: ask_patient(question=Do you consume caffeine, alcohol, or any recreational substances regularly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\n\nIneffective/no-result interactions:\nturn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"} [low-information/no-result]"
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 13,
+        "query_text": "30-year-old male patient reports chronic fatigue, poor appetite, insomnia, irritability, and disrupted sleep. No fever, weight loss, or bleeding noted. No known medical history or substance use. Labs not performed. Uncertainty remains regarding underlying cause.",
+        "skill_query_text": "Presenting problem: chronic fatigue, insomnia, poor appetite, irritability in young adult male. Evidence gathered: patient history, symptom review, literature on differential diagnoses. Ineffective action: lab request yielded no result. Need guidance on next diagnostic step to resolve uncertainty."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 0,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [],
+          "negative_experience": [
+            {
+              "id": "exp_0bca203ce11d",
+              "type": "experience",
+              "score": 0.798,
+              "outcome": "negative",
+              "text": "Black tarry stools in a patient with upper abdominal pain, weight loss, and fatigue strongly suggest upper GI bleeding; this combination is highly specific for peptic ulcer disease and should prompt immediate diagnostic workup, not just general GI evaluation.",
+              "tags": []
+            },
+            {
+              "id": "exp_7edc86e3eac0",
+              "type": "experience",
+              "score": 0.7925,
+              "outcome": "negative",
+              "text": "Ignoring the patient’s report of black tarry stools in the context of weight loss and upper abdominal pain leads to diagnostic delay; this is a critical red flag for upper GI bleeding and should not be dismissed as non-specific or benign.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.7915,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7742,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7674,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7509,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "ASK",
+        "arguments": {
+          "question": "Have you noticed any changes in your diet, such as reduced intake of certain nutrients or skipping meals?"
+        },
+        "patient_or_tool_response": "{'question': \"As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.\"}",
+        "env_info": "{'response': [{'id': '334d6706-fd8c-46ac-a7c6-cf5629424267', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you noticed any changes in your diet, such as reduced intake of certain nutrients or skipping meals?\"}'}}], 'metadata': {'turn_type': 'patient_dialogue', 'ask_tool': 'ask_patient', 'context_keys': ['case_dir', 'dialogue', 'ehr', 'knowbase', 'medenv_case_bundle']}, 'max_steps': 15, 'cur_tokens': 2820}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "ASK",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your diet, such as reduced intake of certain nutrients or skipping meals?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you noticed any changes in your diet, such as reduced intake of certain nutrients or skipping meals?\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 14,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of fatigue, poor appetite, insomnia, and irritability. Key evidence gathered: Patient reports reduced appetite, low energy, disrupted sleep, and irritability. Diagnostic uncertainty remains high due to lack of objective lab results and absence of clear etiology. Most useful missing information: Results of labs, detailed dietary history, and ruling out psychiatric or systemic causes. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [
+          "turn_2 ask_patient_interaction: doctor_action: ask_patient(question=Can you describe the specific symptoms you've been experiencing and when they started?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_3 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any fever, chills, night sweats, weight loss, or fatigue recently?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}",
+          "turn_7 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_8 ask_patient_interaction: doctor_action: ask_patient(question=Have you noticed any changes in your mood, such as feeling unusually sad, anxious, or having thoughts of self-harm?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_10 ask_patient_interaction: doctor_action: ask_patient(question=Do you consume caffeine, alcohol, or any recreational substances regularly?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it.",
+          "turn_12 ask_patient_interaction: doctor_action: ask_patient(question=Have you experienced any unintentional weight loss, changes in bowel habits, or unusual bruising or bleeding?)\nresponse: As far as I know, I haven't had any problems in that area, and I haven't been told of any abnormal findings related to it."
+        ],
+        "prior_information_summary": "Patient reports non-specific complaints of fatigue, poor appetite, insomnia, and irritability. Patient denies fever, weight loss, bleeding, mood changes, substance use, or dietary changes. Labs requested but no results available. Literature suggests possible links to nutritional deficiencies, psychiatric conditions, or systemic disorders. No definitive diagnosis or risk factors identified. No treatment recommended."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 14,
+        "query_text": "Patient reports fatigue, poor appetite, insomnia, and irritability. Denies fever, weight loss, bleeding, mood changes, substance use, or dietary changes. Labs requested but no results available. No clear etiology or risk factors identified. Diagnostic uncertainty remains high.",
+        "skill_query_text": "Presenting problem: non-specific complaints of fatigue, poor appetite, insomnia, and irritability. Evidence gathered: patient denies key red flags; labs requested but no results. Ineffective actions: repeated patient questioning yielded negative responses; lab request unfulfilled. Need workflow guidance on next diagnostic steps given current uncertainty and missing data."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.74,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8212,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_de875edd42f1",
+              "type": "experience",
+              "score": 0.8185,
+              "outcome": "negative",
+              "text": "Repeated negative responses to broad symptom screens (e.g., fever, GI, urinary, neurological) are misleading; focus instead on targeted bleeding-related history to uncover key diagnostic clues.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8168,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.7721,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.761,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7501,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "retrieve",
+        "doctor_action_type": "UPDATE_HYPOTHESIS",
+        "arguments": {
+          "query": "nutritional deficiencies causing fatigue, insomnia, and irritability in young adult male"
+        },
+        "patient_or_tool_response": "{'tool_outputs': {'5e9775ec-2ee8-4433-827f-e9407a70fcae': '[Document 1] (ID: 114_185, Score: 0.865)\\n# Symptoms with Possible Relationship to Nutritional Deficiencies\\n- General symptoms (e.g., fatigue, decreased cognitive function, headache) - Behavioral changes (e.g., irritability, apathy, decreased responsiveness, anxiety, attention deficit) - Body habitus changes (e.g., loss or gain of fat) - Ga...\\n\\n[Document 2] (ID: 1041_11, Score: 0.860)\\n# Common causes and risk factors\\n- All ages: Increased requirements due to growth, low socioeconomic status, lack of balanced diet, (including ethnic groups with low iron high fibre/phytates diet e.g., Asians), celiac disease, bleeding from any source, e.g., frequent nosebleeds, GI diseases includin...\\n\\n[Document 3] (ID: 6281_6, Score: 0.859)\\n# Natural History, Complications and Prognosis\\n- Early clinical features include bloating, flatulence, abdominal pain.\\n- If left untreated, patients with small intestinal bacterial overgrowth (SIBO) may progress to develop diarrhea, dyspepsia and weight loss.\\n- Common complications of small intestin...\\n\\n[Document 4] (ID: 27526_1, Score: 0.854)\\nCommon forms of malnutrition include protein-energy malnutrition (PEM) and micronutrient malnutrition. PEM refers to inade...[truncated]'}}",
+        "env_info": "{'response': [{'id': '5e9775ec-2ee8-4433-827f-e9407a70fcae', 'type': 'function', 'function': {'name': 'retrieve', 'arguments': '{\"query\": \"nutritional deficiencies causing fatigue, insomnia, and irritability in young adult male\"}'}}], 'metadata': {'turn_type': 'tool'}, 'max_steps': 15, 'cur_tokens': 2898}",
+        "reward": 0.0,
+        "done": false,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "UPDATE_HYPOTHESIS",
+        "action_label": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"nutritional deficiencies causing fatigue, insomnia, and irritability in young adult male\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"retrieve\", \"arguments\": {\"query\": \"nutritional deficiencies causing fatigue, insomnia, and irritability in young adult male\"}}\n</tool_call>"
+      }
+    },
+    {
+      "case_id": "20025639",
+      "turn_id": 15,
+      "case_memory": {
+        "chief_complaint": "Patient reports not feeling well recently, seeking assessment and diagnosis.",
+        "diagnostic_strategy": "Current clinical problem: Patient presents with non-specific complaints of fatigue, poor appetite, insomnia, and irritability. Key evidence gathered: Patient reports low energy, reduced appetite, sleep disruption, and increased irritability. Diagnostic uncertainty remains high due to lack of objective lab results and absence of clear etiology. Most useful missing information: Results of labs, detailed dietary history, and ruling out psychiatric or systemic causes. Existing evidence is not enough to finalize diagnosis. No management-relevant risk explicitly supported.",
+        "efficient_turn_information": [
+          "initial_information: chief_complaint: Patient reports not feeling well recently, seeking assessment and diagnosis."
+        ],
+        "ineffective_turn_information": [],
+        "prior_information_summary": "Patient reports general malaise, fatigue, poor appetite, insomnia, and irritability. No fever, chills, weight loss, or bleeding noted. Appetite has decreased, energy is low, sleep is disrupted with frequent awakenings, and irritability and difficulty focusing are present. Labs requested but returned with no result. No unintentional weight loss, bowel changes, bruising, or bleeding reported. No mood disturbances or thoughts of self-harm reported. No regular caffeine, alcohol, or recreational substance use reported. No dietary changes or nutrient deficiencies reported. Differential diagnosis includes nutritional deficiencies, psychiatric causes, and systemic illness, but no definitive findings yet."
+      },
+      "inefficient_turn_information": [
+        "turn_5 request_exam_interaction: doctor_action: request_exam(exam_type=labs)\nresponse: {\"exam_type\": \"labs\", \"source\": \"none\", \"result\": \"No result for \\\"labs\\\" found in the record and no knowledge base available for an approximate answer.\"}"
+      ],
+      "query": {
+        "case_id": "20025639",
+        "turn_id": 15,
+        "query_text": "Patient reports fatigue, poor appetite, insomnia, and irritability. No fever, chills, weight loss, bleeding, or mood disturbances. Labs requested but no results. No dietary changes, substance use, or unintentional weight loss. Uncertainty remains due to lack of objective findings and unclear etiology. Differential includes nutritional deficiencies, psychiatric, and systemic causes.",
+        "skill_query_text": "Presenting problem: Patient with non-specific complaints of fatigue, poor appetite, insomnia, and irritability. Evidence gathered: Chief complaint and subjective symptoms. Labs ordered but no results. No ineffective actions tried. Need workflow guidance on next diagnostic steps, including which labs to order, dietary history to collect, and how to rule out psychiatric or systemic causes."
+      },
+      "retrieval": {
+        "counts": {
+          "positive_experience": 1,
+          "negative_experience": 3,
+          "skill": 3,
+          "knowledge": 0
+        },
+        "top_hits": {
+          "positive_experience": [
+            {
+              "id": "exp_0f6eeb1ef91d",
+              "type": "experience",
+              "score": 0.7321,
+              "outcome": "positive",
+              "text": "Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection.",
+              "tags": []
+            }
+          ],
+          "negative_experience": [
+            {
+              "id": "exp_3019d75ebc50",
+              "type": "experience",
+              "score": 0.8155,
+              "outcome": "negative",
+              "text": "Requesting labs for hip pain without clinical indication of systemic infection or metabolic disorder is low-yield; focus instead on targeted history, physical exam, and imaging to resolve diagnostic uncertainty.",
+              "tags": []
+            },
+            {
+              "id": "exp_60550e05a6e6",
+              "type": "experience",
+              "score": 0.8096,
+              "outcome": "negative",
+              "text": "Abdominal cramping pain, constipation followed by diarrhea with mucus, syncope, and lightheadedness in an elderly female with no fever or blood in stool should prompt consideration of colorectal cancer, especially when fatigue and itching are present; do not assume diverticulitis without weight loss or typical RLQ tenderness.",
+              "tags": []
+            },
+            {
+              "id": "exp_cfb6cb883cfd",
+              "type": "experience",
+              "score": 0.8075,
+              "outcome": "negative",
+              "text": "Pelvic pressure, urinary urgency, and dyspareunia in a patient with a pelvic mass raise suspicion of malignancy, but absence of weight loss, fatigue, or night sweats does not rule it out; these symptoms are not specific to benign leiomyoma and should not be used to dismiss malignancy without imaging or biopsy.",
+              "tags": []
+            }
+          ],
+          "skill": [
+            {
+              "id": "skill_915780044208",
+              "type": "skill",
+              "score": 0.786,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_3fa33c4fa08b",
+              "type": "skill",
+              "score": 0.7629,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            },
+            {
+              "id": "skill_318ffa960bc0",
+              "type": "skill",
+              "score": 0.7615,
+              "outcome": null,
+              "text": null,
+              "tags": []
+            }
+          ],
+          "knowledge": []
+        },
+        "mode": "embedding",
+        "embedding_available": true
+      },
+      "selection_guidance": {
+        "mode": "llm",
+        "selected_memory_ids": [],
+        "selected_memories": []
+      },
+      "clinical_turn": {
+        "tool_name": "ask_patient",
+        "doctor_action_type": "REQUEST_LAB",
+        "arguments": {
+          "question": "Have you been experiencing any gastrointestinal symptoms such as bloating, gas, or abdominal pain?"
+        },
+        "patient_or_tool_response": "{}",
+        "env_info": "{'response': [{'id': '5cd3b15c-ba91-4be2-9988-310637ea7c1f', 'type': 'function', 'function': {'name': 'ask_patient', 'arguments': '{\"question\": \"Have you been experiencing any gastrointestinal symptoms such as bloating, gas, or abdominal pain?\"}'}}], 'metadata': {'result_reward_type': 'judge', 'judge_consistent': False, 'judge_raw_response': 'NO', 'model_output_excerpt': '[{\"id\": \"5cd3b15c-ba91-4be2-9988-310637ea7c1f\", \"type\": \"function\", \"function\": {\"name\": \"ask_patient\", \"arguments\": \"{\\\\\"question\\\\\": \\\\\"Have you been experiencing any gastrointestinal symptoms such as bloating, gas, or abdominal pain?\\\\\"}\"}}]', 'process_reward': 0.0, 'process_turn_details': [{'turn': 0, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 1, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 2, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 3, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 4, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 5, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 6, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}, {'turn': 7, 'conf_before': 0.0, 'conf_after': 0.0, 'delta': 0.0, 'turn_reward': 0.0}], 'result_reward': 0.0}, 'is_correct': False, 'max_steps': 15, 'cur_tokens': 3415}",
+        "reward": 0.0,
+        "done": true,
+        "conf_before": 0.2857142857142857,
+        "conf_after": 0.2857142857142857,
+        "delta": 0.0,
+        "turn_reward": 0.0,
+        "importance": 0.0
+      },
+      "selected_action": {
+        "action_type": "REQUEST_LAB",
+        "action_label": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any gastrointestinal symptoms such as bloating, gas, or abdominal pain?\"}}\n</tool_call>",
+        "raw": "<tool_call>\n{\"name\": \"ask_patient\", \"arguments\": {\"question\": \"Have you been experiencing any gastrointestinal symptoms such as bloating, gas, or abdominal pain?\"}}\n</tool_call>"
+      }
+    }
+  ],
+  "diagnostic_trajectory": [],
+  "ineffective_interactions": []
+}
