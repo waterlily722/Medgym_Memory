@@ -1,7 +1,11 @@
 # /home/xuxiang/virtual_env/code/rllm/examples/MedGym/test_doctor_dialog.py
 import argparse
 import asyncio
+import hashlib
+import json
 import os
+import shlex
+import subprocess
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -16,6 +20,7 @@ from rllm.engine.agent_execution_engine import AgentExecutionEngine
 from rllm.environments.medgym.medgym_env import MedicalDialogueEnv
 # from rllm.environments.tools.tool_env import ToolEnvironment
 from rllm.tools import register_med_tools
+from rllm.tools.multi_tool import MultiTool
 from rllm.utils.diagnose_acc import evaluate_doctor_results
 # from prepare_med_data import prepare_med_data
 from rllm.rewards.reward_fn import search_reward_fn
@@ -44,6 +49,76 @@ class Tee:
     def flush(self):
         for stream in self.streams:
             stream.flush()
+
+
+def _redact_mapping(values: dict) -> dict:
+    return {
+        key: ("***" if "api_key" in key.lower() and value not in ("", None) else value)
+        for key, value in values.items()
+    }
+
+
+def _redacted_command(argv: list[str]) -> str:
+    redacted: list[str] = []
+    hide_next = False
+    for token in argv:
+        if hide_next:
+            redacted.append("***")
+            hide_next = False
+            continue
+        redacted.append(token)
+        hide_next = "api_key" in token.lower()
+    return shlex.join(redacted)
+
+
+def _git_revision(repo_root: Path) -> dict[str, str | bool]:
+    try:
+        commit = subprocess.run(
+            ["git", "-C", str(repo_root), "rev-parse", "HEAD"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+        dirty = bool(
+            subprocess.run(
+                ["git", "-C", str(repo_root), "status", "--porcelain"],
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout.strip()
+        )
+        return {"commit": commit, "dirty": dirty}
+    except Exception:
+        return {"commit": "", "dirty": False}
+
+
+def _format_experiment_config(config: dict) -> str:
+    return (
+        "===== EXPERIMENT CONFIG =====\n"
+        + json.dumps(config, ensure_ascii=False, indent=2, sort_keys=True)
+        + "\n===== END EXPERIMENT CONFIG ====="
+    )
+
+
+def _file_snapshot(path: Path, count_lines: bool = False) -> dict[str, str | int]:
+    if not path.is_file():
+        return {"path": str(path), "exists": 0}
+    digest = hashlib.sha256()
+    line_count = 0
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+            if count_lines:
+                line_count += chunk.count(b"\n")
+    snapshot: dict[str, str | int] = {
+        "path": str(path),
+        "exists": 1,
+        "bytes": path.stat().st_size,
+        "sha256": digest.hexdigest(),
+    }
+    if count_lines:
+        snapshot["lines"] = line_count
+    return snapshot
 
 
 def resolve_doctor_endpoint(args):
@@ -186,6 +261,14 @@ def main():
     )
     parser.add_argument("--judge_base_url", default="", help="Judge API base URL (default: same as --base_url).")
     parser.add_argument("--judge_api_key", default="", help="Judge API key (default: same as --api_key).")
+    parser.add_argument(
+        "--allow_external_agent_fallback",
+        action="store_true",
+        help=(
+            "Allow patient/judge API failures to degrade into default answers or "
+            "incorrect judgments. Default is fail-fast."
+        ),
+    )
     parser.add_argument("--enable_memory", action="store_true")
     parser.add_argument("--memory_root", default="")
     parser.add_argument("--query_builder_mode", default="llm", choices=["rule", "llm"])
@@ -210,7 +293,10 @@ def main():
     parser.add_argument(
         "--allow_memory_fallback",
         action="store_true",
-        help="Allow rule fallback when memory LLM parsing/service fails. Default is fail-fast.",
+        help=(
+            "Allow rule fallback for online query/applicability LLM failures. "
+            "This never enables embedding-scoring or experience-merge fallback."
+        ),
     )
     parser.add_argument("--memory_llm_model", default="")
     parser.add_argument("--memory_llm_base_url", default="")
@@ -230,7 +316,7 @@ def main():
     parser.add_argument(
         "--merge_scoring_mode",
         default="same_as_retrieval",
-        choices=["same_as_retrieval", "cosine", "fielded_bm25"],
+        choices=["same_as_retrieval", "cosine", "fielded_bm25", "embedding"],
         help="Offline experience merge candidate/scoring mode for paired ablations.",
     )
     parser.add_argument(
@@ -273,6 +359,10 @@ def main():
     if args.execution_mode == "serial":
         args.n_parallel_agents = 1
     resolve_doctor_endpoint(args)
+    if not args.allow_external_agent_fallback:
+        os.environ["RLLM_STRICT_PATIENT_ERRORS"] = "1"
+        os.environ["RLLM_STRICT_JUDGE_ERRORS"] = "1"
+    experiment_id = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
 
     os.environ["MEDGYM_RETRIEVAL_FALLBACK_SCORING"] = (
         "fielded_bm25" if args.retrieval_mode == "fielded_bm25" else "cosine"
@@ -280,26 +370,24 @@ def main():
     merge_scoring_mode = (
         args.merge_scoring_mode
         if args.merge_scoring_mode != "same_as_retrieval"
-        else (
-            "fielded_bm25"
-            if args.retrieval_mode == "fielded_bm25"
-            else "cosine"
-        )
+        else args.retrieval_mode
     )
     os.environ["MEDGYM_MERGE_SCORING"] = merge_scoring_mode
 
-    if args.enable_memory and args.retrieval_mode == "embedding":
+    if args.enable_memory and (
+        args.retrieval_mode == "embedding" or merge_scoring_mode == "embedding"
+    ):
         if not (args.memory_embedding_model and args.memory_embedding_base_url):
             raise ValueError(
-                "--retrieval_mode embedding requires --memory_embedding_model "
+                "Embedding retrieval/merge requires --memory_embedding_model "
                 "and --memory_embedding_base_url."
             )
 
     run_log_file = None
+    run_log_path = None
     original_stdout = sys.stdout
     original_stderr = sys.stderr
     if args.run_log_dir:
-        timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         mode = "memory" if args.enable_memory else "no_memory"
         cxr_mode = "no_cxr" if args.no_cxr else "with_cxr"
         retrieval_tag = (
@@ -307,7 +395,7 @@ def main():
             if args.enable_memory else ""
         )
         write_tag = "_frozen" if args.enable_memory and args.disable_memory_write else ""
-        log_name = f"run_{timestamp}_{mode}{retrieval_tag}{write_tag}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
+        log_name = f"run_{experiment_id}_{mode}{retrieval_tag}{write_tag}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
         run_log_path = Path(args.run_log_dir) / log_name
         run_log_path.parent.mkdir(parents=True, exist_ok=True)
         run_log_file = run_log_path.open("w", encoding="utf-8")
@@ -353,6 +441,7 @@ def main():
             "Memory is enabled and configured for LLM mode, but memory LLM is not available. "
             "Set --memory_llm_model and --memory_llm_base_url, or provide --model/--base_url."
         )
+    effective_parser_name = "native" if args.provider == "deepseek" else args.parser_name
 
     subdir = SUBDIR_NO_CXR if args.no_cxr else SUBDIR_WITH_CXR
     tasks, cases, _ = prepare_med_data(
@@ -363,6 +452,9 @@ def main():
     )
 
     # Judge 模式：把 judge 配置注入到每个 task，reward 里会读 task_info["judge_model_name"] 等
+    judge_model = ""
+    judge_base = ""
+    judge_key = ""
     if args.judge_model or args.judge_provider != "auto":
         judge_model, judge_base, judge_key = resolve_judge_endpoint(args)
         if judge_model:
@@ -370,6 +462,50 @@ def main():
                 t["judge_model_name"] = judge_model
                 t["judge_base_url"] = judge_base
                 t["judge_api_key"] = judge_key
+
+    repo_root = Path(__file__).resolve().parent
+    memory_root_path = Path(memory_root)
+    experiment_config = {
+        "started_at_utc": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "experiment_id": experiment_id,
+        "command": _redacted_command([sys.executable, *sys.argv]),
+        "working_directory": str(Path.cwd()),
+        "git": _git_revision(repo_root),
+        "code_fingerprints": {
+            "memory_prompts": _file_snapshot(repo_root / "memory_agent/llm/prompts.py"),
+        },
+        "memory_store_at_start": {
+            name: _file_snapshot(memory_root_path / name, count_lines=True)
+            for name in (
+                "experience_memory.jsonl",
+                "skill_memory.jsonl",
+                "knowledge_memory.jsonl",
+            )
+        },
+        "arguments": _redact_mapping(vars(args)),
+        "effective": {
+            "merge_scoring_mode": merge_scoring_mode,
+            "doctor_tool_call_mode": (
+                "native_function_calling" if args.provider == "deepseek" else "text_parser"
+            ),
+            "effective_parser_name": effective_parser_name,
+            "n_parallel_agents": args.n_parallel_agents,
+            "memory_root": memory_root,
+            "memory_llm_model": memory_llm_model,
+            "memory_llm_base_url": memory_llm_base_url,
+            "judge_model": judge_model,
+            "judge_base_url": judge_base,
+            "patient_model": os.getenv("RLLM_PATIENT_MODEL", ""),
+            "patient_base_url": os.getenv("RLLM_PATIENT_BASE_URL", ""),
+            "strict_patient_errors": os.getenv("RLLM_STRICT_PATIENT_ERRORS", ""),
+            "strict_judge_errors": os.getenv("RLLM_STRICT_JUDGE_ERRORS", ""),
+            "retrieval_server_url": os.getenv("RETRIEVAL_SERVER_URL", ""),
+            "trajectory_dir": os.getenv("RLLM_TRAJECTORY_DIR", ""),
+            "run_log_path": str(run_log_path or ""),
+        },
+    }
+    experiment_header = _format_experiment_config(experiment_config)
+    print(experiment_header)
 
     # tasks, cases, _ = prepare_med_data(
     #     case_dir=args.case_dir,
@@ -382,7 +518,7 @@ def main():
     if args.no_cxr:
         agent_args = {
             "tools": ["ask_patient", "diagnosis", "retrieve", "request_exam"],
-            "parser_name": args.parser_name,
+            "parser_name": effective_parser_name,
             "system_prompt": DOCTOR_SYSTEM_PROMPT_wo_IMG,
             "enable_memory": args.enable_memory,
             "memory_root": memory_root,
@@ -405,7 +541,9 @@ def main():
             "memory_embedding_model": args.memory_embedding_model,
             "memory_embedding_base_url": args.memory_embedding_base_url,
             "memory_embedding_api_key": args.memory_embedding_api_key,
+            "retrieval_mode": args.retrieval_mode,
             "no_cxr": args.no_cxr,
+            "native_tool_calls": args.provider == "deepseek",
         }
 
         env_args = {
@@ -417,7 +555,7 @@ def main():
     else:
         agent_args = {
             "tools": ["ask_patient", "diagnosis", "retrieve", "cxr", "request_exam", "cxr_grounding"],
-            "parser_name": args.parser_name,
+            "parser_name": effective_parser_name,
             "system_prompt": DOCTOR_SYSTEM_PROMPT,
             "enable_memory": args.enable_memory,
             "memory_root": memory_root,
@@ -440,7 +578,9 @@ def main():
             "memory_embedding_model": args.memory_embedding_model,
             "memory_embedding_base_url": args.memory_embedding_base_url,
             "memory_embedding_api_key": args.memory_embedding_api_key,
+            "retrieval_mode": args.retrieval_mode,
             "no_cxr": args.no_cxr,
+            "native_tool_calls": args.provider == "deepseek",
         }
 
         env_args = {
@@ -454,6 +594,11 @@ def main():
         "temperature": args.temperature,
         "top_p": args.top_p,
     }
+    native_tool_schemas = (
+        MultiTool(tools=agent_args["tools"]).json
+        if args.provider == "deepseek"
+        else []
+    )
 
     engine = AgentExecutionEngine(
         agent_class=MemoryWrappedMedicalAgent,
@@ -466,6 +611,7 @@ def main():
             "api_key": args.api_key,
             "model": args.model,
             "use_chat_completions": args.provider in {"deepseek", "qwen", "hulumed"},
+            "tools": native_tool_schemas,
         },
         tokenizer=tokenizer,
         sampling_params=sampling_params,
@@ -477,7 +623,6 @@ def main():
     results = asyncio.run(engine.execute_tasks(tasks))
     log_path = None
     if args.summary_log_dir:
-        timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         mode = "memory" if args.enable_memory else "no_memory"
         cxr_mode = "no_cxr" if args.no_cxr else "with_cxr"
         retrieval_tag = (
@@ -485,7 +630,7 @@ def main():
             if args.enable_memory else ""
         )
         write_tag = "_frozen" if args.enable_memory and args.disable_memory_write else ""
-        log_name = f"summary_{timestamp}_{mode}{retrieval_tag}{write_tag}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
+        log_name = f"summary_{experiment_id}_{mode}{retrieval_tag}{write_tag}_{cxr_mode}_n{args.max_cases}_k{args.repeat_k}.log"
         log_path = Path(args.summary_log_dir) / log_name
     evaluate_doctor_results(
         results,
@@ -493,6 +638,7 @@ def main():
         print_examples=args.print_examples,
         example_text_chars=args.example_text_chars,
         log_path=log_path,
+        report_header=experiment_header,
     )
     if run_log_file:
         sys.stdout = original_stdout

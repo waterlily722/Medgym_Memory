@@ -28,6 +28,7 @@ class ToolAgent(BaseAgent):
         parser_name="qwen",
         tools: list[str] | None = None,
         tool_map: dict[str, type[Tool]] | None = None,
+        native_tool_calls: bool = False,
     ):
         """
         Initialize the ToolAgent.
@@ -42,6 +43,7 @@ class ToolAgent(BaseAgent):
             raise ValueError("Cannot specify both 'tools' and 'tool_map' parameters")
 
         self.system_prompt = system_prompt
+        self.native_tool_calls = native_tool_calls
 
         # Initialize MultiTool with either tools or tool_map
         if tool_map is not None:
@@ -54,7 +56,11 @@ class ToolAgent(BaseAgent):
         parser_class: type[ToolParser] = get_tool_parser(parser_name=parser_name)
         self.tool_parser = parser_class()
 
-        self.tools_prompt = self.tool_parser.get_tool_prompt(json.dumps(self.tools.json, indent=2))
+        self.tools_prompt = (
+            ""
+            if self.native_tool_calls
+            else self.tool_parser.get_tool_prompt(json.dumps(self.tools.json, indent=2))
+        )
 
         # Initialize state according to BaseAgent
         self._trajectory = Trajectory()
@@ -113,26 +119,40 @@ class ToolAgent(BaseAgent):
         Updates the agent's state based on the model's response.
         Parses the response, updates messages, and the current step in the trajectory.
         """
-        tool_calls_dict = []
-        assistant_content = response
-        # Attempt to parse tool calls from string response
-        try:
-            tool_calls = self.tool_parser.parse(response)
-            tool_calls_dict = [
-                {
-                    "id": str(uuid.uuid4()),
-                    "type": "function",
-                    "function": tool_call.to_dict(),
-                }
-                for tool_call in tool_calls
-            ]
-
-        except Exception as e:
-            logger.error(f"Failed to parse tool calls from string response: {e}")
-            tool_calls_dict = []  # Indicate no valid tool calls parsed
+        assistant_content = response or ""
+        native_tool_calls = kwargs.get("native_tool_calls") or []
+        tool_calls_dict = self._normalize_native_tool_calls(native_tool_calls)
+        if self.native_tool_calls and len(tool_calls_dict) != 1:
+            raise RuntimeError(
+                "Native tool-call mode requires exactly one tool call per turn; "
+                f"received {len(tool_calls_dict)}"
+            )
+        if self.native_tool_calls and tool_calls_dict:
+            tool_name = str(tool_calls_dict[0].get("function", {}).get("name") or "")
+            if tool_name not in self.tools.tools:
+                raise RuntimeError(
+                    f"Native tool call selected unknown tool={tool_name!r}; "
+                    f"allowed={self.tools.tools}"
+                )
+        if not tool_calls_dict:
+            try:
+                tool_calls = self.tool_parser.parse(assistant_content)
+                tool_calls_dict = [
+                    {
+                        "id": str(uuid.uuid4()),
+                        "type": "function",
+                        "function": tool_call.to_dict(),
+                    }
+                    for tool_call in tool_calls
+                ]
+            except Exception as e:
+                logger.error(f"Failed to parse tool calls from string response: {e}")
+                tool_calls_dict = []
 
         # Append assistant message to chat history
         assistant_message = {"role": "assistant", "content": assistant_content}
+        if native_tool_calls and tool_calls_dict:
+            assistant_message["tool_calls"] = copy.deepcopy(tool_calls_dict)
         if len(tool_calls_dict) > 0:
             # Ensure arguments within tool_calls_dict are strings if needed by downstream processing
             for call in tool_calls_dict:
@@ -158,6 +178,49 @@ class ToolAgent(BaseAgent):
         self._trajectory.steps.append(new_step)
 
         return Action(action=tool_calls_dict)
+
+    @staticmethod
+    def _normalize_native_tool_calls(tool_calls: list[Any]) -> list[dict[str, Any]]:
+        normalized: list[dict[str, Any]] = []
+        for call in tool_calls:
+            if isinstance(call, dict):
+                call_id = str(call.get("id") or uuid.uuid4())
+                function = call.get("function") or {}
+                name = str(function.get("name") or "")
+                arguments = function.get("arguments") or "{}"
+            else:
+                call_id = str(getattr(call, "id", "") or uuid.uuid4())
+                function = getattr(call, "function", None)
+                name = str(getattr(function, "name", "") or "")
+                arguments = getattr(function, "arguments", "{}") or "{}"
+            if not name:
+                continue
+            if isinstance(arguments, str):
+                try:
+                    parsed_arguments = json.loads(arguments)
+                except json.JSONDecodeError as exc:
+                    raise RuntimeError(
+                        f"Native tool call {name!r} returned invalid JSON arguments"
+                    ) from exc
+                if not isinstance(parsed_arguments, dict):
+                    raise RuntimeError(
+                        f"Native tool call {name!r} arguments must be a JSON object"
+                    )
+                arguments = json.dumps(parsed_arguments, ensure_ascii=False)
+            elif isinstance(arguments, dict):
+                arguments = json.dumps(arguments, ensure_ascii=False)
+            else:
+                raise RuntimeError(
+                    f"Native tool call {name!r} arguments must be JSON text or a dict"
+                )
+            normalized.append(
+                {
+                    "id": call_id,
+                    "type": "function",
+                    "function": {"name": name, "arguments": arguments},
+                }
+            )
+        return normalized
 
     def reset(self):
         """Resets the agent's state for a new episode."""

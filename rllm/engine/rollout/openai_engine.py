@@ -66,7 +66,7 @@ class OpenAIEngine(RolloutEngine):
         """
         converted_messages = []
         for message in messages:
-            if message.get("role") == "tool":
+            if message.get("role") == "tool" and not self.tools:
                 content = message.get("content") or ""
                 converted_messages.append(
                     {
@@ -112,6 +112,11 @@ class OpenAIEngine(RolloutEngine):
 
         sampling_params = self.sampling_params.copy()
         sampling_params.update(kwargs)
+        request_tools = sampling_params.pop("tools", self.tools)
+        request_tool_choice = sampling_params.pop(
+            "tool_choice",
+            "required" if request_tools else None,
+        )
 
         create_params = self._prepare_max_tokens_param(sampling_params)
         converted_messages = self._convert_messages_to_openai_format(messages)
@@ -119,7 +124,19 @@ class OpenAIEngine(RolloutEngine):
         retries = self.api_retries
         while retries > 0:
             try:
-                response = await self.client.chat.completions.create(model=self.model, messages=converted_messages, timeout=3600, **create_params, **sampling_params)
+                tool_params = (
+                    {"tools": request_tools, "tool_choice": request_tool_choice}
+                    if request_tools
+                    else {}
+                )
+                response = await self.client.chat.completions.create(
+                    model=self.model,
+                    messages=converted_messages,
+                    timeout=3600,
+                    **tool_params,
+                    **create_params,
+                    **sampling_params,
+                )
 
                 content = response.choices[0].message.content
                 reasoning = response.choices[0].message.reasoning if hasattr(response.choices[0].message, "reasoning") and isinstance(response.choices[0].message.reasoning, str) else ""
@@ -136,7 +153,7 @@ class OpenAIEngine(RolloutEngine):
                 finish_reason = response.choices[0].finish_reason
 
                 return ModelOutput(
-                    text=text,
+                    text=text or "",
                     content=content,
                     reasoning=reasoning,
                     tool_calls=tool_calls,

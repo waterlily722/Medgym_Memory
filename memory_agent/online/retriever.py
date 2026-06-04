@@ -154,12 +154,14 @@ def _fallback_scoring_mode() -> str:
 def _embedding_cosine(vec_a: list[float], vec_b: list[float]) -> float:
     """Cosine similarity between two dense embedding vectors."""
     if not vec_a or not vec_b or len(vec_a) != len(vec_b):
-        return 0.0
+        raise RuntimeError(
+            "Embedding cosine requires two non-empty vectors with equal dimensions"
+        )
     dot = sum(a * b for a, b in zip(vec_a, vec_b))
     norm_a = math.sqrt(sum(v * v for v in vec_a))
     norm_b = math.sqrt(sum(v * v for v in vec_b))
     if norm_a == 0.0 or norm_b == 0.0:
-        return 0.0
+        raise RuntimeError("Embedding cosine received a zero-norm vector")
     return dot / (norm_a * norm_b)
 
 
@@ -253,7 +255,9 @@ def _precompute_embeddings(
 ) -> dict[str, list[float]]:
     """Batch-embed all items. Returns {memory_id: vector}."""
     if embedding_client is None or not embedding_client.available():
-        return {}
+        raise RuntimeError(
+            f"Embedding client is unavailable while encoding {memory_type} memory"
+        )
 
     texts: list[str] = []
     id_order: list[str] = []
@@ -300,11 +304,10 @@ def _precompute_embeddings(
 
     vectors = embedding_client.embed_documents(miss_texts)
     if vectors is None or len(vectors) != len(miss_ids):
-        logger.warning(
-            "Embedding batch returned %d vectors for %d items; falling back",
-            len(vectors) if vectors else 0, len(miss_ids),
+        raise RuntimeError(
+            f"Embedding batch returned {len(vectors) if vectors else 0} vectors "
+            f"for {len(miss_ids)} {memory_type} memory items"
         )
-        return result
 
     cache_rows: list[dict[str, Any]] = []
     for mid, key, text_hash, vector in zip(
@@ -314,6 +317,11 @@ def _precompute_embeddings(
         vectors,
         strict=False,
     ):
+        if not vector:
+            raise RuntimeError(
+                f"Embedding batch returned an empty vector for "
+                f"{memory_type} memory_id={mid!r}"
+            )
         result[mid] = vector
         cache_rows.append(
             {
@@ -347,16 +355,21 @@ def _score_memory(
     payload: dict[str, Any],
     query_embedding: list[float] | None = None,
     memory_embedding: list[float] | None = None,
+    require_embedding: bool = False,
 ) -> float:
     """
     Score a single memory against the query.
 
-    Priority:
-    1. If both embeddings available → embedding cosine similarity.
-    2. Else use configured fallback scoring:
-       - cosine: previous token-cosine over full memory text.
-       - fielded_bm25: field-weighted BM25 for experience/skill.
+    When require_embedding is true, missing vectors are errors. Otherwise,
+    score using the configured lexical scoring mode.
     """
+    if require_embedding and (query_embedding is None or memory_embedding is None):
+        memory_id = str(payload.get("memory_id") or "")
+        raise RuntimeError(
+            f"Embedding retrieval is missing a vector for "
+            f"{memory_type} memory_id={memory_id!r}"
+        )
+
     if query_embedding is not None and memory_embedding is not None:
         score = _embedding_cosine(query_embedding, memory_embedding)
     elif _fallback_scoring_mode() != "fielded_bm25":
@@ -410,6 +423,7 @@ def _experience_hits(
     negative_min_score: float,
     embedding_vectors: dict[str, list[float]] | None = None,
     query_embedding: list[float] | None = None,
+    require_embedding: bool = False,
 ) -> tuple[list[RetrievalHit], list[RetrievalHit]]:
     store = ExperienceMemoryStore(_root(root_dir))
     all_cards = store.list_all()
@@ -440,6 +454,7 @@ def _experience_hits(
             query, "experience", payload,
             query_embedding=query_embedding,
             memory_embedding=mem_vec,
+            require_embedding=require_embedding,
         )
         tags = {str(tag).lower() for tag in (payload.get("tags") or [])}
         if "negative" in tags:
@@ -471,6 +486,7 @@ def _skill_hits(
     min_score: float,
     embedding_vectors: dict[str, list[float]] | None = None,
     query_embedding: list[float] | None = None,
+    require_embedding: bool = False,
 ) -> list[RetrievalHit]:
     store = SkillMemoryStore(_root(root_dir))
     all_cards = store.list_all()
@@ -486,6 +502,7 @@ def _skill_hits(
             query, "skill", payload,
             query_embedding=query_embedding,
             memory_embedding=mem_vec,
+            require_embedding=require_embedding,
         )
         if score >= min_score:
             hits.append(_build_hit(mid, "skill", payload, score))
@@ -500,6 +517,7 @@ def _knowledge_hits(
     min_score: float,
     embedding_vectors: dict[str, list[float]] | None = None,
     query_embedding: list[float] | None = None,
+    require_embedding: bool = False,
 ) -> list[RetrievalHit]:
     store = KnowledgeMemoryStore(_root(root_dir))
     all_items = store.list_all()
@@ -515,6 +533,7 @@ def _knowledge_hits(
             query, "knowledge", payload,
             query_embedding=query_embedding,
             memory_embedding=mem_vec,
+            require_embedding=require_embedding,
         )
         if score >= min_score:
             hits.append(_build_hit(mid, "knowledge", payload, score))
@@ -538,9 +557,9 @@ def retrieve_multi_memory(
     """
     Retrieve relevant memories for a query.
 
-    When ``embedding_client`` is provided and available, all stored items are
-    batch-embedded once and scored via embedding cosine similarity. Otherwise
-    falls back to token-based Bag-of-Words cosine similarity.
+    When ``embedding_client`` is provided, all stored items are scored only via
+    embedding cosine similarity. Embedding failures raise instead of silently
+    switching to another scoring algorithm.
     """
     # ── Pre-compute embeddings for all stores ──────────────────────────
     query_embedding: list[float] | None = None
@@ -548,8 +567,11 @@ def retrieve_multi_memory(
     exp_vectors: dict[str, list[float]] = {}
     skill_vectors: dict[str, list[float]] = {}
     kn_vectors: dict[str, list[float]] = {}
+    require_embedding = embedding_client is not None
 
-    if embedding_client is not None and embedding_client.available():
+    if embedding_client is not None:
+        if not embedding_client.available():
+            raise RuntimeError("Embedding retrieval requested but embedding client is unavailable")
         # Embed experience query
         query_embedding = embedding_client.embed_query(memory_query.query_text)
         # Embed skill query (separate)
@@ -559,27 +581,28 @@ def retrieve_multi_memory(
         else:
             skill_query_embedding = query_embedding
 
-        if query_embedding and not disable_experience_memory:
+        if not query_embedding:
+            raise RuntimeError("Embedding retrieval failed to encode experience query")
+        if not skill_query_embedding:
+            raise RuntimeError("Embedding retrieval failed to encode skill query")
+
+        if not disable_experience_memory:
             store = ExperienceMemoryStore(_root(root_dir))
             exp_vectors = _precompute_embeddings(
                 store.list_all(), "experience", embedding_client, root_dir=root_dir
             ) or {}
 
-        if (query_embedding or skill_query_embedding) and not disable_skill_memory:
+        if not disable_skill_memory:
             store = SkillMemoryStore(_root(root_dir))
             skill_vectors = _precompute_embeddings(
                 store.list_all(), "skill", embedding_client, root_dir=root_dir
             ) or {}
 
-        if query_embedding and not disable_knowledge_memory:
+        if not disable_knowledge_memory:
             store = KnowledgeMemoryStore(_root(root_dir))
             kn_vectors = _precompute_embeddings(
                 store.list_all(), "knowledge", embedding_client, root_dir=root_dir
             ) or {}
-
-        if not query_embedding and not skill_query_embedding:
-            logger.warning("Query embedding failed; falling back to token scoring")
-            query_embedding = None
 
     # ── Retrieve ───────────────────────────────────────────────────────
     positive: list[RetrievalHit] = []
@@ -592,6 +615,7 @@ def retrieve_multi_memory(
             _threshold("negative_experience_min_score", negative_experience_min_score),
             embedding_vectors=exp_vectors or None,
             query_embedding=query_embedding,
+            require_embedding=require_embedding,
         )
 
     # Build a skill-specific query using skill_query_text
@@ -614,6 +638,7 @@ def retrieve_multi_memory(
             _threshold("skill_min_score", skill_min_score),
             embedding_vectors=skill_vectors or None,
             query_embedding=skill_query_embedding or query_embedding,
+            require_embedding=require_embedding,
         ),
         knowledge_hits=[]
         if disable_knowledge_memory
@@ -622,5 +647,6 @@ def retrieve_multi_memory(
             _threshold("knowledge_min_score", knowledge_min_score),
             embedding_vectors=kn_vectors or None,
             query_embedding=query_embedding,
+            require_embedding=require_embedding,
         ),
     )

@@ -1,10 +1,12 @@
 from __future__ import annotations
 
 import logging
+import math
 import os
 from pathlib import Path
 from typing import Any
 
+from ..llm import EmbeddingClient
 from ..memory_store import ExperienceMemoryStore, SkillMemoryStore
 
 logger = logging.getLogger(__name__)
@@ -27,39 +29,66 @@ def _similar_existing(
     experience: ExperienceCard,
     existing: list[ExperienceCard],
     limit: int | None = None,
-) -> list[ExperienceCard]:
+    embedding_client: EmbeddingClient | None = None,
+) -> tuple[list[ExperienceCard], dict[str, float]]:
     if limit is None:
-        limit = int(MERGE_CONFIG.get("candidate_top_k", 20) or 20)
+        limit = int(MERGE_CONFIG.get("candidate_top_k", 5) or 5)
+    min_score = float(MERGE_CONFIG.get("candidate_min_score", 0.70) or 0.70)
     candidates = [
         item for item in existing
         if _same_outcome_direction(experience, item)
     ]
     if not candidates:
-        return []
+        return [], {}
 
     scoring_mode = _merge_scoring_mode()
-    if scoring_mode != "fielded_bm25":
+    if scoring_mode == "embedding":
+        if embedding_client is None or not embedding_client.available():
+            raise RuntimeError(
+                "Embedding merge requested but embedding client is unavailable"
+            )
+        query_vector = embedding_client.embed_query(_experience_similarity_text(experience))
+        document_vectors = embedding_client.embed_documents(
+            [_experience_similarity_text(item) for item in candidates]
+        )
+        if (
+            not query_vector
+            or document_vectors is None
+            or len(document_vectors) != len(candidates)
+            or any(not vector for vector in document_vectors)
+        ):
+            raise RuntimeError(
+                "Embedding merge candidate encoding failed: "
+                f"expected {len(candidates)} document vectors, "
+                f"received {len(document_vectors) if document_vectors else 0}"
+            )
+        scored = [
+            (_embedding_cosine(query_vector, vector), item)
+            for vector, item in zip(document_vectors, candidates, strict=False)
+        ]
+    elif scoring_mode != "fielded_bm25":
         scored = [
             (token_cosine(_experience_similarity_text(experience), _experience_similarity_text(item)), item)
             for item in candidates
         ]
-        scored.sort(key=lambda pair: pair[0], reverse=True)
-        return [item for score, item in scored[:limit] if score > 0.0]
-
-    text_scores = _normalize_scores(
-        bm25_scores(
-            _experience_similarity_text(experience),
-            [_experience_similarity_text(item) for item in candidates],
+    else:
+        text_scores = _normalize_scores(
+            bm25_scores(
+                _experience_similarity_text(experience),
+                [_experience_similarity_text(item) for item in candidates],
+            )
         )
-    )
+        scored = [
+            (text_scores[idx], item)
+            for idx, item in enumerate(candidates)
+        ]
 
-    scored: list[tuple[float, ExperienceCard]] = []
-    scored: list[tuple[float, ExperienceCard]] = []
-    for idx, item in enumerate(candidates):
-        score = text_scores[idx]
-        scored.append((score, item))
     scored.sort(key=lambda pair: pair[0], reverse=True)
-    return [item for score, item in scored[:limit] if score > 0.0]
+    selected = [(score, item) for score, item in scored if score > min_score][:limit]
+    return (
+        [item for _, item in selected],
+        {item.memory_id: score for score, item in selected},
+    )
 
 
 def _merge_scoring_mode() -> str:
@@ -77,6 +106,19 @@ def _experience_similarity_text(experience: ExperienceCard) -> str:
             experience.outcome_type or "",
         ]
     )
+
+
+def _embedding_cosine(vec_a: list[float], vec_b: list[float]) -> float:
+    if not vec_a or not vec_b or len(vec_a) != len(vec_b):
+        raise RuntimeError(
+            "Embedding merge cosine requires non-empty vectors with equal dimensions"
+        )
+    dot = sum(a * b for a, b in zip(vec_a, vec_b))
+    norm_a = math.sqrt(sum(value * value for value in vec_a))
+    norm_b = math.sqrt(sum(value * value for value in vec_b))
+    if norm_a == 0.0 or norm_b == 0.0:
+        raise RuntimeError("Embedding merge cosine received a zero-norm vector")
+    return dot / (norm_a * norm_b)
 
 
 def _positive_outcome(card: ExperienceCard) -> bool:
@@ -103,6 +145,8 @@ def write_memory_from_distilled_episode(
     experience_merge_mode: str = "rule",
     skill_extraction_mode: str = "llm",
     llm_client=None,
+    embedding_client: EmbeddingClient | None = None,
+    strict: bool = True,
 ) -> dict[str, Any]:
     """
     Write ExperienceCards and episode-level SkillCards from a distilled episode.
@@ -126,6 +170,7 @@ def write_memory_from_distilled_episode(
         distilled,
         mode=experience_extraction_mode,
         llm_client=llm_client,
+        strict=strict,
     )
 
     written_ids: list[str] = []
@@ -133,12 +178,24 @@ def write_memory_from_distilled_episode(
     inserted_count = 0
 
     for experience in extracted:
-        candidates = _similar_existing(experience, existing)
+        candidates, candidate_scores = _similar_existing(
+            experience,
+            existing,
+            embedding_client=embedding_client,
+        )
 
-        if experience_merge_mode == "llm" and llm_client is not None:
-            decision = decide_merge_llm(experience, candidates, llm_client)
+        if experience_merge_mode == "llm":
+            decision = decide_merge_llm(
+                experience,
+                candidates,
+                llm_client,
+            )
         else:
-            decision = decide_merge_rule(experience, candidates)
+            decision = decide_merge_rule(
+                experience,
+                candidates,
+                candidate_scores=candidate_scores,
+            )
 
         merge_decision = str(decision.get("merge_decision") or "insert_new")
 
@@ -171,6 +228,7 @@ def write_memory_from_distilled_episode(
         distilled,
         mode=skill_extraction_mode,
         llm_client=llm_client,
+        strict=strict,
     )
     written_skill_ids: list[str] = []
     for skill in skills:

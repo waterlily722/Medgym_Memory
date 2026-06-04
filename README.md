@@ -225,9 +225,18 @@ python run_med_with_tool.py \
 
 ### DeepSeek
 
-```bash
-export DEEPSEEK_API_KEY="sk-..."
+DeepSeek doctor 使用原生 Function Calling。不要传入 `--parser_name qwen`；
+程序会自动使用内部 `native` parser，并要求响应包含
+`message.tool_calls`。
 
+```bash
+cd /oral_llm/xiweidai/med_env/code/medgym_memory
+export DEEPSEEK_API_KEY="sk-..."
+export RLLM_PATIENT_BASE_URL="https://api.deepseek.com/v1"
+export RLLM_PATIENT_MODEL="deepseek-chat"
+export RLLM_PATIENT_API_KEY="$DEEPSEEK_API_KEY"
+
+# 先用 5 个 case 验证 doctor、patient/exam 和 judge 的连接
 python run_med_with_tool.py \
   --provider deepseek \
   --model deepseek-chat \
@@ -236,8 +245,103 @@ python run_med_with_tool.py \
   --max_cases 5 \
   --repeat_k 1 \
   --no_cxr \
-  --parser_name qwen
+  --execution_mode serial \
+  --trace_tag ds_smoke_test \
+  --judge_provider deepseek \
+  --judge_model deepseek-chat
 ```
+
+### DeepSeek 作为全部 LLM agent
+
+DeepSeek doctor 使用官方 OpenAI-compatible Function Calling：请求发送
+`tools`，响应读取 `message.tool_calls`，工具结果使用原始 `tool_call_id`
+回传。DeepSeek provider 会自动使用内部 `native` parser，不经过 Qwen XML
+tool-call parser。Patient、exam、judge 和 memory LLM 使用同一个 DeepSeek
+Chat Completions endpoint。
+
+```bash
+cd /oral_llm/xiweidai/med_env/code/medgym_memory
+export DEEPSEEK_API_KEY="sk-..."
+export RLLM_PATIENT_BASE_URL="https://api.deepseek.com/v1"
+export RLLM_PATIENT_MODEL="deepseek-chat"
+export RLLM_PATIENT_API_KEY="$DEEPSEEK_API_KEY"
+```
+
+配置来源：
+
+- doctor：`--provider deepseek`、`--model deepseek-chat` 和
+  `DEEPSEEK_API_KEY`
+- patient/exam：`RLLM_PATIENT_*`
+- judge：`--judge_provider deepseek`，默认读取 `DEEPSEEK_API_KEY`
+- memory LLM：`--memory_llm_*`；未显式设置时继承 doctor 配置
+- embedding：本地 E5 服务，不属于 LLM agent
+
+不用 memory 的 baseline：
+
+```bash
+python run_med_with_tool.py \
+  --provider deepseek \
+  --model deepseek-chat \
+  --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --case_dir /oral_llm/xiweidai/med_env/bench \
+  --max_cases 200 \
+  --repeat_k 1 \
+  --max_steps 15 \
+  --no_cxr \
+  --execution_mode serial \
+  --trace_tag ds_no_memory \
+  --judge_provider deepseek \
+  --judge_model deepseek-chat
+```
+
+使用 memory，但不注入 CaseMemory：
+
+以下命令会运行 CaseMemory 构建、query、检索、experience/skill 提取和
+experience merge，但不会把 CaseMemory 注入 doctor observation。保持命令中
+没有 `--inject_case_memory` 即可。
+
+```bash
+# 另一个终端启动本地 memory embedding 服务
+python -m vllm.entrypoints.openai.api_server \
+  --model /oral_llm/xiweidai/med_env/models/intfloat-e5-base-v2 \
+  --port 30010 \
+  --convert embed \
+  --runner pooling \
+  --dtype auto
+
+# DeepSeek doctor/patient/judge/memory + 本地 E5 memory retrieval
+python run_med_with_tool.py \
+  --provider deepseek \
+  --model deepseek-chat \
+  --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
+  --case_dir /oral_llm/xiweidai/med_env/bench \
+  --max_cases 200 \
+  --repeat_k 1 \
+  --max_steps 15 \
+  --no_cxr \
+  --execution_mode serial \
+  --enable_memory \
+  --log_memory_trace \
+  --trace_tag ds_memory_embedding_no_case_memory \
+  --query_builder_mode llm \
+  --applicability_mode llm \
+  --experience_extraction_mode llm \
+  --experience_merge_mode llm \
+  --retrieval_mode embedding \
+  --merge_scoring_mode embedding \
+  --memory_embedding_model intfloat-e5-base-v2 \
+  --memory_embedding_base_url http://127.0.0.1:30010/v1 \
+  --memory_llm_model deepseek-chat \
+  --memory_llm_base_url https://api.deepseek.com/v1 \
+  --memory_llm_api_key "$DEEPSEEK_API_KEY" \
+  --judge_provider deepseek \
+  --judge_model deepseek-chat
+```
+
+上述命令默认 fail-fast：doctor 原生 tool call、patient、judge、memory LLM
+或 embedding 任一路径失败都会中止，不会回退到 XML、rule、token cosine
+或默认 patient answer。Qwen tokenizer 只用于本地 token 计数，不决定远程
+DeepSeek doctor 模型。
 
 ## API 默认配置
 
@@ -288,6 +392,17 @@ DeepSeek 默认配置：
 - experience memory：`memory_agent/memory_data/experience_memory.jsonl`
 - skill memory：`memory_agent/memory_data/skill_memory.jsonl`
 - knowledge memory：`memory_agent/memory_data/knowledge_memory.jsonl`
+
+新的 run log 和 summary log 使用相同的实验时间戳，并在文件开头记录
+`EXPERIMENT CONFIG`：完整脱敏命令、解析后的参数、实际生效的服务配置、
+Git commit/dirty 状态、prompt 指纹，以及运行开始时 memory store 的行数和 SHA256。
+
+使用 `--retrieval_mode embedding` 时，在线检索只使用 embedding cosine；
+embedding 服务或向量生成失败会直接报错，不会回退到 token cosine/BM25。
+当 `--experience_merge_mode llm` 存在 merge 候选时，LLM 服务失败或输出无效
+也会直接报错，不会回退到 rule merge。
+Experience merge 使用相似度筛选并排序候选，但只把前 5 条完整
+ExperienceCard 传给 LLM，不向 LLM 暴露 embedding similarity score。
 
 ## 说明
 

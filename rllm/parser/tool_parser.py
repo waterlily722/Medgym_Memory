@@ -45,6 +45,19 @@ class ToolParser(ABC):
         raise ValueError(f"No tool parser found for {tokenizer.name_or_path}")
 
 
+class NativeToolParser(ToolParser):
+    """Marker parser for provider-native function calling."""
+
+    def parse(self, model_response: str) -> list[ToolCall]:
+        raise RuntimeError(
+            "Native tool-call mode requires provider message.tool_calls; "
+            "text parsing is disabled"
+        )
+
+    def get_tool_prompt(self, tools_schema: str) -> str:
+        return ""
+
+
 class R1ToolParser(ToolParser):
     """Parser for R1 tool call format."""
 

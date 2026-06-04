@@ -298,7 +298,10 @@ class AgentExecutionEngine:
             episode_steps.append(prompt_response_pair)
 
             # Update agent with model response
-            action: Action = agent.update_from_model(response)
+            action: Action = agent.update_from_model(
+                response,
+                native_tool_calls=model_output.tool_calls or [],
+            )
             action = action.action
 
             # action 可能是工具调用列表 list[dict] 或纯文本（str，如未调用工具时的对话）

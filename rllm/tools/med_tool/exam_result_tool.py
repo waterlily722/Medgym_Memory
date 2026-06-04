@@ -252,6 +252,13 @@ class ExamResultTool(Tool):
         ehr = _load_ehr_from_context(case_id, context, case_dir)
         knowledge_obj = _load_knowledge_from_context(case_id, context, case_dir)
         llm = self._get_llm()
+        if llm is None and str(os.getenv("RLLM_STRICT_PATIENT_ERRORS", "")).strip().lower() in {
+            "1", "true", "yes", "on",
+        }:
+            raise RuntimeError(
+                "Exam-result agent model is not configured; set RLLM_PATIENT_MODEL "
+                "and RLLM_PATIENT_BASE_URL"
+            )
 
         # ---------- 1) 判断 EHR 中是否包含该检查结果 ----------
         section_containing: Optional[str] = None

@@ -20,9 +20,8 @@ class EmbeddingClient:
     Expected endpoint:
       {base_url}/embeddings
 
-    Returns a list of float vectors, one per input text.
-    Falls back to None (no embedding) on any error, so the retriever can
-    degrade gracefully to token-based cosine similarity.
+    Returns a list of float vectors, one per input text. Returns None on request
+    errors; embedding-mode callers treat that as a fatal error.
     """
 
     model: str = ""

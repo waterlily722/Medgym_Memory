@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import multiprocessing as mp
+import os
 from typing import Any, Optional
 
 from rllm.environments.base.base_env import BaseEnv
@@ -341,6 +342,10 @@ class MedicalDialogueEnv(BaseEnv):
                                     tool_context["dialogue"] = []
 
                         except Exception as e:
+                            if str(os.getenv("RLLM_STRICT_PATIENT_ERRORS", "")).strip().lower() in {
+                                "1", "true", "yes", "on",
+                            }:
+                                raise
                             reply = f"ERROR calling {ask_tool_name}: {type(e).__name__}: {e}"
 
                         conn.send(

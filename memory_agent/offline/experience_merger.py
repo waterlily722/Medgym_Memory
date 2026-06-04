@@ -24,9 +24,15 @@ def _same_direction(left: ExperienceCard, right: ExperienceCard) -> bool:
     return left.outcome_type == right.outcome_type
 
 
-def _same_trigger(left: ExperienceCard, right: ExperienceCard) -> bool:
+def _same_trigger(
+    left: ExperienceCard,
+    right: ExperienceCard,
+    candidate_scores: dict[str, float] | None = None,
+) -> bool:
     situation_threshold = _threshold("semantic_threshold", 0.80)
-    if _merge_scoring_mode() != "fielded_bm25":
+    if _merge_scoring_mode() == "embedding":
+        similarity_score = float((candidate_scores or {}).get(left.memory_id, 0.0))
+    elif _merge_scoring_mode() != "fielded_bm25":
         similarity_score = token_cosine(left.text, right.text)
     else:
         similarity_score = bm25_similarity(left.text, right.text)
@@ -42,9 +48,13 @@ def _merge_scoring_mode() -> str:
     ).strip().lower()
 
 
-def _can_merge(left: ExperienceCard, right: ExperienceCard) -> bool:
+def _can_merge(
+    left: ExperienceCard,
+    right: ExperienceCard,
+    candidate_scores: dict[str, float] | None = None,
+) -> bool:
     return (
-        _same_trigger(left, right)
+        _same_trigger(left, right, candidate_scores=candidate_scores)
         and _same_direction(left, right)
     )
 
@@ -101,9 +111,10 @@ def merge_experience(base: ExperienceCard, incoming: ExperienceCard) -> Experien
 def decide_merge_rule(
     new_experience: ExperienceCard,
     similar_existing: list[ExperienceCard],
+    candidate_scores: dict[str, float] | None = None,
 ) -> dict[str, Any]:
     for existing in similar_existing:
-        if _can_merge(existing, new_experience):
+        if _can_merge(existing, new_experience, candidate_scores=candidate_scores):
             merged = merge_experience(existing, new_experience)
             return {
                 "merge_decision": "merge",
@@ -123,20 +134,24 @@ def decide_merge_rule(
 def decide_merge_llm(
     new_experience: ExperienceCard,
     similar_existing: list[ExperienceCard],
-    llm_client: LLMClient,
+    llm_client: LLMClient | None,
 ) -> dict[str, Any]:
-    fallback = decide_merge_rule(new_experience, similar_existing)
-
     if not similar_existing:
-        return fallback
+        return {
+            "merge_decision": "insert_new",
+            "target_memory_ids": [],
+            "reason": "no embedding-similar existing memory",
+            "merged_experience": new_experience.to_dict(),
+        }
 
-    if not llm_client.available():
-        return fallback
+    if llm_client is None or not llm_client.available():
+        raise RuntimeError(
+            "Experience merge LLM is unavailable while merge candidates exist"
+        )
 
     payload = {
         "new_experience": new_experience.to_dict(),
         "similar_existing": [item.to_dict() for item in similar_existing],
-        "rule_decision": fallback,
         "instruction": (
             "Decide whether to merge the new experience into one retrieved "
             "candidate or insert it as a separate new memory. "
@@ -145,22 +160,31 @@ def decide_merge_llm(
         ),
     }
 
-    parsed, _, _ = parse_validate_repair(
-        llm_client.generate_json(experience_merge_prompt(payload), max_tokens=1200),
-        EXPERIENCE_MERGE_SCHEMA,
-        fallback,
+    raw_output = llm_client.generate_json(
+        experience_merge_prompt(payload),
+        max_tokens=1200,
     )
+    parsed, ok, errors = parse_validate_repair(
+        raw_output,
+        EXPERIENCE_MERGE_SCHEMA,
+        {},
+    )
+    if not str(raw_output or "").strip() or not ok:
+        raise RuntimeError(
+            "Experience merge LLM returned invalid output: "
+            f"errors={errors}, raw_output={raw_output!r}"
+        )
 
     decision = str(parsed.get("merge_decision") or "insert_new")
     if decision not in {"insert_new", "merge"}:
-        logger.warning(
-            "LLM merge returned invalid decision=%r; falling back to rule", decision
+        raise RuntimeError(
+            f"Experience merge LLM returned invalid decision={decision!r}"
         )
-        return fallback
 
     if decision == "merge" and not isinstance(parsed.get("merged_experience"), dict):
-        logger.warning("LLM merge decided 'merge' but merged_experience is not dict; fallback")
-        return fallback
+        raise RuntimeError(
+            "Experience merge LLM decided merge but merged_experience is not a dict"
+        )
 
     if decision == "merge":
         candidate_ids = {item.memory_id for item in similar_existing}
@@ -169,9 +193,8 @@ def decide_merge_llm(
         merged = parsed.get("merged_experience") or {}
         merged_id = str(merged.get("memory_id") or "")
         if not target_id or merged_id != target_id:
-            logger.warning(
-                "LLM merge did not preserve a retrieved candidate memory_id; fallback"
+            raise RuntimeError(
+                "Experience merge LLM did not preserve a retrieved candidate memory_id"
             )
-            return fallback
 
     return parsed

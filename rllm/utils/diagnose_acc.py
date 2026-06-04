@@ -430,8 +430,11 @@ def _format_evaluation_report(
     summary: Dict[str, Any],
     rows: List[Dict[str, Any]],
     print_examples: int = -1,
+    report_header: str = "",
 ) -> str:
     lines: list[str] = []
+    if report_header:
+        lines.append(report_header.strip())
     lines.append("\n===== SUMMARY =====")
     for k, v in summary.items():
         lines.append(f"{k}: {v}")
@@ -471,6 +474,7 @@ def evaluate_doctor_results(
     print_examples: int = -1,
     example_text_chars: int = 0,
     log_path: str | Path | None = None,
+    report_header: str = "",
 ) -> Dict[str, Any]:
     rows = [
         evaluate_one(res, task, raw_text_chars=example_text_chars)
@@ -479,7 +483,12 @@ def evaluate_doctor_results(
     summary = summarize(rows)
     payload = {"summary": summary, "rows": rows}
 
-    report = _format_evaluation_report(summary, rows, print_examples=print_examples)
+    report = _format_evaluation_report(
+        summary,
+        rows,
+        print_examples=print_examples,
+        report_header=report_header,
+    )
     print(report)
 
     if log_path:

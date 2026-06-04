@@ -200,6 +200,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         memory_embedding_model: str = "",
         memory_embedding_base_url: str = "",
         memory_embedding_api_key: str = "",
+        retrieval_mode: str = "fielded_bm25",
         strict_memory_errors: bool = True,
         no_cxr: bool = False,
         **kwargs: Any,
@@ -229,6 +230,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         self.disable_skill_memory = disable_skill_memory
         self.disable_knowledge_memory = disable_knowledge_memory
         self.disable_memory_write = disable_memory_write
+        self.retrieval_mode = retrieval_mode
         self.strict_memory_errors = strict_memory_errors
         self.no_cxr = no_cxr
         self.memory_llm = LLMClient(
@@ -276,6 +278,8 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         try:
             return method(*args, **kwargs)
         except TypeError:
+            if self.strict_memory_errors:
+                raise
             if args:
                 try:
                     return method(args[0])
@@ -297,6 +301,19 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         if observation is None and "obs" in kwargs:
             observation = kwargs["obs"]
         info = info or kwargs.get("info") or {}
+
+        # A no-memory baseline must bypass all memory bookkeeping, LLM calls,
+        # traces, and offline writes.
+        if self.disable_memory:
+            return self._call_base(
+                "update_from_env",
+                observation,
+                reward=reward,
+                done=done,
+                info=info,
+                **kwargs,
+            )
+
         action_for_case_state = dict(self.pending_selected_action or {})
 
         self._finalize_pending_turn(
@@ -335,6 +352,10 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 )
                 if llm_cc:
                     initial_case_state.chief_complaint = llm_cc
+                elif self.strict_memory_errors:
+                    raise RuntimeError(
+                        "Memory LLM failed to construct a chief complaint from initial information"
+                    )
             if self.strict_memory_errors and not initial_case_state.case_id:
                 raise RuntimeError("Memory CaseState initialization failed: missing case_id")
             self.episode_id = self._episode_id_from_bundle(self._case_bundle, initial_case_state.case_id)
@@ -429,7 +450,33 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
         if model_output is None and "output" in kwargs:
             model_output = kwargs["output"]
 
-        parsed_action = self._parse_selected_action(model_output)
+        if self.disable_memory:
+            base_result = self._call_base("update_from_model", model_output, **kwargs)
+            return base_result if base_result is not None else model_output
+
+        native_calls = kwargs.get("native_tool_calls") or []
+        normalized_native_calls = self._normalize_native_tool_calls(native_calls)
+        if normalized_native_calls:
+            function = normalized_native_calls[-1].get("function") or {}
+            raw_arguments = function.get("arguments") or "{}"
+            if isinstance(raw_arguments, str):
+                try:
+                    arguments = json.loads(raw_arguments)
+                except Exception:
+                    arguments = {"raw": raw_arguments}
+            else:
+                arguments = raw_arguments if isinstance(raw_arguments, dict) else {}
+            tool_name = str(function.get("name") or "")
+            parsed_action = {
+                "action_type": self._normalize_action_type(tool_name),
+                "action_label": str(arguments),
+                "raw": json.dumps(
+                    {"name": tool_name, "arguments": arguments},
+                    ensure_ascii=False,
+                ),
+            }
+        else:
+            parsed_action = self._parse_selected_action(model_output)
         self.pending_selected_action = parsed_action
 
         base_result = self._call_base("update_from_model", model_output, **kwargs)
@@ -512,7 +559,11 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                 disable_experience_memory=self.disable_experience_memory,
                 disable_skill_memory=self.disable_skill_memory,
                 disable_knowledge_memory=self.disable_knowledge_memory,
-                embedding_client=self.memory_embedding if self.memory_embedding.available() else None,
+                embedding_client=(
+                    self.memory_embedding
+                    if self.retrieval_mode == "embedding"
+                    else None
+                ),
             )
             if memory_debug is not None:
                 memory_debug["retrieval"] = {
@@ -521,15 +572,7 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
                     "disable_skill_memory": self.disable_skill_memory,
                     "disable_knowledge_memory": self.disable_knowledge_memory,
                     "embedding_available": self.memory_embedding.available(),
-                    "retrieval_mode": (
-                        "embedding"
-                        if self.memory_embedding.available()
-                        else str(
-                            os.environ.get("MEDGYM_RETRIEVAL_FALLBACK_SCORING")
-                            or RETRIEVAL_CONFIG.get("fallback_scoring")
-                            or "cosine"
-                        )
-                    ),
+                    "retrieval_mode": self.retrieval_mode,
                     "result": self.latest_retrieval.to_dict(),
                 }
                 memory_debug["applicability"] = {}
@@ -834,6 +877,9 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
     def _finalize_episode_if_needed(self, reward: float, info: dict[str, Any]) -> None:
         if self.episode_finalized:
             return
+        if self.disable_memory:
+            self.episode_finalized = True
+            return
         if self.case_state is None:
             logger.warning(
                 "Episode %s done but case_state is None — skipping offline write",
@@ -896,6 +942,8 @@ class MemoryWrappedMedicalAgent(_BaseAgent):
             experience_extraction_mode=self.experience_extraction_mode,
             experience_merge_mode=self.experience_merge_mode,
             llm_client=self.memory_llm,
+            embedding_client=self.memory_embedding,
+            strict=self.strict_memory_errors,
         )
         self.episode_finalized = True
 

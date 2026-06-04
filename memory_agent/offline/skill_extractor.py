@@ -148,13 +148,19 @@ def extract_skills_from_distilled_episode(
     distilled_episode: DistilledEpisode | dict[str, Any],
     mode: str = "llm",
     llm_client: LLMClient | None = None,
+    strict: bool = True,
 ) -> list[SkillCard]:
     distilled = _as_distilled(distilled_episode)
     feedback = distilled.feedback if isinstance(distilled.feedback, dict) else {}
     if not bool(feedback.get("success", False)):
         return []
 
-    if mode != "llm" or llm_client is None or not llm_client.available():
+    if mode != "llm":
+        logger.warning("Skill extraction skipped — unsupported mode=%s", mode)
+        return []
+    if llm_client is None or not llm_client.available():
+        if strict:
+            raise RuntimeError("Skill extraction LLM is unavailable")
         logger.warning(
             "Skill extraction skipped — llm_client available=%s, mode=%s",
             llm_client.available() if llm_client else False,
@@ -190,14 +196,23 @@ def extract_skills_from_distilled_episode(
         "max_skills": MAX_SKILLS_PER_EPISODE,
     }
 
-    parsed, _, _ = parse_validate_repair(
-        llm_client.generate_json(
-            skill_extraction_prompt(payload),
-            max_tokens=MAX_SKILL_EXTRACTION_OUTPUT_TOKENS,
-        ),
+    raw_output = llm_client.generate_json(
+        skill_extraction_prompt(payload),
+        max_tokens=MAX_SKILL_EXTRACTION_OUTPUT_TOKENS,
+    )
+    parsed, ok, errors = parse_validate_repair(
+        raw_output,
         SKILL_EXTRACTION_SCHEMA,
         {"skills": []},
     )
+    if not str(raw_output or "").strip() or str(raw_output).strip() == "{}" or not ok:
+        message = (
+            f"Skill extraction LLM output invalid for episode={distilled.episode_id!r}: "
+            f"errors={errors}, raw_output={raw_output!r}"
+        )
+        if strict:
+            raise RuntimeError(message)
+        logger.warning(message)
 
     skills: list[SkillCard] = []
     for raw in (parsed.get("skills") or [])[:MAX_SKILLS_PER_EPISODE]:

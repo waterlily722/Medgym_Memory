@@ -333,7 +333,7 @@ def build_case_memory_llm(
                 f"CaseMemory LLM output invalid for case_id={case_state.case_id!r} "
                 f"turn_id={case_state.turn_id}: errors={errors}, raw_output={raw_output!r}"
             )
-            if strict and not raw_empty:
+            if strict:
                 raise RuntimeError(message)
             parsed = fallback_memory.to_dict()
         else:
@@ -369,6 +369,8 @@ def build_case_memory_llm(
         debug["case_memory_used_fallback"] = True
         debug["case_memory_fallback_reason"] = "llm_unavailable"
         debug["final_case_memory"] = fallback_memory.to_dict()
+    if strict:
+        raise RuntimeError("CaseMemory LLM mode requested but memory LLM is unavailable")
     return fallback_memory
 
 
@@ -536,7 +538,7 @@ def build_memory_query_llm(
             f"Memory query LLM output invalid for case_id={case_state.case_id!r} "
             f"turn_id={case_state.turn_id}: errors={errors}, raw_output={raw_output!r}"
         )
-        if strict and not raw_empty:
+        if strict:
             raise RuntimeError(message)
         query_text = rule_query.query_text
         skill_query_text = rule_query.skill_query_text

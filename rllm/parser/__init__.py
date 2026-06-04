@@ -1,19 +1,21 @@
 from __future__ import annotations
 
 from rllm.parser.chat_template_parser import ChatTemplateParser
-from rllm.parser.tool_parser import QwenToolParser, R1ToolParser, ToolParser
+from rllm.parser.tool_parser import NativeToolParser, QwenToolParser, R1ToolParser, ToolParser
 
 __all__ = [
     "ChatTemplateParser",
     "ToolParser",
     "R1ToolParser",
     "QwenToolParser",
+    "NativeToolParser",
     "get_tool_parser",
 ]
 
 PARSER_REGISTRY = {
     "r1": R1ToolParser,
     "qwen": QwenToolParser,
+    "native": NativeToolParser,
 }
 
 

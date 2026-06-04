@@ -624,6 +624,10 @@ class DialogTool(Tool):
                 resp["context"] = context
                 return ToolOutput(name=self.name, output=resp, metadata={"mode": "rpc"})
             except Exception as e:
+                if str(os.getenv("RLLM_STRICT_PATIENT_ERRORS", "")).strip().lower() in {
+                    "1", "true", "yes", "on",
+                }:
+                    raise
                 return ToolOutput(name=self.name, error=str(e), metadata={"mode": "rpc"})
 
         if question in self.answer_map:
@@ -637,6 +641,12 @@ class DialogTool(Tool):
 
         ehr = self._load_case_ehr(case_id=case_id, context=context)
         if not isinstance(ehr, dict):
+            if str(os.getenv("RLLM_STRICT_PATIENT_ERRORS", "")).strip().lower() in {
+                "1", "true", "yes", "on",
+            }:
+                raise RuntimeError(
+                    f"Patient-agent input is missing EHR data for case_id={case_id!r}"
+                )
             ans = self.default_answer
             context = _append_dialogue_turn(context, question, ans, max_turns=self.max_history_turns)
             return ToolOutput(
@@ -659,6 +669,13 @@ class DialogTool(Tool):
         # print(f"###### knowledge_obj ######:\n{knowledge_obj}")
 
         llm = self._get_llm()
+        if llm is None and str(os.getenv("RLLM_STRICT_PATIENT_ERRORS", "")).strip().lower() in {
+            "1", "true", "yes", "on",
+        }:
+            raise RuntimeError(
+                "Patient-agent model is not configured; set RLLM_PATIENT_MODEL and "
+                "RLLM_PATIENT_BASE_URL"
+            )
 
         try:
             ans, dbg = patient_answer(
@@ -675,6 +692,12 @@ class DialogTool(Tool):
             dbg.setdefault("patient_model", self.patient_model_id)
 
         except Exception as e:
+            if str(os.getenv("RLLM_STRICT_PATIENT_ERRORS", "")).strip().lower() in {
+                "1", "true", "yes", "on",
+            }:
+                raise RuntimeError(
+                    f"Patient-agent request failed: {type(e).__name__}: {e}"
+                ) from e
             # print(f"##### TRY PATIENT_ANSWER Failed #####\n{e}")
             # exit()
             ans = self.default_answer
@@ -684,7 +707,12 @@ class DialogTool(Tool):
                 "patient_model": self.patient_model_id,
             }
 
-        ans = strip_think(ans).strip() or self.default_answer
+        ans = strip_think(ans).strip()
+        if not ans and str(os.getenv("RLLM_STRICT_PATIENT_ERRORS", "")).strip().lower() in {
+            "1", "true", "yes", "on",
+        }:
+            raise RuntimeError("Patient agent returned an empty answer")
+        ans = ans or self.default_answer
         context = _append_dialogue_turn(context, question, ans, max_turns=self.max_history_turns)
 
         return ToolOutput(

@@ -13,6 +13,7 @@ from __future__ import annotations
 import json
 import re
 import logging
+import os
 from typing import Any
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
@@ -115,6 +116,10 @@ def _call_judge_api(
         with urlopen(req, timeout=timeout) as resp:
             data = json.loads(resp.read().decode("utf-8"))
     except (URLError, HTTPError, json.JSONDecodeError, KeyError, TypeError) as e:
+        if str(os.getenv("RLLM_STRICT_JUDGE_ERRORS", "")).strip().lower() in {
+            "1", "true", "yes", "on",
+        }:
+            raise RuntimeError(f"Judge API call failed: {e}") from e
         logger.warning("Judge API call failed: %s", e)
         return False, str(e)
 
