@@ -51,7 +51,7 @@ class LLMClient:
     def generate_json(
         self,
         prompt: str,
-        max_tokens: int = 1200,
+        max_tokens: int = 8192,
         temperature: float | None = None,
     ) -> str:
         if not self.available():

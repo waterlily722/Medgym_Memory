@@ -104,15 +104,15 @@ vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
 
 ```bash
 conda activate vllm_env
-export CUDA_VISIBLE_DEVICES=3
+export CUDA_VISIBLE_DEVICES=0,3
 vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --served-model-name patient_agent \
   --host 0.0.0.0 \
   --port 30001 \
   --dtype bfloat16 \
-  --max-model-len 16224 \
-  --tensor-parallel-size 1 \
-  --gpu-memory-utilization 0.9 \
+  --max-model-len 64k \
+  --tensor-parallel-size 2 \
+  --gpu-memory-utilization 0.8 \
   --trust-remote-code
 ```
 
@@ -138,13 +138,13 @@ conda activate vllm_env
 export CUDA_VISIBLE_DEVICES=4,5
 vllm serve /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --served-model-name memory_llm \
-  --host 0.0.0.0 \
-  --port 30003 \
-  --dtype bfloat16 \
-  --max-model-len 64k \
-  --tensor-parallel-size 2 \
-  --gpu-memory-utilization 0.9 \
-  --trust-remote-code
+    --host 0.0.0.0 \
+      --port 30003 \
+        --dtype bfloat16 \
+          --max-model-len 64k \
+            --tensor-parallel-size 2 \
+              --gpu-memory-utilization 0.9 \
+                --trust-remote-code
 ```
 
 ### 验证服务就绪

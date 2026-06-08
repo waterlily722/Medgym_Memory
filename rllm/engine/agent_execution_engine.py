@@ -57,7 +57,7 @@ class AgentExecutionEngine:
         retry_limit=3,
         max_steps=15,
         max_response_length=8192,
-        max_prompt_length=1024,
+        max_prompt_length=4096,
         config=None,
         agent_class=None,
         env_class=None,
@@ -447,6 +447,35 @@ class AgentExecutionEngine:
                     response_tokens = res.response_tokens
                     response_masks = res.response_masks
 
+                final_tool_call = {
+                    "id": f"max_step_diagnosis_{uuid.uuid4().hex}",
+                    "type": "function",
+                    "function": {
+                        "name": "diagnosis",
+                        "arguments": {"final_response": res.final_response},
+                    },
+                }
+                final_action = agent.update_from_model(
+                    res.final_response,
+                    native_tool_calls=[final_tool_call],
+                ).action
+                next_observation, reward, done, info = await asyncio.wait_for(
+                    loop.run_in_executor(self.executor, env.step, final_action),
+                    timeout=max(1.0, self.trajectory_timeout - total_time),
+                )
+                if not done:
+                    raise RuntimeError(
+                        "Max-step diagnosis submission did not terminate the environment"
+                    )
+                info["max_steps"] = self.max_steps
+                info["cur_tokens"] = response_token_len
+                agent.update_from_env(
+                    observation=next_observation,
+                    reward=reward,
+                    done=True,
+                    info=info,
+                )
+
                 cur_step = agent.get_current_state()
                 cur_step.done = True
                 break
@@ -746,8 +775,28 @@ class AgentExecutionEngine:
                     self.agents[index] = self.agent_class(**self.agent_args)
                     assert self.agents[index] is not None and isinstance(self.agents[index], BaseAgent), "Agent is not initalized or not inheriting from BaseAgent"
                     self.agents[index].trajectory.task = task  # type: ignore
-                    res = await self.run_agent_trajectory_async(index, application_id=task_id)
-                    res.task = task
+                    try:
+                        res = await self.run_agent_trajectory_async(index, application_id=task_id)
+                        res.task = task
+                    except Exception as e:
+                        import traceback
+                        case_id = task.get("case_id", task_id)
+                        colorful_print(
+                            f"Trajectory {task_id} (case_id={case_id}) failed: "
+                            f"{type(e).__name__}: {e}",
+                            "red",
+                        )
+                        # 构造一个空 trajectory 占位，标记 error
+                        from rllm.agents.agent import Trajectory
+                        res = Trajectory(
+                            uid=f"error_{task_id}",
+                            name="agent",
+                            task=task,
+                            steps=[],
+                            reward=0.0,
+                            info={"error": f"{type(e).__name__}: {e}", "error_traceback": traceback.format_exc()},
+                        )
+                        res.task = task
                     completed += 1
                     colorful_print(f"Progress: {completed}/{total} trajectories completed", "cyan")
                     return task_id, res

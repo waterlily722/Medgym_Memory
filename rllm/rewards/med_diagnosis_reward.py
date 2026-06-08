@@ -336,19 +336,33 @@ def med_diagnosis_reward(
     if isinstance(action, Action):
         action = action.action
     if isinstance(action, list):
-        # 若传入的是 raw_action (tool_calls list)，尝试抽出 finish 的 response
+        # 若传入的是 raw_action (tool_calls list)，抽出最终提交内容。
         for item in action:
             if isinstance(item, dict):
                 fn = item.get("function") or {}
-                if fn.get("name") == "finish":
+                tool_name = fn.get("name")
+                if tool_name in {"finish", "diagnosis"}:
                     args = fn.get("arguments")
                     if isinstance(args, dict):
-                        action = str(args.get("response", ""))
+                        action = str(
+                            args.get("final_response")
+                            or args.get("diagnosis")
+                            or args.get("final_diagnosis")
+                            or args.get("response")
+                            or ""
+                        )
                         break
                     if isinstance(args, str):
                         import json
                         try:
-                            action = str(json.loads(args).get("response", ""))
+                            parsed_args = json.loads(args)
+                            action = str(
+                                parsed_args.get("final_response")
+                                or parsed_args.get("diagnosis")
+                                or parsed_args.get("final_diagnosis")
+                                or parsed_args.get("response")
+                                or ""
+                            )
                         except Exception:
                             action = args
                         break

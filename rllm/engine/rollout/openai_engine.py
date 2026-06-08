@@ -56,17 +56,20 @@ class OpenAIEngine(RolloutEngine):
         image.save(buffered, format="PNG")
         return base64.b64encode(buffered.getvalue()).decode()
 
-    def _convert_messages_to_openai_format(self, messages: list[dict]) -> list[dict]:
+    def _convert_messages_to_openai_format(self, messages: list[dict], strip_tool_messages: bool = False) -> list[dict]:
         """Convert messages from rllm format to OpenAI multimodal format.
         - If message has 'images' (PIL list), build content list from them.
         - If message['content'] is already a list (e.g. CXR tool → user message with image_url parts), pass through.
         - XML tool-call agents store environment outputs as role=tool, but chat
           APIs require role=tool only after native OpenAI tool_calls. Convert
           those tool outputs back into user-visible XML text for compatibility.
+        - When strip_tool_messages=True, always convert role=tool to role=user
+          (used when tools are intentionally omitted, e.g. tool_choice="none").
         """
+        convert_tool_messages = strip_tool_messages or not self.tools
         converted_messages = []
         for message in messages:
-            if message.get("role") == "tool" and not self.tools:
+            if message.get("role") == "tool" and convert_tool_messages:
                 content = message.get("content") or ""
                 converted_messages.append(
                     {
@@ -87,6 +90,34 @@ class OpenAIEngine(RolloutEngine):
                 converted_messages.append(message)
 
         return converted_messages
+
+    @staticmethod
+    def _validate_native_tool_history(messages: list[dict]) -> None:
+        """Require every assistant tool call to be answered by adjacent tool messages."""
+        for index, message in enumerate(messages):
+            tool_calls = message.get("tool_calls") or []
+            if message.get("role") != "assistant" or not tool_calls:
+                continue
+
+            expected_ids = [str(call.get("id") or "") for call in tool_calls]
+            if any(not call_id for call_id in expected_ids):
+                raise RuntimeError(
+                    f"Assistant tool_calls message at index {index} contains a missing tool_call_id"
+                )
+
+            received_ids: list[str] = []
+            cursor = index + 1
+            while cursor < len(messages) and messages[cursor].get("role") == "tool":
+                received_ids.append(str(messages[cursor].get("tool_call_id") or ""))
+                cursor += 1
+
+            if sorted(received_ids) != sorted(expected_ids):
+                next_role = messages[index + 1].get("role") if index + 1 < len(messages) else "<end>"
+                raise RuntimeError(
+                    "Invalid native tool-call history before API request: "
+                    f"assistant message index={index}, expected tool_call_ids={expected_ids}, "
+                    f"adjacent received tool_call_ids={received_ids}, next_role={next_role!r}"
+                )
 
     def _prepare_max_tokens_param(self, sampling_params: dict, prompt_length: int = None) -> dict:
         """Prepare max tokens parameter for API call (supports O3's max_completion_tokens)."""
@@ -118,8 +149,22 @@ class OpenAIEngine(RolloutEngine):
             "required" if request_tools else None,
         )
 
+        # When tool_choice="none", strip tools from the request entirely.
+        # Some providers (e.g. DeepSeek) ignore tool_choice="none" and still
+        # call tools if tools are present, returning non-text output (DSML).
+        # Removing tools forces a pure text completion.  We must also convert
+        # any role=tool history messages to role=user so the API accepts them.
+        no_tools_mode = request_tool_choice == "none"
+        if no_tools_mode:
+            request_tools = []
+            request_tool_choice = None
+
         create_params = self._prepare_max_tokens_param(sampling_params)
-        converted_messages = self._convert_messages_to_openai_format(messages)
+        converted_messages = self._convert_messages_to_openai_format(
+            messages, strip_tool_messages=no_tools_mode
+        )
+        if request_tools:
+            self._validate_native_tool_history(converted_messages)
 
         retries = self.api_retries
         while retries > 0:
@@ -144,9 +189,9 @@ class OpenAIEngine(RolloutEngine):
 
                 # Build text with reasoning if available, otherwise use content
                 if reasoning:
-                    text = f"{THOUGHT_DELIMITER_START}\n{reasoning}\n{THOUGHT_DELIMITER_END}\n\n{content}"
+                    text = f"{THOUGHT_DELIMITER_START}\n{reasoning}\n{THOUGHT_DELIMITER_END}\n\n{content or ''}"
                 else:
-                    text = content
+                    text = content or ""
 
                 prompt_length = response.usage.prompt_tokens
                 completion_length = response.usage.completion_tokens
@@ -174,6 +219,18 @@ class OpenAIEngine(RolloutEngine):
                 print("Sleep for 5 seconds for API limit.")
                 await asyncio.sleep(5)
 
+            except openai.APIStatusError as e:
+                status_code = int(getattr(e, "status_code", 0) or 0)
+                if 400 <= status_code < 500 and status_code not in {408, 409, 429}:
+                    raise RuntimeError(
+                        f"Non-retryable chat-completion error ({status_code}): {e}"
+                    ) from e
+                retries -= 1
+                if retries == 0:
+                    raise Exception(f"API error after retries: {e}") from e
+                print(f"Retryable API error: {e}, retrying...")
+                await asyncio.sleep(1)
+
             except Exception as e:
                 retries -= 1
                 if retries == 0:
@@ -189,6 +246,9 @@ class OpenAIEngine(RolloutEngine):
 
         sampling_params = self.sampling_params.copy()
         sampling_params.update(kwargs)
+        # completion 端点不支持 tool_choice / tools，静默丢弃
+        sampling_params.pop("tool_choice", None)
+        sampling_params.pop("tools", None)
 
         if isinstance(prompt, list):
             prompt_ids = prompt

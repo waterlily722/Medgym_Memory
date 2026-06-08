@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import fcntl
 import json
 import logging
 from pathlib import Path
@@ -46,19 +47,25 @@ class JsonMemoryStore:
         row = self._to_row(item)
         memory_id = self._memory_id(row)
 
-        rows = self._read_raw()
-        replaced = False
+        with self.path.open("a", encoding="utf-8") as lock_file:
+            fcntl.flock(lock_file, fcntl.LOCK_EX)
+            try:
+                rows = self._read_raw()
+                replaced = False
 
-        for index, existing in enumerate(rows):
-            if str(existing.get("memory_id") or "") == memory_id:
-                rows[index] = row
-                replaced = True
-                break
+                for index, existing in enumerate(rows):
+                    if str(existing.get("memory_id") or "") == memory_id:
+                        rows[index] = row
+                        replaced = True
+                        break
 
-        if not replaced:
-            rows.append(row)
+                if not replaced:
+                    rows.append(row)
 
-        self._write_raw(rows)
+                self._write_raw(rows)
+            finally:
+                fcntl.flock(lock_file, fcntl.LOCK_UN)
+
         return item
 
     def find_by_id(self, memory_id: str) -> Any | None:

@@ -77,8 +77,8 @@ python run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 200 \
-  --repeat_k 1 \
+  --max_cases 3470 \
+  --repeat_k 5 \
   --no_cxr \
   --parser_name qwen \
   --trace_tag qwen_no_memory \
@@ -114,7 +114,7 @@ python run_med_with_tool.py \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --base_url http://127.0.0.1:30000/v1 \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 200 \
+  --max_cases 500 \
   --repeat_k 1 \
   --no_cxr \
   --parser_name qwen \
@@ -261,7 +261,7 @@ Chat Completions endpoint。
 
 ```bash
 cd /oral_llm/xiweidai/med_env/code/medgym_memory
-export DEEPSEEK_API_KEY="sk-..."
+export DEEPSEEK_API_KEY="sk-xxx"
 export RLLM_PATIENT_BASE_URL="https://api.deepseek.com/v1"
 export RLLM_PATIENT_MODEL="deepseek-chat"
 export RLLM_PATIENT_API_KEY="$DEEPSEEK_API_KEY"
@@ -284,9 +284,9 @@ python run_med_with_tool.py \
   --model deepseek-chat \
   --tokenizer_path /oral_llm/xiweidai/med_env/models/Qwen3-VL-8B-Instruct \
   --case_dir /oral_llm/xiweidai/med_env/bench \
-  --max_cases 200 \
+  --max_cases 5 \
   --repeat_k 1 \
-  --max_steps 15 \
+  --max_steps 20 \
   --no_cxr \
   --execution_mode serial \
   --trace_tag ds_no_memory \
@@ -365,7 +365,8 @@ DeepSeek 默认配置：
 | `--enable_memory` | 启用 memory wrapper |
 | `--log_memory_trace` | 保存每个 case 的 memory trace |
 | `--inject_case_memory` | 每轮将 compact CaseMemory 注入 doctor agent 的 observation（主诉、诊断目标、已获证据、prior summary） |
-| `--trace_tag` | memory trace 和 trajectory 目录后缀，用于区分不同实验，默认无后缀 |
+| `--trace_tag` | 实验标签；用于区分 trajectory，并默认作为 memory store 子目录名 |
+| `--memory_root_by_trace_tag` / `--no-memory-root-by-trace-tag` | 默认按 `trace_tag` 隔离整个 memory store；关闭后多个实验共享 `memory_root` |
 | `--disable_memory_write` | 冻结 memory store，只检索不写入 |
 | `--retrieval_mode` | 在线检索方式：`fielded_bm25` / `cosine` / `embedding`，默认 `fielded_bm25` |
 | `--merge_scoring_mode` | 离线 merge 候选召回方式，默认 `same_as_retrieval` |
@@ -387,11 +388,21 @@ DeepSeek 默认配置：
 
 - run log：`logs/run_*.log`
 - summary log：`logs/summary_*.log`
-- trajectory：`trajectories/trajectory_*.json`（启用 `--trace_tag` 时输出到 `trajectories/<tag>/`）
-- memory trace：`memory_agent/memory_data/trace/*.json`（启用 `--trace_tag` 时输出到 `memory_agent/memory_data/trace_<tag>/`）
-- experience memory：`memory_agent/memory_data/experience_memory.jsonl`
-- skill memory：`memory_agent/memory_data/skill_memory.jsonl`
-- knowledge memory：`memory_agent/memory_data/knowledge_memory.jsonl`
+- trajectory：`trajectories/trajectory_*.json`（设置 `--trace_tag TAG` 后输出到 `trajectories/TAG/`）
+- memory store：设置 `--trace_tag TAG` 后，默认整体输出到 `memory_agent/memory_data/TAG/`
+- memory trace：`memory_agent/memory_data/TAG/trace/*.json`
+- experience memory：`memory_agent/memory_data/TAG/experience_memory.jsonl`
+- skill memory：`memory_agent/memory_data/TAG/skill_memory.jsonl`
+- knowledge memory：`memory_agent/memory_data/TAG/knowledge_memory.jsonl`
+- embedding cache：`memory_agent/memory_data/TAG/.embedding_cache/embeddings.jsonl`
+
+如果需要多个 `trace_tag` 检索和更新同一个共享 memory store，添加
+`--no-memory-root-by-trace-tag`。此时 memory 文件继续写入 `--memory_root`
+指定的根目录，memory trace 使用 `trace_<tag>/` 区分。
+
+按 tag 隔离时不会自动复制根目录中已有的 memory。新 tag 第一次运行会从空
+store 开始；如需继续使用根目录中的已有 memory，请使用
+`--no-memory-root-by-trace-tag` 或显式准备对应 tag 子目录。
 
 新的 run log 和 summary log 使用相同的实验时间戳，并在文件开头记录
 `EXPERIMENT CONFIG`：完整脱敏命令、解析后的参数、实际生效的服务配置、

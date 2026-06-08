@@ -218,7 +218,7 @@ def _llm_memory_assessment(
             debug["final_assessment"] = rule_assessment.to_dict()
         return rule_assessment
 
-    raw_output = llm_client.generate_json(prompt, max_tokens=900)
+    raw_output = llm_client.generate_json(prompt, max_tokens=512)
     raw_empty = not str(raw_output or "").strip() or str(raw_output or "").strip() == "{}"
     parsed, ok, errors = parse_validate_repair(
         raw_output,

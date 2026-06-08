@@ -33,7 +33,7 @@ MERGE_CONFIG = {
     "action_threshold": 0.75,
     "boundary_threshold": 0.50,
     # Only expose the strongest same-direction memories to rule/LLM merge.
-    "candidate_top_k": 5,
+    "candidate_top_k": 3,
     "candidate_min_score": 0.70,
 }
 
@@ -99,9 +99,10 @@ TRACE_CONFIG = {
 }
 
 LLM_CONFIG = {
-    "experience_extraction_max_output_tokens": 2000,
+    "experience_extraction_max_output_tokens": 2048,
     "experience_extraction_max_turns": 15,
     "experience_extraction_max_text_chars": 1600,
+    "skill_extraction_max_output_tokens": 2048,
 }
 
 # Guidance injection settings

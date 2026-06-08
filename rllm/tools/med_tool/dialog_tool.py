@@ -291,7 +291,7 @@ def llm_context_answerable(
         {"role": "user", "content": f"Source: {source}\n\nDoctor question:\n{question}\n\nText:\n{context or '(empty)'}"},
     ]
 
-    out = judge_model.chat(msgs, temperature=0.0, max_tokens=2048).upper()
+    out = judge_model.chat(msgs, temperature=0.0, max_tokens=32).upper()
     out = out.splitlines()[-1].strip() if out else ""
     return out.startswith("YES")
 

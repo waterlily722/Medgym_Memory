@@ -321,7 +321,7 @@ def build_case_memory_llm(
             debug["case_memory_prompt"] = prompt
             debug["case_memory_payload"] = payload
 
-        raw_output = llm_client.generate_json(prompt, max_tokens=1200)
+        raw_output = llm_client.generate_json(prompt, max_tokens=512)
         raw_empty = not str(raw_output or "").strip() or str(raw_output or "").strip() == "{}"
         parsed, ok, errors = parse_validate_repair(
             raw_output,
@@ -524,7 +524,7 @@ def build_memory_query_llm(
             debug["final_query"] = rule_query.to_dict()
         return rule_query
 
-    raw_output = llm_client.generate_json(prompt, max_tokens=800)
+    raw_output = llm_client.generate_json(prompt, max_tokens=8192)
     raw_empty = not str(raw_output or "").strip() or str(raw_output or "").strip() == "{}"
     parsed, ok, errors = parse_validate_repair(
         raw_output,

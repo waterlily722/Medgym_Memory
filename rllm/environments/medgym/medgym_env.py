@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import json
 import multiprocessing as mp
-import os
 from typing import Any, Optional
 
 from rllm.environments.base.base_env import BaseEnv
@@ -101,8 +100,9 @@ class MedicalDialogueEnv(BaseEnv):
         context_injected_tool_names = set(config.get("context_injected_tool_names", ["cxr"]))
         parallel_tool_calls = config["parallel_tool_calls"]
         max_tool_workers = config["max_tool_workers"]
-        max_steps = int(config["max_steps"])
-
+        # env 的 max_steps 要比 engine 多 1，否则 env 侧 reached_max 会先触发 finalize，
+        # 导致 engine 的 auto-diagnosis 逻辑永远到不了。
+        max_steps_env = int(config.get("max_steps", 10)) + 1
         # init tools
         if tool_map is not None:
             tool_runner = MultiTool(tool_map=tool_map)
@@ -146,8 +146,6 @@ class MedicalDialogueEnv(BaseEnv):
         tool_context: dict = init_tool_context(task)
         process_turns: list[dict] = []  # 用于过程奖励：每次 ask_patient 的 (dialogue_before, question, answer)
 
-        step_count = 0
-
         def simulate_patient_reply(question: str) -> str:
             """
             fallback 用：优先从 task["patient_answers"] 里取
@@ -163,7 +161,8 @@ class MedicalDialogueEnv(BaseEnv):
         def extract_finish_text(tool_calls: list[dict]) -> Optional[str]:
             for tc in tool_calls:
                 fn = tc.get("function", {})
-                if fn.get("name") == "finish":
+                tool_name = fn.get("name")
+                if tool_name in {"finish", "diagnosis"}:
                     args = fn.get("arguments", {})
                     if isinstance(args, str):
                         try:
@@ -171,6 +170,13 @@ class MedicalDialogueEnv(BaseEnv):
                         except Exception:
                             return ""
                     if isinstance(args, dict):
+                        if tool_name == "diagnosis":
+                            return str(
+                                args.get("final_response")
+                                or args.get("diagnosis")
+                                or args.get("final_diagnosis")
+                                or ""
+                            )
                         return str(args.get("response", ""))
                     return ""
             return None
@@ -257,6 +263,7 @@ class MedicalDialogueEnv(BaseEnv):
             )
 
         try:
+            step_count = 0
             while True:
                 cmd, data = conn.recv()
 
@@ -269,7 +276,7 @@ class MedicalDialogueEnv(BaseEnv):
                 elif cmd == "step":
                     action = data
                     step_count += 1
-                    reached_max = step_count >= max_steps
+                    reached_max = step_count >= max_steps_env
 
                     if isinstance(action, str):
                         if reached_max:
@@ -309,6 +316,18 @@ class MedicalDialogueEnv(BaseEnv):
 
                     ask_q = extract_ask_question(tool_calls)
                     if ask_q is not None:
+                        ask_tool_call_id = next(
+                            (
+                                str(tc.get("id") or "")
+                                for tc in tool_calls
+                                if (tc.get("function") or {}).get("name") == ask_tool_name
+                            ),
+                            "",
+                        )
+                        if not ask_tool_call_id:
+                            raise RuntimeError(
+                                f"{ask_tool_name} tool call is missing tool_call_id"
+                            )
                         try:
                             out = tool_runner(
                                 tool_name=ask_tool_name,
@@ -342,15 +361,14 @@ class MedicalDialogueEnv(BaseEnv):
                                     tool_context["dialogue"] = []
 
                         except Exception as e:
-                            if str(os.getenv("RLLM_STRICT_PATIENT_ERRORS", "")).strip().lower() in {
-                                "1", "true", "yes", "on",
-                            }:
-                                raise
-                            reply = f"ERROR calling {ask_tool_name}: {type(e).__name__}: {e}"
+                            import traceback as _tb
+                            err_detail = f"{type(e).__name__}: {e}"
+                            print(f"[medgym_env ask_patient ERROR] {err_detail}\n{_tb.format_exc()}", flush=True)
+                            reply = f"ERROR calling {ask_tool_name}: {err_detail}"
 
                         conn.send(
                             (
-                                {"question": reply},
+                                {"tool_outputs": {ask_tool_call_id: reply}},
                                 0.0,
                                 False,
                                 {
@@ -398,7 +416,17 @@ class MedicalDialogueEnv(BaseEnv):
                     conn.close()
                     break
 
-        except EOFError:
+        except Exception as e:
+            import traceback
+            err_msg = f"{type(e).__name__}: {e}\n{traceback.format_exc()}"
+            print(f"[medgym_env _run ERROR] {err_msg}", flush=True)
+            try:
+                conn.send((
+                    {}, 0.0, True,
+                    {"error": err_msg, "response": None},
+                ))
+            except Exception:
+                pass
             try:
                 conn.close()
             except Exception:

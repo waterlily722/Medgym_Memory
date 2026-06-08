@@ -162,7 +162,7 @@ def decide_merge_llm(
 
     raw_output = llm_client.generate_json(
         experience_merge_prompt(payload),
-        max_tokens=1200,
+        max_tokens=8192,
     )
     parsed, ok, errors = parse_validate_repair(
         raw_output,
@@ -193,8 +193,17 @@ def decide_merge_llm(
         merged = parsed.get("merged_experience") or {}
         merged_id = str(merged.get("memory_id") or "")
         if not target_id or merged_id != target_id:
-            raise RuntimeError(
-                "Experience merge LLM did not preserve a retrieved candidate memory_id"
+            logger.warning(
+                "Experience merge LLM did not preserve a retrieved candidate "
+                "memory_id (target_id=%r, merged_id=%r, candidates=%s). "
+                "Falling back to insert_new.",
+                target_id,
+                merged_id,
+                sorted(candidate_ids),
             )
+            decision = "insert_new"
+            parsed["merge_decision"] = "insert_new"
+            parsed["target_memory_ids"] = []
+            parsed["merged_experience"] = new_experience.to_dict()
 
     return parsed

@@ -427,7 +427,7 @@ def build_chief_complaint_with_llm(
         return ""
     prompt = _CHIEF_COMPLAINT_PROMPT.format(info=info)
     try:
-        raw = llm_client.generate_json(prompt, max_tokens=200)
+        raw = llm_client.generate_json(prompt, max_tokens=1024)
         parsed = json.loads(raw) if isinstance(raw, str) else raw
         cc = str(parsed.get("chief_complaint") or "").strip()
         if _is_valid_chief_complaint(cc):

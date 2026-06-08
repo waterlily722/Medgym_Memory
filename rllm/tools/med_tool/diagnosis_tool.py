@@ -1,7 +1,6 @@
 import time
 import re
 import logging
-import json
 from dataclasses import dataclass
 from typing import Any, Optional
 
@@ -94,9 +93,11 @@ class DiagnosisTool(Tool):
             return m.group(1).strip()
         return None
 
-    def forward(self, final_response: str | None = None, done: bool = True, print_result: bool = True, **kwargs) -> ToolOutput:
+    def forward(self, final_response: str | None = None, done: bool = True, print_result: bool = True, diagnosis: str | None = None, **kwargs) -> ToolOutput:
         try:
             diag = self.extract_boxed_diagnosis(final_response or "")
+            if not diag and diagnosis:
+                diag = diagnosis
             if not diag:
                 return ToolOutput(
                     name=self.name,
@@ -109,7 +110,7 @@ class DiagnosisTool(Tool):
             return ToolOutput(
                 name=self.name,
                 output={"diagnosis": diag, "done": bool(done)},
-                metadata={"parsed_from": "final_response"},
+                metadata={"parsed_from": "final_response" if self.extract_boxed_diagnosis(final_response or "") else "diagnosis_kwarg"},
             )
         except Exception as e:
             logger.exception("DiagnosisTool.forward failed: %s", e)
@@ -173,9 +174,9 @@ class DiagnosisTool(Tool):
                 finalize_kwargs = dict(kwargs)
                 finalize_kwargs["temperature"] = 0.0
                 finalize_kwargs["max_tokens"] = min(int(finalize_kwargs.get("max_tokens", 256)), 512)
-                finalize_kwargs["tools"] = [self.json]
-                finalize_kwargs["tool_choice"] = "required"
-
+                # 保留 tools（让 API 接受 role=tool 消息历史），但用 tool_choice="none"
+                # 强制模型输出纯文本（含 \boxed{...}），而非再次调用 tool
+                finalize_kwargs["tool_choice"] = "none"
                 t0 = time.time()
                 model_out = await self.get_model_response(prompt_messages, application_id, **finalize_kwargs)
                 dt = time.time() - t0
@@ -186,20 +187,6 @@ class DiagnosisTool(Tool):
                     final_response = str(model_out.text or "")
                 else:
                     final_response = str(model_out or "")
-
-                for call in getattr(model_out, "tool_calls", None) or []:
-                    function = getattr(call, "function", None)
-                    name = str(getattr(function, "name", "") or "")
-                    raw_arguments = getattr(function, "arguments", "{}") or "{}"
-                    if name != self.name:
-                        continue
-                    try:
-                        arguments = json.loads(raw_arguments) if isinstance(raw_arguments, str) else raw_arguments
-                    except Exception:
-                        arguments = {}
-                    if isinstance(arguments, dict):
-                        final_response = str(arguments.get("final_response") or "")
-                    break
 
                 dbg["finalize_extra_llm_call"] = True
                 dbg["finalize_extra_llm_dt"] = dt
@@ -213,10 +200,10 @@ class DiagnosisTool(Tool):
             dbg["finalize_extra_llm_call"] = False
 
         if not diag:
-            raise RuntimeError(
-                "Max-step diagnosis finalization failed to produce a valid diagnosis tool call"
-            )
-        dbg["fallback_diagnosis_used"] = False
+            diag = "UNKNOWN"
+            dbg["fallback_diagnosis_used"] = True
+        else:
+            dbg["fallback_diagnosis_used"] = False
 
         tool_out = self.forward(diagnosis=diag, final_response=final_response, done=True, print_result=True)
 

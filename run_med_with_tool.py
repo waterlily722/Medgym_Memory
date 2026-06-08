@@ -4,6 +4,7 @@ import asyncio
 import hashlib
 import json
 import os
+import re
 import shlex
 import subprocess
 import sys
@@ -35,6 +36,7 @@ DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
 DEEPSEEK_DEFAULT_MODEL = "deepseek-chat"
 QWEN_BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 QWEN_DEFAULT_MODEL = "qwen-plus"
+PATH_TAG_RE = re.compile(r"[^A-Za-z0-9_.-]+")
 
 
 class Tee:
@@ -69,6 +71,11 @@ def _redacted_command(argv: list[str]) -> str:
         redacted.append(token)
         hide_next = "api_key" in token.lower()
     return shlex.join(redacted)
+
+
+def _safe_path_tag(value: str) -> str:
+    tag = PATH_TAG_RE.sub("_", str(value or "").strip()).strip("._-")
+    return tag[:80]
 
 
 def _git_revision(repo_root: Path) -> dict[str, str | bool]:
@@ -246,7 +253,7 @@ def main():
         help="Run cases concurrently or one by one. serial forces --n_parallel_agents=1.",
     )
     parser.add_argument("--n_parallel_agents", type=int, default=8)
-    parser.add_argument("--temperature", type=float, default=0.6)
+    parser.add_argument("--temperature", type=float, default=0.2)
     parser.add_argument("--top_p", type=float, default=0.95)
     parser.add_argument("--max_prompt_length", type=int, default=4096)
     parser.add_argument("--max_response_length", type=int, default=8192)
@@ -275,7 +282,7 @@ def main():
     parser.add_argument("--applicability_mode", default="llm", choices=["rule", "llm", "hybrid"])
     parser.add_argument("--experience_extraction_mode", default="llm", choices=["rule", "llm"])
     parser.add_argument("--experience_merge_mode", default="llm", choices=["rule", "llm"])
-    parser.add_argument("--memory_top_k", type=int, default=5)
+    parser.add_argument("--memory_top_k", type=int, default=3)
     parser.add_argument("--log_memory_trace", action="store_true")
     parser.add_argument(
         "--inject_case_memory",
@@ -285,7 +292,27 @@ def main():
     parser.add_argument(
         "--trace_tag",
         default="",
-        help="Optional suffix for memory trace and trajectory directories.",
+        help=(
+            "Experiment tag for trajectory output and, by default, the memory "
+            "store subdirectory."
+        ),
+    )
+    parser.add_argument(
+        "--memory_root_by_trace_tag",
+        "--memory-root-by-trace-tag",
+        dest="memory_root_by_trace_tag",
+        action="store_true",
+        default=True,
+        help=(
+            "When memory is enabled and --trace_tag is set, store all memory "
+            "files under <memory_root>/<trace_tag>/."
+        ),
+    )
+    parser.add_argument(
+        "--no-memory-root-by-trace-tag",
+        dest="memory_root_by_trace_tag",
+        action="store_false",
+        help="Share one memory store across trace tags.",
     )
     parser.add_argument("--disable_experience_memory", action="store_true")
     parser.add_argument("--disable_skill_memory", action="store_true")
@@ -403,10 +430,14 @@ def main():
         sys.stderr = Tee(sys.stderr, run_log_file)
 
     os.environ["TOKENIZERS_PARALLELISM"] = "true"
+    safe_trace_tag = _safe_path_tag(args.trace_tag)
+    if args.trace_tag and not safe_trace_tag:
+        raise ValueError("--trace_tag must contain at least one safe path character")
+
     if args.trajectory_dir:
         trajectory_dir = Path(args.trajectory_dir)
-        if args.trace_tag:
-            trajectory_dir = trajectory_dir / args.trace_tag
+        if safe_trace_tag:
+            trajectory_dir = trajectory_dir / safe_trace_tag
         os.environ["RLLM_TRAJECTORY_DIR"] = str(trajectory_dir)
         trajectory_dir.mkdir(parents=True, exist_ok=True)
     else:
@@ -417,9 +448,20 @@ def main():
     if "RETRIEVAL_SERVER_URL" not in os.environ:
         os.environ["RETRIEVAL_SERVER_URL"] = "http://127.0.0.1:8000"
 
-    memory_root = args.memory_root.strip() if args.memory_root else ""
-    if not memory_root or memory_root == "memory_data":
-        memory_root = MEMORY_ROOT_DIRNAME
+    base_memory_root = args.memory_root.strip() if args.memory_root else ""
+    if not base_memory_root or base_memory_root == "memory_data":
+        base_memory_root = MEMORY_ROOT_DIRNAME
+    memory_scope_tag = (
+        safe_trace_tag
+        if args.enable_memory and args.memory_root_by_trace_tag and safe_trace_tag
+        else ""
+    )
+    memory_root = (
+        str(Path(base_memory_root) / memory_scope_tag)
+        if memory_scope_tag
+        else base_memory_root
+    )
+    memory_trace_tag = "" if memory_scope_tag else safe_trace_tag
 
     memory_llm_model = (
         args.memory_llm_model
@@ -490,6 +532,8 @@ def main():
             ),
             "effective_parser_name": effective_parser_name,
             "n_parallel_agents": args.n_parallel_agents,
+            "base_memory_root": base_memory_root,
+            "memory_scope_tag": memory_scope_tag,
             "memory_root": memory_root,
             "memory_llm_model": memory_llm_model,
             "memory_llm_base_url": memory_llm_base_url,
@@ -529,7 +573,7 @@ def main():
             "memory_top_k": args.memory_top_k,
             "log_memory_trace": args.log_memory_trace,
             "inject_case_memory": args.inject_case_memory,
-            "trace_tag": args.trace_tag,
+            "trace_tag": memory_trace_tag,
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
@@ -566,7 +610,7 @@ def main():
             "memory_top_k": args.memory_top_k,
             "log_memory_trace": args.log_memory_trace,
             "inject_case_memory": args.inject_case_memory,
-            "trace_tag": args.trace_tag,
+            "trace_tag": memory_trace_tag,
             "disable_experience_memory": args.disable_experience_memory,
             "disable_skill_memory": args.disable_skill_memory,
             "disable_knowledge_memory": args.disable_knowledge_memory,
@@ -615,6 +659,7 @@ def main():
         },
         tokenizer=tokenizer,
         sampling_params=sampling_params,
+        max_steps=args.max_steps,
         max_response_length=args.max_response_length,
         max_prompt_length=args.max_prompt_length,
         n_parallel_agents=args.n_parallel_agents,
