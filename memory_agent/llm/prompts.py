@@ -210,41 +210,47 @@ Input:
 - ineffective_interactions: low-value or no-result interactions
 - episode_outcome
 
-Experience memory stores reusable diagnostic evidence-interpretation insights.
-It is not an action policy or workflow.
+Experience memory stores reusable CLINICAL REASONING PATTERNS — how to think through a diagnostic scenario, not just what evidence points to what diagnosis.
 
-Extract experiences about:
-- discriminative symptoms, signs, history, exam, lab, imaging, or tool findings
-- important positive or negative evidence
-- missed, misleading, or over-weighted evidence in failed cases
+It is NOT an action policy, tool-usage rule, or workflow.
+It IS a transferable reasoning chain that helps a doctor think better in similar situations.
+
+Each experience should encode a clinical reasoning chain covering (as applicable):
+- Trigger context: in what clinical scenario this reasoning applies
+- Factors to consider: which differentials, comorbidities, or risk factors matter
+- What to verify or cross-check: which indicators, tests, or findings confirm or refute the reasoning
+- What to rule out: which critical risks or mimics must be excluded
+- How to interpret the combined evidence: the diagnostic implication
+- Boundary: when NOT to apply this reasoning pattern
 
 Good experience:
-"Finger swelling with redness, pus, and nail-biting history supports paronychia because nail-biting provides an inoculation clue and pus suggests localized periungual infection; do not apply this when pain is deep, joint-centered, trauma-dominant, or systemic signs suggest broader infection."
+"When a patient presents with acute chest pain and initial ECG is normal, do not prematurely dismiss cardiac etiology — serial troponins over 6-12 hours should be checked to rule out evolving NSTEMI, especially in elderly, diabetic, or female patients where presentations are frequently atypical. Consider aortic dissection if pain is described as tearing and blood pressure is asymmetric between arms. Do not apply this reasoning when ECG already shows clear STEMI pattern or when a trauma history fully explains the pain."
 
 Bad experience:
-"Ask targeted questions."
-"Consider paronychia."
-"Finger swelling means paronychia."
+"Consider cardiac causes for chest pain."   ← too vague, no reasoning chain
+"Order troponin for chest pain."             ← this is a tool/action instruction (→ skill), not a reasoning pattern
+"Chest pain with normal ECG is not cardiac." ← overgeneralized, wrong conclusion
 
 Rules:
 - Each experience must be grounded in explicit episode evidence.
-- Write one concise clinical insight, not labeled sections.
-- Include clinical pattern, key evidence, diagnostic interpretation, and applicability boundary.
-- Prefer discriminative or commonly missed evidence.
+- Write one concise clinical reasoning insight as a coherent paragraph, not labeled sections.
+- Cover as many reasoning dimensions as the evidence supports: consider, verify, rule-out, interpret, boundary.
+- Prefer reasoning patterns that are discriminative, commonly missed, or counter-intuitive.
 - Do not use gold diagnosis to add facts absent from the trajectory.
-- Do not extract generic workflow advice.
+- Do not extract tool/action instructions (those belong in skill memory).
+- Do not extract pure symptom→diagnosis associations without reasoning depth.
 - Do not output diagnosis-only or overgeneralized statements.
 - Use episode_outcome.success only to choose outcome_type.
-- For failed episodes, return at most 2 high-confidence negative experiences.
+- For failed episodes, return at most 2 high-confidence negative experiences focusing on what reasoning went wrong and what should have been considered instead.
 - Skip generic, duplicate, weakly supported, or non-reusable lessons.
 
 Confidence:
-- 0.9-1.0: directly supported, clinically important, reusable, with clear interpretation and boundary.
+- 0.9-1.0: directly supported, clinically important, reusable, with clear reasoning chain and boundary.
 - 0.7-0.89: useful but partially inferred.
 - Below 0.7: do not output.
 
 Write each ExperienceCard:
-- text: one complete clinical diagnostic insight.
+- text: one complete clinical reasoning insight.
 - outcome_type: "positive" or "negative".
 - confidence: per rules above.
 - support_count: 1 unless otherwise stated.
@@ -327,31 +333,45 @@ Input:
 - ineffective_interactions: low-value or no-result interactions
 - episode_outcome
 
-Skill memory stores reusable local diagnostic decision patterns.
-It is not a medical fact, isolated clue, symptom-diagnosis association, or generic advice.
+Skill memory stores reusable DECISION-TOOL patterns — which tool or action to use, in what order, to resolve a specific diagnostic decision point.
+
+Skill vs Experience boundary:
+- Experience = HOW TO THINK: clinical reasoning pattern, what to consider/verify/exclude in a scenario
+- Skill = HOW TO ACT: which tool/action to use, in what order, with what expected outcome, to resolve a decision point
+
+A skill is NOT a medical fact, clinical reasoning insight, or symptom-diagnosis association.
+A skill IS a concrete, tool-bound action strategy tied to a decision context.
 
 A skill answers:
-- when this local decision pattern applies
-- what next action or short action sequence is useful
-- why it helps reduce diagnostic uncertainty
-- when it should not be applied
+- when (trigger): at what decision point this action pattern applies
+- what (procedure): which tool/action to use, with what specific parameters or focus
+- why (rationale): what information the action is expected to yield and how it resolves the uncertainty
+- when not (boundary): when this action pattern should NOT be applied
 
 Important:
 - Do not invent action_type values.
 - procedure.action_type must be copied exactly from action/tool names present in the episode input.
-- If a useful reasoning pattern has no corresponding available action/tool, skip it.
+- If a useful reasoning pattern has no corresponding available action/tool, skip it — it belongs in experience memory, not skill memory.
 - Always output tags as [].
 - support_count is 1 unless otherwise stated.
 
 Each skill should include:
-1. trigger: clinical pattern or uncertainty that activates the skill
-2. procedure: 1-3 available actions with concrete action_label
-3. rationale: why the action helps the diagnostic process
-4. boundary: when this skill should not apply
+1. trigger: clinical decision point or diagnostic uncertainty that activates this skill
+2. procedure: 1-3 available actions with concrete action_label — specify the focus or parameters of the action, not just the tool name
+3. rationale: what information the action yields and how it advances the diagnostic process
+4. boundary: when this action pattern is inappropriate, redundant, or contradicted by evidence already gathered
+
+Good skill:
+"When initial history suggests infection but the source is unclear and localizing symptoms are absent, use ask_patient to probe for urinary symptoms (dysuria, frequency, urgency) and recent fever pattern before ordering labs, because UTI is a common occult infection source in elderly patients and clarifying symptoms first avoids unnecessary broad workup. Do not apply if urinary symptoms have already been explicitly ruled out or if a clear alternative source has been identified."
+
+Bad skill:
+"Ask about urinary symptoms."          ← no trigger context, no rationale, no boundary
+"Order tests to find the infection."    ← too vague, no specific tool/action
+"Consider UTI in elderly patients."     ← this is experience (reasoning), not skill (action)
 
 Do not extract:
-- isolated medical facts or single clues
-- symptom-diagnosis associations
+- clinical reasoning patterns or "what to consider" insights (→ experience memory)
+- isolated medical facts or symptom-diagnosis associations
 - "consider diagnosis X"
 - generic advice such as "ask more questions" or "order tests"
 - actions contradicted by the episode outcome
@@ -360,17 +380,18 @@ Do not extract:
 
 Generalization:
 - Remove incidental case details.
-- Keep demographics, exposures, modality, evidence threshold, and boundary only if clinically relevant.
-- Prefer local reusable decision patterns over broad disease rules.
+- Keep decision context, tool focus, evidence threshold, and boundary only if clinically relevant.
+- Prefer local reusable action patterns over broad disease rules.
 
 Confidence:
-- 0.9-1.0: visible, evidence-supported, clinically coherent, and outcome-supported.
+- 0.9-1.0: visible, evidence-supported, outcome-confirmed, with clear trigger/action/boundary.
 - 0.7-0.89: useful but partially inferred.
 - Below 0.7: do not output.
 
 Rules:
 - Do not normalize or invent action_type.
 - action_label must be concrete and clinically useful.
+- procedure should specify the FOCUS of the action (what to ask, what to look up, what to check), not just the tool name.
 
 Schema:
 {_dump(SKILL_EXTRACTION_SCHEMA)}

@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import os
 import sys
 import time
 import types
@@ -20,6 +21,7 @@ MODEL = None
 TOKENIZER = None
 SERVED_MODEL_NAME = ""
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+DEVICE_MAP = None  # device_map="auto" 时由 accelerate 管理多卡
 GENERATION_LOCK = threading.Lock()
 
 
@@ -166,6 +168,17 @@ def _load_local_module(name: str, path: Path, package_dir: Path):
     return module
 
 
+def _input_device() -> str | torch.device:
+    """获取模型输入应该放置的设备（多卡时取 embed_tokens 所在设备）。"""
+    if DEVICE_MAP is not None:
+        # device_map="auto" 时，取 embed_tokens 层的设备
+        try:
+            return next(MODEL.parameters()).device
+        except StopIteration:
+            return "cuda"
+    return DEVICE
+
+
 def _generate(payload: dict[str, Any]) -> dict[str, Any]:
     messages = payload.get("messages") or []
     prompt = _message_text(messages)
@@ -173,7 +186,7 @@ def _generate(payload: dict[str, Any]) -> dict[str, Any]:
     temperature = float(payload.get("temperature", 0.0) or 0.0)
     top_p = float(payload.get("top_p", 1.0) or 1.0)
 
-    inputs = TOKENIZER(prompt, return_tensors="pt").to(DEVICE)
+    inputs = TOKENIZER(prompt, return_tensors="pt").to(_input_device())
     prompt_tokens = int(inputs["input_ids"].shape[-1])
     gen_kwargs: dict[str, Any] = {
         "max_new_tokens": max_tokens,
@@ -287,16 +300,51 @@ class HulumedHTTPServer(ThreadingHTTPServer):
     daemon_threads = True
 
 
+def _resolve_auto_map(model_path: Path) -> tuple[str, str, str, str]:
+    """从 config.json 的 auto_map 中自动检测 config 和 model 的类名。
+
+    Returns:
+        (config_py_filename, config_cls_name, modeling_py_filename, model_cls_name)
+    """
+    config_file = model_path / "config.json"
+    if not config_file.is_file():
+        raise FileNotFoundError(f"config.json not found in {model_path}")
+    with config_file.open() as f:
+        data = json.load(f)
+    auto_map = data.get("auto_map", {})
+    config_ref = auto_map.get("AutoConfig", "")
+    model_ref = auto_map.get("AutoModelForCausalLM", "")
+    if not config_ref or not model_ref:
+        raise ValueError(
+            f"config.json auto_map missing AutoConfig or AutoModelForCausalLM: {auto_map}"
+        )
+    # e.g. "configuration_hulumed_qwen3.HulumedQwen3Config"
+    config_py, config_cls_name = config_ref.rsplit(".", 1)
+    model_py, model_cls_name = model_ref.rsplit(".", 1)
+    return config_py, config_cls_name, model_py, model_cls_name
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model_path", required=True)
     parser.add_argument("--served_model_name", default="hulumed")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=30000)
+    parser.add_argument(
+        "--gpus", default="",
+        help="Comma-separated CUDA device indices, e.g. '0,1'. "
+             "Uses device_map='auto' for multi-GPU model parallelism. "
+             "Leave empty to use all visible GPUs.",
+    )
     parser.add_argument("--dtype", default="bfloat16", choices=["auto", "float16", "bfloat16", "float32"])
     args = parser.parse_args()
 
-    global MODEL, TOKENIZER, SERVED_MODEL_NAME, DEVICE
+    global MODEL, TOKENIZER, SERVED_MODEL_NAME, DEVICE, DEVICE_MAP
+
+    if args.gpus.strip():
+        os.environ["CUDA_VISIBLE_DEVICES"] = args.gpus.strip()
+        print(f"[hulumed] CUDA_VISIBLE_DEVICES set to {args.gpus.strip()}")
+
     SERVED_MODEL_NAME = args.served_model_name
     model_path = Path(args.model_path).resolve()
     sys.path.insert(0, str(model_path))
@@ -313,28 +361,38 @@ def main() -> None:
         local_files_only=True,
     )
 
+    # 从 config.json auto_map 自动检测建模文件和类名，兼容 qwen2/qwen3 等变体
+    config_py, config_cls_name, model_py, model_cls_name = _resolve_auto_map(model_path)
+    print(f"[hulumed] Detected model: {config_cls_name} / {model_cls_name}")
+
     # Avoid Transformers dynamic-module cache. Hulu-Med ships local modeling
     # files with sibling imports; direct local import keeps everything offline.
     config_module = _load_local_module(
-        "hulumed_local.configuration_hulumed_qwen2",
-        model_path / "configuration_hulumed_qwen2.py",
+        f"hulumed_local.{config_py}",
+        model_path / f"{config_py}.py",
         model_path,
     )
     modeling_module = _load_local_module(
-        "hulumed_local.modeling_hulumed_qwen2",
-        model_path / "modeling_hulumed_qwen2.py",
+        f"hulumed_local.{model_py}",
+        model_path / f"{model_py}.py",
         model_path,
     )
-    config_cls = getattr(config_module, "HulumedQwen2Config")
-    model_cls = getattr(modeling_module, "HulumedQwen2ForCausalLM")
+    config_cls = getattr(config_module, config_cls_name)
+    model_cls = getattr(modeling_module, model_cls_name)
     config = config_cls.from_pretrained(str(model_path), local_files_only=True)
+
+    # 使用 device_map="auto" 自动跨卡拆分（14B ~28GB，3090 单卡放不下）
+    DEVICE_MAP = "auto"
+    print(f"[hulumed] Loading with device_map='auto' ...")
     MODEL = model_cls.from_pretrained(
         str(model_path),
         local_files_only=True,
         config=config,
         torch_dtype=dtype,
-    ).to(DEVICE)
+        device_map=DEVICE_MAP,
+    )
     MODEL.eval()
+    print(f"[hulumed] Model loaded. Device map:\n{MODEL.hf_device_map}")
 
     server = HulumedHTTPServer((args.host, args.port), Handler)
     print(f"Serving {SERVED_MODEL_NAME} on http://{args.host}:{args.port}/v1")

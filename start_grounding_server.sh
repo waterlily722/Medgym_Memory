@@ -3,10 +3,10 @@
 # 用法：./start_grounding_server.sh  或  PORT=30051 ./start_grounding_server.sh
 set -euo pipefail
 
-RLLM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+RLLM_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../rllm" && pwd)"
 export PYTHONPATH="${RLLM_DIR}:${PYTHONPATH:-}"
 
-MODEL_DIR="${MODEL_DIR:-/doral_llm/xiweidai/med_env/models/grounding-dino-base}"
+MODEL_DIR="${MODEL_DIR:-/oral_llm/xiweidai/med_env/models/grounding-dino-base}"
 PORT="${PORT:-30050}"
 
 echo "[INFO] Starting Grounding DINO API on port ${PORT}, model_dir=${MODEL_DIR}"
